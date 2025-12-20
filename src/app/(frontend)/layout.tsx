@@ -5,10 +5,11 @@ import './globals.css'
 
 import { MobileStickyBar } from '@/components/MobileStickyBar'
 import { getCachedGlobal } from '@/utilities/getGlobals'
+import type { Contact } from '@/payload-types'
 
 // A minimal layout ensuring NO database or Payload code runs on the Home Page
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const contactData = await getCachedGlobal('contact', 1)()
+  const contactData = await getCachedGlobal('contact', 1)() as Contact
 
   return (
     <html className={`${GeistSans.variable} ${GeistMono.variable}`} lang="en" suppressHydrationWarning>

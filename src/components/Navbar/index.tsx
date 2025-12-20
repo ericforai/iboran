@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Phone, ChevronDown, Menu, X, MessageSquare } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
+import type { Contact } from '@/payload-types'
 
 // 解决方案下拉菜单项
 const solutionItems = [
@@ -35,7 +36,7 @@ const menuItems = [
 
 interface NavbarProps {
   onOpenDemo?: () => void
-  contactData?: any
+  contactData?: Contact
 }
 
 export function Navbar({ onOpenDemo, contactData }: NavbarProps) {

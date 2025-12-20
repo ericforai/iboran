@@ -50,7 +50,7 @@ export const seed = async ({
         slug: global,
         data: {
           navItems: [],
-        },
+        } as unknown as Record<string, never>,
         depth: 0,
         context: {
           disableRevalidate: true,

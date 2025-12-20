@@ -4,8 +4,9 @@ import React, { useState } from 'react'
 import { Phone, MessageSquare, Presentation } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
+import type { Contact } from '@/payload-types'
 
-export const MobileStickyBar = ({ contactData }: { contactData?: any }) => {
+export const MobileStickyBar = ({ contactData }: { contactData?: Contact }) => {
     const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
     const [isConsultModalOpen, setIsConsultModalOpen] = useState(false)
 

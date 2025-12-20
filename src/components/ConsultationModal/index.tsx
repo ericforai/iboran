@@ -4,15 +4,12 @@ import React from 'react'
 import { X, MessageSquare, Phone, Copy, Check } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import type { Contact } from '@/payload-types'
 
 interface ConsultationModalProps {
     isOpen: boolean
     onClose: () => void
-    data?: {
-        wechatId?: string | null
-        phone?: string | null
-        wechatQR?: any | null
-    }
+    data?: Contact
 }
 
 export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose, data }) => {
