@@ -58,6 +58,7 @@ const Hero = () => {
                         </h1>
                         <p className="text-lg lg:text-2xl text-[#1F2329] font-medium mb-6 lg:mb-8">
                             用友生态中的<span className="text-[#0052D9]">数字化交付特种部队</span>
+                            {/* v1.0.2-standalone-debug */}
                         </p>
                         
                         {/* Mobile-only Trust Markers - Immediate Social Proof */}
