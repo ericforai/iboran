@@ -4,9 +4,27 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, CheckCircle2, ChevronRight, BarChart3, Layout, Globe2, ShieldCheck, Layers } from 'lucide-react'
+import {
+  CheckCircle2,
+  BarChart3,
+  Users,
+  ArrowRight,
+  Globe,
+  Globe2,
+  Shield,
+  ShieldCheck,
+  Zap,
+  MessageSquare,
+  Layers,
+  Settings,
+  Presentation,
+  Play,
+  Layout,
+  ChevronRight
+} from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { Navbar } from '@/components/Navbar'
+import heroImage from '@/assets/hero.jpg'
 
 // --- Visual Constants ---
 const _Colors = {
@@ -102,10 +120,12 @@ const Hero = () => {
                         className="hidden lg:block lg:w-1/2 relative"
                     >
                         <div className="relative z-10 w-full aspect-video max-w-2xl mx-auto">
-                            <img
-                                src="/hero.jpg"
+                            <Image
+                                src={heroImage}
                                 alt="Enterprise Software Integration Hub"
-                                className="w-full h-auto object-contain drop-shadow-2xl"
+                                fill
+                                className="object-contain drop-shadow-2xl"
+                                priority
                             />
 
                             {/* Floating Elements */}
