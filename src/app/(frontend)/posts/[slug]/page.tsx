@@ -15,7 +15,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { getCachedGlobal } from '@/utilities/getGlobals'
-import { Phone } from 'lucide-react'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -78,12 +78,12 @@ export default async function Post({ params: paramsPromise }: Args) {
                 泊冉软件专家团队深耕行业 12 年，已助力 500+ 企业实现精密管理。点击下方按钮，获取专属行业深度建议。
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
+                <Link
                   href="/demo"
                   className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-lg transition-all text-center"
                 >
                   预约专家演示
-                </a>
+                </Link>
                 <a
                   href={`tel:${phone.replace(/\s+/g, '')}`}
                   className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white border-2 border-white/30 hover:bg-white/10 rounded-md transition-all sm:w-auto"

@@ -29,7 +29,7 @@ export default function CTASection() {
                 预约专家演示
               </button>
               <button className="w-full sm:w-auto px-10 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-lg hover:bg-white/10 transition">
-                致电咨询 400-XXX-XXXX
+                致电咨询 400-9955-161
               </button>
             </div>
 
