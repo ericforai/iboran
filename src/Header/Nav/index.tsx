@@ -20,6 +20,12 @@ export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
         <span className="sr-only">Search</span>
         <SearchIcon className="w-5 text-primary" />
       </Link>
+      <Link
+        href="/demo"
+        className="bg-[#E60012] text-white px-4 py-2 rounded-md font-medium text-sm hover:bg-red-700 transition-colors"
+      >
+        预约演示
+      </Link>
     </nav>
   )
 }

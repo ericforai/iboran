@@ -1,31 +1,34 @@
-version: '3'
-
 services:
-  payload:
-    image: node:18-alpine
+  app:
+    image: node:20-alpine
     ports:
       - '3000:3000'
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
+    working_dir: /home/node/app
+    command: sh -c "corepack enable && pnpm install && pnpm dev"
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
     env_file:
       - .env
+    environment:
+      - NODE_ENV=development
 
   mongo:
-    image: mongo:latest
+    image: mongo:7
     ports:
-      - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
+      - '27018:27017'
     volumes:
-      - data:/data/db
-    logging:
-      driver: none
+      - mongo_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
 volumes:
-  data:
+  mongo_data:
   node_modules:

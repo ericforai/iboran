@@ -1,14 +1,14 @@
 import React from 'react'
 
 const defaultLabels = {
-  plural: 'Docs',
-  singular: 'Doc',
+  plural: '条内容',
+  singular: '条内容',
 }
 
 const defaultCollectionLabels = {
   posts: {
-    plural: 'Posts',
-    singular: 'Post',
+    plural: '篇内容',
+    singular: '篇内容',
   },
 }
 
@@ -49,7 +49,7 @@ export const PageRange: React.FC<{
       {(typeof totalDocs === 'undefined' || totalDocs === 0) && 'Search produced no results.'}
       {typeof totalDocs !== 'undefined' &&
         totalDocs > 0 &&
-        `Showing ${indexStart}${indexStart > 0 ? ` - ${indexEnd}` : ''} of ${totalDocs} ${
+        `当前显示第 ${indexStart}${indexStart > 0 ? ` - ${indexEnd}` : ''} 条，共 ${totalDocs} ${
           totalDocs > 1 ? plural : singular
         }`}
     </div>

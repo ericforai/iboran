@@ -14,6 +14,8 @@ import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { getCachedGlobal } from '@/utilities/getGlobals'
+import { Phone } from 'lucide-react'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -44,6 +46,8 @@ type Args = {
 export default async function Post({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
+  const contactData = await getCachedGlobal('contact', 1)()
+  const phone = contactData?.phone || '400-9955-161'
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
   const url = '/posts/' + decodedSlug
@@ -65,9 +69,36 @@ export default async function Post({ params: paramsPromise }: Args) {
       <div className="flex flex-col items-center gap-4 pt-8">
         <div className="container">
           <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
+          
+          {/* Enhanced CTA Block */}
+          <div className="max-w-[48rem] mx-auto mt-20 p-8 lg:p-12 bg-gradient-to-br from-[#1F2329] to-[#374151] rounded-3xl text-white relative overflow-hidden shadow-2xl">
+            <div className="relative z-10">
+              <h3 className="text-2xl lg:text-3xl font-bold mb-4">准备好开启数字化转型了吗？</h3>
+              <p className="text-slate-300 text-lg mb-8 max-w-xl">
+                泊冉软件专家团队深耕行业 12 年，已助力 500+ 企业实现精密管理。点击下方按钮，获取专属行业深度建议。
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="/demo"
+                  className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-lg transition-all text-center"
+                >
+                  预约专家演示
+                </a>
+                <a
+                  href={`tel:${phone.replace(/\s+/g, '')}`}
+                  className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white border-2 border-white/30 hover:bg-white/10 rounded-md transition-all sm:w-auto"
+                >
+                  拨打咨询热线
+                </a>
+              </div>
+            </div>
+            {/* Subtle background decoration */}
+            <div className="absolute top-0 right-0 -mt-20 -mr-20 w-64 h-64 bg-red-600/10 rounded-full blur-3xl"></div>
+          </div>
+
           {post.relatedPosts && post.relatedPosts.length > 0 && (
             <RelatedPosts
-              className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
+              className="mt-20 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
               docs={post.relatedPosts.filter((post) => typeof post === 'object')}
             />
           )}

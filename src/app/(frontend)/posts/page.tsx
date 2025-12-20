@@ -7,12 +7,15 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
+import { getCachedGlobal } from '@/utilities/getGlobals'
+import { MessageSquare, Phone, ArrowRight } from 'lucide-react'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
 
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
+  const contactData = await getCachedGlobal('contact', 1)()
 
   const posts = await payload.find({
     collection: 'posts',
@@ -31,8 +34,9 @@ export default async function Page() {
     <div className="pt-24 pb-24">
       <PageClient />
       <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+        <div className="prose dark:prose-invert max-w-none text-center">
+          <h1 className="text-4xl font-extrabold text-[#1F2329] mb-4">泊冉观察</h1>
+          <p className="text-slate-500 max-w-2xl mx-auto">深度解析半导体、装备制造及企业数字化转型的实战洞察与行业发现</p>
         </div>
       </div>
 
@@ -47,10 +51,29 @@ export default async function Page() {
 
       <CollectionArchive posts={posts.docs} />
 
-      <div className="container">
+      <div className="container mt-16">
         {posts.totalPages > 1 && posts.page && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
+          <div className="mb-16">
+            <Pagination page={posts.page} totalPages={posts.totalPages} />
+          </div>
         )}
+
+        {/* Lead Gen CTA Section */}
+        <div className="bg-[#F7F8FA] rounded-3xl p-8 lg:p-12 border border-slate-100 flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div>
+            <h2 className="text-2xl lg:text-3xl font-bold text-[#1F2329] mb-4">想要深入探讨您的数字化转型？</h2>
+            <p className="text-slate-600 max-w-xl">我们的业务专家随时准备为您提供专业的行业洞察和落地建议，帮助您化繁为简。</p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+            <a 
+              href={`tel:${(contactData?.phone || '400-9955-161').replace(/\s+/g, '')}`}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-xl hover:bg-blue-50 transition-all"
+            >
+              <Phone className="w-5 h-5" />
+              <span>立即致电专家</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -58,6 +81,6 @@ export default async function Page() {
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Payload Website Template Posts`,
+    title: `泊冉观察 - 行业深度解析与实战洞察 | 泊冉软件`,
   }
 }
