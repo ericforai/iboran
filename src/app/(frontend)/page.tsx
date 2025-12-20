@@ -24,7 +24,6 @@ import {
 } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { Navbar } from '@/components/Navbar'
-import heroImage from '@/assets/hero.jpg'
 
 // --- Visual Constants ---
 const _Colors = {
