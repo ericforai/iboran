@@ -3,7 +3,7 @@
 ## Phase 1: Backend - Data Modeling
 - [ ] Task: Implement Content Blocks
     - [x] Subtask: Create `PainPoints` Block Schema [bfcfc6f]
-    - [ ] Subtask: Create `Methodology` Block Schema
+    - [x] Subtask: Create `Methodology` Block Schema [60e94ac]
     - [ ] Subtask: Create `BenefitMetrics` Block Schema
     - [ ] Subtask: Ensure `Code` Block is available and configured
 - [ ] Task: Implement `IndustrySolutions` Collection
