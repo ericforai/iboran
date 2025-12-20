@@ -58,7 +58,7 @@ const Hero = () => {
                         </h1>
                         <p className="text-lg lg:text-2xl text-[#1F2329] font-medium mb-6 lg:mb-8">
                             用友生态中的<span className="text-[#0052D9]">数字化交付特种部队</span>
-                            {/* v1.0.2-standalone-debug */}
+                            <span className="block text-[10px] text-slate-400 opacity-30 mt-1">Build: 20251221.01</span>
                         </p>
                         
                         {/* Mobile-only Trust Markers - Immediate Social Proof */}
@@ -121,12 +121,10 @@ const Hero = () => {
                         className="w-full lg:w-1/2 relative mt-12 lg:mt-0"
                     >
                         <div className="relative z-10 w-full aspect-[4/3] sm:aspect-video max-w-2xl mx-auto">
-                            <Image
-                                src={heroImage}
+                            <img
+                                src="/hero.jpg?v=20251221"
                                 alt="Enterprise Software Integration Hub"
-                                fill
-                                className="object-contain drop-shadow-2xl"
-                                priority
+                                className="w-full h-full object-contain drop-shadow-2xl"
                             />
 
                             {/* Floating Elements (Visible on desktop only to avoid clutter) */}
