@@ -117,9 +117,9 @@ const Hero = () => {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
-                        className="hidden lg:block lg:w-1/2 relative"
+                        className="w-full lg:w-1/2 relative mt-12 lg:mt-0"
                     >
-                        <div className="relative z-10 w-full aspect-video max-w-2xl mx-auto">
+                        <div className="relative z-10 w-full aspect-[4/3] sm:aspect-video max-w-2xl mx-auto">
                             <Image
                                 src={heroImage}
                                 alt="Enterprise Software Integration Hub"
@@ -128,15 +128,15 @@ const Hero = () => {
                                 priority
                             />
 
-                            {/* Floating Elements */}
+                            {/* Floating Elements (Visible on desktop only to avoid clutter) */}
                             <motion.div
                                 animate={{ y: [0, -20, 0] }}
                                 transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                                className="absolute -top-12 -right-12 w-24 h-24 bg-white rounded-xl shadow-xl border border-slate-100 flex items-center justify-center z-20"
+                                className="hidden sm:flex absolute -top-12 -right-12 w-24 h-24 bg-white rounded-xl shadow-xl border border-slate-100 items-center justify-center z-20"
                             >
                                 <Layers className="w-10 h-10 text-[#E60012]" />
                             </motion.div>
-                            <div className="absolute -bottom-8 -left-8 w-64 h-24 bg-white/80 backdrop-blur rounded-lg shadow-lg border border-slate-100 flex items-center px-6 gap-4 z-20">
+                            <div className="hidden sm:flex absolute -bottom-8 -left-8 w-64 h-24 bg-white/80 backdrop-blur rounded-lg shadow-lg border border-slate-100 items-center px-6 gap-4 z-20">
                                 <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                                 </div>
