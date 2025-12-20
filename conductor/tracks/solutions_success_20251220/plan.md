@@ -4,7 +4,7 @@
 - [ ] Task: Implement Content Blocks
     - [x] Subtask: Create `PainPoints` Block Schema [bfcfc6f]
     - [x] Subtask: Create `Methodology` Block Schema [60e94ac]
-    - [ ] Subtask: Create `BenefitMetrics` Block Schema
+    - [x] Subtask: Create `BenefitMetrics` Block Schema [52060af]
     - [ ] Subtask: Ensure `Code` Block is available and configured
 - [ ] Task: Implement `IndustrySolutions` Collection
     - [ ] Subtask: Define Collection Schema in `src/collections/IndustrySolutions.ts` with `layout` field
