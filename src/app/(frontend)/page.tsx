@@ -2,23 +2,13 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
 import {
   CheckCircle2,
   BarChart3,
-  Users,
   ArrowRight,
-  Globe,
   Globe2,
-  Shield,
   ShieldCheck,
-  Zap,
-  MessageSquare,
   Layers,
-  Settings,
-  Presentation,
-  Play,
   Layout,
   ChevronRight
 } from 'lucide-react'

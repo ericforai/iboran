@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types'
+import { CollectionConfig } from 'payload'
 import { Code } from '../blocks/Code/config'
 import { CallToAction } from '../blocks/CallToAction/config'
 import { Content } from '../blocks/Content/config'

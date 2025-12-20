@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types'
+import { CollectionConfig } from 'payload'
 import { PainPointsBlock } from '../blocks/PainPoints/config'
 import { MethodologyBlock } from '../blocks/Methodology/config'
 import { BenefitMetricsBlock } from '../blocks/BenefitMetrics/config'
