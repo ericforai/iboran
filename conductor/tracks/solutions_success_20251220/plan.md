@@ -6,14 +6,12 @@
     - [x] Subtask: Create `Methodology` Block Schema [60e94ac]
     - [x] Subtask: Create `BenefitMetrics` Block Schema [52060af]
     - [x] Subtask: Ensure `Code` Block is available and configured [833fab2]
-- [ ] Task: Implement `IndustrySolutions` Collection
-    - [x] Subtask: Define Collection Schema in `src/collections/IndustrySolutions.ts` with `layout` field [d6f7add]
-    - [ ] Subtask: Register Collection in `payload.config.ts`
-    - [ ] Subtask: Verify Admin UI functionality
-- [ ] Task: Implement `SuccessStories` Collection
-    - [ ] Subtask: Define Collection Schema in `src/collections/SuccessStories.ts` with `layout` field
-    - [ ] Subtask: Register Collection in `payload.config.ts`
-    - [ ] Subtask: Verify Admin UI functionality
+- [x] Subtask: Register Collection in `payload.config.ts` [0dc8e96]
+    - [x] Subtask: Verify Admin UI functionality
+- [x] Task: Implement `SuccessStories` Collection
+    - [x] Subtask: Define Collection Schema in `src/collections/SuccessStories.ts` with `layout` field [0dc8e96]
+    - [x] Subtask: Register Collection in `payload.config.ts` [0dc8e96]
+    - [x] Subtask: Verify Admin UI functionality
 - [ ] Task: Conductor - User Manual Verification 'Backend - Data Modeling' (Protocol in workflow.md)
 
 ## Phase 2: Frontend - UI Components
