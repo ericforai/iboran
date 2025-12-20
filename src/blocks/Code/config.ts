@@ -5,6 +5,22 @@ export const Code: Block = {
   interfaceName: 'CodeBlock',
   fields: [
     {
+      name: 'type',
+      label: 'Type',
+      type: 'select',
+      defaultValue: 'code-snippet',
+      options: [
+        {
+          label: 'Code Snippet',
+          value: 'code-snippet',
+        },
+        {
+          label: 'Raw HTML',
+          value: 'raw-html',
+        },
+      ],
+    },
+    {
       name: 'language',
       type: 'select',
       defaultValue: 'typescript',
@@ -21,7 +37,14 @@ export const Code: Block = {
           label: 'CSS',
           value: 'css',
         },
+        {
+          label: 'HTML',
+          value: 'html',
+        },
       ],
+      admin: {
+        condition: ({ type }) => type === 'code-snippet',
+      },
     },
     {
       name: 'code',
