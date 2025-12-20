@@ -7,7 +7,7 @@
     - [x] Subtask: Create `BenefitMetrics` Block Schema [52060af]
     - [x] Subtask: Ensure `Code` Block is available and configured [833fab2]
 - [ ] Task: Implement `IndustrySolutions` Collection
-    - [ ] Subtask: Define Collection Schema in `src/collections/IndustrySolutions.ts` with `layout` field
+    - [x] Subtask: Define Collection Schema in `src/collections/IndustrySolutions.ts` with `layout` field [d6f7add]
     - [ ] Subtask: Register Collection in `payload.config.ts`
     - [ ] Subtask: Verify Admin UI functionality
 - [ ] Task: Implement `SuccessStories` Collection
