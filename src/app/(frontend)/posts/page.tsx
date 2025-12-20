@@ -8,14 +8,15 @@ import { getPayload } from 'payload'
 import React from 'react'
 import PageClient from './page.client'
 import { getCachedGlobal } from '@/utilities/getGlobals'
-import { MessageSquare, Phone, ArrowRight } from 'lucide-react'
+import { Phone } from 'lucide-react'
+import type { Contact } from '@/payload-types'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
 
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
-  const contactData = await getCachedGlobal('contact', 1)()
+  const contactData = await getCachedGlobal('contact', 1)() as Contact
 
   const posts = await payload.find({
     collection: 'posts',
