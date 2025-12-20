@@ -8,7 +8,7 @@ import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
 import RichText from '@/components/RichText'
 
-import type { Post } from '@/payload-types'
+import type { Post, Contact } from '@/payload-types'
 
 import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
@@ -46,7 +46,7 @@ type Args = {
 export default async function Post({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
-  const contactData = await getCachedGlobal('contact', 1)()
+  const contactData = await getCachedGlobal('contact', 1)() as Contact
   const phone = contactData?.phone || '400-9955-161'
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
