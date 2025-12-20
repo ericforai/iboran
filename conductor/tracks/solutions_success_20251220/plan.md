@@ -5,7 +5,7 @@
     - [x] Subtask: Create `PainPoints` Block Schema [bfcfc6f]
     - [x] Subtask: Create `Methodology` Block Schema [60e94ac]
     - [x] Subtask: Create `BenefitMetrics` Block Schema [52060af]
-    - [ ] Subtask: Ensure `Code` Block is available and configured
+    - [x] Subtask: Ensure `Code` Block is available and configured [833fab2]
 - [ ] Task: Implement `IndustrySolutions` Collection
     - [ ] Subtask: Define Collection Schema in `src/collections/IndustrySolutions.ts` with `layout` field
     - [ ] Subtask: Register Collection in `payload.config.ts`
