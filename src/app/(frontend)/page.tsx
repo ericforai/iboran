@@ -102,12 +102,10 @@ const Hero = () => {
                         className="hidden lg:block lg:w-1/2 relative"
                     >
                         <div className="relative z-10 w-full aspect-video max-w-2xl mx-auto">
-                            <Image
-                                src="/boran_homepage_banner.jpg"
+                            <img
+                                src="/hero.jpg"
                                 alt="Enterprise Software Integration Hub"
-                                fill
-                                className="object-contain drop-shadow-2xl"
-                                priority
+                                className="w-full h-auto object-contain drop-shadow-2xl"
                             />
 
                             {/* Floating Elements */}
