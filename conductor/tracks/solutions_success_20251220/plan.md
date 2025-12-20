@@ -1,17 +1,28 @@
 # Plan: Industry Solutions & Success Stories
 
 ## Phase 1: Backend - Data Modeling
+- [ ] Task: Implement Content Blocks
+    - [x] Subtask: Create `PainPoints` Block Schema [bfcfc6f]
+    - [ ] Subtask: Create `Methodology` Block Schema
+    - [ ] Subtask: Create `BenefitMetrics` Block Schema
+    - [ ] Subtask: Ensure `Code` Block is available and configured
 - [ ] Task: Implement `IndustrySolutions` Collection
-    - [ ] Subtask: Define Collection Schema in `src/collections/IndustrySolutions.ts`
+    - [ ] Subtask: Define Collection Schema in `src/collections/IndustrySolutions.ts` with `layout` field
     - [ ] Subtask: Register Collection in `payload.config.ts`
     - [ ] Subtask: Verify Admin UI functionality
 - [ ] Task: Implement `SuccessStories` Collection
-    - [ ] Subtask: Define Collection Schema in `src/collections/SuccessStories.ts`
+    - [ ] Subtask: Define Collection Schema in `src/collections/SuccessStories.ts` with `layout` field
     - [ ] Subtask: Register Collection in `payload.config.ts`
     - [ ] Subtask: Verify Admin UI functionality
 - [ ] Task: Conductor - User Manual Verification 'Backend - Data Modeling' (Protocol in workflow.md)
 
 ## Phase 2: Frontend - UI Components
+- [ ] Task: Update Block Renderer
+    - [ ] Subtask: Update `RenderBlocks.tsx` to handle new block types
+    - [ ] Subtask: Implement `PainPointsBlock` Frontend Component
+    - [ ] Subtask: Implement `MethodologyBlock` Frontend Component
+    - [ ] Subtask: Implement `BenefitMetricsBlock` Frontend Component
+    - [ ] Subtask: Implement `CodeBlock` Frontend Component (Safety check: Sanitize HTML)
 - [ ] Task: Create Shared UI Components
     - [ ] Subtask: Implement `SolutionCard` component with tests
     - [ ] Subtask: Implement `StoryCard` component with tests
