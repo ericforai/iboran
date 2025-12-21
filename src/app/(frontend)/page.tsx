@@ -325,32 +325,47 @@ const CoreValueGrid = () => {
 }
 
 const SocialProof = () => {
-    return (
-        <section className="py-20 bg-[#1F2329] text-white">
-            <div className="container mx-auto px-4 text-center">
-                <h2 className="text-3xl font-bold mb-12">500+ 行业领军企业的共同选择</h2>
+    const stats = [
+        { number: "12年+", label: "行业经验" },
+        { number: "100+", label: "软件著作权" },
+        { number: "98%", label: "交付成功率" },
+    ]
 
-                <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16 opacity-70 mb-16 grayscale">
-                    <div className="text-xl font-bold font-serif tracking-widest">BURGER KING</div>
-                    <div className="text-xl font-bold font-sans tracking-tight">SHELL</div>
-                    <div className="text-xl font-bold tracking-widest">bilibili</div>
-                    <div className="text-xl font-serif font-black">久事集团</div>
-                    <div className="text-xl font-bold">强生出租</div>
+    return (
+        <section className="py-20 bg-[#E0E5EC]">
+            <div className="container mx-auto px-4 text-center">
+                <h2 className="text-3xl font-bold text-[#3D4852] mb-4">500+ 行业领军企业的共同选择</h2>
+                <div className="w-16 h-1 bg-[#6C63FF] mx-auto rounded-full mb-12"></div>
+
+                {/* Brand Logos - Neumorphism Pills */}
+                <div className="flex flex-wrap justify-center items-center gap-4 lg:gap-6 mb-16">
+                    {["BURGER KING", "SHELL", "bilibili", "久事集团", "强生出租"].map((brand, idx) => (
+                        <div 
+                            key={idx}
+                            className="px-6 py-3 rounded-2xl bg-[#E0E5EC] text-[#6B7280] font-bold
+                                shadow-[5px_5px_10px_rgb(163,177,198,0.6),-5px_-5px_10px_rgba(255,255,255,0.5)]
+                                hover:shadow-[inset_5px_5px_10px_rgb(163,177,198,0.6),inset_-5px_-5px_10px_rgba(255,255,255,0.5)]
+                                hover:text-[#6C63FF] transition-all duration-300 cursor-default"
+                        >
+                            {brand}
+                        </div>
+                    ))}
                 </div>
 
+                {/* Stats Cards - Neumorphism */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                    <div className="p-6 border border-white/10 rounded-xl bg-white/5">
-                        <div className="text-4xl font-bold text-[#E60012] mb-2">12年+</div>
-                        <div className="text-slate-400 font-medium">行业经验</div>
-                    </div>
-                    <div className="p-6 border border-white/10 rounded-xl bg-white/5">
-                        <div className="text-4xl font-bold text-[#E60012] mb-2">100+</div>
-                        <div className="text-slate-400 font-medium">软件著作权</div>
-                    </div>
-                    <div className="p-6 border border-white/10 rounded-xl bg-white/5">
-                        <div className="text-4xl font-bold text-[#E60012] mb-2">98%</div>
-                        <div className="text-slate-400 font-medium">交付成功率</div>
-                    </div>
+                    {stats.map((stat, idx) => (
+                        <div 
+                            key={idx}
+                            className="p-8 rounded-[32px] bg-[#E0E5EC]
+                                shadow-[9px_9px_16px_rgb(163,177,198,0.6),-9px_-9px_16px_rgba(255,255,255,0.5)]
+                                hover:shadow-[12px_12px_20px_rgb(163,177,198,0.7),-12px_-12px_20px_rgba(255,255,255,0.6)]
+                                hover:-translate-y-1 transition-all duration-300"
+                        >
+                            <div className="text-4xl font-black text-[#6C63FF] mb-2">{stat.number}</div>
+                            <div className="text-[#6B7280] font-medium">{stat.label}</div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
