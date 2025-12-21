@@ -103,3 +103,95 @@
     scrollbar-width: none;
   }
 }
+
+/* Shimmer animation for brand text */
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ========================================
+   Neumorphism (Soft UI) Design System
+   ======================================== */
+
+:root {
+  /* Neumorphism Color Tokens */
+  --neu-bg: #E0E5EC;
+  --neu-text-primary: #3D4852;
+  --neu-text-muted: #6B7280;
+  --neu-accent: #6C63FF;
+  --neu-accent-light: #8B84FF;
+  --neu-accent-secondary: #38B2AC;
+  
+  /* Neumorphism Shadow Colors */
+  --neu-shadow-light: rgba(255, 255, 255, 0.5);
+  --neu-shadow-light-strong: rgba(255, 255, 255, 0.6);
+  --neu-shadow-dark: rgb(163, 177, 198, 0.6);
+  --neu-shadow-dark-strong: rgb(163, 177, 198, 0.7);
+}
+
+/* Neumorphism Utility Classes */
+@layer components {
+  /* Extruded (Raised) State */
+  .neu-extruded {
+    box-shadow: 
+      9px 9px 16px rgb(163, 177, 198, 0.6),
+      -9px -9px 16px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Extruded Hover (Lifted) State */
+  .neu-extruded-hover {
+    box-shadow: 
+      12px 12px 20px rgb(163, 177, 198, 0.7),
+      -12px -12px 20px rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Extruded Small */
+  .neu-extruded-sm {
+    box-shadow: 
+      5px 5px 10px rgb(163, 177, 198, 0.6),
+      -5px -5px 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Inset (Pressed) State */
+  .neu-inset {
+    box-shadow: 
+      inset 6px 6px 10px rgb(163, 177, 198, 0.6),
+      inset -6px -6px 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Inset Deep (Input/Well) State */
+  .neu-inset-deep {
+    box-shadow: 
+      inset 10px 10px 20px rgb(163, 177, 198, 0.7),
+      inset -10px -10px 20px rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Inset Small */
+  .neu-inset-sm {
+    box-shadow: 
+      inset 3px 3px 6px rgb(163, 177, 198, 0.6),
+      inset -3px -3px 6px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Neumorphism Float Animation */
+@keyframes neu-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-neu-float {
+  animation: neu-float 3s ease-in-out infinite;
+}
