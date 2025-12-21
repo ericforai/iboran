@@ -28,7 +28,7 @@ export const StoryCard: React.FC<{
       
       <div className="mb-6">
         <span className="text-red-600 text-xs font-bold uppercase tracking-widest bg-red-50 px-2 py-1 rounded">
-          Success Story
+          成功案例
         </span>
       </div>
 
@@ -53,7 +53,7 @@ export const StoryCard: React.FC<{
       </div>
 
       <div className="mt-8 pt-6 border-t border-gray-50 flex justify-between items-center text-gray-400 font-medium group-hover:text-blue-600 transition-colors">
-        <span className="text-sm">Read Full Story</span>
+        <span className="text-sm">阅读完整案例</span>
         <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>

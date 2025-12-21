@@ -57,7 +57,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
           <div className="container px-4">
             <div className="max-w-4xl">
               <div className="flex items-center gap-4 mb-6 text-red-500 font-bold uppercase tracking-widest text-sm">
-                <span>Success Story</span>
+                <span>成功案例</span>
                 <span className="w-12 h-px bg-red-500 opacity-50"></span>
                 <span>{story.industry}</span>
               </div>
@@ -65,7 +65,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
                 {story.title}
               </h1>
               <div className="flex items-center gap-4 text-gray-400">
-                <span className="font-bold text-white">Client:</span>
+                <span className="font-bold text-white">客户名称：</span>
                 <span>{story.clientName}</span>
               </div>
             </div>

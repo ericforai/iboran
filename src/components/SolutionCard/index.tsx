@@ -34,7 +34,7 @@ export const SolutionCard: React.FC<{
           </div>
         )}
         <div className="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">
-          Industry Solution
+          行业方案
         </div>
       </div>
       <div className="p-6">
@@ -49,7 +49,7 @@ export const SolutionCard: React.FC<{
           </p>
         )}
         <div className="flex items-center text-blue-600 font-semibold text-sm">
-          Learn More
+          了解更多
           <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
