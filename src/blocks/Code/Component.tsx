@@ -16,15 +16,21 @@ type Props = CodeBlockProps & {
 export const CodeBlock: React.FC<Props> = ({ className, code, language, type = 'code-snippet' }) => {
   if (type === 'raw-html') {
     return (
-      <div
-        className={[className, 'raw-html'].filter(Boolean).join(' ')}
-        dangerouslySetInnerHTML={{ __html: code }}
-      />
+      <div className={[className, 'raw-html-container'].filter(Boolean).join(' ')}>
+        <style dangerouslySetInnerHTML={{ __html: `
+          .raw-html-container img { max-width: 100%; height: auto; }
+          .raw-html-container iframe { max-width: 100%; }
+        `}} />
+        <div
+          className="w-full overflow-hidden"
+          dangerouslySetInnerHTML={{ __html: code }}
+        />
+      </div>
     )
   }
 
   return (
-    <div className={[className, 'not-prose'].filter(Boolean).join(' ')}>
+    <div className={[className, 'not-prose container mx-auto my-8'].filter(Boolean).join(' ')}>
       <Code code={code} language={language} />
     </div>
   )

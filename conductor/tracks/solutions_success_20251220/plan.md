@@ -17,14 +17,14 @@
 - [~] Task: Conductor - User Manual Verification 'Backend - Data Modeling' (Protocol in workflow.md)
 
 ## Phase 2: Frontend - UI Components
-- [~] Task: Update Block Renderer
+- [x] Task: Update Block Renderer [b31b1e6]
     - [x] Subtask: Update `RenderBlocks.tsx` to handle new block types [b31b1e6]
-    - [ ] Subtask: Implement `PainPointsBlock` Frontend Component
-    - [ ] Subtask: Implement `MethodologyBlock` Frontend Component
-    - [ ] Subtask: Implement `BenefitMetricsBlock` Frontend Component
-    - [ ] Subtask: Implement `CodeBlock` Frontend Component (Safety check: Sanitize HTML)
-- [ ] Task: Create Shared UI Components
-    - [ ] Subtask: Implement `SolutionCard` component with tests
+    - [x] Subtask: Implement `PainPointsBlock` Frontend Component [b31b1e6]
+    - [x] Subtask: Implement `MethodologyBlock` Frontend Component [b31b1e6]
+    - [x] Subtask: Implement `BenefitMetricsBlock` Frontend Component [b31b1e6]
+    - [x] Subtask: Implement `CodeBlock` Frontend Component (Safety check: Sanitize HTML) [b31b1e6]
+- [~] Task: Create Shared UI Components
+    - [~] Subtask: Implement `SolutionCard` component with tests
     - [ ] Subtask: Implement `StoryCard` component with tests
     - [ ] Subtask: Implement `MetricDisplay` component with tests
 - [ ] Task: Conductor - User Manual Verification 'Frontend - UI Components' (Protocol in workflow.md)
