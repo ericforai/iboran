@@ -17,8 +17,8 @@
 - [~] Task: Conductor - User Manual Verification 'Backend - Data Modeling' (Protocol in workflow.md)
 
 ## Phase 2: Frontend - UI Components
-- [ ] Task: Update Block Renderer
-    - [ ] Subtask: Update `RenderBlocks.tsx` to handle new block types
+- [~] Task: Update Block Renderer
+    - [x] Subtask: Update `RenderBlocks.tsx` to handle new block types [b31b1e6]
     - [ ] Subtask: Implement `PainPointsBlock` Frontend Component
     - [ ] Subtask: Implement `MethodologyBlock` Frontend Component
     - [ ] Subtask: Implement `BenefitMetricsBlock` Frontend Component
