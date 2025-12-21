@@ -7,6 +7,10 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import { PainPointsBlock } from '@/blocks/PainPoints/Component'
+import { MethodologyBlock } from '@/blocks/Methodology/Component'
+import { BenefitMetricsBlock } from '@/blocks/BenefitMetrics/Component'
+import { CodeBlock } from '@/blocks/Code/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -14,6 +18,10 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  painPoints: PainPointsBlock,
+  methodology: MethodologyBlock,
+  benefitMetrics: BenefitMetricsBlock,
+  code: CodeBlock,
 }
 
 export const RenderBlocks: React.FC<{
