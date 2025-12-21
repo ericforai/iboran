@@ -6,7 +6,7 @@
     - [x] Subtask: Register in `payload.config.ts` [a1557a4]
     - [x] Subtask: Configure `upload` properties (mime-types, resize options) [81439bd]
 - [ ] Task: Configure Search Plugin
-    - [ ] Subtask: Verify/Configure `@payloadcms/plugin-search` in `payload.config.ts` to include `resources`
+    - [x] Subtask: Verify/Configure `@payloadcms/plugin-search` in `payload.config.ts` to include `resources` [724c7c1]
 - [ ] Task: Conductor - User Manual Verification 'Backend - Resource Collection' (Protocol in workflow.md)
 
 ## Phase 2: Frontend - Resource Components
