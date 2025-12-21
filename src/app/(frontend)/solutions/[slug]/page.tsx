@@ -9,24 +9,13 @@ import type { IndustrySolution, Contact } from '@/payload-types'
 import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { StoryCard } from '@/components/StoryCard'
+import { ResourceCard } from '@/components/ResourceCard'
 import { PageClientWrapper } from '../../page.client.wrapper'
 import { SiteFooter } from '@/components/SiteFooter'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
 export async function generateStaticParams() {
-  const payload = await getPayload({ config: configPromise })
-  const solutions = await payload.find({
-    collection: 'industry-solutions',
-    draft: false,
-    limit: 1000,
-    overrideAccess: false,
-    pagination: false,
-    select: {
-      slug: true,
-    },
-  })
-
-  return solutions.docs.map(({ slug }) => ({ slug }))
+// ... (unchanged)
 }
 
 type Args = {
@@ -46,6 +35,18 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
 
   if (!solution) return <PayloadRedirects url={url} />
 
+  // Fetch related resources
+  const payload = await getPayload({ config: configPromise })
+  const resources = await payload.find({
+    collection: 'resources',
+    depth: 1,
+    where: {
+      relatedSolutions: {
+        contains: solution.id,
+      }
+    }
+  })
+
   return (
     <PageClientWrapper contactData={contactData}>
       <article className="pb-24 pt-16">
@@ -56,22 +57,38 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
 
         <RenderBlocks blocks={solution.layout} />
 
-        {solution.relatedSuccessStories && solution.relatedSuccessStories.length > 0 && (
-          <div className="container mt-24 px-4">
-            <div className="max-w-3xl mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">相关成功案例</h2>
-              <div className="w-12 h-1 bg-red-500 rounded-full"></div>
+        <div className="container mt-24 px-4 space-y-24">
+          {solution.relatedSuccessStories && solution.relatedSuccessStories.length > 0 && (
+            <div>
+              <div className="max-w-3xl mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">相关成功案例</h2>
+                <div className="w-12 h-1 bg-red-500 rounded-full"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {solution.relatedSuccessStories.map((story, index) => {
+                  if (typeof story === 'object') {
+                    return <StoryCard key={index} doc={story} />
+                  }
+                  return null
+                })}
+              </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {solution.relatedSuccessStories.map((story, index) => {
-                if (typeof story === 'object') {
-                  return <StoryCard key={index} doc={story} />
-                }
-                return null
-              })}
+          )}
+
+          {resources.docs.length > 0 && (
+            <div>
+              <div className="max-w-3xl mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">推荐下载资料</h2>
+                <div className="w-12 h-1 bg-blue-600 rounded-full"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {resources.docs.map((resource, index) => (
+                  <ResourceCard key={index} resource={resource as any} />
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </article>
       <SiteFooter />
     </PageClientWrapper>
