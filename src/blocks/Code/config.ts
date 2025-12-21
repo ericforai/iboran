@@ -48,7 +48,7 @@ export const Code: Block = {
     },
     {
       name: 'code',
-      type: 'code',
+      type: 'textarea',
       label: false,
       required: true,
     },

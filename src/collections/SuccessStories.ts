@@ -1,10 +1,10 @@
-import { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload'
 import { Code } from '../blocks/Code/config'
 import { CallToAction } from '../blocks/CallToAction/config'
 import { Content } from '../blocks/Content/config'
 import { MediaBlock } from '../blocks/MediaBlock/config'
 
-export const SuccessStories: CollectionConfig = {
+export const SuccessStories: CollectionConfig<'success-stories'> = {
   slug: 'success-stories',
   admin: {
     useAsTitle: 'title',

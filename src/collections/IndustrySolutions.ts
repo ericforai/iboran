@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload'
 import { PainPointsBlock } from '../blocks/PainPoints/config'
 import { MethodologyBlock } from '../blocks/Methodology/config'
 import { BenefitMetricsBlock } from '../blocks/BenefitMetrics/config'
@@ -7,7 +7,7 @@ import { CallToAction } from '../blocks/CallToAction/config'
 import { Content } from '../blocks/Content/config'
 import { MediaBlock } from '../blocks/MediaBlock/config'
 
-export const IndustrySolutions: CollectionConfig = {
+export const IndustrySolutions: CollectionConfig<'industry-solutions'> = {
   slug: 'industry-solutions',
   admin: {
     useAsTitle: 'title',

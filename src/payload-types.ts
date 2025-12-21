@@ -72,6 +72,8 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
+    'industry-solutions': IndustrySolution;
+    'success-stories': SuccessStory;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -94,6 +96,8 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    'industry-solutions': IndustrySolutionsSelect<false> | IndustrySolutionsSelect<true>;
+    'success-stories': SuccessStoriesSelect<false> | SuccessStoriesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -783,6 +787,88 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "industry-solutions".
+ */
+export interface IndustrySolution {
+  id: string;
+  title: string;
+  slug: string;
+  coverImage?: (string | null) | Media;
+  summary?: string | null;
+  layout: (
+    | {
+        title: string;
+        points: {
+          icon: string | Media;
+          title: string;
+          description: string;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'painPoints';
+      }
+    | {
+        title: string;
+        steps: {
+          title: string;
+          description: string;
+          image?: (string | null) | Media;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'methodology';
+      }
+    | {
+        title: string;
+        metrics: {
+          label: string;
+          value: string;
+          suffix?: string | null;
+          id?: string | null;
+        }[];
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'benefitMetrics';
+      }
+    | CodeBlock
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+  )[];
+  relatedSuccessStories?: (string | SuccessStory)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CodeBlock".
+ */
+export interface CodeBlock {
+  type?: ('code-snippet' | 'raw-html') | null;
+  language?: ('typescript' | 'javascript' | 'css' | 'html') | null;
+  code: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'code';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "success-stories".
+ */
+export interface SuccessStory {
+  id: string;
+  title: string;
+  slug: string;
+  clientName?: string | null;
+  industry?: string | null;
+  layout: (CodeBlock | CallToActionBlock | ContentBlock | MediaBlock)[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -990,6 +1076,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: string | User;
+      } | null)
+    | ({
+        relationTo: 'industry-solutions';
+        value: string | IndustrySolution;
+      } | null)
+    | ({
+        relationTo: 'success-stories';
+        value: string | SuccessStory;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1355,6 +1449,103 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "industry-solutions_select".
+ */
+export interface IndustrySolutionsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  coverImage?: T;
+  summary?: T;
+  layout?:
+    | T
+    | {
+        painPoints?:
+          | T
+          | {
+              title?: T;
+              points?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        methodology?:
+          | T
+          | {
+              title?: T;
+              steps?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    image?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        benefitMetrics?:
+          | T
+          | {
+              title?: T;
+              metrics?:
+                | T
+                | {
+                    label?: T;
+                    value?: T;
+                    suffix?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        code?: T | CodeBlockSelect<T>;
+        cta?: T | CallToActionBlockSelect<T>;
+        content?: T | ContentBlockSelect<T>;
+        mediaBlock?: T | MediaBlockSelect<T>;
+      };
+  relatedSuccessStories?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CodeBlock_select".
+ */
+export interface CodeBlockSelect<T extends boolean = true> {
+  type?: T;
+  language?: T;
+  code?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "success-stories_select".
+ */
+export interface SuccessStoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  clientName?: T;
+  industry?: T;
+  layout?:
+    | T
+    | {
+        code?: T | CodeBlockSelect<T>;
+        cta?: T | CallToActionBlockSelect<T>;
+        content?: T | ContentBlockSelect<T>;
+        mediaBlock?: T | MediaBlockSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1805,17 +1996,6 @@ export interface BannerBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'banner';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CodeBlock".
- */
-export interface CodeBlock {
-  language?: ('typescript' | 'javascript' | 'css') | null;
-  code: string;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'code';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
