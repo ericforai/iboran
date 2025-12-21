@@ -30,7 +30,7 @@ const Hero = () => {
                             更懂落地。
                         </h1>
                         <p className="text-lg lg:text-2xl text-[#1F2329] font-medium mb-6 lg:mb-8">
-                            用友生态中的<span className="text-[#0052D9]">数字化交付特种部队</span>
+                            用友生态中的<span className="text-[#0052D9]">复杂项目交付专家</span>
                         </p>
                         
                         {/* Mobile-only Trust Markers */}
