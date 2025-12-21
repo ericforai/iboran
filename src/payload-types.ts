@@ -74,6 +74,7 @@ export interface Config {
     users: User;
     'industry-solutions': IndustrySolution;
     'success-stories': SuccessStory;
+    resources: Resource;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -98,6 +99,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     'industry-solutions': IndustrySolutionsSelect<false> | IndustrySolutionsSelect<true>;
     'success-stories': SuccessStoriesSelect<false> | SuccessStoriesSelect<true>;
+    resources: ResourcesSelect<false> | ResourcesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -869,6 +871,29 @@ export interface SuccessStory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "resources".
+ */
+export interface Resource {
+  id: string;
+  title: string;
+  category: 'whitepaper' | 'case-study' | 'manual' | 'training';
+  relatedSolutions?: (string | IndustrySolution)[] | null;
+  gated?: boolean | null;
+  summary?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -920,10 +945,23 @@ export interface Search {
   id: string;
   title?: string | null;
   priority?: number | null;
-  doc: {
-    relationTo: 'posts';
-    value: string | Post;
-  };
+  doc:
+    | {
+        relationTo: 'posts';
+        value: string | Post;
+      }
+    | {
+        relationTo: 'industry-solutions';
+        value: string | IndustrySolution;
+      }
+    | {
+        relationTo: 'success-stories';
+        value: string | SuccessStory;
+      }
+    | {
+        relationTo: 'resources';
+        value: string | Resource;
+      };
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -1084,6 +1122,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'success-stories';
         value: string | SuccessStory;
+      } | null)
+    | ({
+        relationTo: 'resources';
+        value: string | Resource;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1546,6 +1588,28 @@ export interface SuccessStoriesSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "resources_select".
+ */
+export interface ResourcesSelect<T extends boolean = true> {
+  title?: T;
+  category?: T;
+  relatedSolutions?: T;
+  gated?: T;
+  summary?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

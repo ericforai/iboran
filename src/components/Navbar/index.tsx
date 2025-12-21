@@ -2,24 +2,115 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Phone, ChevronDown, Menu, X, MessageSquare } from 'lucide-react'
+import { 
+  Phone, 
+  ChevronDown, 
+  Menu, 
+  X, 
+  MessageSquare,
+  TrendingUp,
+  Wallet,
+  Package,
+  FlaskConical,
+  Factory,
+  Wrench,
+  Calculator,
+  FileSpreadsheet,
+  Bot,
+  Link2,
+  Users,
+  Blocks,
+  ArrowRight,
+  Building2,
+  Cpu,
+  Pill,
+  Car,
+  Utensils,
+  Zap,
+  ShoppingBag,
+  Truck
+} from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
 import type { Contact } from '@/payload-types'
 
-// 解决方案下拉菜单项
-const solutionItems = [
-  { label: 'L2C 销售到收款', href: '/solution/lead-to-cash', desc: '从线索到收款闭环' },
-  { label: '营收云', href: '/solution/revenue-cloud', desc: 'AI 智能对账' },
-  { label: 'AIP 智能化应用', href: '/solution/aip-intelligent-apps', desc: 'YonGPT 与智能 Agent' },
-  { label: '企业集成平台', href: '/solution/enterprise-integration', desc: 'LINK：让商业连接更容易' },
-  { label: 'EOC 数智化协作', href: '/solution/eoc-collaboration', desc: 'AI 驱动的效能革命' },
-  { label: 'PLM 研发云', href: '/solution/plm', desc: '驱动产品创新' },
-  { label: '制造全生命周期 (P2M)', href: '/solution/p2m', desc: '从计划、生产到成本' },
-  { label: '财务云', href: '/solution/finance-cloud', desc: '业财一体化' },
-  { label: 'MES 生产管理', href: '/solution/mes', desc: '智能制造' },
-  { label: '数字化建模', href: '/solution/digital-modeling', desc: '企业数智化创新加速器' },
+// 解决方案分类（按业务领域）
+const solutionByBusiness = [
+  {
+    name: '销售与收款',
+    items: [
+      { label: 'L2C 销售到收款', href: '/solution/lead-to-cash', desc: '从线索到收款闭环', icon: TrendingUp },
+      { label: '营收云', href: '/solution/revenue-cloud', desc: 'AI 智能对账', icon: Wallet },
+    ]
+  },
+  {
+    name: '采购与供应链',
+    items: [
+      { label: 'S2P 采购到付款', href: '/solution/s2p', desc: '从需求采购到付款全流程', icon: Package },
+    ]
+  },
+  {
+    name: '研发与制造',
+    items: [
+      { label: 'PLM 研发云', href: '/solution/plm', desc: '驱动产品创新', icon: FlaskConical },
+      { label: 'P2M 制造全生命周期', href: '/solution/p2m', desc: '从计划、生产到成本', icon: Factory },
+      { label: 'MES 生产管理', href: '/solution/mes', desc: '智能制造', icon: Wrench },
+    ]
+  },
+  {
+    name: '财务管理',
+    items: [
+      { label: '财务云', href: '/solution/finance-cloud', desc: '业财一体化', icon: Calculator },
+      { label: 'R2R 核算到报告', href: '/solution/r2r', desc: '从核算到报告全流程', icon: FileSpreadsheet },
+    ]
+  },
+  {
+    name: '智能平台',
+    items: [
+      { label: 'AIP 智能化应用', href: '/solution/aip-intelligent-apps', desc: 'YonGPT 与智能 Agent', icon: Bot },
+      { label: '企业集成平台', href: '/solution/enterprise-integration', desc: 'LINK：让商业连接更容易', icon: Link2 },
+      { label: 'EOC 数智化协作', href: '/solution/eoc-collaboration', desc: 'AI 驱动的效能革命', icon: Users },
+      { label: '数字化建模', href: '/solution/digital-modeling', desc: '企业数智化创新加速器', icon: Blocks },
+    ]
+  },
 ]
+
+// 解决方案分类（按行业） - 链接到 CMS 管理的行业解决方案
+const solutionByIndustry = [
+  {
+    name: '制造业',
+    icon: Factory,
+    href: '/solutions',  // 链接到行业解决方案列表页
+    desc: '智能制造、生产管理、供应链协同',
+  },
+  {
+    name: '高科技',
+    icon: Cpu,
+    href: '/solutions',
+    desc: '研发创新、敏捷开发、数字化转型',
+  },
+  {
+    name: '医药健康',
+    icon: Pill,
+    href: '/solutions',
+    desc: '合规管理、研发追溯、业财一体',
+  },
+  {
+    name: '汽车行业',
+    icon: Car,
+    href: '/solutions',
+    desc: '供应链协同、质量追溯、成本管控',
+  },
+  {
+    name: '消费品',
+    icon: ShoppingBag,
+    href: '/solutions',
+    desc: '渠道管理、营销数智化、库存优化',
+  },
+]
+
+// 扁平化 solutionItems 用于移动端
+const solutionItems = solutionByBusiness.flatMap(cat => cat.items)
 
 // 主菜单项
 const menuItems = [
@@ -27,7 +118,7 @@ const menuItems = [
     label: '解决方案',
     href: '/solution',
     hasDropdown: true,
-    dropdownItems: solutionItems,
+    isMegaMenu: true,
   },
   { label: '核心产品', href: '/products' },
   { label: '客户案例', href: '/cases' },
@@ -46,8 +137,28 @@ export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
   const [isConsultModalOpen, setIsConsultModalOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string | null>(null)
+  const [megaMenuTab, setMegaMenuTab] = useState<'business' | 'industry'>('business')
+  
+  // Timer ref for delayed menu close to prevent hover gap issue
+  const closeTimeoutRef = React.useRef<NodeJS.Timeout | null>(null)
 
   const phone = contactData?.phone || '400-9955-161'
+
+  // Open dropdown immediately, cancel any pending close
+  const handleMenuEnter = (label: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+    setActiveDropdown(label)
+  }
+
+  // Close dropdown with a delay to allow mouse to transition to mega menu
+  const handleMenuLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null)
+    }, 150) // 150ms delay gives time to move to mega menu
+  }
 
   // Close mobile menu on route change or resize
   useEffect(() => {
@@ -114,73 +225,171 @@ export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => item.hasDropdown && setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseEnter={() => item.hasDropdown && handleMenuEnter(item.label)}
+                onMouseLeave={handleMenuLeave}
               >
                 <Link
                   href={item.href}
                   className="flex items-center gap-1 text-sm font-medium text-[#1F2329] hover:text-[#0052D9] transition-colors relative group py-2"
                 >
                   {item.label}
-                  {item.hasDropdown && <ChevronDown className="w-4 h-4" />}
+                  {item.hasDropdown && <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0052D9] transition-all duration-300 group-hover:w-full"></span>
                 </Link>
-
-                {/* Dropdown Menu */}
-                {item.hasDropdown && activeDropdown === item.label && (
-                  <div className="absolute top-full left-0 pt-2">
-                    <div className="bg-white rounded-lg shadow-xl border border-slate-100 py-2 min-w-[200px]">
-                      {item.dropdownItems?.map((dropItem) => (
-                        <Link
-                          key={dropItem.href}
-                          href={dropItem.href}
-                          className="block px-4 py-3 hover:bg-slate-50 transition-colors"
-                        >
-                          <div className="font-medium text-[#1F2329]">{dropItem.label}</div>
-                          {'desc' in dropItem && (
-                            <div className="text-xs text-slate-500">{dropItem.desc}</div>
-                          )}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
             ))}
           </nav>
 
-          {/* Right: Actions */}
-          <div className="flex items-center gap-4 lg:gap-6">
-            <Link
-              href={`tel:${phone.replace(/\s+/g, '')}`}
-              className="hidden xl:flex items-center gap-2 text-sm font-semibold text-[#1F2329] hover:text-[#0052D9] transition-colors"
-            >
-              <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                <Phone className="w-4 h-4 text-[#0052D9]" />
+        {/* Mega Menu Dropdown - Below header, full width */}
+        {activeDropdown === '解决方案' && (
+          <div 
+            className="absolute top-full left-0 right-0 w-full bg-white border-t border-gray-100 shadow-2xl z-50"
+            onMouseEnter={() => handleMenuEnter('解决方案')}
+            onMouseLeave={handleMenuLeave}
+          >
+            <div className="container mx-auto px-6 py-6">
+              {/* Tab Switcher */}
+              <div className="flex items-center gap-2 mb-6">
+                <button
+                  onClick={() => setMegaMenuTab('business')}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    megaMenuTab === 'business' 
+                      ? 'bg-[#0052D9] text-white shadow-sm' 
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  按业务
+                </button>
+                <button
+                  onClick={() => setMegaMenuTab('industry')}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    megaMenuTab === 'industry' 
+                      ? 'bg-[#0052D9] text-white shadow-sm' 
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  按行业
+                </button>
               </div>
-              <span>{phone}</span>
-            </Link>
-            <button
-              onClick={handleOpenDemo}
-              className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-sm transition-all hover:shadow-md active:scale-95"
-            >
-              预约专家演示
-            </button>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-md hover:bg-slate-100 transition-colors"
-              aria-label={isMobileMenuOpen ? '关闭菜单' : '打开菜单'}
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6 text-[#1F2329]" />
-              ) : (
-                <Menu className="w-6 h-6 text-[#1F2329]" />
-              )}
-            </button>
+              {/* Scrollable Content Area */}
+              <div className="max-h-[60vh] overflow-y-auto pr-2 -mr-2">
+                {/* Business Categories Grid */}
+                {megaMenuTab === 'business' && (
+                  <div className="grid grid-cols-5 gap-6">
+                    {solutionByBusiness.map((category) => (
+                      <div key={category.name}>
+                        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 pb-2 border-b border-slate-100">
+                          {category.name}
+                        </h3>
+                        <div className="space-y-1">
+                          {category.items.map((item) => {
+                            const IconComponent = item.icon
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className="group flex items-start gap-3 p-2.5 -mx-2.5 rounded-lg hover:bg-slate-50 transition-all duration-150"
+                              >
+                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center transition-colors">
+                                  <IconComponent className="w-4 h-4 text-[#0052D9]" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="font-medium text-[#1F2329] text-sm group-hover:text-[#0052D9] transition-colors">
+                                    {item.label}
+                                  </div>
+                                  <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">
+                                    {item.desc}
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Industry Categories Grid - Simple cards linking to /solutions */}
+                {megaMenuTab === 'industry' && (
+                  <div className="grid grid-cols-5 gap-4">
+                    {solutionByIndustry.map((category) => {
+                      const CategoryIcon = category.icon
+                      return (
+                        <Link
+                          key={category.name}
+                          href={category.href}
+                          className="group p-4 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all duration-200"
+                        >
+                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 group-hover:from-blue-100 group-hover:to-blue-200 flex items-center justify-center mb-3 transition-all">
+                            <CategoryIcon className="w-6 h-6 text-[#0052D9]" />
+                          </div>
+                          <h3 className="font-semibold text-[#1F2329] group-hover:text-[#0052D9] transition-colors mb-1">
+                            {category.name}
+                          </h3>
+                          <p className="text-xs text-slate-500 line-clamp-2">
+                            {category.desc}
+                          </p>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+              
+              {/* Bottom CTA Bar */}
+              <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
+                <Link 
+                  href="/solution"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[#0052D9] hover:text-blue-700 transition-colors group"
+                >
+                  查看全部解决方案
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <button
+                  onClick={handleOpenDemo}
+                  className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-sm transition-all hover:shadow-md active:scale-95"
+                >
+                  预约专家演示
+                </button>
+              </div>
+            </div>
           </div>
+        )}
+
+        {/* Right: Actions - positioned inside header */}
+        <div className="flex items-center gap-4 lg:gap-6">
+          <Link
+            href={`tel:${phone.replace(/\s+/g, '')}`}
+            className="hidden xl:flex items-center gap-2 text-sm font-semibold text-[#1F2329] hover:text-[#0052D9] transition-colors"
+          >
+            <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
+              <Phone className="w-4 h-4 text-[#0052D9]" />
+            </div>
+            <span>{phone}</span>
+          </Link>
+          <button
+            onClick={handleOpenDemo}
+            className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-sm transition-all hover:shadow-md active:scale-95"
+          >
+            预约专家演示
+          </button>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 rounded-md hover:bg-slate-100 transition-colors"
+            aria-label={isMobileMenuOpen ? '关闭菜单' : '打开菜单'}
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-[#1F2329]" />
+            ) : (
+              <Menu className="w-6 h-6 text-[#1F2329]" />
+            )}
+          </button>
         </div>
+      </div>
       </header>
 
       {/* Mobile Menu Overlay */}
@@ -228,21 +437,34 @@ export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
                       />
                     </button>
                     {mobileActiveDropdown === item.label && (
-                      <div className="bg-slate-50 pb-2">
-                        {item.dropdownItems?.map((dropItem) => (
-                          <Link
-                            key={dropItem.href}
-                            href={dropItem.href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="block px-8 py-3 hover:bg-slate-100 transition-colors"
-                          >
-                            <div className="font-medium text-[#1F2329] text-sm">
-                              {dropItem.label}
+                      <div className="bg-slate-50 pb-2 max-h-[60vh] overflow-y-auto">
+                        {solutionByBusiness.map((category) => (
+                          <div key={category.name} className="pt-3 first:pt-2">
+                            <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                              {category.name}
                             </div>
-                            {'desc' in dropItem && (
-                              <div className="text-xs text-slate-500 mt-0.5">{dropItem.desc}</div>
-                            )}
-                          </Link>
+                            {category.items.map((dropItem) => {
+                              const IconComponent = dropItem.icon
+                              return (
+                                <Link
+                                  key={dropItem.href}
+                                  href={dropItem.href}
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                  className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
+                                >
+                                  <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                    <IconComponent className="w-4 h-4 text-[#0052D9]" />
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="font-medium text-[#1F2329] text-sm">
+                                      {dropItem.label}
+                                    </div>
+                                    <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">{dropItem.desc}</div>
+                                  </div>
+                                </Link>
+                              )
+                            })}
+                          </div>
                         ))}
                       </div>
                     )}
