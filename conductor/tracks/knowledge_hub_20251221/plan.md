@@ -4,7 +4,7 @@
 - [ ] Task: Create `Resources` Collection
     - [x] Subtask: Define Schema in `src/collections/Resources.ts` (Title, File, Category, Relations) [81439bd]
     - [x] Subtask: Register in `payload.config.ts` [a1557a4]
-    - [ ] Subtask: Configure `upload` properties (mime-types, resize options)
+    - [x] Subtask: Configure `upload` properties (mime-types, resize options) [81439bd]
 - [ ] Task: Configure Search Plugin
     - [ ] Subtask: Verify/Configure `@payloadcms/plugin-search` in `payload.config.ts` to include `resources`
 - [ ] Task: Conductor - User Manual Verification 'Backend - Resource Collection' (Protocol in workflow.md)
