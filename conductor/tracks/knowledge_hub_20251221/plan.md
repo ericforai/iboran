@@ -20,9 +20,9 @@
 - [x] Task: Conductor - User Manual Verification 'Frontend - Resource Components' (Protocol in workflow.md) [ef26bf9]
 
 ## Phase 3: Frontend - Pages & Integration
-- [x] Task: Build `/resources` Page [3bc6ef7]
-    - [x] Subtask: Implement layout with filters and grid [3bc6ef7]
-    - [x] Subtask: Connect to Payload API for data fetching [3bc6ef7]
-- [x] Task: Add "Related Resources" to Solution Pages [3bc6ef7]
-    - [x] Subtask: Update `solutions/[slug]/page.tsx` to fetch and display linked resources [3bc6ef7]
-- [x] Task: Conductor - User Manual Verification 'Frontend - Pages & Integration' (Protocol in workflow.md) [3bc6ef7]
+- [x] Task: Build `/resources` Page [9e1231f]
+    - [x] Subtask: Implement layout with filters and grid [9e1231f]
+    - [x] Subtask: Connect to Payload API for data fetching [9e1231f]
+- [x] Task: Add "Related Resources" to Solution Pages [9e1231f]
+    - [x] Subtask: Update `solutions/[slug]/page.tsx` to fetch and display linked resources [9e1231f]
+- [x] Task: Conductor - User Manual Verification 'Frontend - Pages & Integration' (Protocol in workflow.md) [9e1231f]
