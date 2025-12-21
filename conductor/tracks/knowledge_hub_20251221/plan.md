@@ -3,7 +3,7 @@
 ## Phase 1: Backend - Resource Collection
 - [ ] Task: Create `Resources` Collection
     - [x] Subtask: Define Schema in `src/collections/Resources.ts` (Title, File, Category, Relations) [81439bd]
-    - [ ] Subtask: Register in `payload.config.ts`
+    - [x] Subtask: Register in `payload.config.ts` [a1557a4]
     - [ ] Subtask: Configure `upload` properties (mime-types, resize options)
 - [ ] Task: Configure Search Plugin
     - [ ] Subtask: Verify/Configure `@payloadcms/plugin-search` in `payload.config.ts` to include `resources`
