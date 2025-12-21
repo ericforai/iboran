@@ -44,7 +44,7 @@ export const RecentPostsSection: React.FC<Props> = ({ posts }) => {
                 </div>
                 <div className="p-8 flex flex-col flex-grow">
                   <div className="flex gap-2 mb-4">
-                    {post.categories?.map((cat: any, i: number) => (
+                    {(post.categories as any[])?.map((cat, i: number) => (
                       <span key={i} className="px-2 py-0.5 rounded bg-blue-50 text-[10px] font-bold text-[#0052D9] uppercase tracking-wider">
                         {typeof cat === 'object' ? cat.title : '资讯'}
                       </span>

@@ -2,18 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import {
   CheckCircle2,
-  BarChart3,
-  ArrowRight,
   Globe2,
   ShieldCheck,
   Layers,
-  Layout,
-  ChevronRight
+  Layout
 } from 'lucide-react'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { getCachedGlobal } from '@/utilities/getGlobals'
-import type { Contact, IndustrySolution, SuccessStory, Post } from '@/payload-types'
+import type { Contact } from '@/payload-types'
 
 // Components
 import { IndustrySolutionsSection } from './_sections/IndustrySolutionsSection'

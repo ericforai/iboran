@@ -1,4 +1,4 @@
-import { Workflow, Calculator, DollarSign, GitMerge, LayoutDashboard, Bot } from 'lucide-react'
+import { Calculator, DollarSign, GitMerge } from 'lucide-react'
 
 const featureGroups = [
   {

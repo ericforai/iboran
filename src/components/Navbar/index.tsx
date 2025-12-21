@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
-import { solutionByBusiness, solutionByIndustry, allBusinessSolutions } from '@/data/solutions'
+import { solutionByBusiness, solutionByIndustry } from '@/data/solutions'
 import type { Contact } from '@/payload-types'
 
 // 主菜单项

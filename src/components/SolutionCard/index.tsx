@@ -4,7 +4,7 @@ import useClickableCard from '@/utilities/useClickableCard'
 import Link from 'next/link'
 import React from 'react'
 import { Media } from '@/components/Media'
-import type { IndustrySolution, Media as MediaType } from '@/payload-types'
+import type { IndustrySolution } from '@/payload-types'
 
 export const SolutionCard: React.FC<{
   className?: string

@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { ArrowRight, Layout } from 'lucide-react'
 import type { IndustrySolution } from '@/payload-types'
 import { Media } from '@/components/Media'

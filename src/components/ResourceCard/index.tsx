@@ -9,13 +9,13 @@ export const ResourceCard: React.FC<{
   resource: Resource
   variant?: 'vertical' | 'horizontal'
 }> = ({ className, resource, variant = 'vertical' }) => {
-  const { title, summary, gated, file } = resource
+  const { title, summary, gated, url, filesize } = resource
   
-  const fileSize = typeof file === 'object' && file?.filesize 
-    ? `${(file.filesize / 1024 / 1024).toFixed(2)} MB` 
+  const fileSizeString = filesize 
+    ? `${(filesize / 1024 / 1024).toFixed(2)} MB` 
     : ''
 
-  const fileUrl = typeof file === 'object' && file?.url ? file.url : '#'
+  const fileUrl = url || '#'
 
   const handleDownload = (e: React.MouseEvent) => {
     if (gated) {
@@ -51,7 +51,7 @@ export const ResourceCard: React.FC<{
             )}
           </div>
           {summary && <p className="text-gray-500 text-sm truncate">{summary}</p>}
-          <div className="text-xs text-gray-400 mt-1">{fileSize}</div>
+          <div className="text-xs text-gray-400 mt-1">{fileSizeString}</div>
         </div>
 
         <a 
@@ -97,7 +97,7 @@ export const ResourceCard: React.FC<{
       </div>
 
       <div className="mt-6 pt-6 border-t border-gray-50 flex items-center justify-between">
-        <span className="text-xs text-gray-400 font-medium">{fileSize}</span>
+        <span className="text-xs text-gray-400 font-medium">{fileSizeString}</span>
         <a 
           href={fileUrl}
           download={!gated}

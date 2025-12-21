@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { motion, useInView, useSpring, useTransform } from 'framer-motion'
 
 export type Metric = {
@@ -15,29 +15,26 @@ export type BenefitMetricsBlockProps = {
 }
 
 const AnimatedNumber: React.FC<{ value: string }> = ({ value }) => {
-  const numericValue = parseFloat(value.replace(/,/g, ''))
-  const isNumeric = !isNaN(numericValue)
-  
-  if (!isNumeric) return <span>{value}</span>
-
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
-  
   const spring = useSpring(0, { stiffness: 50, damping: 30 })
   const displayValue = useTransform(spring, (current) => 
     Math.floor(current).toLocaleString()
   )
 
+  const numericValue = parseFloat(value.replace(/,/g, ''))
+  const isNumeric = !isNaN(numericValue)
+
   useEffect(() => {
-    if (isInView) {
+    if (isNumeric && isInView) {
       spring.set(numericValue)
     }
-  }, [isInView, spring, numericValue])
+  }, [isNumeric, isInView, spring, numericValue])
+
+  if (!isNumeric) return <span>{value}</span>
 
   return <motion.span ref={ref}>{displayValue}</motion.span>
 }
-
-import { MetricDisplay } from '@/components/MetricDisplay'
 
 export const BenefitMetricsBlock: React.FC<BenefitMetricsBlockProps> = ({ title, metrics }) => {
   return (

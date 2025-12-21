@@ -1,4 +1,4 @@
-import { Cloud, Code, Shield, Boxes, Workflow, Database } from 'lucide-react'
+import { Cloud, Code, Workflow } from 'lucide-react'
 
 const featureGroups = [
   {

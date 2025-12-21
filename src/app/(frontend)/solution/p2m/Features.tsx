@@ -1,4 +1,4 @@
-import { LayoutGrid, ClipboardList, Share2, Layers, Cpu, ShieldCheck } from 'lucide-react'
+import { ClipboardList, Share2, Cpu } from 'lucide-react'
 
 const featureGroups = [
   {

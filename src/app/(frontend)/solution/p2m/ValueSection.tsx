@@ -1,4 +1,4 @@
-import { TrendingUp, Users, ShieldCheck, Zap } from 'lucide-react'
+import { TrendingUp, ShieldCheck, Zap } from 'lucide-react'
 
 const metrics = [
   {
