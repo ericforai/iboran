@@ -179,7 +179,7 @@ export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
               <div className="max-h-[60vh] overflow-y-auto pr-2 -mr-2">
                 {/* Business Categories Grid */}
                 {megaMenuTab === 'business' && (
-                  <div className="grid grid-cols-5 gap-6">
+                  <div className="grid grid-cols-3 lg:grid-cols-6 gap-6">
                     {solutionByBusiness.map((category) => (
                       <div key={category.name}>
                         <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 pb-2 border-b border-slate-100">

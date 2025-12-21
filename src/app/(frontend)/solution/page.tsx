@@ -1,8 +1,4 @@
 import { Metadata } from 'next'
-import { getCachedGlobal } from '@/utilities/getGlobals'
-import type { Contact } from '@/payload-types'
-import { PageClientWrapper } from '../page.client.wrapper'
-import { SiteFooter } from '@/components/SiteFooter'
 import { SolutionPageContent } from './page.content'
 
 export const metadata: Metadata = {
@@ -11,13 +7,6 @@ export const metadata: Metadata = {
   keywords: '企业数字化, 数智化转型, YonBIP, 用友, ERP, MES, PLM, 财务云',
 }
 
-export default async function SolutionPage() {
-  const contactData = await getCachedGlobal('contact', 1)() as Contact
-
-  return (
-    <PageClientWrapper contactData={contactData}>
-      <SolutionPageContent />
-      <SiteFooter />
-    </PageClientWrapper>
-  )
+export default function SolutionPage() {
+  return <SolutionPageContent />
 }

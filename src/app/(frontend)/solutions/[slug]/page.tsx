@@ -15,7 +15,23 @@ import { SiteFooter } from '@/components/SiteFooter'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
 export async function generateStaticParams() {
-// ... (unchanged)
+  const payload = await getPayload({ config: configPromise })
+  const solutions = await payload.find({
+    collection: 'industry-solutions',
+    draft: false,
+    limit: 1000,
+    overrideAccess: false,
+    pagination: false,
+    select: {
+      slug: true,
+    },
+  })
+
+  const params = solutions.docs
+    .filter((doc) => typeof doc.slug === 'string')
+    .map((doc) => ({ slug: doc.slug as string }))
+
+  return params
 }
 
 type Args = {
@@ -81,9 +97,9 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">推荐下载资料</h2>
                 <div className="w-12 h-1 bg-blue-600 rounded-full"></div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {resources.docs.map((resource, index) => (
-                  <ResourceCard key={index} resource={resource as any} />
+                  <ResourceCard key={index} resource={resource as any} variant="horizontal" />
                 ))}
               </div>
             </div>
