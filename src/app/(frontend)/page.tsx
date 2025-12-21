@@ -48,7 +48,7 @@ const Hero = () => {
                         </h1>
                         <p className="text-lg lg:text-2xl text-[#1F2329] font-medium mb-6 lg:mb-8">
                             用友生态中的<span className="text-[#0052D9]">数字化交付特种部队</span>
-                            <span className="block text-[10px] text-slate-400 opacity-30 mt-1">Build: 20251221.02</span>
+                            <span className="block text-[10px] text-slate-400 opacity-30 mt-1">Build: 20251221.03</span>
                         </p>
                         
                         {/* Mobile-only Trust Markers - Immediate Social Proof */}
@@ -112,7 +112,7 @@ const Hero = () => {
                     >
                         <div className="relative z-10 w-full aspect-[4/3] sm:aspect-video max-w-2xl mx-auto">
                             <img
-                                src="/media/boran_homepage_banner.webp?v=20251221_v2"
+                                src="/banner.webp?v=20251221_v3"
                                 alt="Enterprise Software Integration Hub"
                                 className="w-full h-full object-contain drop-shadow-2xl"
                             />
