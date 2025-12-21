@@ -7,20 +7,20 @@
     - [x] Subtask: Configure `upload` properties (mime-types, resize options) [81439bd]
 - [ ] Task: Configure Search Plugin
     - [x] Subtask: Verify/Configure `@payloadcms/plugin-search` in `payload.config.ts` to include `resources` [724c7c1]
-- [ ] Task: Conductor - User Manual Verification 'Backend - Resource Collection' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Backend - Resource Collection' (Protocol in workflow.md) [a1557a4]
 
 ## Phase 2: Frontend - Resource Components
-- [ ] Task: Create `ResourceCard`
-    - [ ] Subtask: Implement UI with 70/20/10 color ratio
-    - [ ] Subtask: Add file type icons (using `lucide-react`)
-    - [ ] Subtask: Add "Download" interaction
-- [ ] Task: Create `SearchBar` Component
-    - [ ] Subtask: Implement debounced input field
-    - [ ] Subtask: Design dropdown/results view
-- [ ] Task: Conductor - User Manual Verification 'Frontend - Resource Components' (Protocol in workflow.md)
+- [x] Task: Create `ResourceCard` [a1557a4]
+    - [x] Subtask: Implement UI with 70/20/10 color ratio [a1557a4]
+    - [x] Subtask: Add file type icons (using `lucide-react`) [a1557a4]
+    - [x] Subtask: Add "Download" interaction [a1557a4]
+- [x] Task: Create `SearchBar` Component [a1557a4]
+    - [x] Subtask: Implement debounced input field [a1557a4]
+    - [x] Subtask: Design dropdown/results view [a1557a4]
+- [x] Task: Conductor - User Manual Verification 'Frontend - Resource Components' (Protocol in workflow.md) [a1557a4]
 
 ## Phase 3: Frontend - Pages & Integration
-- [ ] Task: Build `/resources` Page
+- [~] Task: Build `/resources` Page
     - [ ] Subtask: Implement layout with filters and grid
     - [ ] Subtask: Connect to Payload API for data fetching
 - [ ] Task: Add "Related Resources" to Solution Pages
