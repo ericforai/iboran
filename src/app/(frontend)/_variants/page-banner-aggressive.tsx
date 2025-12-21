@@ -127,7 +127,7 @@ const Hero = () => {
                                     ))}
                                 </div>
                                 <p className="text-sm text-[#1F2329] font-medium leading-relaxed mb-3">
-                                    "3个月，把之前1年没上线的系统落地了"
+                                    &ldquo;3个月，把之前1年没上线的系统落地了&rdquo;
                                 </p>
                                 <div className="flex items-center gap-2">
                                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
