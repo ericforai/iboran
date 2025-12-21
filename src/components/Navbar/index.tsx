@@ -15,6 +15,7 @@ const solutionItems = [
   { label: '企业集成平台', href: '/solution/enterprise-integration', desc: 'LINK：让商业连接更容易' },
   { label: 'EOC 数智化协作', href: '/solution/eoc-collaboration', desc: 'AI 驱动的效能革命' },
   { label: 'PLM 研发云', href: '/solution/plm', desc: '驱动产品创新' },
+  { label: '制造全生命周期 (P2M)', href: '/solution/p2m', desc: '从计划、生产到成本' },
   { label: '财务云', href: '/solution/finance-cloud', desc: '业财一体化' },
   { label: 'MES 生产管理', href: '/solution/mes', desc: '智能制造' },
   { label: '数字化建模', href: '/solution/digital-modeling', desc: '企业数智化创新加速器' },

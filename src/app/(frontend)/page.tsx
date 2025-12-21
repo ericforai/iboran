@@ -1,8 +1,5 @@
-'use client'
-
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
 import {
   CheckCircle2,
   BarChart3,
@@ -13,22 +10,16 @@ import {
   Layout,
   ChevronRight
 } from 'lucide-react'
-import { DemoRequestModal } from '@/components/DemoRequestModal'
-import { Navbar } from '@/components/Navbar'
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
+import { getCachedGlobal } from '@/utilities/getGlobals'
+import type { Contact, IndustrySolution, SuccessStory, Post } from '@/payload-types'
 
-// --- Visual Constants ---
-const _Colors = {
-    Base: {
-        White: '#FFFFFF',
-        Bg: '#F7F8FA',
-        Heading: '#1F2329',
-        Text: '#4B5563', // Slate-600
-    },
-    Blue: '#0052D9',
-    Red: '#E60012',
-}
-
-// --- Components ---
+// Components
+import { IndustrySolutionsSection } from './_sections/IndustrySolutionsSection'
+import { SuccessStoriesSection } from './_sections/SuccessStoriesSection'
+import { RecentPostsSection } from './_sections/RecentPostsSection'
+import { PageClientWrapper } from './page.client.wrapper'
 
 const Hero = () => {
     return (
@@ -36,22 +27,16 @@ const Hero = () => {
             <div className="container mx-auto px-4">
                 <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
                     {/* Left: Text */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="w-full lg:w-1/2"
-                    >
+                    <div className="w-full lg:w-1/2">
                         <h1 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] leading-[1.2] lg:leading-[1.15] mb-4 lg:mb-6">
                             懂软件，<br className="hidden lg:block" />
                             更懂落地。
                         </h1>
                         <p className="text-lg lg:text-2xl text-[#1F2329] font-medium mb-6 lg:mb-8">
                             用友生态中的<span className="text-[#0052D9]">数字化交付特种部队</span>
-                            <span className="block text-[10px] text-slate-400 opacity-30 mt-1">Build: 20251221.03</span>
                         </p>
                         
-                        {/* Mobile-only Trust Markers - Immediate Social Proof */}
+                        {/* Mobile-only Trust Markers */}
                         <div className="lg:hidden flex flex-wrap gap-3 mb-8">
                             <div className="flex items-center gap-1.5 bg-blue-50/50 px-2.5 py-1 rounded-full border border-blue-100/50">
                                 <ShieldCheck className="w-3.5 h-3.5 text-[#0052D9]" />
@@ -73,7 +58,7 @@ const Hero = () => {
                         
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link
-                                href="/solutions"
+                                href="/solution"
                                 className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-lg transition-all text-center"
                             >
                                 免费获取行业方案
@@ -101,15 +86,10 @@ const Hero = () => {
                                 </div>
                             ))}
                         </div>
-                    </motion.div>
+                    </div>
 
                     {/* Right: Illustration */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8 }}
-                        className="w-full lg:w-1/2 relative mt-12 lg:mt-0"
-                    >
+                    <div className="w-full lg:w-1/2 relative mt-12 lg:mt-0">
                         <div className="relative z-10 w-full aspect-[4/3] sm:aspect-video max-w-2xl mx-auto">
                             <img
                                 src="/banner.webp?v=20251221_v3"
@@ -117,14 +97,9 @@ const Hero = () => {
                                 className="w-full h-full object-contain drop-shadow-2xl"
                             />
 
-                            {/* Floating Elements (Visible on desktop only to avoid clutter) */}
-                            <motion.div
-                                animate={{ y: [0, -20, 0] }}
-                                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                                className="hidden sm:flex absolute -top-12 -right-12 w-24 h-24 bg-white rounded-xl shadow-xl border border-slate-100 items-center justify-center z-20"
-                            >
+                            <div className="hidden sm:flex absolute -top-12 -right-12 w-24 h-24 bg-white rounded-xl shadow-xl border border-slate-100 items-center justify-center z-20">
                                 <Layers className="w-10 h-10 text-[#E60012]" />
-                            </motion.div>
+                            </div>
                             <div className="hidden sm:flex absolute -bottom-8 -left-8 w-64 h-24 bg-white/80 backdrop-blur rounded-lg shadow-lg border border-slate-100 items-center px-6 gap-4 z-20">
                                 <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
@@ -135,7 +110,7 @@ const Hero = () => {
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -170,12 +145,8 @@ const CoreValueGrid = () => {
                 </div>
                 <div className="grid lg:grid-cols-3 gap-8">
                     {cards.map((card, idx) => (
-                        <motion.div
+                        <div
                             key={idx}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
                             className="bg-white p-8 rounded-xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0052D9]/30 transition-all duration-300 group"
                         >
                             <div className="w-14 h-14 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:bg-[#0052D9] transition-colors duration-300">
@@ -185,111 +156,8 @@ const CoreValueGrid = () => {
                             <p className="text-slate-600 leading-relaxed font-medium text-sm lg:text-base">
                                 {card.desc}
                             </p>
-                        </motion.div>
+                        </div>
                     ))}
-                </div>
-            </div>
-        </section>
-    )
-}
-
-const SolutionTabs = () => {
-    const [activeTab, setActiveTab] = useState(0)
-
-    const tabs = [
-        {
-            id: "finance",
-            label: "智能财务 (U8 Cloud / 财务云)",
-            title: "智能财务解决方案",
-            desc: "解决多组织报表合并与业财一体化。",
-            features: ["多准则核算体系", "实时合并报表", "银企直联支付", "全面预算管理"],
-            color: "from-blue-500 to-indigo-600",
-            icon: BarChart3
-        },
-        {
-            id: "manufacturing",
-            label: "智能制造 (MES + AIoT)",
-            title: "智能制造解决方案",
-            desc: "实现从设计到生产的 C2M 全链路数字化。",
-            features: ["LRP 计划运算", "车间工序派工", "PDA 扫码报工", "质量追溯体系"],
-            color: "from-red-500 to-orange-600",
-            icon: SettingsIcon
-        },
-        {
-            id: "hr",
-            label: "人力资源 (致远薪税云)",
-            title: "人力资源解决方案",
-            desc: "打造入转调离全生命周期管理。",
-            features: ["组织架构管理", "复杂薪资计算", "个税一键申报", "员工自助服务"],
-            color: "from-emerald-500 to-teal-600",
-            icon: UsersIcon
-        }
-    ]
-
-    // Helper icons for specific tabs
-    function SettingsIcon(props: React.SVGProps<SVGSVGElement>) { return <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /><circle cx="12" cy="12" r="3" /></svg> }
-    function UsersIcon(props: React.SVGProps<SVGSVGElement>) { return <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg> }
-
-    return (
-        <section className="py-12 lg:py-24 bg-white">
-            <div className="container mx-auto px-4">
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-                    {/* Sidebar Tabs - Horizontal scroll on mobile, vertical on desktop */}
-                    <div className="lg:w-1/3 flex overflow-x-auto lg:flex-col gap-3 pb-2 lg:pb-0 -mx-4 px-4 lg:mx-0 lg:px-0 scrollbar-hide no-scrollbar">
-                        {tabs.map((tab, idx) => (
-                            <button
-                                key={tab.id}
-                                onClick={() => setActiveTab(idx)}
-                                className={`flex-shrink-0 text-left px-6 lg:px-8 py-4 lg:py-6 rounded-xl border transition-all duration-300 min-w-[240px] lg:min-w-0 ${activeTab === idx
-                                    ? 'bg-[#F7F8FA] border-[#0052D9] shadow-sm ring-1 ring-[#0052D9]/10'
-                                    : 'bg-white border-slate-100 hover:bg-slate-50'
-                                    }`}
-                            >
-                                <div className="flex items-center justify-between">
-                                    <span className={`font-bold text-base lg:text-lg ${activeTab === idx ? 'text-[#0052D9]' : 'text-slate-600'}`}>
-                                        {tab.label}
-                                    </span>
-                                    <ChevronRight className={`hidden lg:block w-5 h-5 ${activeTab === idx ? 'text-[#0052D9]' : 'text-slate-300'}`} />
-                                </div>
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Content Area */}
-                    <div className="lg:w-2/3">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeTab}
-                                initial={{ opacity: 0, scale: 0.98 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.98 }}
-                                transition={{ duration: 0.2 }}
-                                className="bg-[#F7F8FA] rounded-3xl p-6 lg:p-10 h-full border border-slate-100"
-                            >
-                                <div className={`w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-gradient-to-br ${tabs[activeTab].color} flex items-center justify-center text-white mb-6 shadow-lg`}>
-                                    {React.createElement(tabs[activeTab].icon, { className: 'w-6 h-6 lg:w-7 lg:h-7' })}
-                                </div>
-                                <h3 className="text-xl lg:text-2xl font-bold text-[#1F2329] mb-3 lg:mb-4">{tabs[activeTab].title}</h3>
-                                <p className="text-base lg:text-lg text-slate-600 mb-6 lg:mb-8">{tabs[activeTab].desc}</p>
-
-                                <div className="grid sm:grid-cols-2 gap-3 lg:gap-4">
-                                    {tabs[activeTab].features.map((feature, i) => (
-                                        <div key={i} className="flex items-center gap-3 bg-white p-3 lg:p-4 rounded-xl border border-slate-100 shadow-sm">
-                                            <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
-                                                <CheckCircle2 className="w-3.5 h-3.5 text-[#0052D9]" />
-                                            </div>
-                                            <span className="font-semibold text-slate-700 text-sm">{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="mt-8 pt-6 border-t border-slate-200">
-                                    <Link href={`/solution/${tabs[activeTab].id}`} className="inline-flex items-center text-[#E60012] font-bold hover:underline gap-1">
-                                        了解详情 <ArrowRight className="w-4 h-4" />
-                                    </Link>
-                                </div>
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
                 </div>
             </div>
         </section>
@@ -302,7 +170,6 @@ const SocialProof = () => {
             <div className="container mx-auto px-4 text-center">
                 <h2 className="text-3xl font-bold mb-12">500+ 行业领军企业的共同选择</h2>
 
-                {/* Logo Wall */}
                 <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16 opacity-70 mb-16 grayscale">
                     <div className="text-xl font-bold font-serif tracking-widest">BURGER KING</div>
                     <div className="text-xl font-bold font-sans tracking-tight">SHELL</div>
@@ -311,7 +178,6 @@ const SocialProof = () => {
                     <div className="text-xl font-bold">强生出租</div>
                 </div>
 
-                {/* Stats */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                     <div className="p-6 border border-white/10 rounded-xl bg-white/5">
                         <div className="text-4xl font-bold text-[#E60012] mb-2">12年+</div>
@@ -349,7 +215,6 @@ const Footer = () => {
                     </div>
 
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                        {/* Placeholder links to flesh out footer */}
                         {[
                             { title: '产品', links: ['U8 Cloud', 'YonSuite', '人力云', '供应链云'] },
                             { title: '解决方案', links: ['智能财务', '智能制造', '新零售', '项目管理'] },
@@ -378,24 +243,43 @@ const Footer = () => {
     )
 }
 
-export default function Page() {
-    const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+export default async function Page() {
+    const payload = await getPayload({ config: configPromise })
+    const contactData = await getCachedGlobal('contact', 1)() as Contact
+
+    const [industrySolutions, successStories, latestPosts] = await Promise.all([
+      payload.find({
+        collection: 'industry-solutions',
+        limit: 3,
+        sort: '-updatedAt',
+      }),
+      payload.find({
+        collection: 'success-stories',
+        limit: 4,
+        sort: '-updatedAt',
+      }),
+      payload.find({
+        collection: 'posts',
+        limit: 3,
+        sort: '-publishedAt',
+      }),
+    ])
 
     return (
         <div className="font-sans text-slate-600 bg-white min-h-screen flex flex-col">
-            <Navbar onOpenDemo={() => setIsDemoModalOpen(true)} />
-            <main className="flex-grow">
-                <Hero />
-                <CoreValueGrid />
-                <SolutionTabs />
-                <SocialProof />
-            </main>
+            <PageClientWrapper contactData={contactData}>
+              <main className="flex-grow">
+                  <Hero />
+                  <CoreValueGrid />
+                  <IndustrySolutionsSection solutions={industrySolutions.docs as any} />
+                  <SuccessStoriesSection stories={successStories.docs as any} />
+                  <RecentPostsSection posts={latestPosts.docs as any} />
+                  <SocialProof />
+              </main>
+            </PageClientWrapper>
             <Footer />
-            <DemoRequestModal
-                isOpen={isDemoModalOpen}
-                onClose={() => setIsDemoModalOpen(false)}
-            />
         </div>
     )
 }
+
 

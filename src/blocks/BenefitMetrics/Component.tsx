@@ -37,6 +37,8 @@ const AnimatedNumber: React.FC<{ value: string }> = ({ value }) => {
   return <motion.span ref={ref}>{displayValue}</motion.span>
 }
 
+import { MetricDisplay } from '@/components/MetricDisplay'
+
 export const BenefitMetricsBlock: React.FC<BenefitMetricsBlockProps> = ({ title, metrics }) => {
   return (
     <div className="bg-[#002B5B] py-20 px-4 md:px-0 overflow-hidden relative">

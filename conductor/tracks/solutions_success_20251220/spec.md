@@ -12,7 +12,13 @@ This track implements the core content structures to showcase Boran's expertise:
   - `slug` (Text, unique, required)
   - `coverImage` (Upload: Media)
   - `summary` (Textarea)
-  - `content` (RichText / Blocks)
+  - `layout` (Blocks, required):
+    - `Hero` (Banner with title and image)
+    - `PainPoints` (Grid of problem cards: Title, Description, Icon)
+    - `Methodology` (Step-by-step process: Title, Description, Image)
+    - `BenefitMetrics` (Key results: Label, Value, Suffix)
+    - `CallToAction` (Link to form or contact)
+    - `Code` (Raw HTML/JSX for developer flexibility)
   - `relatedSuccessStories` (Relationship to `success-stories`)
 
 ### 2.2 Collection: Success Stories (`success-stories`)
@@ -22,10 +28,12 @@ This track implements the core content structures to showcase Boran's expertise:
   - `slug` (Text, unique, required)
   - `clientName` (Text)
   - `industry` (Select/Relationship)
-  - `challenge` (RichText)
-  - `solution` (RichText)
-  - `results` (RichText or Array of Key Metrics)
-  - `content` (RichText / Blocks)
+  - `layout` (Blocks, required):
+    - `Hero` (Banner)
+    - `Challenge` (RichText or Structured Block)
+    - `Solution` (RichText or Structured Block)
+    - `Results` (List of metrics)
+    - `Code` (Raw HTML/JSX for developer flexibility)
 
 ## 3. Frontend Implementation (Next.js)
 

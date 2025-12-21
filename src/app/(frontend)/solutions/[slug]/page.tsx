@@ -5,10 +5,13 @@ import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import type { IndustrySolution } from '@/payload-types'
+import type { IndustrySolution, Contact } from '@/payload-types'
 import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { StoryCard } from '@/components/StoryCard'
+import { PageClientWrapper } from '../../page.client.wrapper'
+import { SiteFooter } from '@/components/SiteFooter'
+import { getCachedGlobal } from '@/utilities/getGlobals'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -37,36 +40,41 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
   const { slug = '' } = await paramsPromise
   const decodedSlug = decodeURIComponent(slug)
   const url = '/solutions/' + decodedSlug
+  
   const solution = await querySolutionBySlug({ slug: decodedSlug })
+  const contactData = await getCachedGlobal('contact', 1)() as Contact
 
   if (!solution) return <PayloadRedirects url={url} />
 
   return (
-    <article className="pb-24">
-      {/* Allows redirects for valid pages too */}
-      <PayloadRedirects disableNotFound url={url} />
+    <PageClientWrapper contactData={contactData}>
+      <article className="pb-24 pt-16">
+        {/* Allows redirects for valid pages too */}
+        <PayloadRedirects disableNotFound url={url} />
 
-      {draft && <LivePreviewListener />}
+        {draft && <LivePreviewListener />}
 
-      <RenderBlocks blocks={solution.layout} />
+        <RenderBlocks blocks={solution.layout} />
 
-      {solution.relatedSuccessStories && solution.relatedSuccessStories.length > 0 && (
-        <div className="container mt-24 px-4">
-          <div className="max-w-3xl mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">相关成功案例</h2>
-            <div className="w-12 h-1 bg-red-500 rounded-full"></div>
+        {solution.relatedSuccessStories && solution.relatedSuccessStories.length > 0 && (
+          <div className="container mt-24 px-4">
+            <div className="max-w-3xl mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">相关成功案例</h2>
+              <div className="w-12 h-1 bg-red-500 rounded-full"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {solution.relatedSuccessStories.map((story, index) => {
+                if (typeof story === 'object') {
+                  return <StoryCard key={index} doc={story} />
+                }
+                return null
+              })}
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {solution.relatedSuccessStories.map((story, index) => {
-              if (typeof story === 'object') {
-                return <StoryCard key={index} doc={story} />
-              }
-              return null
-            })}
-          </div>
-        </div>
-      )}
-    </article>
+        )}
+      </article>
+      <SiteFooter />
+    </PageClientWrapper>
   )
 }
 

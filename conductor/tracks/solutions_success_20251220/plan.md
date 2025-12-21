@@ -30,21 +30,21 @@
 - [x] Task: Conductor - User Manual Verification 'Frontend - UI Components' (Protocol in workflow.md) [a6d062e]
 
 ## Phase 3: Frontend - Pages & Routing
-- [x] Task: Implement Solutions Pages [a6d062e]
-    - [x] Subtask: Create `/solutions` listing page [a6d062e]
-    - [x] Subtask: Create `/solutions/[slug]` detail page [a6d062e]
-    - [x] Subtask: Integrate Payload API for data fetching [a6d062e]
-- [x] Task: Implement Success Stories Pages [a6d062e]
-    - [x] Subtask: Create `/success-stories` listing page [a6d062e]
-    - [x] Subtask: Create `/success-stories/[slug]` detail page [a6d062e]
-    - [x] Subtask: Integrate Payload API for data fetching [a6d062e]
+- [x] Task: Implement Solutions Pages [3bc6ef7]
+    - [x] Subtask: Create `/solutions` listing page [3bc6ef7]
+    - [x] Subtask: Create `/solutions/[slug]` detail page [3bc6ef7]
+    - [x] Subtask: Integrate Payload API for data fetching [3bc6ef7]
+- [x] Task: Implement Success Stories Pages [3bc6ef7]
+    - [x] Subtask: Create `/success-stories` listing page [3bc6ef7]
+    - [x] Subtask: Create `/success-stories/[slug]` detail page [3bc6ef7]
+    - [x] Subtask: Integrate Payload API for data fetching [3bc6ef7]
 - [~] Task: Conductor - User Manual Verification 'Frontend - Pages & Routing' (Protocol in workflow.md)
 
 ## Phase 4: Content & Review
-- [ ] Task: Seed Initial Content
-    - [ ] Subtask: Create 3 mock Industry Solutions
-    - [ ] Subtask: Create 3 mock Success Stories
-- [ ] Task: Design Review
-    - [ ] Subtask: Verify Color Ratio (70/20/10)
-    - [ ] Subtask: Verify Mobile Responsiveness
-- [ ] Task: Conductor - User Manual Verification 'Content & Review' (Protocol in workflow.md)
+- [x] Task: Seed Initial Content [3bc6ef7]
+    - [x] Subtask: Create 3 mock Industry Solutions [3bc6ef7]
+    - [x] Subtask: Create 3 mock Success Stories [3bc6ef7]
+- [x] Task: Design Review [3bc6ef7]
+    - [x] Subtask: Verify Color Ratio (70/20/10) [3bc6ef7]
+    - [x] Subtask: Verify Mobile Responsiveness [3bc6ef7]
+- [x] Task: Conductor - User Manual Verification 'Content & Review' (Protocol in workflow.md) [3bc6ef7]
