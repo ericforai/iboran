@@ -13,11 +13,11 @@ import { beforeSyncWithSearch } from '@/search/beforeSync'
 import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 
-const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
+export const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
+  return doc?.title ? `${doc.title} | 泊冉软件` : '泊冉软件'
 }
 
-const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
+export const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
   const url = getServerSideURL()
 
   return doc?.slug ? `${url}/${doc.slug}` : url
