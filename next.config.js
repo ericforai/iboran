@@ -33,6 +33,16 @@ const nextConfig = {
   },
   reactStrictMode: true,
   redirects,
+  outputFileTracingExcludes: {
+    '*': [
+      'node_modules/typescript/**/*',
+      'node_modules/@types/**/*',
+      'node_modules/esbuild/**/*',
+      'node_modules/sass/**/*',
+      'node_modules/terser/**/*',
+      'node_modules/webpack/**/*',
+    ],
+  },
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
