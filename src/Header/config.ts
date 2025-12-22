@@ -1,7 +1,9 @@
 import type { GlobalConfig } from 'payload'
 
-import { link } from '@/fields/link'
 import { revalidateHeader } from './hooks/revalidateHeader'
+import { SingleLink } from './blocks/SingleLink'
+import { NavGroup } from './blocks/NavGroup'
+import { CollectionMenu } from './blocks/CollectionMenu'
 
 export const Header: GlobalConfig = {
   slug: 'header',
@@ -11,18 +13,15 @@ export const Header: GlobalConfig = {
   fields: [
     {
       name: 'navItems',
-      type: 'array',
-      fields: [
-        link({
-          appearances: false,
-        }),
+      type: 'blocks',
+      blocks: [
+        SingleLink,
+        NavGroup,
+        CollectionMenu,
       ],
       maxRows: 6,
       admin: {
         initCollapsed: true,
-        components: {
-          RowLabel: '@/Header/RowLabel#RowLabel',
-        },
       },
     },
   ],

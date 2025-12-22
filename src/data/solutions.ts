@@ -20,6 +20,9 @@ import {
   HardHat,
   UserCircle,
   Landmark,
+  Atom,
+  Zap,
+  Globe,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -111,10 +114,34 @@ export const solutionByIndustry: IndustryCategory[] = [
     desc: '研发驱动、项目制交付下的研发效率 + 业财协同',
   },
   {
+    name: '芯片半导体',
+    icon: Cpu,
+    href: '/solution/industry/semiconductor',
+    desc: '智造芯未来 · CIM赋能12寸量产线Auto3全自动化转型',
+  },
+  {
     name: '医药健康',
     icon: Pill,
-    href: '/solutions',
-    desc: '强合规监管下的研发追溯 · 业务闭环 · 财务合规',
+    href: '/solution/industry/biopharmaceutical',
+    desc: '数智赋能CDMO研产一体化 · 项目管控 · 质量合规',
+  },
+  {
+    name: '新材料',
+    icon: Atom,
+    href: '/solution/industry/new-materials',
+    desc: '数智驱动负极材料企业IPO合规与精益制造',
+  },
+  {
+    name: '能源行业',
+    icon: Zap,
+    href: '/solution/industry/energy',
+    desc: '数智驱动能源企业高质量发展 · 智能生产 · 设备全生命周期',
+  },
+  {
+    name: '电气装备',
+    icon: Zap,
+    href: '/solution/industry/electrical-equipment',
+    desc: '智能制造驱动电气装备企业数字化转型 · 项目型生产 · 成本精准',
   },
   {
     name: '汽车行业',
@@ -128,8 +155,19 @@ export const solutionByIndustry: IndustryCategory[] = [
     href: '/solutions',
     desc: '多渠道、快周转场景下的精细化运营与动态库存管理',
   },
+  {
+    name: '中企出海',
+    icon: Globe,
+    href: '/solution/global-operations',
+    desc: 'YonBIP助力全球化经营·多语多币多时区统一管理',
+  },
+  {
+    name: '基础化工',
+    icon: FlaskConical,
+    href: '/solution/industry/basic-chemicals',
+    desc: '绿色·高端·智能 驱动化工行业数智化转型升级',
+  },
 ]
 
 // 扁平化所有业务解决方案用于其他场景
 export const allBusinessSolutions = solutionByBusiness.flatMap(cat => cat.items)
-

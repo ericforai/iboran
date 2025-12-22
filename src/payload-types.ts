@@ -1893,24 +1893,74 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Header {
   id: string;
   navItems?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: string | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: string | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
-        id?: string | null;
-      }[]
+    | (
+        | {
+            link: {
+              type?: ('reference' | 'custom') | null;
+              newTab?: boolean | null;
+              reference?:
+                | ({
+                    relationTo: 'pages';
+                    value: string | Page;
+                  } | null)
+                | ({
+                    relationTo: 'posts';
+                    value: string | Post;
+                  } | null);
+              url?: string | null;
+              label: string;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'singleLink';
+          }
+        | {
+            label: string;
+            items?:
+              | (
+                  | {
+                      link: {
+                        type?: ('reference' | 'custom') | null;
+                        newTab?: boolean | null;
+                        reference?:
+                          | ({
+                              relationTo: 'pages';
+                              value: string | Page;
+                            } | null)
+                          | ({
+                              relationTo: 'posts';
+                              value: string | Post;
+                            } | null);
+                        url?: string | null;
+                        label: string;
+                      };
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'singleLink';
+                    }
+                  | {
+                      linkLabel: string;
+                      collectionSlug: 'industry-solutions' | 'success-stories';
+                      limit?: number | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'collectionMenu';
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'navGroup';
+          }
+        | {
+            linkLabel: string;
+            collectionSlug: 'industry-solutions' | 'success-stories';
+            limit?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'collectionMenu';
+          }
+      )[]
     | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1964,16 +2014,65 @@ export interface HeaderSelect<T extends boolean = true> {
   navItems?:
     | T
     | {
-        link?:
+        singleLink?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
+              blockName?: T;
             };
-        id?: T;
+        navGroup?:
+          | T
+          | {
+              label?: T;
+              items?:
+                | T
+                | {
+                    singleLink?:
+                      | T
+                      | {
+                          link?:
+                            | T
+                            | {
+                                type?: T;
+                                newTab?: T;
+                                reference?: T;
+                                url?: T;
+                                label?: T;
+                              };
+                          id?: T;
+                          blockName?: T;
+                        };
+                    collectionMenu?:
+                      | T
+                      | {
+                          linkLabel?: T;
+                          collectionSlug?: T;
+                          limit?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        collectionMenu?:
+          | T
+          | {
+              linkLabel?: T;
+              collectionSlug?: T;
+              limit?: T;
+              id?: T;
+              blockName?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
