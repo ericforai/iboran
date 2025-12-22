@@ -4,7 +4,7 @@
 - [x] Task: Update Global Branding Defaults [c7836b4]
     - [ ] Subtask: Update `generateTitle` suffix to "泊冉软件" in `src/plugins/index.ts`
     - [ ] Subtask: Write unit tests to verify default title generation for Pages and Posts
-- [ ] Task: Enhance Metadata Logic
+- [x] Task: Enhance Metadata Logic [8eff2d1]
     - [ ] Subtask: Implement hybrid logic in `generateTitle` and `generateDescription` to use document fields as fallback
     - [ ] Subtask: Write unit tests for fallback logic
 - [ ] Task: Conductor - User Manual Verification 'Foundation & Brand Updates' (Protocol in workflow.md)
