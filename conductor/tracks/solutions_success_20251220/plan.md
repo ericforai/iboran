@@ -48,3 +48,17 @@
     - [x] Subtask: Verify Color Ratio (70/20/10) [3bc6ef7]
     - [x] Subtask: Verify Mobile Responsiveness [3bc6ef7]
 - [x] Task: Conductor - User Manual Verification 'Content & Review' (Protocol in workflow.md) [3bc6ef7]
+
+## Phase 5: Navigation & Site Structure
+- [ ] Task: Enhance Header Data Model
+    - [ ] Subtask: Define `NavGroup` block for nested menus (Label + Sub-links)
+    - [ ] Subtask: Define `CollectionMenu` block for dynamic collection lists (Label + Collection Reference)
+    - [ ] Subtask: Update Header Global Config to use new block-based navigation
+- [ ] Task: Update Header Component
+    - [ ] Subtask: Implement `NavGroup` rendering (Dropdown)
+    - [ ] Subtask: Implement `CollectionMenu` rendering (Fetch & List Industry Solutions)
+    - [ ] Subtask: Update `HeaderNav` to handle recursive/nested structures
+- [ ] Task: Configure Main Navigation
+    - [ ] Subtask: Add "Solutions" -> "By Industry" dropdown in Admin
+    - [ ] Subtask: Verify "Industry Solutions" are automatically listed
+- [ ] Task: Conductor - User Manual Verification 'Navigation & Site Structure' (Protocol in workflow.md)
