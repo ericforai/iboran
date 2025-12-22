@@ -10,7 +10,7 @@
 - [x] Task: Conductor - User Manual Verification 'Foundation & Brand Updates' (Protocol in workflow.md)
 
 ## Phase 2: Routing Alignment & Canonicalization
-- [ ] Task: Synchronize dynamic URLs
+- [x] Task: Synchronize dynamic URLs [baee277]
     - [ ] Subtask: Update `generateURL` in `src/plugins/index.ts` to handle `/solution/industry/` prefix for `industry-solutions`
     - [ ] Subtask: Update `generateURL` for `success-stories` and `resources`
     - [ ] Subtask: Write unit tests verifying URL generation for all dynamic collections
