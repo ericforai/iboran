@@ -10,7 +10,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { StoryCard } from '@/components/StoryCard'
 import { ResourceCard } from '@/components/ResourceCard'
-import { PageClientWrapper } from '../../page.client.wrapper'
+import { PageClientWrapper } from '../../../page.client.wrapper'
 import { SiteFooter } from '@/components/SiteFooter'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
@@ -44,7 +44,7 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
   const decodedSlug = decodeURIComponent(slug)
-  const url = '/solutions/' + decodedSlug
+  const url = '/solution/industry/' + decodedSlug
   
   const solution = await querySolutionBySlug({ slug: decodedSlug })
   const contactData = await getCachedGlobal('contact', 1)() as Contact

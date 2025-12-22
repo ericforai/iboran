@@ -1946,6 +1946,34 @@ export interface Header {
                       blockName?: string | null;
                       blockType: 'collectionMenu';
                     }
+                  | {
+                      label: string;
+                      items?:
+                        | {
+                            link: {
+                              type?: ('reference' | 'custom') | null;
+                              newTab?: boolean | null;
+                              reference?:
+                                | ({
+                                    relationTo: 'pages';
+                                    value: string | Page;
+                                  } | null)
+                                | ({
+                                    relationTo: 'posts';
+                                    value: string | Post;
+                                  } | null);
+                              url?: string | null;
+                              label: string;
+                            };
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'singleLink';
+                          }[]
+                        | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'navSubGroup';
+                    }
                 )[]
               | null;
             id?: string | null;
@@ -2057,6 +2085,32 @@ export interface HeaderSelect<T extends boolean = true> {
                           linkLabel?: T;
                           collectionSlug?: T;
                           limit?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    navSubGroup?:
+                      | T
+                      | {
+                          label?: T;
+                          items?:
+                            | T
+                            | {
+                                singleLink?:
+                                  | T
+                                  | {
+                                      link?:
+                                        | T
+                                        | {
+                                            type?: T;
+                                            newTab?: T;
+                                            reference?: T;
+                                            url?: T;
+                                            label?: T;
+                                          };
+                                      id?: T;
+                                      blockName?: T;
+                                    };
+                              };
                           id?: T;
                           blockName?: T;
                         };

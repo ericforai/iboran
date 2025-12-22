@@ -13,6 +13,8 @@ export const RowLabel: React.FC<RowLabelProps> = () => {
       label = item?.link?.label
   } else if (item?.blockType === 'navGroup') {
       label = item?.label
+  } else if (item?.blockType === 'navSubGroup') {
+      label = item?.label
   } else if (item?.blockType === 'collectionMenu') {
       label = item?.linkLabel
   }
