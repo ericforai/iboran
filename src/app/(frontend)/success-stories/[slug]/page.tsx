@@ -81,10 +81,9 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
-  const decodedSlug = decodeURIComponent(slug)
-  const story = await queryStoryBySlug({ slug: decodedSlug })
+  const story = await queryStoryBySlug({ slug })
 
-  return generateMeta({ doc: story })
+  return generateMeta({ doc: story, collection: 'success-stories' })
 }
 
 const queryStoryBySlug = cache(async ({ slug }: { slug: string }) => {

@@ -110,11 +110,9 @@ export default async function Post({ params: paramsPromise }: Args) {
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
-  // Decode to support slugs with special characters
-  const decodedSlug = decodeURIComponent(slug)
-  const post = await queryPostBySlug({ slug: decodedSlug })
+  const post = await queryPostBySlug({ slug }) // This line will be replaced by the instruction
 
-  return generateMeta({ doc: post })
+  return generateMeta({ doc: post, collection: 'posts' })
 }
 
 const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {

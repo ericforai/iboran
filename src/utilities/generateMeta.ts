@@ -20,15 +20,25 @@ const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
 }
 
 export const generateMeta = async (args: {
-  doc: Partial<Page> | Partial<Post> | null
+  doc: Partial<Page> | Partial<Post> | any | null
+  collection?: string
 }): Promise<Metadata> => {
-  const { doc } = args
+  const { doc, collection } = args
+  const serverUrl = getServerSideURL()
 
   const ogImage = getImageURL(doc?.meta?.image)
 
-  const title = doc?.meta?.title
-    ? doc?.meta?.title + ' | Payload Website Template'
-    : 'Payload Website Template'
+  const title = doc?.meta?.title ? `${doc?.meta?.title} | 泊冉软件` : '泊冉软件'
+
+  const getPath = () => {
+    if (!doc?.slug) return '/'
+    if (collection === 'posts') return `/posts/${doc.slug}`
+    if (collection === 'industry-solutions') return `/solution/industry/${doc.slug}`
+    if (collection === 'success-stories') return `/success-stories/${doc.slug}`
+    return `/${doc.slug}`
+  }
+
+  const path = getPath()
 
   return {
     description: doc?.meta?.description,
@@ -42,8 +52,11 @@ export const generateMeta = async (args: {
           ]
         : undefined,
       title,
-      url: Array.isArray(doc?.slug) ? doc?.slug.join('/') : '/',
+      url: path,
     }),
     title,
+    alternates: {
+      canonical: `${serverUrl}${path}`,
+    },
   }
 }
