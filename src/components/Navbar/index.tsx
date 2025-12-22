@@ -41,6 +41,7 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string | null>(null)
   const [megaMenuTab, setMegaMenuTab] = useState<'business' | 'industry'>('business')
+  const [mobileSolutionTab, setMobileSolutionTab] = useState<'business' | 'industry'>('industry')
   
   // Timer ref for delayed menu close to prevent hover gap issue
   const closeTimeoutRef = React.useRef<NodeJS.Timeout | null>(null)
@@ -328,47 +329,111 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
               <div key={item.label} className="border-b border-gray-50">
                 {item.hasDropdown ? (
                   <>
-                    <button
-                      onClick={() => toggleMobileDropdown(item.label)}
-                      className="w-full flex items-center justify-between px-6 py-4 text-base font-medium text-[#1F2329] hover:bg-slate-50 transition-colors"
-                    >
-                      <span>{item.label}</span>
-                      <ChevronDown
-                        className={`w-5 h-5 text-slate-400 transition-transform duration-200 ${
-                          mobileActiveDropdown === item.label ? 'rotate-180' : ''
-                        }`}
-                      />
-                    </button>
+                    <div className="flex items-center justify-between hover:bg-slate-50 transition-colors">
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex-1 px-6 py-4 text-base font-medium text-[#1F2329]"
+                      >
+                        {item.label}
+                      </Link>
+                      <button
+                        onClick={() => toggleMobileDropdown(item.label)}
+                        className="px-4 py-4 text-slate-400 hover:text-[#0052D9] transition-colors"
+                        aria-label={mobileActiveDropdown === item.label ? '收起菜单' : '展开菜单'}
+                      >
+                        <ChevronDown
+                          className={`w-5 h-5 transition-transform duration-200 ${
+                            mobileActiveDropdown === item.label ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+                    </div>
                     {mobileActiveDropdown === item.label && (
-                      <div className="bg-slate-50 pb-2 max-h-[60vh] overflow-y-auto">
-                        {solutionByBusiness.map((category) => (
-                          <div key={category.name} className="pt-3 first:pt-2">
-                            <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                              {category.name}
-                            </div>
-                            {category.items.map((dropItem) => {
-                              const IconComponent = dropItem.icon
-                              return (
-                                <Link
-                                  key={dropItem.href}
-                                  href={dropItem.href}
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                  className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
-                                >
-                                  <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
-                                    <IconComponent className="w-4 h-4 text-[#0052D9]" />
-                                  </div>
-                                  <div className="flex-1 min-w-0">
-                                    <div className="font-medium text-[#1F2329] text-sm">
-                                      {dropItem.label}
+                      <div className="bg-slate-50 pb-2">
+                        {/* 移动端标签切换器 */}
+                        <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-200">
+                          <button
+                            onClick={() => setMobileSolutionTab('industry')}
+                            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                              mobileSolutionTab === 'industry' 
+                                ? 'bg-[#0052D9] text-white shadow-sm' 
+                                : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                            }`}
+                          >
+                            按行业
+                          </button>
+                          <button
+                            onClick={() => setMobileSolutionTab('business')}
+                            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                              mobileSolutionTab === 'business' 
+                                ? 'bg-[#0052D9] text-white shadow-sm' 
+                                : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                            }`}
+                          >
+                            按业务
+                          </button>
+                        </div>
+
+                        {/* 按行业内容 */}
+                        {mobileSolutionTab === 'industry' && (
+                          <div className="max-h-[50vh] overflow-y-auto py-3">
+                            <div className="grid grid-cols-2 gap-2 px-4">
+                              {solutionByIndustry.map((industry) => {
+                                const IndustryIcon = industry.icon
+                                return (
+                                  <Link
+                                    key={industry.href}
+                                    href={industry.href}
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className="flex items-center gap-2 p-3 rounded-xl bg-white border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all"
+                                  >
+                                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center flex-shrink-0">
+                                      <IndustryIcon className="w-4 h-4 text-[#0052D9]" />
                                     </div>
-                                    <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">{dropItem.desc}</div>
-                                  </div>
-                                </Link>
-                              )
-                            })}
+                                    <span className="font-medium text-[#1F2329] text-sm">
+                                      {industry.name}
+                                    </span>
+                                  </Link>
+                                )
+                              })}
+                            </div>
                           </div>
-                        ))}
+                        )}
+
+                        {/* 按业务内容 */}
+                        {mobileSolutionTab === 'business' && (
+                          <div className="max-h-[50vh] overflow-y-auto">
+                            {solutionByBusiness.map((category) => (
+                              <div key={category.name} className="pt-3 first:pt-2">
+                                <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                                  {category.name}
+                                </div>
+                                {category.items.map((dropItem) => {
+                                  const IconComponent = dropItem.icon
+                                  return (
+                                    <Link
+                                      key={dropItem.href}
+                                      href={dropItem.href}
+                                      onClick={() => setIsMobileMenuOpen(false)}
+                                      className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
+                                    >
+                                      <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                        <IconComponent className="w-4 h-4 text-[#0052D9]" />
+                                      </div>
+                                      <div className="flex-1 min-w-0">
+                                        <div className="font-medium text-[#1F2329] text-sm">
+                                          {dropItem.label}
+                                        </div>
+                                        <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">{dropItem.desc}</div>
+                                      </div>
+                                    </Link>
+                                  )
+                                })}
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )}
                   </>
