@@ -9,15 +9,15 @@
     - [x] Subtask: Write unit tests for fallback logic
 - [x] Task: Conductor - User Manual Verification 'Foundation & Brand Updates' (Protocol in workflow.md)
 
-## Phase 2: Routing Alignment & Canonicalization
+## Phase 2: Routing Alignment & Canonicalization [checkpoint: 8d703bb]
 - [x] Task: Synchronize dynamic URLs [baee277]
-    - [ ] Subtask: Update `generateURL` in `src/plugins/index.ts` to handle `/solution/industry/` prefix for `industry-solutions`
-    - [ ] Subtask: Update `generateURL` for `success-stories` and `resources`
-    - [ ] Subtask: Write unit tests verifying URL generation for all dynamic collections
-- [ ] Task: Verify Canonical Tags
-    - [ ] Subtask: Ensure `<link rel="canonical">` is rendered correctly in the frontend layout/head
-    - [ ] Subtask: Add integration test for canonical tag presence on restructured routes
-- [ ] Task: Conductor - User Manual Verification 'Routing Alignment & Canonicalization' (Protocol in workflow.md)
+    - [x] Subtask: Update `generateURL` in `src/plugins/index.ts` to handle `/solution/industry/` prefix for `industry-solutions`
+    - [x] Subtask: Update `generateURL` for `success-stories` and `resources`
+    - [x] Subtask: Write unit tests verifying URL generation for all dynamic collections
+- [x] Task: Verify Canonical Tags [baee277]
+    - [x] Subtask: Ensure `<link rel="canonical">` is rendered correctly in the frontend layout/head
+    - [x] Subtask: Add integration test for canonical tag presence on restructured routes
+- [x] Task: Conductor - User Manual Verification 'Routing Alignment & Canonicalization' (Protocol in workflow.md)
 
 ## Phase 3: Sitemap & Discovery Automation
 - [ ] Task: Configure `next-sitemap`
