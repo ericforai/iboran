@@ -46,6 +46,32 @@ async function updateHeader() {
             blockType: 'navGroup',
             label: '解决方案', // Solutions
             items: [
+               {
+                 blockType: 'navSubGroup', // Changed from navGroup
+                 label: '按业务领域', // By Business
+                 items: [
+                     {
+                         blockType: 'singleLink',
+                         link: { type: 'custom', label: '全部业务方案', url: '/solution' }
+                     },
+                     {
+                         blockType: 'singleLink',
+                         link: { type: 'custom', label: 'L2C 销售到收款', url: '/solution/business/lead-to-cash' }
+                     },
+                     {
+                         blockType: 'singleLink',
+                         link: { type: 'custom', label: 'S2P 采购到付款', url: '/solution/business/s2p' }
+                     },
+                     {
+                         blockType: 'singleLink',
+                         link: { type: 'custom', label: 'MES 生产管理', url: '/solution/business/mes' }
+                     },
+                      {
+                         blockType: 'singleLink',
+                         link: { type: 'custom', label: '财务云', url: '/solution/business/finance-cloud' }
+                     }
+                 ]
+               },
               {
                  blockType: 'collectionMenu',
                  linkLabel: '按行业分类', // By Industry

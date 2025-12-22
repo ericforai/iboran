@@ -52,67 +52,56 @@ export const solutionByBusiness: BusinessCategory[] = [
   {
     name: '销售与收款',
     items: [
-      { label: 'L2C 销售到收款', href: '/solution/lead-to-cash', desc: '线索多、转化低、回款慢？从销售到收款的全流程闭环', icon: TrendingUp },
-      { label: '营收云', href: '/solution/revenue-cloud', desc: '业绩不差，但钱回得慢？销售到收款的经营可视化', icon: Wallet },
+      { label: 'L2C 销售到收款', href: '/solution/business/lead-to-cash', desc: '线索多、转化低、回款慢？从销售到收款的全流程闭环', icon: TrendingUp },
+      { label: '营收云', href: '/solution/business/revenue-cloud', desc: '业绩不差，但钱回得慢？销售到收款的经营可视化', icon: Wallet },
     ]
   },
   {
     name: '采购与供应链',
     items: [
-      { label: 'S2P 采购到付款', href: '/solution/s2p', desc: '供应商多、管控难、合规风险高？采购到付款的全流程管控', icon: Package },
+      { label: 'S2P 采购到付款', href: '/solution/business/s2p', desc: '供应商多、管控难、合规风险高？采购到付款的全流程管控', icon: Package },
     ]
   },
   {
     name: '研发与制造',
     items: [
-      { label: 'PLM 研发云', href: '/solution/plm', desc: '研发周期长、协同难、市场响应慢？加速产品创新的研发管理', icon: FlaskConical },
-      { label: 'P2M 制造全生命周期', href: '/solution/p2m', desc: '计划常变、现场失控、成本不准？生产全过程透明可控', icon: Factory },
-      { label: 'MES 生产管理', href: '/solution/mes', desc: '排产靠经验，问题靠追人？让生产进度与质量实时可见', icon: Wrench },
+      { label: 'PLM 研发云', href: '/solution/business/plm', desc: '研发周期长、协同难、市场响应慢？加速产品创新的研发管理', icon: FlaskConical },
+      { label: 'P2M 制造全生命周期', href: '/solution/business/p2m', desc: '计划常变、现场失控、成本不准？生产全过程透明可控', icon: Factory },
+      { label: 'MES 生产管理', href: '/solution/business/mes', desc: '排产靠经验，问题靠追人？让生产进度与质量实时可见', icon: Wrench },
     ]
   },
   {
     name: '财务与资金',
     items: [
-      { label: '财务云', href: '/solution/finance-cloud', desc: '多组织、对账难、报表慢？业财一体的集团财务管控', icon: Calculator },
-      { label: 'R2R 核算到报告', href: '/solution/r2r', desc: '账算得清，但看不懂业务？让财务真正参与经营决策', icon: FileSpreadsheet },
-      { label: 'TRM 资金管理', href: '/solution/trm', desc: '资金分散、调度难、风险盲区多？资金可视化与精准管控', icon: Landmark },
+      { label: '财务云', href: '/solution/business/finance-cloud', desc: '多组织、对账难、报表慢？业财一体的集团财务管控', icon: Calculator },
+      { label: 'R2R 核算到报告', href: '/solution/business/r2r', desc: '账算得清，但看不懂业务？让财务真正参与经营决策', icon: FileSpreadsheet },
+      { label: 'TRM 资金管理', href: '/solution/business/trm', desc: '资金分散、调度难、风险盲区多？资金可视化与精准管控', icon: Landmark },
     ]
   },
   {
     name: '人力与资产',
     items: [
-      { label: 'HRM 人力资源', href: '/solution/hrm', desc: '人不少，但效率看不清？组织、人效、成本一体管理', icon: UserCircle },
-      { label: 'EAM 资产管理', href: '/solution/eam', desc: '资产多、台账乱、利用率低？从采购到退役的全生命周期管理', icon: HardHat },
+      { label: 'HRM 人力资源', href: '/solution/business/hrm', desc: '人不少，但效率看不清？组织、人效、成本一体管理', icon: UserCircle },
+      { label: 'EAM 资产管理', href: '/solution/business/eam', desc: '资产多、台账乱、利用率低？从采购到退役的全生命周期管理', icon: HardHat },
     ]
   },
   {
     name: '智能平台',
     items: [
-      { label: 'AIP 智能化应用', href: '/solution/aip-intelligent-apps', desc: '想用AI但不知从何下手？YonGPT 智能体快速落地', icon: Bot },
-      { label: '企业集成平台', href: '/solution/enterprise-integration', desc: '系统孤岛多、数据不互通？让业务连接更简单', icon: Link2 },
-      { label: 'EOC 数智化协作', href: '/solution/eoc-collaboration', desc: '信息散乱、协作低效、事事靠人？AI 驱动的组织效能提升', icon: Users },
-      { label: '数字化建模', href: '/solution/digital-modeling', desc: '需求变化快、开发跟不上？快速构建企业专属应用', icon: Blocks },
-      { label: 'CTP 技术平台', href: '/solution/ctp', desc: '技术栈老旧、扩展困难？云原生技术底座支撑转型', icon: Cpu },
-      { label: 'DEV 开发平台', href: '/solution/dev', desc: '开发周期长、维护成本高？低代码快速构建业务应用', icon: Code2 },
-      { label: 'DMP 数据平台', href: '/solution/dmp', desc: '数据分散、分析困难、决策靠感觉？数据驱动经营决策', icon: Database },
+      { label: 'AIP 智能化应用', href: '/solution/business/aip-intelligent-apps', desc: '想用AI但不知从何下手？YonGPT 智能体快速落地', icon: Bot },
+      { label: '企业集成平台', href: '/solution/business/enterprise-integration', desc: '系统孤岛多、数据不互通？让业务连接更简单', icon: Link2 },
+      { label: 'EOC 数智化协作', href: '/solution/business/eoc-collaboration', desc: '信息散乱、协作低效、事事靠人？AI 驱动的组织效能提升', icon: Users },
+      { label: '数字化建模', href: '/solution/business/digital-modeling', desc: '需求变化快、开发跟不上？快速构建企业专属应用', icon: Blocks },
+      { label: 'CTP 技术平台', href: '/solution/business/ctp', desc: '技术栈老旧、扩展困难？云原生技术底座支撑转型', icon: Cpu },
+      { label: 'DEV 开发平台', href: '/solution/business/dev', desc: '开发周期长、维护成本高？低代码快速构建业务应用', icon: Code2 },
+      { label: 'DMP 数据平台', href: '/solution/business/dmp', desc: '数据分散、分析困难、决策靠感觉？数据驱动经营决策', icon: Database },
     ]
   },
 ]
 
 // 解决方案分类（按行业） - 链接到 CMS 管理的行业解决方案
 export const solutionByIndustry: IndustryCategory[] = [
-  {
-    name: '制造业',
-    icon: Factory,
-    href: '/solutions',
-    desc: '多订单、多工厂场景下的生产可控 · 成本可算 · 交付可追',
-  },
-  {
-    name: '高科技',
-    icon: Cpu,
-    href: '/solutions',
-    desc: '研发驱动、项目制交付下的研发效率 + 业财协同',
-  },
+
   {
     name: '芯片半导体',
     icon: Cpu,
@@ -146,19 +135,19 @@ export const solutionByIndustry: IndustryCategory[] = [
   {
     name: '汽车行业',
     icon: Car,
-    href: '/solutions',
+    href: '/solution',
     desc: '多层级供应链下的协同管控 · 质量追溯 · 成本透明',
   },
   {
     name: '消费品',
     icon: ShoppingBag,
-    href: '/solutions',
+    href: '/solution',
     desc: '多渠道、快周转场景下的精细化运营与动态库存管理',
   },
   {
     name: '中企出海',
     icon: Globe,
-    href: '/solution/global-operations',
+    href: '/solution/business/global-operations',
     desc: 'YonBIP助力全球化经营·多语多币多时区统一管理',
   },
   {

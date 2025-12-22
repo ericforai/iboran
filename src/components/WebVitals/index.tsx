@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 export function WebVitals() {
   useEffect(() => {
     // 动态导入 web-vitals 库
+    // @ts-ignore
     import('next/dist/compiled/web-vitals').then(({ onCLS, onFCP, onLCP, onTTFB, onINP }) => {
       const reportMetric = (metric: any) => {
         const rating = metric.rating || 'unknown'

@@ -31,3 +31,6 @@ node_modules/
 "泊冉官网设计与实施方案 V2..md"
 "泊冉官网设计与实施方案 V2..*"
 package-lock.json
+
+# 行业解决方案
+docs/行业解决方案/

@@ -15,6 +15,7 @@ services:
       - .env
     environment:
       - NODE_ENV=development
+      - DATABASE_URI=mongodb://mongo:27017/iboran
 
   mongo:
     image: mongo:7

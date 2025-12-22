@@ -1,6 +1,7 @@
 import { Block } from 'payload'
 import { SingleLink } from './SingleLink'
 import { CollectionMenu } from './CollectionMenu'
+import { NavSubGroup } from './NavSubGroup'
 
 export const NavGroup: Block = {
   slug: 'navGroup',
@@ -17,7 +18,7 @@ export const NavGroup: Block = {
     {
       name: 'items',
       type: 'blocks',
-      blocks: [SingleLink, CollectionMenu],
+      blocks: [SingleLink, CollectionMenu, NavSubGroup],
     },
   ],
 }
