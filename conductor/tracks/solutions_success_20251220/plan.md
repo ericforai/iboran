@@ -50,15 +50,15 @@
 - [x] Task: Conductor - User Manual Verification 'Content & Review' (Protocol in workflow.md) [3bc6ef7]
 
 ## Phase 5: Navigation & Site Structure
-- [ ] Task: Enhance Header Data Model
-    - [ ] Subtask: Define `NavGroup` block for nested menus (Label + Sub-links)
-    - [ ] Subtask: Define `CollectionMenu` block for dynamic collection lists (Label + Collection Reference)
-    - [ ] Subtask: Update Header Global Config to use new block-based navigation
-- [ ] Task: Update Header Component
-    - [ ] Subtask: Implement `NavGroup` rendering (Dropdown)
-    - [ ] Subtask: Implement `CollectionMenu` rendering (Fetch & List Industry Solutions)
-    - [ ] Subtask: Update `HeaderNav` to handle recursive/nested structures
-- [ ] Task: Configure Main Navigation
-    - [ ] Subtask: Add "Solutions" -> "By Industry" dropdown in Admin
-    - [ ] Subtask: Verify "Industry Solutions" are automatically listed
+- [x] Task: Enhance Header Data Model [4ac40c9]
+    - [x] Subtask: Define `NavGroup` block for nested menus (Label + Sub-links) [4ac40c9]
+    - [x] Subtask: Define `CollectionMenu` block for dynamic collection lists (Label + Collection Reference) [4ac40c9]
+    - [x] Subtask: Update Header Global Config to use new block-based navigation [4ac40c9]
+- [x] Task: Update Header Component [4ac40c9]
+    - [x] Subtask: Implement `NavGroup` rendering (Dropdown) [4ac40c9]
+    - [x] Subtask: Implement `CollectionMenu` rendering (Fetch & List Industry Solutions) [4ac40c9]
+    - [x] Subtask: Update `HeaderNav` to handle recursive/nested structures [4ac40c9]
+- [x] Task: Configure Main Navigation [4ac40c9]
+    - [x] Subtask: Add "Solutions" -> "By Industry" dropdown in Admin [4ac40c9]
+    - [x] Subtask: Verify "Industry Solutions" are automatically listed [4ac40c9]
 - [ ] Task: Conductor - User Manual Verification 'Navigation & Site Structure' (Protocol in workflow.md)
