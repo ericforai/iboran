@@ -34,7 +34,7 @@ interface NavbarProps {
   contactData?: Contact
 }
 
-export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
+export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: NavbarProps) {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const [isConsultModalOpen, setIsConsultModalOpen] = useState(false)
@@ -417,13 +417,13 @@ export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
         <DemoRequestModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
       )}
 
-      <ConsultationModal 
+      <ConsultationModal
         isOpen={isConsultModalOpen}
         onClose={() => setIsConsultModalOpen(false)}
         data={contactData}
       />
     </>
   )
-}
+})
 
 export default Navbar
