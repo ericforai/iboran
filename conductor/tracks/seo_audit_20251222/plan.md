@@ -20,10 +20,10 @@
 - [x] Task: Conductor - User Manual Verification 'Routing Alignment & Canonicalization' (Protocol in workflow.md)
 
 ## Phase 3: Sitemap & Discovery Automation
-- [ ] Task: Configure `next-sitemap`
-    - [ ] Subtask: Update `next-sitemap.config.cjs` to include all dynamic routes and set correct `siteUrl`
-    - [ ] Subtask: Verify `robots.txt` generation settings
-- [ ] Task: End-to-End Validation
-    - [ ] Subtask: Run a production build and verify the content of `public/sitemap.xml` and `public/robots.txt`
-    - [ ] Subtask: Verify no "Payload Website Template" remains in generated static HTML
-- [ ] Task: Conductor - User Manual Verification 'Sitemap & Discovery Automation' (Protocol in workflow.md)
+- [x] Task: Configure `next-sitemap` [f590a5a]
+    - [x] Subtask: Update `next-sitemap.config.cjs` to include all dynamic routes and set correct `siteUrl`
+    - [x] Subtask: Verify `robots.txt` generation settings
+- [x] Task: End-to-End Validation [f590a5a]
+    - [x] Subtask: Run a production build and verify the content of `public/sitemap.xml` and `public/robots.txt`
+    - [x] Subtask: Verify no "Payload Website Template" remains in generated static HTML
+- [x] Task: Conductor - User Manual Verification 'Sitemap & Discovery Automation' (Protocol in workflow.md)
