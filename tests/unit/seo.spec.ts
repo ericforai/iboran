@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
-import { generateTitle, generateDescription } from '../../src/plugins/index'
+import { generateTitle, generateDescription, generateURL } from '../../src/plugins/index'
+import { generateMeta } from '../../src/utilities/generateMeta'
 
 describe('SEO Plugin', () => {
   describe('generateTitle', () => {
@@ -27,6 +28,47 @@ describe('SEO Plugin', () => {
       const doc = { title: 'No Summary' } as any
       const desc = generateDescription({ doc, locale: 'en' })
       expect(desc).toBe('')
+    })
+  })
+
+  describe('generateURL', () => {
+    it('should generate URL for pages (root prefix)', () => {
+      const doc = { slug: 'about' } as any
+      const url = generateURL({ doc, collectionConfig: { slug: 'pages' } as any } as any)
+      expect(url).toContain('/about')
+      expect(url).not.toContain('/pages/about')
+    })
+
+    it('should generate URL for posts (/posts prefix)', () => {
+      const doc = { slug: 'news-item' } as any
+      const url = generateURL({ doc, collectionConfig: { slug: 'posts' } as any } as any)
+      expect(url).toContain('/posts/news-item')
+    })
+
+    it('should generate URL for industry-solutions (/solution/industry prefix)', () => {
+      const doc = { slug: 'semiconductor' } as any
+      const url = generateURL({ doc, collectionConfig: { slug: 'industry-solutions' } as any } as any)
+      expect(url).toContain('/solution/industry/semiconductor')
+    })
+
+    it('should generate URL for success-stories (/success-stories prefix)', () => {
+      const doc = { slug: 'client-a' } as any
+      const url = generateURL({ doc, collectionConfig: { slug: 'success-stories' } as any } as any)
+      expect(url).toContain('/success-stories/client-a')
+    })
+  })
+
+  describe('generateMeta', () => {
+    it('should include alternates.canonical with correct path', async () => {
+      const doc = { slug: 'test-slug' } as any
+      const meta = await generateMeta({ doc, collection: 'industry-solutions' })
+      expect(meta.alternates?.canonical).toBe('http://localhost:3000/solution/industry/test-slug')
+    })
+
+    it('should use root as canonical if no slug', async () => {
+      const doc = {} as any
+      const meta = await generateMeta({ doc })
+      expect(meta.alternates?.canonical).toBe('http://localhost:3000/')
     })
   })
 })

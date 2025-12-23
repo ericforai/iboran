@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { solutionByIndustry } from '../data/solutions'
 
 // Helper for __dirname in ESM
 const __filename = fileURLToPath(import.meta.url)
@@ -73,10 +74,16 @@ async function updateHeader() {
                  ]
                },
               {
-                 blockType: 'collectionMenu',
-                 linkLabel: '按行业分类', // By Industry
-                 collectionSlug: 'industry-solutions',
-                 limit: 10,
+                 blockType: 'navSubGroup',
+                 label: '按行业分类', // By Industry
+                 items: solutionByIndustry.map((item) => ({
+                   blockType: 'singleLink' as const,
+                   link: {
+                     type: 'custom' as const,
+                     label: item.name,
+                     url: item.href,
+                   },
+                 })),
               },
                {
                  blockType: 'singleLink',

@@ -21,10 +21,25 @@ export const generateDescription: GenerateDescription<Post | Page | any> = ({ do
   return doc?.summary || ''
 }
 
-export const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
+export const generateURL: GenerateURL<Post | Page | any> = ({ doc, collectionConfig }) => {
   const url = getServerSideURL()
+  const collection = collectionConfig?.slug
 
-  return doc?.slug ? `${url}/${doc.slug}` : url
+  if (!doc?.slug) return url
+
+  if (collection === 'posts') {
+    return `${url}/posts/${doc.slug}`
+  }
+
+  if (collection === 'industry-solutions') {
+    return `${url}/solution/industry/${doc.slug}`
+  }
+
+  if (collection === 'success-stories') {
+    return `${url}/success-stories/${doc.slug}`
+  }
+
+  return `${url}/${doc.slug}`
 }
 
 export const plugins: Plugin[] = [
