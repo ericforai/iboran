@@ -19,7 +19,7 @@
     - [x] Subtask: Add integration test for canonical tag presence on restructured routes
 - [x] Task: Conductor - User Manual Verification 'Routing Alignment & Canonicalization' (Protocol in workflow.md)
 
-## Phase 3: Sitemap & Discovery Automation
+## Phase 3: Sitemap & Discovery Automation [checkpoint: e1e568b]
 - [x] Task: Configure `next-sitemap` [f590a5a]
     - [x] Subtask: Update `next-sitemap.config.cjs` to include all dynamic routes and set correct `siteUrl`
     - [x] Subtask: Verify `robots.txt` generation settings
