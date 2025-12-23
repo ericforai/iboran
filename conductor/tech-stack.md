@@ -15,6 +15,7 @@ This document outlines the core technologies and frameworks used in the Boran co
 ## Libraries & UI Components
 - **Framer Motion 12.23.26:** The primary library used for creating fluid and modern animations.
 - **Radix UI:** A collection of unstyled, accessible UI primitives (Checkbox, Select, Label, Slot, etc.) used as the foundation for the design system.
+- **next-sitemap:** For automated generation of sitemap.xml and robots.txt.
 - **Lucide React 0.378.0:** The icon library for consistent and scalable vector icons.
 
 ## Tooling & Infrastructure
