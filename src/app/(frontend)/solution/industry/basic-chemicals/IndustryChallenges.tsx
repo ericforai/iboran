@@ -3,33 +3,33 @@ import { Leaf, Gem, Cpu, Globe, Shield } from 'lucide-react'
 const challenges = [
   {
     icon: Leaf,
-    title: '环保合规压力大',
-    description: '高能耗、高污染，面临严格的环保法规和碳排放要求，需加速绿色化转型',
-    dataPoint: '绿色化是行业生存底线',
-  },
-  {
-    icon: Gem,
-    title: '产品附加值低',
-    description: '产品同质化严重、研发周期长，缺乏高端化产品布局，市场竞争力不足',
-    dataPoint: '高端化是价值增长引擎',
-  },
-  {
-    icon: Cpu,
-    title: '人工经验依赖',
-    description: '生产运营高度依赖人工经验，设备故障停机损失大，智能化程度不足',
-    dataPoint: '智能化是效率提升关键',
-  },
-  {
-    icon: Globe,
-    title: '跨国协同困难',
-    description: '中企出海面临跨国协同效率低、贸易合规风险高、多语多币多时区管理难题',
-    dataPoint: '全球化是市场拓展方向',
+    title: '绿色化合规压力',
+    description: '石化化工重点行业节能降碳行动方案要求：到2025年能源效能水平标杆产能需超30%，碳排放强度需显著下降',
+    dataPoint: '十四五绿色安全高质量发展格局',
   },
   {
     icon: Shield,
-    title: '系统安全风险',
-    description: '核心系统受制于国外软件，数据安全风险和服务风险并存，亟需自主可控',
-    dataPoint: '自主化是战略安全保障',
+    title: '安全生产升级',
+    description: '化工老旧装置更新改造行动计划（2024）明确要求淘汰安全间距不足、监测设施落后的装置，提升本质安全水平',
+    dataPoint: '“三同时”闭环与危化品全生命周期监控',
+  },
+  {
+    icon: Gem,
+    title: '高端化产品替代',
+    description: '基础化工原料同质化严重，低端产能过剩，急需提升高端产品保障能力及数字化研发效率',
+    dataPoint: 'PLM贯穿产品全生命周期研发',
+  },
+  {
+    icon: Cpu,
+    title: '智能化运营指挥',
+    description: '传统工艺控制依赖人工经验，面临“老师傅”退休风险；设备预测性维护能力不足，非计划停机损失巨大',
+    dataPoint: 'AIoT数物融合+PHM故障预测',
+  },
+  {
+    icon: Globe,
+    title: '全球化合规协同',
+    description: '中企出海面临GDPR数据安全、各国发薪及合规结算压力，需构建全球人才供应链与共享运营中心',
+    dataPoint: '赋能中企一站式出海数智化需求',
   },
 ]
 

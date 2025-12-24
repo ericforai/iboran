@@ -26,7 +26,7 @@ node_modules/
 *.zip
 
 # Local materials and docs
-方案资料/
+docs/方案资料/
 提示词.md
 "泊冉官网设计与实施方案 V2..md"
 "泊冉官网设计与实施方案 V2..*"

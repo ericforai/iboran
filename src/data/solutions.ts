@@ -1,5 +1,6 @@
 import {
   TrendingUp,
+  Activity,
   Wallet,
   Package,
   FlaskConical,
@@ -23,6 +24,11 @@ import {
   Atom,
   Zap,
   Globe,
+  Briefcase,
+  Building2,
+  Wine,
+  Utensils,
+  Milk,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -101,12 +107,17 @@ export const solutionByBusiness: BusinessCategory[] = [
 
 // 解决方案分类（按行业） - 链接到 CMS 管理的行业解决方案
 export const solutionByIndustry: IndustryCategory[] = [
-
   {
     name: '芯片半导体',
     icon: Cpu,
     href: '/solution/industry/semiconductor',
     desc: '智造芯未来 · CIM赋能12寸量产线Auto3全自动化转型',
+  },
+  {
+    name: '电子IC',
+    icon: Cpu,
+    href: '/solution/industry/electronic-ic',
+    desc: '精细化委外协同 · 批号/刻号全局追溯 · 实时成本/效益模拟',
   },
   {
     name: '医药健康',
@@ -155,6 +166,60 @@ export const solutionByIndustry: IndustryCategory[] = [
     icon: FlaskConical,
     href: '/solution/industry/basic-chemicals',
     desc: '绿色·高端·智能 驱动化工行业数智化转型升级',
+  },
+  {
+    name: '商务服务',
+    icon: Briefcase,
+    href: '/solution/industry/business-services',
+    desc: '项目化经营 · 精细化核算 · 人才化运营',
+  },
+  {
+    name: '科技服务',
+    icon: Code2,
+    href: '/solution/industry/tech-services',
+    desc: '数智驱动项目与人才双轮飞轮 · L2C项目管理 · 业财一体',
+  },
+  {
+    name: '互联网行业',
+    icon: Globe,
+    href: '/solution/industry/internet',
+    desc: '数智驱动 · 集团管控 · 全球化运营 · 业财融合',
+  },
+  {
+    name: '白酒行业',
+    icon: Wine,
+    href: '/solution/industry/baijiu',
+    desc: '数智酿造 · 品质传承 · 产销一体化协同',
+  },
+  {
+    name: '医疗器械',
+    icon: Activity,
+    href: '/solution/industry/medical-device',
+    desc: '覆盖研发、制造、GSP、UDI 追溯全链路，助力医疗器械企业合规稳健增长',
+  },
+  {
+    name: '餐饮行业',
+    icon: Utensils,
+    href: '/solution/industry/catering',
+    desc: '业财一体助力餐饮连锁高效经营 · 精细化成本管控 · 全渠道订单闭环',
+  },
+  {
+    name: '工程项目管理',
+    icon: Building2,
+    href: '/solution/industry/engineering-project',
+    desc: '业主方业财一体深度管控 · 投资可控 · 进度可视 · 价值闭环',
+  },
+  {
+    name: '乳制品行业',
+    icon: Milk,
+    href: '/solution/industry/dairy',
+    desc: '全产业链协同 · 收奶、生产、流通实时感知 · 守护每一滴品质',
+  },
+  {
+    name: '国资国企',
+    icon: Building2,
+    href: '/solution/industry/state-owned',
+    desc: '构建"智慧监管+智能运营"体系 · 激活数智新动能 · 打造新质生产力',
   },
 ]
 

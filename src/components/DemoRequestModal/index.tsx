@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 interface DemoRequestModalProps {
     isOpen: boolean
     onClose: () => void
+    source?: string
 }
 
 interface FormData {
@@ -27,7 +28,7 @@ const industries = [
     { label: '其他', value: 'other' },
 ]
 
-export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onClose }) => {
+export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onClose, source }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
     const [error, setError] = useState<string | null>(null)
@@ -48,6 +49,10 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
             const submissionData = Object.entries(data)
                 .filter(([, value]) => value !== undefined && value !== '')
                 .map(([field, value]) => ({ field, value }))
+            
+            if (source) {
+                submissionData.push({ field: 'source', value: source })
+            }
 
             const response = await fetch('/api/form-submissions', {
                 method: 'POST',
@@ -69,7 +74,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
         } finally {
             setIsLoading(false)
         }
-    }, [reset])
+    }, [reset, source])
 
     const handleClose = useCallback(() => {
         setIsSuccess(false)
