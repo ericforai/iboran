@@ -26,11 +26,7 @@ export default function ElectronicICPage() {
 
   return (
     <main className="min-h-screen">
-      <Hero 
-        industryName={industryName}
-        tagline="智慧芯片，数智链动未来"
-        description="针对Fabless、IDM等不同经营模式，提供涵盖研发管理、委外协同、批号追溯及精细化成本核算的电子IC行业全生命周期数字化解决方案。"
-      />
+      <Hero />
       
       <IndustryChallenges 
         industryName={industryName}

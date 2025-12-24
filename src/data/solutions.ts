@@ -139,7 +139,7 @@ export const solutionByIndustry: IndustryCategory[] = [
     name: '医药健康',
     icon: Pill,
     href: '/solution/industry/biopharmaceutical',
-    desc: '数智赋能CDMO研产一体化 · 项目管控 · 质量合规',
+    desc: '数智赋能CDMO研产一体化 · 质量合规 · 事项会计 · AI智能体',
   },
   {
     name: '新材料',
@@ -290,7 +290,7 @@ export const solutionByIndustryCategory: IndustryBusinessCategory[] = [
   {
     name: '医药与大健康',
     items: [
-      { label: '医药健康', href: '/solution/industry/biopharmaceutical', desc: '数智赋能CDMO研产一体化 · 项目管控 · 质量合规', icon: Pill },
+      { label: '医药健康', href: '/solution/industry/biopharmaceutical', desc: '数智赋能CDMO研产一体化 · 质量合规 · 事项会计 · AI智能体', icon: Pill },
       { label: '医疗器械', href: '/solution/industry/medical-device', desc: '覆盖研发、制造、GSP、UDI 追溯全链路，助力医疗器械企业合规稳健增长', icon: Activity },
       { label: '中药企业', href: '/solution/industry/traditional-chinese-medicine', desc: '传承精华·守正创新 质量全追溯与成本精细化管控', icon: Pill },
     ]

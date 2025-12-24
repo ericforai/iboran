@@ -82,34 +82,34 @@ export function SolutionOverview() {
               </ul>
             </div>
 
-            {/* Layer 3: Data & Integration */}
+            {/* Layer 3: Data & Intelligence */}
             <div className="p-8 lg:p-10">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center">
                   <Database className="w-5 h-5 text-cyan-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900">数据智能层</h3>
+                <h3 className="text-xl font-bold text-slate-900">数智决策层</h3>
               </div>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-600 mt-2"></span>
                   <div>
-                    <strong className="block text-slate-900">业财深度融合</strong>
-                    <span className="text-sm text-slate-500">单品/单项目成本精准核算</span>
+                    <strong className="block text-slate-900">YonGPT AI 智能体</strong>
+                    <span className="text-sm text-slate-500">AI+100+行业场景，智能洞察赋能</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-600 mt-2"></span>
                   <div>
-                    <strong className="block text-slate-900">多系统集成</strong>
-                    <span className="text-sm text-slate-500">链接SAP/Veeva/LIMS，消除孤岛</span>
+                    <strong className="block text-slate-900">事项会计中台</strong>
+                    <span className="text-sm text-slate-500">精细多维核算，实时业财大数据</span>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-600 mt-2"></span>
                   <div>
                     <strong className="block text-slate-900">全球化数据运营</strong>
-                    <span className="text-sm text-slate-500">多组织多准则多币种支持</span>
+                    <span className="text-sm text-slate-500">多组织、多准则、多币种实时管控</span>
                   </div>
                 </li>
               </ul>

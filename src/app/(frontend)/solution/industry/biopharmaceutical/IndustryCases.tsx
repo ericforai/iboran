@@ -90,7 +90,7 @@ export function IndustryCases() {
               <div className="mt-auto bg-slate-50 p-4 rounded-xl relative">
                 <Quote className="absolute top-2 left-2 w-4 h-4 text-blue-200" />
                 <p className="text-xs text-slate-600 italic pl-4 relative z-10">
-                  &ldquo;生物制药行业对合规性要求极高，用友BIP帮助我们实现了全流程的质量追溯，确保每一批次药品都符合GMP标准。&rdquo;
+                  &ldquo;我们始终认为，实现信息化项目成功的最优路径就是用成功去复制成功。YonSuite帮助我们打破了20多个异构系统的孤岛，实现了研产一体化的高度融合。&rdquo;
                 </p>
               </div>
             </div>

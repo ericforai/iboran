@@ -8,54 +8,54 @@ const scenarios = [
   {
     id: 'cdmo',
     icon: Microscope,
-    title: "CDMO研产一体化",
-    description: "打通从研发项目管理到GMP生产执行的全链路，实现工艺参数无缝转移，加速新药上市进程。",
+    title: "研产一体化 (CDMO/CRO)",
+    description: "打通临床前研究、临床研究到商业化生产的全链路。实现研发项目预算、进度与质量全透明，工艺参数无缝转移。",
     features: [
-      "研发项目进度与成本实时可视",
-      "工艺配方（PLM）到生产工单（MES）无缝衔接",
-      "实验室数据（LIMS）自动采集与关联",
-      "临床试验物料全程追溯"
+      "多管线项目全生命周期管控",
+      "研发工艺配方到生产BOM自动转换",
+      "LIMS与实验数据自动采集集成",
+      "试产物料与委托加工（CMO）协同"
     ],
     image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80&w=1000"
   },
   {
-    id: 'global',
-    icon: Globe2,
-    title: "全球化运营合规",
-    description: "支持多语言、多币种、多准则核算，满足跨国药企的全球化管控与合规经营需求。",
+    id: 'compliance',
+    icon: FileCheck,
+    title: "全流程合规管控",
+    description: "内置符合NMPA/FDA标准的GMP/GSP管理规范，支持Csv计算机化系统验证，确保数据完整性与追溯合规。",
     features: [
-      "全球多组织财务集中管控",
-      "符合国际会计准则（IFRS/GAAP）的多准则核算",
-      "跨国供应链协同与转移定价",
-      "GDPR等全球数据隐私合规"
+      "基于GAMP5的全生命周期CSV验证",
+      "质量管理QMS/DMS/TMS一体化",
+      "电子批记录(EBR)与电子签名",
+      "稳定性考察与留样全生命周期管理"
     ],
-    image: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=1000"
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1000"
   },
   {
-    id: 'integration',
+    id: 'accounting',
     icon: Link2,
-    title: "多系统深度集成",
-    description: "打破SAP、Veeva、CRM等系统孤岛，建立统一的数据底座，实现业务流与数据流的闭环互通。",
+    title: "事项会计与精益成本",
+    description: "基于事项会计中台，实现业务、财务、税务三位一体。单批次成本、项目损益实时洞察，支撑科学定价与集采应对。",
     features: [
-      "SAP/Oracle等ERP系统深度对接",
-      "Veeva/CRM营销系统数据打通",
-      "MES/LIMS/SCADA生产设备互联",
-      "统一主数据管理与数据清洗"
+      "多维会计核算，支持多准则报告",
+      "产品批次成本、全周期成本精准核算",
+      "精细化成本动因分析与管控",
+      "全员线上报销与预算事前控制"
     ],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000"
   },
   {
-    id: 'compliance',
-    icon: FileCheck,
-    title: "IPO合规与CSV验证",
-    description: "提供符合GSP/GMP要求的计算机化系统验证（CSV）服务，助力企业顺利通过审计，加速IPO进程。",
+    id: 'ai-agents',
+    icon: Globe2,
+    title: "AI+全球化数智运营",
+    description: "YonGPT 2.0 AI智能体赋能企业经营，多语言、多币种、跨国准则支持，助力药企全球化扩张与出海经营。",
     features: [
-      "全生命周期GxP合规管理",
-      "内置CSV验证文档模板与流程",
-      "电子签名与电子记录（21 CFR Part 11）",
-      "审计追踪与权限管控体系"
+      "AI智能营销分析与费用看板",
+      "全球多组织管理与海外合规审计",
+      "跨国供应链协同与电子仓储对接",
+      "经营指标层层穿透直达根因分析"
     ],
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1000"
+    image: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=1000"
   }
 ]
 
