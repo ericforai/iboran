@@ -10,11 +10,29 @@ interface Case {
   quote?: string
 }
 
-interface IndustryCasesProps {
-  cases: Case[]
-}
+// 案例数据内置在组件中
+const cases: Case[] = [
+  {
+    company: '长晶科技',
+    industry: '半导体设计与销售',
+    scale: '上市公司/知名分立器件供应商',
+    challenge: '专业分包工序多，变化快，总部与分子公司协同压力大，亟需精细化成本核算。',
+    solution: '通过BIP超级版实现集团化管控，打通长晶到浦联的协同流程，实现PDA扫码入库与生产现场MES链接。',
+    result: '全流程打通实现"内链接、外协同"，大幅提升了委外采购效率与入库精度。',
+    quote: '用友BIP帮助我们实现了从长晶到代工厂的深度业务整合。'
+  },
+  {
+    company: '奥拉半导体',
+    industry: '无晶圆厂（Fabless）',
+    scale: '跨国模拟/混合信号集成电路供应商',
+    challenge: '全球多研发中心，信息孤岛严重，且原系统无法支撑跨组织交易与复杂委外核销。',
+    solution: '构建全球管控一体化平台，规范数据标准，打通研产供销闭环，引入订单级精细成本核算。',
+    result: '业务财务一体化，加强了财务与业务一致性，实现了全球范围内的精细化管控。',
+    quote: '数字化的核心不仅是流程，更是数据的标准化与实时性。'
+  }
+]
 
-export default function IndustryCases({ cases }: IndustryCasesProps) {
+export default function IndustryCases() {
   return (
     <section className="py-24 bg-[#F7F8FA]">
       <div className="container mx-auto px-4">

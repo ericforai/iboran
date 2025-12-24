@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 
 interface CoreProduct {
@@ -6,15 +5,17 @@ interface CoreProduct {
   role: string
 }
 
-interface SolutionOverviewProps {
-  description: string
-  coreProducts: CoreProduct[]
-}
+// 核心产品数据内置在组件中
+const coreProducts: CoreProduct[] = [
+  { name: '智石开 PLM', role: '研发项目时程与版本管控' },
+  { name: 'BIP 供应链云', role: '全场景委外协同与计划编排' },
+  { name: '制造云 (WIP)', role: 'LOT/刻号追踪与工装治具管理' },
+  { name: '财务/成本中心', role: '订单级精细成本与差异分析' }
+]
 
-export default function SolutionOverview({ 
-  description, 
-  coreProducts 
-}: SolutionOverviewProps) {
+const description = '泊冉软件基于用友BIP超级版，为电子IC行业构建"研供产销服"一体化平台。针对Fabless模式，重点强化委外协同与批号追踪；针对IDM模式，强化生产执行与良率分析，帮助企业实现从实验室研发到规模化量产的全过程数智化。'
+
+export default function SolutionOverview() {
   return (
     <section className="py-24 bg-[#F7F8FA]">
       <div className="container mx-auto px-4">

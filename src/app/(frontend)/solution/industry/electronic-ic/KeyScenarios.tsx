@@ -2,21 +2,41 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle, Layers, Cpu, Database } from 'lucide-react'
+import { CheckCircle, Layers, Cpu, Database, Network, Search } from 'lucide-react'
 
 interface Scenario {
   title: string
   problem: string
   solution: string
   outcome: string
-  icon: React.ElementType
 }
 
-interface KeyScenariosProps {
-  scenarios: Scenario[]
-}
+// 场景数据内置在组件中
+const scenarios: Scenario[] = [
+  {
+    title: 'Fabless 全程委外协同',
+    problem: 'Fabless企业对Foundry/封测厂的WIP状态掌握不及时，回货拆批、并批及良率数据全凭线下Excel，极易出错。',
+    solution: '建立委外服务门户，实时对接委外厂商数据，支持在线下达Turnkey指令，自动生成批号继承关系。',
+    outcome: 'WIP数据同步频率从"按周"提升至"准实时"。委外结算准确率提升至100%。多级委外节点全程可视。'
+  },
+  {
+    title: '端到端批号/刻号追溯',
+    problem: '从Wafer到CP、AS、FT各个阶段，批号、片号、管脚排列等属性众多，任何环节断档都将导致无法溯源。',
+    solution: '支持一品多属性管理，自动记录Wafer批号继承CP、AS、FT批号的过程，实现"一码到底"的全程数字化档案。',
+    outcome: '异常召回定位耗时从"天级"缩短至"分钟级"。满足最严苛的汽车、军工级合规要求。'
+  },
+  {
+    title: '芯片/晶圆多维度物料管理',
+    problem: '同一料号下存在不同的BIN等级、DateCode。由于缺乏辅助属性，往往需要建立海量料号，维护成本极高。',
+    solution: '采用"料号+辅助属性"模式，动态管理BIN等级、Wafer等级及存储有效期，智能匹配客户订单规格要求。',
+    outcome: '物料编码维护量降低70%。库存周转率提升15%。极大地减少选配出货的差错率。'
+  }
+]
 
-export default function KeyScenarios({ scenarios }: KeyScenariosProps) {
+// 图标映射
+const scenarioIcons = [Network, Search, Layers]
+
+export default function KeyScenarios() {
   const [activeTab, setActiveTab] = useState(0)
 
   return (
@@ -34,20 +54,23 @@ export default function KeyScenarios({ scenarios }: KeyScenariosProps) {
         
         {/* Tab 切换 */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {scenarios.map((scenario, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveTab(idx)}
-              className={`flex items-center gap-2 px-8 py-4 rounded-xl font-bold transition-all ${
-                activeTab === idx
-                  ? 'bg-[#0052D9] text-white shadow-xl scale-105'
-                  : 'bg-slate-50 text-slate-500 hover:bg-slate-100'
-              }`}
-            >
-              <scenario.icon className={`w-5 h-5 ${activeTab === idx ? 'text-white' : 'text-[#0052D9]'}`} />
-              {scenario.title}
-            </button>
-          ))}
+          {scenarios.map((scenario, idx) => {
+            const Icon = scenarioIcons[idx]
+            return (
+              <button
+                key={idx}
+                onClick={() => setActiveTab(idx)}
+                className={`flex items-center gap-2 px-8 py-4 rounded-xl font-bold transition-all ${
+                  activeTab === idx
+                    ? 'bg-[#0052D9] text-white shadow-xl scale-105'
+                    : 'bg-slate-50 text-slate-500 hover:bg-slate-100'
+                }`}
+              >
+                <Icon className={`w-5 h-5 ${activeTab === idx ? 'text-white' : 'text-[#0052D9]'}`} />
+                {scenario.title}
+              </button>
+            )
+          })}
         </div>
         
         {/* 场景内容 */}

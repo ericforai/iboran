@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowRight, Phone, Mail, CheckCircle } from 'lucide-react'
+import { ArrowRight, Phone, CheckCircle } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 
 export default function CTASection() {
