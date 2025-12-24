@@ -2,84 +2,96 @@ import { Quote } from 'lucide-react'
 
 const cases = [
   {
-    company: '某生物医药CDMO企业',
-    industry: '生物制药',
-    scale: '年营收20亿+，员工500+',
-    challenge: '多个研发项目并行，跨三地工厂协同生产，项目进度不透明，成本核算跨组织困难，项目延期率高达40%',
-    solution: '部署YonSuite项目管理+生产制造+成本核算一体化方案，建立统一项目管控平台，实现跨组织成本归集和实时分析',
-    result: '项目交付周期缩短35%，跨组织成本核算准确率达96%，项目延期率降至10%以下',
-    quote: 'YonSuite帮助我们实现了多项目的统一管控，项目进度一目了然，成本分析也变得精准高效。',
+    name: "博福-益普生 (Mayoly)",
+    industry: "制药企业",
+    description: "作为蒙脱石散的原研厂家，面对全球业务重组，成功用YonSuite替换原有SAP等20多个异构系统，实现业财一体化与全球化管控。",
+    tags: ["全球化运营", "SAP替换", "业财一体"],
+    logo: "/logos/mayoly.png", // Use placeholder or text if no logo
+    stats: [
+      { label: "系统及接口", value: "20+ -> 1" },
+      { label: "实施周期", value: "3个月" },
+    ],
+    quote: "我们用成功来复制成功，是最先进的数智化转型方式。YonSuite帮助我们快速完成了独立IT系统的构建与切换。"
   },
   {
-    company: '某大型CDMO集团',
-    industry: 'CMO/CDMO',
-    scale: '集团化运营，4个生产基地',
-    challenge: '集团采购模式复杂，供应商资质管理分散，生产物料配套不及时，质量追溯依赖手工记录',
-    solution: '实施集团化采购管控+供应商管理+质量追溯全链路方案，建立GMP合规的数字化质量管理体系',
-    result: '采购效率提升45%，供应商合规率100%，批次追溯时间从2天缩短至10分钟',
-    quote: '从采购到质量追溯的全流程数字化，让我们的GMP审计变得更加从容。',
+    name: "行诚生物 (CoJourney)",
+    industry: "基因治疗CDMO",
+    description: "一站式基因治疗CDMO平台，借助YonSuite实现研发到生产的全流程管理，顺利完成CSV验证，为Pre-IPO打下坚实合规基础。",
+    tags: ["CDMO", "CSV验证", "IPO合规"],
+    stats: [
+      { label: "合规通过率", value: "100%" },
+      { label: "项目效率", value: "+40%" },
+    ],
+    quote: "YonSuite不仅满足了我们在GMP/GSP方面的合规要求，更为我们研发到生产的一体化管理提供了强有力的支撑。"
   },
+  {
+    name: "同仁堂 (河南)",
+    industry: "中药配方颗粒",
+    description: "通过数智化平台实现中药配方颗粒的全流程质量追溯与精细化成本管控，打造中药现代化标杆。",
+    tags: ["中药制造", "质量追溯", "成本管控"],
+    stats: [
+      { label: "追溯精度", value: "单瓶级" },
+      { label: "成本核算", value: "实时" },
+    ],
+    quote: "实现了从药材种植到成品销售的全链条质量追溯，让老字号焕发了数智化的新活力。"
+  }
 ]
 
-export default function IndustryCases() {
+export function IndustryCases() {
   return (
-    <section className="py-24 bg-[#F7F8FA]">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <span className="text-sm text-[#0052D9] font-semibold tracking-wider uppercase">
-            Success Stories
-          </span>
-          <h2 className="text-3xl font-bold text-[#1F2329] mt-2 mb-4">
-            生物医药行业标杆案例
+    <section className="py-20 bg-slate-50">
+      <div className="container px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-4">
+            行业标杆案例
           </h2>
-          <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full" />
+          <p className="text-lg text-slate-600">
+            见证众多生物医药企业的数智化转型成功之路
+          </p>
         </div>
-        
-        <div className="grid lg:grid-cols-2 gap-8">
-          {cases.map((caseItem, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {cases.map((item, index) => (
+            <div 
+              key={index} 
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col"
             >
-              {/* Company Header */}
-              <div className="flex items-start justify-between mb-6">
-                <div>
-                  <h3 className="text-xl font-bold text-[#1F2329]">
-                    {caseItem.company}
-                  </h3>
-                  <p className="text-sm text-slate-500 mt-1">
-                    {caseItem.industry} · {caseItem.scale}
-                  </p>
+              <div className="mb-6">
+                <div className="flex items-center gap-2 mb-4">
+                   <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-700 font-bold">
+                     {item.name.charAt(0)}
+                   </div>
+                   <div>
+                     <h3 className="font-bold text-slate-900">{item.name}</h3>
+                     <span className="text-xs text-slate-500">{item.industry}</span>
+                   </div>
                 </div>
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-xl flex items-center justify-center">
-                  <span className="text-2xl">🧬</span>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {item.tags.map((tag, i) => (
+                    <span key={i} className="px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-full font-medium">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
+                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+                  {item.description}
+                </p>
               </div>
-              
-              {/* Challenge - Solution - Result */}
-              <div className="space-y-4">
-                <div className="flex gap-3">
-                  <span className="shrink-0 w-14 text-sm font-semibold text-red-600">挑战</span>
-                  <p className="text-sm text-slate-600 leading-relaxed">{caseItem.challenge}</p>
-                </div>
-                <div className="flex gap-3">
-                  <span className="shrink-0 w-14 text-sm font-semibold text-blue-600">方案</span>
-                  <p className="text-sm text-slate-600 leading-relaxed">{caseItem.solution}</p>
-                </div>
-                <div className="flex gap-3">
-                  <span className="shrink-0 w-14 text-sm font-semibold text-green-600">成果</span>
-                  <p className="text-sm text-slate-600 leading-relaxed">{caseItem.result}</p>
-                </div>
+
+              <div className="grid grid-cols-2 gap-4 py-6 border-t border-slate-100 mb-6">
+                {item.stats.map((stat, i) => (
+                  <div key={i}>
+                    <div className="text-xl font-bold text-slate-900">{stat.value}</div>
+                    <div className="text-xs text-slate-500">{stat.label}</div>
+                  </div>
+                ))}
               </div>
-              
-              {/* Quote */}
-              <div className="mt-6 pt-6 border-t border-slate-100">
-                <div className="flex gap-3">
-                  <Quote className="w-5 h-5 text-slate-300 shrink-0 mt-0.5" />
-                  <p className="text-sm text-slate-500 italic leading-relaxed">
-                    &ldquo;{caseItem.quote}&rdquo;
-                  </p>
-                </div>
+
+              <div className="mt-auto bg-slate-50 p-4 rounded-xl relative">
+                <Quote className="absolute top-2 left-2 w-4 h-4 text-blue-200" />
+                <p className="text-xs text-slate-600 italic pl-4 relative z-10">
+                  &ldquo;生物制药行业对合规性要求极高，用友BIP帮助我们实现了全流程的质量追溯，确保每一批次药品都符合GMP标准。&rdquo;
+                </p>
               </div>
             </div>
           ))}

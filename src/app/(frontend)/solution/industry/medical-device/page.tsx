@@ -29,12 +29,7 @@ export const metadata: Metadata = {
 export default function MedicalDeviceSolution() {
   return (
     <main className="flex flex-col min-h-screen">
-      <Hero 
-        industryName="医疗器械"
-        tagline="构建企业稳健增长的数智引擎"
-        description="面对集采压力与合规重塑，泊冉软件联合用友 YonSuite 为医疗器械企业提供从研发创新、智能制造、质量合规到客户服务的全链路数智化解决方案，驱动高质量发展。"
-        industryTrend="数智化建设将成为医疗器械企业持续高质量发展的关键引擎"
-      />
+      <Hero />
       <IndustryChallenges />
       <SolutionOverview />
       <KeyScenarios />

@@ -1,120 +1,115 @@
-'use client'
+import { ArrowRight, CheckCircle2, Pill, Activity, ShieldCheck, Microscope } from 'lucide-react'
+import Link from 'next/link'
 
-import { useState } from 'react'
-import { ArrowRight, CheckCircle, Pill } from 'lucide-react'
-import { DemoRequestModal } from '@/components/DemoRequestModal'
-
-export default function Hero() {
-  const [isDemoOpen, setIsDemoOpen] = useState(false)
-
+export function Hero() {
   return (
-    <>
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-gradient-to-br from-slate-900 via-emerald-900 to-teal-900">
-        {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl"></div>
-          {/* DNA/Molecular pattern overlay */}
-          <div className="absolute inset-0 opacity-5" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='50' cy='50' r='2'/%3E%3Ccircle cx='10' cy='50' r='2'/%3E%3Ccircle cx='50' cy='10' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <section className="relative bg-gradient-to-b from-slate-50 to-white pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          
+          {/* Left Content (60%) */}
+          <div className="flex-1 text-center lg:text-left z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-medium mb-6">
+              <Pill className="w-4 h-4" />
+              <span>生物医药行业解决方案</span>
+            </div>
             
-            <div className="flex-1 text-center lg:text-left">
-              {/* Industry Tag */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-medium mb-6">
-                <Pill size={16} className="text-emerald-400" />
-                生物医药行业解决方案
-              </div>
-              
-              {/* Main Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                <span className="text-emerald-400">数智</span>赋能<br/>
-                激发<span className="text-[#E60012]">CDMO</span>研产价值
-              </h1>
-              
-              <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                为生物医药CDMO企业提供从项目立项到结项的全生命周期数字化管理，实现研发-生产-质量一体化协同
-              </p>
-              
-              <p className="text-sm text-slate-400 mb-8 italic">
-                &ldquo;合同研发生产组织（CDMO）正加速向数智化转型，研产一体化管控势在必行&rdquo;
-              </p>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                <button 
-                  onClick={() => setIsDemoOpen(true)}
-                  className="px-8 py-3.5 bg-[#E60012] text-white rounded-md font-bold hover:bg-red-700 transition shadow-lg shadow-red-900/30 flex items-center gap-2 group"
-                >
-                  预约生物医药专家咨询
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
-                </button>
-                <button className="px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-md font-semibold hover:bg-white/20 transition flex items-center gap-2">
-                  下载行业白皮书
-                </button>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-400">
-                <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-400"/> GMP 合规</span>
-                <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-400"/> 项目级管控</span>
-                <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-400"/> YonSuite 赋能</span>
-              </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6 leading-tight">
+              数智赋能CDMO研产一体化
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+                全流程质量合规
+              </span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              连接研发、生产、质量与商业化，构建符合GMP/GSP/CSV合规要求的全产业链数智平台，助力生物医药企业IPO上市与全球化运营。
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <Link 
+                href="/contact"
+                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-all duration-200 shadow-lg shadow-blue-600/20"
+              >
+                预约专家咨询
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <Link 
+                href="/resources/whitepaper"
+                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-slate-700 bg-white border-2 border-slate-200 hover:border-blue-600 hover:text-blue-600 rounded-lg transition-all duration-200"
+              >
+                下载行业白皮书
+              </Link>
             </div>
 
-            {/* Right side: Visual Element */}
-            <div className="flex-1 w-full max-w-lg lg:max-w-none">
-              <div className="relative">
-                {/* CDMO Visualization */}
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-                  <div className="text-center mb-6">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl shadow-lg shadow-emerald-500/30 mb-4">
-                      <Pill size={40} className="text-white" />
-                    </div>
-                    <h3 className="text-white font-bold text-lg">CDMO 数智化平台</h3>
-                    <p className="text-slate-400 text-sm mt-1">研产一体化管理</p>
-                  </div>
-                  
-                  {/* Module Grid */}
-                  <div className="grid grid-cols-3 gap-3">
-                    {['项目管理', '生产制造', '质量管控', '采购供应', '成本核算', 'CSV验证'].map((module, idx) => (
-                      <div key={idx} className="bg-white/5 rounded-lg p-3 text-center border border-white/10 hover:bg-white/10 transition">
-                        <div className="text-emerald-400 font-bold text-sm">{module}</div>
-                        <div className="text-slate-500 text-xs mt-1">
-                          {['全周期', '多组织', 'GMP', '集团化', '批次级', '计算机'][idx]}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Stats */}
-                  <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-center">
-                    <div>
-                      <div className="text-2xl font-bold text-[#E60012]">30%+</div>
-                      <div className="text-xs text-slate-400">交付效率提升</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-emerald-400">95%+</div>
-                      <div className="text-xs text-slate-400">成本核算准确</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-bold text-teal-400">100%</div>
-                      <div className="text-xs text-slate-400">合规达标</div>
-                    </div>
-                  </div>
+            <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4 text-sm text-slate-500">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                <span>GMP/GSP合规</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                <span>CDMO项目管控</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                <span>IPO审计支持</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Visuals (40%) */}
+          <div className="flex-1 w-full max-w-lg lg:max-w-none relative">
+            {/* Main Visual Card */}
+            <div className="relative z-10 bg-white rounded-2xl shadow-2xl p-6 border border-slate-100">
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                 {/* Top Left: Compliance */}
+                 <div className="p-4 rounded-xl bg-blue-50 border border-blue-100">
+                  <ShieldCheck className="w-8 h-8 text-blue-600 mb-3" />
+                  <div className="font-semibold text-slate-900">质量合规</div>
+                  <div className="text-sm text-slate-600">CSV/GMP认证</div>
+                 </div>
+                 {/* Top Right: R&D */}
+                 <div className="p-4 rounded-xl bg-cyan-50 border border-cyan-100">
+                  <Microscope className="w-8 h-8 text-cyan-600 mb-3" />
+                  <div className="font-semibold text-slate-900">研发创新</div>
+                  <div className="text-sm text-slate-600">项目全周期管理</div>
+                 </div>
+                 {/* Bottom Left: Production */}
+                 <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-100">
+                  <Activity className="w-8 h-8 text-indigo-600 mb-3" />
+                  <div className="font-semibold text-slate-900">生产制造</div>
+                  <div className="text-sm text-slate-600">精益生产管控</div>
+                 </div>
+                 {/* Bottom Right: Global */}
+                 <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-100">
+                  <Pill className="w-8 h-8 text-emerald-600 mb-3" />
+                  <div className="font-semibold text-slate-900">全球运营</div>
+                  <div className="text-sm text-slate-600">多组织多准则</div>
+                 </div>
+              </div>
+
+              {/* Data Metrics Overlay */}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 rounded-lg bg-slate-50">
+                  <span className="text-sm font-medium text-slate-600">合规通过率</span>
+                  <span className="text-lg font-bold text-green-600">100%</span>
+                </div>
+                <div className="flex items-center justify-between p-3 rounded-lg bg-slate-50">
+                  <span className="text-sm font-medium text-slate-600">研发效率提升</span>
+                  <span className="text-lg font-bold text-blue-600">+30%</span>
+                </div>
+                <div className="w-full bg-slate-100 rounded-full h-2">
+                  <div className="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full" style={{ width: '85%' }}></div>
                 </div>
               </div>
             </div>
 
+            {/* Decorative Elements */}
+            <div className="absolute -top-12 -right-12 w-64 h-64 bg-blue-100/50 rounded-full blur-3xl -z-10 animate-pulse"></div>
+            <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-cyan-100/50 rounded-full blur-3xl -z-10"></div>
           </div>
         </div>
-      </section>
-
-      <DemoRequestModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
-    </>
+      </div>
+    </section>
   )
 }

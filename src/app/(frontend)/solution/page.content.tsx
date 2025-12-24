@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Briefcase, Building2 } from 'lucide-react'
-import { solutionByBusiness, solutionByIndustry } from '@/data/solutions'
+import { solutionByBusiness, solutionByIndustryCategory } from '@/data/solutions'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 
 export function SolutionPageContent() {
@@ -133,48 +133,42 @@ export function SolutionPageContent() {
       {activeTab === 'industry' && (
         <section className="py-16 bg-slate-50">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-2xl font-bold text-[#1F2329] mb-4">选择您所在的行业</h2>
-                <p className="text-slate-600">
-                  查看针对您行业的专属数智化解决方案
-                </p>
-              </div>
-              
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {solutionByIndustry.map((industry) => {
-                  const IconComponent = industry.icon
-                  return (
-                    <Link
-                      key={industry.name}
-                      href={industry.href}
-                      className="group relative bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0052D9]/30 transition-all duration-300 text-center"
-                    >
-                      <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-blue-50 to-blue-100 group-hover:from-[#0052D9] group-hover:to-blue-600 flex items-center justify-center mb-5 transition-all duration-300">
-                        <IconComponent className="w-8 h-8 text-[#0052D9] group-hover:text-white transition-colors" />
-                      </div>
-                      <h3 className="text-xl font-bold text-[#1F2329] mb-2 group-hover:text-[#0052D9] transition-colors">
-                        {industry.name}
-                      </h3>
-                      <p className="text-sm text-slate-500">{industry.desc}</p>
-                      <div className="mt-4 flex items-center justify-center gap-1 text-[#0052D9] font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                        查看方案
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </Link>
-                  )
-                })}
-              </div>
-              
-              <div className="text-center mt-10">
-                <Link
-                  href="/solutions"
-                  className="inline-flex items-center gap-2 text-[#0052D9] font-semibold hover:text-blue-700 transition-colors"
-                >
-                  查看更多行业解决方案
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
+            <div className="space-y-16">
+              {solutionByIndustryCategory.map((category) => (
+                <div key={category.name}>
+                  {/* Category Header */}
+                  <div className="flex items-center gap-4 mb-8">
+                    <h2 className="text-2xl font-bold text-[#1F2329]">{category.name}</h2>
+                    <div className="flex-1 h-px bg-slate-200"></div>
+                  </div>
+                  
+                  {/* Solutions Grid */}
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {category.items.map((solution) => {
+                      const IconComponent = solution.icon
+                      return (
+                        <Link
+                          key={solution.href}
+                          href={solution.href}
+                          className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-[#0052D9]/30 transition-all duration-300"
+                        >
+                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 group-hover:from-blue-100 group-hover:to-blue-200 flex items-center justify-center mb-4 transition-all">
+                            <IconComponent className="w-7 h-7 text-[#0052D9]" />
+                          </div>
+                          <h3 className="text-xl font-bold text-[#1F2329] mb-2 group-hover:text-[#0052D9] transition-colors">
+                            {solution.label}
+                          </h3>
+                          <p className="text-slate-600 mb-4">{solution.desc}</p>
+                          <div className="flex items-center gap-2 text-[#0052D9] font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                            了解更多
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

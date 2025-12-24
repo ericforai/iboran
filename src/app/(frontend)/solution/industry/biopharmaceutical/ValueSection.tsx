@@ -1,113 +1,67 @@
-import { TrendingUp, Clock, Shield, Users } from 'lucide-react'
+import { TrendingUp, Clock, Shuffle, CheckCircle } from 'lucide-react'
 
-const valueMetrics = [
-  {
-    icon: TrendingUp,
-    value: '30%+',
-    label: '项目交付效率提升',
-    description: '端到端项目管理，缩短交付周期',
-    color: 'green',
-  },
-  {
-    icon: Clock,
-    value: '95%+',
-    label: '成本核算准确率',
-    description: '批次级成本追溯，精准利润分析',
-    color: 'blue',
-  },
-  {
-    icon: Shield,
-    value: '100%',
-    label: '质量合规达标',
-    description: 'GMP/GCP/GLP 全覆盖合规保障',
-    color: 'emerald',
-  },
-  {
-    icon: Users,
-    value: '40%+',
-    label: '跨组织协同效率',
-    description: '多工厂协同生产，资源高效配置',
-    color: 'purple',
-  },
-]
-
-const colorClasses = {
-  green: {
-    bg: 'bg-green-100',
-    text: 'text-green-600',
-    valueBg: 'bg-green-50',
-    valueText: 'text-green-700',
-  },
-  blue: {
-    bg: 'bg-blue-100',
-    text: 'text-[#0052D9]',
-    valueBg: 'bg-blue-50',
-    valueText: 'text-[#0052D9]',
-  },
-  emerald: {
-    bg: 'bg-emerald-100',
-    text: 'text-emerald-600',
-    valueBg: 'bg-emerald-50',
-    valueText: 'text-emerald-700',
-  },
-  purple: {
-    bg: 'bg-purple-100',
-    text: 'text-purple-600',
-    valueBg: 'bg-purple-50',
-    valueText: 'text-purple-700',
-  },
-}
-
-export default function ValueSection() {
+export function ValueSection() {
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <span className="text-sm text-[#0052D9] font-semibold tracking-wider uppercase">
-            Business Value
-          </span>
-          <h2 className="text-3xl font-bold text-[#1F2329] mt-2 mb-4">
-            可量化的行业价值
+    <section className="py-20 bg-blue-900 text-white overflow-hidden relative">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+      
+      <div className="container px-4 md:px-6 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+            创造可量化的<span className="text-blue-300">商业价值</span>
           </h2>
-          <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6" />
-          <p className="text-slate-600 max-w-2xl mx-auto">
-            通过数智化转型，实现项目交付效率、成本控制、质量合规与协同效率的全面提升
+          <p className="text-blue-100 text-lg">
+            通过数智化转型，助力生物医药企业实现高质量增长
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {valueMetrics.map((metric, idx) => {
-            const colors = colorClasses[metric.color as keyof typeof colorClasses]
-            return (
-              <div
-                key={idx}
-                className="bg-[#F7F8FA] p-6 rounded-2xl border border-slate-100 text-center hover:shadow-md transition-shadow"
-              >
-                <div className={`w-14 h-14 ${colors.bg} rounded-xl flex items-center justify-center mx-auto mb-4`}>
-                  <metric.icon className={colors.text} size={28} />
-                </div>
-                <div className={`text-4xl font-bold ${colors.valueText} mb-2`}>
-                  {metric.value}
-                </div>
-                <h3 className="font-bold text-[#1F2329] mb-2">{metric.label}</h3>
-                <p className="text-sm text-slate-500">{metric.description}</p>
-              </div>
-            )
-          })}
-        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Value 1 */}
+          <div className="text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all">
+            <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-900/20">
+              <CheckCircle className="w-8 h-8 text-white" />
+            </div>
+            <div className="text-4xl font-bold text-white mb-2">100%</div>
+            <div className="text-blue-200 font-medium">合规通过率</div>
+            <p className="text-sm text-blue-300 mt-2">
+              GMP/GSP/CSV验证<br/>一次性通过
+            </p>
+          </div>
 
-        {/* Applicable Industries */}
-        <div className="mt-16 text-center">
-          <h3 className="text-lg font-semibold text-slate-500 mb-6">适用细分领域</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {['CDMO', 'CMO', 'CRO', '创新药', '生物制药', '化学制药', '中药', '医疗器械'].map((industry, idx) => (
-              <span
-                key={idx}
-                className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors cursor-default"
-              >
-                {industry}
-              </span>
-            ))}
+          {/* Value 2 */}
+          <div className="text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-900/20">
+              <Clock className="w-8 h-8 text-white" />
+            </div>
+            <div className="text-4xl font-bold text-white mb-2">-40%</div>
+            <div className="text-blue-200 font-medium">项目交付周期</div>
+            <p className="text-sm text-blue-300 mt-2">
+              研发转产一体化<br/>加速新药上市
+            </p>
+          </div>
+
+          {/* Value 3 */}
+          <div className="text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all">
+            <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-purple-900/20">
+              <Shuffle className="w-8 h-8 text-white" />
+            </div>
+            <div className="text-4xl font-bold text-white mb-2">99%</div>
+            <div className="text-blue-200 font-medium">业务覆盖率</div>
+            <p className="text-sm text-blue-300 mt-2">
+              消除信息孤岛<br/>实现全业务闭环
+            </p>
+          </div>
+
+          {/* Value 4 */}
+          <div className="text-center p-6 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-all">
+            <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-orange-900/20">
+              <TrendingUp className="w-8 h-8 text-white" />
+            </div>
+            <div className="text-4xl font-bold text-white mb-2">+25%</div>
+            <div className="text-blue-200 font-medium">运营效率提升</div>
+            <p className="text-sm text-blue-300 mt-2">
+              业财一体化降低<br/>内耗与管理成本
+            </p>
           </div>
         </div>
       </div>

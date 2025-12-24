@@ -1,42 +1,51 @@
-'use client'
+import { ArrowRight, Download } from 'lucide-react'
+import Link from 'next/link'
 
-import { useState } from 'react'
-import { ArrowRight } from 'lucide-react'
-import { DemoRequestModal } from '@/components/DemoRequestModal'
-
-export default function CTASection() {
-  const [isDemoOpen, setIsDemoOpen] = useState(false)
-
+export function CTASection() {
   return (
-    <>
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-emerald-900 to-teal-900">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            准备好加速您的 CDMO 数字化转型了吗？
-          </h2>
-          <p className="text-slate-300 mb-8 max-w-xl mx-auto">
-            泊冉软件作为用友铂金伙伴，提供专业的生物医药行业数字化解决方案实施与定制服务。
-            立即预约演示，了解如何为您的企业量身定制研产一体化方案。
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => setIsDemoOpen(true)}
-              className="px-10 py-4 bg-[#E60012] text-white font-bold rounded-md hover:bg-red-700 transition-all shadow-lg shadow-red-900/20 flex items-center gap-2 group"
-            >
-              预约行业专家演示
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <a
-              href="tel:4009955161"
-              className="px-10 py-4 border-2 border-white/30 text-white font-semibold rounded-md hover:bg-white/10 transition-all"
-            >
-              致电 400-9955-161
-            </a>
+    <section className="py-24 bg-white">
+      <div className="container px-4 md:px-6">
+        <div className="bg-gradient-to-br from-blue-600 to-cyan-600 rounded-3xl p-8 md:p-16 text-center shadow-2xl relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute top-0 left-0 w-full h-full opacity-10">
+            <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M0 0 L100 100 M100 0 L0 100" stroke="white" strokeWidth="0.5" />
+            </svg>
+          </div>
+
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-6">
+              开启生物医药企业的数智化转型之旅
+            </h2>
+            <p className="text-blue-100 text-lg mb-10 leading-relaxed">
+              预约行业专家为您量身定制合规、高效的数智化解决方案，
+              <br className="hidden sm:block" />
+              或下载最新行业白皮书，了解更多标杆实践。
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/contact"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-blue-600 bg-white hover:bg-blue-50 rounded-xl transition-all duration-200 shadow-lg"
+              >
+                预约专家演示
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <Link
+                href="/resources/whitepaper/biopharma-2025"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white border-2 border-white/30 hover:bg-white/10 rounded-xl transition-all duration-200"
+              >
+                <Download className="mr-2 w-5 h-5" />
+                下载行业白皮书
+              </Link>
+            </div>
+            
+            <p className="mt-8 text-sm text-blue-200 opacity-80">
+              已为 500+ 生物医药企业提供合规验证与数字化服务
+            </p>
           </div>
         </div>
-      </section>
-
-      <DemoRequestModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
-    </>
+      </div>
+    </section>
   )
 }

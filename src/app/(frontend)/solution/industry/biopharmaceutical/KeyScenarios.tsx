@@ -2,120 +2,169 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle, FolderKanban, Factory, Calculator, Shield } from 'lucide-react'
+import { Microscope, Globe2, Link2, FileCheck, ArrowRight, CheckCircle2 } from 'lucide-react'
 
 const scenarios = [
   {
-    icon: FolderKanban,
-    title: '项目全生命周期管理',
-    problem: 'CDMO企业多项目并行，项目进度分散在各部门，无法实时掌握项目整体情况，项目延期频发，客户投诉增加',
-    solution: '建立统一项目管理平台，从项目立项、WBS分解、资源分配、进度跟踪到结项验收全流程在线管理，支持多级项目汇报和预警机制',
-    outcome: '项目交付周期缩短30%，项目可视化程度达100%，客户满意度显著提升',
+    id: 'cdmo',
+    icon: Microscope,
+    title: "CDMO研产一体化",
+    description: "打通从研发项目管理到GMP生产执行的全链路，实现工艺参数无缝转移，加速新药上市进程。",
+    features: [
+      "研发项目进度与成本实时可视",
+      "工艺配方（PLM）到生产工单（MES）无缝衔接",
+      "实验室数据（LIMS）自动采集与关联",
+      "临床试验物料全程追溯"
+    ],
+    image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80&w=1000"
   },
   {
-    icon: Factory,
-    title: '多组织协同生产',
-    problem: '跨地域、跨工厂协同生产，生产进度难以同步，物料配套不及时，生产计划频繁变更导致资源浪费',
-    solution: '实现跨组织生产订单协同，统一排产平台，物料需求联动，生产进度实时同步，变更自动触发计划调整',
-    outcome: '跨组织协同效率提升40%，物料配套及时率达95%+，生产计划执行率大幅提高',
+    id: 'global',
+    icon: Globe2,
+    title: "全球化运营合规",
+    description: "支持多语言、多币种、多准则核算，满足跨国药企的全球化管控与合规经营需求。",
+    features: [
+      "全球多组织财务集中管控",
+      "符合国际会计准则（IFRS/GAAP）的多准则核算",
+      "跨国供应链协同与转移定价",
+      "GDPR等全球数据隐私合规"
+    ],
+    image: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=1000"
   },
   {
-    icon: Calculator,
-    title: '精细化成本核算',
-    problem: '项目成本核算复杂，跨组织成本难以归集，批次成本不准确，项目利润分析滞后',
-    solution: '建立批次级成本核算体系，自动归集人工、物料、制费，支持跨组织成本分摊，实时项目成本预实对比',
-    outcome: '成本核算准确率达95%+，项目利润实时可见，成本控制能力显著增强',
+    id: 'integration',
+    icon: Link2,
+    title: "多系统深度集成",
+    description: "打破SAP、Veeva、CRM等系统孤岛，建立统一的数据底座，实现业务流与数据流的闭环互通。",
+    features: [
+      "SAP/Oracle等ERP系统深度对接",
+      "Veeva/CRM营销系统数据打通",
+      "MES/LIMS/SCADA生产设备互联",
+      "统一主数据管理与数据清洗"
+    ],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000"
   },
   {
-    icon: Shield,
-    title: '质量管理体系',
-    problem: 'GMP/GCP/GLP多体系要求，手工记录易出错，批次追溯困难，稳定性考察管理分散，合规风险高',
-    solution: '建立数字化质量管理体系，电子批记录、自动追溯、稳定性考察管理、偏差CAPA闭环，支持CSV计算机验证',
-    outcome: '质量合规达标率100%，批次追溯时间从天降至分钟，监管检查通过率大幅提升',
-  },
+    id: 'compliance',
+    icon: FileCheck,
+    title: "IPO合规与CSV验证",
+    description: "提供符合GSP/GMP要求的计算机化系统验证（CSV）服务，助力企业顺利通过审计，加速IPO进程。",
+    features: [
+      "全生命周期GxP合规管理",
+      "内置CSV验证文档模板与流程",
+      "电子签名与电子记录（21 CFR Part 11）",
+      "审计追踪与权限管控体系"
+    ],
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1000"
+  }
 ]
 
-export default function KeyScenarios() {
-  const [activeTab, setActiveTab] = useState(0)
+export function KeyScenarios() {
+  const [activeTab, setActiveTab] = useState(scenarios[0].id)
 
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <span className="text-sm text-[#0052D9] font-semibold tracking-wider uppercase">
-            Key Scenarios
-          </span>
-          <h2 className="text-3xl font-bold text-[#1F2329] mt-2 mb-4">
-            核心业务场景
+    <section className="py-20 bg-white">
+      <div className="container px-4 md:px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-4">
+            覆盖医药全生命周期的<span className="text-blue-600">核心场景</span>
           </h2>
-          <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full" />
+          <p className="text-lg text-slate-600">
+            从分子发现到商业化生产，从国内市场到全球布局，提供全方位的数智化支撑
+          </p>
         </div>
-        
-        {/* Tab buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {scenarios.map((scenario, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveTab(idx)}
-              className={`px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2 ${
-                activeTab === idx
-                  ? 'bg-[#0052D9] text-white shadow-lg'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              <scenario.icon size={18} />
-              {scenario.title}
-            </button>
-          ))}
+
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Left: Tabs */}
+          <div className="lg:w-1/3 flex flex-col gap-4">
+            {scenarios.map((scenario) => (
+              <button
+                key={scenario.id}
+                onClick={() => setActiveTab(scenario.id)}
+                className={`flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-300 border ${
+                  activeTab === scenario.id
+                    ? 'bg-blue-50 border-blue-200 shadow-md'
+                    : 'bg-white border-transparent hover:bg-slate-50'
+                }`}
+              >
+                <div className={`p-3 rounded-lg ${
+                  activeTab === scenario.id ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'
+                }`}>
+                  <scenario.icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className={`font-bold ${
+                    activeTab === scenario.id ? 'text-blue-900' : 'text-slate-900'
+                  }`}>
+                    {scenario.title}
+                  </h3>
+                  <p className={`text-sm mt-1 line-clamp-1 ${
+                    activeTab === scenario.id ? 'text-blue-700' : 'text-slate-500'
+                  }`}>
+                    {scenario.description}
+                  </p>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Right: Content Area */}
+          <div className="lg:w-2/3">
+            <AnimatePresence mode="wait">
+              {scenarios.map((scenario) => (
+                activeTab === scenario.id && (
+                  <motion.div
+                    key={scenario.id}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 shadow-xl"
+                  >
+                    <div className="relative h-64 sm:h-80 overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10" />
+                      <img 
+                        src={scenario.image} 
+                        alt={scenario.title}
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute bottom-6 left-6 z-20">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/90 text-white text-sm font-medium mb-3 backdrop-blur-sm">
+                          <scenario.icon className="w-4 h-4" />
+                          <span>核心场景</span>
+                        </div>
+                        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+                          {scenario.title}
+                        </h3>
+                      </div>
+                    </div>
+                    
+                    <div className="p-8">
+                      <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                        {scenario.description}
+                      </p>
+                      
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        {scenario.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-start gap-3">
+                            <CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
+                            <span className="text-slate-700 font-medium">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="mt-8 pt-6 border-t border-slate-200">
+                        <button className="flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
+                          了解具体方案 <ArrowRight className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              ))}
+            </AnimatePresence>
+          </div>
         </div>
-        
-        {/* Scenario content */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="grid lg:grid-cols-2 gap-12 items-center"
-          >
-            {/* Left: Problem-Solution-Outcome */}
-            <div className="space-y-6">
-              <div className="p-6 bg-red-50 rounded-xl border border-red-100">
-                <h4 className="text-sm font-semibold text-red-600 mb-3 flex items-center gap-2">
-                  😣 行业痛点
-                </h4>
-                <p className="text-slate-700 leading-relaxed">{scenarios[activeTab].problem}</p>
-              </div>
-              <div className="p-6 bg-blue-50 rounded-xl border border-blue-100">
-                <h4 className="text-sm font-semibold text-blue-600 mb-3 flex items-center gap-2">
-                  💡 解决方案
-                </h4>
-                <p className="text-slate-700 leading-relaxed">{scenarios[activeTab].solution}</p>
-              </div>
-              <div className="p-6 bg-green-50 rounded-xl border border-green-100">
-                <h4 className="text-sm font-semibold text-green-600 mb-3 flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4" />
-                  实现效果
-                </h4>
-                <p className="text-slate-700 leading-relaxed">{scenarios[activeTab].outcome}</p>
-              </div>
-            </div>
-            
-            {/* Right: Visual Placeholder */}
-            <div className="bg-gradient-to-br from-slate-100 to-slate-50 rounded-2xl p-8 aspect-video flex flex-col items-center justify-center border border-slate-200">
-              <div className="w-20 h-20 bg-white rounded-2xl shadow-sm flex items-center justify-center mb-4">
-                {(() => {
-                  const IconComponent = scenarios[activeTab].icon
-                  return <IconComponent size={40} className="text-[#0052D9]" />
-                })()}
-              </div>
-              <h3 className="text-xl font-bold text-[#1F2329] mb-2">{scenarios[activeTab].title}</h3>
-              <p className="text-sm text-slate-500 text-center max-w-sm">
-                基于 YonSuite 平台的数智化场景解决方案
-              </p>
-            </div>
-          </motion.div>
-        </AnimatePresence>
       </div>
     </section>
   )

@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
-import { solutionByBusiness, solutionByIndustry } from '@/data/solutions'
+import { solutionByBusiness, solutionByIndustryCategory } from '@/data/solutions'
 import type { Contact } from '@/payload-types'
 
 // 主菜单项
@@ -215,29 +215,40 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
                   </div>
                 )}
 
-                {/* Industry Categories Grid - Simple cards linking to /solutions */}
+                {/* Industry Categories Grid - Two-level structure like business */}
                 {megaMenuTab === 'industry' && (
-                  <div className="grid grid-cols-5 gap-4">
-                    {solutionByIndustry.map((category) => {
-                      const CategoryIcon = category.icon
-                      return (
-                        <Link
-                          key={category.name}
-                          href={category.href}
-                          className="group p-4 rounded-xl border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all duration-200"
-                        >
-                          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 group-hover:from-blue-100 group-hover:to-blue-200 flex items-center justify-center mb-3 transition-all">
-                            <CategoryIcon className="w-6 h-6 text-[#0052D9]" />
-                          </div>
-                          <h3 className="font-semibold text-[#1F2329] group-hover:text-[#0052D9] transition-colors mb-1">
-                            {category.name}
-                          </h3>
-                          <p className="text-xs text-slate-500 line-clamp-2">
-                            {category.desc}
-                          </p>
-                        </Link>
-                      )
-                    })}
+                  <div className="grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-9 gap-6">
+                    {solutionByIndustryCategory.map((category) => (
+                      <div key={category.name}>
+                        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 pb-2 border-b border-slate-100">
+                          {category.name}
+                        </h3>
+                        <div className="space-y-1">
+                          {category.items.map((item) => {
+                            const IconComponent = item.icon
+                            return (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className="group flex items-start gap-3 p-2.5 -mx-2.5 rounded-lg hover:bg-slate-50 transition-all duration-150"
+                              >
+                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center transition-colors">
+                                  <IconComponent className="w-4 h-4 text-[#0052D9]" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <div className="font-medium text-[#1F2329] text-sm group-hover:text-[#0052D9] transition-colors">
+                                    {item.label}
+                                  </div>
+                                  <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">
+                                    {item.desc}
+                                  </div>
+                                </div>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
@@ -375,29 +386,37 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
                           </button>
                         </div>
 
-                        {/* 按行业内容 */}
+                        {/* 按行业内容 - 二级分类结构 */}
                         {mobileSolutionTab === 'industry' && (
-                          <div className="max-h-[50vh] overflow-y-auto py-3">
-                            <div className="grid grid-cols-2 gap-2 px-4">
-                              {solutionByIndustry.map((industry) => {
-                                const IndustryIcon = industry.icon
-                                return (
-                                  <Link
-                                    key={industry.href}
-                                    href={industry.href}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="flex items-center gap-2 p-3 rounded-xl bg-white border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all"
-                                  >
-                                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center flex-shrink-0">
-                                      <IndustryIcon className="w-4 h-4 text-[#0052D9]" />
-                                    </div>
-                                    <span className="font-medium text-[#1F2329] text-sm">
-                                      {industry.name}
-                                    </span>
-                                  </Link>
-                                )
-                              })}
-                            </div>
+                          <div className="max-h-[50vh] overflow-y-auto">
+                            {solutionByIndustryCategory.map((category) => (
+                              <div key={category.name} className="pt-3 first:pt-2">
+                                <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                                  {category.name}
+                                </div>
+                                {category.items.map((item) => {
+                                  const IconComponent = item.icon
+                                  return (
+                                    <Link
+                                      key={item.href}
+                                      href={item.href}
+                                      onClick={() => setIsMobileMenuOpen(false)}
+                                      className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
+                                    >
+                                      <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                        <IconComponent className="w-4 h-4 text-[#0052D9]" />
+                                      </div>
+                                      <div className="flex-1 min-w-0">
+                                        <div className="font-medium text-[#1F2329] text-sm">
+                                          {item.label}
+                                        </div>
+                                        <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">{item.desc}</div>
+                                      </div>
+                                    </Link>
+                                  )
+                                })}
+                              </div>
+                            ))}
                           </div>
                         )}
 
