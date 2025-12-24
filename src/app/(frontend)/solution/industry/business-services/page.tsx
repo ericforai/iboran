@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { Briefcase, DollarSign, Users, Award, FileCheck2, BarChart4, Globe2, Box } from 'lucide-react'
+import { DollarSign, Users, FileCheck2, Box } from 'lucide-react'
 import Hero from './Hero'
 import IndustryChallenges from './IndustryChallenges'
 import SolutionOverview from './SolutionOverview'
@@ -18,32 +18,6 @@ export const metadata: Metadata = {
 }
 
 export default function BusinessServicesPage() {
-  const challenges = [
-    {
-      icon: DollarSign,
-      title: "项目成本难核算",
-      description: "人员成本、费用报销难以精确分摊到项目，导致项目利润核算不准，经营存在盲区。",
-      dataPoint: "45% 企业无法精确核算单项目毛利"
-    },
-    {
-      icon: Users,
-      title: "人才利用率低",
-      description: "人员调度缺乏全盘视角，忙闲不均，关键资源冲突，导致交付延期或资源浪费。",
-      dataPoint: "人员闲置率平均高达 20%+"
-    },
-    {
-      icon: FileCheck2,
-      title: "业财数据脱节",
-      description: "业务系统与财务系统分离，立项、合同、回款、发票数据对不上，手工对账效率低。",
-      dataPoint: "月底对账平均耗时 5-7 天"
-    },
-    {
-      icon: Box,
-      title: "服务标准难统一",
-      description: "缺乏非标服务的标准化管理工具，依赖个人经验，导致服务质量参差不齐，客户满意度波动。",
-      dataPoint: "因服务质量导致的客诉率 > 15%"
-    }
-  ]
 
   const scenarios = [
     {
@@ -98,16 +72,10 @@ export default function BusinessServicesPage() {
 
   return (
     <main>
-      <Hero 
-        industryName={industryName}
-        icon={<Briefcase className="w-5 h-5 text-[#0052D9]" />}
-        tagline={tagline}
-        description={description}
-      />
+      <Hero />
       
       <IndustryChallenges 
         industryName={industryName}
-        challenges={challenges}
       />
       
       <SolutionOverview />

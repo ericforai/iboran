@@ -1,7 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { type LucideIcon } from 'lucide-react'
+import { 
+  Calculator, 
+  Users, 
+  FolderKanban,
+  BarChart3,
+  type LucideIcon 
+} from 'lucide-react'
 
 interface Challenge {
   icon: LucideIcon
@@ -10,12 +16,38 @@ interface Challenge {
   dataPoint: string
 }
 
+const challenges: Challenge[] = [
+  {
+    icon: Calculator,
+    title: "项目成本难核算",
+    description: "人员成本、差旅费用难以精确分摊到项目，项目盈亏看不清，经营决策缺依据。",
+    dataPoint: "45% 企业无法精确归集人员成本到项目"
+  },
+  {
+    icon: Users,
+    title: "人力事务繁重",
+    description: "入转调离手工处理，薪资核算易出错，考勤统计耗时长，HR疲于事务无暇赋能业务。",
+    dataPoint: "人力事务型工作占比超 50%"
+  },
+  {
+    icon: FolderKanban,
+    title: "业务系统分散",
+    description: "财务、人力、CRM、项目各自为政，数据不互通，跨系统对账效率低下。",
+    dataPoint: "月底跨系统对账平均耗时 5-7 天"
+  },
+  {
+    icon: BarChart3,
+    title: "项目进度失控",
+    description: "缺乏统一项目视图，里程碑跟踪困难，超期风险无法提前预警，交付质量难保障。",
+    dataPoint: "项目延期风险识别滞后率 > 30%"
+  }
+]
+
 interface IndustryChallengesProps {
   industryName: string
-  challenges: Challenge[]
 }
 
-export default function IndustryChallenges({ industryName, challenges }: IndustryChallengesProps) {
+export default function IndustryChallenges({ industryName }: IndustryChallengesProps) {
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
