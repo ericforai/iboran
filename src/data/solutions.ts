@@ -31,6 +31,12 @@ import {
   Milk,
   Sparkles,
   Beer,
+  Microscope,
+  Apple,
+  Shirt,
+  Tv,
+  CircuitBoard,
+  Settings2,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -139,7 +145,13 @@ export const solutionByIndustry: IndustryCategory[] = [
     name: '医药健康',
     icon: Pill,
     href: '/solution/industry/biopharmaceutical',
-    desc: '数智赋能CDMO研产一体化 · 质量合规 · 事项会计 · AI智能体',
+    desc: '赋能药企全产业链数智化 · 营销合规 · 事项会计 · AI 智能体',
+  },
+  {
+    name: 'CDMO 研产一体化',
+    icon: Microscope,
+    href: '/solution/industry/biomedical-cdmo',
+    desc: '研产一体化 · GMP/CSV 合规 · 多组织协同 · 精细成本',
   },
   {
     name: '新材料',
@@ -261,6 +273,42 @@ export const solutionByIndustry: IndustryCategory[] = [
     href: '/solution/industry/beer',
     desc: '数智酿造 · 品质升级 · 产销一体化协同',
   },
+  {
+    name: '食品行业',
+    icon: Apple,
+    href: '/solution/industry/food',
+    desc: '全产业链溯源 · 精益生产管控 · 业财一体转型',
+  },
+  {
+    name: '休食行业',
+    icon: Apple,
+    href: '/solution/industry/snack',
+    desc: '全渠道营销 · 敏捷供应协同 · AI 智能应用',
+  },
+  {
+    name: '服装纺织',
+    icon: Shirt,
+    href: '/solution/industry/apparel',
+    desc: '柔性化生产 · 快反供应链 · 全域订单管理',
+  },
+  {
+    name: '家用电器',
+    icon: Tv,
+    href: '/solution/industry/home-appliances',
+    desc: '价值激发方案 · 研产供销一体 · 售后服务体系',
+  },
+  {
+    name: '电子组装',
+    icon: CircuitBoard,
+    href: '/solution/industry/electronic-assembly',
+    desc: '数字化车间 · 精细化委外协同 · 批次全追溯',
+  },
+  {
+    name: '汽配行业',
+    icon: Settings2,
+    href: '/solution/industry/automotive-parts',
+    desc: '多层级供应链协同 · 质量体系管控 · 成本透明化',
+  },
 ]
 
 // 解决方案分类（按行业大类） - 二级分类结构
@@ -277,6 +325,9 @@ export const solutionByIndustryCategory: IndustryBusinessCategory[] = [
     items: [
       { label: '新材料', href: '/solution/industry/new-materials', desc: '数智驱动负极材料企业IPO合规与精益制造', icon: Atom },
       { label: '电气装备', href: '/solution/industry/electrical-equipment', desc: '智能制造驱动电气装备企业数字化转型 · 项目型生产 · 成本精准', icon: Zap },
+      { label: '家用电器', href: '/solution/industry/home-appliances', desc: '价值激发方案 · 研产供销一体 · 售后服务体系', icon: Tv },
+      { label: '电子组装', href: '/solution/industry/electronic-assembly', desc: '数字化车间 · 精细化委外协同 · 批次全追溯', icon: CircuitBoard },
+      { label: '汽配行业', href: '/solution/industry/automotive-parts', desc: '多层级供应链协同 · 质量体系管控 · 成本透明化', icon: Settings2 },
       { label: '汽车行业', href: '/solution', desc: '多层级供应链下的协同管控 · 质量追溯 · 成本透明', icon: Car },
     ]
   },
@@ -290,7 +341,8 @@ export const solutionByIndustryCategory: IndustryBusinessCategory[] = [
   {
     name: '医药与大健康',
     items: [
-      { label: '医药健康', href: '/solution/industry/biopharmaceutical', desc: '数智赋能CDMO研产一体化 · 质量合规 · 事项会计 · AI智能体', icon: Pill },
+      { label: '医药健康', href: '/solution/industry/biopharmaceutical', desc: '赋能药企全产业链数智化 · 营销合规 · 事项会计 · AI 智能体', icon: Pill },
+      { label: 'CDMO 研产一体化', href: '/solution/industry/biomedical-cdmo', desc: '研产一体化 · GMP/CSV 合规 · 多组织协同', icon: Microscope },
       { label: '医疗器械', href: '/solution/industry/medical-device', desc: '覆盖研发、制造、GSP、UDI 追溯全链路，助力医疗器械企业合规稳健增长', icon: Activity },
       { label: '中药企业', href: '/solution/industry/traditional-chinese-medicine', desc: '传承精华·守正创新 质量全追溯与成本精细化管控', icon: Pill },
     ]
@@ -303,6 +355,9 @@ export const solutionByIndustryCategory: IndustryBusinessCategory[] = [
       { label: '餐饮行业', href: '/solution/industry/catering', desc: '业财一体助力餐饮连锁高效经营 · 精细化成本管控 · 全渠道订单闭环', icon: Utensils },
       { label: '化妆品行业', href: '/solution/industry/cosmetics', desc: '全域营销 · B2B2C一体化 · 供应链协同 · 业财融合', icon: Sparkles },
       { label: '啤酒行业', href: '/solution/industry/beer', desc: '数智酿造 · 品质升级 · 产销一体化协同', icon: Beer },
+      { label: '食品行业', href: '/solution/industry/food', desc: '全产业链溯源 · 精益生产管控 · 业财一体转型', icon: Apple },
+      { label: '休食行业', href: '/solution/industry/snack', desc: '全渠道营销 · 敏捷供应协同 · AI 智能应用', icon: Apple },
+      { label: '服装纺织', href: '/solution/industry/apparel', desc: '柔性化生产 · 快反供应链 · 全域订单管理', icon: Shirt },
       { label: '消费品', href: '/solution', desc: '多渠道、快周转场景下的精细化运营与动态库存管理', icon: ShoppingBag },
     ]
   },
