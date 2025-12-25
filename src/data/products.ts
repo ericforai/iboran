@@ -11,6 +11,7 @@ import {
   Box,
   CreditCard,
   Network,
+  Sparkles,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -32,6 +33,12 @@ export const productCategories: ProductCategory[] = [
     name: 'ERP 与业务系统',
     description: '平台型能力 · 企业核心业务底座',
     items: [
+      { 
+        label: '用友 BIP', 
+        href: '/products/bip', 
+        desc: '全球领先的企业软件与智能服务平台', 
+        icon: Sparkles 
+      },
       { 
         label: '用友 YonSuite', 
         href: '/products/yonsuite', 
