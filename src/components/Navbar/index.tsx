@@ -13,6 +13,7 @@ import {
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
 import { solutionByBusiness, solutionByIndustryCategory } from '@/data/solutions'
+import { productCategories } from '@/data/products'
 import type { Contact } from '@/payload-types'
 
 // 主菜单项
@@ -23,7 +24,12 @@ const menuItems = [
     hasDropdown: true,
     isMegaMenu: true,
   },
-  { label: '核心产品', href: '/products' },
+  { 
+    label: '核心产品', 
+    href: '/products',
+    hasDropdown: true,
+    isMegaMenu: true,
+  },
   { label: '客户案例', href: '/cases' },
   { label: '泊冉观察', href: '/posts' },
   { label: '关于我们', href: '/about' },
@@ -39,7 +45,7 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const [isConsultModalOpen, setIsConsultModalOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string | null>(null)
+  const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string[]>([])
   const [megaMenuTab, setMegaMenuTab] = useState<'business' | 'industry'>('business')
   const [mobileSolutionTab, setMobileSolutionTab] = useState<'business' | 'industry'>('industry')
   
@@ -102,7 +108,11 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
   }
 
   const toggleMobileDropdown = (label: string) => {
-    setMobileActiveDropdown(mobileActiveDropdown === label ? null : label)
+    setMobileActiveDropdown(prev => 
+      prev.includes(label) 
+        ? prev.filter(item => item !== label)
+        : [...prev, label]
+    )
   }
 
   return (
@@ -143,6 +153,81 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
               </div>
             ))}
           </nav>
+
+        
+        {/* Core Products Mega Menu */}
+        {activeDropdown === '核心产品' && (
+          <div 
+            className="absolute top-full left-0 right-0 w-full bg-white border-t border-gray-100 shadow-2xl z-50"
+            onMouseEnter={() => handleMenuEnter('核心产品')}
+            onMouseLeave={handleMenuLeave}
+          >
+            <div className="container mx-auto px-6 py-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:divide-x divide-gray-100">
+                {productCategories.map((category) => (
+                  <div key={category.name} className="flex flex-col md:pl-8 first:pl-0">
+                    <div className="mb-5">
+                      <h3 className="text-base font-bold text-[#1F2329] flex items-center gap-2 mb-1">
+                        <span className="w-1 h-4 bg-[#E60012] rounded-full"></span>
+                        {category.name}
+                      </h3>
+                      <p className="text-xs text-slate-500 pl-3">{category.description}</p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      {category.items.map((item) => {
+                        const IconComponent = item.icon
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="group flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-all duration-200"
+                          >
+                            <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-red-50 group-hover:bg-white group-hover:shadow-sm flex items-center justify-center transition-all">
+                              <IconComponent className="w-4 h-4 text-[#E60012]" />
+                            </div>
+                            <div className="flex-1 min-w-0 pt-0.5">
+                              <div className="font-medium text-[#1F2329] text-sm group-hover:text-[#E60012] transition-colors">
+                                {item.label}
+                              </div>
+                              <div className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                                {item.desc}
+                              </div>
+                            </div>
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bottom CTA Bar */}
+              <div className="flex items-center justify-between mt-8 pt-4 border-t border-slate-100">
+                 <div className="flex gap-6">
+                    <Link 
+                      href="/products"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-[#1F2329] hover:text-[#E60012] transition-colors"
+                    >
+                      产品总览
+                    </Link>
+                    <Link 
+                      href="/pricing"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-[#1F2329] hover:text-[#E60012] transition-colors"
+                    >
+                      价格体系
+                    </Link>
+                 </div>
+                 <button
+                  onClick={handleOpenDemo}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[#E60012] hover:text-red-700 transition-colors group"
+                >
+                  预约产品演示
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Mega Menu Dropdown - Below header, full width */}
         {activeDropdown === '解决方案' && (
@@ -217,30 +302,28 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
 
                 {/* Industry Categories Grid - Two-level structure like business */}
                 {megaMenuTab === 'industry' && (
-                  <div className="grid grid-cols-3 lg:grid-cols-5 xl:grid-cols-9 gap-6">
+                  <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
                     {solutionByIndustryCategory.map((category) => (
-                      <div key={category.name}>
-                        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 pb-2 border-b border-slate-100">
+                      <div key={category.name} className="flex flex-col">
+                        <h3 className="text-sm font-bold text-[#1F2329] mb-4 pb-2 border-b-2 border-slate-100 flex items-center gap-2">
+                          <span className="w-1.5 h-4 bg-[#0052D9] rounded-full"></span>
                           {category.name}
                         </h3>
-                        <div className="space-y-1">
+                        <div className="grid grid-cols-1 gap-1">
                           {category.items.map((item) => {
                             const IconComponent = item.icon
                             return (
                               <Link
                                 key={item.href}
                                 href={item.href}
-                                className="group flex items-start gap-3 p-2.5 -mx-2.5 rounded-lg hover:bg-slate-50 transition-all duration-150"
+                                className="group flex items-center gap-3 p-2 -mx-2 rounded-lg hover:bg-blue-50/50 transition-all duration-200"
                               >
-                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center transition-colors">
-                                  <IconComponent className="w-4 h-4 text-[#0052D9]" />
+                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-50 group-hover:bg-white group-hover:shadow-sm flex items-center justify-center transition-all">
+                                  <IconComponent className="w-4 h-4 text-slate-400 group-hover:text-[#0052D9]" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <div className="font-medium text-[#1F2329] text-sm group-hover:text-[#0052D9] transition-colors">
+                                  <div className="font-medium text-[#1F2329] text-[13px] group-hover:text-[#0052D9] transition-colors">
                                     {item.label}
-                                  </div>
-                                  <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">
-                                    {item.desc}
                                   </div>
                                 </div>
                               </Link>
@@ -340,122 +423,160 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
               <div key={item.label} className="border-b border-gray-50">
                 {item.hasDropdown ? (
                   <>
-                    <div className="flex items-center justify-between hover:bg-slate-50 transition-colors">
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
+                    <div 
+                      className="flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                      onClick={() => toggleMobileDropdown(item.label)}
+                    >
+                      <span
                         className="flex-1 px-6 py-4 text-base font-medium text-[#1F2329]"
                       >
                         {item.label}
-                      </Link>
-                      <button
-                        onClick={() => toggleMobileDropdown(item.label)}
+                      </span>
+                      <div
                         className="px-4 py-4 text-slate-400 hover:text-[#0052D9] transition-colors"
-                        aria-label={mobileActiveDropdown === item.label ? '收起菜单' : '展开菜单'}
                       >
                         <ChevronDown
                           className={`w-5 h-5 transition-transform duration-200 ${
-                            mobileActiveDropdown === item.label ? 'rotate-180' : ''
+                            mobileActiveDropdown.includes(item.label) ? 'rotate-180' : ''
                           }`}
                         />
-                      </button>
-                    </div>
-                    {mobileActiveDropdown === item.label && (
-                      <div className="bg-slate-50 pb-2">
-                        {/* 移动端标签切换器 */}
-                        <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-200">
-                          <button
-                            onClick={() => setMobileSolutionTab('industry')}
-                            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
-                              mobileSolutionTab === 'industry' 
-                                ? 'bg-[#0052D9] text-white shadow-sm' 
-                                : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-                            }`}
-                          >
-                            按行业
-                          </button>
-                          <button
-                            onClick={() => setMobileSolutionTab('business')}
-                            className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
-                              mobileSolutionTab === 'business' 
-                                ? 'bg-[#0052D9] text-white shadow-sm' 
-                                : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-                            }`}
-                          >
-                            按业务
-                          </button>
-                        </div>
-
-                        {/* 按行业内容 - 二级分类结构 */}
-                        {mobileSolutionTab === 'industry' && (
-                          <div className="max-h-[50vh] overflow-y-auto">
-                            {solutionByIndustryCategory.map((category) => (
-                              <div key={category.name} className="pt-3 first:pt-2">
-                                <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                                  {category.name}
-                                </div>
-                                {category.items.map((item) => {
-                                  const IconComponent = item.icon
-                                  return (
-                                    <Link
-                                      key={item.href}
-                                      href={item.href}
-                                      onClick={() => setIsMobileMenuOpen(false)}
-                                      className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
-                                    >
-                                      <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
-                                        <IconComponent className="w-4 h-4 text-[#0052D9]" />
-                                      </div>
-                                      <div className="flex-1 min-w-0">
-                                        <div className="font-medium text-[#1F2329] text-sm">
-                                          {item.label}
-                                        </div>
-                                        <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">{item.desc}</div>
-                                      </div>
-                                    </Link>
-                                  )
-                                })}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-
-                        {/* 按业务内容 */}
-                        {mobileSolutionTab === 'business' && (
-                          <div className="max-h-[50vh] overflow-y-auto">
-                            {solutionByBusiness.map((category) => (
-                              <div key={category.name} className="pt-3 first:pt-2">
-                                <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                                  {category.name}
-                                </div>
-                                {category.items.map((dropItem) => {
-                                  const IconComponent = dropItem.icon
-                                  return (
-                                    <Link
-                                      key={dropItem.href}
-                                      href={dropItem.href}
-                                      onClick={() => setIsMobileMenuOpen(false)}
-                                      className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
-                                    >
-                                      <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
-                                        <IconComponent className="w-4 h-4 text-[#0052D9]" />
-                                      </div>
-                                      <div className="flex-1 min-w-0">
-                                        <div className="font-medium text-[#1F2329] text-sm">
-                                          {dropItem.label}
-                                        </div>
-                                        <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">{dropItem.desc}</div>
-                                      </div>
-                                    </Link>
-                                  )
-                                })}
-                              </div>
-                            ))}
-                          </div>
-                        )}
                       </div>
+                    </div>
+                      <div className="bg-slate-50 pb-2">
+                        {mobileActiveDropdown.includes(item.label) && (
+                          <>
+                            {item.label === '解决方案' && (
+                          <>
+                            {/* 移动端标签切换器 */}
+                            <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-200">
+                              <button
+                                onClick={() => setMobileSolutionTab('industry')}
+                                className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                                  mobileSolutionTab === 'industry' 
+                                    ? 'bg-[#0052D9] text-white shadow-sm' 
+                                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                                }`}
+                              >
+                                按行业
+                              </button>
+                              <button
+                                onClick={() => setMobileSolutionTab('business')}
+                                className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                                  mobileSolutionTab === 'business' 
+                                    ? 'bg-[#0052D9] text-white shadow-sm' 
+                                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                                }`}
+                              >
+                                按业务
+                              </button>
+                            </div>
+
+                            {/* 按行业内容 - 二级分类结构 */}
+                            {mobileSolutionTab === 'industry' && (
+                              <div className="max-h-[50vh] overflow-y-auto">
+                                {solutionByIndustryCategory.map((category) => (
+                                  <div key={category.name} className="pt-3 first:pt-2">
+                                    <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                                      {category.name}
+                                    </div>
+                                    {category.items.map((item) => {
+                                      const IconComponent = item.icon
+                                      return (
+                                        <Link
+                                          key={item.href}
+                                          href={item.href}
+                                          onClick={() => setIsMobileMenuOpen(false)}
+                                          className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
+                                        >
+                                          <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                            <IconComponent className="w-4 h-4 text-[#0052D9]" />
+                                          </div>
+                                          <div className="flex-1 min-w-0">
+                                            <div className="font-medium text-[#1F2329] text-sm">
+                                              {item.label}
+                                            </div>
+                                            <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">{item.desc}</div>
+                                          </div>
+                                        </Link>
+                                      )
+                                    })}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+
+                            {/* 按业务内容 */}
+                            {mobileSolutionTab === 'business' && (
+                              <div className="max-h-[50vh] overflow-y-auto">
+                                {solutionByBusiness.map((category) => (
+                                  <div key={category.name} className="pt-3 first:pt-2">
+                                    <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                                      {category.name}
+                                    </div>
+                                    {category.items.map((dropItem) => {
+                                      const IconComponent = dropItem.icon
+                                      return (
+                                        <Link
+                                          key={dropItem.href}
+                                          href={dropItem.href}
+                                          onClick={() => setIsMobileMenuOpen(false)}
+                                          className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
+                                        >
+                                          <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                            <IconComponent className="w-4 h-4 text-[#0052D9]" />
+                                          </div>
+                                          <div className="flex-1 min-w-0">
+                                            <div className="font-medium text-[#1F2329] text-sm">
+                                              {dropItem.label}
+                                            </div>
+                                            <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">{dropItem.desc}</div>
+                                          </div>
+                                        </Link>
+                                      )
+                                    })}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </>
+                        )}
+                        {item.label === '核心产品' && (
+                          <div className="max-h-[50vh] overflow-y-auto">
+                             {productCategories.map((category) => (
+                                <div key={category.name} className="pt-3 first:pt-2">
+                                  <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                                    <span className="w-1 h-3 bg-[#E60012] rounded-full"></span>
+                                    {category.name}
+                                  </div>
+                                  {category.items.map((prodItem) => {
+                                    const IconComponent = prodItem.icon
+                                    return (
+                                      <Link
+                                        key={prodItem.href}
+                                        href={prodItem.href}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
+                                      >
+                                        <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0">
+                                          <IconComponent className="w-4 h-4 text-[#E60012]" />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                          <div className="font-medium text-[#1F2329] text-sm">
+                                            {prodItem.label}
+                                          </div>
+                                          <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">{prodItem.desc}</div>
+                                        </div>
+                                      </Link>
+                                    )
+                                  })}
+                                </div>
+                             ))}
+                          </div>
+                        )}
+                      </>
                     )}
-                  </>
+                  </div>
+                </>
                 ) : (
                   <Link
                     href={item.href}

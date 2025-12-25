@@ -21,7 +21,7 @@ node_modules/
 /playwright/.cache/
 
 # Agent and temporary files
-.agent/
+# .agent/
 .pnpm-store/
 *.zip
 
