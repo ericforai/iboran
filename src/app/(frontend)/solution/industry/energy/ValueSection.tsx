@@ -78,7 +78,7 @@ export default function ValueSection() {
         <div className="mt-16 bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl p-8 md:p-12">
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
-              用友BIP超级版：能源企业数智化转型首选
+              用友BIP超级版：能源企业数智化转型理想选择
             </h3>
             <p className="text-amber-100 leading-relaxed">
               依托用友在能源行业的深厚积累，BIP超级版已成功服务平煤、榆林能源、乌海能源、潞宝焦化等能源领域标杆企业，

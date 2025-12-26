@@ -17,7 +17,7 @@ const tenets = [
   {
     icon: HeartHandshake,
     title: "价值激活 (Value Activation)",
-    description: "从『代工者』向『共创者』进化。通过极致成本管控，将每一分研发投入转化为确定的商业成功。"
+    description: "从『代工者』向『共创者』进化。通过卓越成本管控，将每一分研发投入转化为确定的商业成功。"
   }
 ]
 
@@ -34,7 +34,7 @@ export function SoulSection() {
           <div className="lg:w-1/2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-sm font-medium mb-8">
               <Sparkles className="w-4 h-4" />
-              <span>方案之魂 · 极致理解</span>
+              <span>方案之魂 · 深度解析</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8">
               什么是 CDMO？<br />

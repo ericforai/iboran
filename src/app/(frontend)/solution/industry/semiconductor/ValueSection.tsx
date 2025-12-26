@@ -48,7 +48,7 @@ export default function ValueSection() {
           </h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6" />
           <p className="text-slate-600 max-w-2xl mx-auto">
-            国产12寸量产FAB线CIM领先供应商，为半导体企业提供可量化的业务价值
+            国产12寸量产FAB线CIM专业供应商，为半导体企业提供可量化的业务价值
           </p>
         </div>
         
@@ -78,7 +78,7 @@ export default function ValueSection() {
         <div className="mt-16 bg-gradient-to-r from-[#0052D9] to-blue-700 rounded-2xl p-8 md:p-12">
           <div className="max-w-3xl mx-auto text-center">
             <h3 className="text-2xl font-bold text-white mb-4">
-              第一个实现可同时对三个类型工厂进行智能化管理的国产工业软件项目
+              率先实现可同时对三个类型工厂进行智能化管理的国产工业软件项目
             </h3>
             <p className="text-blue-100 leading-relaxed">
               泊冉软件作为国产CIM解决方案的领军者，已成功在多个头部半导体企业实现落地，

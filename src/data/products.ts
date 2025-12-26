@@ -36,7 +36,7 @@ export const productCategories: ProductCategory[] = [
       { 
         label: '用友 BIP', 
         href: '/products/bip', 
-        desc: '全球领先的企业软件与智能服务平台', 
+        desc: '先进成熟的企业软件与智能服务平台', 
         icon: Sparkles 
       },
       { 
@@ -46,10 +46,16 @@ export const productCategories: ProductCategory[] = [
         icon: Cloud 
       },
       { 
-        label: '用友 U8 / U9 / NC', 
-        href: '/products/erp', 
-        desc: '经典 ERP 解决方案，覆盖财务、供应链、制造', 
-        icon: Layers 
+        label: '用友 U9 cloud', 
+        href: '/products/u9-cloud', 
+        desc: '离散制造数智制造全场景平台，大国重器背后的力量', 
+        icon: Box 
+      },
+      { 
+        label: '用友 U8 cloud', 
+        href: '/products/u8-cloud', 
+        desc: '成长型集团云 ERP，业财税金档一体化', 
+        icon: Cloud 
       },
       { 
         label: '财务与供应链', 
@@ -70,9 +76,9 @@ export const productCategories: ProductCategory[] = [
     description: '组织与流程能力 · 落地执行',
     items: [
       { 
-        label: '协同办公 (致远/钉钉)', 
-        href: '/products/collaboration', 
-        desc: '统一门户、移动办公，提升组织协同效率', 
+        label: '协同办公', 
+        href: '/products/collaborative-office', 
+        desc: '致远 A8 数智化协同运营平台 (COP)', 
         icon: Users 
       },
       { 

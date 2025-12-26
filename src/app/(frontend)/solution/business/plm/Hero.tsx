@@ -51,7 +51,7 @@ export default function Hero() {
               <div className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-slate-500">
                 <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-500"/> 研发效率提升 30%</span>
                 <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-500"/> 设计制造一体化</span>
-                <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-500"/> IPD 最佳实践</span>
+                <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-500"/> IPD 先进实践</span>
               </div>
             </div>
 

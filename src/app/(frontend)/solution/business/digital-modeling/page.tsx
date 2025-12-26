@@ -7,7 +7,7 @@ import CTASection from './CTASection'
 
 export const metadata: Metadata = {
   title: '数字化建模解决方案 | 泊冉软件',
-  description: '用友BIP & YonSuite 数字化建模（APP），企业数智化创新加速器。建立领先、统一、灵活的数智化资产模型，助力企业打破边界，加速创新。',
+  description: '用友BIP & YonSuite 数字化建模（APP），企业数智化创新加速器。建立先进、统一、灵活 de 数智化资产模型，助力企业打破边界，加速创新。',
   keywords: ['数字化建模', 'YonBIP', 'YonSuite', '数智底座', '组织建模', '主数据管理', '泊冉软件', '用友'],
   openGraph: {
     title: '数字化建模解决方案 - 企业数智化创新加速器',

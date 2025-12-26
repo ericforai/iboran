@@ -19,7 +19,7 @@ const features = [
   {
     icon: Zap,
     title: '敏捷上线见效',
-    description: '基于最佳实践模板，实现系统快速部署与业务快速响应。'
+    description: '基于成熟实践模板，实现系统快速部署与业务快速响应。'
   }
 ]
 

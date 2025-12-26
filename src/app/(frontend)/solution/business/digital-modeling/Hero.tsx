@@ -38,7 +38,7 @@ export default function Hero() {
               </h1>
               
               <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                建立领先、统一、灵活的数智化资产模型。通过多维组织、智能流程与统一主数据，打破业务边界，释放创新潜能。
+                建立先进、统一、灵活的数智化资产模型。通过多维组织、智能流程与统一主数据，打破业务边界，释放创新潜能。
               </p>
               
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">

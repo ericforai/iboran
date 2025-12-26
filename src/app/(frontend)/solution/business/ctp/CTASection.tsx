@@ -15,7 +15,7 @@ export default function CTASection() {
             构建您的企业级技术底座
           </h2>
           <p className="text-slate-400 mb-10 max-w-2xl mx-auto text-lg">
-            泊冉软件作为用友铂金合作伙伴，拥有丰富的技术平台建设经验。我们不仅提供领先的 CTP 技术平台能力，更为您提供从架构规划到实施落地的全程支持。
+            泊冉软件作为用友铂金合作伙伴，拥有丰富的技术平台建设经验。我们不仅提供成熟的 CTP 技术平台能力，更为您提供从架构规划到实施落地的全程支持。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button

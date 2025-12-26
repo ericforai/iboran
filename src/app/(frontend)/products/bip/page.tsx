@@ -10,7 +10,7 @@ import FAQ from './FAQ'
 import CTASection from './CTASection'
 
 export const metadata: Metadata = {
-  title: '用友 BIP｜全球领先的企业软件与智能服务平台｜泊冉软件',
+  title: '用友 BIP｜先进的企业软件与智能服务平台｜泊冉软件',
   description: '泊冉软件为您提供用友 BIP (Business Innovation Platform) 的咨询、实施与定制开发服务。深度融合企业“研供产销服”核心场景，助力大型集团实现数智化转型。',
   keywords: ['用友BIP', 'YonBIP', '企业数智化', '商业创新平台', 'ERP升级', '泊冉软件'],
 }

@@ -43,7 +43,7 @@ export default function IndustryCases() {
           </h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6" />
           <p className="text-slate-600 max-w-2xl mx-auto">
-            泊冉软件已成功服务多家头部半导体企业，成为国产12寸量产FAB线CIM的领先供应商
+            泊冉软件已成功服务多家头部半导体企业，成为国产12寸量产FAB线CIM的专业供应商
           </p>
         </div>
         

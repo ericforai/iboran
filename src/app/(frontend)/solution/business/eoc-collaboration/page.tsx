@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   keywords: ['EOC', '协同办公', 'OA系统', '数智化', '用友', 'YonBIP', '智能助手', '泊冉软件'],
   openGraph: {
     title: 'EOC 企业数智化协同办公解决方案 | 泊冉软件',
-    description: 'AI 驱动的业务流程效率革命。连接人、业务与数据，打造极致协同体验。',
+    description: 'AI 驱动的业务流程效率革命。连接人、业务与数据，打造智能协同体验。',
   },
 }
 

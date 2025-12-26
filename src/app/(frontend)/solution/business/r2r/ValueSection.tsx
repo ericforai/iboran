@@ -80,7 +80,7 @@ export default function ValueSection() {
         {/* Customer Logos */}
         <div className="bg-white p-10 rounded-3xl border border-slate-100 shadow-sm">
           <div className="text-center mb-8">
-            <h3 className="text-xl font-bold text-[#1F2329] mb-2">众多行业领先企业的选择</h3>
+            <h3 className="text-xl font-bold text-[#1F2329] mb-2">众多行业头部企业的选择</h3>
             <p className="text-slate-500 text-sm">涵盖农牧、电力、零售、能源、金融等多个行业</p>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">

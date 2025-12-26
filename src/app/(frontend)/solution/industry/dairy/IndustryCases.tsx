@@ -19,7 +19,7 @@ export default function IndustryCases() {
             Customer Success
           </span>
           <h2 className="text-3xl font-bold text-[#1F2329] mt-2 mb-4">
-            行业领先实践案例
+            行业先进实践案例
           </h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full" />
         </div>

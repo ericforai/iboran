@@ -36,7 +36,7 @@ export default function Hero() {
               </p>
               
               <p className="text-sm text-slate-500 mb-8 italic">
-                &ldquo;传统酿造工艺与数字化技术的完美融合&rdquo;
+                &ldquo;传统酿造工艺与数字化技术的深度融合&rdquo;
               </p>
               
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">

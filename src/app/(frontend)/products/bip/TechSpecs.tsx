@@ -10,7 +10,7 @@ export default function TechSpecs() {
               企业级技术架构与集成
             </h2>
             <p className="text-slate-600 mb-8 text-lg">
-              基于云原生微服务架构，支持高并发、高可用，满足大型集团对系统性能与安全的极致要求。
+              基于云原生微服务架构，支持高并发、高可用，满足大型集团对系统性能与安全的严苛要求。
             </p>
 
             <div className="space-y-8">

@@ -133,7 +133,7 @@ export function UnifiedPracticesSection() {
                         <div className="relative flex items-start justify-between">
                             {/* Simple dashed lines with subtle arrows between icons */}
                             <svg 
-                                className="absolute top-7 left-0 right-0 h-6 w-full"
+                                className="absolute top-7 left-0 right-0 h-6 w-full pointer-events-none select-none"
                                 style={{ zIndex: 1 }}
                             >
                                 <defs>

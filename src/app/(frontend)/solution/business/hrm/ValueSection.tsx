@@ -46,7 +46,7 @@ export default function ValueSection() {
           <h2 className="text-3xl font-bold text-[#1F2329] mb-4">激活组织核心动能</h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6"></div>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            让人才成为企业最强竞争力，打造高绩效、高敬业度的卓越组织。
+            让人才成为企业核心竞争力，打造高绩效、高敬业度的卓越组织。
           </p>
         </div>
 

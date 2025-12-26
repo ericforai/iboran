@@ -20,7 +20,7 @@ export default function CTASection() {
               开启企业数智化创新之旅
             </h2>
             <p className="text-xl text-blue-100 mb-10 leading-relaxed">
-              立即预约专家演示，了解泊冉软件如何助力您的企业建立领先的数智化建模底座。
+              立即预约专家演示，了解泊冉软件如何助力您的企业建立先进的数智化建模底座。
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
