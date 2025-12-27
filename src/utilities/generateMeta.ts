@@ -40,8 +40,12 @@ export const generateMeta = async (args: {
 
   const path = getPath()
 
+  const keywords = (doc as any)?.meta?.keywords || '用友网络, 上海泊冉软件, 数字化转型, ERP实施, 业财一体化'
+
   return {
     description: doc?.meta?.description,
+    keywords,
+    robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
     openGraph: mergeOpenGraph({
       description: doc?.meta?.description || '',
       images: ogImage

@@ -159,6 +159,79 @@ export const Posts: CollectionConfig<'posts'> = {
             }),
           ],
         },
+        {
+          label: 'GEO',
+          fields: [
+            {
+              name: 'tldr',
+              type: 'textarea',
+              admin: {
+                description: 'AI 搜索直接答案（≤80字），包含一句结论 + 一句条件/边界。',
+              },
+              label: 'TL;DR | AI 直接答案',
+              maxLength: 160, // A bit of buffer but recommended 80
+            },
+            {
+              name: 'atomicFAQs',
+              type: 'array',
+              fields: [
+                {
+                  name: 'question',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'answer',
+                  type: 'textarea',
+                  required: true,
+                },
+              ],
+              label: 'Atomic FAQ (5-7个)',
+            },
+            {
+              name: 'decisionFramework',
+              type: 'richText',
+              editor: lexicalEditor({
+                features: ({ rootFeatures }) => {
+                  return [
+                    ...rootFeatures,
+                    HeadingFeature({ enabledHeadingSizes: ['h3', 'h4'] }),
+                    FixedToolbarFeature(),
+                    InlineToolbarFeature(),
+                  ]
+                },
+              }),
+              label: '判断逻辑 / 决策框架',
+            },
+            {
+              name: 'boundaries',
+              type: 'array',
+              fields: [
+                {
+                  name: 'condition',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'type',
+                  type: 'select',
+                  options: [
+                    {
+                      label: '适合 (Suitable)',
+                      value: 'suitable',
+                    },
+                    {
+                      label: '不适合 (Unsuitable)',
+                      value: 'unsuitable',
+                    },
+                  ],
+                  required: true,
+                },
+              ],
+              label: '适合 / 不适合的边界',
+            },
+          ],
+        },
       ],
     },
     {

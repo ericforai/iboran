@@ -260,6 +260,39 @@ export interface Post {
     image?: (string | null) | Media;
     description?: string | null;
   };
+  /**
+   * AI 搜索直接答案（≤80字），包含一句结论 + 一句条件/边界。
+   */
+  tldr?: string | null;
+  atomicFAQs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  decisionFramework?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  boundaries?:
+    | {
+        condition: string;
+        type: 'suitable' | 'unsuitable';
+        id?: string | null;
+      }[]
+    | null;
   publishedAt?: string | null;
   authors?: (string | User)[] | null;
   populatedAuthors?:
@@ -1340,6 +1373,22 @@ export interface PostsSelect<T extends boolean = true> {
         title?: T;
         image?: T;
         description?: T;
+      };
+  tldr?: T;
+  atomicFAQs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  decisionFramework?: T;
+  boundaries?:
+    | T
+    | {
+        condition?: T;
+        type?: T;
+        id?: T;
       };
   publishedAt?: T;
   authors?: T;

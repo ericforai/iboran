@@ -1,4 +1,5 @@
 import { formatDateTime } from 'src/utilities/formatDateTime'
+import Link from 'next/link'
 import React from 'react'
 
 import type { Post } from '@/payload-types'
@@ -18,20 +19,21 @@ export const PostHero: React.FC<{
     <div className="relative -mt-[10.4rem] flex items-end">
       <div className="container z-10 relative lg:grid lg:grid-cols-[1fr_48rem_1fr] text-white pb-8">
         <div className="col-start-1 col-span-1 md:col-start-2 md:col-span-2">
-          <div className="uppercase text-sm mb-6">
+          <div className="uppercase text-sm mb-6 flex gap-3">
             {categories?.map((category, index) => {
               if (typeof category === 'object' && category !== null) {
-                const { title: categoryTitle } = category
+                const { title: categoryTitle, slug: categorySlug } = category
 
                 const titleToUse = categoryTitle || 'Untitled category'
 
-                const isLast = index === categories.length - 1
-
                 return (
-                  <React.Fragment key={index}>
+                  <Link 
+                    key={index} 
+                    href={`/posts?category=${categorySlug}`}
+                    className="bg-white/20 hover:bg-white/30 backdrop-blur-md px-3 py-1 rounded-full text-white transition-colors border border-white/20"
+                  >
                     {titleToUse}
-                    {!isLast && <React.Fragment>, &nbsp;</React.Fragment>}
-                  </React.Fragment>
+                  </Link>
                 )
               }
               return null
@@ -62,7 +64,7 @@ export const PostHero: React.FC<{
           </div>
         </div>
       </div>
-      <div className="min-h-[80vh] select-none">
+      <div className="min-h-[50vh] select-none">
         {heroImage && typeof heroImage !== 'string' && (
           <Media fill priority imgClassName="-z-10 object-cover" resource={heroImage} />
         )}
