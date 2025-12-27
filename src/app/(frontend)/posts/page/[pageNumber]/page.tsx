@@ -5,7 +5,7 @@ import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
+import React, { Suspense } from 'react'
 import PageClient from './page.client'
 import { notFound } from 'next/navigation'
 import { getCachedGlobal } from '@/utilities/getGlobals'
@@ -69,7 +69,9 @@ export default async function Page({ params: paramsPromise }: Args) {
           </div>
 
           <div className="container mb-8">
-            <CategoryFilter categories={categories.docs} />
+            <Suspense fallback={<div className="h-10" />}>
+              <CategoryFilter categories={categories.docs} />
+            </Suspense>
             <PageRange
               collection="posts"
               currentPage={posts.page}

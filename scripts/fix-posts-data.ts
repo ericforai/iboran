@@ -107,7 +107,7 @@ async function fixPostsData() {
       const newDF = {
         root: {
           type: 'root',
-          format: '',
+          format: 0,
           indent: 0,
           version: 1,
           direction: 'ltr',
@@ -116,7 +116,7 @@ async function fixPostsData() {
             {
               type: 'heading',
               tag: 'h3',
-              format: '',
+              format: 0,
               indent: 0,
               version: 1,
               direction: 'ltr',
@@ -125,7 +125,7 @@ async function fixPostsData() {
             // Paragraph: Scenario Desc
             {
               type: 'paragraph',
-              format: '',
+              format: 0,
               indent: 0,
               version: 1,
               direction: 'ltr',
@@ -139,7 +139,7 @@ async function fixPostsData() {
             {
               type: 'heading',
               tag: 'h3',
-              format: '',
+              format: 0,
               indent: 0,
               version: 1,
               direction: 'ltr',
@@ -150,7 +150,7 @@ async function fixPostsData() {
               type: 'list',
               tag: 'ul',
               listType: 'bullet',
-              format: '',
+              format: 0,
               indent: 0,
               version: 1,
               direction: 'ltr',
@@ -162,12 +162,12 @@ async function fixPostsData() {
 
       // Populate List
       if (Array.isArray(rawDF.if_then)) {
-         const listNode = newDF.root.children[3]
+         const listNode = newDF.root.children[3] as any
          rawDF.if_then.forEach((item: any) => {
             listNode.children.push({
               type: 'listitem',
               value: 1,
-              format: '',
+              format: 0,
               indent: 0,
               version: 1,
               direction: 'ltr',
