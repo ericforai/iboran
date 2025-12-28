@@ -1,0 +1,589 @@
+#!/usr/bin/env node
+/**
+ * PSEO 页面导入到 Blog
+ * 
+ * 将生成的 Markdown 页面导入到 Payload CMS Posts collection
+ * 
+ * Usage:
+ *   tsx scripts/pseo-import-to-blog.ts [options]
+ * 
+ * Options:
+ *   --page <path>          page.md 文件路径
+ *   --schema <path>        schema.yaml 文件路径（可选，用于提取元数据）
+ *   --category <slug>      分类 slug（可选，默认：industry-insights）
+ *   --status <draft|published> 发布状态（默认：draft）
+ *   --slug <text>          自定义 slug（可选，自动生成）
+ * 
+ * Example:
+ *   tsx scripts/pseo-import-to-blog.ts \
+ *     --page output/demo/page.md \
+ *     --category industry-insights \
+ *     --status published
+ */
+
+import { getPayload } from 'payload'
+import configPromise from '../src/payload.config'
+import * as fs from 'fs'
+import * as path from 'path'
+import yaml from 'js-yaml'
+
+interface Schema {
+  schema_version: number
+  page: {
+    keyword: string
+  }
+  modules: Array<{
+    id: string
+    h2: string
+    required_fields: string[]
+    format: string
+  }>
+}
+
+function parseArgs() {
+  const args: {
+    page?: string
+    schema?: string
+    category?: string
+    status?: 'draft' | 'published'
+    slug?: string
+  } = {}
+
+  for (let i = 2; i < process.argv.length; i++) {
+    const arg = process.argv[i]
+    const next = process.argv[i + 1]
+
+    switch (arg) {
+      case '--page':
+        if (next && !next.startsWith('--')) {
+          args.page = next
+          i++
+        }
+        break
+      case '--schema':
+        if (next && !next.startsWith('--')) {
+          args.schema = next
+          i++
+        }
+        break
+      case '--category':
+        if (next && !next.startsWith('--')) {
+          args.category = next
+          i++
+        }
+        break
+      case '--status':
+        if (next && (next === 'draft' || next === 'published')) {
+          args.status = next
+          i++
+        }
+        break
+      case '--slug':
+        if (next && !next.startsWith('--')) {
+          args.slug = next
+          i++
+        }
+        break
+    }
+  }
+
+  return args
+}
+
+function loadPage(filePath: string): string {
+  return fs.readFileSync(filePath, 'utf-8')
+}
+
+function loadSchema(filePath: string): Schema | null {
+  if (!fs.existsSync(filePath)) return null
+  const content = fs.readFileSync(filePath, 'utf-8')
+  return yaml.load(content) as Schema
+}
+
+function markdownToLexical(markdown: string): any {
+  const lines = markdown.split('\n')
+  const children: any[] = []
+  let currentParagraph: any[] = []
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim()
+
+    // 跳过空行
+    if (!line) {
+      if (currentParagraph.length > 0) {
+        children.push({
+          type: 'paragraph',
+          format: 0,
+          indent: 0,
+          version: 1,
+          direction: 'ltr',
+          children: currentParagraph,
+        })
+        currentParagraph = []
+      }
+      continue
+    }
+
+    // H1 标题
+    if (line.startsWith('# ')) {
+      if (currentParagraph.length > 0) {
+        children.push({
+          type: 'paragraph',
+          format: 0,
+          indent: 0,
+          version: 1,
+          direction: 'ltr',
+          children: currentParagraph,
+        })
+        currentParagraph = []
+      }
+      children.push({
+        type: 'heading',
+        tag: 'h1',
+        format: 0,
+        indent: 0,
+        version: 1,
+        direction: 'ltr',
+        children: [{
+          type: 'text',
+          text: line.substring(2),
+          detail: 0,
+          format: 0,
+          mode: 'normal',
+          style: '',
+          version: 1,
+        }],
+      })
+      continue
+    }
+
+    // H2 标题
+    if (line.startsWith('## ')) {
+      if (currentParagraph.length > 0) {
+        children.push({
+          type: 'paragraph',
+          format: 0,
+          indent: 0,
+          version: 1,
+          direction: 'ltr',
+          children: currentParagraph,
+        })
+        currentParagraph = []
+      }
+      children.push({
+        type: 'heading',
+        tag: 'h2',
+        format: 0,
+        indent: 0,
+        version: 1,
+        direction: 'ltr',
+        children: [{
+          type: 'text',
+          text: line.substring(3),
+          detail: 0,
+          format: 0,
+          mode: 'normal',
+          style: '',
+          version: 1,
+        }],
+      })
+      continue
+    }
+
+    // H3 标题
+    if (line.startsWith('### ')) {
+      if (currentParagraph.length > 0) {
+        children.push({
+          type: 'paragraph',
+          format: 0,
+          indent: 0,
+          version: 1,
+          direction: 'ltr',
+          children: currentParagraph,
+        })
+        currentParagraph = []
+      }
+      children.push({
+        type: 'heading',
+        tag: 'h3',
+        format: 0,
+        indent: 0,
+        version: 1,
+        direction: 'ltr',
+        children: [{
+          type: 'text',
+          text: line.substring(4),
+          detail: 0,
+          format: 0,
+          mode: 'normal',
+          style: '',
+          version: 1,
+        }],
+      })
+      continue
+    }
+
+    // 列表项
+    if (line.startsWith('- ') || line.startsWith('* ')) {
+      if (currentParagraph.length > 0) {
+        children.push({
+          type: 'paragraph',
+          format: 0,
+          indent: 0,
+          version: 1,
+          direction: 'ltr',
+          children: currentParagraph,
+        })
+        currentParagraph = []
+      }
+      const listItemText = line.substring(2)
+      // 处理粗体
+      const parts = listItemText.split(/\*\*(.+?)\*\*/g)
+      const listItemChildren: any[] = []
+      for (let j = 0; j < parts.length; j++) {
+        if (j % 2 === 0) {
+          if (parts[j]) {
+            listItemChildren.push({
+              type: 'text',
+              text: parts[j],
+              detail: 0,
+              format: 0,
+              mode: 'normal',
+              style: '',
+              version: 1,
+            })
+          }
+        } else {
+          listItemChildren.push({
+            type: 'text',
+            text: parts[j],
+            detail: 0,
+            format: 1, // Bold
+            mode: 'normal',
+            style: '',
+            version: 1,
+          })
+        }
+      }
+      children.push({
+        type: 'list',
+        tag: 'ul',
+        listType: 'bullet',
+        format: 0,
+        indent: 0,
+        version: 1,
+        direction: 'ltr',
+        children: [{
+          type: 'listitem',
+          format: 0,
+          indent: 0,
+          version: 1,
+          direction: 'ltr',
+          children: [{
+            type: 'paragraph',
+            format: 0,
+            indent: 0,
+            version: 1,
+            direction: 'ltr',
+            children: listItemChildren,
+          }],
+        }],
+      })
+      continue
+    }
+
+    // 表格（简单处理）
+    if (line.startsWith('|') && line.endsWith('|')) {
+      // 跳过表头分隔线
+      if (line.includes('---')) continue
+      
+      if (currentParagraph.length > 0) {
+        children.push({
+          type: 'paragraph',
+          format: 0,
+          indent: 0,
+          version: 1,
+          direction: 'ltr',
+          children: currentParagraph,
+        })
+        currentParagraph = []
+      }
+      // 表格作为代码块处理（简化）
+      const cells = line.split('|').filter(c => c.trim())
+      children.push({
+        type: 'paragraph',
+        format: 0,
+        indent: 0,
+        version: 1,
+        direction: 'ltr',
+        children: [{
+          type: 'text',
+          text: cells.join(' | '),
+          detail: 0,
+          format: 0,
+          mode: 'normal',
+          style: '',
+          version: 1,
+        }],
+      })
+      continue
+    }
+
+    // Q/A 格式
+    if (line.startsWith('**Q: ')) {
+      if (currentParagraph.length > 0) {
+        children.push({
+          type: 'paragraph',
+          format: 0,
+          indent: 0,
+          version: 1,
+          direction: 'ltr',
+          children: currentParagraph,
+        })
+        currentParagraph = []
+      }
+      const question = line.replace('**Q: ', '').replace('**', '')
+      children.push({
+        type: 'heading',
+        tag: 'h3',
+        format: 0,
+        indent: 0,
+        version: 1,
+        direction: 'ltr',
+        children: [{
+          type: 'text',
+          text: `Q: ${question}`,
+          detail: 0,
+          format: 1, // Bold
+          mode: 'normal',
+          style: '',
+          version: 1,
+        }],
+      })
+      continue
+    }
+
+    if (line.startsWith('A: ')) {
+      const answer = line.substring(3)
+      children.push({
+        type: 'paragraph',
+        format: 0,
+        indent: 0,
+        version: 1,
+        direction: 'ltr',
+        children: [{
+          type: 'text',
+          text: `A: ${answer}`,
+          detail: 0,
+          format: 0,
+          mode: 'normal',
+          style: '',
+          version: 1,
+        }],
+      })
+      continue
+    }
+
+    // 水平线
+    if (line.startsWith('---')) {
+      if (currentParagraph.length > 0) {
+        children.push({
+          type: 'paragraph',
+          format: 0,
+          indent: 0,
+          version: 1,
+          direction: 'ltr',
+          children: currentParagraph,
+        })
+        currentParagraph = []
+      }
+      children.push({
+        type: 'horizontalrule',
+        format: 0,
+        indent: 0,
+        version: 1,
+        direction: 'ltr',
+      })
+      continue
+    }
+
+    // 普通文本
+    // 处理粗体
+    const parts = line.split(/\*\*(.+?)\*\*/g)
+    for (let j = 0; j < parts.length; j++) {
+      if (j % 2 === 0) {
+        if (parts[j]) {
+          currentParagraph.push({
+            type: 'text',
+            text: parts[j],
+            detail: 0,
+            format: 0,
+            mode: 'normal',
+            style: '',
+            version: 1,
+          })
+        }
+      } else {
+        currentParagraph.push({
+          type: 'text',
+          text: parts[j],
+          detail: 0,
+          format: 1, // Bold
+          mode: 'normal',
+          style: '',
+          version: 1,
+        })
+      }
+    }
+  }
+
+  // 处理最后一个段落
+  if (currentParagraph.length > 0) {
+    children.push({
+      type: 'paragraph',
+      format: 0,
+      indent: 0,
+      version: 1,
+      direction: 'ltr',
+      children: currentParagraph,
+    })
+  }
+
+  return {
+    root: {
+      type: 'root',
+      format: 0,
+      indent: 0,
+      version: 1,
+      direction: 'ltr',
+      children,
+    },
+  }
+}
+
+function extractTLDR(markdown: string): string {
+  // 提取"一句话结论"部分
+  const match = markdown.match(/## 一句话结论\s*\n\s*\n(.+?)(?=\n## |$)/s)
+  if (match) {
+    return match[1].trim().substring(0, 160)
+  }
+  return ''
+}
+
+function extractFAQs(markdown: string): Array<{ question: string; answer: string }> {
+  const faqs: Array<{ question: string; answer: string }> = []
+  const faqSection = markdown.match(/## 常见问题\s*\n\s*([\s\S]*?)(?=\n---|$)/)
+  
+  if (faqSection) {
+    const qaMatches = [...faqSection[1].matchAll(/\*\*Q: (.+?)\*\*\s*\n\s*\nA: (.+?)(?=\n\*\*Q:|$)/gs)]
+    qaMatches.forEach(match => {
+      faqs.push({
+        question: match[1].trim(),
+        answer: match[2].trim(),
+      })
+    })
+  }
+
+  return faqs
+}
+
+function generateSlug(title: string, customSlug?: string): string {
+  if (customSlug) return customSlug
+  
+  // 简单的中文转拼音 slug（实际应该使用拼音库）
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .substring(0, 100)
+}
+
+async function main() {
+  try {
+    const args = parseArgs()
+
+    if (!args.page) {
+      throw new Error('--page is required')
+    }
+
+    const pageContent = loadPage(args.page)
+    const schema = args.schema ? loadSchema(args.schema) : null
+
+    // 提取标题（H1）
+    const titleMatch = pageContent.match(/^# (.+)$/m)
+    if (!titleMatch) {
+      throw new Error('Page must have an H1 title')
+    }
+    const title = titleMatch[1]
+
+    // 转换为 Lexical 格式
+    const lexicalContent = markdownToLexical(pageContent)
+
+    // 提取 TLDR
+    const tldr = extractTLDR(pageContent)
+
+    // 提取 FAQs
+    const atomicFAQs = extractFAQs(pageContent)
+
+    // 生成 slug
+    const slug = generateSlug(title, args.slug)
+
+    // 连接 Payload CMS
+    const payload = await getPayload({ config: configPromise })
+
+    // 解析分类
+    let categoryIds: string[] = []
+    if (args.category) {
+      const categoryRes = await payload.find({
+        collection: 'categories',
+        where: { slug: { equals: args.category } },
+        depth: 0,
+      })
+      if (categoryRes.docs.length > 0) {
+        categoryIds = [categoryRes.docs[0].id]
+      }
+    }
+
+    // 创建 Post
+    const postData: any = {
+      title,
+      slug,
+      content: lexicalContent,
+      tldr: tldr || undefined,
+      atomicFAQs: atomicFAQs.length > 0 ? atomicFAQs : undefined,
+      meta: {
+        title: `${title} | 泊冉软件`,
+        description: tldr || title,
+      },
+      categories: categoryIds.length > 0 ? categoryIds : undefined,
+      _status: args.status || 'draft',
+    }
+
+    if (args.status === 'published') {
+      postData.publishedAt = new Date().toISOString()
+    }
+
+    const result = await payload.create({
+      collection: 'posts',
+      data: postData,
+    })
+
+    console.error(`✓ Post created successfully!`)
+    console.error(`  - ID: ${result.id}`)
+    console.error(`  - Title: ${result.title}`)
+    console.error(`  - Slug: ${result.slug}`)
+    console.error(`  - Status: ${result._status}`)
+    console.error(`  - URL: /posts/${result.slug}`)
+
+    process.exit(0)
+  } catch (error) {
+    console.error(`ERROR: ${error instanceof Error ? error.message : String(error)}`)
+    process.exit(1)
+  }
+}
+
+main()
+
+
+

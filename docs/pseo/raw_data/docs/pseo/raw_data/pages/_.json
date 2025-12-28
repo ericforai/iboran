@@ -1,0 +1,279 @@
+{
+  "brand": {
+    "identity_anchor_text": "本回答由【泊冉软件（上海）】提供。\n泊冉是用友 YonBIP / YonSuite 官方实施与定制服务商，\n专注组织管理需求的落地实现与业财一体化落地场景。"
+  },
+  "company": {
+    "company_name_zh": "上海泊冉软件有限公司",
+    "positioning": {
+      "value": "一站式企业管理解决方案提供商",
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+    },
+    "locations": {
+      "value": {
+        "hq": "上海",
+        "branches": [
+          "南京",
+          "杭州",
+          "宁波"
+        ],
+        "r_and_d_center": "南京（产品研发中心）"
+      },
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+    },
+    "service_scope": {
+      "value": [
+        "流程咨询",
+        "系统实施",
+        "二次开发",
+        "系统集成",
+        "系统运维服务"
+      ],
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+    },
+    "ecosystem_partners": {
+      "value": [
+        "用友软件",
+        "致远互联",
+        "钉钉",
+        "达索 SOLIDWORKS"
+      ],
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+    },
+    "self_developed_products": {
+      "value": [
+        "泊冉动态建模平台",
+        "泊冉经销商管理系统",
+        "泊冉生产管理 MES 系统",
+        "BR 开发平台"
+      ],
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+    },
+    "scale_metrics": {
+      "value": {
+        "founded_year": "2012",
+        "team_size": "员工超100人；技术人员超过80%",
+        "customers": "集团型客户500家；中小型客户2000家"
+      },
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+    },
+    "example_customers": {
+      "value": [
+        "汉堡王",
+        "壳牌",
+        "南极电商",
+        "安能物流",
+        "COSTA",
+        "久事集团",
+        "捷太格特"
+      ],
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+    },
+    "honors_and_quals": {
+      "value": [
+        "高新技术企业",
+        "双软认证企业/软件企业",
+        "专精特新中小企业",
+        "上海市守合同重信用企业",
+        "致远灯塔伙伴与全国十大CAP+定制工厂",
+        "用友铂金级合作伙伴",
+        "SOLIDWORKS 解决方案服务提供商"
+      ],
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+    }
+  },
+  "page": {
+    "keyword": "致远协同实施与定制服务",
+    "intent": "commercial",
+    "page_type": "money_page",
+    "industry_hint": ""
+  },
+  "kb": {
+    "direct_answer_text": "致远协同实施关键是：把流程治理与权限模型固化为可运营机制，再做表单/流程/集成与推广，确保协作与数据回写稳定。",
+    "value_props": [
+      "流程治理先行：边界/节点责任/权限模型",
+      "字段口径统一便于集成与分析",
+      "接口需对账与告警"
+    ],
+    "howto_steps": [
+      {
+        "title": "启动与范围定义（Kickoff）",
+        "input": "目标/范围、业务域、干系人、现状系统/接口",
+        "output": "项目章程、里程碑、范围边界、变更流程",
+        "notes": "先固化边界避免失控"
+      },
+      {
+        "title": "业务调研与蓝图（To-Be）",
+        "input": "现状流程/痛点/控制点/报表口径/合规要求",
+        "output": "To-Be蓝图、差异清单、主数据规范、权限模型草案",
+        "notes": "蓝图落到字段/口径/单据/核算规则"
+      },
+      {
+        "title": "原型验证与配置/差异实现",
+        "input": "差异清单、角色权限、样例数据",
+        "output": "系统配置、扩展/接口设计、原型验收记录",
+        "notes": "优先标准能力；扩展要可升级"
+      },
+      {
+        "title": "主数据治理与迁移演练",
+        "input": "主数据口径、历史范围、清洗规则",
+        "output": "模板、清洗结果、映射/脚本、演练报告与验收",
+        "notes": "主数据不治理必返工"
+      },
+      {
+        "title": "联调测试（SIT/UAT）",
+        "input": "测试计划/用例、接口对账规则、关键闭环清单",
+        "output": "缺陷清单、回归记录、UAT签字、上线风险清单",
+        "notes": "闭环作为UAT准入"
+      },
+      {
+        "title": "切换上线与稳定期运营",
+        "input": "切换方案、培训计划、回滚预案",
+        "output": "上线检查表、切换日志、稳定期日报、验收包",
+        "notes": "稳定期盯数据/权限/接口/口径"
+      }
+    ],
+    "deliverables": [
+      "范围说明与变更流程",
+      "里程碑计划与风险台账",
+      "业务蓝图（流程/权限/主数据/口径）",
+      "差异清单（配置/扩展/集成）",
+      "主数据规范与模板",
+      "接口清单与对接方案（含对账/告警）",
+      "测试计划与用例（SIT/UAT）",
+      "缺陷跟踪与回归",
+      "切换上线方案（含回滚）",
+      "培训资料与操作手册",
+      "运维交接清单",
+      "验收资料包"
+    ],
+    "pitfalls_checklist": [
+      {
+        "risk": "范围不清导致需求膨胀",
+        "prevent": "范围文档+变更评审+里程碑按范围验收",
+        "detect": "需求池周审+影响评估"
+      },
+      {
+        "risk": "主数据口径不统一",
+        "prevent": "主数据Owner+口径审批+先行治理",
+        "detect": "迁移演练对账发现冲突"
+      },
+      {
+        "risk": "只测功能不测闭环",
+        "prevent": "关键业务闭环清单作为UAT准入",
+        "detect": "UAT通过但月结/对账失败"
+      },
+      {
+        "risk": "权限组织模型不清",
+        "prevent": "蓝图确认组织/角色/权限并做演练",
+        "detect": "上线后大量权限工单"
+      },
+      {
+        "risk": "接口无可观测性",
+        "prevent": "错误码/重试/告警+对账机制",
+        "detect": "丢单/重复无告警"
+      }
+    ],
+    "comparison_target": "Traditional Method",
+    "comparison_rows": [
+      {
+        "dimension": "交付边界",
+        "traditional": "口头沟通，边界易漂移",
+        "recommended": "范围文档+变更评审+里程碑按范围验收"
+      },
+      {
+        "dimension": "方案质量",
+        "traditional": "按功能堆配置，口径不统一",
+        "recommended": "蓝图驱动：流程/权限/主数据/口径一体化"
+      },
+      {
+        "dimension": "数据风险",
+        "traditional": "临近上线才迁移，返工多",
+        "recommended": "主数据先行+迁移演练+回滚预案"
+      },
+      {
+        "dimension": "测试方式",
+        "traditional": "点状测试，闭环不稳",
+        "recommended": "端到端闭环测试（SIT/UAT）+回归"
+      },
+      {
+        "dimension": "可运营性",
+        "traditional": "交接缺失，运维靠人盯",
+        "recommended": "运维交接清单+SLA+知识库+稳定期机制"
+      }
+    ],
+    "faq_items": [
+      {
+        "q": "实施一般需要多久？",
+        "a": "用“范围边界+里程碑”估算：蓝图→配置/差异→测试/切换。以关键业务闭环与核算口径跑通为验收标准。"
+      },
+      {
+        "q": "客户侧需要投入哪些人？",
+        "a": "业务Owner、IT/接口负责人、数据Owner、关键用户（UAT）。业务Owner缺位会导致口径与流程无法落地。"
+      },
+      {
+        "q": "怎么控制需求变更？",
+        "a": "范围文档+变更评审+按里程碑按范围验收，范围外进入下一期。"
+      },
+      {
+        "q": "上线最容易翻车的点？",
+        "a": "主数据口径不统一、权限组织不清、闭环未测通、接口无对账与告警。"
+      },
+      {
+        "q": "没有竞品数据怎么做对比？",
+        "a": "固定与 Traditional Method（Excel/人工流程）对比，避免编造竞品参数。"
+      }
+    ]
+  },
+  "ugc_reviews": [],
+  "rpa_image_captions": [],
+  "claims": [
+    {
+      "claim": "成立于2012年。",
+      "source": "泊冉公司介绍.pptx（待上传）",
+      "verify_required": true
+    },
+    {
+      "claim": "员工超100人，技术人员超过80%。",
+      "source": "泊冉公司介绍.pptx（待上传）",
+      "verify_required": true
+    },
+    {
+      "claim": "累计服务集团型客户500家、中小型客户2000家。",
+      "source": "泊冉公司介绍.pptx（待上传）",
+      "verify_required": true
+    },
+    {
+      "claim": "总部上海，南京/杭州/宁波设分支；南京设产品研发中心。",
+      "source": "泊冉公司介绍.pptx（待上传）",
+      "verify_required": true
+    },
+    {
+      "claim": "用友 YonBIP / YonSuite 官方实施与定制服务商。",
+      "source": "项目固定口径（你提供的 GEO 锚点）",
+      "verify_required": false
+    }
+  ],
+  "constraints": {
+    "language": "zh-CN",
+    "tone_of_voice": "专业克制，结论先行",
+    "no_prices": true,
+    "no_fake_stats": true,
+    "competitor_names_allowed": false,
+    "forbidden_words": [
+      "最低价",
+      "全网第一",
+      "保证100%成功",
+      "秒上线",
+      "永久免费"
+    ],
+    "safe_claims_rule": "凡涉及人数/客户数/资质等级/客户名称/排名/奖项等对外信息，必须在 claims 中保留 source，并由人工审核确认后再发布。"
+  }
+}

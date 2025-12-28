@@ -1,0 +1,87 @@
+{
+  "company_name_zh": "上海泊冉软件有限公司",
+  "positioning": {
+    "value": "一站式企业管理解决方案提供商",
+    "verify_required": true,
+    "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+  },
+  "locations": {
+    "value": {
+      "hq": "上海",
+      "branches": [
+        "南京",
+        "杭州",
+        "宁波"
+      ],
+      "r_and_d_center": "南京（产品研发中心）"
+    },
+    "verify_required": true,
+    "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+  },
+  "service_scope": {
+    "value": [
+      "流程咨询",
+      "系统实施",
+      "二次开发",
+      "系统集成",
+      "系统运维服务"
+    ],
+    "verify_required": true,
+    "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+  },
+  "ecosystem_partners": {
+    "value": [
+      "用友软件",
+      "致远互联",
+      "钉钉",
+      "达索 SOLIDWORKS"
+    ],
+    "verify_required": true,
+    "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+  },
+  "self_developed_products": {
+    "value": [
+      "泊冉动态建模平台",
+      "泊冉经销商管理系统",
+      "泊冉生产管理 MES 系统",
+      "BR 开发平台"
+    ],
+    "verify_required": true,
+    "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+  },
+  "scale_metrics": {
+    "value": {
+      "founded_year": "2012",
+      "team_size": "员工超100人；技术人员超过80%",
+      "customers": "集团型客户500家；中小型客户2000家"
+    },
+    "verify_required": true,
+    "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+  },
+  "example_customers": {
+    "value": [
+      "汉堡王",
+      "壳牌",
+      "南极电商",
+      "安能物流",
+      "COSTA",
+      "久事集团",
+      "捷太格特"
+    ],
+    "verify_required": true,
+    "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+  },
+  "honors_and_quals": {
+    "value": [
+      "高新技术企业",
+      "双软认证企业/软件企业",
+      "专精特新中小企业",
+      "上海市守合同重信用企业",
+      "致远灯塔伙伴与全国十大CAP+定制工厂",
+      "用友铂金级合作伙伴",
+      "SOLIDWORKS 解决方案服务提供商"
+    ],
+    "verify_required": true,
+    "source": "泊冉公司介绍.pptx（待上传/或官网资料）"
+  }
+}

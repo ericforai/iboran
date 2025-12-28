@@ -1,0 +1,18 @@
+field,type,meaning,required
+brand.identity_anchor_text,string,固定身份锚点（GEO口径）,必填
+company,object,公司事实库（建议从PPT/官网核验后固化）,建议
+page.keyword,string,关键词,必填
+page.intent,string,搜索意图,必填
+page.page_type,string,money_page/guide_page,必填
+kb.direct_answer_text,string,一句话结论（可被引用）,必填
+kb.value_props,list[string],价值主张（不含夸张承诺）,建议
+kb.howto_steps,list[object],实施步骤,必填
+kb.deliverables,list[string],交付物清单,必填
+kb.pitfalls_checklist,list[object],风险与控制,必填
+kb.comparison_target,string,对比对象（默认Traditional Method）,必填
+kb.comparison_rows,list[object],对比表行,必填
+kb.faq_items,list[object],FAQ,必填
+ugc_reviews,list[object|null],可选：UGC/访谈摘录（需有来源）,可选
+rpa_image_captions,list[string|null],可选：截图说明（由RPA/人工提供）,可选
+claims,list[object],对外主张（带source与verify_required）,建议
+constraints,object,全局约束,必填

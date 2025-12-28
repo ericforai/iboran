@@ -1,0 +1,697 @@
+
+> iboran@1.0.0 dev
+> cross-env NODE_OPTIONS=--no-deprecation next dev
+
+   ▲ Next.js 15.4.10
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.2.41:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1831ms
+ ○ Compiling /posts ...
+ ✓ Compiled /posts in 2.3s (2011 modules)
+ ✓ Compiled in 888ms (759 modules)
+[23:08:41] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts 200 in 3388ms
+ ○ Compiling /posts/page/[pageNumber] ...
+ ✓ Compiled /posts/page/[pageNumber] in 703ms (2013 modules)
+[23:08:52] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/2 200 in 1723ms
+[23:08:53] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/8 200 in 51ms
+ ○ Compiling /api/[...slug] ...
+[23:08:59] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled /api/[...slug] in 841ms (2624 modules)
+ GET /api/media/file/engine_vs_broken_gears_isometric_1766837712076.png?2025-12-27T12%3A15%3A36.363Z 200 in 1669ms
+ GET /api/media/file/erp_organization_friction_abstract_1766837692443.png?2025-12-27T12%3A15%3A36.257Z 200 in 1669ms
+ GET /api/media/file/b2b-hero.png?2025-12-27T10%3A50%3A50.868Z 200 in 1669ms
+ GET /api/media/file/chip-testing-hero.png?2025-12-20T00%3A49%3A51.984Z 200 in 1669ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 1671ms
+ GET /api/media/file/system_vs_management_split_1766837868761.png?2025-12-27T12%3A19%3A02.073Z 200 in 1671ms
+ GET /posts/page/7 200 in 85ms
+[23:09:04] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/6 200 in 48ms
+[23:09:08] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/5 200 in 49ms
+[23:09:11] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/4 200 in 48ms
+[23:09:15] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/3 200 in 39ms
+[23:09:18] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/2 200 in 46ms
+[23:09:20] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/1 200 in 46ms
+[23:09:24] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled /posts/[slug] in 471ms (2700 modules)
+[23:09:56] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/roi-post-implementation-review 200 in 1524ms
+[23:09:57] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts?category=digital-transformation 200 in 71ms
+ GET /posts/roi-post-implementation-review 200 in 51ms
+[23:11:29] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts?category=digital-transformation 200 in 42ms
+ GET /posts/it-maintenance-support-strategy 200 in 49ms
+[23:11:36] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 318ms (784 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts?category=digital-transformation 200 in 69ms
+ ✓ Compiled in 234ms (784 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts?category=digital-transformation 200 in 64ms
+ GET /posts/it-maintenance-support-strategy 200 in 48ms
+[23:15:51] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/roi-post-implementation-review 200 in 55ms
+[23:17:31] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/roi-post-implementation-review 200 in 188ms
+[23:17:48] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts 200 in 56ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 29ms
+ GET /posts/roi-post-implementation-review 200 in 55ms
+[23:19:17] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts 200 in 105ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 10ms
+ GET /posts 200 in 98ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 13ms
+ GET /posts?category=digital-transformation 200 in 45ms
+ GET /posts/it-maintenance-support-strategy 200 in 41ms
+[23:20:52] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/disaster-recovery-plan-drill 200 in 50ms
+[23:21:07] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 625ms (2113 modules)
+ GET /_next/static/media/payload-favicon-dark.c322d81c.png 404 in 766ms
+ GET /posts?category=digital-transformation 200 in 307ms
+ ✓ Compiled /api/[...slug] in 261ms (1930 modules)
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 434ms
+ GET /posts?category=digital-transformation 200 in 248ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 14ms
+ GET /posts/roi-post-implementation-review 200 in 95ms
+[23:30:03] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 689ms (2120 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/roi-post-implementation-review 200 in 258ms
+[23:31:12] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts?category=digital-transformation 200 in 196ms
+ ✓ Compiled /api/[...slug] in 135ms (1930 modules)
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 293ms
+ ✓ Compiled in 708ms (2714 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts?category=digital-transformation 200 in 223ms
+ ⨯ ./src/app/(frontend)/posts/page.tsx
+Error:   [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/user/iboran/src/app/(frontend)/posts/page.tsx[0m:64:1]
+ [2m61[0m |       heroImage: true,
+ [2m62[0m |       publishedAt: true,
+ [2m63[0m |     },
+ [2m64[0m |   })
+    : [35;1m  ^[0m
+ [2m65[0m | 
+ [2m66[0m |   return (
+ [2m67[0m |     <div className="min-h-screen flex flex-col">
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/(frontend)/posts/page.tsx
+ ○ Compiling /_error ...
+ ⨯ ./src/app/(frontend)/posts/page.tsx
+Error:   [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/user/iboran/src/app/(frontend)/posts/page.tsx[0m:64:1]
+ [2m61[0m |       heroImage: true,
+ [2m62[0m |       publishedAt: true,
+ [2m63[0m |     },
+ [2m64[0m |   })
+    : [35;1m  ^[0m
+ [2m65[0m | 
+ [2m66[0m |   return (
+ [2m67[0m |     <div className="min-h-screen flex flex-col">
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/(frontend)/posts/page.tsx
+ GET /posts?category=digital-transformation 500 in 1941ms
+ GET /posts?category=digital-transformation 500 in 9ms
+ GET /posts?category=digital-transformation 500 in 7ms
+ GET /posts?category=digital-transformation 500 in 7ms
+ ✓ Compiled /_not-found in 547ms (2441 modules)
+Generating import map
+No new imports found, skipping writing import map
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/f3fe4f58eee3d738.webpack.hot-update.json 404 in 929ms
+ GET /posts?category=digital-transformation 200 in 407ms
+ GET /posts?category=digital-transformation 200 in 153ms
+ ✓ Compiled /api/[...slug] in 199ms (2113 modules)
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 381ms
+ ✓ Compiled in 768ms (3049 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts?category=digital-transformation 200 in 187ms
+ GET /posts?category=digital-transformation 200 in 239ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 23ms
+ GET /posts/disaster-recovery-plan-drill 200 in 79ms
+[23:34:43] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/it-audit-compliance-segregation-of-duties 200 in 57ms
+[23:34:47] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/disaster-recovery-plan-drill 200 in 50ms
+[23:34:51] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts?category=digital-transformation 200 in 26ms
+ GET /posts?category=digital-transformation 200 in 126ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 18ms
+ GET /posts?category=digital-transformation 200 in 87ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 11ms
+ GET /posts?category=digital-transformation 200 in 101ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 14ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 15ms
+ GET /posts/disaster-recovery-plan-drill 200 in 60ms
+[23:37:59] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts?category=digital-transformation 200 in 100ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 23ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 24ms
+ GET /posts?category=digital-transformation 200 in 94ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 18ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 19ms
+ GET /posts?category=digital-transformation 200 in 96ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 16ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 17ms
+ GET /posts?category=digital-transformation 200 in 74ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 15ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 15ms
+ GET /posts?category=digital-transformation 200 in 95ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 16ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 19ms
+ GET /posts?category=digital-transformation 200 in 80ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 17ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 18ms
+ GET /posts?category=digital-transformation 200 in 100ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 21ms
+ GET /api/media/file/blog-hero-it-audit-compliance-segregation-of-duties.png?2025-12-27T15%3A42%3A02.618Z 200 in 21ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 21ms
+ GET /posts?category=digital-transformation 200 in 108ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 24ms
+ GET /api/media/file/blog-hero-it-audit-compliance-segregation-of-duties.png?2025-12-27T15%3A42%3A02.618Z 200 in 24ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 24ms
+ GET /posts?category=digital-transformation 200 in 85ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 17ms
+ GET /api/media/file/blog-hero-it-audit-compliance-segregation-of-duties.png?2025-12-27T15%3A42%3A02.618Z 200 in 16ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 17ms
+ GET /posts?category=digital-transformation 200 in 97ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 19ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 19ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 19ms
+ GET /posts?category=digital-transformation 200 in 99ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 19ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 19ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 19ms
+ GET /posts?category=digital-transformation 200 in 63ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 16ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 16ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 16ms
+ GET /posts?category=digital-transformation 200 in 125ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 25ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 27ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 28ms
+ GET /posts?category=digital-transformation 200 in 132ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 30ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 41ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 42ms
+ GET /api/media/file/blog-hero-694fe188694f357894794378.png?2025-12-27T23%3A47%3A15.099Z 200 in 22ms
+ GET /posts/user-training-best-practices 200 in 53ms
+[07:49:09] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts?category=digital-transformation 200 in 108ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 20ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 21ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 21ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6b8.png?2025-12-27T23%3A49%3A36.234Z 200 in 19ms
+ GET /api/media/file/blog-hero-694fe188694f357894794378.png?2025-12-27T23%3A47%3A15.099Z 200 in 23ms
+ GET /api/media/file/blog-hero-694fe188694f35789479435e.png?2025-12-27T23%3A48%3A53.683Z 200 in 23ms
+ GET /posts?category=digital-transformation 200 in 112ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 29ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 30ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 31ms
+ GET /api/media/file/blog-hero-694fe188694f35789479435e.png?2025-12-27T23%3A48%3A53.683Z 200 in 31ms
+ GET /api/media/file/blog-hero-694fe188694f357894794378.png?2025-12-27T23%3A47%3A15.099Z 200 in 32ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6b8.png?2025-12-27T23%3A49%3A36.234Z 200 in 16ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6ab.png?2025-12-27T23%3A50%3A23.183Z 200 in 18ms
+ GET /posts?category=digital-transformation 200 in 96ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 24ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 26ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 26ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b69e.png?2025-12-27T23%3A51%3A03.344Z 200 in 19ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6ab.png?2025-12-27T23%3A50%3A23.183Z 200 in 19ms
+ GET /api/media/file/blog-hero-694fe188694f357894794378.png?2025-12-27T23%3A47%3A15.099Z 200 in 20ms
+ GET /api/media/file/blog-hero-694fe188694f35789479435e.png?2025-12-27T23%3A48%3A53.683Z 200 in 24ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6b8.png?2025-12-27T23%3A49%3A36.234Z 200 in 19ms
+ GET /posts?category=digital-transformation 200 in 109ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 27ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 31ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 31ms
+ GET /api/media/file/blog-hero-694fe188694f35789479435e.png?2025-12-27T23%3A48%3A53.683Z 200 in 31ms
+ GET /api/media/file/blog-hero-694fe188694f357894794378.png?2025-12-27T23%3A47%3A15.099Z 200 in 31ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6ab.png?2025-12-27T23%3A50%3A23.183Z 200 in 21ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b691.png?2025-12-27T23%3A57%3A05.653Z 200 in 18ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b69e.png?2025-12-27T23%3A51%3A03.344Z 200 in 19ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6b8.png?2025-12-27T23%3A49%3A36.234Z 200 in 18ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b668.png?2025-12-27T23%3A57%3A37.962Z 200 in 16ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c58278783d.png?2025-12-27T23%3A58%3A08.896Z 200 in 16ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c582787830.png?2025-12-27T23%3A58%3A44.544Z 200 in 17ms
+ GET /posts/page/2 200 in 56ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c582787823.png?2025-12-27T23%3A59%3A19.966Z 200 in 27ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c582787814.png?2025-12-27T23%3A59%3A52.626Z 200 in 29ms
+ GET /api/media/file/blog-hero-694fe07745cbc637ffbefb86.png?2025-12-28T00%3A00%3A53.246Z 200 in 29ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c5827877f1.png?2025-12-28T00%3A00%3A22.551Z 200 in 29ms
+[08:01:14] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/2 200 in 116ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c582787823.png?2025-12-27T23%3A59%3A19.966Z 200 in 30ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c582787814.png?2025-12-27T23%3A59%3A52.626Z 200 in 32ms
+ GET /api/media/file/blog-hero-694fe07745cbc637ffbefb86.png?2025-12-28T00%3A00%3A53.246Z 200 in 32ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c5827877f1.png?2025-12-28T00%3A00%3A22.551Z 200 in 32ms
+ GET /api/media/file/blog-hero-694fe07745cbc637ffbefb79.png?2025-12-28T00%3A01%3A29.298Z 200 in 33ms
+ GET /api/media/file/blog-hero-694fe07745cbc637ffbefb5d.png?2025-12-28T00%3A03%3A28.657Z 200 in 14ms
+ GET /api/media/file/blog-hero-694fe07745cbc637ffbefb6a.png?2025-12-28T00%3A02%3A58.887Z 200 in 16ms
+[08:08:14] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/predictive-maintenance-why-fix-if-not-broken 200 in 61ms
+[08:08:21] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/3 200 in 45ms
+[08:08:40] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/1 200 in 57ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 34ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 49ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6b8.png?2025-12-27T23%3A49%3A36.234Z 200 in 48ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 80ms
+ GET /api/media/file/blog-hero-694fe188694f357894794378.png?2025-12-27T23%3A47%3A15.099Z 200 in 79ms
+ GET /api/media/file/blog-hero-694fe188694f35789479435e.png?2025-12-27T23%3A48%3A53.683Z 200 in 80ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6ab.png?2025-12-27T23%3A50%3A23.183Z 200 in 40ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b691.png?2025-12-27T23%3A57%3A05.653Z 200 in 52ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b69e.png?2025-12-27T23%3A51%3A03.344Z 200 in 52ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b668.png?2025-12-27T23%3A57%3A37.962Z 200 in 53ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c58278783d.png?2025-12-27T23%3A58%3A08.896Z 200 in 53ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c582787830.png?2025-12-27T23%3A58%3A44.544Z 200 in 53ms
+[08:15:32] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/roi-post-implementation-review 200 in 43ms
+[08:15:34] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ○ Compiling / ...
+ ✓ Compiled / in 834ms (2472 modules)
+ GET / 200 in 1334ms
+ GET /posts 200 in 66ms
+ ✓ Compiled /api/[...slug] in 220ms (2141 modules)
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6ab.png?2025-12-27T23%3A50%3A23.183Z 200 in 413ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 414ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6b8.png?2025-12-27T23%3A49%3A36.234Z 200 in 414ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 415ms
+ GET /api/media/file/blog-hero-694fe188694f357894794378.png?2025-12-27T23%3A47%3A15.099Z 200 in 416ms
+ GET /api/media/file/blog-hero-694fe188694f35789479435e.png?2025-12-27T23%3A48%3A53.683Z 200 in 416ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b69e.png?2025-12-27T23%3A51%3A03.344Z 200 in 34ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b691.png?2025-12-27T23%3A57%3A05.653Z 200 in 40ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c58278783d.png?2025-12-27T23%3A58%3A08.896Z 200 in 39ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b668.png?2025-12-27T23%3A57%3A37.962Z 200 in 41ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c582787830.png?2025-12-27T23%3A58%3A44.544Z 200 in 40ms
+ GET /posts/page/2 200 in 86ms
+[08:16:46] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 587ms (2479 modules)
+ GET /_next/static/media/payload-favicon-dark.c322d81c.png 404 in 746ms
+ GET /posts/page/2 200 in 429ms
+ ✓ Compiled /api/[...slug] in 476ms (2141 modules)
+ GET /api/media/file/blog-hero-mes-implementation-dilemma-3.png?2025-12-28T09%3A08%3A16.485Z 200 in 738ms
+ GET /api/media/file/blog-hero-bullwhip-effect-supply-chain-collaboration.png?2025-12-28T09%3A08%3A37.416Z 200 in 740ms
+ GET /api/media/file/blog-hero-reverse-logistics-nightmare.png?2025-12-28T09%3A08%3A40.475Z 200 in 740ms
+ GET /api/media/file/blog-hero-694fe0199e26f43782080f57.png?2025-12-28T00%3A18%3A50.474Z 200 in 604ms
+ GET /api/media/file/blog-hero-694fe0199e26f43782080f4a.png?2025-12-28T00%3A19%3A47.325Z 200 in 690ms
+[17:12:06] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/3 200 in 96ms
+ GET /api/media/file/blog-hero-kitting-rate-vs-on-time-delivery.png?2025-12-28T09%3A09%3A37.819Z 200 in 22ms
+ GET /api/media/file/blog-hero-sales-forecast-accuracy-dilemma.png?2025-12-28T09%3A10%3A38.830Z 200 in 23ms
+[17:12:10] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/3 200 in 343ms
+ GET /api/media/file/blog-hero-kitting-rate-vs-on-time-delivery.png?2025-12-28T09%3A09%3A37.819Z 200 in 35ms
+ GET /api/media/file/blog-hero-supplier-relationship-management-beyond-price.png?2025-12-28T09%3A12%3A19.020Z 200 in 39ms
+ GET /api/media/file/blog-hero-sales-forecast-accuracy-dilemma.png?2025-12-28T09%3A10%3A38.830Z 200 in 39ms
+[17:14:47] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/page/1 200 in 43ms
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 30ms
+ GET /api/media/file/blog-hero-694fe188694f357894794387.png?2025-12-27T15%3A43%3A12.011Z 200 in 31ms
+ GET /api/media/file/blog-hero-disaster-recovery-plan-drill.png?2025-12-27T15%3A36%3A46.245Z 200 in 31ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6b8.png?2025-12-27T23%3A49%3A36.234Z 200 in 32ms
+ GET /api/media/file/blog-hero-694fe188694f35789479435e.png?2025-12-27T23%3A48%3A53.683Z 200 in 33ms
+ GET /api/media/file/blog-hero-694fe188694f357894794378.png?2025-12-27T23%3A47%3A15.099Z 200 in 36ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b6ab.png?2025-12-27T23%3A50%3A23.183Z 200 in 24ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b69e.png?2025-12-27T23%3A51%3A03.344Z 200 in 32ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b668.png?2025-12-27T23%3A57%3A37.962Z 200 in 33ms
+ GET /api/media/file/blog-hero-694fe128cf3ea348e471b691.png?2025-12-27T23%3A57%3A05.653Z 200 in 33ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c58278783d.png?2025-12-27T23%3A58%3A08.896Z 200 in 33ms
+ GET /api/media/file/blog-hero-694fe0caba9ad4c582787830.png?2025-12-27T23%3A58%3A44.544Z 200 in 34ms
+[17:14:53] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/roi-post-implementation-review 200 in 80ms
+[17:14:55] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/disaster-recovery-plan-drill 200 in 44ms
+[17:15:01] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts 200 in 114ms
+ GET /posts/roi-post-implementation-review 200 in 64ms
+[17:17:10] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts?category=digital-transformation 200 in 50ms
+ GET /posts/page/8 200 in 49ms
+ GET /api/media/file/engine_vs_broken_gears_isometric_1766837712076.png?2025-12-27T12%3A15%3A36.363Z 200 in 34ms
+ GET /api/media/file/erp_organization_friction_abstract_1766837692443.png?2025-12-27T12%3A15%3A36.257Z 200 in 33ms
+ GET /api/media/file/system_vs_management_split_1766837868761.png?2025-12-27T12%3A19%3A02.073Z 200 in 35ms
+ GET /api/media/file/b2b-hero.png?2025-12-27T10%3A50%3A50.868Z 200 in 33ms
+ GET /api/media/file/chip-testing-hero.png?2025-12-20T00%3A49%3A51.984Z 200 in 33ms
+[17:18:09] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /posts/chip-testing-digital-transformation 200 in 53ms
+[17:18:13] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /api/media/file/engine_vs_broken_gears_isometric_1766837712076.png?2025-12-27T12%3A15%3A36.363Z 200 in 20ms
+ GET /api/media/file/b2b-hero.png?2025-12-27T10%3A50%3A50.868Z 200 in 22ms
+ GET /api/media/file/erp_organization_friction_abstract_1766837692443.png?2025-12-27T12%3A15%3A36.257Z 200 in 22ms
+ GET /api/media/file/system_vs_management_split_1766837868761.png?2025-12-27T12%3A19%3A02.073Z 200 in 22ms
+ GET /posts/yonyou-shanghai-agent-boran 200 in 48ms
+[17:18:16] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 682ms (2472 modules)
+ ✓ Compiled in 252ms (2472 modules)
+ ✓ Compiled in 626ms (2472 modules)
+ ✓ Compiled in 267ms (2472 modules)
+ ✓ Compiled in 665ms (2472 modules)
+ ✓ Compiled in 319ms (2472 modules)
+ ✓ Compiled in 651ms (2472 modules)
+ ✓ Compiled in 258ms (2472 modules)
+ ✓ Compiled in 666ms (2472 modules)
+ ✓ Compiled in 655ms (2472 modules)
+ ✓ Compiled in 697ms (2472 modules)
+ ✓ Compiled in 255ms (2472 modules)
+ ✓ Compiled in 487ms (2472 modules)
+ ✓ Compiled in 266ms (2472 modules)
+ ✓ Compiled in 1411ms (2472 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 687ms (2479 modules)
+ GET /_next/static/media/payload-favicon-dark.c322d81c.png 404 in 835ms
+ ✓ Compiled in 640ms (939 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 228ms
+[19:43:52] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 371ms (939 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 148ms
+[19:44:57] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 275ms (939 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 79ms
+[19:44:59] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 266ms (939 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 75ms
+[19:45:30] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 294ms (939 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 76ms
+[19:45:32] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 288ms (939 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 124ms
+[19:46:01] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 285ms (939 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 82ms
+[19:46:08] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 373ms (939 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 147ms
+[19:46:10] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 349ms (939 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 107ms
+[19:46:35] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 260ms (939 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 120ms
+[19:46:37] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 1058ms (2472 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 1023ms
+ GET /posts/yonyou-shanghai-agent-boran 200 in 68ms
+[19:46:40] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 837ms (2486 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /posts/yonyou-shanghai-agent-boran 200 in 232ms
+[19:46:53] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled /_not-found in 353ms (2479 modules)
+ GET /_next/static/media/payload-favicon-dark.c322d81c.png 404 in 502ms
+ ○ Compiling /products/bpm ...
+ ✓ Compiled /products/bpm in 1358ms (2566 modules)
+ GET /products/bpm 200 in 1571ms
+ GET /products/bpm 200 in 20ms
+ ✓ Compiled /_not-found in 253ms (2573 modules)
+ GET /Users/user/.gemini/antigravity/brain/0d34b4fc-9b2a-4e30-beb1-2a3e0f93d7be/bpm_hero_visual_1766922268021.png 404 in 392ms
+ GET /products/bpm 200 in 322ms
+ GET /Users/user/.gemini/antigravity/brain/0d34b4fc-9b2a-4e30-beb1-2a3e0f93d7be/bpm_hero_visual_1766922268021.png 404 in 16ms
+ GET /Users/user/.gemini/antigravity/brain/0d34b4fc-9b2a-4e30-beb1-2a3e0f93d7be/bpm_hero_visual_1766922268021.png 404 in 31ms
+ GET /products/bpm 200 in 124ms
+ GET /Users/user/.gemini/antigravity/brain/0d34b4fc-9b2a-4e30-beb1-2a3e0f93d7be/bpm_hero_visual_1766922268021.png 404 in 19ms
+ GET /Users/user/.gemini/antigravity/brain/0d34b4fc-9b2a-4e30-beb1-2a3e0f93d7be/bpm_hero_visual_1766922268021.png 404 in 12ms
+ ✓ Compiled in 725ms (2587 modules)
+ GET /products/bpm 200 in 161ms
+ GET /_next/static/media/payload-favicon-dark.c322d81c.png 404 in 64ms
+ ✓ Compiled in 369ms (983 modules)
+ GET /products/bpm 200 in 44ms
+ ✓ Compiled in 282ms (979 modules)
+ GET /products/bpm 200 in 20ms
+ ✓ Compiled in 272ms (979 modules)
+ GET /products/bpm 200 in 17ms
+ ✓ Compiled in 259ms (979 modules)
+ GET /products/bpm 200 in 30ms
+ ✓ Compiled /_not-found in 357ms (2573 modules)
+ GET /_next/static/media/payload-favicon-dark.c322d81c.png 404 in 452ms
+ ✓ Compiled in 282ms (983 modules)
+ GET /products/bpm 200 in 128ms
+ ✓ Compiled in 266ms (983 modules)
+ GET /products/bpm 200 in 18ms
+ ✓ Compiled in 265ms (983 modules)
+ GET /products/bpm 200 in 22ms
+ ✓ Compiled in 290ms (983 modules)
+ GET /products/bpm 200 in 16ms
+ ✓ Compiled in 263ms (983 modules)
+ GET /products/bpm 200 in 18ms
+ ✓ Compiled in 278ms (983 modules)
+ GET /products/bpm 200 in 19ms
+ ✓ Compiled in 1026ms (2573 modules)
+ GET /products/bpm 200 in 896ms
+ GET /products/bpm 200 in 16ms
+ ✓ Compiled in 575ms (2580 modules)
+ GET /products/bpm 200 in 154ms
+ ✓ Compiled in 292ms (979 modules)
+ GET /products/bpm 200 in 17ms
+ ○ Compiling /products/contract-management ...
+ ✓ Compiled /products/contract-management in 1095ms (2620 modules)
+ GET /products/contract-management 200 in 1304ms
+ ✓ Compiled in 751ms (2628 modules)
+ GET /products/contract-management 200 in 203ms
+ GET /products/contract-management 200 in 324ms
+ GET /products/contract-management 200 in 166ms
+ GET /products/contract-management 200 in 173ms
+ GET /products/contract-management 200 in 170ms
+ GET /products/contract-management 200 in 173ms
+ GET /products/contract-management 200 in 149ms
+ ✓ Compiled in 354ms (986 modules)
+ GET /products/contract-management 200 in 108ms
+ ✓ Compiled in 342ms (986 modules)
+ GET /products/contract-management 200 in 56ms
+ ✓ Compiled in 282ms (986 modules)
+ GET /products/contract-management 200 in 49ms
+ ✓ Compiled in 273ms (986 modules)
+ GET /products/contract-management 200 in 83ms
+ ✓ Compiled in 310ms (986 modules)
+ GET /products/contract-management 200 in 55ms
+ ✓ Compiled in 270ms (986 modules)
+ GET /products/contract-management 200 in 51ms
+ ✓ Compiled in 261ms (986 modules)
+ GET /products/contract-management 200 in 50ms
+ ✓ Compiled in 273ms (986 modules)
+ GET /products/contract-management 200 in 49ms
+ ✓ Compiled in 312ms (986 modules)
+ GET /products/contract-management 200 in 77ms
+ ✓ Compiled in 291ms (986 modules)
+ GET /products/contract-management 200 in 53ms
+ ✓ Compiled in 1152ms (2628 modules)
+ GET /products/contract-management 200 in 1136ms
+ GET /products/contract-management 200 in 50ms
+ ✓ Compiled in 611ms (2628 modules)
+ GET /products/contract-management 200 in 217ms
+ ✓ Compiled in 283ms (986 modules)
+ GET /products/contract-management 200 in 52ms
+ ✓ Compiled in 281ms (986 modules)
+ GET /products/contract-management 200 in 53ms
+ ✓ Compiled in 291ms (986 modules)
+ GET /products/contract-management 200 in 48ms
+ ✓ Compiled in 311ms (986 modules)
+ GET /products/contract-management 200 in 81ms
+ ○ Compiling /products/expense-management ...
+ ✓ Compiled /products/expense-management in 1264ms (2683 modules)
+ GET /products/expense-management 200 in 1437ms
+ ✓ Compiled /_not-found in 346ms (2671 modules)
+ GET /_next/static/media/payload-favicon-dark.c322d81c.png 404 in 519ms
+ ✓ Compiled in 577ms (2685 modules)
+ GET /products/expense-management 200 in 157ms
+ GET /products/project-collaboration 404 in 25ms
+ GET /products/project-collaboration 404 in 58ms
+ GET /products/expense-management 200 in 189ms
+ GET /products/project-collaboration 404 in 12ms
+ GET /products/project-collaboration 404 in 22ms
+ GET /products/expense-management 200 in 108ms
+ ✓ Compiled in 380ms (1014 modules)
+ GET /products/expense-management 200 in 50ms
+ ✓ Compiled in 302ms (1014 modules)
+ GET /products/expense-management 200 in 25ms
+ ✓ Compiled in 269ms (1014 modules)
+ GET /products/expense-management 200 in 22ms
+ ✓ Compiled in 273ms (1014 modules)
+ GET /products/expense-management 200 in 20ms
+ ✓ Compiled in 280ms (1014 modules)
+ GET /products/expense-management 200 in 35ms
+ ✓ Compiled in 292ms (1014 modules)
+ GET /products/expense-management 200 in 21ms
+ ✓ Compiled in 275ms (1014 modules)
+ GET /products/expense-management 200 in 20ms
+ ✓ Compiled in 275ms (1014 modules)
+ GET /products/expense-management 200 in 25ms
+ ✓ Compiled in 281ms (1014 modules)
+ GET /products/expense-management 200 in 18ms
+ ✓ Compiled in 317ms (1014 modules)
+ GET /products/expense-management 200 in 35ms
+ ✓ Compiled in 1187ms (2678 modules)
+ GET /products/expense-management 200 in 1109ms
+ GET /products/expense-management 200 in 21ms
+ ✓ Compiled in 640ms (2678 modules)
+ GET /products/expense-management 200 in 207ms
+ ○ Compiling /products/project-collaboration ...
+ ⨯ ./src/app/(frontend)/products/project-collaboration/FAQ.tsx:2:1
+Module not found: Can't resolve '@/components/ui/accordion'
+  1 | import React from 'react'
+> 2 | import {
+    | ^
+  3 |   Accordion,
+  4 |   AccordionContent,
+  5 |   AccordionItem,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/app/(frontend)/products/project-collaboration/page.tsx
+ ⨯ ./src/app/(frontend)/products/project-collaboration/FAQ.tsx:2:1
+Module not found: Can't resolve '@/components/ui/accordion'
+  1 | import React from 'react'
+> 2 | import {
+    | ^
+  3 |   Accordion,
+  4 |   AccordionContent,
+  5 |   AccordionItem,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/app/(frontend)/products/project-collaboration/page.tsx
+ GET /products/project-collaboration 500 in 1398ms
+ GET /products/project-collaboration 500 in 7ms
+ ✓ Compiled /_not-found in 759ms (2672 modules)
+ GET /_next/static/webpack/f3fe4f58eee3d738.webpack.hot-update.json 404 in 868ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ✓ Compiled /products/project-collaboration in 415ms (2704 modules)
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /_next/static/webpack/f3fe4f58eee3d738.webpack.hot-update.json 404 in 431ms
+ GET /images/solutions/project-management-hero.webp 404 in 22ms
+ GET /products/project-collaboration 200 in 905ms
+ ○ Compiling /[slug] ...
+ ✓ Compiled /[slug] in 1677ms (2996 modules)
+[20:38:12] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Generating import map
+No new imports found, skipping writing import map
+ GET /cases 200 in 3112ms
+[20:38:13] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled /_not-found in 306ms (2977 modules)
+ GET /images/solutions/project-management-hero.webp 404 in 452ms
+ GET /about 200 in 130ms
+[20:38:21] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ GET /images/solutions/project-management-hero.webp 404 in 31ms
+ ✓ Compiled / in 215ms (1845 modules)
+ GET / 200 in 364ms
+ ○ Compiling /api/[...slug] ...
+ ✓ Compiled /api/[...slug] in 611ms (2439 modules)
+ GET /api/media/file/unclear_rules_digital_tangle_1766837885870.png?2025-12-27T12%3A19%3A02.205Z 200 in 777ms
+ GET /cases/mayoly-pharmaceutical-success-story 404 in 49ms
+ GET /cases/mayoly-pharmaceutical-success-story 404 in 57ms
+ GET / 200 in 239ms
+ GET /solution/semiconductor-ic-solution 404 in 25ms
+ GET /solution/semiconductor-ic-solution 404 in 23ms
+ GET / 200 in 180ms
+ GET /solution/bio-pharmaceutical-solution 404 in 12ms
+ GET /solution/bio-pharmaceutical-solution 404 in 21ms
+ GET / 200 in 140ms
+ GET /about 200 in 52ms
+[20:39:16] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ✓ Compiled in 1175ms (2955 modules)
+ ✓ Compiled in 716ms (1168 modules)
+Generating import map
+No new imports found, skipping writing import map
+ GET /about 200 in 271ms
+[20:43:53] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+ ○ Compiling /about ...
+ ✓ Compiled /about in 1665ms (2971 modules)
+ GET /about 200 in 1549ms
+ GET /about 200 in 10ms
+ ✓ Compiled in 526ms (2940 modules)
+ GET /about 200 in 83ms
+ ⨯ ./src/app/(frontend)/about/page.content.tsx
+Error:   [31mx[0m Unterminated regexp literal
+     ,-[[36;1;4m/Users/user/iboran/src/app/(frontend)/about/page.content.tsx[0m:382:1]
+ [2m379[0m |       
+ [2m380[0m |       {/* Demo Modal */}
+ [2m381[0m |       <DemoRequestModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
+ [2m382[0m |     </div>
+     : [35;1m     ^^^^^[0m
+ [2m383[0m |   )
+ [2m384[0m | }
+     `----
+  [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/user/iboran/src/app/(frontend)/about/page.content.tsx[0m:382:1]
+ [2m379[0m |       
+ [2m380[0m |       {/* Demo Modal */}
+ [2m381[0m |       <DemoRequestModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
+ [2m382[0m |     </div>
+     : [35;1m      ^^^^[0m
+ [2m383[0m |   )
+ [2m384[0m | }
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/(frontend)/about/page.content.tsx
+./src/app/(frontend)/about/page.tsx
+ ✓ Compiled in 881ms (2926 modules)
+ GET /about 200 in 342ms
+ ✓ Compiled in 876ms (2940 modules)
+ GET /about 200 in 100ms
+ ✓ Compiled in 1402ms (2941 modules)
+ GET /about 200 in 94ms
+ GET /about 200 in 179ms
+ ✓ Compiled in 1029ms (2941 modules)
+ GET /about 200 in 200ms

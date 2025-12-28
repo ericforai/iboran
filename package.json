@@ -19,7 +19,14 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --no-experimental-strip-types\" pnpm exec playwright test --config=playwright.config.ts",
-    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
+    "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
+    "pseo:config": "tsx scripts/pseo-config-generator.ts",
+    "pseo:keywords": "tsx scripts/pseo-keywords-generator.ts",
+    "pseo:schema": "tsx scripts/pseo-schema-generator.ts",
+    "pseo:render": "tsx scripts/pseo-page-renderer.ts",
+    "pseo:review": "tsx scripts/pseo-review.ts",
+    "pseo:import": "tsx scripts/pseo-import-to-blog.ts",
+    "pseo:publish": "tsx scripts/pseo-auto-publish.ts"
   },
   "dependencies": {
     "@payloadcms/admin-bar": "3.68.5",

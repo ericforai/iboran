@@ -168,23 +168,6 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
         equals: slug,
       },
     },
-    select: {
-      title: true,
-      slug: true,
-      content: true,
-      meta: true,
-      tldr: true,
-      atomicFAQs: true,
-      decisionFramework: true,
-      boundaries: true,
-      heroImage: true,
-      publishedAt: true,
-      updatedAt: true,
-      createdAt: true,
-      categories: true,
-      authors: true,
-      relatedPosts: true,
-    }
   })
 
   return result.docs?.[0] || null

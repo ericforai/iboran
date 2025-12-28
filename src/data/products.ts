@@ -83,21 +83,27 @@ export const productCategories: ProductCategory[] = [
       },
       { 
         label: 'BPM 流程引擎', 
-        href: '/products/workflow', 
+        href: '/products/bpm', 
         desc: '灵活配置企业业务流程，实现端到端闭环', 
         icon: Workflow 
       },
       { 
-        label: '费控与商旅', 
-        href: '/products/expense', 
-        desc: '全流程费用管控，合规透明，降本增效', 
+        label: '费控管理系统', 
+        href: '/products/expense-management', 
+        desc: '业财一体化费控方案，集成 1400+ 银行，票据自动归集', 
         icon: FileText 
       },
       { 
         label: '项目协同管理', 
         href: '/products/project-collaboration', 
-        desc: '项目全生命周期管理，进度、成本实时可视', 
+        desc: '项目全生命周期管理，实现进度、成本与资源实时可视', 
         icon: Share2 
+      },
+      { 
+        label: '合同管理系统', 
+        href: '/products/contract-management', 
+        desc: '合同全生命周期数智化管理，规避风险提升效率', 
+        icon: FileText 
       },
     ]
   },
