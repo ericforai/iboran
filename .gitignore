@@ -34,3 +34,8 @@ package-lock.json
 
 # 行业解决方案
 docs/行业解决方案/
+
+# Temporary files and logs
+*.log
+all_posts_dump.txt
+missing_images_list.txt

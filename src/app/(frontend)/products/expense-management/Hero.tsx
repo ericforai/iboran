@@ -6,63 +6,78 @@ import { MoveRight, PhoneCall } from 'lucide-react'
 
 export const Hero = () => {
   return (
-    <section className="relative bg-slate-50 py-20 lg:py-32 overflow-hidden">
-      <div className="container px-4 mx-auto relative z-10">
+    <section className="relative bg-[#F8FAFC] py-16 lg:py-24 overflow-hidden border-b border-slate-50">
+      <div className="container px-4 mx-auto">
         <div className="flex flex-wrap items-center -mx-4">
-          <div className="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
-            <div className="max-w-xl">
-              <span className="inline-block py-1 px-3 mb-4 text-xs font-semibold text-blue-600 bg-blue-50 rounded-full uppercase tracking-widest">
+          <div className="w-full lg:w-3/5 px-4 mb-12 lg:mb-0">
+            <div className="max-w-2xl">
+              <span className="inline-block py-1.5 px-4 mb-6 text-[10px] font-bold text-blue-600 bg-blue-50 rounded-full uppercase tracking-[0.2em]">
                 致远费控管理解决方案
               </span>
-              <h1 className="text-4xl lg:text-5xl font-bold font-heading mb-6 leading-tight">
+              <h1 className="text-4xl lg:text-6xl font-bold font-heading mb-8 leading-[1.15] text-slate-900 font-display">
                 数智化强劲赋能 <br />
                 <span className="text-blue-600">打破业财管理壁垒</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+              <p className="text-lg text-slate-500 mb-12 leading-loose max-w-xl">
                 融合协同、费控、财务系统，实现从预算、报销、票据到商旅、支付、档案的全链条闭环管理，提升财务效率 [30]% 以上。
               </p>
-              <div className="flex flex-wrap items-center gap-4">
-                <Button className="bg-red-600 hover:bg-red-700 text-white px-8 py-6 text-lg rounded-md group">
+              <div className="flex flex-wrap items-center gap-5 mb-12">
+                <Button className="bg-[#E62E2D] hover:bg-[#CC2928] text-white h-14 px-10 text-base font-bold rounded-lg group shadow-xl shadow-red-600/20 transition-all duration-300 hover:-translate-y-1">
                   预约专家演示
                   <MoveRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-6 text-lg rounded-md">
+                <Button variant="outline" className="bg-white/50 backdrop-blur-sm border-blue-600 text-blue-600 hover:bg-blue-50 h-14 px-10 text-base font-bold rounded-lg border-2 transition-all duration-300 hover:-translate-y-1">
                   获取报价清单
                   <PhoneCall className="ml-2 h-5 w-5" />
                 </Button>
               </div>
-              <div className="mt-10 flex items-center gap-8 text-sm text-gray-500">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>1400+ 银行直联</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>自动化凭证生成</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>电子档案合规</span>
-                </div>
+              <div className="flex items-center gap-10 text-[13px] font-medium text-slate-400">
+                <span className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                  1400+ 银行直联
+                </span>
+                <span className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                  自动化凭证生成
+                </span>
+                <span className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                  电子档案合规
+                </span>
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 px-4">
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+          <div className="w-full lg:w-2/5 px-4">
+            <div className="relative group">
+              {/* 核心产品图 - 采用 mix-blend-multiply 或 match 背景来实现无缝融合 */}
+              <div className="relative z-10 flex justify-center items-center animate-float">
                 <img
-                  src="/banner-hero-v2.png"
+                  src="/expense-management-hero.png"
                   alt="费控管理系统架构"
-                  className="w-full h-auto object-cover"
+                  className="w-full h-auto max-w-md lg:max-w-none mix-blend-multiply transition-all duration-700 group-hover:scale-105 drop-shadow-[0_30px_60px_rgba(0,0,0,0.12)]"
                 />
               </div>
-              {/* 装饰元素 */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-blue-600/10 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-red-600/10 rounded-full blur-3xl animate-pulse"></div>
+              
+              {/* 浮动装饰效果 */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] -z-10 bg-radial-gradient">
+                <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-blue-400/20 rounded-full blur-[120px] animate-pulse"></div>
+                <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-red-400/10 rounded-full blur-[120px] animate-pulse [animation-delay:2s]"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      
+      {/* 自定义动画样式 */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   )
 }

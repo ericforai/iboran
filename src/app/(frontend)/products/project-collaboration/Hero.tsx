@@ -46,7 +46,7 @@ export const Hero = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-brand-blue/5 rounded-3xl transform rotate-2"></div>
               <img
-                src="/images/solutions/project-management-hero.webp"
+                src="/images/solutions/project-management-hero.png"
                 alt="项目协同管理架构图"
                 className="relative z-10 w-full h-auto rounded-2xl shadow-2xl border border-gray-100"
               />

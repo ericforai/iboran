@@ -695,3 +695,4 @@ Import trace for requested module:
  GET /about 200 in 179ms
  ✓ Compiled in 1029ms (2941 modules)
  GET /about 200 in 200ms
+[?25h

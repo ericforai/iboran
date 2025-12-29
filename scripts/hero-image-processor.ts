@@ -35,8 +35,8 @@ async function processHero() {
 
   console.log(`Uploaded media ID: ${media.id}`)
 
-  // 2. Find Post
-  let postId: string | number | undefined
+  // 2. Find Posts
+  let postIds: (string | number)[] = []
   
   // Try finding by slug
   const postsBySlug = await payload.find({
@@ -46,11 +46,12 @@ async function processHero() {
         equals: slugOrId,
       },
     },
+    limit: 100,
   })
 
   if (postsBySlug.docs.length > 0) {
-    postId = postsBySlug.docs[0].id
-    console.log(`Found post by slug: ${slugOrId} -> ID: ${postId}`)
+    postIds = postsBySlug.docs.map(doc => doc.id)
+    console.log(`Found ${postIds.length} post(s) by slug: ${slugOrId}`)
   } else {
     // Try finding by ID
     try {
@@ -59,37 +60,50 @@ async function processHero() {
         id: slugOrId,
       })
       if (postById) {
-        postId = postById.id
+        postIds = [postById.id]
         console.log(`Found post by ID: ${slugOrId}`)
       }
     } catch (e) {
-      // Ignore error
+      // Try finding by ID using find and where
+      const postsById = await payload.find({
+        collection: 'posts',
+        where: {
+          id: {
+            equals: slugOrId
+          }
+        }
+      })
+      if (postsById.docs.length > 0) {
+        postIds = postsById.docs.map(doc => doc.id)
+        console.log(`Found post by ID using query: ${slugOrId}`)
+      }
     }
   }
 
-  if (!postId) {
+  if (postIds.length === 0) {
     console.error(`Could not find post with slug or ID: ${slugOrId}`)
     process.exit(1)
   }
 
-  // 3. Update Post
-  try {
-    await payload.update({
-      collection: 'posts',
-      id: postId,
-      data: {
-        heroImage: media.id,
-      },
-      context: {
-        disableRevalidate: true,
-      },
-    })
-    console.log(`Successfully updated post ${postId} with hero image ${media.id}`)
-    process.exit(0)
-  } catch (e: any) {
-    console.error(`Update failed for ${postId}: ${e.message}`)
-    process.exit(1)
+  // 3. Update Posts
+  for (const id of postIds) {
+    try {
+      await payload.update({
+        collection: 'posts',
+        id: id,
+        data: {
+          heroImage: media.id,
+        },
+        context: {
+          disableRevalidate: true,
+        },
+      })
+      console.log(`Successfully updated post ${id} with hero image ${media.id}`)
+    } catch (e: any) {
+      console.error(`Update failed for ${id}: ${e.message}`)
+    }
   }
+  process.exit(0)
 }
 
 processHero().catch(console.error)
