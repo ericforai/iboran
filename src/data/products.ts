@@ -105,6 +105,18 @@ export const productCategories: ProductCategory[] = [
         desc: '合同全生命周期数智化管理，规避风险提升效率', 
         icon: FileText 
       },
+      { 
+        label: '采购管理', 
+        href: '/products/procurement-management', 
+        desc: '数字化采购管理平台，实现从请购到支付的全流程闭环', 
+        icon: Layers 
+      },
+      { 
+        label: '致远薪事力', 
+        href: '/products/hr-salary-management', 
+        desc: '全模块人力资源管理云平台，随需应变，算薪更简单', 
+        icon: Users 
+      },
     ]
   },
   {
