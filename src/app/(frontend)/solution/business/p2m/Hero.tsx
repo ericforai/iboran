@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
+import P2MDashboardMockup from './P2MDashboardMockup'
 
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
@@ -56,14 +57,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:w-1/2 relative"
             >
-              <div className="relative z-10 bg-white p-4 rounded-2xl shadow-2xl border border-slate-100">
-                <div className="aspect-[4/3] bg-slate-100 rounded-xl overflow-hidden flex items-center justify-center">
-                   {/* Placeholder for an image or graphic */}
-                   <div className="text-center p-8">
-                     <div className="w-16 h-1 bg-[#E60012] mx-auto mb-4" />
-                     <p className="text-slate-400 font-medium">智能制造全景架构图</p>
-                   </div>
-                </div>
+              <div className="relative z-10">
+                 <P2MDashboardMockup />
               </div>
               {/* Decorative dots */}
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[radial-gradient(#0052D9_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
