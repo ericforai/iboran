@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Hero from './Hero'
 import PainPoints from './PainPoints'
+import HowItWorks from './HowItWorks'
 import Features from './Features'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
@@ -20,6 +21,7 @@ export default function PLMSolutionPage() {
     <>
       <Hero />
       <PainPoints />
+      <HowItWorks />
       <Features />
       <ValueSection />
       <CTASection />

@@ -36,7 +36,7 @@ const specs = [
     icon: <Share2 className="w-6 h-6" />,
     items: [
       { label: 'API 接口', value: 'OpenAPI 标准' },
-      { label: '集成中心', value: 'iPaaS 集成能力' },
+      { label: '集成中心', value: 'LINK 集成能力' },
       { label: '适配器', value: '500+ 标准适配器' }
     ]
   }

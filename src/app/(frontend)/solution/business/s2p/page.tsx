@@ -2,6 +2,8 @@ import { Metadata } from 'next'
 import Hero from './Hero'
 import PainPoints from './PainPoints'
 import Features from './Features'
+import HowItWorks from './HowItWorks'
+import CustomerSuccess from './CustomerSuccess'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
 
@@ -19,7 +21,9 @@ export default function S2PPage() {
   return (
     <>
       <Hero />
+      <CustomerSuccess />
       <PainPoints />
+      <HowItWorks />
       <Features />
       <ValueSection />
       <CTASection />

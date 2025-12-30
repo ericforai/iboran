@@ -2,7 +2,9 @@ import { Metadata } from 'next'
 import Hero from './Hero'
 import PainPoints from './PainPoints'
 import Features from './Features'
+import HowItWorks from './HowItWorks'
 import ValueSection from './ValueSection'
+import CustomerSuccess from './CustomerSuccess'
 import CTASection from './CTASection'
 
 export const metadata: Metadata = {
@@ -20,8 +22,10 @@ export default function LeadToCashPage() {
     <>
       <Hero />
       <PainPoints />
+      <HowItWorks />
       <Features />
       <ValueSection />
+      <CustomerSuccess />
       <CTASection />
     </>
   )

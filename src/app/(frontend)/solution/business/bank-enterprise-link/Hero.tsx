@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
+import BankLinkIllustration from './BankLinkIllustration'
 
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
@@ -63,29 +63,39 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* 右侧引导图 */}
+            {/* 右侧引导图 - SVG 动画 */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative hidden lg:block"
+              className="relative hidden lg:block group"
             >
-              <div className="relative z-20 rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white">
-                <Image
-                  src="/images/solutions/bank-enterprise-link-hero.png"
-                  alt="银企联产品展示"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                />
+              {/* 核心 SVG 插图 */}
+              <div className="relative z-20 flex justify-center items-center animate-float">
+                <div className="w-full relative">
+                  <BankLinkIllustration />
+                </div>
               </div>
               
-              {/* 装饰性浮动元素 */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-blue-100 rounded-full opacity-50 blur-2xl z-10" />
-              <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-red-100 rounded-full opacity-30 blur-3xl z-10" />
+              {/* 装饰性浮动元素 - 动态光效 */}
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] -z-10">
+                <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-400/20 rounded-full blur-[100px] animate-pulse"></div>
+                <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-red-400/10 rounded-full blur-[100px] animate-pulse [animation-delay:2s]"></div>
+              </div>
             </motion.div>
           </div>
         </div>
+        
+        {/* 自定义动画样式 */}
+        <style jsx>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+          }
+          .animate-float {
+            animation: float 6s ease-in-out infinite;
+          }
+        `}</style>
       </section>
 
       <DemoRequestModal 

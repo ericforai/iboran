@@ -56,63 +56,101 @@ export default function Hero() {
             </div>
 
             <div className="flex-1 w-full max-w-2xl lg:max-w-none">
-              <div className="relative">
-                {/* Visual Representation of PLM/R&D Cloud */}
-                <div className="bg-white rounded-2xl shadow-2xl p-8 border border-slate-100 relative z-10 overflow-hidden">
-                  <div className="absolute top-0 right-0 p-4">
-                    <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center -mr-10 -mt-10 blur-xl"></div>
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-3">
-                        <Database size={20} />
+{/* Visual Representation of PLM/R&D Cloud - Dashboard Mockup */}
+                <div className="relative">
+                   {/* Main Dashboard Panel */}
+                   <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden relative z-10 w-full">
+                      {/* Window Controls */}
+                      <div className="h-8 bg-slate-50 border-b border-slate-100 flex items-center px-4 gap-2">
+                        <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-400"></div>
                       </div>
-                      <div className="text-xs text-slate-500 mb-1">单一数据源</div>
-                      <div className="text-sm font-bold text-[#1F2329]">物料 & BOM 库</div>
-                    </div>
-                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 text-right">
-                      <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-[#E60012] mb-3 ml-auto">
-                        <Zap size={20} />
-                      </div>
-                      <div className="text-xs text-slate-500 mb-1">流程驱动</div>
-                      <div className="text-sm font-bold text-[#1F2329]">工程变更 ECM</div>
-                    </div>
-                    <div className="col-span-2 p-4 bg-blue-600 rounded-xl text-white">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2 text-sm font-bold">
-                          <Layout size={18} />
-                          IPD 数字化看板
+
+                      {/* Mockup Content */}
+                      <div className="grid grid-cols-12 h-[350px]">
+                        {/* Sidebar: BOM/Project Tree */}
+                        <div className="col-span-4 border-r border-slate-100 p-4 bg-slate-50/50">
+                          <div className="flex items-center gap-2 mb-4 text-xs font-bold text-slate-500 uppercase">
+                            <span className="w-1.5 h-1.5 bg-[#0052D9] rounded-full"></span> 
+                            Project Explorer
+                          </div>
+                          <div className="space-y-3">
+                             <div className="flex items-center gap-2 text-sm font-semibold text-[#0052D9] bg-blue-50 p-2 rounded">
+                               <Database size={14} /> EV_Platform_V2.0
+                             </div>
+                             <div className="pl-4 space-y-2 text-xs text-slate-600">
+                                <div className="flex items-center gap-2 hover:bg-slate-100 p-1 rounded cursor-pointer">
+                                  <Layout size={12} /> 01_Chassis_System
+                                </div>
+                                <div className="flex items-center gap-2 hover:bg-slate-100 p-1 rounded cursor-pointer">
+                                  <Layout size={12} /> 02_Power_Battery
+                                </div>
+                                <div className="flex items-center gap-2 hover:bg-slate-100 p-1 rounded cursor-pointer">
+                                  <Zap size={12} /> 03_Electrical_Control
+                                </div>
+                             </div>
+                          </div>
+                          
+                          <div className="mt-8 border-t border-slate-100 pt-4">
+                             <div className="flex items-center gap-2 mb-2 text-xs font-bold text-slate-500 uppercase">
+                               <span className="w-1.5 h-1.5 bg-[#E60012] rounded-full"></span>
+                               Alerts
+                             </div>
+                             <div className="bg-red-50 text-[#E60012] p-2 rounded text-[10px] flex items-center gap-2 mb-2">
+                               <span className="font-bold">!!</span> 
+                               <span>Change Request #2908 Pending</span>
+                             </div>
+                          </div>
                         </div>
-                        <span className="text-[10px] bg-blue-500 px-2 py-0.5 rounded">实时更新</span>
-                      </div>
-                      <div className="flex gap-1 h-2 bg-blue-700/50 rounded-full overflow-hidden mb-3">
-                        <div className="bg-white w-1/4"></div>
-                        <div className="bg-white w-1/3 opacity-70"></div>
-                        <div className="bg-white w-1/6 opacity-40"></div>
-                      </div>
-                      <div className="grid grid-cols-3 gap-2 text-[10px] opacity-90">
-                        <div>
-                          <div className="mb-0.5">需求分析</div>
-                          <div className="font-bold">85%</div>
+
+                        {/* Main Viewing Area: 3D Model / Gantt */}
+                        <div className="col-span-8 p-6 bg-white relative">
+                           {/* Header of View */}
+                           <div className="flex justify-between items-center mb-6">
+                             <div>
+                               <h3 className="text-sm font-bold text-slate-800">Chassis Assembly - Rev A.2</h3>
+                               <p className="text-[10px] text-slate-400">Last Modified: 2 mins ago by Admin</p>
+                             </div>
+                             <div className="flex gap-2">
+                                <span className="px-2 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded">Released</span>
+                             </div>
+                           </div>
+
+                           {/* Analysis Chart Mockup */}
+                           <div className="space-y-4">
+                              <div className="flex gap-4 mb-2">
+                                 <div className="flex-1 bg-blue-50 rounded h-20 relative overflow-hidden">
+                                    <div className="absolute bottom-0 left-0 w-full h-1/2 bg-[#0052D9] opacity-20"></div>
+                                    <div className="absolute inset-0 flex items-center justify-center text-[#0052D9] font-bold text-xs flex-col gap-1">
+                                      <Zap size={16} />
+                                      <span>Simulation: Pass</span>
+                                    </div>
+                                 </div>
+                                 <div className="flex-1 bg-slate-50 rounded h-20 flex items-center justify-center flex-col gap-1 text-slate-400">
+                                    <div className="w-8 h-8 rounded-full border-2 border-slate-200 flex items-center justify-center">85%</div>
+                                    <span className="text-[10px]">Cost Target</span>
+                                 </div>
+                              </div>
+
+                              <div className="relative h-24 bg-slate-50 rounded border border-slate-100 flex items-center justify-center">
+                                 {/* Fake Gantt Lines */}
+                                 <div className="absolute top-4 left-4 w-1/3 h-2 bg-blue-200 rounded-full"></div>
+                                 <div className="absolute top-8 left-1/4 w-1/2 h-2 bg-blue-300 rounded-full"></div>
+                                 <div className="absolute top-12 left-1/3 w-1/4 h-2 bg-blue-400 rounded-full"></div>
+                                 <div className="z-10 bg-white px-3 py-1 rounded shadow-sm text-[10px] font-bold text-slate-500 border border-slate-100">
+                                   IPD Stage Gate 3: Verified
+                                 </div>
+                              </div>
+                           </div>
                         </div>
-                        <div>
-                          <div className="mb-0.5">产品设计</div>
-                          <div className="font-bold">62%</div>
-                        </div>
-                        <div>
-                          <div className="mb-0.5">样品试制</div>
-                          <div className="font-bold">20%</div>
-                        </div>
                       </div>
-                    </div>
-                  </div>
+                   </div>
+
+                   {/* Decorative elements behind */}
+                   <div className="absolute -z-10 -top-4 -right-4 w-full h-full bg-[#E60012] opacity-[0.03] rounded-2xl"></div>
+                   <div className="absolute -z-20 -bottom-4 -left-4 w-full h-full bg-[#0052D9] opacity-[0.03] rounded-2xl"></div>
                 </div>
-                
-                {/* Decorative behind elements */}
-                <div className="absolute -z-10 top-6 -right-6 w-full h-full bg-[#0052D9]/5 rounded-2xl"></div>
-                <div className="absolute -z-20 top-12 -right-12 w-full h-full bg-slate-50 rounded-2xl border border-slate-100"></div>
-              </div>
             </div>
 
           </div>

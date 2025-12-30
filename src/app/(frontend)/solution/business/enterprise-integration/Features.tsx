@@ -9,7 +9,7 @@ const features = [
     tags: ['RBAC 管理', '流量控制', '日志溯源'],
   },
   {
-    title: '应用系统集成 (IPaaS)',
+    title: '应用系统集成 (LINK)',
     description: '内置 100+ 预置连接器与集成方案，涵盖 ERP、CRM、协同办公等。通过零代码/低代码方式，快速打通异构系统数据流。',
     icon: Layers,
     color: 'bg-[#E60012]/10 text-[#E60012]',

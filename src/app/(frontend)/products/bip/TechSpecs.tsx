@@ -35,7 +35,7 @@ export default function TechSpecs() {
                   <Network className="w-6 h-6 text-[#0052D9]" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-[#1F2329] mb-2">开放集成能力 (iPaaS)</h3>
+                  <h3 className="text-lg font-bold text-[#1F2329] mb-2">开放集成能力 (LINK)</h3>
                   <p className="text-sm text-slate-600 mb-2">提供标准 Open API 与 预置集成连接器。</p>
                   <div className="flex flex-wrap gap-2">
                     {['RestAPI', 'WebHook', 'ETL', '消息队列 ESB'].map(tag => (

@@ -118,7 +118,7 @@ export const productCategories: ProductCategory[] = [
         icon: Database 
       },
       { 
-        label: '系统集成平台 (iPaaS)', 
+        label: '系统集成平台 (LINK)', 
         href: '/products/ipaas', 
         desc: '连接异构系统，打破信息孤岛，实现业务通畅', 
         icon: Network 

@@ -30,7 +30,7 @@ description: "从内容链接/文档直接生成解决方案页面"
 │  - 主标题 + 价值主张                      │
 │  - 副标题（1-2句产品定位）                 │
 │  - 双 CTA（主: 预约演示 / 次: 下载白皮书） │
-│  - 可选：产品截图/视觉元素                 │
+│  - 视觉核心：Coded UI Mockup (代码模拟界面) │
 ├─────────────────────────────────────────┤
 │  Pain Points（痛点分析）                  │
 │  - 3-4 个行业痛点卡片                     │
@@ -40,11 +40,11 @@ description: "从内容链接/文档直接生成解决方案页面"
 │  - Tab 切换 或 功能网格                   │
 │  - 每个功能: 图标 + 标题 + 描述 + 效果指标 │
 ├─────────────────────────────────────────┤
-│  How It Works（工作原理）[可选]           │
+│  How It Works（工作原理）[必选]           │
 │  - 流程图 / 架构图                        │
 │  - 分步骤说明                            │
 ├─────────────────────────────────────────┤
-│  Customer Success（客户案例）[可选]       │
+│  Customer Success（客户案例）[必选]       │
 │  - Logo 墙                               │
 │  - 1-2 个简短案例引用                     │
 ├─────────────────────────────────────────┤
@@ -140,6 +140,19 @@ mkdir -p src/app/\(frontend\)/solution/[slug]
 | `Features.tsx` | 核心功能 |
 | `ValueSection.tsx` | 业务价值 |
 | `CTASection.tsx` | 底部 CTA |
+| `[Slug]DashboardMockup.tsx` | **代码化高保真界面模拟** (核心亮点) |
+| `HowItWorks.tsx` | 流程/架构图 |
+| `CustomerSuccess.tsx` | 客户案例与 Logo 墙 |
+
+#### 视觉策略：Coded UI Mockups ⭐
+
+**不要等待截图，直接用代码绘制高保真界面。**
+
+- **优势**：加载快、无限清晰、可交互、易维护。
+- **技术栈**：Tailwind CSS (布局) + Lucide Icons (图标) + Framer Motion (微动效)。
+- **应用场景**：
+  - `Hero` 右侧：展示系统概览。
+  - `Features` 区域：Tab 切换时联动展示不同功能模块。
 
 #### 组件规范
 
@@ -360,6 +373,74 @@ export default function PainPoints({ points }: PainPointsProps) {
         </div>
       </div>
     </section>
+  )
+}
+```
+
+### DashboardMockup.tsx 模板 (简化版)
+
+```tsx
+'use client'
+
+import { motion } from 'framer-motion'
+import { BarChart3, Users, Settings, Bell } from 'lucide-react'
+
+// 接收 activeTab 或 type 属性来动态切换显示内容
+export default function DashboardMockup({ type = 'default' }: { type?: string }) {
+  return (
+    <div className="bg-white rounded-xl shadow-2xl border border-slate-200 overflow-hidden w-full aspect-[16/10] flex text-xs">
+      {/* Sidebar - 深色专业感 */}
+      <div className="w-16 md:w-48 bg-[#001529] text-slate-400 flex flex-col border-r border-slate-800">
+        <div className="h-12 flex items-center justify-center border-b border-slate-800 font-bold text-white tracking-wider">
+          BIP CLOUD
+        </div>
+        <div className="p-2 space-y-1">
+          <div className="px-3 py-2 bg-[#1890FF] text-white rounded flex items-center gap-2 cursor-pointer">
+            <BarChart3 size={14} /> <span className="hidden md:inline">工作台</span>
+          </div>
+          <div className="px-3 py-2 hover:bg-slate-800 rounded flex items-center gap-2 cursor-pointer transition-colors">
+            <Users size={14} /> <span className="hidden md:inline">客户管理</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 bg-slate-50 flex flex-col">
+        {/* Header */}
+        <div className="h-12 bg-white border-b border-slate-200 flex items-center justify-between px-4 shadow-sm">
+          <div className="font-bold text-slate-700">仪表盘 / {type === 'default' ? '总览' : type}</div>
+          <div className="flex gap-3 text-slate-400">
+            <Bell size={16} />
+            <div className="w-6 h-6 rounded-full bg-slate-200"></div>
+          </div>
+        </div>
+        
+        {/* Dashboard Content Grid */}
+        <div className="p-4 grid grid-cols-2 gap-4 flex-1 overflow-hidden">
+          {/* Card 1 */}
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex flex-col justify-between"
+          >
+            <div className="text-slate-500 mb-1">本月营收</div>
+            <div className="text-xl font-bold text-slate-800">¥ 1,280,000</div>
+            <div className="text-green-500 text-[10px]">+12.5% 较上月</div>
+          </motion.div>
+          {/* Card 2 */}
+           <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-white p-4 rounded-lg shadow-sm border border-slate-100"
+          >
+            <div className="h-full w-full bg-blue-50 rounded flex items-center justify-center text-blue-300">
+              Chart Placeholder
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </div>
   )
 }
 ```

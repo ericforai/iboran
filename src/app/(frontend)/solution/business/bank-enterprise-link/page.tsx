@@ -2,6 +2,9 @@ import { Metadata } from 'next'
 import Hero from './Hero'
 import PainPoints from './PainPoints'
 import Features from './Features'
+import Architecture from './Architecture'
+import SecuritySection from './SecuritySection'
+import CustomerCases from './CustomerCases'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
 
@@ -21,6 +24,9 @@ export default function BankEnterpriseLinkPage() {
       <Hero />
       <PainPoints />
       <Features />
+      <Architecture />
+      <SecuritySection />
+      <CustomerCases />
       <ValueSection />
       <CTASection />
     </main>

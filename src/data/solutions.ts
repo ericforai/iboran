@@ -13,6 +13,7 @@ import {
   Users,
   Blocks,
   Cpu,
+  Layers,
   Pill,
   Car,
   ShoppingBag,
@@ -88,6 +89,7 @@ export const solutionByBusiness: BusinessCategory[] = [
     name: '采购与供应链',
     items: [
       { label: 'S2P：采购到付款', href: '/solution/business/s2p', desc: '供应商多、管控难、合规风险高？采购到付款的全流程管控', icon: Package },
+      { label: 'CLM：数智合同', href: '/solution/contract-lifecycle-management', desc: '范本不一、签约慢、履约难控？业财法一体化全生命周期管理', icon: FileSpreadsheet },
     ]
   },
   {
@@ -99,12 +101,20 @@ export const solutionByBusiness: BusinessCategory[] = [
     ]
   },
   {
+    name: '项目与成本',
+    items: [
+      { label: 'P2C：从项目到成本', href: '/solution/business/p2c-project-to-cost', desc: '项目多、核算乱、成本控不住？从立项到结项的全过程管控', icon: Layers },
+    ]
+  },
+  {
     name: '财务与资金',
     items: [
       { label: 'FINANCE：财务云', href: '/solution/business/finance-cloud', desc: '多组织、对账难、报表慢？业财一体的集团财务财务管控', icon: Calculator },
       { label: 'R2R：核算到报告', href: '/solution/business/r2r', desc: '账算得清，但看不懂业务？让财务真正参与经营决策', icon: FileSpreadsheet },
       { label: 'TRM：资金管理', href: '/solution/business/trm', desc: '资金分散、调度难、风险盲区多？资金可视化与精准管控', icon: Landmark },
       { label: 'BANK：银企联', href: '/solution/business/bank-enterprise-link', desc: '2500+银行直联，开箱即用，构建数智化金融服务底座', icon: Landmark },
+      { label: 'SPE：纵向 PDCA', href: '/solution/spe', desc: '从战略规划、预算控制到经营分析的全闭环管理体系', icon: Activity },
+      { label: 'TES：智能差旅与费控', href: '/solution/tes', desc: '从商旅申请到报账共享全流程，实现业财税资档一体化', icon: Wallet },
     ]
   },
   {
@@ -118,7 +128,7 @@ export const solutionByBusiness: BusinessCategory[] = [
     name: '智能平台',
     items: [
       { label: 'AIP：智能化应用', href: '/solution/business/aip-intelligent-apps', desc: '想用AI但不知从何下手？YonGPT 智能体快速落地', icon: Bot },
-      { label: 'IPaaS：企业集成平台', href: '/solution/business/enterprise-integration', desc: '系统孤岛多、数据不互通？让业务连接更简单', icon: Link2 },
+      { label: 'LINK：企业集成平台', href: '/solution/business/enterprise-integration', desc: '系统孤岛多、数据不互通？让业务连接更简单', icon: Link2 },
       { label: 'EOC：数智化协作', href: '/solution/business/eoc-collaboration', desc: '信息散乱、协作低效、事事靠人？AI 驱动的组织效能提升', icon: Users },
       { label: 'APP：数字化建模', href: '/solution/business/digital-modeling', desc: '需求变化快、开发跟不上？快速构建企业专属应用', icon: Blocks },
       { label: 'CTP：技术平台底座', href: '/solution/business/ctp', desc: '技术栈老旧、扩展困难？云原生技术底座支撑转型', icon: Cpu },
