@@ -25,7 +25,7 @@ export default function Hero() {
               </div>
               
               <h1 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
-                致远 A8 协同办公 <br/>
+                A8 协同办公 <br/>
                 <span className="text-2xl lg:text-4xl text-slate-600 font-semibold mt-2 block leading-snug">
                   AI+协同深度融合，成就高绩效组织
                 </span>
@@ -80,7 +80,7 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* Right Visual - Seeyon COP Architecture */}
+            {/* Right Visual - COP Architecture */}
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -92,7 +92,7 @@ export default function Hero() {
                 
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-8">
-                    <div className="text-sm font-bold text-slate-400 uppercase tracking-wider">Seeyon COP 协同架构</div>
+                    <div className="text-sm font-bold text-slate-400 uppercase tracking-wider">数字化协同 COP 架构</div>
                     <div className="flex gap-1">
                       <div className="w-3 h-3 rounded-full bg-slate-200"></div>
                       <div className="w-3 h-3 rounded-full bg-slate-200"></div>

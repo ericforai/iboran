@@ -7,7 +7,7 @@ export const TechSpecs = () => {
       icon: Server,
       title: '部署与集成',
       items: [
-        '支持私有云部署、混合云或致远云 SaaS 调用',
+        '支持私有云部署、混合云或云端 SaaS 调用',
         '标准 REST/Webservice 接口体系，适配各种异构系统',
         '内置用友 BIP / U9 cloud / U8 cloud 专用适配器'
       ]
@@ -26,7 +26,7 @@ export const TechSpecs = () => {
       title: '数据处理量',
       items: [
         '支持亿级数据存储，万人级供应商在线协同并发',
-        '基于致远索引引擎，支持采购历史数据的毫秒级检索',
+        '基于协同索引引擎，支持采购历史数据的毫秒级检索',
         '分布式数据库架构适配，保障业务连续性'
       ]
     }

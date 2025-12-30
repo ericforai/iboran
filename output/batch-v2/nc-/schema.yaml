@@ -1,0 +1,43 @@
+schema_version: 1
+page:
+  keyword: "NC 实施服务"
+modules:
+  - id: direct_answer
+    h2: "一句话结论"
+    required_fields:
+      - "kb.direct_answer_text"
+    format: "h2+p"
+  - id: business_process
+    h2: "业务流程梳理"
+    required_fields:
+      - "kb.business_process_steps"
+    format: "h2+steps"
+  - id: system_configuration
+    h2: "系统配置方案"
+    required_fields:
+      - "kb.configuration_items"
+    format: "h2+list"
+  - id: data_migration
+    h2: "数据迁移策略"
+    required_fields:
+      - "kb.migration_steps"
+    format: "h2+steps"
+  - id: comparison
+    h2: "对比分析"
+    required_fields:
+      - "kb.comparison_rows"
+    format: "h2+table"
+  - id: faq
+    h2: "常见问题"
+    required_fields:
+      - "kb.faq_items"
+    format: "h2+qa"
+
+# Outline (comment only):
+# - H1: NC 实施服务
+# - H2: 一句话结论
+# - H2: 业务流程梳理
+# - H2: 系统配置方案
+# - H2: 数据迁移策略
+# - H2: 对比分析
+# - H2: 常见问题

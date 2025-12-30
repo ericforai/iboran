@@ -16,13 +16,13 @@ export const Hero = () => {
               数字化采购解决方案
             </div>
             <h1 className="text-4xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
-              致远数字化采购管理平台
+              数字化采购管理平台
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                 驱动采购降本增效
               </span>
             </h1>
             <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-              基于致远 COP 平台打造，实现从请购、寻源、合同到支付的全流程闭环管理。规范采购流程，强化过程监控，提升供应链协同效率。
+              基于 COP 平台打造，实现从请购、寻源、合同到支付的全流程闭环管理。规范采购流程，强化过程监控，提升供应链协同效率。
             </p>
             <div className="flex flex-wrap gap-4 mb-10">
               {['降本幅度 [15]%+', '协同效率提升 [30]%+', '合规闭环 [100]%'].map((item) => (
@@ -48,7 +48,7 @@ export const Hero = () => {
                <div className="w-full h-full min-h-[400px] bg-slate-50 flex items-center justify-center rounded-2xl overflow-hidden">
                   <img 
                     src="/procurement-management-hero.png" 
-                    alt="致远数字化采购管理平台架构" 
+                    alt="数字化采购管理平台架构" 
                     className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
                   />
                </div>

@@ -16,7 +16,7 @@ export const TechSpecs = () => {
                   <Share2 size={24} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-bold mb-2">致远全生态无缝同步</h4>
+                  <h4 className="text-lg font-bold mb-2">协同全生态无缝同步</h4>
                   <p className="text-gray-600 text-sm">
                     通过协同云（COP）与薪事力深度融合，实现组织架构、权限体系、流程审批的实时联动，真正做到“一个入口，全业务闭环”。
                   </p>
@@ -62,7 +62,7 @@ export const TechSpecs = () => {
                     </div>
                   </div>
                   <div className="mt-10 pt-10 border-t border-white/10 text-sm text-gray-400">
-                    * 支持移动端多端覆盖（微信小程序、致远 M3、钉钉、企业微信）
+                    * 支持移动端多端覆盖（微信小程序、移动 M3、钉钉、企业微信）
                   </div>
                </div>
                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[100px]"></div>

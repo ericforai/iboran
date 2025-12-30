@@ -18,7 +18,7 @@ export const TechSpecs = () => {
                 <div>
                   <h4 className="text-lg font-bold mb-2">广泛的生态连接</h4>
                   <p className="text-gray-600 text-sm">
-                    通过致远 M3/微协同无缝衔接，集成 1400+ 银行支付接口，支持携程、滴滴、同程等第三方商旅平台数据拉取。
+                    通过移动端/微协同无缝衔接，集成 1400+ 银行支付接口，支持携程、滴滴、同程等第三方商旅平台数据拉取。
                   </p>
                 </div>
               </div>

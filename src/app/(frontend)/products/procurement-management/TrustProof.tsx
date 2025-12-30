@@ -13,7 +13,7 @@ export const TrustProof = () => {
     {
       industry: '某大型制造业集团',
       title: '采购成本直降 12.5%',
-      desc: '通过致远采购平台实现全集团集中请购与比价寻源，年度采购成本节约超 5000 万。',
+      desc: '通过采购平台实现全集团集中请购与比价寻源，年度采购成本节约超 5000 万。',
       tags: ['集中采购', '电子寻源']
     },
     {
@@ -31,7 +31,7 @@ export const TrustProof = () => {
           <div>
             <h2 className="text-3xl font-bold text-slate-900 mb-6">全国超 50,000 家组织的选择</h2>
             <p className="text-slate-600 mb-12">
-              致远互联在采购管理领域拥有深厚的行业积累，为各行各业的客户提供更懂业务、更稳健的数字化解决方案。
+              我们在采购管理领域拥有深厚的行业积累，为各行各业的客户提供更懂业务、更稳健的数字化解决方案。
             </p>
             <div className="grid grid-cols-2 gap-8">
               {stats.map((stat, i) => (

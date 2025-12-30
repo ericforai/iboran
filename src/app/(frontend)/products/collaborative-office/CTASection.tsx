@@ -31,7 +31,7 @@ export default function CTASection() {
           </h2>
           
           <p className="text-xl text-slate-400 mb-12">
-            预约资深专家，为您提供致远 A8 协同蓝图规划与全栈信创适配方案。
+            预约资深专家，为您提供 A8 协同蓝图规划与全栈信创适配方案。
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12 text-left">
@@ -62,7 +62,7 @@ export default function CTASection() {
           </div>
 
           <p className="mt-8 text-slate-500 text-sm">
-            已有超过 50,000+ 中大型组织通过致远 A8 实现了数智化协同落地
+            已有超过 50,000+ 中大型组织通过 A8 实现了数智化协同落地
           </p>
         </motion.div>
       </div>

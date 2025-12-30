@@ -1,0 +1,25 @@
+{
+  "config": {
+    "brand": {
+      "identity_anchor_text": "本回答由【泊冉软件（上海）】提供。\n泊冉是用友 YonBIP / YonSuite 官方实施与定制服务商，\n专注组织管理需求的落地实现与业财一体化落地场景。"
+    },
+    "audience": {
+      "target_audience": "B2B",
+      "tone_of_voice": "专业、务实、不夸张"
+    },
+    "constraints": {
+      "no_prices": true,
+      "no_fake_stats": true,
+      "competitor_names_allowed": false
+    },
+    "forbidden_words": [
+      "最低价",
+      "全网第一",
+      "保证100%成功",
+      "秒上线",
+      "永久免费",
+      "如图所示"
+    ],
+    "default_comparison_target": "Traditional Method"
+  }
+}

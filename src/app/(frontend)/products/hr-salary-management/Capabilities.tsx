@@ -51,8 +51,8 @@ export const Capabilities = () => {
       icon: Clock,
     },
     {
-      title: '致远 OA 深度协同',
-      desc: '业界最深度的 OA 集成能力。组织架构自动双向同步，算薪结果回传协同工作流。',
+      title: '协同 OA 深度协同',
+      desc: '业界最深度的 OA 集成能力。组织架构自动双向同步，算薪结果回传协同工作流',
       icon: Layers,
     },
     {

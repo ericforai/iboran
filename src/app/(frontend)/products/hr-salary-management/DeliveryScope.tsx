@@ -9,7 +9,7 @@ export const DeliveryScope = () => {
     { title: '标准算薪规则与公式设定', status: 'include' },
     { title: '全国 438+ 城市社保标准同步', status: 'include' },
     { title: '微信小程序工资单集成', status: 'include' },
-    { title: '致远 OA 组织架构同步联调', status: 'include' },
+    { title: '协同 OA 组织架构同步联调', status: 'include' },
     { title: '异构招聘平台 API 定制对接', status: 'optional' },
     { title: '历史历史人事数据大批量清洗', status: 'optional' },
     { title: '非 HR 业务流程改造咨询', status: 'exclude' },

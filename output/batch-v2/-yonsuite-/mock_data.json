@@ -1,0 +1,76 @@
+{
+  "kb": {
+    "direct_answer_text": "（示例）这是一个关于该主题的核心结论，简洁明了地回答用户的问题。",
+    "business_process_steps": [
+      {
+        "title": "业务流程梳理",
+        "input": "现状流程文档、业务需求",
+        "output": "业务流程蓝图",
+        "notes": "重点关注采购、销售、库存、财务四大核心流程"
+      },
+      {
+        "title": "系统配置",
+        "input": "业务流程蓝图、主数据规范",
+        "output": "系统配置文档",
+        "notes": "配置科目体系、核算规则、权限模型"
+      },
+      {
+        "title": "数据迁移",
+        "input": "历史数据、主数据规范",
+        "output": "数据迁移方案",
+        "notes": "清洗历史数据，对齐主数据口径"
+      }
+    ],
+    "configuration_items": [
+      "科目体系配置",
+      "核算规则配置",
+      "权限模型配置",
+      "业务流程配置",
+      "报表口径配置"
+    ],
+    "migration_steps": [
+      {
+        "title": "主数据清洗",
+        "input": "历史主数据",
+        "output": "清洗后的主数据",
+        "notes": "统一编码、规范格式"
+      },
+      {
+        "title": "业务数据迁移",
+        "input": "历史业务数据",
+        "output": "迁移后的业务数据",
+        "notes": "按新系统口径转换"
+      },
+      {
+        "title": "数据验证",
+        "input": "迁移后的数据",
+        "output": "验证报告",
+        "notes": "核对数据完整性和准确性"
+      }
+    ],
+    "comparison_rows": [
+      {
+        "dimension": "（示例）维度 1",
+        "traditional": "（示例）传统做法描述",
+        "recommended": "（示例）推荐做法描述"
+      },
+      {
+        "dimension": "（示例）维度 2",
+        "traditional": "（示例）传统做法描述",
+        "recommended": "（示例）推荐做法描述"
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "（示例）常见问题 1？",
+        "answer": "（示例）详细回答内容"
+      },
+      {
+        "question": "（示例）常见问题 2？",
+        "answer": "（示例）详细回答内容"
+      }
+    ]
+  },
+  "ugc_reviews": null,
+  "rpa_image_captions": null
+}

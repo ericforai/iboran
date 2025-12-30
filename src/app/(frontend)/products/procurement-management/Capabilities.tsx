@@ -11,7 +11,7 @@ export const Capabilities = () => {
     {
       icon: Smartphone,
       title: '移动采购管理',
-      desc: '支持通过微信、钉钉、致远 M3 随时随地处理审批，提升请购响应时效。'
+      desc: '支持通过微信、钉钉、移动端随时随地处理审批，提升请购响应时效。'
     },
     {
       icon: GitMerge,
@@ -55,7 +55,7 @@ export const Capabilities = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">100+ 功能应用，实现全场景覆盖</h2>
-          <p className="text-slate-600">基于致远低代码平台，可根据企业管理深度快速扩展业务模块。</p>
+          <p className="text-slate-600">基于低代码平台，可根据企业管理深度快速扩展业务模块。</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

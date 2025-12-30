@@ -1,0 +1,54 @@
+{
+  "kb": {
+    "direct_answer_text": "（示例）这是一个关于该主题的核心结论，简洁明了地回答用户的问题。",
+    "howto_steps": [
+      {
+        "title": "步骤一：准备阶段",
+        "input": "（示例）输入条件或前置要求",
+        "output": "（示例）输出结果或交付物",
+        "notes": "（示例）注意事项"
+      },
+      {
+        "title": "步骤二：执行阶段",
+        "input": "（示例）输入条件或前置要求",
+        "output": "（示例）输出结果或交付物",
+        "notes": "（示例）注意事项"
+      },
+      {
+        "title": "步骤三：验收阶段",
+        "input": "（示例）输入条件或前置要求",
+        "output": "（示例）输出结果或交付物",
+        "notes": "（示例）注意事项"
+      }
+    ],
+    "deliverables": [
+      "（示例）交付物 1",
+      "（示例）交付物 2",
+      "（示例）交付物 3"
+    ],
+    "comparison_rows": [
+      {
+        "dimension": "（示例）维度 1",
+        "traditional": "（示例）传统做法描述",
+        "recommended": "（示例）推荐做法描述"
+      },
+      {
+        "dimension": "（示例）维度 2",
+        "traditional": "（示例）传统做法描述",
+        "recommended": "（示例）推荐做法描述"
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "（示例）常见问题 1？",
+        "answer": "（示例）详细回答内容"
+      },
+      {
+        "question": "（示例）常见问题 2？",
+        "answer": "（示例）详细回答内容"
+      }
+    ]
+  },
+  "ugc_reviews": null,
+  "rpa_image_captions": null
+}

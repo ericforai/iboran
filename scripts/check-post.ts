@@ -1,7 +1,8 @@
+#!/usr/bin/env node
 import { getPayload } from 'payload'
 import configPromise from '../src/payload.config'
 import dotenv from 'dotenv'
-import path from 'path'
+import * as path from 'path'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -16,28 +17,29 @@ if (!process.env.DATABASE_URI) {
   process.env.DATABASE_URI = 'mongodb://localhost:27017/iboran'
 }
 
-async function check() {
-  try {
-    const payload = await getPayload({ config: configPromise })
-    
+async function checkPost() {
+  const payload = await getPayload({ config: configPromise })
+  
+  // 检查两个可能的 slug
+  for (const slug of ['erp-', 'erp-shishi-fuwu']) {
     const posts = await payload.find({
       collection: 'posts',
-      where: {
-        slug: {
-          equals: 'yonyou-shanghai-agent-boran',
-        },
-      },
+      where: { slug: { equals: slug } },
+      limit: 1,
     })
     
     if (posts.docs.length > 0) {
-      console.log('POST_EXISTS:', posts.docs[0].id)
-    } else {
-      console.log('POST_NOT_FOUND')
+      const post = posts.docs[0]
+      console.error(`✓ Found post with slug: ${slug}`)
+      console.error(`  - ID: ${post.id}`)
+      console.error(`  - Title: ${post.title}`)
+      console.error(`  - Slug: ${post.slug}`)
+      console.error(`  - Status: ${post._status}`)
+      console.error(`  - URL: /posts/${post.slug}`)
     }
-  } catch (error) {
-    console.error('ERROR:', error)
   }
+  
   process.exit(0)
 }
 
-check()
+checkPost()

@@ -126,7 +126,7 @@ const Hero = () => {
                     </div>
                     <div className="flex items-center gap-2">
                         <span className="w-2 h-2 bg-[#0052D9] rounded-full"></span>
-                        <span>致远互联全国十大定制工厂</span>
+                        <span>协同领域全国十大定制工厂</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <span className="w-2 h-2 bg-[#0052D9] rounded-full"></span>
@@ -292,7 +292,7 @@ const CoreValueGrid = () => {
         },
         {
             title: "跨厂商乐高式集成",
-            desc: "打通 用友YonSuite + 钉钉 + 致远COP + 达索SOLIDWORKS，消除企业数据孤岛。",
+            desc: "打通 用友YonSuite + 钉钉 + 协同COP + 达索SOLIDWORKS，消除企业数据孤岛。",
             icon: Layers
         },
         {

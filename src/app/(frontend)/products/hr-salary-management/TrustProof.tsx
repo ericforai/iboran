@@ -25,7 +25,7 @@ export const TrustProof = () => {
       <div className="container px-4 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 font-heading">值得信赖的交付证据</h2>
-          <p className="text-gray-600">致远薪事力：连接协同生态，赋能数智化人力资源管理</p>
+          <p className="text-gray-600">薪事力：连接协同生态，赋能数智化人力资源管理</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto mb-16">
@@ -61,7 +61,7 @@ export const TrustProof = () => {
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-12 opacity-40 grayscale group-hover:grayscale-0 transition-all">
-          <span className="text-2xl font-black">SEEYON</span>
+          <span className="text-2xl font-black">HR CLOUD</span>
           <span className="text-2xl font-black">XINSHILI</span>
           <span className="text-2xl font-black">438+ CITIES</span>
           <span className="text-2xl font-black">50,000+ ORGS</span>

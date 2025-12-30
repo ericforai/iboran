@@ -12,7 +12,7 @@ export const Hero = () => {
           <div className="w-full lg:w-3/5 px-4 mb-12 lg:mb-0">
             <div className="max-w-2xl">
               <span className="inline-block py-1.5 px-4 mb-6 text-[10px] font-bold text-blue-600 bg-blue-50 rounded-full uppercase tracking-[0.2em]">
-                致远薪事力 · HR & 薪税云平台
+                薪事力 · HR & 薪税云平台
               </span>
               <h1 className="text-4xl lg:text-6xl font-bold font-heading mb-8 leading-[1.15] text-slate-900 font-display">
                 随需应变 <br />
@@ -56,7 +56,7 @@ export const Hero = () => {
                 */}
                 <img
                   src="/products/hr-salary-hero.png"
-                  alt="致远薪事力系统架构"
+                  alt="薪事力系统架构"
                   className="w-full h-auto max-w-md lg:max-w-none mix-blend-multiply transition-all duration-700 group-hover:scale-105 drop-shadow-[0_30px_60px_rgba(0,0,0,0.12)]"
                   onError={(e) => {
                     e.currentTarget.src = 'https://www.iboran.com/static/home/Zhuanq/images/xinshili/banner_img.png'

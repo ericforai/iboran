@@ -92,7 +92,7 @@ const Hero = () => {
                             {[
                                 { icon: ShieldCheck, text: "国家高新技术企业" },
                                 { icon: CheckCircle2, text: "双软认证企业" },
-                                { icon: Globe2, text: "致远互联全国十大定制工厂" },
+                                { icon: Globe2, text: "协同领域全国十大定制工厂" },
                             ].map((badge, idx) => (
                                 <div key={idx} className="flex items-center gap-2 group cursor-default">
                                     <badge.icon className="w-5 h-5 text-slate-400 group-hover:text-[#0052D9] transition-colors" />
@@ -156,7 +156,7 @@ const CoreValueGrid = () => {
         },
         {
             title: "跨厂商乐高式集成",
-            desc: "打通 用友YonSuite + 钉钉 + 致远COP + 达索SOLIDWORKS，消除企业数据孤岛。",
+            desc: "打通 用友YonSuite + 钉钉 + 协同COP + 达索SOLIDWORKS，消除企业数据孤岛。",
             icon: Layers
         },
         {

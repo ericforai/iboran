@@ -26,7 +26,8 @@
     "pseo:render": "tsx scripts/pseo-page-renderer.ts",
     "pseo:review": "tsx scripts/pseo-review.ts",
     "pseo:import": "tsx scripts/pseo-import-to-blog.ts",
-    "pseo:publish": "tsx scripts/pseo-auto-publish.ts"
+    "pseo:publish": "tsx scripts/pseo-auto-publish.ts",
+    "pseo:batch": "tsx scripts/pseo-batch-generate.ts"
   },
   "dependencies": {
     "@payloadcms/admin-bar": "3.68.5",

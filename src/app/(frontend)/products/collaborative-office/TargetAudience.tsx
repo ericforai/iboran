@@ -34,7 +34,7 @@ export default function TargetAudience() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">适用群体与典型现状</h2>
-          <p className="text-slate-600 italic">“如果您正在面临系统碎片化、流程合规性差或信创替代压力，致远 A8 将是您的理想选择。”</p>
+          <p className="text-slate-600 italic">“如果您正在面临系统碎片化、流程合规性差或信创替代压力，A8 协同管理平台将是您的理想选择。”</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
@@ -76,7 +76,7 @@ export default function TargetAudience() {
             <div>
               <h4 className="font-bold text-[#1F2329] mb-2 text-lg">不适用情况</h4>
               <p className="text-slate-500 text-sm leading-relaxed">
-                如果您是 10 人以下的极小规模组织（仅需即时通讯），或不需要复杂的审批流、集成需求，致远 A8 的强大功能可能会造成资源的“过载”。
+                如果您是 10 人以下的极小规模组织（仅需即时通讯），或不需要复杂的审批流、集成需求，A8 的强大功能可能会造成资源的“过载”。
                 针对此类纯轻量办公需求，我们建议咨询我们的低代码应用包或轻量级协作工具。
               </p>
             </div>

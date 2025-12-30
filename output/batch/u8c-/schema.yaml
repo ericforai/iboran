@@ -1,0 +1,37 @@
+schema_version: 1
+page:
+  keyword: "U8C 实施服务"
+modules:
+  - id: direct_answer
+    h2: "一句话结论"
+    required_fields:
+      - "kb.direct_answer_text"
+    format: "h2+p"
+  - id: howto
+    h2: "实施步骤"
+    required_fields:
+      - "kb.howto_steps"
+    format: "h2+steps"
+  - id: deliverables
+    h2: "交付物清单"
+    required_fields:
+      - "kb.deliverables"
+    format: "h2+list"
+  - id: comparison
+    h2: "对比分析"
+    required_fields:
+      - "kb.comparison_rows"
+    format: "h2+table"
+  - id: faq
+    h2: "常见问题"
+    required_fields:
+      - "kb.faq_items"
+    format: "h2+qa"
+
+# Outline (comment only):
+# - H1: U8C 实施服务
+# - H2: 一句话结论
+# - H2: 实施步骤
+# - H2: 交付物清单
+# - H2: 对比分析
+# - H2: 常见问题

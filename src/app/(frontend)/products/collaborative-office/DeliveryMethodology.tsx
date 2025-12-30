@@ -13,7 +13,7 @@ const steps = [
   },
   {
     title: '架构设计与适配',
-    desc: '基于致远 A8 平台进行集成设计与信创环境适配。',
+    desc: '基于 A8 协同平台进行集成设计与信创环境适配。',
     items: ['CAP 业务建模', '集成接口方案', '信创兼容性调优'],
     icon: <PenTool className="w-6 h-6 text-[#E60012]" />,
     color: 'red'

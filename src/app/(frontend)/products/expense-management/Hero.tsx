@@ -12,7 +12,7 @@ export const Hero = () => {
           <div className="w-full lg:w-3/5 px-4 mb-12 lg:mb-0">
             <div className="max-w-2xl">
               <span className="inline-block py-1.5 px-4 mb-6 text-[10px] font-bold text-blue-600 bg-blue-50 rounded-full uppercase tracking-[0.2em]">
-                致远费控管理解决方案
+                费控管理解决方案
               </span>
               <h1 className="text-4xl lg:text-6xl font-bold font-heading mb-8 leading-[1.15] text-slate-900 font-display">
                 数智化强劲赋能 <br />

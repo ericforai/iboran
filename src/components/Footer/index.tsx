@@ -19,8 +19,8 @@ export const Footer = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: '产品', links: ['U8 Cloud', 'YonSuite', '人力云', '供应链云'] },
-              { title: '解决方案', links: ['智能财务', '智能制造', '新零售', '项目管理'] },
+              { title: '产品', links: ['U8 Cloud', 'YonSuite'] },
+              { title: '解决方案', links: ['智能财务', '新零售', '项目管理'] },
               { title: '服务', links: ['实施交付', '二次开发', '运维支持', '客户培训'] },
               { title: '关于', links: ['公司简介', '新闻动态', '加入我们', '联系我们'] },
             ].map((col, i) => (

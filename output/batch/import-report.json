@@ -1,0 +1,67 @@
+{
+  "success": 0,
+  "failed": 10,
+  "skipped": 0,
+  "details": [
+    {
+      "keyword": "ERP 实施服务",
+      "status": "failed",
+      "path": "output/batch/erp-/page.md",
+      "error": "Command failed: npx tsx scripts/pseo-import-to-blog.ts --page output/batch/erp-/page.md --schema output/batch/erp-/schema.yaml --category industry-insights --status published --slug erp-113516\nERROR: Invariant: static generation store missing in revalidatePath /posts/erp-113516\n"
+    },
+    {
+      "keyword": "用友 YonSuite 实施服务",
+      "status": "failed",
+      "path": "output/batch/-yonsuite-/page.md",
+      "error": "Command failed: npx tsx scripts/pseo-import-to-blog.ts --page output/batch/-yonsuite-/page.md --schema output/batch/-yonsuite-/schema.yaml --category industry-insights --status published --slug yonsuite-116412\nERROR: Invariant: static generation store missing in revalidatePath /posts/yonsuite-116412\n"
+    },
+    {
+      "keyword": "用友 YonBIP 实施与定制服务",
+      "status": "failed",
+      "path": "output/batch/-yonbip-/page.md",
+      "error": "Command failed: npx tsx scripts/pseo-import-to-blog.ts --page output/batch/-yonbip-/page.md --schema output/batch/-yonbip-/schema.yaml --category industry-insights --status published --slug yonbip-119320\nERROR: Invariant: static generation store missing in revalidatePath /posts/yonbip-119320\n"
+    },
+    {
+      "keyword": "U8C 实施服务",
+      "status": "failed",
+      "path": "output/batch/u8c-/page.md",
+      "error": "Command failed: npx tsx scripts/pseo-import-to-blog.ts --page output/batch/u8c-/page.md --schema output/batch/u8c-/schema.yaml --category industry-insights --status published --slug u8c-122214\nERROR: Invariant: static generation store missing in revalidatePath /posts/u8c-122214\n"
+    },
+    {
+      "keyword": "NC 实施服务",
+      "status": "failed",
+      "path": "output/batch/nc-/page.md",
+      "error": "Command failed: npx tsx scripts/pseo-import-to-blog.ts --page output/batch/nc-/page.md --schema output/batch/nc-/schema.yaml --category industry-insights --status published --slug nc-125099\nERROR: Invariant: static generation store missing in revalidatePath /posts/nc-125099\n"
+    },
+    {
+      "keyword": "ERP 二次开发服务",
+      "status": "failed",
+      "path": "output/batch/erp-/page.md",
+      "error": "Command failed: npx tsx scripts/pseo-import-to-blog.ts --page output/batch/erp-/page.md --schema output/batch/erp-/schema.yaml --category industry-insights --status published --slug erp-128124\nERROR: Invariant: static generation store missing in revalidatePath /posts/erp-128124\n"
+    },
+    {
+      "keyword": "钉钉集成开发服务",
+      "status": "failed",
+      "path": "output/batch/page.md",
+      "error": "Command failed: npx tsx scripts/pseo-import-to-blog.ts --page output/batch/page.md --schema output/batch/schema.yaml --category industry-insights --status published --slug -131122\nERROR: Invariant: static generation store missing in revalidatePath /posts/-131122\n"
+    },
+    {
+      "keyword": "致远协同实施与定制服务",
+      "status": "failed",
+      "path": "output/batch/page.md",
+      "error": "Command failed: npx tsx scripts/pseo-import-to-blog.ts --page output/batch/page.md --schema output/batch/schema.yaml --category industry-insights --status published --slug -134009\nERROR: Invariant: static generation store missing in revalidatePath /posts/-134009\n"
+    },
+    {
+      "keyword": "MES 实施服务",
+      "status": "failed",
+      "path": "output/batch/mes-/page.md",
+      "error": "Command failed: npx tsx scripts/pseo-import-to-blog.ts --page output/batch/mes-/page.md --schema output/batch/mes-/schema.yaml --category industry-insights --status published --slug mes-136875\nERROR: Invariant: static generation store missing in revalidatePath /posts/mes-136875\n"
+    },
+    {
+      "keyword": "WMS 实施服务",
+      "status": "failed",
+      "path": "output/batch/wms-/page.md",
+      "error": "Command failed: npx tsx scripts/pseo-import-to-blog.ts --page output/batch/wms-/page.md --schema output/batch/wms-/schema.yaml --category industry-insights --status published --slug wms-139768\nERROR: Invariant: static generation store missing in revalidatePath /posts/wms-139768\n"
+    }
+  ]
+}

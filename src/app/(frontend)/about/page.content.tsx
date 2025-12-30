@@ -44,7 +44,7 @@ const productEcosystem = {
   agency: [
     { name: '用友 ERP', level: '铂金级合作伙伴', icon: Award },
     { name: '达索 SOLIDWORKS', level: '华东区最高级合作伙伴', icon: ShieldCheck },
-    { name: '致远协同 / 钉钉', level: '核心战略合作伙伴', icon: Users },
+    { name: '数字化协同 / 钉钉', level: '核心战略合作伙伴', icon: Users },
   ],
   selfDeveloped: [
     { name: '泊冉动态建模平台', desc: '自主知识产权的低代码开发引擎', icon: Code },

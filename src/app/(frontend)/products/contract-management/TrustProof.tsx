@@ -50,7 +50,7 @@ export default function TrustProof() {
             <div className="p-6 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
               <Award className="text-orange-500" size={40} />
               <div>
-                <p className="text-sm font-bold text-slate-900 tracking-tight">致远互联“协同外挂”产品认证</p>
+                <p className="text-sm font-bold text-slate-900 tracking-tight">“协同外挂”产品认证</p>
                 <p className="text-[10px] text-slate-500 uppercase">OFFICIAL CERTIFIED PARTNER</p>
               </div>
             </div>

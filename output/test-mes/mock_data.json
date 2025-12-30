@@ -1,0 +1,55 @@
+{
+  "kb": {
+    "direct_answer_text": "（示例）这是一个关于该主题的核心结论，简洁明了地回答用户的问题。",
+    "production_planning_steps": [
+      {
+        "title": "生产计划制定",
+        "input": "销售订单、BOM、产能",
+        "output": "生产计划",
+        "notes": "考虑设备产能和物料齐套"
+      },
+      {
+        "title": "工单下发",
+        "input": "生产计划",
+        "output": "工单",
+        "notes": "按工序分解工单"
+      },
+      {
+        "title": "生产执行",
+        "input": "工单",
+        "output": "生产数据",
+        "notes": "实时采集工序数据"
+      }
+    ],
+    "data_collection_methods": [
+      "工单数据采集",
+      "工序报工采集",
+      "设备数据采集",
+      "质量数据采集",
+      "物料消耗采集"
+    ],
+    "traceability_components": [
+      "批次追溯体系",
+      "工序追溯记录",
+      "质量追溯链条",
+      "物料追溯路径"
+    ],
+    "integration_points": [
+      "与ERP的BOM对齐",
+      "与PLM的工艺对齐",
+      "与WMS的库存对齐"
+    ],
+    "faq_items": [
+      {
+        "question": "（示例）常见问题 1？",
+        "answer": "（示例）详细回答内容"
+      },
+      {
+        "question": "（示例）常见问题 2？",
+        "answer": "（示例）详细回答内容"
+      }
+    ]
+  },
+  "ugc_reviews": null,
+  "rpa_image_captions": null
+}

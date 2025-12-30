@@ -1,0 +1,17 @@
+{
+  "success": 2,
+  "failed": 0,
+  "skipped": 0,
+  "details": [
+    {
+      "keyword": "ERP 实施服务",
+      "status": "success",
+      "path": "output/batch-test/erp-/page.md"
+    },
+    {
+      "keyword": "用友 YonSuite 实施服务",
+      "status": "success",
+      "path": "output/batch-test/-yonsuite-/page.md"
+    }
+  ]
+}

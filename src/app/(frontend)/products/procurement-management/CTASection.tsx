@@ -40,7 +40,7 @@ export const CTASection = () => {
                 </div>
               </div>
               <div className="pt-6 border-t border-white/10 text-sm text-blue-100 italic">
-                “致远数字化采购管理平台，不仅是管理工具，更是业务增值的助推器。”
+                “数字化采购管理平台，不仅是管理工具，更是业务增值的助推器。”
               </div>
             </div>
           </div>

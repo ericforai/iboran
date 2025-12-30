@@ -1,0 +1,49 @@
+schema_version: 1
+page:
+  keyword: "YonSuite 公有云数据安全性如何保证"
+modules:
+  - id: direct_answer
+    h2: "一句话结论"
+    required_fields:
+      - "kb.direct_answer_text"
+    format: "h2+p"
+  - id: security_architecture
+    h2: "安全架构"
+    required_fields:
+      - "kb.security_architecture"
+    format: "h2+structure"
+  - id: encryption_solutions
+    h2: "加密方案"
+    required_fields:
+      - "kb.encryption_solutions"
+    format: "h2+structure"
+  - id: byox_solution
+    h2: "BYOX 解决方案"
+    required_fields:
+      - "kb.byox_solution"
+    format: "h2+structure"
+  - id: howto_steps
+    h2: "实施步骤"
+    required_fields:
+      - "kb.howto_steps"
+    format: "h2+steps"
+  - id: comparison
+    h2: "对比分析"
+    required_fields:
+      - "kb.comparison_rows"
+    format: "h2+table"
+  - id: faq
+    h2: "常见问题"
+    required_fields:
+      - "kb.faq_items"
+    format: "h2+qa"
+
+# Outline (comment only):
+# - H1: YonSuite 公有云数据安全性如何保证
+# - H2: 一句话结论
+# - H2: 安全架构
+# - H2: 加密方案
+# - H2: BYOX 解决方案
+# - H2: 实施步骤
+# - H2: 对比分析
+# - H2: 常见问题

@@ -34,7 +34,7 @@ const capabilities = [
   },
   {
     title: '移动项目管理',
-    desc: '依托 M3 移动端，随时随地处理审批、汇报项目进度，保障时效性。',
+    desc: '依托移动端，随时随地处理审批、汇报项目进度，保障时效性。',
     icon: <Smartphone className="w-6 h-6" />
   },
   {

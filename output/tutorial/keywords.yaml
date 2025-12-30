@@ -1,0 +1,100 @@
+dimensions:
+  - name: industry
+    values:
+      - 制造业
+      - 零售业
+      - 服务业
+      - 物流
+      - 医药
+      - 食品
+      - 化工
+      - 电子
+      - 汽车
+      - 纺织
+      - 建材
+      - 能源
+      - 金融
+      - 教育
+      - 医疗
+      - 房地产
+  - name: scenario
+    values:
+      - 集团管控
+      - 多组织
+      - 业财一体化
+      - 产销一体化
+      - 财务共享
+      - 供应链协同
+      - 移动办公
+      - 智能分析
+generator:
+  method: python
+  python_pseudocode: |-
+    # 关键词组合生成逻辑
+    from itertools import product
+
+    # 定义各维度枚举值
+        industry_values = ["制造业", "零售业", "服务业", "物流", "医药", "食品", "化工", "电子", "汽车", "纺织"]  # 示例值，实际应包含所有枚举
+        scenario_values = ["集团管控", "多组织", "业财一体化", "产销一体化", "财务共享", "供应链协同", "移动办公", "智能分析"]  # 示例值，实际应包含所有枚举
+
+    # 生成所有维度组合
+    combinations = product(industry_values, scenario_values)
+
+    # 生成关键词列表
+    keywords = []
+    for combo in combinations:
+        # 组合方式：维度值1 + 维度值2 + ... + 种子关键词
+        keyword_parts = [str(v) for v in combo if v]  # 过滤空值
+        keyword = "".join(keyword_parts) + "实施服务"  # 可根据需要调整组合方式
+        keywords.append(keyword)
+
+    # 去重和排序
+    keywords = sorted(set(keywords))
+
+    # 输出结果
+    for kw in keywords:
+        print(kw)
+samples:
+  - keyword: 制造业集团管控Yonsuite 公有云数据安全性如何保证服务
+    cluster: 制造业 + 集团管控
+  - keyword: 零售业多组织Yonsuite 公有云数据安全性如何保证服务
+    cluster: 零售业 + 多组织
+  - keyword: 服务业业财一体化Yonsuite 公有云数据安全性如何保证服务
+    cluster: 服务业 + 业财一体化
+  - keyword: 物流产销一体化Yonsuite 公有云数据安全性如何保证服务
+    cluster: 物流 + 产销一体化
+  - keyword: 医药财务共享Yonsuite 公有云数据安全性如何保证服务
+    cluster: 医药 + 财务共享
+  - keyword: 食品供应链协同Yonsuite 公有云数据安全性如何保证服务
+    cluster: 食品 + 供应链协同
+  - keyword: 化工移动办公Yonsuite 公有云数据安全性如何保证服务
+    cluster: 化工 + 移动办公
+  - keyword: 电子智能分析Yonsuite 公有云数据安全性如何保证服务
+    cluster: 电子 + 智能分析
+  - keyword: 汽车集团管控Yonsuite 公有云数据安全性如何保证服务
+    cluster: 汽车 + 集团管控
+  - keyword: 纺织多组织Yonsuite 公有云数据安全性如何保证服务
+    cluster: 纺织 + 多组织
+  - keyword: 建材业财一体化Yonsuite 公有云数据安全性如何保证服务
+    cluster: 建材 + 业财一体化
+  - keyword: 能源产销一体化Yonsuite 公有云数据安全性如何保证服务
+    cluster: 能源 + 产销一体化
+  - keyword: 金融财务共享Yonsuite 公有云数据安全性如何保证服务
+    cluster: 金融 + 财务共享
+  - keyword: 教育供应链协同Yonsuite 公有云数据安全性如何保证服务
+    cluster: 教育 + 供应链协同
+  - keyword: 医疗移动办公Yonsuite 公有云数据安全性如何保证服务
+    cluster: 医疗 + 移动办公
+  - keyword: 房地产智能分析Yonsuite 公有云数据安全性如何保证服务
+    cluster: 房地产 + 智能分析
+validation_criteria:
+  - rule: Top3 SERP contains Reddit/Quora/知乎 -> PASS
+    rationale: UGC站点多时通常竞争更低，适合长尾关键词
+  - rule: Title match rate < 0.6 -> PASS
+    rationale: SERP不集中说明可用差异化切入，竞争度较低
+  - rule: Top10 contains 3+ 问答类页面 -> PASS
+    rationale: 问答类内容多说明用户需求明确，适合内容营销
+  - rule: Top10 contains 0 品牌官网 -> PASS
+    rationale: 无品牌官网说明竞争度低，适合新站优化
+  - rule: Keyword length >= 8 characters -> PASS
+    rationale: 长尾关键词通常竞争度更低，转化率更高

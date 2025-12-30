@@ -1,0 +1,57 @@
+{
+  "success": 10,
+  "failed": 0,
+  "skipped": 0,
+  "details": [
+    {
+      "keyword": "ERP 实施服务",
+      "status": "success",
+      "path": "output/batch/erp-/page.md"
+    },
+    {
+      "keyword": "用友 YonSuite 实施服务",
+      "status": "success",
+      "path": "output/batch/-yonsuite-/page.md"
+    },
+    {
+      "keyword": "用友 YonBIP 实施与定制服务",
+      "status": "success",
+      "path": "output/batch/-yonbip-/page.md"
+    },
+    {
+      "keyword": "U8C 实施服务",
+      "status": "success",
+      "path": "output/batch/u8c-/page.md"
+    },
+    {
+      "keyword": "NC 实施服务",
+      "status": "success",
+      "path": "output/batch/nc-/page.md"
+    },
+    {
+      "keyword": "ERP 二次开发服务",
+      "status": "success",
+      "path": "output/batch/erp-/page.md"
+    },
+    {
+      "keyword": "钉钉集成开发服务",
+      "status": "success",
+      "path": "output/batch/page.md"
+    },
+    {
+      "keyword": "致远协同实施与定制服务",
+      "status": "success",
+      "path": "output/batch/page.md"
+    },
+    {
+      "keyword": "MES 实施服务",
+      "status": "success",
+      "path": "output/batch/mes-/page.md"
+    },
+    {
+      "keyword": "WMS 实施服务",
+      "status": "success",
+      "path": "output/batch/wms-/page.md"
+    }
+  ]
+}

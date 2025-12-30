@@ -31,7 +31,7 @@ export const TrustProof = () => {
           <div>
             <h2 className="text-3xl font-bold mb-6">交付证据：用数据说话</h2>
             <p className="text-gray-600 text-lg mb-10">
-              致远项目协同管理系统已助力数万家组织实现高效协同。
+              项目协同管理系统已助力数万家组织实现高效协同。
             </p>
             <div className="grid grid-cols-2 gap-6">
               {stats.map((stat, idx) => (

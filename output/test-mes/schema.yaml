@@ -1,0 +1,43 @@
+schema_version: 1
+page:
+  keyword: "MES 实施服务"
+modules:
+  - id: direct_answer
+    h2: "一句话结论"
+    required_fields:
+      - "kb.direct_answer_text"
+    format: "h2+p"
+  - id: production_planning
+    h2: "生产计划流程"
+    required_fields:
+      - "kb.production_planning_steps"
+    format: "h2+steps"
+  - id: process_data_collection
+    h2: "工序数据采集"
+    required_fields:
+      - "kb.data_collection_methods"
+    format: "h2+list"
+  - id: quality_traceability
+    h2: "质量追溯体系"
+    required_fields:
+      - "kb.traceability_components"
+    format: "h2+list"
+  - id: erp_integration
+    h2: "ERP 集成方案"
+    required_fields:
+      - "kb.integration_points"
+    format: "h2+list"
+  - id: faq
+    h2: "常见问题"
+    required_fields:
+      - "kb.faq_items"
+    format: "h2+qa"
+
+# Outline (comment only):
+# - H1: MES 实施服务
+# - H2: 一句话结论
+# - H2: 生产计划流程
+# - H2: 工序数据采集
+# - H2: 质量追溯体系
+# - H2: ERP 集成方案
+# - H2: 常见问题

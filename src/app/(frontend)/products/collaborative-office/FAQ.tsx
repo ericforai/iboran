@@ -6,12 +6,12 @@ import { Plus, Minus, HelpCircle } from 'lucide-react'
 
 const faqs = [
   {
-    question: '致远 A8 的典型实施周期是多久？',
+    question: 'A8 协同平台的典型实施周期是多久？',
     answer: '标准模块上线通常需要 1-2 个月。如果涉及复杂的异构系统集成（如 ERP 对接）或大规模的 CAP 业务定制，周期通常在 3-6 个月。我们将根据您的具体蓝图进行分期规划交付。'
   },
   {
     question: '系统是否支持国产软硬件环境（信创适配）？',
-    answer: '致远 A8 已实现全栈信创适配，支持包括中科方德、中标麒麟等国产 OS，华为鲲鹏、龙芯、飞腾等国产芯片，以及达梦、人大金仓、人大金仓等国产数据库，确保政务及国资组织的安全办公需求。'
+    answer: 'A8 协同平台已实现全栈信创适配，支持包括中科方德、中标麒麟等国产 OS，华为鲲鹏、龙芯、飞腾等国产芯片，以及达梦、人大金仓、人大金仓等国产数据库，确保政务及国资组织的安全办公需求。'
   },
   {
     question: 'CAP 低代码平台能实现哪些业务应用？',
@@ -19,11 +19,11 @@ const faqs = [
   },
   {
     question: '如何解决与现有 ERP/HR 系统的“信息孤岛”问题？',
-    answer: '致远提供的协同集成平台（CIP）预置了丰富的集成插件，支持主数据同步、单点登录（SSO）、消息穿透及双向数据流转，可将 OA 作为企业的统一工作入口（Portal）。'
+    answer: '提供的协同集成平台（CIP）预置了丰富的集成插件，支持主数据同步、单点登录（SSO）、消息穿透及双向数据流转，可将 OA 作为企业的统一工作入口（Portal）。'
   },
   {
     question: '移动端支持哪些接入方式？',
-    answer: '除了致远原生的移动办公平台 M3 外，我们还支持通过微协同套件直接与企业微信、钉钉、飞书、华为云 WeLink 等主流移动办公平台集成，实现“一套后台，多端入口”。'
+    answer: '除了原生的移动办公平台 M3 外，我们还支持通过微协同套件直接与企业微信、钉钉、飞书、华为云 WeLink 等主流移动办公平台集成，实现“一套后台，多端入口”。'
   },
   {
     question: '系统的扩展性如何，能够支撑集团级管理吗？',
@@ -42,7 +42,7 @@ export default function FAQ() {
             <HelpCircle className="w-4 h-4" />
             <span>常见问题解答</span>
           </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">关于致远 A8 交付的常见疑问</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">关于 A8 交付的常见疑问</h2>
         </div>
 
         <div className="max-w-4xl mx-auto space-y-4">

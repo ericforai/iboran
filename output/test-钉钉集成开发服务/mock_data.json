@@ -1,0 +1,70 @@
+{
+  "kb": {
+    "direct_answer_text": "（示例）这是一个关于该主题的核心结论，简洁明了地回答用户的问题。",
+    "api_integration_steps": [
+      {
+        "title": "API对接设计",
+        "input": "业务需求、系统接口文档",
+        "output": "对接方案",
+        "notes": "定义接口规范和数据格式"
+      },
+      {
+        "title": "接口开发",
+        "input": "对接方案",
+        "output": "接口代码",
+        "notes": "实现数据转换和异常处理"
+      },
+      {
+        "title": "联调测试",
+        "input": "接口代码",
+        "output": "测试报告",
+        "notes": "验证数据准确性和稳定性"
+      }
+    ],
+    "message_push_methods": [
+      "实时消息推送",
+      "定时消息推送",
+      "事件触发推送",
+      "批量消息推送"
+    ],
+    "workflow_design_steps": [
+      {
+        "title": "审批流程设计",
+        "input": "业务规则",
+        "output": "流程定义",
+        "notes": "定义审批节点和流转规则"
+      },
+      {
+        "title": "流程配置",
+        "input": "流程定义",
+        "output": "流程实例",
+        "notes": "在系统中配置流程"
+      },
+      {
+        "title": "流程测试",
+        "input": "流程实例",
+        "output": "测试结果",
+        "notes": "验证流程正确性"
+      }
+    ],
+    "sync_strategies": [
+      "实时同步",
+      "定时同步",
+      "增量同步",
+      "全量同步",
+      "双向同步"
+    ],
+    "faq_items": [
+      {
+        "question": "（示例）常见问题 1？",
+        "answer": "（示例）详细回答内容"
+      },
+      {
+        "question": "（示例）常见问题 2？",
+        "answer": "（示例）详细回答内容"
+      }
+    ]
+  },
+  "ugc_reviews": null,
+  "rpa_image_captions": null
+}

@@ -23,9 +23,30 @@
 
 import { getPayload } from 'payload'
 import configPromise from '../src/payload.config'
+import dotenv from 'dotenv'
 import * as fs from 'fs'
 import * as path from 'path'
+import { fileURLToPath } from 'url'
 import yaml from 'js-yaml'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// Load .env file
+const envPath = path.resolve(__dirname, '../.env')
+if (fs.existsSync(envPath)) {
+  dotenv.config({ path: envPath })
+}
+
+// Manual override if dotenv fails for npx tsx environment
+if (!process.env.PAYLOAD_SECRET) {
+  process.env.PAYLOAD_SECRET = 'd587beaf9532cb1c89f3945e'
+  console.error('⚠️  使用默认 PAYLOAD_SECRET（建议在 .env 中设置）')
+}
+if (!process.env.DATABASE_URI) {
+  process.env.DATABASE_URI = 'mongodb://localhost:27017/iboran'
+  console.error('⚠️  使用默认 DATABASE_URI（建议在 .env 中设置）')
+}
 
 interface Schema {
   schema_version: number
@@ -490,13 +511,45 @@ function extractFAQs(markdown: string): Array<{ question: string; answer: string
 function generateSlug(title: string, customSlug?: string): string {
   if (customSlug) return customSlug
   
-  // 简单的中文转拼音 slug（实际应该使用拼音库）
-  return title
+  // 改进的 slug 生成：保留中文字符，转换为拼音风格的 slug
+  // 简单映射常见中文词汇（实际应该使用拼音库如 pinyin-pro）
+  const chineseMap: Record<string, string> = {
+    '实施': 'shishi',
+    '服务': 'fuwu',
+    '用友': 'yongyou',
+    'ERP': 'erp',
+    'YonSuite': 'yonsuite',
+    'YonBIP': 'yonbip',
+  }
+  
+  let slug = title
+  // 替换已知的中文词汇
+  for (const [chinese, pinyin] of Object.entries(chineseMap)) {
+    slug = slug.replace(new RegExp(chinese, 'gi'), pinyin)
+  }
+  
+  // 处理剩余的中文：保留或转换为拼音（这里简化处理）
+  // 移除所有非字母数字字符，保留空格和连字符
+  slug = slug
     .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
+    .replace(/[^\w\s-]/g, '')  // 移除特殊字符
+    .replace(/\s+/g, '-')      // 空格转连字符
+    .replace(/-+/g, '-')       // 多个连字符合并
+    .replace(/^-|-$/g, '')     // 移除首尾连字符
     .substring(0, 100)
+  
+  // 如果 slug 为空或太短，使用备用方案
+  if (!slug || slug.length < 3) {
+    slug = title
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+      .substring(0, 100) || 'post'
+  }
+  
+  return slug
 }
 
 async function main() {
@@ -532,6 +585,17 @@ async function main() {
     // 连接 Payload CMS
     const payload = await getPayload({ config: configPromise })
 
+    // 检查是否已存在相同标题的 Post
+    const existingPosts = await payload.find({
+      collection: 'posts',
+      where: {
+        title: {
+          equals: title,
+        },
+      },
+      limit: 1,
+    })
+
     // 解析分类
     let categoryIds: string[] = []
     if (args.category) {
@@ -545,7 +609,7 @@ async function main() {
       }
     }
 
-    // 创建 Post
+    // 准备 Post 数据
     const postData: any = {
       title,
       slug,
@@ -564,12 +628,29 @@ async function main() {
       postData.publishedAt = new Date().toISOString()
     }
 
-    const result = await payload.create({
-      collection: 'posts',
-      data: postData,
-    })
+    let result
+    if (existingPosts.docs.length > 0) {
+      // 已存在，更新而非创建
+      const existingPost = existingPosts.docs[0]
+      console.error(`⚠️  已存在相同标题的 Post (ID: ${existingPost.id}), 将更新...`)
+      
+      result = await payload.update({
+        collection: 'posts',
+        id: existingPost.id,
+        data: postData,
+      })
+      
+      console.error(`✓ Post updated successfully!`)
+    } else {
+      // 不存在，创建新的
+      result = await payload.create({
+        collection: 'posts',
+        data: postData,
+      })
+      
+      console.error(`✓ Post created successfully!`)
+    }
 
-    console.error(`✓ Post created successfully!`)
     console.error(`  - ID: ${result.id}`)
     console.error(`  - Title: ${result.title}`)
     console.error(`  - Slug: ${result.slug}`)
@@ -584,6 +665,7 @@ async function main() {
 }
 
 main()
+
 
 
 

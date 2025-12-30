@@ -1,0 +1,11 @@
+{
+  "review": {
+    "score": 10,
+    "fail_reasons": []
+  },
+  "format_check": {
+    "matches_schema": true,
+    "diffs": []
+  },
+  "result": "PASS"
+}

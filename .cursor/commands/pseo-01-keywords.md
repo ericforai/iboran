@@ -1,7 +1,10 @@
 # Skill 01 — Keyword Cluster Logic Builder (Cluster-First)
 
 ## Purpose
-不要让模型生成100行表格。
+围绕 {topic} 关键词簇规划，基于 SEED KEYWORDS 进行关键词挖掘和分类。
+
+**核心原则**：理解"词根"和"SEED KEYWORDS"。进入一个行业，基于行业 SEED KEYWORDS 进行关键词挖掘，然后分类。这一流程下来，你自然对这个行业的搜索需求有一定认知了，更容易挖掘到真正有价值的词。
+
 让模型输出：
 1) 维度设计（3-6个）
 2) 每个维度枚举（10-30个）
@@ -38,6 +41,11 @@ validation_criteria:
 - 必须输出 generator（excel_formula 或 python_pseudocode 至少一个）
 - validation_criteria 必须是可编程判断的规则（不能只写一句"看一下竞争度"）
 - 不要编造搜索量/难度数字；只给规则，不给虚数。
+
+**关键词矩阵打法**：
+- 核心在于理解"词根"、"SEED KEYWORDS"
+- 基于行业 SEED KEYWORDS 进行关键词挖掘，然后分类
+- 通过这一流程，自然对这个行业的搜索需求有一定认知，更容易挖掘到真正有价值的词
 
 ## Implementation
 可执行脚本：`scripts/pseo-keywords-generator.ts`

@@ -1,0 +1,43 @@
+schema_version: 1
+page:
+  keyword: "WMS 实施服务"
+modules:
+  - id: direct_answer
+    h2: "一句话结论"
+    required_fields:
+      - "kb.direct_answer_text"
+    format: "h2+p"
+  - id: warehouse_layout
+    h2: "仓储布局设计"
+    required_fields:
+      - "kb.layout_design_steps"
+    format: "h2+steps"
+  - id: inventory_management
+    h2: "库存管理策略"
+    required_fields:
+      - "kb.inventory_strategies"
+    format: "h2+list"
+  - id: inbound_outbound
+    h2: "出入库流程"
+    required_fields:
+      - "kb.inbound_outbound_steps"
+    format: "h2+steps"
+  - id: comparison
+    h2: "对比分析"
+    required_fields:
+      - "kb.comparison_rows"
+    format: "h2+table"
+  - id: faq
+    h2: "常见问题"
+    required_fields:
+      - "kb.faq_items"
+    format: "h2+qa"
+
+# Outline (comment only):
+# - H1: WMS 实施服务
+# - H2: 一句话结论
+# - H2: 仓储布局设计
+# - H2: 库存管理策略
+# - H2: 出入库流程
+# - H2: 对比分析
+# - H2: 常见问题

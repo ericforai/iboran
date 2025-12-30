@@ -5,7 +5,7 @@ export const TargetAudience = () => {
   const applicable = [
     { title: '集团化多组织企业', desc: '需要管理复杂组织架构、多套薪酬标准与多地社保缴纳的企事业单位' },
     { title: 'HR管理数字化转型期', desc: '希望通过 AI 自动化技术减少重复性劳动，提升组织效能的企业' },
-    { title: '致远 OA 在用客户', desc: '对 OA 与 HR 系统深度集成有强诉求，追求办公管理一体化的组织' },
+    { title: '协同 OA 在用客户', desc: '对 OA 与 HR 系统深度集成有强诉求，追求办公管理一体化的组织' },
   ]
 
   const notApplicable = [

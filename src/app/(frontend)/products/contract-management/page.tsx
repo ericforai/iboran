@@ -13,7 +13,7 @@ import CTASection from './CTASection'
 export const metadata: Metadata = {
   title: '合同管理系统 - 合同全生命周期数智化管理解决方案 | 泊冉',
   description: '泊冉合同管理系统提供从合同起草、智能内审、电子签章到履约监控、财务对账及自动归档的一站式管理。集成法大大、财务系统，助力企业规范流程、规避风险。',
-  keywords: '合同管理系统, 电子合同, 电子签章, 履约预警, 数字化法务, 法大大集成, 致远互联, 泊冉',
+  keywords: '合同管理系统, 电子合同, 电子签章, 履约预警, 数字化法务, 法大大集成, 泊冉',
 }
 
 export default function ContractManagementPage() {

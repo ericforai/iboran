@@ -57,18 +57,6 @@ export const productCategories: ProductCategory[] = [
         desc: '成长型集团云 ERP，业财税金档一体化', 
         icon: Cloud 
       },
-      { 
-        label: '财务与供应链', 
-        href: '/products/finance-supply-chain', 
-        desc: '业财一体化，精细化成本管控与高效协同', 
-        icon: CreditCard 
-      },
-      { 
-        label: '智能制造', 
-        href: '/products/intelligent-manufacturing', 
-        desc: 'PLM / MES / AIoT，打造透明化数字工厂', 
-        icon: Box 
-      },
     ]
   },
   {
@@ -78,7 +66,7 @@ export const productCategories: ProductCategory[] = [
       { 
         label: '协同办公', 
         href: '/products/collaborative-office', 
-        desc: '致远 A8 数智化协同运营平台 (COP)', 
+        desc: 'A8 数智化协同运营平台 (COP)', 
         icon: Users 
       },
       { 
@@ -112,10 +100,10 @@ export const productCategories: ProductCategory[] = [
         icon: Layers 
       },
       { 
-        label: '致远薪事力', 
-        href: '/products/hr-salary-management', 
-        desc: '全模块人力资源管理云平台，随需应变，算薪更简单', 
-        icon: Users 
+        label: '采购管理', 
+        href: '/products/procurement-management', 
+        desc: '数字化采购管理平台，实现从请购到支付的全流程闭环', 
+        icon: Layers 
       },
     ]
   },
