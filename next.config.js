@@ -41,6 +41,8 @@ const nextConfig = {
       'node_modules/sass/**/*',
       'node_modules/terser/**/*',
       'node_modules/webpack/**/*',
+      'node_modules/sharp/**/*',
+      'node_modules/@swc/core/**/*',
     ],
   },
 }
