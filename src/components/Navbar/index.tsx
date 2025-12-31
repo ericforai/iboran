@@ -421,44 +421,82 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
                     </motion.div>
                   )}
 
-                  {/* Industry Categories Grid */}
+                  {/* Industry Categories Grid - Column Stacking Layout */}
                   {megaMenuTab === 'industry' && (
                     <motion.div 
                       key="industry-tab"
                       initial={{ opacity: 0, x: 10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10"
+                      className="grid grid-cols-4 gap-x-8 gap-y-12 pr-4 pt-1 items-start"
                     >
-                      {solutionByIndustryCategory.map((category) => (
-                        <div key={category.name} className="flex flex-col">
-                          <h3 className="text-sm font-bold text-[#1F2329] mb-4 pb-2 border-b-2 border-slate-100 flex items-center gap-2">
-                            <span className="w-1.5 h-4 bg-[#0052D9] rounded-full"></span>
-                            {category.name}
-                          </h3>
-                          <div className="grid grid-cols-1 gap-1">
-                            {category.items.map((item) => {
-                              const IconComponent = item.icon
-                              return (
-                                <Link
-                                  key={item.href}
-                                  href={item.href}
-                                  className="group flex items-center gap-3 p-2.5 -mx-2.5 rounded-xl hover:bg-blue-50/50 transition-all duration-200"
-                                >
-                                  <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-50 group-hover:bg-white group-hover:shadow-sm flex items-center justify-center transition-all">
-                                    <IconComponent className="w-4 h-4 text-slate-400 group-hover:text-[#0052D9]" />
-                                  </div>
-                                  <div className="flex-1 min-w-0">
-                                    <div className="font-semibold text-[#1F2329] text-[13px] group-hover:text-[#0052D9] transition-colors">
-                                      {item.label}
-                                    </div>
-                                  </div>
-                                </Link>
-                              )
-                            })}
+                      {/* Column 1 */}
+                      <div className="space-y-10">
+                        {[0, 4].map(idx => solutionByIndustryCategory[idx]).filter(Boolean).map(category => (
+                          <div key={category.name} className="space-y-4">
+                            <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                              {category.name}
+                            </h3>
+                            <div className="space-y-1">
+                              {category.items.map((item) => (
+                                <SolutionItem key={item.href} item={item} />
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
+
+                      {/* Column 2 */}
+                      <div className="space-y-10">
+                        {[1, 5].map(idx => solutionByIndustryCategory[idx]).filter(Boolean).map(category => (
+                          <div key={category.name} className="space-y-4">
+                            <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                              {category.name}
+                            </h3>
+                            <div className="space-y-1">
+                              {category.items.map((item) => (
+                                <SolutionItem key={item.href} item={item} />
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Column 3 */}
+                      <div className="space-y-10">
+                        {[2, 6].map(idx => solutionByIndustryCategory[idx]).filter(Boolean).map(category => (
+                          <div key={category.name} className="space-y-4">
+                            <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                              {category.name}
+                            </h3>
+                            <div className="space-y-1">
+                              {category.items.map((item) => (
+                                <SolutionItem key={item.href} item={item} />
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Column 4 */}
+                      <div className="space-y-10">
+                        {[3, 7].map(idx => solutionByIndustryCategory[idx]).filter(Boolean).map(category => (
+                          <div key={category.name} className="space-y-4">
+                            <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                              {category.name}
+                            </h3>
+                            <div className="space-y-1">
+                              {category.items.map((item) => (
+                                <SolutionItem key={item.href} item={item} />
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </motion.div>
                   )}
                 </div>
