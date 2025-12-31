@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
+import TRMDashboardMockup from './TRMDashboardMockup'
 
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
@@ -50,20 +51,24 @@ export default function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="lg:w-1/2 relative"
             >
-              <div className="relative z-10 bg-white p-4 rounded-2xl shadow-2xl border border-slate-100">
-                <div className="aspect-[4/3] bg-slate-100 rounded-xl overflow-hidden flex items-center justify-center">
-                   <div className="text-center p-8">
-                     <div className="w-16 h-1 bg-[#E60012] mx-auto mb-4" />
-                     <p className="text-slate-400 font-medium">集团资金管理架构</p>
-                   </div>
+              <div className="relative z-10 w-full max-w-[640px] mx-auto lg:ml-auto">
+                {/* Dashboard Container */}
+                <div className="relative rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-200/50 bg-white overflow-hidden aspect-[16/10]">
+                  <TRMDashboardMockup />
                 </div>
+                
+                {/* Floating Decorative Elements */}
+                <div className="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-red-100/50 rounded-full blur-3xl opacity-60 animate-pulse" />
+                <div className="absolute -z-10 -top-10 -left-10 w-64 h-64 bg-blue-100/50 rounded-full blur-3xl opacity-60" />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[radial-gradient(#0052D9_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
+
+              {/* Dot Grid Background */}
+              <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-[radial-gradient(#0052D9_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
             </motion.div>
           </div>
         </div>

@@ -99,12 +99,6 @@ export const productCategories: ProductCategory[] = [
         desc: '数字化采购管理平台，实现从请购到支付的全流程闭环', 
         icon: Layers 
       },
-      { 
-        label: '采购管理', 
-        href: '/products/procurement-management', 
-        desc: '数字化采购管理平台，实现从请购到支付的全流程闭环', 
-        icon: Layers 
-      },
     ]
   },
   {

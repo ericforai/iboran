@@ -4,27 +4,27 @@ const painPoints = [
   {
     icon: Target,
     title: '定不准',
-    description: '战略目标与业务计划脱节，指标分解缺乏科学依据。'
+    description: '战略目标与业务计划脱节，指标分解缺乏科学依据，难以层层穿透落地。'
   },
   {
     icon: LayoutGrid,
     title: '编不顺',
-    description: '多部门协同困难，数据采集周期长，手工编制效率低。'
+    description: '多部门协同困难，数据采集周期长，手工编制效率低，版本版本管理混乱。'
   },
   {
     icon: ShieldAlert,
     title: '控不住',
-    description: '预算控制滞后，缺乏事中动态预警与在线自动刚性控制。'
+    description: '预算控制滞后，缺乏事中动态预警与在线自动刚性控制，财务管控流于形式。'
   },
   {
     icon: RotateCw,
     title: '滚不动',
-    description: '无法快速响应市场变化，滚动预测与动态调整难度大。'
+    description: '无法快速响应市场变化，滚动预测模型单一，业务计划与财务结果难以合一。'
   },
   {
     icon: BarChart3,
     title: '看不远',
-    description: '经营分析缺乏深度，难以透过数据预见未来的风险与机会。'
+    description: '经营分析工作流转效率低，难以透过财务数据预见业务风险，决策缺乏时效。'
   }
 ]
 

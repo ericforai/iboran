@@ -32,10 +32,10 @@ export default function Hero() {
                 <span className="text-[#E60012]">数字化转型</span> 专家
               </h1>
               <p className="text-xl text-[#0052D9] font-medium mb-6">
-                从计划、生产到成本：打通制造业务全流程
+                产销协同 · 料动账动 · 精细核算
               </p>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-xl">
-                深耕制造行业，助力企业实现从研发、计划、执行到成本核算的正向一体化管理。通过柔性计划、智能工厂与产业链协作，实现从物理空间到数字空间的价值重构。
+                面向制造企业，提供从计划、生产到成本的一体化解决方案。基于"业财融合"理念，实现业务驱动财务，财务实时反映业务，打造精细化成本管控体系。
               </p>
               
               <div className="flex flex-wrap gap-4">

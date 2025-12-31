@@ -1,85 +1,182 @@
-import { Calculator, DollarSign, GitMerge } from 'lucide-react'
+'use client'
 
-const featureGroups = [
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { 
+  Activity, 
+  Globe, 
+  Archive, 
+  ChevronRight,
+  Database,
+  BarChart3,
+  Search,
+  Zap,
+  ShieldCheck,
+  CheckCircle2
+} from 'lucide-react'
+import R2RDashboardMockup from './R2RDashboardMockup'
+
+const tabs = [
   {
-    title: "智能核算层",
-    subtitle: "事项驱动，自动生账",
-    icon: Calculator,
+    id: 'accounting',
+    title: "智能核算 (Smart Accounting)",
+    subtitle: "事项驱动，多准则实时核算",
+    icon: Activity,
+    mockupTab: 'accounting',
     features: [
-      { title: "智能事项中台", desc: "以'事件'为中心的数据模型，自动将业务事件转化为财务凭证，一次录入多维记账。" },
-      { title: "自动化核算与结账", desc: "AI 驱动的凭证生成、智能审计机器人、一键月结，实现凭证自动化率 100%。" },
-      { title: "多账簿管理", desc: "支持法定、管理、税务等多套账簿并行，满足不同维度的核算与报告需求。" }
+      { title: "事项会计平台", desc: "基于'事项法'采集全量业务数据，精细化记录业务属性，支持同一事项生成多套凭证。", icon: Database },
+      { title: "智能核算引擎", desc: "内置核算引擎，业务单据自动触发凭证生成，自动化率达 95%+。实现财务报告实时出具。", icon: Zap },
+      { title: "内部交易对账", desc: "支持集团内部交易的实时协同与自动对账，由'事后核对'转变为'交易即对账'。", icon: Search }
     ]
   },
   {
-    title: "成本管理层",
-    subtitle: "精细归集，实时透视",
-    icon: DollarSign,
+    id: 'consolidation',
+    title: "全球合并 (Consolidation)",
+    subtitle: "一键合并，全球经营看板",
+    icon: Globe,
+    mockupTab: 'consolidation',
     features: [
-      { title: "精细化成本核算", desc: "与生产项目深度集成，实现'料、工、费'工序级的精准归集与分摊。" },
-      { title: "实时成本追踪", desc: "成本核算同步于业务发生，管理者可随时获取产品、订单、项目的实时成本。" },
-      { title: "多维利润分析", desc: "按产品、客户、渠道、区域等多维度进行利润贡献分析，支撑战略决策。" }
+      { title: "多维重组合并", desc: "支持按股权架构、管理架构等多维度的自动合并。内置复杂股权自动抵销规则。", icon: Globe },
+      { title: "准则转换引擎", desc: "自动完成海内外异构数据的准则映射与余额转换，支持 CAS/IFRS/US GAAP 并行。", icon: BarChart3 },
+      { title: "对账不平衡预警", desc: "实时识别内部交易与往来差异，异常数据精准定位到明细事项，提升合并效率。", icon: Activity }
     ]
   },
   {
-    title: "合并报表层",
-    subtitle: "一键合并，智能抵消",
-    icon: GitMerge,
+    id: 'insights',
+    title: "经营洞察 (Insights)",
+    subtitle: "从价值记录到价值创造",
+    icon: BarChart3,
+    mockupTab: 'insights',
     features: [
-      { title: "智能合并报表", desc: "自动汇率折算、内部交易抵消、复杂股权关系处理，合并效率提升 80%。" },
-      { title: "合并科目标准化", desc: "统一 3,000+ 合并科目映射，消除手工对账与核对的繁琐流程。" },
-      { title: "多准则输出", desc: "支持中国会计准则、IFRS、US GAAP 等多准则并行出表，满足跨境经营需求。" }
+      { title: "实时管财融合", desc: "不仅提供法定财务报表，更提供面向经营管理的管报体系。支持报表数据穿透查询。", icon: Archive },
+      { title: "数智分析平台", desc: "基于事项大数据，提供盈利分析、现金流预测等深度经营洞察，支持决策科学化。", icon: BarChart3 },
+      { title: "财税一体化", desc: "全税种自动计算与申报，纳税风险指标实时预警。外引内接，构建税务合规防火墙。", icon: ShieldCheck }
     ]
   }
 ]
 
 export default function Features() {
+  const [activeTab, setActiveTab] = useState(tabs[0])
+
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl font-bold text-[#1F2329] mb-4">财务数智化，从业务闭环开始</h2>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">下一代 R2R 核心能力</h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6"></div>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            从手工核算到智能财务的跨越，构建全方位的数字化财务能力，实现效率与价值的双重飞跃。
+            以事项法会计为核心，重构从交易到报告的全数字化路径。
           </p>
         </div>
 
-        <div className="space-y-16">
-          {featureGroups.map((group, groupIdx) => (
-            <div key={groupIdx} className="relative">
-              <div className="flex items-center gap-4 mb-10">
-                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-[#0052D9]">
-                  <group.icon size={26} />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-[#1F2329]">{group.title}</h3>
-                  <p className="text-[#0052D9] font-medium">{group.subtitle}</p>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-8">
-                {group.features.map((feature, featureIdx) => (
-                  <div 
-                    key={featureIdx}
-                    className="p-8 bg-[#F7F8FA] rounded-2xl border border-transparent hover:border-blue-100 hover:bg-white hover:shadow-lg transition-all duration-300"
-                  >
-                    <h4 className="text-lg font-bold text-[#1F2329] mb-3 flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-[#E60012] rounded-full" />
-                      {feature.title}
-                    </h4>
-                    <p className="text-slate-600 text-sm leading-relaxed">
-                      {feature.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
+          {/* Tabs Sidebar */}
+          <div className="lg:w-1/3 w-full flex flex-col gap-8">
+            <div className="relative space-y-4">
+              {/* Vertical Flow Line */}
+              <div className="absolute left-12 top-10 bottom-10 w-px border-l-2 border-dashed border-slate-200 hidden lg:block z-0" />
               
-              {groupIdx < featureGroups.length - 1 && (
-                <div className="absolute left-6 -bottom-10 w-0.5 h-8 bg-slate-100 hidden md:block" />
-              )}
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab)}
+                  className={`w-full text-left p-6 rounded-2xl border transition-all duration-300 relative z-10 group ${
+                    activeTab.id === tab.id 
+                    ? 'bg-blue-600 border-blue-600 shadow-xl shadow-blue-100 text-white' 
+                    : 'bg-white border-slate-100 hover:border-blue-200 text-slate-600'
+                  }`}
+                >
+                  <div className="flex items-center gap-6">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${
+                      activeTab.id === tab.id ? 'bg-white/20' : 'bg-slate-50 border border-slate-100'
+                    }`}>
+                      <tab.icon size={22} className={activeTab.id === tab.id ? 'text-white' : 'text-blue-600'} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-base mb-0.5">{tab.title}</h3>
+                      <p className={`text-xs ${activeTab.id === tab.id ? 'text-white/80' : 'text-slate-500'}`}>
+                        {tab.subtitle}
+                      </p>
+                    </div>
+                  </div>
+                  {activeTab.id === tab.id && (
+                    <motion.div 
+                      layoutId="active-indicator"
+                      className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 rotate-45 hidden lg:block"
+                    />
+                  )}
+                </button>
+              ))}
             </div>
-          ))}
+
+            {/* Core Pillars box to fill the gap */}
+            <div className="bg-[#001529] rounded-2xl p-6 text-white relative overflow-hidden hidden lg:block">
+               <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <Activity size={80} />
+               </div>
+               <h4 className="text-sm font-bold mb-4 flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-blue-400" />
+                  数智化三柱石
+               </h4>
+               <ul className="space-y-4 relative z-10">
+                  {[
+                    { label: '数智核算', desc: '事项驱动，实时凭证' },
+                    { label: '全球合并', desc: '智能抵销，秒级合并' },
+                    { label: '经营洞察', desc: '穿透洞察，辅助决策' }
+                  ].map((item, i) => (
+                    <li key={i} className="flex gap-3">
+                       <div className="w-1 h-8 bg-blue-500/30 rounded-full shrink-0" />
+                       <div>
+                          <div className="text-xs font-bold text-blue-400">{item.label}</div>
+                          <div className="text-[10px] text-white/50">{item.desc}</div>
+                       </div>
+                    </li>
+                  ))}
+               </ul>
+            </div>
+          </div>
+
+          {/* Tab Content & Mockup */}
+          <div className="lg:w-2/3 w-full bg-[#F7F8FA] rounded-3xl p-8 lg:px-12 lg:py-10 relative">
+             <div className="space-y-10">
+                <div className="grid md:grid-cols-3 gap-6">
+                  {activeTab.features.map((feature, idx) => (
+                    <motion.div
+                      key={feature.title}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
+                    >
+                      <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+                        <feature.icon size={20} />
+                      </div>
+                      <h4 className="font-bold text-sm text-[#1F2329] mb-2">{feature.title}</h4>
+                      <p className="text-[11px] text-slate-500 leading-relaxed">{feature.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="relative">
+                  <div className="flex justify-between items-center mb-4">
+                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                        系统实时演示 (Live Mockup)
+                     </span>
+                     <div className="flex gap-1.5">
+                        <div className="w-1 h-1 rounded-full bg-slate-200" />
+                        <div className="w-1 h-1 rounded-full bg-slate-200" />
+                        <div className="w-1 h-1 rounded-full bg-slate-200" />
+                     </div>
+                  </div>
+                  <div className="shadow-2xl rounded-2xl overflow-hidden overflow-x-auto ring-1 ring-slate-200">
+                    <div className="min-w-[800px] lg:min-w-0">
+                      <R2RDashboardMockup activeTab={activeTab.mockupTab} />
+                    </div>
+                  </div>
+                </div>
+             </div>
+          </div>
         </div>
       </div>
     </section>

@@ -32,6 +32,7 @@
   "dependencies": {
     "@payloadcms/admin-bar": "3.68.5",
     "@payloadcms/db-mongodb": "3.68.5",
+    "@payloadcms/email-nodemailer": "^3.68.5",
     "@payloadcms/live-preview-react": "3.68.5",
     "@payloadcms/next": "3.68.5",
     "@payloadcms/plugin-form-builder": "3.68.5",

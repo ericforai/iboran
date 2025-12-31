@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
+import { HRMDashboardMockup } from './HRMDashboardMockup'
 
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
@@ -25,15 +26,15 @@ export default function Hero() {
                   YonBIP & YonSuite 人力资源
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
-                HRM 人力资源 <br />
-                <span className="text-[#E60012]">全生命周期</span> 管理
+              <h1 className="text-4xl lg:text-7xl font-extrabold text-[#1F2329] mb-6 leading-[1.1]">
+                赋能员工 <br />
+                <span className="text-[#E60012]">激活组织</span>
               </h1>
               <p className="text-xl text-[#0052D9] font-medium mb-6">
-                激活组织活力：数智化人才管理体系
+                数字化人力资源：构建高绩效的敏捷组织
               </p>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-xl">
-                HRM 人力资源解决方案覆盖员工从招聘入职、培训发展、薪酬绩效到离职退休的全生命周期。通过数智化手段实现人才精细化管理，助力企业构建高效能组织。
+                用友BIP HRM 覆盖从人才招聘、组织人事、时间管理、薪酬绩效到人才发展的全生命周期。通过数智化手段重构组织能力，服务企业高质量发展。
               </p>
               
               <div className="flex flex-wrap gap-4">
@@ -44,30 +45,30 @@ export default function Hero() {
                   预约专家演示
                 </button>
                 <button className="px-10 py-4 border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-lg hover:bg-blue-50 transition-all">
-                  下载人力资源白皮书
+                  下载 HRM 白皮书
                 </button>
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:w-1/2 relative"
             >
-              <div className="relative z-10 bg-white p-4 rounded-2xl shadow-2xl border border-slate-100">
-                <div className="aspect-[4/3] bg-slate-100 rounded-xl overflow-hidden flex items-center justify-center">
-                   <div className="text-center p-8">
-                     <div className="w-16 h-1 bg-[#E60012] mx-auto mb-4" />
-                     <p className="text-slate-400 font-medium">人力资源数智化管理架构</p>
-                   </div>
+              <div className="relative z-10 bg-white p-2 rounded-2xl shadow-2xl border border-slate-100 group">
+                <div className="aspect-[16/10] rounded-xl overflow-hidden relative">
+                   <HRMDashboardMockup />
+                   <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none" />
                 </div>
               </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[radial-gradient(#0052D9_1px,transparent_1px)] [background-size:16px_16px] opacity-20" />
+              <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-[radial-gradient(#0052D9_1px,transparent_1px)] [background-size:20px_20px] opacity-20" />
+              <div className="absolute -top-12 -left-12 w-32 h-32 bg-red-50 rounded-full blur-3xl opacity-50 -z-10" />
             </motion.div>
           </div>
         </div>
       </section>
+
 
       <DemoRequestModal 
         isOpen={isDemoOpen} 

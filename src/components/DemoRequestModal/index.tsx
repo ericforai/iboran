@@ -45,7 +45,15 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
         setError(null)
 
         try {
-            // Format data for Payload form submission
+            // 1. Get Form ID by title
+            const idRes = await fetch('/api/identify-form?title=Expert Demo')
+            if (!idRes.ok) {
+                console.error('Form ID fetch failed:', await idRes.text())
+               throw new Error('未找到对应表单配置，请联系管理员') 
+            }
+            const { id: formID } = await idRes.json()
+
+            // 2. Format data for Payload form submission
             const submissionData = Object.entries(data)
                 .filter(([, value]) => value !== undefined && value !== '')
                 .map(([field, value]) => ({ field, value }))
@@ -54,17 +62,21 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
                 submissionData.push({ field: 'source', value: source })
             }
 
-            const response = await fetch('/api/form-submissions', {
+            // 3. Submit to Payload Form Builder API
+            const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || ''}/api/form-submissions`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    form: 'demo-request', // Will match by title or ID
+                    form: formID,
                     submissionData,
                 }),
             })
 
+            const resJson = await response.json()
+
             if (!response.ok) {
-                throw new Error('提交失败，请稍后重试')
+                 console.error('Submission failed:', resJson)
+                throw new Error(resJson.errors?.[0]?.message || '提交失败，请稍后重试')
             }
 
             setIsSuccess(true)

@@ -2,36 +2,36 @@ import { TrendingUp, Clock, Users, Heart } from 'lucide-react'
 
 const metrics = [
   {
-    title: "招聘效率提升",
+    title: "业务运营提效",
     icon: Clock,
     color: "blue",
-    description: "智能化招聘流程大幅缩短招聘周期，提升候选人体验，吸引更多优质人才。",
+    description: "通过标准化与智能化手段，大幅缩短业务处理周期，释放HR战术性工作压力。",
     stats: [
-      { label: "招聘周期缩短", value: "-40%" },
-      { label: "简历处理效率", value: "+300%" },
-      { label: "候选人体验", value: "+50%" }
+      { label: "发薪周期", value: "4天→4时" },
+      { label: "发薪自动化率", value: "90%" },
+      { label: "单据处理提效", value: "68%" }
     ]
   },
   {
-    title: "人效显著改善",
+    title: "协同与管理进化",
     icon: TrendingUp,
     color: "green",
-    description: "数据驱动的人才管理，优化人员配置，提升人均产出与组织效能。",
+    description: "打通端到端流程壁垒，实现数据高度融合与实时对标，辅助科学决策。",
     stats: [
-      { label: "人均产值提升", value: "+15%" },
-      { label: "HR事务减负", value: "-60%" },
-      { label: "人效分析覆盖", value: "100%" }
+      { label: "绩效核算周期", value: "10天→3天" },
+      { label: "数据统计提效", value: "3天→1时" },
+      { label: "关键数据准确率", value: "100%" }
     ]
   },
   {
-    title: "员工敬业度提升",
+    title: "员工体验重构",
     icon: Heart,
     color: "red",
-    description: "优化员工体验，构建正向激励文化，提升员工满意度与留存率。",
+    description: "以员工为中心，融入数智化服务体验，提升全员敬业度与组织凝聚力。",
     stats: [
       { label: "员工满意度", value: "+30%" },
-      { label: "主动离职率", value: "-25%" },
-      { label: "内部晋升率", value: "+40%" }
+      { label: "自助服务覆盖", value: "100%" },
+      { label: "人才发现精准度", value: "95%" }
     ]
   }
 ]
@@ -72,11 +72,11 @@ export default function ValueSection() {
 
               <div className="mt-auto grid grid-cols-3 gap-3">
                 {item.stats.map((stat, sIdx) => (
-                  <div key={sIdx} className="bg-slate-50 p-3 rounded-xl text-center">
+                  <div key={sIdx} className="bg-slate-50 p-2 xl:p-3 rounded-xl text-center min-w-0">
                     <div className={`${
                       item.color === 'blue' ? 'text-blue-600' :
                       item.color === 'green' ? 'text-green-600' : 'text-red-600'
-                    } font-bold text-xl mb-1`}>{stat.value}</div>
+                    } font-bold text-base xl:text-lg mb-1 whitespace-nowrap overflow-hidden text-ellipsis`}>{stat.value}</div>
                     <div className="text-[10px] text-slate-500 font-medium leading-tight">{stat.label}</div>
                   </div>
                 ))}

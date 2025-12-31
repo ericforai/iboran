@@ -10,9 +10,15 @@ import {
   MessageSquare,
   ArrowRight,
 } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
-import { solutionByBusiness, solutionByIndustryCategory } from '@/data/solutions'
+import { 
+  solutionByBusiness, 
+  solutionByIndustryCategory,
+  type BusinessSolutionItem,
+  type IndustrySolutionItem
+} from '@/data/solutions'
 import { productCategories } from '@/data/products'
 import type { Contact } from '@/payload-types'
 
@@ -112,6 +118,27 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
       prev.includes(label) 
         ? prev.filter(item => item !== label)
         : [...prev, label]
+    )
+  }
+  const SolutionItem = ({ item }: { item: BusinessSolutionItem | IndustrySolutionItem }) => {
+    const IconComponent = item.icon
+    return (
+      <Link
+        href={item.href}
+        className="group flex items-start gap-3 p-2 -mx-2 rounded-xl hover:bg-blue-50/50 transition-all duration-200"
+      >
+        <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-blue-50 group-hover:bg-[#0052D9] flex items-center justify-center transition-all duration-300">
+          <IconComponent className="w-4.5 h-4.5 text-[#0052D9] group-hover:text-white transition-colors" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="font-semibold text-[#1F2329] text-[13px] group-hover:text-[#0052D9] transition-colors leading-snug whitespace-nowrap tracking-tight">
+            {item.label}
+          </div>
+          <div className="text-[11px] text-slate-500 mt-0.5 line-clamp-1 opacity-70 group-hover:opacity-100 transition-opacity">
+            {item.desc}
+          </div>
+        </div>
+      </Link>
     )
   }
 
@@ -230,131 +257,232 @@ export const Navbar = React.memo(function Navbar({ onOpenDemo, contactData }: Na
         )}
 
         {/* Mega Menu Dropdown - Below header, full width */}
-        {activeDropdown === '解决方案' && (
-          <div 
-            className="absolute top-full left-0 right-0 w-full bg-white border-t border-gray-100 shadow-2xl z-50"
-            onMouseEnter={() => handleMenuEnter('解决方案')}
-            onMouseLeave={handleMenuLeave}
-          >
-            <div className="container mx-auto px-6 py-6">
-              {/* Tab Switcher */}
-              <div className="flex items-center gap-2 mb-6">
-                <button
-                  onClick={() => setMegaMenuTab('business')}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    megaMenuTab === 'business' 
-                      ? 'bg-[#0052D9] text-white shadow-sm' 
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                  }`}
-                >
-                  按业务
-                </button>
-                <button
-                  onClick={() => setMegaMenuTab('industry')}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                    megaMenuTab === 'industry' 
-                      ? 'bg-[#0052D9] text-white shadow-sm' 
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                  }`}
-                >
-                  按行业
-                </button>
-              </div>
+        <AnimatePresence>
+          {activeDropdown === '解决方案' && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              className="absolute top-full left-0 right-0 w-full bg-white border-t border-gray-100 shadow-2xl z-50"
+              onMouseEnter={() => handleMenuEnter('解决方案')}
+              onMouseLeave={handleMenuLeave}
+            >
+              <div className="container mx-auto px-6 py-6">
+                {/* Tab Switcher - Segmented Control Style */}
+                <div className="flex items-center gap-1 p-1 bg-slate-100 rounded-xl w-fit mb-8">
+                  <button
+                    onClick={() => setMegaMenuTab('business')}
+                    className={`relative px-6 py-2 rounded-lg text-sm font-semibold transition-colors duration-200 ${
+                      megaMenuTab === 'business' ? 'text-[#0052D9]' : 'text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    {megaMenuTab === 'business' && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 bg-white rounded-lg shadow-sm"
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-10">按业务</span>
+                  </button>
+                  <button
+                    onClick={() => setMegaMenuTab('industry')}
+                    className={`relative px-6 py-2 rounded-lg text-sm font-semibold transition-colors duration-200 ${
+                      megaMenuTab === 'industry' ? 'text-[#0052D9]' : 'text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    {megaMenuTab === 'industry' && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 bg-white rounded-lg shadow-sm"
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-10">按行业</span>
+                  </button>
+                </div>
 
-              {/* Scrollable Content Area */}
-              <div className="max-h-[60vh] overflow-y-auto pr-2 -mr-2">
-                {/* Business Categories Grid */}
-                {megaMenuTab === 'business' && (
-                  <div className="grid grid-cols-3 lg:grid-cols-6 gap-6">
-                    {solutionByBusiness.map((category) => (
-                      <div key={category.name}>
-                        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 pb-2 border-b border-slate-100">
-                          {category.name}
-                        </h3>
-                        <div className="space-y-1">
-                          {category.items.map((item) => {
-                            const IconComponent = item.icon
+                {/* Scrollable Content Area - Optimized for Side-by-Side */}
+                <div className="pr-2 -mr-2">
+                  {/* Business Categories Grid - Final Optimized Layout */}
+                  {megaMenuTab === 'business' && (
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="grid grid-cols-6 gap-x-10 items-start"
+                    >
+                      {/* Left Side: Business Solutions (Cols 1-4) */}
+                      <div className="col-span-4 pr-10 border-r border-slate-100">
+                        {/* Nested Grid to ensure horizontal alignment across rows */}
+                        <div className="grid grid-cols-4 gap-x-8 gap-y-12">
+                          {/* ROW 1: Sales | R&D | Finance (span 2) */}
+                          <div className="space-y-1 items-start">
+                            <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                              销售与收款
+                            </h3>
+                            {solutionByBusiness.find(c => c.name === '销售与收款')?.items.map((item) => (
+                              <SolutionItem key={item.href} item={item} />
+                            ))}
+                          </div>
+                          <div className="space-y-1 items-start">
+                            <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                              研发与制造
+                            </h3>
+                            {solutionByBusiness.find(c => c.name === '研发与制造')?.items.map((item) => (
+                              <SolutionItem key={item.href} item={item} />
+                            ))}
+                          </div>
+                          <div className="col-span-2">
+                            <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                              财务与资金
+                            </h3>
+                            <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+                              {solutionByBusiness.find(c => c.name === '财务与资金')?.items.map((item) => (
+                                <SolutionItem key={item.href} item={item} />
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* ROW 2: Procurement | Human | Project (span 2) */}
+                          <div className="space-y-1 items-start">
+                            <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                              采购与供应链
+                            </h3>
+                            {solutionByBusiness.find(c => c.name === '采购与供应链')?.items.map((item) => (
+                              <SolutionItem key={item.href} item={item} />
+                            ))}
+                          </div>
+                          <div className="space-y-1 items-start">
+                            <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                              人力与资产
+                            </h3>
+                            {solutionByBusiness.find(c => c.name === '人力与资产')?.items.map((item) => (
+                              <SolutionItem key={item.href} item={item} />
+                            ))}
+                          </div>
+                          <div className="col-span-2">
+                            <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                              项目与成本
+                            </h3>
+                            <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+                              {solutionByBusiness.find(c => c.name === '项目与成本')?.items.map((item) => (
+                                <SolutionItem key={item.href} item={item} />
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Right Side: Digital Base Sidebar (Cols 5-6) */}
+                      <div className="col-span-2 pl-4">
+                        <div className="bg-slate-50/50 border border-slate-100/50 rounded-2xl p-5">
+                          <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-8 flex items-center gap-2">
+                            <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
+                            数智底座与基础平台
+                          </h3>
+
+                          {solutionByBusiness.filter(c => c.name === '智能平台').map((category) => {
+                            const platformGroups = [
+                              { title: '智能协作', keys: ['AIP', 'EOC'], desc: 'AI驱动效率' },
+                              { title: '开发建模', keys: ['APP', 'DEV'], desc: '响应变革' },
+                              { title: '连接集成', keys: ['LINK'], desc: '打破孤岛' },
+                              { title: '数智底座', keys: ['DMP', 'CTP'], desc: '支撑转型' }
+                            ]
                             return (
-                              <Link
-                                key={item.href}
-                                href={item.href}
-                                className="group flex items-start gap-3 p-2.5 -mx-2.5 rounded-lg hover:bg-slate-50 transition-all duration-150"
-                              >
-                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center transition-colors">
-                                  <IconComponent className="w-4 h-4 text-[#0052D9]" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="font-medium text-[#1F2329] text-sm group-hover:text-[#0052D9] transition-colors">
-                                    {item.label}
+                              <div key={category.name} className="grid grid-cols-2 gap-x-4 gap-y-10">
+                                {platformGroups.map((group) => (
+                                  <div key={group.title} className="space-y-3">
+                                    <div className="flex flex-col border-l-2 border-slate-200 pl-3">
+                                      <h4 className="text-[12px] font-bold text-slate-700">{group.title}</h4>
+                                      <p className="text-[10px] text-slate-400 mt-0.5">{group.desc}</p>
+                                    </div>
+                                    <div className="space-y-1">
+                                      {category.items
+                                        .filter(item => group.keys.some(key => item.label.startsWith(key)))
+                                        .map((item) => (
+                                          <SolutionItem key={item.href} item={item} />
+                                        ))}
+                                    </div>
                                   </div>
-                                  <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">
-                                    {item.desc}
-                                  </div>
-                                </div>
-                              </Link>
+                                ))}
+                              </div>
                             )
                           })}
                         </div>
                       </div>
-                    ))}
-                  </div>
-                )}
+                    </motion.div>
+                  )}
 
-                {/* Industry Categories Grid - Two-level structure like business */}
-                {megaMenuTab === 'industry' && (
-                  <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
-                    {solutionByIndustryCategory.map((category) => (
-                      <div key={category.name} className="flex flex-col">
-                        <h3 className="text-sm font-bold text-[#1F2329] mb-4 pb-2 border-b-2 border-slate-100 flex items-center gap-2">
-                          <span className="w-1.5 h-4 bg-[#0052D9] rounded-full"></span>
-                          {category.name}
-                        </h3>
-                        <div className="grid grid-cols-1 gap-1">
-                          {category.items.map((item) => {
-                            const IconComponent = item.icon
-                            return (
-                              <Link
-                                key={item.href}
-                                href={item.href}
-                                className="group flex items-center gap-3 p-2 -mx-2 rounded-lg hover:bg-blue-50/50 transition-all duration-200"
-                              >
-                                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-slate-50 group-hover:bg-white group-hover:shadow-sm flex items-center justify-center transition-all">
-                                  <IconComponent className="w-4 h-4 text-slate-400 group-hover:text-[#0052D9]" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="font-medium text-[#1F2329] text-[13px] group-hover:text-[#0052D9] transition-colors">
-                                    {item.label}
+                  {/* Industry Categories Grid */}
+                  {megaMenuTab === 'industry' && (
+                    <motion.div 
+                      key="industry-tab"
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10"
+                    >
+                      {solutionByIndustryCategory.map((category) => (
+                        <div key={category.name} className="flex flex-col">
+                          <h3 className="text-sm font-bold text-[#1F2329] mb-4 pb-2 border-b-2 border-slate-100 flex items-center gap-2">
+                            <span className="w-1.5 h-4 bg-[#0052D9] rounded-full"></span>
+                            {category.name}
+                          </h3>
+                          <div className="grid grid-cols-1 gap-1">
+                            {category.items.map((item) => {
+                              const IconComponent = item.icon
+                              return (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  className="group flex items-center gap-3 p-2.5 -mx-2.5 rounded-xl hover:bg-blue-50/50 transition-all duration-200"
+                                >
+                                  <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-slate-50 group-hover:bg-white group-hover:shadow-sm flex items-center justify-center transition-all">
+                                    <IconComponent className="w-4 h-4 text-slate-400 group-hover:text-[#0052D9]" />
                                   </div>
-                                </div>
-                              </Link>
-                            )
-                          })}
+                                  <div className="flex-1 min-w-0">
+                                    <div className="font-semibold text-[#1F2329] text-[13px] group-hover:text-[#0052D9] transition-colors">
+                                      {item.label}
+                                    </div>
+                                  </div>
+                                </Link>
+                              )
+                            })}
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                      ))}
+                    </motion.div>
+                  )}
+                </div>
+                
+                {/* Bottom CTA Bar */}
+                <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
+                  <Link 
+                    href="/solution"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-[#0052D9] hover:text-blue-700 transition-colors group"
+                  >
+                    查看全部解决方案
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <button
+                    onClick={handleOpenDemo}
+                    className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-sm transition-all hover:shadow-md active:scale-95"
+                  >
+                    预约专家演示
+                  </button>
+                </div>
               </div>
-              
-              {/* Bottom CTA Bar */}
-              <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
-                <Link 
-                  href="/solution"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-[#0052D9] hover:text-blue-700 transition-colors group"
-                >
-                  查看全部解决方案
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <button
-                  onClick={handleOpenDemo}
-                  className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-sm transition-all hover:shadow-md active:scale-95"
-                >
-                  预约专家演示
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Right: Actions - positioned inside header */}
         <div className="flex items-center gap-4 lg:gap-6">

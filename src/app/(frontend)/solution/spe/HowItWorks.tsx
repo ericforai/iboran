@@ -6,27 +6,27 @@ import { Target, FileSpreadsheet, Activity, PieChart } from 'lucide-react'
 const steps = [
   {
     icon: Target,
-    title: 'Strategic Planning (战略规划)',
-    description: '承接企业 3-5 年战略规划，通过多维度测算模型进行目标分解，确保战略目标可执行、可落地。',
-    details: ['战略目标确定', '多维目标分解', '目标下达与模拟']
+    title: 'Strategic Planning (从战略到计划)',
+    description: '承接企业 3-5 年战略规划，通过 MDS 建模进行多维度测算，确保战略直达业务末梢。',
+    details: ['纵向指标对齐', '沙箱模拟测算', '目标下达落实']
   },
   {
     icon: FileSpreadsheet,
-    title: 'Budgeting & Planning (计划预算)',
-    description: '构建覆盖业务计划、财务预算（收入/成本/费用/资金）的全面预算体系，支持多业态、多层级灵活建模。',
-    details: ['供应链计划协同', '全面预算编制', '多版滚动预测']
+    title: 'Budgeting & Insight (从计划到执行)',
+    description: '构建全面预算编制体系，将管理诉求转化为业务动效，实现预算法人到颗粒度规则的全面映射。',
+    details: ['编审协同联动', '多版滚动预测', '动态资源配置']
   },
   {
     icon: Activity,
-    title: 'Execution & Control (执行控制)',
-    description: '通过预算控制中台，实现对业务系统的实时刚性控制与柔性预警，打通申请、报销、采购等全链路。',
-    details: ['实时预算控制', '预算调整与追加', '跨系统流程贯通']
+    title: 'Execution & Control (执行与控制)',
+    description: '通过预算中台实现贯穿立项、采购、费控的实时刚性控制，确保业务始终在管理轨道内运行。',
+    details: ['全链路实时控制', '柔性预警机制', '控制策略统管']
   },
   {
     icon: PieChart,
-    title: 'Analysis & Assessment (分析考核)',
-    description: '基于业财融合数据进行多维经营分析，透过数据洞察业务动因，形成从分析到绩效考核的完整闭环。',
-    details: ['预算执行分析', '目标利润模拟', '业财综合分析']
+    title: 'Analysis & Assessment (经营分析与考核)',
+    description: '通过智能归因分析技术，透过财务结果洞察业务动因，形成分析关联绩效的管理闭环。',
+    details: ['智能归因洞察', '敏感性模拟', '绩效锚定考核']
   }
 ]
 

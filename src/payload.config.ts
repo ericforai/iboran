@@ -1,4 +1,5 @@
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import sharp from 'sharp'
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
@@ -68,6 +69,23 @@ export default buildConfig({
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Contact],
   plugins,
+  email: nodemailerAdapter({
+    defaultFromAddress: process.env.SMTP_FROM || 'info@boran.cn',
+    defaultFromName: 'Boran Software',
+    transportOptions: process.env.SMTP_HOST
+      ? {
+          host: process.env.SMTP_HOST,
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
+          },
+          port: Number(process.env.SMTP_PORT),
+          secure: Number(process.env.SMTP_PORT) === 465,
+        }
+      : {
+          streamTransport: true, // Log to console if no SMTP
+      },
+  }),
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: {
