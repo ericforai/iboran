@@ -43,20 +43,26 @@ if (fs.existsSync(routesManifestPath)) {
           if (key === 'regex' && obj.source === '/:path*') {
                pRegex = '^/.*$';
           } else {
-              // Remove lazy quantifiers
+              // 1. Simplify optional trailing slash groups:
+              //    (?:/)?$  -> /?$
+              //    (/)?$    -> /?$
+              //    (\/)?$   -> \/?$
+              if (pRegex.endsWith('(?:/)?$')) {
+                pRegex = pRegex.substring(0, pRegex.length - 7) + '/?$';
+              } else if (pRegex.endsWith('(/)?$')) {
+                pRegex = pRegex.substring(0, pRegex.length - 5) + '/?$';
+              } else if (pRegex.endsWith('(\\/)?$')) {
+                 pRegex = pRegex.replace(/\(\\\/\)\?\$$/, '\\/?$')
+              }
+
+              // 2. Remove lazy quantifiers
               if (pRegex.includes('+?') || pRegex.includes('*?')) {
                 pRegex = pRegex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
               }
               
-              // Replace non-capturing groups (?: with capturing groups (
+              // 3. Replace remaining non-capturing groups (?: with capturing groups (
               if (pRegex.includes('(?:')) {
                 pRegex = pRegex.replace(/\(\?:/g, '(')
-              }
-
-              // OPTIMIZATION: Simplify optional slash group (\/)?$ to \/?$
-              // This handles the common pattern ^\/...(\/)?$ avoiding the group modifier 
-              if (pRegex.endsWith('(\\/)?$')) {
-                 pRegex = pRegex.replace(/\(\\\/\)\?\$$/, '\\/?$')
               }
           }
 
