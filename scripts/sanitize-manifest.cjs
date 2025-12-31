@@ -27,44 +27,46 @@ if (fs.existsSync(routesManifestPath)) {
         sanitizeRoutesManifest(item)
       }
     } else if (typeof obj === 'object' && obj !== null) {
-      // Remove namedRegex
-      if ('namedRegex' in obj) {
-        delete obj.namedRegex
-        modified = true
-      }
+      // Remove named regexes
+      if ('namedRegex' in obj) delete obj.namedRegex;
+      if ('namedDataRouteRegex' in obj) delete obj.namedDataRouteRegex;
 
-      // Simplify regex
-      if ('regex' in obj && typeof obj.regex === 'string') {
-        let originalRegex = obj.regex;
-        let pRegex = obj.regex;
+      // Define keys to sanitize
+      const keysToSanitize = ['regex', 'dataRouteRegex'];
 
-        // Specific fix for catch-all header regex
-        if (obj.source === '/:path*') {
-             pRegex = '^/.*$';
-        } else {
-            // Remove lazy quantifiers
-            if (pRegex.includes('+?') || pRegex.includes('*?')) {
-              pRegex = pRegex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
-            }
-            
-            // Replace non-capturing groups (?: with capturing groups (
-            if (pRegex.includes('(?:')) {
-              pRegex = pRegex.replace(/\(\?:/g, '(')
-            }
+      for (const key of keysToSanitize) {
+        if (key in obj && typeof obj[key] === 'string') {
+          let originalRegex = obj[key];
+          let pRegex = obj[key];
 
-            // OPTIMIZATION: Simplify optional slash group (\/)?$ to \/?$
-            // This handles the common pattern ^\/...(\/)?$ avoiding the group modifier 
-            if (pRegex.endsWith('(\\/)?$')) {
-               pRegex = pRegex.replace(/\(\\\/\)\?\$$/, '\\/?$')
-            }
-        }
+          // Specific fix for catch-all header regex (only for 'regex' key)
+          if (key === 'regex' && obj.source === '/:path*') {
+               pRegex = '^/.*$';
+          } else {
+              // Remove lazy quantifiers
+              if (pRegex.includes('+?') || pRegex.includes('*?')) {
+                pRegex = pRegex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
+              }
+              
+              // Replace non-capturing groups (?: with capturing groups (
+              if (pRegex.includes('(?:')) {
+                pRegex = pRegex.replace(/\(\?:/g, '(')
+              }
 
-        if (pRegex !== originalRegex) {
-            console.log(`Sanitized regex for source "${obj.source || 'unknown'}":`)
-            console.log(`  Before: ${originalRegex}`)
-            console.log(`  After:  ${pRegex}`)
-            obj.regex = pRegex
-            modified = true
+              // OPTIMIZATION: Simplify optional slash group (\/)?$ to \/?$
+              // This handles the common pattern ^\/...(\/)?$ avoiding the group modifier 
+              if (pRegex.endsWith('(\\/)?$')) {
+                 pRegex = pRegex.replace(/\(\\\/\)\?\$$/, '\\/?$')
+              }
+          }
+
+          if (pRegex !== originalRegex) {
+              console.log(`Sanitized ${key} for source "${obj.source || obj.page || 'unknown'}":`)
+              console.log(`  Before: ${originalRegex}`)
+              console.log(`  After:  ${pRegex}`)
+              obj[key] = pRegex
+              modified = true
+          }
         }
       }
 
