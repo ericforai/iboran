@@ -9,26 +9,36 @@ if (fs.existsSync(routesManifestPath)) {
   const manifest = JSON.parse(fs.readFileSync(routesManifestPath, 'utf8'))
   let modified = false
 
-  // Recursive function to remove namedRegex
-  function removeNamedRegex(obj) {
+  // Recursive function to sanitize manifest
+  function sanitizeRoutesManifest(obj) {
     if (Array.isArray(obj)) {
-      obj.forEach(removeNamedRegex)
+      obj.forEach(sanitizeRoutesManifest)
     } else if (typeof obj === 'object' && obj !== null) {
+      // Remove namedRegex
       if ('namedRegex' in obj) {
         delete obj.namedRegex
         modified = true
       }
-      Object.values(obj).forEach(removeNamedRegex)
+
+      // Simplify regex (remove lazy quantifiers)
+      if ('regex' in obj && typeof obj.regex === 'string') {
+        if (obj.regex.includes('+?') || obj.regex.includes('*?')) {
+          obj.regex = obj.regex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
+          modified = true
+        }
+      }
+
+      Object.values(obj).forEach(sanitizeRoutesManifest)
     }
   }
 
-  removeNamedRegex(manifest)
+  sanitizeRoutesManifest(manifest)
 
   if (modified) {
     fs.writeFileSync(routesManifestPath, JSON.stringify(manifest, null, 2))
-    console.log('Sanitized routes-manifest.json: removed namedRegex properties')
+    console.log('Sanitized routes-manifest.json: removed namedRegex and simplified regex')
   } else {
-    console.log('No namedRegex properties found in routes-manifest.json')
+    console.log('No namedRegex or complex regex found in routes-manifest.json')
   }
 } else {
   console.log('routes-manifest.json not found')
