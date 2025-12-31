@@ -30,6 +30,14 @@ if (fs.existsSync(routesManifestPath)) {
           continue
         }
 
+        // Remove global headers that use catch-all paths (potential regex source)
+        if (item && item.source === '/:path*' && item.headers) {
+           console.log('Removing global catch-all header:', item.source);
+           obj.splice(i, 1);
+           modified = true;
+           continue;
+        }
+
         sanitizeRoutesManifest(item)
       }
     } else if (typeof obj === 'object' && obj !== null) {
@@ -45,34 +53,29 @@ if (fs.existsSync(routesManifestPath)) {
           let originalRegex = obj[key];
           let pRegex = obj[key];
 
-          // Specific fix for catch-all header regex (only for 'regex' key)
-          if (key === 'regex' && obj.source === '/:path*') {
-               pRegex = '^/.*$';
-          } else {
-              // 1. Aggressively remove optional trailing slash groups/modifiers
-              //    Simplify ^...(/)?$ or ^...(?:/)?$ or ^.../?$ to ^...$
-              //    The router likely dislikes the ? modifier on the slash
-              const originalLen = pRegex.length;
-              
-              if (pRegex.endsWith('(?:/)?$')) {
-                pRegex = pRegex.substring(0, pRegex.length - 7) + '$';
-              } else if (pRegex.endsWith('(/)?$')) {
-                pRegex = pRegex.substring(0, pRegex.length - 5) + '$';
-              } else if (pRegex.endsWith('(\\/)?$')) {
-                 pRegex = pRegex.replace(/\(\\\/\)\?\$$/, '$')
-              } else if (pRegex.endsWith('/?$')) {
-                 pRegex = pRegex.substring(0, pRegex.length - 3) + '$';
-              }
+          // 1. Aggressively remove optional trailing slash groups/modifiers
+          //    Simplify ^...(/)?$ or ^...(?:/)?$ or ^.../?$ to ^...$
+          //    The router likely dislikes the ? modifier on the slash
+          const originalLen = pRegex.length;
+          
+          if (pRegex.endsWith('(?:/)?$')) {
+            pRegex = pRegex.substring(0, pRegex.length - 7) + '$';
+          } else if (pRegex.endsWith('(/)?$')) {
+            pRegex = pRegex.substring(0, pRegex.length - 5) + '$';
+          } else if (pRegex.endsWith('(\\/)?$')) {
+             pRegex = pRegex.replace(/\(\\\/\)\?\$$/, '$')
+          } else if (pRegex.endsWith('/?$')) {
+             pRegex = pRegex.substring(0, pRegex.length - 3) + '$';
+          }
 
-              // 2. Remove lazy quantifiers
-              if (pRegex.includes('+?') || pRegex.includes('*?')) {
-                pRegex = pRegex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
-              }
-              
-              // 3. Replace remaining non-capturing groups (?: with capturing groups (
-              if (pRegex.includes('(?:')) {
-                pRegex = pRegex.replace(/\(\?:/g, '(')
-              }
+          // 2. Remove lazy quantifiers
+          if (pRegex.includes('+?') || pRegex.includes('*?')) {
+            pRegex = pRegex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
+          }
+          
+          // 3. Replace remaining non-capturing groups (?: with capturing groups (
+          if (pRegex.includes('(?:')) {
+            pRegex = pRegex.replace(/\(\?:/g, '(')
           }
 
           if (pRegex !== originalRegex) {
@@ -110,23 +113,24 @@ if (fs.existsSync(imagesManifestPath)) {
   let modified = false
 
   if (manifest.images && Array.isArray(manifest.images.remotePatterns)) {
-    manifest.images.remotePatterns.forEach((pattern) => {
-      // Check for regex containing negative lookaheads (?!...)
-      if (pattern.pathname && pattern.pathname.includes('(?!')) {
-        console.log(`Found complex regex in images manifest for ${pattern.hostname}, simplifying...`)
-        // Replace with a simple catch-all regex that matches anything starting with /
-        pattern.pathname = '^/.*$'
-        modified = true
-      }
-
-      // Check for regex in hostname (starts with ^)
-      if (pattern.hostname && pattern.hostname.startsWith('^')) {
-        console.log(`Found complex regex in hostname for ${pattern.hostname}, simplifying...`)
-        // Strip regex characters: ^, $, (, ), ?, :, \, |
-        pattern.hostname = pattern.hostname.replace(/[\^\$\(\)\?\:\\\|]/g, '')
-        modified = true
-      }
-    })
+    // Clear remotePatterns entirely if they look suspicious to avoid regex issues
+    // Or strictly sanitize them
+    manifest.images.remotePatterns = manifest.images.remotePatterns.map((pattern) => {
+        if (pattern.pathname && pattern.pathname.includes('(?!')) {
+             console.log(`Simplifying complex pathname for ${pattern.hostname}`);
+             pattern.pathname = '^/.*$';
+             modified = true;
+        }
+        if (pattern.hostname && pattern.hostname.startsWith('^')) {
+             console.log(`Simplifying hostname regex for ${pattern.hostname}`);
+             pattern.hostname = pattern.hostname.replace(/[\^\$\(\)\?\:\\\|]/g, '');
+             modified = true;
+        }
+        return pattern;
+    });
+    
+    // Safety check: if modification didn't catch specific 'Unexpected MODIFIER' issues
+    // We might want to just set pathname to something super simple if it was regex
   }
 
   if (modified) {
