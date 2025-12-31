@@ -18,7 +18,7 @@ if (fs.existsSync(routesManifestPath)) {
         
         // Remove default Next.js trailing slash redirect which causes regex issues
         if (item && item.source === '/:path+/' && item.destination === '/:path+') {
-          console.log('Removing problematic trailing slash redirect')
+          console.log('Removing problematic trailing slash redirect:', item.source)
           obj.splice(i, 1)
           modified = true
           continue
@@ -33,23 +33,38 @@ if (fs.existsSync(routesManifestPath)) {
         modified = true
       }
 
-      // Simplify regex (remove lazy quantifiers)
+      // Simplify regex
       if ('regex' in obj && typeof obj.regex === 'string') {
+        let originalRegex = obj.regex;
+        let pRegex = obj.regex;
+
         // Specific fix for catch-all header regex
         if (obj.source === '/:path*') {
-             console.log('Simplifying catch-all regex for /:path*');
-             obj.regex = '^/.*$';
-             modified = true;
+             pRegex = '^/.*$';
         } else {
-            if (obj.regex.includes('+?') || obj.regex.includes('*?')) {
-              obj.regex = obj.regex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
-              modified = true
+            // Remove lazy quantifiers
+            if (pRegex.includes('+?') || pRegex.includes('*?')) {
+              pRegex = pRegex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
             }
+            
             // Replace non-capturing groups (?: with capturing groups (
-            if (obj.regex.includes('(?:')) {
-              obj.regex = obj.regex.replace(/\(\?:/g, '(')
-              modified = true
+            if (pRegex.includes('(?:')) {
+              pRegex = pRegex.replace(/\(\?:/g, '(')
             }
+
+            // OPTIMIZATION: Simplify optional slash group (\/)?$ to \/?$
+            // This handles the common pattern ^\/...(\/)?$ avoiding the group modifier 
+            if (pRegex.endsWith('(\\/)?$')) {
+               pRegex = pRegex.replace(/\(\\\/\)\?\$$/, '\\/?$')
+            }
+        }
+
+        if (pRegex !== originalRegex) {
+            console.log(`Sanitized regex for source "${obj.source || 'unknown'}":`)
+            console.log(`  Before: ${originalRegex}`)
+            console.log(`  After:  ${pRegex}`)
+            obj.regex = pRegex
+            modified = true
         }
       }
 
