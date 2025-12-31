@@ -26,6 +26,11 @@ if (fs.existsSync(routesManifestPath)) {
           obj.regex = obj.regex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
           modified = true
         }
+        // Replace non-capturing groups (?: with capturing groups (
+        if (obj.regex.includes('(?:')) {
+          obj.regex = obj.regex.replace(/\(\?:/g, '(')
+          modified = true
+        }
       }
 
       Object.values(obj).forEach(sanitizeRoutesManifest)
