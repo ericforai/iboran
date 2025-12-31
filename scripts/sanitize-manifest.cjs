@@ -48,6 +48,14 @@ if (fs.existsSync(imagesManifestPath)) {
         pattern.pathname = '^/.*$'
         modified = true
       }
+
+      // Check for regex in hostname (starts with ^)
+      if (pattern.hostname && pattern.hostname.startsWith('^')) {
+        console.log(`Found complex regex in hostname for ${pattern.hostname}, simplifying...`)
+        // Strip regex characters: ^, $, (, ), ?, :, \, |
+        pattern.hostname = pattern.hostname.replace(/[\^\$\(\)\?\:\\\|]/g, '')
+        modified = true
+      }
     })
   }
 
