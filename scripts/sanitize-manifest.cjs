@@ -43,16 +43,19 @@ if (fs.existsSync(routesManifestPath)) {
           if (key === 'regex' && obj.source === '/:path*') {
                pRegex = '^/.*$';
           } else {
-              // 1. Simplify optional trailing slash groups:
-              //    (?:/)?$  -> /?$
-              //    (/)?$    -> /?$
-              //    (\/)?$   -> \/?$
+              // 1. Aggressively remove optional trailing slash groups/modifiers
+              //    Simplify ^...(/)?$ or ^...(?:/)?$ or ^.../?$ to ^...$
+              //    The router likely dislikes the ? modifier on the slash
+              const originalLen = pRegex.length;
+              
               if (pRegex.endsWith('(?:/)?$')) {
-                pRegex = pRegex.substring(0, pRegex.length - 7) + '/?$';
+                pRegex = pRegex.substring(0, pRegex.length - 7) + '$';
               } else if (pRegex.endsWith('(/)?$')) {
-                pRegex = pRegex.substring(0, pRegex.length - 5) + '/?$';
+                pRegex = pRegex.substring(0, pRegex.length - 5) + '$';
               } else if (pRegex.endsWith('(\\/)?$')) {
-                 pRegex = pRegex.replace(/\(\\\/\)\?\$$/, '\\/?$')
+                 pRegex = pRegex.replace(/\(\\\/\)\?\$$/, '$')
+              } else if (pRegex.endsWith('/?$')) {
+                 pRegex = pRegex.substring(0, pRegex.length - 3) + '$';
               }
 
               // 2. Remove lazy quantifiers
@@ -72,6 +75,9 @@ if (fs.existsSync(routesManifestPath)) {
               console.log(`  After:  ${pRegex}`)
               obj[key] = pRegex
               modified = true
+          } else if (key === 'dataRouteRegex') {
+             // Debug log to confirm we are seeing dataRouteRegex even if not modified
+             console.log(`Checked dataRouteRegex for ${obj.page}: ${originalRegex} (No changes needed)`);
           }
         }
       }
