@@ -12,7 +12,20 @@ if (fs.existsSync(routesManifestPath)) {
   // Recursive function to sanitize manifest
   function sanitizeRoutesManifest(obj) {
     if (Array.isArray(obj)) {
-      obj.forEach(sanitizeRoutesManifest)
+      // Iterate backwards to allow removal
+      for (let i = obj.length - 1; i >= 0; i--) {
+        const item = obj[i]
+        
+        // Remove default Next.js trailing slash redirect which causes regex issues
+        if (item && item.source === '/:path+/' && item.destination === '/:path+') {
+          console.log('Removing problematic trailing slash redirect')
+          obj.splice(i, 1)
+          modified = true
+          continue
+        }
+
+        sanitizeRoutesManifest(item)
+      }
     } else if (typeof obj === 'object' && obj !== null) {
       // Remove namedRegex
       if ('namedRegex' in obj) {
@@ -22,14 +35,21 @@ if (fs.existsSync(routesManifestPath)) {
 
       // Simplify regex (remove lazy quantifiers)
       if ('regex' in obj && typeof obj.regex === 'string') {
-        if (obj.regex.includes('+?') || obj.regex.includes('*?')) {
-          obj.regex = obj.regex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
-          modified = true
-        }
-        // Replace non-capturing groups (?: with capturing groups (
-        if (obj.regex.includes('(?:')) {
-          obj.regex = obj.regex.replace(/\(\?:/g, '(')
-          modified = true
+        // Specific fix for catch-all header regex
+        if (obj.source === '/:path*') {
+             console.log('Simplifying catch-all regex for /:path*');
+             obj.regex = '^/.*$';
+             modified = true;
+        } else {
+            if (obj.regex.includes('+?') || obj.regex.includes('*?')) {
+              obj.regex = obj.regex.replace(/\+\?/g, '+').replace(/\*\?/g, '*')
+              modified = true
+            }
+            // Replace non-capturing groups (?: with capturing groups (
+            if (obj.regex.includes('(?:')) {
+              obj.regex = obj.regex.replace(/\(\?:/g, '(')
+              modified = true
+            }
         }
       }
 
