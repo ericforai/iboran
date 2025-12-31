@@ -7,6 +7,12 @@ const imagesManifestPath = path.join(process.cwd(), '.next', 'images-manifest.js
 // Sanitize routes-manifest.json
 if (fs.existsSync(routesManifestPath)) {
   const manifest = JSON.parse(fs.readFileSync(routesManifestPath, 'utf8'))
+  console.log('Sanitizing routes-manifest.json. Root keys:', Object.keys(manifest));
+  if (manifest.dynamicRoutes) console.log(`Found ${manifest.dynamicRoutes.length} dynamicRoutes`);
+  if (manifest.staticRoutes) console.log(`Found ${manifest.staticRoutes.length} staticRoutes`);
+  if (manifest.dataRoutes) console.log(`Found ${manifest.dataRoutes.length} dataRoutes`);
+  else console.warn('WARNING: No dataRoutes found in manifest!');
+
   let modified = false
 
   // Recursive function to sanitize manifest
