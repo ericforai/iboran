@@ -10,7 +10,7 @@ import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { StoryCard } from '@/components/StoryCard'
 import { ResourceCard } from '@/components/ResourceCard'
-import { PageClientWrapper } from '../../../page.client.wrapper'
+
 import { Footer as SiteFooter } from '@/components/Footer'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
@@ -64,16 +64,12 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
   })
 
   return (
-    <PageClientWrapper contactData={contactData}>
-      <article className="pb-24 pt-16">
-        {/* Allows redirects for valid pages too */}
-        <PayloadRedirects disableNotFound url={url} />
-
-        {draft && <LivePreviewListener />}
-
-        <RenderBlocks blocks={solution.layout} />
-
-        <div className="container mt-24 px-4 space-y-24">
+    <article className="pb-24 pt-16">
+      <PayloadRedirects disableNotFound url={url} />
+      {draft && <LivePreviewListener />}
+      <RenderBlocks blocks={solution.layout} />
+      
+      <div className="container mt-24 px-4 space-y-24">
           {solution.relatedSuccessStories && solution.relatedSuccessStories.length > 0 && (
             <div>
               <div className="max-w-3xl mb-12">
@@ -106,8 +102,6 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
           )}
         </div>
       </article>
-      <SiteFooter />
-    </PageClientWrapper>
   )
 }
 

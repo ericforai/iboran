@@ -5,12 +5,10 @@ import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
 import PageClient from './page.client'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { Phone } from 'lucide-react'
 import type { Contact } from '@/payload-types'
-import { PageClientWrapper } from '../page.client.wrapper'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 600
@@ -67,7 +65,6 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
   return (
     <div className="min-h-screen flex flex-col">
-      <PageClientWrapper contactData={contactData}>
         <div className="flex-grow pt-24 pb-24">
           <PageClient />
           <div className="container mb-16">
@@ -114,7 +111,6 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
             </div>
           </div>
         </div>
-      </PageClientWrapper>
     </div>
   )
 }

@@ -1,10 +1,9 @@
 import type { Metadata } from 'next/types'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import React from 'react'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Contact } from '@/payload-types'
-import { PageClientWrapper } from '../page.client.wrapper'
+
 import { Footer as SiteFooter } from '@/components/Footer'
 import ResourcesClient from './page.client'
 
@@ -23,7 +22,7 @@ export default async function ResourcesPage() {
   })
 
   return (
-    <PageClientWrapper contactData={contactData}>
+    <>
       <div className="bg-gray-50 min-h-screen">
         <header className="bg-blue-600 pt-40 pb-20 text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
@@ -42,7 +41,7 @@ export default async function ResourcesPage() {
         <ResourcesClient initialResources={resources.docs as any} />
       </div>
       <SiteFooter />
-    </PageClientWrapper>
+    </>
   )
 }
 

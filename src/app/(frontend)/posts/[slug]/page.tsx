@@ -6,6 +6,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
+
 import RichText from '@/components/RichText'
 
 import type { Post, Contact } from '@/payload-types'
@@ -13,7 +14,6 @@ import type { Post, Contact } from '@/payload-types'
 import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
-import { PageClientWrapper } from '../../page.client.wrapper'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import Link from 'next/link'
@@ -66,19 +66,17 @@ export default async function Post({ params: paramsPromise }: Args) {
     : undefined
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <PageClientWrapper contactData={contactData}>
-        <article className="flex-grow pt-16 pb-16">
-          <PageClient />
+    <article className="pt-16 pb-16">
+      <PageClient />
 
-          {/* Allows redirects for valid pages too */}
-          <PayloadRedirects disableNotFound url={url} />
+      {/* Allows redirects for valid pages too */}
+      <PayloadRedirects disableNotFound url={url} />
 
-          {draft && <LivePreviewListener />}
+      {draft && <LivePreviewListener />}
 
-          <PostHero post={post} />
+      <PostHero post={post} />
 
-          <GEOJsonLd 
+      <GEOJsonLd 
             title={post.title} 
             description={post.meta?.description || undefined} 
             faqs={post.atomicFAQs} 
@@ -137,8 +135,6 @@ export default async function Post({ params: paramsPromise }: Args) {
             </div>
           </div>
         </article>
-      </PageClientWrapper>
-    </div>
   )
 }
 

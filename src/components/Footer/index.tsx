@@ -35,8 +35,6 @@ export const Footer = () => {
             <h4 className="font-semibold text-[#1D1D1F] mb-6">产品中心</h4>
             <ul className="space-y-3 text-sm">
               <li><Link href="/products/yonsuite" className="hover:text-[#1D1D1F] hover:underline decoration-1 underline-offset-4 transition-all">YonSuite 成长型云服务</Link></li>
-              <li><Link href="/products/u9-cloud" className="hover:text-[#1D1D1F] hover:underline decoration-1 underline-offset-4 transition-all">U9 Cloud 制造云</Link></li>
-              <li><Link href="/products/u8-cloud" className="hover:text-[#1D1D1F] hover:underline decoration-1 underline-offset-4 transition-all">U8 Cloud 创新云</Link></li>
               <li><Link href="/products/collaborative-office" className="hover:text-[#1D1D1F] hover:underline decoration-1 underline-offset-4 transition-all">协同办公</Link></li>
               <li><Link href="/solution/business/digital-modeling" className="hover:text-[#1D1D1F] hover:underline decoration-1 underline-offset-4 transition-all">数字化建模</Link></li>
               <li><Link href="/solution/business/aip-intelligent-apps" className="hover:text-[#1D1D1F] hover:underline decoration-1 underline-offset-4 transition-all">AI 智能应用</Link></li>
@@ -63,7 +61,6 @@ export const Footer = () => {
               <li><Link href="/posts" className="hover:text-[#1D1D1F] hover:underline decoration-1 underline-offset-4 transition-all">新闻动态</Link></li>
               <li><Link href="/about" className="hover:text-[#1D1D1F] hover:underline decoration-1 underline-offset-4 transition-all">加入我们</Link></li>
               <li><Link href="/about" className="hover:text-[#1D1D1F] hover:underline decoration-1 underline-offset-4 transition-all">联系我们</Link></li>
-              <li><Link href="/solution/business/global-operations" className="hover:text-[#1D1D1F] hover:underline decoration-1 underline-offset-4 transition-all">全球经营</Link></li>
             </ul>
           </div>
 

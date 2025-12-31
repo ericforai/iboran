@@ -6,7 +6,6 @@ import React from 'react'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Contact } from '@/payload-types'
 import { Phone } from 'lucide-react'
-import { PageClientWrapper } from '../page.client.wrapper'
 import { Footer as SiteFooter } from '@/components/Footer'
 
 export const dynamic = 'force-static'
@@ -24,8 +23,7 @@ export default async function SuccessStoriesPage() {
   })
 
   return (
-    <PageClientWrapper contactData={contactData}>
-      <div className="pt-24 pb-24 bg-white min-h-screen">
+    <div className="pt-24 pb-24 bg-white min-h-screen">
         <div className="container mb-12 px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight text-red-600">
@@ -83,8 +81,6 @@ export default async function SuccessStoriesPage() {
           </div>
         </div>
       </div>
-      <SiteFooter />
-    </PageClientWrapper>
   )
 }
 

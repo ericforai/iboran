@@ -11,7 +11,6 @@ import { notFound } from 'next/navigation'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { Phone } from 'lucide-react'
 import type { Contact } from '@/payload-types'
-import { PageClientWrapper } from '../../../page.client.wrapper'
 import { CategoryFilter } from '@/components/CategoryFilter'
 
 export const revalidate = 600
@@ -57,7 +56,6 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <PageClientWrapper contactData={contactData}>
         <div className="flex-grow pt-24 pb-24">
           <PageClient />
           <div className="container mb-16">
@@ -106,7 +104,6 @@ export default async function Page({ params: paramsPromise }: Args) {
             </div>
           </div>
         </div>
-      </PageClientWrapper>
     </div>
   )
 }

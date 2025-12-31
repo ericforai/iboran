@@ -16,7 +16,7 @@ import type { Contact } from '@/payload-types'
 import { IndustrySolutionsSection } from '../_sections/IndustrySolutionsSection'
 import { SuccessStoriesSection } from '../_sections/SuccessStoriesSection'
 import { RecentPostsSection } from '../_sections/RecentPostsSection'
-import { PageClientWrapper } from '../page.client.wrapper'
+
 
 const Hero = () => {
     return (
@@ -252,18 +252,13 @@ export default async function Page() {
 
     return (
         <div className="font-sans text-slate-600 bg-white min-h-screen flex flex-col">
-            <PageClientWrapper contactData={contactData}>
-              <main className="flex-grow">
-                  <Hero />
-                  <CoreValueGrid />
-                  <IndustrySolutionsSection solutions={industrySolutions.docs as any} />
-                  <SuccessStoriesSection stories={successStories.docs as any} />
-                  <RecentPostsSection posts={latestPosts.docs as any} />
-                  <SocialProof />
-              </main>
-            </PageClientWrapper>
+            <main className="flex-grow">
+                <Hero />
+                <CoreValueGrid />
+                <IndustrySolutionsSection solutions={industrySolutions.docs as any} />
+                <SuccessStoriesSection stories={successStories.docs as any} />
+            <SocialProof />
+          </main>
         </div>
-    )
-}
-
-
+      )
+    }

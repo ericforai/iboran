@@ -20,10 +20,10 @@ import type { Contact } from '@/payload-types'
 import { IndustrySolutionsSection } from './_sections/IndustrySolutionsSection'
 import { SuccessStoriesSection } from './_sections/SuccessStoriesSection'
 import { RecentPostsSection } from './_sections/RecentPostsSection'
-import { UnifiedPracticesSection } from './_sections/UnifiedPracticesSection'
-import { PageClientWrapper } from './page.client.wrapper'
+import BeforeLogin from '@/components/BeforeLogin'
 import { NeuStatCard } from '@/components/NeuStatCard'
 import { NeuFeatureCard } from '@/components/NeuFeatureCard'
+import { UnifiedPracticesSection } from './_sections/UnifiedPracticesSection'
 
 const Hero = () => {
     return (
@@ -397,7 +397,6 @@ export default async function Page() {
 
     return (
         <div className="font-sans text-slate-600 bg-white min-h-screen flex flex-col">
-            <PageClientWrapper contactData={contactData}>
               <main className="flex-grow">
                   <Hero />
                   <FailureScenarios />
@@ -408,9 +407,6 @@ export default async function Page() {
                   <RecentPostsSection posts={latestPosts.docs as any} />
                   <SocialProof />
               </main>
-            </PageClientWrapper>
         </div>
     )
 }
-
-

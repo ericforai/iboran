@@ -8,7 +8,7 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import type { Contact } from '@/payload-types'
 import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { PageClientWrapper } from '../../page.client.wrapper'
+
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
 export async function generateStaticParams() {
@@ -45,8 +45,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
   if (!story) return <PayloadRedirects url={url} />
 
   return (
-    <PageClientWrapper contactData={contactData}>
-      <article className="pb-24">
+    <article className="pb-24">
         {/* Allows redirects for valid pages too */}
         <PayloadRedirects disableNotFound url={url} />
 
@@ -73,7 +72,6 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
 
         <RenderBlocks blocks={story.layout} />
       </article>
-    </PageClientWrapper>
   )
 }
 
