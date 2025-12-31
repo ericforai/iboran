@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { 
   FileText, Search, PenTool, LayoutTemplate, 
   BarChart3, AlertTriangle, CheckCircle2, 
-  Clock, Bell, Settings, User, ChevronRight,
-  ShieldCheck, AlertCircle, FileCheck
+  Clock, Bell, Settings, ChevronRight,
+  ShieldCheck, AlertCircle, type LucideIcon
 } from 'lucide-react'
 
 interface CLMDashboardMockupProps {
@@ -86,7 +86,13 @@ export default function CLMDashboardMockup({ type = 'overview' }: CLMDashboardMo
   )
 }
 
-function SidebarItem({ icon: Icon, label, active = false }: { icon: any, label: string, active?: boolean }) {
+interface SidebarItemProps {
+  icon: LucideIcon
+  label: string
+  active?: boolean
+}
+
+function SidebarItem({ icon: Icon, label, active = false }: SidebarItemProps) {
   return (
     <div className={`
       mx-2 px-3 py-2.5 rounded-lg flex items-center gap-3 cursor-pointer transition-all group
@@ -243,7 +249,7 @@ function ReviewView() {
                   <div>
                     <div className="font-bold text-orange-900 mb-1">付款条款风险提示</div>
                     <p className="text-orange-800 leading-snug">
-                      检测到"预付 80%"条款，高于集团采购管理办法规定的最高预付比例 (30%)。
+                      检测到&quot;预付 80%&quot;条款，高于集团采购管理办法规定的最高预付比例 (30%)。
                     </p>
                     <div className="mt-3 flex gap-2">
                       <button className="bg-white border border-orange-200 text-orange-700 px-2 py-1 rounded shadow-sm hover:bg-orange-50">保留原款</button>
@@ -375,8 +381,15 @@ function MonitoringView() {
 
 // --- Components ---
 
-function StatCard({ label, value, trend, color }: any) {
-  const colors: any = {
+interface StatCardProps {
+  label: string
+  value: string
+  trend: string
+  color: 'blue' | 'amber' | 'purple' | 'red'
+}
+
+function StatCard({ label, value, trend, color }: StatCardProps) {
+  const colors: Record<string, string> = {
     blue: "bg-blue-50 text-blue-600",
     amber: "bg-amber-50 text-amber-600",
     purple: "bg-purple-50 text-purple-600",
@@ -393,7 +406,13 @@ function StatCard({ label, value, trend, color }: any) {
   )
 }
 
-function AnalysisItem({ title, status, desc }: any) {
+interface AnalysisItemProps {
+  title: string
+  status: 'pass' | 'warn' | 'fail'
+  desc: string
+}
+
+function AnalysisItem({ title, status, desc }: AnalysisItemProps) {
    return (
      <div className="flex gap-3">
        <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${status === 'pass' ? 'bg-green-100 text-green-600' : 'bg-orange-100 text-orange-600'}`}>
@@ -407,7 +426,13 @@ function AnalysisItem({ title, status, desc }: any) {
    )
 }
 
-function SignStep({ num, label, status }: any) {
+interface SignStepProps {
+  num: string
+  label: string
+  status: 'done' | 'active' | 'wait'
+}
+
+function SignStep({ num, label, status }: SignStepProps) {
   return (
     <div className="flex flex-col items-center relative z-10 w-24">
       <div className={`

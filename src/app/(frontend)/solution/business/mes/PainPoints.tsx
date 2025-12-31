@@ -6,7 +6,7 @@ import { AlertCircle, FileX, Clock, Sliders } from 'lucide-react'
 const painPoints = [
   {
     icon: AlertCircle,
-    title: '生产进度是"黑箱"',
+    title: '生产进度是&quot;黑箱&quot;',
     desc: '调度员跑断腿收集数据，老板看不见现场。订单进度全靠问，异常情况发现晚，交付延期风险高。'
   },
   {
@@ -35,7 +35,7 @@ export default function PainPoints() {
             传统制造企业的痛点
           </h2>
           <p className="text-lg text-slate-600">
-            告别粗放式管理，解决生产现场"看不见、管不着、算不清"的核心难题
+            告别粗放式管理，解决生产现场&quot;看不见、管不着、算不清&quot;的核心难题
           </p>
         </div>
 

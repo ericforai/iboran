@@ -1,4 +1,4 @@
-import { AlertTriangle, Clock, Database, BarChart2, FileWarning } from 'lucide-react'
+import { Clock, Database, BarChart2, FileWarning } from 'lucide-react'
 
 const painPoints = [
   {
@@ -29,7 +29,7 @@ export default function PainPoints() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1F2329] mb-4">
-            项目型企业普遍面临的 "成长阵痛"
+            项目型企业普遍面临的 &quot;成长阵痛&quot;
           </h2>
           <p className="text-lg text-slate-600">
             当企业规模扩大，简单的粗放式管理已无法支撑业务发展，甚至成为上市路上的绊脚石。

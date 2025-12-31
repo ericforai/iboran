@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  BarChart3, 
   Layers, 
   Database, 
   Calculator, 
@@ -407,7 +406,7 @@ function InsightsView() {
              <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">AI Insight</span>
           </div>
           <p className="text-[9px] text-white/80 leading-relaxed italic">
-            "基于事项大数据分析。本月采购成本波动主要受原材料价格上涨影响，建议启动二期套期保值策略..."
+            &quot;基于事项大数据分析。本月采购成本波动主要受原材料价格上涨影响，建议启动二期套期保值策略...&quot;
           </p>
        </div>
     </motion.div>

@@ -1,7 +1,6 @@
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Contact } from '@/payload-types'
 import { PageClientWrapper } from '../page.client.wrapper'
-import { SiteFooter } from '@/components/SiteFooter'
 
 export default async function SolutionLayout({ children }: { children: React.ReactNode }) {
   const contactData = await getCachedGlobal('contact', 1)() as Contact
@@ -9,7 +8,6 @@ export default async function SolutionLayout({ children }: { children: React.Rea
   return (
     <PageClientWrapper contactData={contactData}>
       <main className="flex-grow">{children}</main>
-      <SiteFooter />
     </PageClientWrapper>
   )
 }

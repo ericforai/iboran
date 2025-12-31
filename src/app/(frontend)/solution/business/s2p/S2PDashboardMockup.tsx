@@ -3,10 +3,8 @@
 import React from 'react'
 import { 
   BarChart3, 
-  PieChart, 
   TrendingUp, 
   AlertCircle, 
-  MoreHorizontal, 
   Search, 
   Bell, 
   Settings,
@@ -15,9 +13,7 @@ import {
   FileText,
   Users,
   CheckCircle2,
-  Clock,
-  ArrowUpRight,
-  ArrowDownRight
+  Clock
 } from 'lucide-react'
 
 // Type definition for dashboard types

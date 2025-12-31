@@ -11,7 +11,7 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { StoryCard } from '@/components/StoryCard'
 import { ResourceCard } from '@/components/ResourceCard'
 import { PageClientWrapper } from '../../../page.client.wrapper'
-import { SiteFooter } from '@/components/SiteFooter'
+import { Footer as SiteFooter } from '@/components/Footer'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
 export async function generateStaticParams() {

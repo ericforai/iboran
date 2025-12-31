@@ -1,7 +1,7 @@
 'use client'
 
-import { ArrowRight, Lightbulb, FileCode, MonitorPlay, Truck, Settings } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { ArrowRight, Lightbulb, FileCode, Truck, Settings } from 'lucide-react'
+
 
 const steps = [
   {

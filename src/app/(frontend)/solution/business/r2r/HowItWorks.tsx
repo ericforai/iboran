@@ -2,12 +2,9 @@
 
 import { motion } from 'framer-motion'
 import { 
-  ClipboardCheck, 
-  Workflow, 
   Database, 
   PieChart, 
   ArrowRight,
-  MonitorCheck,
   Zap,
   Layers
 } from 'lucide-react'

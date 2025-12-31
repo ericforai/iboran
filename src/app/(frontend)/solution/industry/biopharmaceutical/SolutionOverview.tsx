@@ -1,4 +1,4 @@
-import { Share2, ShieldCheck, Database, Zap } from 'lucide-react'
+import { ShieldCheck, Database, Zap } from 'lucide-react'
 
 export function SolutionOverview() {
   return (

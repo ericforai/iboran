@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { BarChart3, PieChart, Activity, Globe, Wallet, ShieldCheck, ArrowUpRight, ArrowDownRight } from 'lucide-react'
+import { Activity, Globe, Wallet, ShieldCheck, ArrowUpRight, ArrowDownRight } from 'lucide-react'
 import { useState } from 'react'
 
 export default function FinanceCloudDashboardMockup() {

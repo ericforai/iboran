@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Microscope, Globe2, Link2, FileCheck, ArrowRight, CheckCircle2 } from 'lucide-react'
+import Image from 'next/image'
 
 const scenarios = [
   {
@@ -123,10 +124,11 @@ export function KeyScenarios() {
                   >
                     <div className="relative h-64 sm:h-80 overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10" />
-                      <img 
+                      <Image
                         src={scenario.image} 
                         alt={scenario.title}
-                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                        fill
+                        className="object-cover transform hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute bottom-6 left-6 z-20">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/90 text-white text-sm font-medium mb-3 backdrop-blur-sm">

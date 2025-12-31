@@ -4,6 +4,8 @@ import React from 'react'
 import './globals.css'
 
 import { MobileStickyBar } from '@/components/MobileStickyBar'
+import { Navbar } from '@/components/Navbar'
+import { Footer } from '@/components/Footer'
 import { ReactScan } from '@/components/ReactScan'
 import { WebVitals } from '@/components/WebVitals'
 import { getCachedGlobal } from '@/utilities/getGlobals'
@@ -22,7 +24,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body suppressHydrationWarning>
         <ReactScan />
         <WebVitals />
+        <Navbar contactData={contactData} />
         {children}
+        <Footer />
         <MobileStickyBar contactData={contactData} />
       </body>
     </html>

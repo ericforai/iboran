@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+
 
 const customers = [
   { name: '中国一汽', logo: 'faw' },

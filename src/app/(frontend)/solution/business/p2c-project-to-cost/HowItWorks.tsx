@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, FileText, Settings, Wallet, BarChart4, CheckCircle2 } from 'lucide-react'
+import { FileText, Settings, Wallet, BarChart4, CheckCircle2 } from 'lucide-react'
 
 const steps = [
   {

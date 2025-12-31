@@ -1,10 +1,9 @@
 'use client'
 
 import { 
-  BarChart3, Users, TrendingUp, DollarSign, 
+  Users, TrendingUp, DollarSign,
   ShoppingCart, Package, Truck, Activity,
-  MoreHorizontal, Plus, Search, Bell, Menu,
-  CheckCircle2, Clock
+  MoreHorizontal, Plus, Search, Bell
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 

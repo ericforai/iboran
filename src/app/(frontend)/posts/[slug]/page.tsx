@@ -47,7 +47,6 @@ type Args = {
   }>
 }
 
-import { Footer } from '@/components/Footer'
 
 export default async function Post({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
@@ -139,7 +138,6 @@ export default async function Post({ params: paramsPromise }: Args) {
           </div>
         </article>
       </PageClientWrapper>
-      <Footer />
     </div>
   )
 }

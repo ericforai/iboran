@@ -6,19 +6,16 @@ import {
   Plus, 
   Search, 
   Bell, 
-  Settings, 
   LayoutDashboard, 
   Database, 
   Wrench, 
   ClipboardCheck, 
   BarChart3,
-  MoreVertical,
   CheckCircle2,
   Clock,
   AlertTriangle,
   ArrowUpRight,
-  TrendingUp,
-  FileText
+  TrendingUp
 } from 'lucide-react'
 
 interface EAMDashboardMockupProps {

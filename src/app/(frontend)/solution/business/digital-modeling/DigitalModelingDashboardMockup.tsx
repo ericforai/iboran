@@ -14,7 +14,6 @@ import {
   Plus,
   Layout,
   BarChart3,
-  Clock,
   ArrowRight,
   Globe,
   Lock,

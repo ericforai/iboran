@@ -35,7 +35,7 @@ export default function SolutionOverview() {
             {/* ERP Layer */}
             <div className="bg-[#0052D9] text-white p-4 text-center">
               <div className="text-sm font-medium opacity-80">企业资源层</div>
-              <div className="text-lg font-bold">用友 U9C / YonBIP</div>
+              <div className="text-lg font-bold">用友 YonBIP</div>
             </div>
             
             {/* MOM Layer */}

@@ -36,10 +36,10 @@ export default function HowItWorks() {
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-3xl font-bold text-[#1F2329] mb-4">基于"事项法会计"的业财融合架构</h2>
+          <h2 className="text-3xl font-bold text-[#1F2329] mb-4">基于&quot;事项法会计&quot;的业财融合架构</h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6"></div>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            打破传统财务"宏观汇总"局限，通过颗粒度更细的"业务事项"驱动财务核算，还原业务真像，实现业财数据的无缝穿透。
+            打破传统财务&quot;宏观汇总&quot;局限，通过颗粒度更细的&quot;业务事项&quot;驱动财务核算，还原业务真像，实现业财数据的无缝穿透。
           </p>
         </div>
 

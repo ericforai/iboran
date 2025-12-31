@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  Target, ShoppingCart, Truck, Megaphone, Store, Package, Network, Check
+  Target, ShoppingCart, Truck, Megaphone, Check
 } from 'lucide-react'
 import DashboardMockup from './DashboardMockup'
 

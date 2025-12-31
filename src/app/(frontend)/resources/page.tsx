@@ -5,7 +5,7 @@ import React from 'react'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Contact } from '@/payload-types'
 import { PageClientWrapper } from '../page.client.wrapper'
-import { SiteFooter } from '@/components/SiteFooter'
+import { Footer as SiteFooter } from '@/components/Footer'
 import ResourcesClient from './page.client'
 
 export const dynamic = 'force-static'

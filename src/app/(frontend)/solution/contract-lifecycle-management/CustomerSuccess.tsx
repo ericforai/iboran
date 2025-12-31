@@ -1,7 +1,7 @@
 'use client'
 
 import { Quote } from 'lucide-react'
-import Image from 'next/image'
+
 
 const testimonials = [
   {
@@ -65,7 +65,7 @@ export default function CustomerSuccess() {
               
               <div className="relative z-10 pt-8">
                 <p className="text-slate-600 text-lg leading-relaxed mb-8 italic">
-                  "{item.quote}"
+                  &quot;{item.quote}&quot;
                 </p>
                 
                 <div className="flex items-center gap-4 border-t border-slate-100 pt-6">

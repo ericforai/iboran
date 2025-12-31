@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Building2, TrendingUp, Users, Clock } from 'lucide-react'
+import { Building2 } from 'lucide-react'
 
 const caseStudies = [
   {

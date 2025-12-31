@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Activity, Globe, Scale, Archive, FileCheck, ShieldCheck, Zap, Layers, Calculator } from 'lucide-react'
+import { Activity, Globe, Archive, FileCheck, Layers, Calculator } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const tabs = [

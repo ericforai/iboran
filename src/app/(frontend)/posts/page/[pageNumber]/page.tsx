@@ -11,7 +11,6 @@ import { notFound } from 'next/navigation'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { Phone } from 'lucide-react'
 import type { Contact } from '@/payload-types'
-import { Footer } from '@/components/Footer'
 import { PageClientWrapper } from '../../../page.client.wrapper'
 import { CategoryFilter } from '@/components/CategoryFilter'
 
@@ -108,7 +107,6 @@ export default async function Page({ params: paramsPromise }: Args) {
           </div>
         </div>
       </PageClientWrapper>
-      <Footer />
     </div>
   )
 }

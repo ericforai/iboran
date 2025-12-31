@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { 
-  BarChart3, 
   Target, 
   Activity, 
   PieChart, 
@@ -14,7 +13,8 @@ import {
   ChevronRight,
   Database,
   ArrowUpRight,
-  ArrowDownRight
+  ArrowDownRight,
+  type LucideIcon
 } from 'lucide-react'
 
 interface MockupProps {
@@ -88,7 +88,13 @@ export default function SPEDashboardMockup({ type = 'default' }: MockupProps) {
   )
 }
 
-function NavItem({ icon: Icon, label, active = false }: { icon: any, label: string, active?: boolean }) {
+interface NavItemProps {
+  icon: LucideIcon
+  label: string
+  active?: boolean
+}
+
+function NavItem({ icon: Icon, label, active = false }: NavItemProps) {
   return (
     <div className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors cursor-pointer ${active ? 'bg-[#0052D9] text-white shadow-lg' : 'hover:bg-slate-800/50 text-slate-400'}`}>
       <Icon size={16} />
@@ -140,8 +146,16 @@ function Overview() {
   )
 }
 
-function MetricCard({ label, value, trend, isUp, color }: any) {
-  const colorMap: any = {
+interface MetricCardProps {
+  label: string
+  value: string
+  trend: string
+  isUp: boolean
+  color: 'blue' | 'red' | 'slate' | 'yellow'
+}
+
+function MetricCard({ label, value, trend, isUp, color }: MetricCardProps) {
+  const colorMap: Record<string, string> = {
     blue: 'border-l-blue-500',
     red: 'border-l-[#E60012]',
     slate: 'border-l-slate-400',
@@ -159,8 +173,15 @@ function MetricCard({ label, value, trend, isUp, color }: any) {
   )
 }
 
-function ActivityItem({ label, status, time, color = 'green' }: any) {
-  const dotColor: any = {
+interface ActivityItemProps {
+  label: string
+  time: string
+  status?: string
+  color?: 'green' | 'yellow' | 'blue'
+}
+
+function ActivityItem({ label, time, color = 'green' }: ActivityItemProps) {
+  const dotColor: Record<string, string> = {
     green: 'bg-green-500',
     yellow: 'bg-yellow-500',
     blue: 'bg-blue-500'
@@ -278,7 +299,7 @@ function AnalysisView() {
              <TrendingUp size={16} className="text-blue-500" />
           </div>
           <div className="flex-1 bg-slate-950/30 rounded border border-slate-800/50 m-2 flex flex-col p-4">
-             <div className="text-[10px] text-slate-500 mb-4 italic">"分析结论：若客单价下降 5%，为维持 20% 净利率，需消减物流成本 12.4%..."</div>
+             <div className="text-[10px] text-slate-500 mb-4 italic">&quot;分析结论：若客单价下降 5%，为维持 20% 净利率，需消减物流成本 12.4%...&quot;</div>
              <div className="flex-1 relative">
                  {/* Simplified Chart Line */}
                  <svg className="w-full h-full" viewBox="0 0 400 150">

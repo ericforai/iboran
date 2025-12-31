@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Users, Workflow, GitBranch, Database, ShieldCheck, CheckCircle2 } from 'lucide-react'
+import { Users, Workflow, GitBranch, Database, ShieldCheck, CheckCircle2, type LucideIcon } from 'lucide-react'
 import DigitalModelingDashboardMockup from './DigitalModelingDashboardMockup'
 
 type TabID = 'organization' | 'process' | 'object' | 'data' | 'compliance'
@@ -10,7 +10,7 @@ type TabID = 'organization' | 'process' | 'object' | 'data' | 'compliance'
 interface Feature {
   id: TabID
   title: string
-  icon: any
+  icon: LucideIcon
   description: string
   details: string[]
   metric: string

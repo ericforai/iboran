@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Box, CreditCard, FileText, Layers, Search, Truck } from 'lucide-react'
+import { Box, CreditCard, FileText, Layers, Search, Truck } from 'lucide-react'
 
 const steps = [
   {

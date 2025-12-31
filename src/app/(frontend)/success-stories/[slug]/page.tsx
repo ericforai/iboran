@@ -9,7 +9,6 @@ import type { Contact } from '@/payload-types'
 import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { PageClientWrapper } from '../../page.client.wrapper'
-import { Footer } from '@/Footer/Component'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 
 export async function generateStaticParams() {
@@ -74,7 +73,6 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
 
         <RenderBlocks blocks={story.layout} />
       </article>
-      <Footer />
     </PageClientWrapper>
   )
 }

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { PenTool, Search, Key, LayoutGrid, ArrowRight, ShieldCheck, FileCheck, BarChart3 } from 'lucide-react'
+import { PenTool, Search, Key, ShieldCheck, BarChart3 } from 'lucide-react'
 import CLMDashboardMockup from './CLMDashboardMockup'
 
 const features = [

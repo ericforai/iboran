@@ -372,7 +372,6 @@ const SocialProof = () => {
     )
 }
 
-import { Footer } from '@/components/Footer'
 
 export default async function Page() {
     const payload = await getPayload({ config: configPromise })
@@ -410,7 +409,6 @@ export default async function Page() {
                   <SocialProof />
               </main>
             </PageClientWrapper>
-            <Footer />
         </div>
     )
 }

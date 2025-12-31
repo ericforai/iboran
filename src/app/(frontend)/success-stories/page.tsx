@@ -7,7 +7,7 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Contact } from '@/payload-types'
 import { Phone } from 'lucide-react'
 import { PageClientWrapper } from '../page.client.wrapper'
-import { SiteFooter } from '@/components/SiteFooter'
+import { Footer as SiteFooter } from '@/components/Footer'
 
 export const dynamic = 'force-static'
 export const revalidate = 600

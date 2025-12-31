@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 
 interface Scenario {
   title: string
@@ -91,10 +92,11 @@ export default function KeyScenarios({ scenarios }: KeyScenariosProps) {
               <div className="relative h-full min-h-[400px] rounded-3xl overflow-hidden shadow-2xl group">
                 {scenarios[activeTab].image ? (
                   <>
-                    <img 
+                    <Image
                       src={scenarios[activeTab].image} 
                       alt={scenarios[activeTab].title}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
                        <p className="text-white font-medium text-lg flex items-center gap-2">

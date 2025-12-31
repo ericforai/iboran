@@ -35,7 +35,7 @@ export default function Hero() {
                 产销协同 · 料动账动 · 精细核算
               </p>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-xl">
-                面向制造企业，提供从计划、生产到成本的一体化解决方案。基于"业财融合"理念，实现业务驱动财务，财务实时反映业务，打造精细化成本管控体系。
+                面向制造企业，提供从计划、生产到成本的一体化解决方案。基于&quot;业财融合&quot;理念，实现业务驱动财务，财务实时反映业务，打造精细化成本管控体系。
               </p>
               
               <div className="flex flex-wrap gap-4">

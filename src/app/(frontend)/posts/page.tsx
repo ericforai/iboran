@@ -10,7 +10,6 @@ import PageClient from './page.client'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { Phone } from 'lucide-react'
 import type { Contact } from '@/payload-types'
-import { Footer } from '@/components/Footer'
 import { PageClientWrapper } from '../page.client.wrapper'
 
 export const dynamic = 'force-dynamic'
@@ -116,7 +115,6 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
           </div>
         </div>
       </PageClientWrapper>
-      <Footer />
     </div>
   )
 }

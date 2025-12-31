@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Microscope, FileCheck, Link2, Globe2, CheckCircle2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 const scenarios = [
   {
@@ -121,11 +122,12 @@ export function KeyScenarios() {
                       ))}
                     </ul>
                   </div>
-                  <div className="relative">
-                    <img
+                  <div className="relative h-full min-h-[300px]">
+                    <Image
                       src={activeScenario.image}
                       alt={activeScenario.title}
-                      className="w-full h-full object-cover rounded-2xl shadow-lg aspect-square lg:aspect-auto"
+                      fill
+                      className="object-cover rounded-2xl shadow-lg"
                     />
                     <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-slate-900/10" />
                   </div>

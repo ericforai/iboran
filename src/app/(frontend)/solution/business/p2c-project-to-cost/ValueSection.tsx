@@ -68,7 +68,7 @@ export default function ValueSection() {
               <div className="flex-1 relative z-10">
                  <Quote className="text-slate-600 mb-4 w-8 h-8 opacity-50"/>
                  <p className="text-slate-300 leading-relaxed mb-6">
-                    "利用 YonBIP 项目云与财务云的深度集成，我们实现了全生命周期的数字化管理闭环。尤其是**业财一体化的风控引擎**，让每一笔预算支出都受控，彻底消灭了业财断点，支撑了集团化的高效运营。"
+                    &quot;利用 YonBIP 项目云与财务云的深度集成，我们实现了全生命周期的数字化管理闭环。尤其是**业财一体化的风控引擎**，让每一笔预算支出都受控，彻底消灭了业财断点，支撑了集团化的高效运营。&quot;
                  </p>
               </div>
               <div className="pt-6 border-t border-white/10 flex gap-4 text-sm text-[#E60012] font-semibold">
@@ -88,7 +88,7 @@ export default function ValueSection() {
              <div className="flex-1 relative z-10">
                  <Quote className="text-slate-600 mb-4 w-8 h-8 opacity-50"/>
                  <p className="text-slate-300 leading-relaxed mb-6">
-                    "作为拟上市公司，**IPO 合规性**是我们关注的重点。P2C 方案帮我们构建了完整的业务财务证据链，不仅实现了项目收支的实时掌控，更为上市审计提供了坚实的数据基础，满足了严格的合规要求。"
+                    &quot;作为拟上市公司，**IPO 合规性**是我们关注的重点。P2C 方案帮我们构建了完整的业务财务证据链，不仅实现了项目收支的实时掌控，更为上市审计提供了坚实的数据基础，满足了严格的合规要求。&quot;
                  </p>
               </div>
               <div className="pt-6 border-t border-white/10 flex gap-4 text-sm text-blue-400 font-semibold">

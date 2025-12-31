@@ -6,7 +6,6 @@ import {
   Activity, 
   Globe, 
   Archive, 
-  ChevronRight,
   Database,
   BarChart3,
   Search,

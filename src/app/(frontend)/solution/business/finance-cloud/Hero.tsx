@@ -34,7 +34,7 @@ export default function Hero() {
                 事项法会计 · 业财水乳交融 · 智能会计 · 全球司库
               </p>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-                基于"事项法会计"理论，以大数据技术为支撑，构建财务共享、精细管控、全球司库等一体化应用。打破"票、账、表"传统模式，实现全业务流、全生命周期的自动化与智能化，支撑企业全球化经营。
+                基于&quot;事项法会计&quot;理论，以大数据技术为支撑，构建财务共享、精细管控、全球司库等一体化应用。打破&quot;票、账、表&quot;传统模式，实现全业务流、全生命周期的自动化与智能化，支撑企业全球化经营。
               </p>
               
               <div className="flex flex-wrap gap-4">

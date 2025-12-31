@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { LayoutDashboard, Wallet, Users, Link2, FileWarning, BarChart3 } from 'lucide-react'
+import { LayoutDashboard, Wallet, Users, BarChart3 } from 'lucide-react'
 
 const tabs = [
   {
@@ -66,7 +66,7 @@ export default function Features() {
             全场景数智化能力矩阵
           </h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            基于用友 YonBIP 强大的技术底座，为您构建 "PaaS + SaaS" 一体化的项目管理平台。
+            基于用友 YonBIP 强大的技术底座，为您构建 &quot;PaaS + SaaS&quot; 一体化的项目管理平台。
           </p>
         </div>
 

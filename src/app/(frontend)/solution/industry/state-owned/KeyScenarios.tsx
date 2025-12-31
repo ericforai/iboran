@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
+import Image from 'next/image'
 
 const scenarios = [
   {
@@ -96,11 +97,14 @@ export default function KeyScenarios() {
             {/* 右侧：场景截图 */}
             <div className="bg-slate-100 rounded-2xl p-4 aspect-video flex items-center justify-center">
               {scenarios[activeTab].screenshot ? (
-                <img 
-                  src={scenarios[activeTab].screenshot} 
-                  alt={scenarios[activeTab].title}
-                  className="rounded-lg max-h-full object-contain"
-                />
+                <div className="relative w-full h-full">
+                  <Image
+                    src={scenarios[activeTab].screenshot} 
+                    alt={scenarios[activeTab].title}
+                    fill
+                    className="object-contain rounded-lg"
+                  />
+                </div>
               ) : (
                 <div className="text-center text-slate-400">
                   <p className="text-sm">[场景架构图/截图]</p>
