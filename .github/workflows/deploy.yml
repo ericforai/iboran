@@ -18,8 +18,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
-          cache-dependency-path: 'pnpm-lock.yaml'
 
       - name: Install pnpm
         run: corepack enable pnpm && pnpm -v
@@ -63,7 +61,6 @@ jobs:
           docker exec iboran-app sh -c 'sed -i "s/DATABASE_URI=mongodb:\/\/localhost:27018\//DATABASE_URI=mongodb:\/\/mongo:27017\//" .env' 2>/dev/null || true
           docker restart iboran-app
           rm ~/deploy.tar.gz
-          echo "Deploy complete!"
           ENDSSH
 
       - name: Verify deployment
@@ -75,7 +72,6 @@ jobs:
             echo "Deployment failed"
             exit 1
           fi
-          echo "Deploy verified!"
 
       - name: Cleanup
         if: always()
