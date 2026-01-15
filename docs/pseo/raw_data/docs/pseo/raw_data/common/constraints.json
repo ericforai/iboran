@@ -1,0 +1,15 @@
+{
+  "language": "zh-CN",
+  "tone_of_voice": "专业克制，结论先行",
+  "no_prices": true,
+  "no_fake_stats": true,
+  "competitor_names_allowed": false,
+  "forbidden_words": [
+    "最低价",
+    "全网第一",
+    "保证100%成功",
+    "秒上线",
+    "永久免费"
+  ],
+  "safe_claims_rule": "凡涉及人数/客户数/资质等级/客户名称/排名/奖项等对外信息，必须在 claims 中保留 source，并由人工审核确认后再发布。"
+}

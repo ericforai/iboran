@@ -1,0 +1,11 @@
+keyword,file,intent,page_type,industry_hint
+ERP 实施服务,erp_.json,commercial,money_page,
+用友 YonSuite 实施服务,_yonsuite_.json,commercial,money_page,
+用友 YonBIP 实施与定制服务,_yonbip_.json,commercial,money_page,
+U8C 实施服务,u8c_.json,commercial,money_page,
+NC 实施服务,nc_.json,commercial,money_page,
+ERP 二次开发服务,erp_.json,commercial,money_page,
+钉钉集成开发服务,_.json,commercial,money_page,
+致远协同实施与定制服务,_.json,commercial,money_page,
+MES 实施服务,mes_.json,commercial,money_page,智能制造（C2M）
+WMS 实施服务,wms_.json,commercial,money_page,智能制造（C2M）

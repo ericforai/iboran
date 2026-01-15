@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <!-- 林清轩 Logo - 护肤品品牌 -->
+  <rect width="200" height="60" fill="white"/>
+  <circle cx="100" cy="28" r="16" fill="#8B6914"/>
+  <text x="100" y="34" font-family="serif" font-weight="bold" font-size="16" text-anchor="middle" fill="white">林</text>
+  <text x="100" y="52" font-family="Microsoft YaHei, sans-serif" font-size="14" text-anchor="middle" fill="#8B6914">林清轩</text>
+</svg>

@@ -1,0 +1,32 @@
+[20:42:33] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+--- Posts Needing Images (29) ---
+1. [694fd22a88954ecab0565998] underestimated-erp-tasks | ERP 项目最容易被低估的工作是什么？
+2. [694fd22a88954ecab056598d] requirements-to-avoid-customization | 哪些需求不应该通过二次开发解决？
+3. [694fd22a88954ecab0565962] erp-customization-solution-or-trap | ERP 二次开发到底是解法还是陷阱？
+4. [694fd166b43952973a70f810] yonsuite-for-high-growth-companies | YonSuite 是否适合高速增长型企业？
+5. [694fd166b43952973a70f805] migration-risks-u8-to-yonsuite | 从 U8/NC 迁移到 YonSuite，风险点有哪些？
+6. [694fd166b43952973a70f7fa] yonsuite-implementation-delay-reasons | YonSuite 实施周期为什么容易失控？
+7. [694fd166b43952973a70f7ef] is-customization-necessary | 用友系统一定要二次开发吗？
+8. [694fd166b43952973a70f7e4] yonsuite-implementation-failure-steps | YonSuite 上线失败，通常失败在哪一步？
+9. [694fd166b43952973a70f7d9] yonbip-management-solutions | YonBIP 更适合解决哪些管理问题？
+10. [694fd166b43952973a70f7ce] cloud-erp-complex-org-support | 云 ERP 能不能支撑复杂组织？
+11. [694fd166b43952973a70f7c3] yonsuite-vs-traditional-erp | YonSuite 和传统 ERP 的本质差异是什么？
+12. [694fd166b43952973a70f7b8] who-should-not-use-yonsuite | 什么样的企业不适合用 YonSuite？
+13. [694fd166b43952973a70f799] yonsuite-suitable-organizations | 用友 YonSuite 适合哪些组织形态？
+14. [694fd060f738dc5277962774] management-perspective-gap | 管理层想要的经营视角，系统为什么给不了？
+15. [694fd060f738dc5277962769] multi-profit-center-integration | 多利润中心企业，业财一体化怎么落地？
+16. [694fd060f738dc527796275e] when-integration-becomes-complex | 什么时候业财一体化会“越做越复杂”？
+17. [694fd060f738dc5277962752] is-finance-system-upgrade-enough | 业财一体化是不是财务系统升级就够了？
+18. [694fd060f738dc5277962724] why-finance-cant-see-business-reality | 为什么财务看不清真实经营结果？
+19. [694fd004b550838542cc683c] budget-failure-execution | 预算为什么在执行阶段失效？
+20. [694fd004b550838542cc6831] erp-live-data-inaccurate | ERP 已上线，为什么经营数据还是不准？
+21. [694fd004b550838542cc6826] business-fast-finance-slow | 为什么业务跑得很快，财务却永远在后面？
+22. [694fd004b550838542cc6818] root-cause-of-integration-failure | 业财一体化失败，最常见的根本原因是什么？
+23. [694fd004b550838542cc67ec] business-finance-integration-failure-reasons | 为什么企业总是做不好业财一体化？
+24. [694fcf6963c02e053333ed12] organize-before-digitize | 什么时候应该先管组织，而不是先上系统？
+25. [694fcf6963c02e053333ed07] erp-amplifies-management-issues | 为什么 ERP 更容易放大管理问题？
+26. [694fcf6963c02e053333ecfc] three-things-before-erp | ERP 实施前，组织必须先想清楚哪 3 件事？
+27. [694fcf6963c02e053333ecf1] unclear-process-risk | 为什么“流程不清”，是 ERP 最大的风险？
+28. [694fcf6963c02e053333ece5] multi-org-system-chaos | 多组织企业为什么系统越多越乱？
+29. [694fcf6963c02e053333ecac] erp-increases-organizational-friction | 为什么 ERP 上线后，组织摩擦反而更多？

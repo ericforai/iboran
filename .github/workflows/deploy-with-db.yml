@@ -1,0 +1,54 @@
+name: Deploy with Database Sync
+
+on:
+  workflow_dispatch:  # 仅手动触发
+    inputs:
+      sync_db:
+        description: '同步本地数据库到服务器'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    # 如果需要同步数据库，需要先启动本地 MongoDB
+    # 这个工作流假设你在本地已经有 MongoDB 运行
+    # 实际上数据库同步最好在本地进行，CI 无法访问本地数据库
+
+    runs-on: self-hosted  # 需要自托管 runner 才能访问本地 MongoDB
+    if: github.event.inputs.sync_db == true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and sync database
+        run: |
+          pnpm build
+          docker exec iboran-mongo-1 mongodump --db=iboran --archive=/tmp/iboran_data.gz
+          docker cp iboran-mongo-1:/tmp/iboran_data.gz ./iboran_data.gz
+          tar -czf deploy.tar.gz .next/standalone .next/static public iboran_data.gz
+
+      - name: Upload and deploy
+        run: |
+          scp deploy.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:~/deploy.tar.gz
+
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'ENDSSH'
+          cd /opt/iboran
+          docker stop iboran-app && docker rm iboran-app
+          rm -rf .next/standalone .next/static public
+          tar -xzf ~/deploy.tar.gz
+
+          # 导入数据库
+          docker cp iboran_data.gz iboran-mongo:/tmp/iboran_data.gz
+          docker exec iboran-mongo mongorestore --db=iboran --archive=/tmp/iboran_data.gz
+          docker exec iboran-mongo rm /tmp/iboran_data.gz
+
+          docker build -f Dockerfile.simple -t iboran-app:latest . -q
+          docker run -d --name iboran-app --restart always -p 3000:3000 --link iboran-mongo:mongo iboran-app:latest
+          sleep 3 && docker exec iboran-app sh -c 'sed -i "s/DATABASE_URI=mongodb:\/\/localhost:27018\//DATABASE_URI=mongodb:\/\/mongo:27017\//" .env'
+          docker restart iboran-app
+          rm ~/deploy.tar.gz
+          ENDSSH

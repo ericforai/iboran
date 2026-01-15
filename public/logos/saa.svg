@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" fill="transparent"/>
+  <!-- AVINEX logo text representation -->
+  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="22" fill="#0099cc">AVINEX</text>
+  <text x="50%" y="75%" dominant-baseline="middle" text-anchor="middle" font-family="SimHei, sans-serif" font-size="10" fill="#555">上海机场集团</text>
+</svg>

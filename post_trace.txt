@@ -1,0 +1,95 @@
+[23:27:19] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+Post ID | Created At | Slug | Title
+---|---|---|---
+6945f2b087bc301b6fd71fc2 | 2025-12-20T00:49:52.002Z | chip-testing-digital-transformation | 芯片测试行业如何守住“毛利生死线”？从混料焦虑到精密对账
+694fb3ecdf25c7d60f709515 | 2025-12-27T10:24:44.371Z | yonyou-shanghai-agent-boran | 用友上海优秀代理商--泊冉软件介绍
+694fca6bcbe277f51edee2b6 | 2025-12-27T12:00:43.010Z | why-erp-projects-fail-not-software | 为什么 ERP 项目失败，往往不是系统问题？
+694fcb6e795a3f031f2b4f21 | 2025-12-27T12:05:02.238Z | organizational-issues-cannot-be-solved-by-system | 为什么组织管理问题，上什么系统都没用？
+694fceb61ea86ed2271072bc | 2025-12-27T12:19:02.095Z | system-vs-management-boundaries | 系统能不能替代管理？边界在哪里？
+694fceb61ea86ed2271072cb | 2025-12-27T12:19:02.214Z | unclear-rules-erp-disaster | 管理规则不清晰，上 ERP 会发生什么？
+694fcf6963c02e053333ecac | 2025-12-27T12:22:01.368Z | erp-increases-organizational-friction | 为什么 ERP 上线后，组织摩擦反而更多？
+694fcf6963c02e053333ece5 | 2025-12-27T12:22:01.405Z | multi-org-system-chaos | 多组织企业为什么系统越多越乱？
+694fcf6963c02e053333ecf1 | 2025-12-27T12:22:01.418Z | unclear-process-risk | 为什么“流程不清”，是 ERP 最大的风险？
+694fcf6963c02e053333ecfc | 2025-12-27T12:22:01.432Z | three-things-before-erp | ERP 实施前，组织必须先想清楚哪 3 件事？
+694fcf6963c02e053333ed07 | 2025-12-27T12:22:01.445Z | erp-amplifies-management-issues | 为什么 ERP 更容易放大管理问题？
+694fcf6963c02e053333ed12 | 2025-12-27T12:22:01.457Z | organize-before-digitize | 什么时候应该先管组织，而不是先上系统？
+694fd004b550838542cc67ec | 2025-12-27T12:24:36.775Z | business-finance-integration-failure-reasons | 为什么企业总是做不好业财一体化？
+694fd004b550838542cc6818 | 2025-12-27T12:24:36.806Z | root-cause-of-integration-failure | 业财一体化失败，最常见的根本原因是什么？
+694fd004b550838542cc6826 | 2025-12-27T12:24:36.819Z | business-fast-finance-slow | 为什么业务跑得很快，财务却永远在后面？
+694fd004b550838542cc6831 | 2025-12-27T12:24:36.832Z | erp-live-data-inaccurate | ERP 已上线，为什么经营数据还是不准？
+694fd004b550838542cc683c | 2025-12-27T12:24:36.846Z | budget-failure-execution | 预算为什么在执行阶段失效？
+694fd060f738dc5277962724 | 2025-12-27T12:26:08.452Z | why-finance-cant-see-business-reality | 为什么财务看不清真实经营结果？
+694fd060f738dc5277962752 | 2025-12-27T12:26:08.486Z | is-finance-system-upgrade-enough | 业财一体化是不是财务系统升级就够了？
+694fd060f738dc527796275e | 2025-12-27T12:26:08.510Z | when-integration-becomes-complex | 什么时候业财一体化会“越做越复杂”？
+694fd060f738dc5277962769 | 2025-12-27T12:26:08.522Z | multi-profit-center-integration | 多利润中心企业，业财一体化怎么落地？
+694fd060f738dc5277962774 | 2025-12-27T12:26:08.535Z | management-perspective-gap | 管理层想要的经营视角，系统为什么给不了？
+694fd166b43952973a70f799 | 2025-12-27T12:30:30.643Z | yonsuite-suitable-organizations | 用友 YonSuite 适合哪些组织形态？
+694fd166b43952973a70f7b8 | 2025-12-27T12:30:30.672Z | who-should-not-use-yonsuite | 什么样的企业不适合用 YonSuite？
+694fd166b43952973a70f7c3 | 2025-12-27T12:30:30.688Z | yonsuite-vs-traditional-erp | YonSuite 和传统 ERP 的本质差异是什么？
+694fd166b43952973a70f7ce | 2025-12-27T12:30:30.699Z | cloud-erp-complex-org-support | 云 ERP 能不能支撑复杂组织？
+694fd166b43952973a70f7d9 | 2025-12-27T12:30:30.709Z | yonbip-management-solutions | YonBIP 更适合解决哪些管理问题？
+694fd166b43952973a70f7e4 | 2025-12-27T12:30:30.718Z | yonsuite-implementation-failure-steps | YonSuite 上线失败，通常失败在哪一步？
+694fd166b43952973a70f7ef | 2025-12-27T12:30:30.728Z | is-customization-necessary | 用友系统一定要二次开发吗？
+694fd166b43952973a70f7fa | 2025-12-27T12:30:30.741Z | yonsuite-implementation-delay-reasons | YonSuite 实施周期为什么容易失控？
+694fd166b43952973a70f805 | 2025-12-27T12:30:30.750Z | migration-risks-u8-to-yonsuite | 从 U8/NC 迁移到 YonSuite，风险点有哪些？
+694fd166b43952973a70f810 | 2025-12-27T12:30:30.760Z | yonsuite-for-high-growth-companies | YonSuite 是否适合高速增长型企业？
+694fd22a88954ecab0565962 | 2025-12-27T12:33:46.720Z | erp-customization-solution-or-trap | ERP 二次开发到底是解法还是陷阱？
+694fd22a88954ecab056598d | 2025-12-27T12:33:46.750Z | requirements-to-avoid-customization | 哪些需求不应该通过二次开发解决？
+694fd22a88954ecab0565998 | 2025-12-27T12:33:46.763Z | underestimated-erp-tasks | ERP 项目最容易被低估的工作是什么？
+694fd22a88954ecab05659a3 | 2025-12-27T12:33:46.775Z | system-integration-failure-points | 系统集成失败通常发生在哪一步？
+694fd22a88954ecab05659ae | 2025-12-27T12:33:46.787Z | capability-vs-feasibility | 为什么“能做”和“该不该做”是两回事？
+694fd22a88954ecab05659b9 | 2025-12-27T12:33:46.801Z | points-to-reject-during-implementation | ERP 实施中，哪些问题一定要当场拒绝？
+694fd22a88954ecab05659c3 | 2025-12-27T12:33:46.811Z | why-erp-projects-stall-late-stage | 为什么 ERP 项目越到后期越难推进？
+694fd22a88954ecab05659cd | 2025-12-27T12:33:46.820Z | when-to-pause-erp-project | 什么时候应该停下 ERP 项目重新评估？
+694fd22a88954ecab05659d7 | 2025-12-27T12:33:46.830Z | dingtalk-erp-integration-challenges | 钉钉 / 协同系统和 ERP 打通，最难的是什么？
+694fd22a88954ecab05659e2 | 2025-12-27T12:33:46.841Z | erp-maintenance-risks | ERP 运维阶段最容易被忽视的风险是什么？
+694fd2be17319ee6aa057b0f | 2025-12-27T12:36:14.437Z | when-not-to-implement-erp | 企业什么时候不应该上 ERP？
+694fd2be17319ee6aa057b2a | 2025-12-27T12:36:14.464Z | 5-overlooked-erp-selection-risks | ERP 选型最容易忽略的 5 个风险
+694fd2be17319ee6aa057b35 | 2025-12-27T12:36:14.478Z | why-early-erp-is-not-always-better | 为什么 ERP 不是“越早上越好”？
+694fd2be17319ee6aa057b40 | 2025-12-27T12:36:14.489Z | signs-of-erp-failure | ERP 项目失败前，通常会出现哪些信号？
+694fd2be17319ee6aa057b4a | 2025-12-27T12:36:14.500Z | selection-more-important-than-implementation | 为什么 ERP 选型比实施更重要？
+694fd2be17319ee6aa057b55 | 2025-12-27T12:36:14.509Z | dangerous-promises-in-erp-projects | ERP 项目中，哪些承诺最危险？
+694fd2be17319ee6aa057b60 | 2025-12-27T12:36:14.519Z | no-impulse-decisions-in-erp | 为什么 ERP 项目不适合“拍脑袋决策”？
+694fd2be17319ee6aa057b6b | 2025-12-27T12:36:14.529Z | erp-budget-overrun-reasons | ERP 预算最容易失控的原因是什么？
+694fd2be17319ee6aa057b76 | 2025-12-27T12:36:14.539Z | erp-readiness-assessment | 企业如何判断自己是否准备好上 ERP？
+694fd2be17319ee6aa057b81 | 2025-12-27T12:36:14.548Z | when-to-cut-losses-erp | ERP 项目什么时候该果断止损？
+694fdf034c5d211de76880e5 | 2025-12-27T13:28:35.482Z | financial-business-integration-ceo-project | 为什么说“业财一体化”是 CEO 的一把手工程？
+694fdf034c5d211de768810f | 2025-12-27T13:28:35.514Z | financial-vs-business-data-mismatch | 财务数据和业务数据为什么永远对不上？
+694fdf034c5d211de768811e | 2025-12-27T13:28:35.533Z | cio-vs-cfo-lead-integration | 业财一体化项目，CIO 和 CFO 谁来主导？
+694fdf034c5d211de768812a | 2025-12-27T13:28:35.547Z | post-accounting-to-pre-control | 从“事后核算”到“事前控制”，企业要经历哪几步？
+694fdf034c5d211de7688137 | 2025-12-27T13:28:35.559Z | roi-of-financial-integration | 业财一体化的投入产出比 (ROI) 到底怎么算？
+694fdf59268c59ce1eea49ea | 2025-12-27T13:30:01.189Z | approval-workflow-complexity | 审批流越复杂越好，还是越简单越好？
+694fdf59268c59ce1eea4a01 | 2025-12-27T13:30:01.219Z | mobile-expense-reimbursement | 移动化报销：如何平衡“方便”与“合规”？
+694fdf59268c59ce1eea4a0e | 2025-12-27T13:30:01.240Z | electronic-accounting-archives | “电子会计档案”是不是伪需求？
+694fdf59268c59ce1eea4a1b | 2025-12-27T13:30:01.257Z | excel-budgeting-nightmare | 还在用 Excel 做预算？你Out了
+694fdf59268c59ce1eea4a2a | 2025-12-27T13:30:01.270Z | treasury-management-money-makes-money | 资金管理 (TMS)：如何让钱生钱？
+694fdfbeafee51c3603fa3aa | 2025-12-27T13:31:42.096Z | inventory-turnover-importance | 为什么库存周转率是供应链的第一指标？
+694fdfbeafee51c3603fa3cc | 2025-12-27T13:31:42.125Z | causes-of-obsolete-inventory | 呆滞料（长库龄库存）是怎么产生的？
+694fdfbeafee51c3603fa3d9 | 2025-12-27T13:31:42.140Z | safety-stock-insurance-or-waste | 安全库存到底是“安全”还是“浪费”？
+694fdfbeafee51c3603fa3e6 | 2025-12-27T13:31:42.152Z | supplier-relationship-management-beyond-price | 供应商管理 (SRM)：除了杀价，还能管什么？
+694fdfbeafee51c3603fa3f3 | 2025-12-27T13:31:42.162Z | sales-forecast-accuracy-dilemma | 销售预测永远不准，还要不要做？
+694fe0199e26f43782080f38 | 2025-12-27T13:33:13.714Z | kitting-rate-vs-on-time-delivery | 为什么“齐套率”比“准时交货率”更重要？
+694fe0199e26f43782080f4a | 2025-12-27T13:33:13.743Z | aps-advanced-scheduling-scam | APS（高级排程）是不是智商税？
+694fe0199e26f43782080f57 | 2025-12-27T13:33:13.757Z | vmi-consignment-inventory | 寄售库存 (VMI)：能不能让供应商帮我背库存？
+694fe0199e26f43782080f64 | 2025-12-27T13:33:13.771Z | reverse-logistics-nightmare | 退货流程为什么比发货流程难 10 倍？
+694fe0199e26f43782080f71 | 2025-12-27T13:33:13.783Z | bullwhip-effect-supply-chain-collaboration | 供应链协同：如何消灭“牛鞭效应”？
+694fe07745cbc637ffbefb3b | 2025-12-27T13:34:47.504Z | mes-implementation-dilemma | MES 上了很重，不上很痛，到底怎么办？
+694fe07745cbc637ffbefb5d | 2025-12-27T13:34:47.534Z | predictive-maintenance-why-fix-if-not-broken | 预测性维护：设备还没坏，为什么要修？
+694fe07745cbc637ffbefb6a | 2025-12-27T13:34:47.547Z | quality-is-manufactured-not-inspected | 质量是检测出来的，还是生产出来的？
+694fe07745cbc637ffbefb79 | 2025-12-27T13:34:47.562Z | digital-twin-hype-vs-reality | 数字孪生：是动画片还是生产力？
+694fe07745cbc637ffbefb86 | 2025-12-27T13:34:47.572Z | lean-vs-mass-production | 精益生产 vs 大规模生产：矛盾吗？
+694fe0caba9ad4c5827877f1 | 2025-12-27T13:36:10.627Z | iiot-smart-manufacturing-myth | 工业物联网 (IIoT)：设备连上网就能叫智能制造吗？
+694fe0caba9ad4c582787814 | 2025-12-27T13:36:10.658Z | flexible-manufacturing-system-mass-customization | 柔性制造系统 (FMS)：如何一条线生产 100 种产品？
+694fe0caba9ad4c582787823 | 2025-12-27T13:36:10.673Z | manufacturing-intelligence-vs-bi | 制造智能 (MI)：比 BI 强在哪？
+694fe0caba9ad4c582787830 | 2025-12-27T13:36:10.687Z | energy-management-system-cost-saving | 能源管理 (EMS)：一度电的精细化管理
+694fe0caba9ad4c58278783d | 2025-12-27T13:36:10.703Z | carbon-footprint-competitiveness | 碳足迹：绿色制造是成本还是竞争力？
+694fe128cf3ea348e471b668 | 2025-12-27T13:37:44.812Z | change-management-failure | 为什么 70% 的数字化转型死在“变革管理”？
+694fe128cf3ea348e471b691 | 2025-12-27T13:37:44.840Z | data-migration-strategy | 数据迁移：搬家最怕扔东西
+694fe128cf3ea348e471b69e | 2025-12-27T13:37:44.857Z | user-training-best-practices | 用户培训：讲了一遍就会了吗？
+694fe128cf3ea348e471b6ab | 2025-12-27T13:37:44.873Z | pmo-project-management-office-role | PMO：是管人的还是管事的？
+694fe128cf3ea348e471b6b8 | 2025-12-27T13:37:44.886Z | go-live-strategy-big-bang-vs-phased | 上线策略：一次性切换还是并行运行？
+694fe188694f35789479435e | 2025-12-27T13:39:20.525Z | it-maintenance-support-strategy | 运维体系：系统上线了，顾问撤了，谁来管？
+694fe188694f357894794378 | 2025-12-27T13:39:20.553Z | software-upgrade-dilemma | 版本升级：升还是不升？这是个问题
+694fe188694f357894794387 | 2025-12-27T13:39:20.569Z | it-audit-compliance-segregation-of-duties | IT 审计：为什么上市前必须过这一关？
+694fe188694f357894794394 | 2025-12-27T13:39:20.582Z | disaster-recovery-plan-drill | 灾备演练：如果机房着火了，数据还在吗？
+694fe188694f3578947943a1 | 2025-12-27T13:39:20.597Z | roi-post-implementation-review | 价值评估：花了 2000 万，到底值不值？

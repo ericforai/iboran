@@ -1,0 +1,6 @@
+keyword,slug
+价值评估：花了 2000 万，到底值不值？,roi-post-implementation-review
+灾备演练：如果机房着火了，数据还在吗？,disaster-recovery-plan-drill
+IT 审计：为什么上市前必须过这一关？,it-audit-compliance-segregation-of-duties
+版本升级：升还是不升？这是个问题,software-upgrade-dilemma
+运维体系：系统上线了，顾问撤了，谁来管？,it-maintenance-support-strategy

@@ -1,0 +1,270 @@
+'use client'
+
+import React, { useState, useEffect, useCallback } from 'react'
+import { X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useAttribution } from '@/providers/Attribution'
+
+interface LeadFormData {
+  name: string
+  company: string
+  phone: string
+  email?: string
+  role?: string
+  currentSystem?: string
+  message?: string
+  source?: string
+}
+
+const STORAGE_KEY = 'exit-intent-shown'
+const COOLDOWN_DAYS = 7
+
+// Check if exit intent was shown recently
+function shouldShowModal(): boolean {
+  if (typeof window === 'undefined') return false
+  const lastShown = localStorage.getItem(STORAGE_KEY)
+  if (!lastShown) return true
+
+  const daysSinceShown = (Date.now() - parseInt(lastShown)) / (1000 * 60 * 60 * 24)
+  return daysSinceShown >= COOLDOWN_DAYS
+}
+
+// Mark exit intent as shown
+function markAsShown() {
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(STORAGE_KEY, Date.now().toString())
+  }
+}
+
+export const ExitIntentModal: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [formData, setFormData] = useState<Partial<LeadFormData>>({})
+  const attribution = useAttribution()
+
+  // Detect exit intent
+  useEffect(() => {
+    // Don't show on mobile (no mouse) or if shown recently
+    if (typeof window === 'undefined' || 'ontouchstart' in window || !shouldShowModal()) {
+      return
+    }
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      // Only trigger when mouse leaves from the top of the viewport
+      if (e.clientY <= 0) {
+        setIsOpen(true)
+        markAsShown()
+      }
+    }
+
+    // Add a small delay before enabling detection (avoid false positives on page load)
+    const timer = setTimeout(() => {
+      document.addEventListener('mouseleave', handleMouseLeave)
+    }, 2000)
+
+    return () => {
+      clearTimeout(timer)
+      document.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, [])
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError(null)
+
+    try {
+      // 1. Get Form ID by title
+      const idRes = await fetch('/api/identify-form?title=Expert Demo')
+      if (!idRes.ok) {
+        throw new Error('未找到对应表单配置，请联系管理员')
+      }
+      const { id: formID } = await idRes.json()
+
+      // 2. Format data for Payload form submission
+      const submissionData = Object.entries({
+        ...formData,
+        source: 'exit-intent-modal',
+      })
+        .filter(([, value]) => value !== undefined && value !== '')
+        .map(([field, value]) => ({ field, value }))
+
+      // Add Attribution Data
+      if (attribution) {
+        if (attribution.utm_source) submissionData.push({ field: 'utm_source', value: attribution.utm_source })
+        if (attribution.utm_medium) submissionData.push({ field: 'utm_medium', value: attribution.utm_medium })
+        if (attribution.utm_campaign) submissionData.push({ field: 'utm_campaign', value: attribution.utm_campaign })
+        if (attribution.referrer) submissionData.push({ field: 'referrer', value: attribution.referrer })
+      }
+
+      // 3. Submit to Payload Form Builder API
+      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || ''}/api/form-submissions`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          form: formID,
+          submissionData,
+        }),
+      })
+
+      const resJson = await response.json()
+
+      if (!response.ok) {
+        throw new Error(resJson.errors?.[0]?.message || '提交失败，请稍后重试')
+      }
+
+      setIsSubmitted(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '提交失败，请稍后重试')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false)
+  }, [])
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+        >
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={handleClose}
+          />
+
+          {/* Modal */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden"
+          >
+            {/* Close button */}
+            <button
+              onClick={handleClose}
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors z-10"
+              style={{ color: '#1F2329' }}
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {!isSubmitted ? (
+              <>
+                {/* Header */}
+                <div className="bg-gradient-to-r from-[#E60012] to-red-600 px-6 py-8 text-white">
+                  <h2 className="text-2xl font-bold mb-2">别急着走！</h2>
+                  <p className="text-white/90">
+                    获取《用友ERP选型指南》和专属咨询服务
+                  </p>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <div className="space-y-4 mb-6">
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-[#E60012] text-sm font-bold">1</span>
+                      </div>
+                      <p className="text-sm text-slate-600">免费获取同行业数字化转型案例集</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-[#E60012] text-sm font-bold">2</span>
+                      </div>
+                      <p className="text-sm text-slate-600">专家1对1咨询，分析您的业务痛点</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="text-[#E60012] text-sm font-bold">3</span>
+                      </div>
+                      <p className="text-sm text-slate-600">获取用友产品演示与报价方案</p>
+                    </div>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <input
+                      type="text"
+                      placeholder="姓名 *"
+                      required
+                      value={formData.name || ''}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0052D9]/20"
+                    />
+                    <input
+                      type="text"
+                      placeholder="公司名称 *"
+                      required
+                      value={formData.company || ''}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0052D9]/20"
+                    />
+                    <input
+                      type="tel"
+                      placeholder="手机号 *"
+                      required
+                      pattern="^1[3-9]\d{9}$"
+                      value={formData.phone || ''}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0052D9]/20"
+                    />
+
+                    {error && (
+                      <div className="p-3 bg-red-50 text-red-600 text-sm rounded-lg">
+                        {error}
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-3 bg-[#E60012] hover:bg-red-700 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2"
+                    >
+                      {isSubmitting ? '提交中...' : '立即获取'}
+                    </button>
+
+                    <p className="text-xs text-slate-400 text-center">
+                      提交即表示您同意我们的隐私政策
+                    </p>
+                  </form>
+                </div>
+              </>
+            ) : (
+              // Success state
+              <div className="p-8 text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-[#1F2329] mb-3">提交成功！</h3>
+                <p className="text-slate-600 mb-6">
+                  我们的项目顾问将在 <strong className="text-[#E60012]">1 个工作日内</strong>与您联系
+                </p>
+                <button
+                  onClick={handleClose}
+                  className="w-full py-3 bg-[#0052D9] text-white rounded-lg font-medium hover:bg-blue-700"
+                >
+                  知道了
+                </button>
+              </div>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}

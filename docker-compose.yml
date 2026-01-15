@@ -1,0 +1,35 @@
+services:
+  app:
+    image: node:20-alpine
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    working_dir: /home/node/app
+    command: sh -c "corepack enable && pnpm install && pnpm dev"
+    depends_on:
+      mongo:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URI=mongodb://mongo:27017/iboran
+
+  mongo:
+    image: mongo:7
+    ports:
+      - '27018:27017'
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  mongo_data:
+  node_modules:

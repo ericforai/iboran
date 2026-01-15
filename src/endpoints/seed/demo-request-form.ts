@@ -1,0 +1,153 @@
+import { RequiredDataFromCollectionSlug } from 'payload'
+
+export const demoRequestForm: RequiredDataFromCollectionSlug<'forms'> = {
+    confirmationMessage: {
+        root: {
+            type: 'root',
+            children: [
+                {
+                    type: 'heading',
+                    children: [
+                        {
+                            type: 'text',
+                            detail: 0,
+                            format: 0,
+                            mode: 'normal',
+                            style: '',
+                            text: '感谢您的预约申请！',
+                            version: 1,
+                        },
+                    ],
+                    direction: 'ltr',
+                    format: '',
+                    indent: 0,
+                    tag: 'h2',
+                    version: 1,
+                },
+                {
+                    type: 'paragraph',
+                    children: [
+                        {
+                            type: 'text',
+                            detail: 0,
+                            format: 0,
+                            mode: 'normal',
+                            style: '',
+                            text: '我们的专家顾问将在 1 个工作日内与您联系，为您安排专属演示。',
+                            version: 1,
+                        },
+                    ],
+                    direction: 'ltr',
+                    format: '',
+                    indent: 0,
+                    textFormat: 0,
+                    version: 1,
+                },
+            ],
+            direction: 'ltr',
+            format: '',
+            indent: 0,
+            version: 1,
+        },
+    },
+    confirmationType: 'message',
+    createdAt: new Date().toISOString(),
+    emails: [
+        {
+            emailFrom: '"泊冉软件" <demo@iboran.com>',
+            emailTo: '{{email}}',
+            message: {
+                root: {
+                    type: 'root',
+                    children: [
+                        {
+                            type: 'paragraph',
+                            children: [
+                                {
+                                    type: 'text',
+                                    detail: 0,
+                                    format: 0,
+                                    mode: 'normal',
+                                    style: '',
+                                    text: '尊敬的 {{name}}，感谢您预约泊冉软件专家演示。我们的顾问将尽快与您联系。',
+                                    version: 1,
+                                },
+                            ],
+                            direction: 'ltr',
+                            format: '',
+                            indent: 0,
+                            textFormat: 0,
+                            version: 1,
+                        },
+                    ],
+                    direction: 'ltr',
+                    format: '',
+                    indent: 0,
+                    version: 1,
+                },
+            },
+            subject: '泊冉软件 - 专家演示预约确认',
+        },
+    ],
+    fields: [
+        {
+            name: 'name',
+            blockName: 'name',
+            blockType: 'text',
+            label: '姓名',
+            required: true,
+            width: 50,
+        },
+        {
+            name: 'company',
+            blockName: 'company',
+            blockType: 'text',
+            label: '公司名称',
+            required: true,
+            width: 50,
+        },
+        {
+            name: 'phone',
+            blockName: 'phone',
+            blockType: 'text',
+            label: '手机号',
+            required: true,
+            width: 50,
+        },
+        {
+            name: 'email',
+            blockName: 'email',
+            blockType: 'email',
+            label: '邮箱',
+            required: false,
+            width: 50,
+        },
+        {
+            name: 'industry',
+            blockName: 'industry',
+            blockType: 'select',
+            label: '所属行业',
+            required: false,
+            width: 100,
+            options: [
+                { label: '制造业', value: 'manufacturing' },
+                { label: '零售业', value: 'retail' },
+                { label: '金融业', value: 'finance' },
+                { label: '服务业', value: 'service' },
+                { label: '其他', value: 'other' },
+            ],
+        },
+        {
+            name: 'message',
+            blockName: 'message',
+            blockType: 'textarea',
+            label: '备注',
+            required: false,
+            width: 100,
+        },
+    ],
+    redirect: undefined,
+    submitButtonLabel: '提交预约',
+    title: 'Demo Request Form',
+    updatedAt: new Date().toISOString(),
+}

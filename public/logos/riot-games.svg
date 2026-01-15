@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" fill="transparent"/>
+  <path d="M40 10 L60 10 L60 50 L40 50 Z M70 10 L90 10 L90 50 L70 50 Z" fill="#D13639" style="display:none"/> <!-- Simplify: just text -->
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#D13639">RIOT GAMES</text>
+  <rect x="25" y="15" width="20" height="30" fill="#D13639" transform="rotate(15 35 30)"/>
+</svg>

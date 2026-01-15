@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" fill="transparent"/>
+  <rect x="20" y="10" width="40" height="40" rx="4" fill="#00539B"/>
+  <text x="80" y="40" font-family="Arial, sans-serif" font-weight="900" font-size="20" fill="#00539B">SINOTRANS</text>
+  <text x="80" y="55" font-family="SimHei, sans-serif" font-size="10" fill="#00539B">中国外运</text>
+</svg>

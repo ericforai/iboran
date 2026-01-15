@@ -1,0 +1,341 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .snap-always {
+    scroll-snap-stop: always;
+  }
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: unset;
+    font-weight: unset;
+  }
+
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 240 5% 96%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 6% 80%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.2rem;
+
+    --success: 196 52% 74%;
+    --warning: 34 89% 85%;
+    --error: 10 100% 86%;
+  }
+
+  [data-theme='dark'] {
+    --background: 0 0% 0%;
+    --foreground: 210 40% 98%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0, 0%, 15%, 0.8;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+
+    --success: 196 100% 14%;
+    --warning: 34 51% 25%;
+    --error: 10 39% 43%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground min-h-[100vh] flex flex-col;
+  }
+  /* Custom Selection Style for Premium Feel */
+  ::selection {
+    background-color: rgba(6, 182, 212, 0.2); /* cyan-500 with low opacity */
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
+  }
+}
+
+@layer utilities {
+  /* Ultra-refined cinematic grain */
+  .bg-cinematic-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+    mask-image: radial-gradient(circle at center, transparent 0%, black 100%); /* Vignette effect */
+  }
+}
+
+/* Theme opacity rules removed - page should always be visible */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Shimmer animation for brand text */
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ========================================
+   Neumorphism (Soft UI) Design System
+   ======================================== */
+
+:root {
+  /* Neumorphism Color Tokens */
+  --neu-bg: #E0E5EC;
+  --neu-text-primary: #3D4852;
+  --neu-text-muted: #6B7280;
+  --neu-accent: #6C63FF;
+  --neu-accent-light: #8B84FF;
+  --neu-accent-secondary: #38B2AC;
+  
+  /* Neumorphism Shadow Colors */
+  --neu-shadow-light: rgba(255, 255, 255, 0.5);
+  --neu-shadow-light-strong: rgba(255, 255, 255, 0.6);
+  --neu-shadow-dark: rgb(163, 177, 198, 0.6);
+  --neu-shadow-dark-strong: rgb(163, 177, 198, 0.7);
+}
+
+/* Neumorphism Utility Classes */
+@layer components {
+  /* Extruded (Raised) State */
+  .neu-extruded {
+    box-shadow: 
+      9px 9px 16px rgb(163, 177, 198, 0.6),
+      -9px -9px 16px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Extruded Hover (Lifted) State */
+  .neu-extruded-hover {
+    box-shadow: 
+      12px 12px 20px rgb(163, 177, 198, 0.7),
+      -12px -12px 20px rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Extruded Small */
+  .neu-extruded-sm {
+    box-shadow: 
+      5px 5px 10px rgb(163, 177, 198, 0.6),
+      -5px -5px 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Inset (Pressed) State */
+  .neu-inset {
+    box-shadow: 
+      inset 6px 6px 10px rgb(163, 177, 198, 0.6),
+      inset -6px -6px 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Inset Deep (Input/Well) State */
+  .neu-inset-deep {
+    box-shadow: 
+      inset 10px 10px 20px rgb(163, 177, 198, 0.7),
+      inset -10px -10px 20px rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Inset Small */
+  .neu-inset-sm {
+    box-shadow: 
+      inset 3px 3px 6px rgb(163, 177, 198, 0.6),
+      inset -3px -3px 6px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Neumorphism Float Animation */
+@keyframes neu-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-neu-float {
+  animation: neu-float 3s ease-in-out infinite;
+}
+
+/* Hero Banner SVG Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out forwards;
+}
+
+/* Masterpiece Animations */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.animate-scan {
+  animation: scan 8s linear infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+/* ========================================
+   Micro-Skeuomorphic Design System
+   ======================================== */
+
+@layer utilities {
+  /* Surface: 3-Stage Gradient */
+  .neu-surface-gradient {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(245, 247, 250, 0.8) 50%,
+      rgba(255, 255, 255, 0.6) 100%
+    );
+  }
+
+  /* Shadow: 3-Layer Structure (Drop + Highlight + Shade) */
+  .neu-shadow-physical {
+    box-shadow: 
+      0 4px 12px -2px rgba(0, 0, 0, 0.08),  /* Soft Drop */
+      inset 0 1px 0 rgba(255, 255, 255, 0.6), /* Top Highlight */
+      inset 0 -1px 0 rgba(0, 0, 0, 0.05);     /* Bottom Lip */
+  }
+
+  .neu-shadow-physical-hover {
+    box-shadow: 
+      0 8px 24px -4px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Text Texture */
+  .text-physical {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+}

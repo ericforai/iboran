@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <rect width="200" height="60" fill="transparent"/>
+  <!-- SMG Logo Style -->
+  <path d="M20 30 L50 10 L80 30 L50 50 Z" fill="#E60012" opacity="0.8"/> <!-- Abstract shape -->
+  <text x="60%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="32" fill="#000">SMG</text>
+  <text x="60%" y="85%" dominant-baseline="middle" text-anchor="middle" font-family="SimHei, sans-serif" font-size="10" fill="#555">上海文广</text>
+</svg>

@@ -1,0 +1,55 @@
+build
+dist / media
+node_modules
+.DS_Store
+.env
+.next
+.vercel
+
+# Payload default media upload directory
+public/media/
+
+public/robots.txt
+public/sitemap*.xml
+
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Agent and temporary files
+# .agent/
+.pnpm-store/
+*.zip
+
+# Local materials and docs
+docs/方案资料/
+提示词.md
+"泊冉官网设计与实施方案 V2..md"
+"泊冉官网设计与实施方案 V2..*"
+package-lock.json
+
+# 行业解决方案
+docs/行业解决方案/
+
+# Temporary files and logs
+*.log
+all_posts_dump.txt
+missing_images_list.txt
+
+
+# Local data and logs
+output/
+backups/
+dbs.json
+.env.archived
+# Binary files
+*.pptx
+*.pdf
+*.zip
+*.tar
+*.gz
+*.bak

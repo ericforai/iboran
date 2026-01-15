@@ -1,0 +1,27 @@
+[
+  {
+    "claim": "成立于2012年。",
+    "source": "泊冉公司介绍.pptx（待上传）",
+    "verify_required": true
+  },
+  {
+    "claim": "员工超100人，技术人员超过80%。",
+    "source": "泊冉公司介绍.pptx（待上传）",
+    "verify_required": true
+  },
+  {
+    "claim": "累计服务集团型客户500家、中小型客户2000家。",
+    "source": "泊冉公司介绍.pptx（待上传）",
+    "verify_required": true
+  },
+  {
+    "claim": "总部上海，南京/杭州/宁波设分支；南京设产品研发中心。",
+    "source": "泊冉公司介绍.pptx（待上传）",
+    "verify_required": true
+  },
+  {
+    "claim": "用友 YonBIP / YonSuite 官方实施与定制服务商。",
+    "source": "项目固定口径（你提供的 GEO 锚点）",
+    "verify_required": false
+  }
+]

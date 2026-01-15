@@ -1,0 +1,93 @@
+keyword,file,intent,page_type,industry_hint,slug
+价值评估：花了 2000 万，到底值不值？,_.json,commercial,money_page,,roi-post-implementation-review
+灾备演练：如果机房着火了，数据还在吗？,_.json,commercial,money_page,,disaster-recovery-plan-drill
+IT 审计：为什么上市前必须过这一关？,_.json,commercial,guide_page,,it-audit-compliance-segregation-of-duties
+版本升级：升还是不升？这是个问题,_.json,commercial,money_page,,software-upgrade-dilemma
+运维体系：系统上线了，顾问撤了，谁来管？,_.json,commercial,money_page,,it-maintenance-support-strategy
+上线策略：一次性切换还是并行运行？,_.json,commercial,money_page,,go-live-strategy-big-bang-vs-phased
+PMO：是管人的还是管事的？,_.json,commercial,money_page,,pmo-project-management-office-role
+用户培训：讲了一遍就会了吗？,_.json,commercial,money_page,,user-training-best-practices
+数据迁移：搬家最怕扔东西,_.json,commercial,money_page,,data-migration-strategy
+为什么 70% 的数字化转型死在“变革管理”？,_.json,commercial,guide_page,,change-management-failure
+碳足迹：绿色制造是成本还是竞争力？,_.json,commercial,money_page,,carbon-footprint-competitiveness
+能源管理 (EMS)：一度电的精细化管理,_.json,commercial,money_page,,energy-management-system-cost-saving
+制造智能 (MI)：比 BI 强在哪？,_.json,commercial,money_page,,manufacturing-intelligence-vs-bi
+柔性制造系统 (FMS)：如何一条线生产 100 种产品？,_.json,commercial,guide_page,,flexible-manufacturing-system-mass-customization
+工业物联网 (IIoT)：设备连上网就能叫智能制造吗？,_.json,commercial,money_page,,iiot-smart-manufacturing-myth
+精益生产 vs 大规模生产：矛盾吗？,_.json,commercial,money_page,,lean-vs-mass-production
+数字孪生：是动画片还是生产力？,_.json,commercial,money_page,,digital-twin-hype-vs-reality
+质量是检测出来的，还是生产出来的？,_.json,commercial,money_page,,quality-is-manufactured-not-inspected
+预测性维护：设备还没坏，为什么要修？,_.json,commercial,guide_page,,predictive-maintenance-why-fix-if-not-broken
+MES 上了很重，不上很痛，到底怎么办？,mes_.json,commercial,money_page,,mes-implementation-dilemma
+供应链协同：如何消灭“牛鞭效应”？,_.json,commercial,guide_page,,bullwhip-effect-supply-chain-collaboration
+退货流程为什么比发货流程难 10 倍？,_.json,commercial,guide_page,,reverse-logistics-nightmare
+寄售库存 (VMI)：能不能让供应商帮我背库存？,_.json,commercial,money_page,,vmi-consignment-inventory
+APS（高级排程）是不是智商税？,_.json,commercial,money_page,,aps-advanced-scheduling-scam
+为什么“齐套率”比“准时交货率”更重要？,_.json,commercial,guide_page,,kitting-rate-vs-on-time-delivery
+销售预测永远不准，还要不要做？,_.json,commercial,money_page,,sales-forecast-accuracy-dilemma
+供应商管理 (SRM)：除了杀价，还能管什么？,_.json,commercial,money_page,,supplier-relationship-management-beyond-price
+安全库存到底是“安全”还是“浪费”？,_.json,commercial,money_page,,safety-stock-insurance-or-waste
+呆滞料（长库龄库存）是怎么产生的？,_.json,commercial,money_page,,causes-of-obsolete-inventory
+为什么库存周转率是供应链的第一指标？,_.json,commercial,guide_page,,inventory-turnover-importance
+资金管理 (TMS)：如何让钱生钱？,_.json,commercial,guide_page,,treasury-management-money-makes-money
+还在用 Excel 做预算？你Out了,_.json,commercial,money_page,,excel-budgeting-nightmare
+“电子会计档案”是不是伪需求？,_.json,commercial,money_page,,electronic-accounting-archives
+移动化报销：如何平衡“方便”与“合规”？,_.json,commercial,guide_page,,mobile-expense-reimbursement
+审批流越复杂越好，还是越简单越好？,_.json,commercial,money_page,,approval-workflow-complexity
+业财一体化的投入产出比 (ROI) 到底怎么算？,_.json,commercial,money_page,,roi-of-financial-integration
+从“事后核算”到“事前控制”，企业要经历哪几步？,_.json,commercial,money_page,,post-accounting-to-pre-control
+业财一体化项目，CIO 和 CFO 谁来主导？,_.json,commercial,money_page,,cio-vs-cfo-lead-integration
+财务数据和业务数据为什么永远对不上？,_.json,commercial,guide_page,,financial-vs-business-data-mismatch
+为什么说“业财一体化”是 CEO 的一把手工程？,_.json,commercial,guide_page,,financial-business-integration-ceo-project
+ERP 项目什么时候该果断止损？,erp_.json,commercial,money_page,,when-to-cut-losses-erp
+企业如何判断自己是否准备好上 ERP？,erp_.json,commercial,guide_page,,erp-readiness-assessment
+ERP 预算最容易失控的原因是什么？,erp_.json,commercial,money_page,,erp-budget-overrun-reasons
+为什么 ERP 项目不适合“拍脑袋决策”？,erp_.json,commercial,guide_page,,no-impulse-decisions-in-erp
+ERP 项目中，哪些承诺最危险？,erp_.json,commercial,money_page,,dangerous-promises-in-erp-projects
+为什么 ERP 选型比实施更重要？,erp_.json,commercial,guide_page,,selection-more-important-than-implementation
+ERP 项目失败前，通常会出现哪些信号？,erp_.json,commercial,money_page,,signs-of-erp-failure
+为什么 ERP 不是“越早上越好”？,erp_.json,commercial,guide_page,,why-early-erp-is-not-always-better
+ERP 选型最容易忽略的 5 个风险,erp_.json,commercial,money_page,,5-overlooked-erp-selection-risks
+企业什么时候不应该上 ERP？,erp_.json,commercial,money_page,,when-not-to-implement-erp
+ERP 运维阶段最容易被忽视的风险是什么？,erp_.json,commercial,money_page,,erp-maintenance-risks
+钉钉 / 协同系统和 ERP 打通，最难的是什么？,erp_.json,commercial,money_page,,dingtalk-erp-integration-challenges
+什么时候应该停下 ERP 项目重新评估？,erp_.json,commercial,money_page,,when-to-pause-erp-project
+为什么 ERP 项目越到后期越难推进？,erp_.json,commercial,guide_page,,why-erp-projects-stall-late-stage
+ERP 实施中，哪些问题一定要当场拒绝？,erp_.json,commercial,money_page,,points-to-reject-during-implementation
+为什么“能做”和“该不该做”是两回事？,_.json,commercial,guide_page,,capability-vs-feasibility
+系统集成失败通常发生在哪一步？,_.json,commercial,money_page,,system-integration-failure-points
+ERP 项目最容易被低估的工作是什么？,erp_.json,commercial,money_page,,underestimated-erp-tasks
+哪些需求不应该通过二次开发解决？,_.json,commercial,money_page,,requirements-to-avoid-customization
+ERP 二次开发到底是解法还是陷阱？,erp_.json,commercial,money_page,,erp-customization-solution-or-trap
+YonSuite 是否适合高速增长型企业？,_yonsuite_.json,commercial,money_page,,yonsuite-for-high-growth-companies
+从 U8/NC 迁移到 YonSuite，风险点有哪些？,_yonsuite_.json,commercial,money_page,,migration-risks-u8-to-yonsuite
+YonSuite 实施周期为什么容易失控？,_yonsuite_.json,commercial,guide_page,,yonsuite-implementation-delay-reasons
+用友系统一定要二次开发吗？,_.json,commercial,money_page,,is-customization-necessary
+YonSuite 上线失败，通常失败在哪一步？,_yonsuite_.json,commercial,money_page,,yonsuite-implementation-failure-steps
+YonBIP 更适合解决哪些管理问题？,_yonbip_.json,commercial,money_page,,yonbip-management-solutions
+云 ERP 能不能支撑复杂组织？,erp_.json,commercial,money_page,,cloud-erp-complex-org-support
+YonSuite 和传统 ERP 的本质差异是什么？,erp_.json,commercial,money_page,,yonsuite-vs-traditional-erp
+什么样的企业不适合用 YonSuite？,_yonsuite_.json,commercial,money_page,,who-should-not-use-yonsuite
+用友 YonSuite 适合哪些组织形态？,_yonsuite_.json,commercial,money_page,,yonsuite-suitable-organizations
+管理层想要的经营视角，系统为什么给不了？,_.json,commercial,guide_page,,management-perspective-gap
+多利润中心企业，业财一体化怎么落地？,_.json,commercial,money_page,,multi-profit-center-integration
+什么时候业财一体化会“越做越复杂”？,_.json,commercial,money_page,,when-integration-becomes-complex
+业财一体化是不是财务系统升级就够了？,_.json,commercial,money_page,,is-finance-system-upgrade-enough
+为什么财务看不清真实经营结果？,_.json,commercial,guide_page,,why-finance-cant-see-business-reality
+预算为什么在执行阶段失效？,_.json,commercial,guide_page,,budget-failure-execution
+ERP 已上线，为什么经营数据还是不准？,erp_.json,commercial,guide_page,,erp-live-data-inaccurate
+为什么业务跑得很快，财务却永远在后面？,_.json,commercial,guide_page,,business-fast-finance-slow
+业财一体化失败，最常见的根本原因是什么？,_.json,commercial,money_page,,root-cause-of-integration-failure
+为什么企业总是做不好业财一体化？,_.json,commercial,guide_page,,business-finance-integration-failure-reasons
+什么时候应该先管组织，而不是先上系统？,_.json,commercial,money_page,,organize-before-digitize
+为什么 ERP 更容易放大管理问题？,erp_.json,commercial,guide_page,,erp-amplifies-management-issues
+ERP 实施前，组织必须先想清楚哪 3 件事？,erp_.json,commercial,money_page,,three-things-before-erp
+为什么“流程不清”，是 ERP 最大的风险？,erp_.json,commercial,guide_page,,unclear-process-risk
+多组织企业为什么系统越多越乱？,_.json,commercial,guide_page,,multi-org-system-chaos
+为什么 ERP 上线后，组织摩擦反而更多？,erp_.json,commercial,guide_page,,erp-increases-organizational-friction
+管理规则不清晰，上 ERP 会发生什么？,erp_.json,commercial,money_page,,unclear-rules-erp-disaster
+系统能不能替代管理？边界在哪里？,_.json,commercial,money_page,,system-vs-management-boundaries
+为什么组织管理问题，上什么系统都没用？,_.json,commercial,guide_page,,organizational-issues-cannot-be-solved-by-system
+为什么 ERP 项目失败，往往不是系统问题？,erp_.json,commercial,guide_page,,why-erp-projects-fail-not-software
+用友上海优秀代理商--泊冉软件介绍,_.json,commercial,money_page,,yonyou-shanghai-agent-boran
+芯片测试行业如何守住“毛利生死线”？从混料焦虑到精密对账,_.json,commercial,guide_page,,chip-testing-digital-transformation

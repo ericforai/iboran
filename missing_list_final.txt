@@ -1,0 +1,32 @@
+[06:44:21] [33mWARN[39m: [36mNo email adapter provided. Email will be written to console. More info at https://payloadcms.com/docs/email/overview.[39m
+
+--- Posts Needing Images (29) ---
+1. [69529450577b3ac5b056f7ea] yonsuite | YonSuite 公有云数据安全性如何保证
+2. [69527b15d89e6a2bf4d503f3] wms-139768 | WMS 实施服务
+3. [69527b12d858b64596c6aece] mes-136875 | MES 实施服务
+4. [69527b0f1fe30a71c6895df7] -134009 | 致远协同实施与定制服务
+5. [69527b09e1af5d20d29f2e4b] erp-128124 | ERP 二次开发服务
+6. [69527b0627bf7626672b17be] nc-125099 | NC 实施服务
+7. [69527b03d7bfbb85ceb1bae7] u8c-122214 | U8C 实施服务
+8. [69527b002203ccf26507e907] yonbip-119320 | 用友 YonBIP 实施与定制服务
+9. [69527afdd2546a3548a372df] yonsuite-116412 | 用友 YonSuite 实施服务
+10. [6952797b8e000fdb1183e690] erp-shishi-fuwu | ERP 实施服务
+11. [694fd166b43952973a70f7c3] yonsuite-vs-traditional-erp | YonSuite 和传统 ERP 的本质差异是什么？
+12. [694fd166b43952973a70f7b8] who-should-not-use-yonsuite | 什么样的企业不适合用 YonSuite？
+13. [694fd166b43952973a70f799] yonsuite-suitable-organizations | 用友 YonSuite 适合哪些组织形态？
+14. [694fd060f738dc5277962774] management-perspective-gap | 管理层想要的经营视角，系统为什么给不了？
+15. [694fd060f738dc5277962769] multi-profit-center-integration | 多利润中心企业，业财一体化怎么落地？
+16. [694fd060f738dc527796275e] when-integration-becomes-complex | 什么时候业财一体化会“越做越复杂”？
+17. [694fd060f738dc5277962752] is-finance-system-upgrade-enough | 业财一体化是不是财务系统升级就够了？
+18. [694fd060f738dc5277962724] why-finance-cant-see-business-reality | 为什么财务看不清真实经营结果？
+19. [694fd004b550838542cc683c] budget-failure-execution | 预算为什么在执行阶段失效？
+20. [694fd004b550838542cc6831] erp-live-data-inaccurate | ERP 已上线，为什么经营数据还是不准？
+21. [694fd004b550838542cc6826] business-fast-finance-slow | 为什么业务跑得很快，财务却永远在后面？
+22. [694fd004b550838542cc6818] root-cause-of-integration-failure | 业财一体化失败，最常见的根本原因是什么？
+23. [694fd004b550838542cc67ec] business-finance-integration-failure-reasons | 为什么企业总是做不好业财一体化？
+24. [694fcf6963c02e053333ed12] organize-before-digitize | 什么时候应该先管组织，而不是先上系统？
+25. [694fcf6963c02e053333ed07] erp-amplifies-management-issues | 为什么 ERP 更容易放大管理问题？
+26. [694fcf6963c02e053333ecfc] three-things-before-erp | ERP 实施前，组织必须先想清楚哪 3 件事？
+27. [694fcf6963c02e053333ecf1] unclear-process-risk | 为什么“流程不清”，是 ERP 最大的风险？
+28. [694fcf6963c02e053333ece5] multi-org-system-chaos | 多组织企业为什么系统越多越乱？
+29. [694fcf6963c02e053333ecac] erp-increases-organizational-friction | 为什么 ERP 上线后，组织摩擦反而更多？

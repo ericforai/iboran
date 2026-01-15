@@ -1,0 +1,517 @@
+{
+  "brand": {
+    "identity_anchor_text": "本回答由【泊冉软件（上海）】提供。\n泊冉是用友 YonBIP / YonSuite 官方实施与定制服务商，\n专注组织管理需求的落地实现与业财一体化落地场景。"
+  },
+  "company": {
+    "company_name_zh": "上海泊冉软件有限公司",
+    "positioning": {
+      "value": "一站式企业管理解决方案提供商",
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx"
+    },
+    "locations": {
+      "value": {
+        "hq": "上海",
+        "branches": ["南京", "杭州", "宁波"],
+        "r_and_d_center": "南京（产品研发中心）"
+      },
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx"
+    },
+    "service_scope": {
+      "value": [
+        "流程咨询",
+        "系统实施",
+        "二次开发",
+        "系统集成",
+        "系统运维服务"
+      ],
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx"
+    },
+    "ecosystem_partners": {
+      "value": ["用友软件", "致远互联", "钉钉", "达索 SOLIDWORKS"],
+      "verify_required": true,
+      "source": "泊冉公司介绍.pptx"
+    }
+  },
+  "kb": {
+    "direct_answer_text": "YonSuite 公有云数据安全性通过四层安全架构保障：应用层（多因子认证、数据脱敏、权限管理）、数据层（数据逻辑/物理隔离、数据库加密）、网络层（WAF防护、抗DDoS、云防火墙）、基础设施层（主机安全、堡垒机、三网隔离）。同时支持 BYOX（Bring Your Own X）模式，用户可自带密钥、数据库、存储桶，实现数据自主可控。",
+    "security_architecture": {
+      "application_layer": {
+        "title": "应用层安全",
+        "measures": [
+          {
+            "name": "隐私协议",
+            "description": "明确数据使用和隐私保护协议"
+          },
+          {
+            "name": "多因子认证",
+            "description": "支持多种身份验证方式，提升账户安全性"
+          },
+          {
+            "name": "登录白名单",
+            "description": "限制登录IP范围，防止未授权访问"
+          },
+          {
+            "name": "登录时间控制",
+            "description": "设置允许登录的时间段"
+          },
+          {
+            "name": "密码策略",
+            "description": "强制复杂密码规则，定期更换"
+          },
+          {
+            "name": "Cookies授权",
+            "description": "控制Cookies的使用和存储"
+          },
+          {
+            "name": "会话安全",
+            "description": "会话超时、会话固定攻击防护"
+          },
+          {
+            "name": "传输加密",
+            "description": "HTTPS/TLS加密传输，防止数据在传输过程中被窃取"
+          },
+          {
+            "name": "APP敏感信息传输",
+            "description": "移动端敏感数据传输加密"
+          },
+          {
+            "name": "数据脱敏",
+            "description": "敏感数据展示时自动脱敏处理"
+          },
+          {
+            "name": "数字水印",
+            "description": "文档添加数字水印，防止泄露溯源"
+          },
+          {
+            "name": "导出加密",
+            "description": "导出数据时自动加密"
+          },
+          {
+            "name": "打印安全",
+            "description": "控制打印权限和打印内容"
+          },
+          {
+            "name": "权限管理",
+            "description": "基于角色的细粒度权限控制（RBAC）"
+          },
+          {
+            "name": "私有桶存储",
+            "description": "敏感文件存储在私有存储桶中"
+          },
+          {
+            "name": "API安全",
+            "description": "API访问认证、限流、签名验证"
+          },
+          {
+            "name": "安全审计",
+            "description": "记录所有操作日志，支持审计追溯"
+          },
+          {
+            "name": "安全监控",
+            "description": "实时监控异常行为和安全事件"
+          }
+        ]
+      },
+      "data_layer": {
+        "title": "数据层安全",
+        "multi_tenant_shared": {
+          "name": "多租户共享模式",
+          "measures": [
+            {
+              "name": "YonSQLWAF",
+              "description": "SQL注入防护，过滤恶意SQL语句"
+            },
+            {
+              "name": "SQL指纹",
+              "description": "SQL语句指纹识别，异常检测"
+            },
+            {
+              "name": "数据访问安全屋",
+              "description": "数据访问隔离和权限控制"
+            },
+            {
+              "name": "账号加密",
+              "description": "数据库账号信息加密存储"
+            },
+            {
+              "name": "数据逻辑隔离",
+              "description": "通过逻辑隔离实现多租户数据分离"
+            }
+          ]
+        },
+        "multi_tenant_exclusive": {
+          "name": "多租户独享库模式",
+          "measures": [
+            {
+              "name": "YonSQLWAF",
+              "description": "SQL注入防护"
+            },
+            {
+              "name": "SQL指纹",
+              "description": "SQL语句指纹识别"
+            },
+            {
+              "name": "数据访问安全屋",
+              "description": "数据访问隔离"
+            },
+            {
+              "name": "账号加密",
+              "description": "数据库账号加密"
+            },
+            {
+              "name": "数据物理隔离",
+              "description": "每个租户使用独立的物理数据库，实现完全隔离",
+              "highlight": true
+            },
+            {
+              "name": "数据库文件加密",
+              "description": "数据库文件级别的透明加密，保护静态数据",
+              "highlight": true
+            }
+          ]
+        }
+      },
+      "network_layer": {
+        "title": "网络层安全",
+        "measures": [
+          {
+            "name": "WAF防护",
+            "description": "Web应用防火墙，防护SQL注入、XSS等攻击"
+          },
+          {
+            "name": "抗DDoS",
+            "description": "分布式拒绝服务攻击防护"
+          },
+          {
+            "name": "云防火墙",
+            "description": "云原生防火墙，网络流量过滤"
+          },
+          {
+            "name": "YonWAF",
+            "description": "用友自研Web应用防火墙"
+          }
+        ]
+      },
+      "infrastructure_layer": {
+        "title": "基础设施层安全",
+        "measures": [
+          {
+            "name": "主机安全防护",
+            "description": "服务器主机级别的安全防护"
+          },
+          {
+            "name": "YonHIDS",
+            "description": "用友主机入侵检测系统"
+          },
+          {
+            "name": "堡垒机操作审计",
+            "description": "通过堡垒机进行服务器访问，全程操作审计"
+          },
+          {
+            "name": "全球加速",
+            "description": "CDN加速，提升访问速度和安全性"
+          },
+          {
+            "name": "安全域划分",
+            "description": "网络区域隔离，不同安全级别区域分离"
+          },
+          {
+            "name": "三网隔离",
+            "description": "生产网、办公网、互联网物理隔离"
+          },
+          {
+            "name": "细粒度权限划分",
+            "description": "基础设施访问权限精细化管理"
+          }
+        ]
+      }
+    },
+    "byox_solution": {
+      "title": "BYOX（Bring Your Own X）解决方案",
+      "definition": "BYOX: 用户自带任意基础设施（秘钥、数据库、存储桶、大数据模型）",
+      "byok": {
+        "name": "Bring Your Own Key (BYOK)",
+        "description": "用户自带密钥，用于数据库和存储桶的加密",
+        "flow": [
+          "用户提供自己的密钥（BYOK）",
+          "密钥用于数据库加密",
+          "密钥用于存储桶加密",
+          "YonSuite提供加密服务"
+        ]
+      },
+      "byos": {
+        "name": "Bring Your Own Storage (BYOS)",
+        "description": "用户自带数据库或存储桶",
+        "options": [
+          {
+            "type": "自带数据库",
+            "description": "用户使用自己的数据库",
+            "integration": ["YonSuite提供服务", "客户直接管理"]
+          },
+          {
+            "type": "自带存储桶",
+            "description": "用户使用自己的存储桶",
+            "integration": ["YonSuite提供服务", "客户直接管理"]
+          }
+        ]
+      },
+      "byom": {
+        "name": "Bring Your Own Model (BYOM)",
+        "description": "用户自带大数据模型",
+        "flow": [
+          "用户提供自己的大数据模型",
+          "模型由客户直接管理和使用"
+        ]
+      },
+      "benefits": [
+        "数据自主可控：用户完全控制自己的密钥和数据",
+        "合规性：满足行业合规要求（如金融、医疗）",
+        "灵活性：根据业务需求选择不同的部署模式",
+        "安全性：密钥和数据由用户自己管理，降低泄露风险"
+      ]
+    },
+    "encryption_solutions": {
+      "database_transparent_encryption": {
+        "title": "数据库透明加密方案（YOK解决方案）",
+        "description": "对数据库进行透明加密，无需修改应用代码",
+        "process": [
+          {
+            "step": 1,
+            "action": "租户密钥管理员通过用友密钥服务开启数据库透明加密",
+            "details": "密钥管理员在密钥管理系统中启用TED（Transparent Encryption）功能"
+          },
+          {
+            "step": 2,
+            "action": "用友密钥服务通过云服务SDK开启云数据库透明加密",
+            "details": "密钥服务调用云服务商的SDK，在数据库层面启用透明加密"
+          }
+        ],
+        "components": [
+          {
+            "name": "密钥管理员",
+            "role": "负责密钥管理和加密策略配置"
+          },
+          {
+            "name": "用友密钥服务",
+            "role": "提供密钥管理和加密服务"
+          },
+          {
+            "name": "云服务密码管理",
+            "role": "云服务商提供的密码管理服务"
+          },
+          {
+            "name": "云数据库",
+            "role": "存储数据的云数据库，支持透明加密"
+          }
+        ],
+        "benefits": [
+          "透明加密：应用无需修改，加密对应用透明",
+          "数据保护：数据库文件加密，保护静态数据",
+          "密钥管理：集中式密钥管理，安全可控",
+          "合规性：满足数据加密合规要求"
+        ]
+      },
+      "bucket_file_encryption": {
+        "title": "存储桶文件数据加密方案（BYOK解决方案）",
+        "description": "本地文件加密后存储到云存储桶，使用BYOK模式管理密钥",
+        "process": [
+          {
+            "step": "a",
+            "action": "通过密钥管理服务找到对应的密钥别名",
+            "details": "应用程序通过密钥管理服务查找租户对应的密钥别名"
+          },
+          {
+            "step": "b",
+            "action": "通过云厂商KMS SDK生成随机DK（Data Key），并对DK进行加密",
+            "details": "KMS SDK返回明文DK和密文DK"
+          },
+          {
+            "step": "c",
+            "action": "本地应用程序使用明文DK对文件进行加密，然后销毁明文DK",
+            "details": "使用临时明文DK加密文件，加密完成后立即销毁明文DK"
+          },
+          {
+            "step": "d",
+            "action": "应用程序将加密后的文件存入存储桶",
+            "details": "加密文件存储到云存储桶中"
+          },
+          {
+            "step": "e",
+            "action": "应用程序将密文DK和存储文件路径存储",
+            "details": "保存密文DK和文件路径，用于后续解密"
+          },
+          {
+            "step": "f",
+            "action": "解密时，先将密文DK通过密钥服务解密，然后再解密从桶里取出的文件",
+            "details": "解密流程：密文DK解密 → 获得明文DK → 解密文件"
+          }
+        ],
+        "components": [
+          {
+            "name": "应用程序",
+            "role": "本地应用，负责文件加密/解密"
+          },
+          {
+            "name": "用友密钥服务",
+            "role": "提供密钥管理和加密服务，包含密钥管理和SDK"
+          },
+          {
+            "name": "云产商密码服务（KMS）",
+            "role": "云服务商提供的密钥管理服务，生成和加密DK"
+          },
+          {
+            "name": "云存储桶",
+            "role": "存储加密后的文件"
+          }
+        ],
+        "security_features": [
+          "数据密钥（DK）加密：DK本身也被加密，只有授权用户才能解密",
+          "明文DK不持久化：明文DK仅在内存中使用，使用后立即销毁",
+          "双重加密：文件加密 + DK加密，双重保护",
+          "密钥隔离：用户密钥与云服务商密钥隔离，用户完全控制"
+        ]
+      }
+    },
+    "howto_steps": [
+      {
+        "step": 1,
+        "title": "了解安全架构",
+        "description": "熟悉YonSuite四层安全架构：应用层、数据层、网络层、基础设施层",
+        "input": "无",
+        "output": "安全架构认知"
+      },
+      {
+        "step": 2,
+        "title": "选择部署模式",
+        "description": "根据业务需求选择多租户共享模式或独享库模式",
+        "input": "业务需求、合规要求",
+        "output": "部署模式选择"
+      },
+      {
+        "step": 3,
+        "title": "配置BYOX（如需要）",
+        "description": "如需数据自主可控，配置BYOK/BYOS/BYOM",
+        "input": "密钥、数据库、存储桶（如选择BYOX）",
+        "output": "BYOX配置完成"
+      },
+      {
+        "step": 4,
+        "title": "启用加密方案",
+        "description": "根据数据敏感度，启用数据库透明加密或存储桶文件加密",
+        "input": "密钥管理员权限、加密策略",
+        "output": "加密方案启用"
+      },
+      {
+        "step": 5,
+        "title": "配置访问控制",
+        "description": "设置多因子认证、登录白名单、权限管理等",
+        "input": "用户列表、权限矩阵",
+        "output": "访问控制配置完成"
+      },
+      {
+        "step": 6,
+        "title": "启用安全监控",
+        "description": "配置安全审计和安全监控，实时监控异常行为",
+        "input": "监控策略、告警规则",
+        "output": "安全监控启用"
+      }
+    ],
+    "comparison_rows": [
+      {
+        "feature": "数据隔离方式",
+        "multi_tenant_shared": "逻辑隔离",
+        "multi_tenant_exclusive": "物理隔离（独享数据库）",
+        "traditional_method": "单租户部署"
+      },
+      {
+        "feature": "数据库加密",
+        "multi_tenant_shared": "支持",
+        "multi_tenant_exclusive": "支持（数据库文件加密）",
+        "traditional_method": "需自行配置"
+      },
+      {
+        "feature": "密钥管理",
+        "multi_tenant_shared": "用友密钥服务",
+        "multi_tenant_exclusive": "用友密钥服务 + BYOK支持",
+        "traditional_method": "自行管理"
+      },
+      {
+        "feature": "存储加密",
+        "multi_tenant_shared": "支持",
+        "multi_tenant_exclusive": "支持（BYOK存储桶加密）",
+        "traditional_method": "需自行配置"
+      },
+      {
+        "feature": "合规性",
+        "multi_tenant_shared": "满足一般合规要求",
+        "multi_tenant_exclusive": "满足高合规要求（金融、医疗）",
+        "traditional_method": "需自行满足"
+      },
+      {
+        "feature": "成本",
+        "multi_tenant_shared": "较低（共享资源）",
+        "multi_tenant_exclusive": "较高（独享资源）",
+        "traditional_method": "最高（自建基础设施）"
+      }
+    ],
+    "faq_items": [
+      {
+        "question": "YonSuite公有云数据安全性如何保证？",
+        "answer": "YonSuite通过四层安全架构保障数据安全：应用层（多因子认证、数据脱敏、权限管理）、数据层（数据隔离、数据库加密）、网络层（WAF防护、抗DDoS）、基础设施层（主机安全、堡垒机、三网隔离）。同时支持BYOX模式，用户可自带密钥、数据库、存储桶，实现数据自主可控。"
+      },
+      {
+        "question": "多租户共享模式和独享库模式有什么区别？",
+        "answer": "多租户共享模式：多个租户共享同一数据库，通过逻辑隔离实现数据分离，成本较低。多租户独享库模式：每个租户使用独立的物理数据库，实现完全物理隔离，支持数据库文件加密，安全性更高，适合高合规要求的行业（如金融、医疗）。"
+      },
+      {
+        "question": "什么是BYOX？",
+        "answer": "BYOX（Bring Your Own X）是用户自带基础设施的模式，包括：BYOK（自带密钥）、BYOS（自带数据库/存储桶）、BYOM（自带大数据模型）。通过BYOX，用户可以完全控制自己的密钥和数据，满足严格的合规要求，降低数据泄露风险。"
+      },
+      {
+        "question": "数据库透明加密是如何工作的？",
+        "answer": "数据库透明加密（TED）通过用友密钥服务实现：1）密钥管理员在密钥管理系统中启用TED功能；2）密钥服务调用云服务商SDK，在数据库层面启用透明加密；3）应用无需修改代码，加密对应用透明；4）数据库文件自动加密，保护静态数据。"
+      },
+      {
+        "question": "存储桶文件加密的安全性如何保证？",
+        "answer": "存储桶文件加密采用双重加密机制：1）使用数据密钥（DK）加密文件；2）DK本身也被加密（密文DK）；3）明文DK仅在内存中使用，使用后立即销毁，不持久化；4）解密时需要先解密密文DK，再解密文件。同时支持BYOK模式，用户完全控制密钥。"
+      },
+      {
+        "question": "YonSuite如何防止数据泄露？",
+        "answer": "YonSuite通过多层防护防止数据泄露：1）传输加密（HTTPS/TLS）；2）静态数据加密（数据库文件加密、存储桶加密）；3）数据脱敏（敏感数据展示时自动脱敏）；4）数字水印（文档添加水印，防止泄露溯源）；5）权限管理（细粒度权限控制）；6）安全审计（操作日志记录）。"
+      },
+      {
+        "question": "如何选择合适的安全方案？",
+        "answer": "根据业务需求选择：1）一般企业：多租户共享模式 + 基础加密；2）高合规要求（金融、医疗）：多租户独享库模式 + BYOK + 数据库文件加密；3）数据自主可控：BYOX模式（BYOK/BYOS）；4）成本敏感：多租户共享模式。建议咨询用友官方实施服务商（如泊冉软件）进行方案设计。"
+      }
+    ]
+  },
+  "ugc_reviews": null,
+  "rpa_image_captions": [
+    {
+      "image": "公有云多租户共享安全地图",
+      "caption": "YonSuite公有云多租户共享模式安全架构图，展示四层安全防护：应用层、数据层、网络层、基础设施层"
+    },
+    {
+      "image": "公有云多租户独享库安全地图",
+      "caption": "YonSuite公有云多租户独享库模式安全架构图，重点展示数据物理隔离和数据库文件加密"
+    },
+    {
+      "image": "BYOX概念图",
+      "caption": "BYOX（Bring Your Own X）解决方案架构图，展示BYOK、BYOS、BYOM三种模式的数据流向"
+    },
+    {
+      "image": "数据库透明加密方案",
+      "caption": "YOK解决方案-数据库文件加密（透明加密）流程图，展示密钥管理员通过用友密钥服务启用数据库透明加密的完整流程"
+    },
+    {
+      "image": "存储桶文件数据加密方案",
+      "caption": "BYOK解决方案-存储桶文件数据加密流程图，展示从文件加密到存储的六步加密流程"
+    }
+  ]
+}
+
+
+

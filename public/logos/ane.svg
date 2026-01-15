@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <!-- 安能物流 ANE Logo - 红色品牌 -->
+  <rect width="200" height="60" fill="white"/>
+  <text x="100" y="40" font-family="Arial, sans-serif" font-weight="bold" font-size="28" text-anchor="middle" fill="#E60012">安能物流</text>
+  <text x="100" y="55" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#999">ANE</text>
+</svg>
