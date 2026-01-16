@@ -29,6 +29,8 @@ jobs:
         run: pnpm build
         env:
           NEXT_PUBLIC_SERVER_URL: https://www.iboran.com
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          DATABASE_URI: mongodb://localhost:27018/iboran
 
       - name: Prepare deployment files
         run: |
