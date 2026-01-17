@@ -66,7 +66,7 @@ tar -xzf ~/deploy.tar.gz
 
 # 导入数据库
 docker cp iboran_data.gz iboran-mongo:/tmp/iboran_data.gz
-docker exec iboran-mongo mongorestore --db=iboran --archive=/tmp/iboran_data.gz -q
+docker exec iboran-mongo mongorestore --db=iboran --archive=/tmp/iboran_data.gz
 docker exec iboran-mongo rm /tmp/iboran_data.gz
 
 # 重建镜像

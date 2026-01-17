@@ -84,16 +84,18 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     setIsMobileMenuOpen(false)
   }, [pathname])
 
-  // Close menu on click outside
+  // Close menu on ESC key
   useEffect(() => {
-    const handleClickOutside = () => {
-      if (activeDropdown) {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && activeDropdown) {
         setActiveDropdown(null)
       }
     }
-    document.addEventListener('click', handleClickOutside)
-    return () => document.removeEventListener('click', handleClickOutside)
+    document.addEventListener('keydown', handleEscKey)
+    return () => document.removeEventListener('keydown', handleEscKey)
   }, [activeDropdown])
+
+
 
   // Close mobile menu on resize
   useEffect(() => {
@@ -302,6 +304,23 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
   contactData?: Contact
 }) {
   const { activeDropdown, setActiveDropdown, megaMenuTab, setMegaMenuTab } = useNavbarState()
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  // Handle click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        activeDropdown && 
+        menuRef.current && 
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setActiveDropdown(null)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [activeDropdown, setActiveDropdown])
 
   const SolutionItem = ({
     item,
@@ -337,12 +356,13 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
       {/* Core Products Mega Menu */}
       {activeDropdown === '核心产品' && (
         <div
-          className="fixed top-16 lg:top-20 left-0 right-0 w-full bg-white border-t border-gray-100 shadow-2xl z-[100]"
+          ref={menuRef}
+          className="hidden lg:block fixed top-20 inset-x-0 mx-auto w-full lg:max-w-6xl bg-white backdrop-blur-md rounded-b-2xl border-x border-b border-gray-100 shadow-xl z-[100] max-h-[calc(100vh-6rem)] overflow-y-auto custom-scrollbar"
           onMouseEnter={() => handleMenuEnter('核心产品')}
           onMouseLeave={handleMenuLeave}
         >
-          <div className="container mx-auto px-6 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:divide-x divide-gray-100">
+          <div className="container mx-auto px-6 py-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:divide-x divide-gray-100">
               {productCategories.map((category) => (
                 <div key={category.name} className="flex flex-col md:pl-8 first:pl-0">
                   <div className="mb-6">
@@ -384,7 +404,7 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
             </div>
 
             {/* Bottom CTA Bar */}
-            <div className="flex items-center justify-between mt-8 pt-4 border-t border-slate-100">
+            <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
               <div className="flex gap-6">
                 <Link
                   href="/products"
@@ -421,42 +441,58 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed top-16 lg:top-20 left-0 right-0 w-full bg-white border-t border-gray-100 shadow-2xl z-[100]"
+            ref={menuRef}
+            className="hidden lg:block fixed top-20 inset-x-0 mx-auto w-full lg:max-w-6xl bg-white backdrop-blur-md rounded-b-2xl border-x border-b border-gray-100 shadow-xl z-[100] max-h-[calc(100vh-6rem)] overflow-y-auto custom-scrollbar"
             onMouseEnter={() => handleMenuEnter('解决方案')}
             onMouseLeave={handleMenuLeave}
           >
-            <div className="container mx-auto px-6 py-6">
-              {/* Tab Switcher */}
-              <div className="flex items-center gap-1 p-1 bg-slate-50 border border-slate-200 rounded-xl w-fit mb-8">
+            <div className="container mx-auto px-6 py-5">
+              {/* Header with Tab Switcher and Close Button */}
+              <div className="flex items-center justify-between mb-5">
+                {/* Tab Switcher */}
+                <div className="flex items-center gap-1 p-1 bg-slate-50 border border-slate-200 rounded-xl w-fit">
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); setMegaMenuTab('business'); }}
+                    className={`relative px-8 py-2.5 rounded-lg text-xs font-mono font-black transition-colors duration-200 uppercase tracking-tighter ${
+                      megaMenuTab === 'business' ? 'text-white' : 'text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    {megaMenuTab === 'business' && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 bg-[#0052D9] rounded-lg shadow-lg"
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-10">按业务</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); setMegaMenuTab('industry'); }}
+                    className={`relative px-8 py-2.5 rounded-lg text-xs font-mono font-black transition-colors duration-200 uppercase tracking-tighter ${
+                      megaMenuTab === 'industry' ? 'text-white' : 'text-slate-500 hover:text-slate-700'
+                    }`}
+                  >
+                    {megaMenuTab === 'industry' && (
+                      <motion.div
+                        layoutId="activeTab"
+                        className="absolute inset-0 bg-[#0052D9] rounded-lg shadow-lg"
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-10">按行业</span>
+                  </button>
+                </div>
+                
+                {/* Close Button */}
                 <button
-                  onClick={() => setMegaMenuTab('business')}
-                  className={`relative px-8 py-2.5 rounded-lg text-xs font-mono font-black transition-colors duration-200 uppercase tracking-tighter ${
-                    megaMenuTab === 'business' ? 'text-white' : 'text-slate-500 hover:text-slate-700'
-                  }`}
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); setActiveDropdown(null); }}
+                  className="p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                  aria-label="关闭菜单"
                 >
-                  {megaMenuTab === 'business' && (
-                    <motion.div
-                      layoutId="activeTab"
-                      className="absolute inset-0 bg-[#0052D9] rounded-lg shadow-lg"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                  <span className="relative z-10">按业务</span>
-                </button>
-                <button
-                  onClick={() => setMegaMenuTab('industry')}
-                  className={`relative px-8 py-2.5 rounded-lg text-xs font-mono font-black transition-colors duration-200 uppercase tracking-tighter ${
-                    megaMenuTab === 'industry' ? 'text-white' : 'text-slate-500 hover:text-slate-700'
-                  }`}
-                >
-                  {megaMenuTab === 'industry' && (
-                    <motion.div
-                      layoutId="activeTab"
-                      className="absolute inset-0 bg-[#0052D9] rounded-lg shadow-lg"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                  <span className="relative z-10">按行业</span>
+                  <X className="w-5 h-5" />
                 </button>
               </div>
 
@@ -467,9 +503,9 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
-                    className="grid grid-cols-12 gap-x-8 items-start"
+                    className="grid grid-cols-12 gap-x-6 items-start"
                   >
-                    <div className="col-span-9 grid grid-cols-3 gap-x-10 pr-10 border-r border-slate-100">
+                    <div className="col-span-9 grid grid-cols-3 gap-x-6 pr-6 border-r border-slate-100">
                       <div className="space-y-1">
                         <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                           <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
@@ -531,7 +567,7 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="grid grid-cols-4 gap-x-8 gap-y-12 pr-4 pt-1 items-start"
+                    className="grid grid-cols-4 gap-x-8 gap-y-12 pr-4 pt-1 items-start max-h-[60vh] overflow-y-auto"
                   >
                     {[0, 1, 2, 3].map((colIdx) => (
                       <div key={colIdx} className="space-y-10">

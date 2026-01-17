@@ -33,6 +33,7 @@ import {
   Sun,
   Microscope,
   Apple,
+  Crown,
   Shirt,
   Tv,
   CircuitBoard,
@@ -355,6 +356,7 @@ export const solutionByIndustryCategory: IndustryBusinessCategory[] = [
       { label: '食品行业', href: '/solution/industry/food', desc: '全产业链溯源 · 精益生产管控 · 业财一体转型', icon: Apple },
       { label: '休食行业', href: '/solution/industry/snack', desc: '全渠道营销 · 敏捷供应协同 · AI 智能应用', icon: Apple },
       { label: '服装纺织', href: '/solution/industry/apparel', desc: '柔性化生产 · 快反供应链 · 全域订单管理', icon: Shirt },
+      { label: 'IP 运营', href: '/solution/industry/ip-operations', desc: '授权全链路闭环 · 自动分成结算 · AI 维权巡检', icon: Crown },
     ]
   },
   {

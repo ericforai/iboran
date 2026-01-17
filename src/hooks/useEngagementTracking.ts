@@ -24,7 +24,8 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
   const { onTrigger, triggerThreshold = {} } = options
   const { scrollDepth: scrollThreshold = 60, timeOnPage: timeThreshold = 90 } = triggerThreshold
 
-  const [metrics, setMetrics] = useState<EngagementMetrics>({
+  // Use refs for tracking to avoid re-renders
+  const metricsRef = useRef<EngagementMetrics>({
     hasScrolled60Percent: false,
     hasSpent90Seconds: false,
     scrollDepth: 0,
@@ -32,27 +33,30 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
     pageViews: 1,
   })
 
+  // We only enable this state if we need to force a re-render (e.g. for debugging or if the UI displayed these live values)
+  // In the current usage, only the trigger matters.
+  const [, forceUpdate] = useState({})
+
   const hasTriggeredRef = useRef(false)
   const startTimeRef = useRef(Date.now())
   const timerRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
-  // Check if trigger conditions are met
-  const checkAndTrigger = useCallback(
-    (currentMetrics: EngagementMetrics) => {
-      if (hasTriggeredRef.current) return
+  const checkAndTrigger = useCallback(() => {
+    if (hasTriggeredRef.current) return
 
-      const shouldTrigger =
-        currentMetrics.hasScrolled60Percent ||
-        currentMetrics.hasSpent90Seconds ||
-        currentMetrics.pageViews >= 2
+    const current = metricsRef.current
+    const shouldTrigger =
+      current.hasScrolled60Percent ||
+      current.hasSpent90Seconds ||
+      current.pageViews >= 2
 
-      if (shouldTrigger && onTrigger) {
-        hasTriggeredRef.current = true
-        onTrigger(currentMetrics)
-      }
-    },
-    [onTrigger],
-  )
+    if (shouldTrigger && onTrigger) {
+      hasTriggeredRef.current = true
+      onTrigger({ ...current })
+      // Force update to reflect "has..." state changes if needed by UI
+      forceUpdate({})
+    }
+  }, [onTrigger])
 
   // Restore previous session data
   useEffect(() => {
@@ -60,10 +64,7 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
       const stored = sessionStorage.getItem(STORAGE_KEY)
       if (stored) {
         const data = JSON.parse(stored)
-        setMetrics(prev => ({
-          ...prev,
-          pageViews: (data.pageViews || 0) + 1,
-        }))
+        metricsRef.current.pageViews = (data.pageViews || 0) + 1
       }
     } catch {
       // ignore storage errors
@@ -72,22 +73,24 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
 
   // Scroll depth tracking
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
-      const scrolled = (window.scrollY / scrollHeight) * 100
-      const depth = Math.min(100, Math.max(0, scrolled))
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+          const scrolled = (window.scrollY / scrollHeight) * 100
+          const depth = Math.min(100, Math.max(0, scrolled))
 
-      setMetrics(prev => {
-        const newMetrics = { ...prev, scrollDepth: depth }
-        const hasReached60 = depth >= scrollThreshold
+          metricsRef.current.scrollDepth = depth
 
-        if (hasReached60 && !prev.hasScrolled60Percent) {
-          newMetrics.hasScrolled60Percent = true
-          checkAndTrigger({ ...newMetrics, hasScrolled60Percent: true })
-        }
-
-        return newMetrics
-      })
+          if (depth >= scrollThreshold && !metricsRef.current.hasScrolled60Percent) {
+            metricsRef.current.hasScrolled60Percent = true
+            checkAndTrigger()
+          }
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -98,18 +101,12 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
   useEffect(() => {
     timerRef.current = setInterval(() => {
       const elapsed = Math.floor((Date.now() - startTimeRef.current) / 1000)
+      metricsRef.current.timeOnPage = elapsed
 
-      setMetrics(prev => {
-        const newMetrics = { ...prev, timeOnPage: elapsed }
-        const hasSpent90Seconds = elapsed >= timeThreshold
-
-        if (hasSpent90Seconds && !prev.hasSpent90Seconds) {
-          newMetrics.hasSpent90Seconds = true
-          checkAndTrigger({ ...newMetrics, hasSpent90Seconds: true })
-        }
-
-        return newMetrics
-      })
+      if (elapsed >= timeThreshold && !metricsRef.current.hasSpent90Seconds) {
+        metricsRef.current.hasSpent90Seconds = true
+        checkAndTrigger()
+      }
     }, 1000)
 
     return () => clearInterval(timerRef.current)
@@ -119,7 +116,7 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
   useEffect(() => {
     const saveMetrics = () => {
       try {
-        sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ pageViews: metrics.pageViews }))
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ pageViews: metricsRef.current.pageViews }))
       } catch {
         // ignore
       }
@@ -127,7 +124,7 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
 
     window.addEventListener('beforeunload', saveMetrics)
     return () => window.removeEventListener('beforeunload', saveMetrics)
-  }, [metrics.pageViews])
+  }, [])
 
-  return metrics
+  return metricsRef.current
 }

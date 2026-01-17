@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { X, ArrowRight, CheckCircle2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEngagementTracking } from '@/hooks/useEngagementTracking'
@@ -10,12 +11,31 @@ interface ScrollTriggerDrawerProps {
   onOpenLeadForm?: () => void
 }
 
+// Pages where the drawer should NOT auto-trigger
+const DISABLED_PAGES = ['/solution', '/pricing', '/contact']
+
 export const ScrollTriggerDrawer: React.FC<ScrollTriggerDrawerProps> = ({
   isEnabled = true,
   onOpenLeadForm,
 }) => {
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [hasShown, setHasShown] = useState(false)
+
+  // Check if current page should disable the drawer
+  const isDisabledPage = DISABLED_PAGES.some(page => pathname?.startsWith(page))
+
+  const handleTrigger = React.useCallback(
+    (metrics: any) => {
+      if (isEnabled && !isDisabledPage && !hasShown && !isOpen) {
+        setTimeout(() => {
+          setIsOpen(true)
+          setHasShown(true)
+        }, 1000)
+      }
+    },
+    [isEnabled, isDisabledPage, hasShown, isOpen],
+  )
 
   // Use engagement tracking hook
   useEngagementTracking({
@@ -23,14 +43,7 @@ export const ScrollTriggerDrawer: React.FC<ScrollTriggerDrawerProps> = ({
       scrollDepth: 60,
       timeOnPage: 90,
     },
-    onTrigger: (metrics) => {
-      if (isEnabled && !hasShown && !isOpen) {
-        setTimeout(() => {
-          setIsOpen(true)
-          setHasShown(true)
-        }, 1000)
-      }
-    },
+    onTrigger: handleTrigger,
   })
 
   const handleClose = () => setIsOpen(false)
@@ -52,7 +65,7 @@ export const ScrollTriggerDrawer: React.FC<ScrollTriggerDrawerProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/20 z-[90]"
+            className="fixed inset-0 bg-black/20 z-[9990]"
             onClick={handleClose}
           />
           <motion.div
@@ -60,7 +73,7 @@ export const ScrollTriggerDrawer: React.FC<ScrollTriggerDrawerProps> = ({
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed bottom-0 left-0 right-0 lg:left-auto lg:right-0 lg:top-0 lg:bottom-0 lg:w-full lg:max-w-md bg-white shadow-2xl z-[91] flex flex-col max-h-[85vh] lg:max-h-full rounded-t-3xl lg:rounded-none"
+            className="fixed bottom-0 left-0 right-0 lg:left-auto lg:right-0 lg:top-0 lg:bottom-0 lg:w-full lg:max-w-md bg-white shadow-2xl z-[9991] flex flex-col max-h-[85vh] lg:max-h-full rounded-t-3xl lg:rounded-none"
           >
             {/* Mobile drag indicator */}
             <div className="lg:hidden flex justify-center pt-3 pb-1">
@@ -74,10 +87,14 @@ export const ScrollTriggerDrawer: React.FC<ScrollTriggerDrawerProps> = ({
                 <p className="text-sm text-slate-500">让我们帮您快速判断</p>
               </div>
               <button
-                onClick={handleClose}
-                className="w-10 h-10 rounded-full hover:bg-slate-100 flex items-center justify-center transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleClose()
+                }}
+                className="w-12 h-12 -mr-3 flex items-center justify-center rounded-full hover:bg-slate-100 active:bg-slate-200 transition-colors touch-manipulation cursor-pointer"
+                aria-label="关闭"
               >
-                <X className="w-5 h-5 text-slate-400" />
+                <X className="w-6 h-6 text-slate-400" />
               </button>
             </div>
 

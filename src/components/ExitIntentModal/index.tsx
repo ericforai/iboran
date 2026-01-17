@@ -52,10 +52,18 @@ export const ExitIntentModal: React.FC = () => {
     }
 
     const handleMouseLeave = (e: MouseEvent) => {
+      // Double check if it should be shown (in case it was shown in another tab or state changed)
+      if (!shouldShowModal()) {
+        document.removeEventListener('mouseleave', handleMouseLeave)
+        return
+      }
+
       // Only trigger when mouse leaves from the top of the viewport
       if (e.clientY <= 0) {
         setIsOpen(true)
         markAsShown()
+        // Remove listener to prevent repeated triggering in the same session
+        document.removeEventListener('mouseleave', handleMouseLeave)
       }
     }
 
