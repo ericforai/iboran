@@ -81,7 +81,7 @@ export const Hero = () => {
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                     <div className="relative px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-slate-950 font-bold text-sm rounded-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-cyan-500/20 transition-all active:scale-[0.98]">
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                      <span>获取行业方案</span>
+                      <span>预约专家咨询</span>
                       <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-slate-950 group-hover:translate-x-1 transition-all" />
                     </div>
                  </Link>
@@ -89,7 +89,7 @@ export const Hero = () => {
                  {/* Spotlight Button 2 - Glass */}
                  <Link href="/solution" className="group px-6 sm:px-8 py-3.5 sm:py-4 bg-white/5 border border-white/10 text-white font-bold text-sm rounded-lg hover:bg-white/10 hover:border-white/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 backdrop-blur-md overflow-hidden relative w-full sm:w-auto">
                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></div>
-                   <span>查看行业方案</span>
+                   <span>探索解决方案</span>
                  </Link>
                </motion.div>
 

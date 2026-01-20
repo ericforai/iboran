@@ -67,7 +67,7 @@ const features = [
 ]
 
 export default function Features() {
-  const [activeTab, setActiveTab] = useState(features[0].id)
+  const [activeTab, setActiveTab] = useState<"overview" | "asset" | "license" | "settlement" | "ai">("asset")
   const activeFeature = features.find(f => f.id === activeTab) || features[0]
 
   return (
@@ -86,7 +86,7 @@ export default function Features() {
           {features.map((feature) => (
             <button
               key={feature.id}
-              onClick={() => setActiveTab(feature.id)}
+              onClick={() => setActiveTab(feature.id as "overview" | "asset" | "license" | "settlement" | "ai")}
               className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
                 activeTab === feature.id
                   ? 'bg-[#0052D9] text-white shadow-lg shadow-blue-200'

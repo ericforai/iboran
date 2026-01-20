@@ -23,6 +23,8 @@ const lexend = Lexend({
   preload: false,
 })
 
+import { OrganizationJsonLd } from '@/components/OrganizationJsonLd'
+
 // A minimal layout ensuring NO database or Payload code runs on the Home Page
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const contactData = await getCachedGlobal('contact', 1)() as Contact
@@ -34,6 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body suppressHydrationWarning className="antialiased font-sans">
+        <OrganizationJsonLd />
         <ReactScan />
         <WebVitals />
         {/* Cinematic Grain Overlay - DISABLED for Performance

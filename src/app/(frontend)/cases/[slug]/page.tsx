@@ -13,6 +13,7 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -56,10 +57,17 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
   
   if (!story) return <PayloadRedirects url={url} />
 
+  const breadcrumbItems = [
+      { name: '首页', url: '/' },
+      { name: '成功案例', url: '/cases' },
+      { name: story.title, url: `/cases/${slug}` }
+  ]
+
   return (
     <article className="min-h-screen bg-slate-50 font-sans selection:bg-red-100 selection:text-red-900">
         <PayloadRedirects disableNotFound url={url} />
         {draft && <LivePreviewListener />}
+        <BreadcrumbJsonLd items={breadcrumbItems} />
 
         {/* Hero Section */}
         <header className="relative bg-slate-900 text-white overflow-hidden pb-12">

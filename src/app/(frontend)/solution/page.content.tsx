@@ -57,29 +57,31 @@ export function SolutionPageContent() {
       {/* Tab Switcher */}
       <section className="bg-white border-b border-slate-100 sticky top-16 lg:top-20 z-40">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-center gap-2 py-4">
-            <button
-              onClick={() => setActiveTab('business')}
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all ${
-                activeTab === 'business'
-                  ? 'bg-[#0052D9] text-white shadow-lg shadow-blue-200'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              <Briefcase className="w-4 h-4" />
-              按业务能力
-            </button>
-            <button
-              onClick={() => setActiveTab('industry')}
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all ${
-                activeTab === 'industry'
-                  ? 'bg-[#0052D9] text-white shadow-lg shadow-blue-200'
-                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
-            >
-              <Building2 className="w-4 h-4" />
-              按行业场景
-            </button>
+          <div className="flex items-center justify-center py-6">
+            <div className="inline-flex bg-slate-100 p-1.5 rounded-2xl">
+              <button
+                onClick={() => setActiveTab('business')}
+                className={`inline-flex items-center gap-2 px-8 py-3 rounded-xl text-base font-bold transition-all duration-300 ${
+                  activeTab === 'business'
+                    ? 'bg-[#0052D9] text-white shadow-md'
+                    : 'text-slate-600 hover:bg-white/50'
+                }`}
+              >
+                <Briefcase className="w-5 h-5" />
+                按业务能力
+              </button>
+              <button
+                onClick={() => setActiveTab('industry')}
+                className={`inline-flex items-center gap-2 px-8 py-3 rounded-xl text-base font-bold transition-all duration-300 ${
+                  activeTab === 'industry'
+                    ? 'bg-[#0052D9] text-white shadow-md'
+                    : 'text-slate-600 hover:bg-white/50'
+                }`}
+              >
+                <Building2 className="w-5 h-5" />
+                按行业场景
+              </button>
+            </div>
           </div>
         </div>
       </section>

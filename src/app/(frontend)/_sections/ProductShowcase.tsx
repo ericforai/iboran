@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { 
   Cloud, 
@@ -63,7 +64,7 @@ export const ProductShowcase = () => {
           </motion.div>
           
           <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl lg:text-7xl font-heading font-black text-slate-900 tracking-tighter leading-[1] sm:leading-[0.95] lg:leading-[0.9] mb-6 text-physical">
-            全场景业财合一 
+            全场景业财融合 
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700 italic px-3">数智化</span>
             产品方阵
           </motion.h2>
@@ -104,18 +105,18 @@ export const ProductShowcase = () => {
 
                   <div className="space-y-4">
                     {[
-                      { name: '用友 BIP', desc: '先进成熟的企业软件与智能服务平台' },
-                      { name: '用友 YonSuite', desc: '成长型企业商业创新全场景 SaaS' },
-                      { name: '集团财务共享解决方案', desc: '推动财务从管控型向价值创造型转型' },
-                      { name: '连锁门店资产管理解决方案', desc: '让每一项资产投资都能产生可衡量的业务回报' }
+                      { name: '用友 BIP', desc: '先进成熟的企业软件与智能服务平台', href: '/products/bip' },
+                      { name: '用友 YonSuite', desc: '成长型企业商业创新全场景 SaaS', href: '/products/yonsuite' },
+                      { name: '集团财务共享解决方案', desc: '推动财务从管控型向价值创造型转型', href: '/solution/financial-shared-services' }
                     ].map((item, i) => (
-                      <div key={i} className="group/item flex flex-col">
+                      <Link href={item.href} key={i} className="group/item flex flex-col hover:bg-white/5 p-2 rounded-lg transition-colors -mx-2">
                         <div className="flex items-center gap-2 text-white font-bold text-base mb-0.5">
                           <span className="w-1.5 h-1.5 rounded-full bg-blue-500 group-hover/item:bg-blue-400 transition-colors"></span>
                           {item.name}
+                          <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/item:opacity-70 transition-opacity ml-1" />
                         </div>
-                        <div className="pl-3.5 text-slate-500 text-xs">{item.desc}</div>
-                      </div>
+                        <div className="pl-3.5 text-slate-500 text-xs group-hover/item:text-slate-400 transition-colors">{item.desc}</div>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -139,11 +140,18 @@ export const ProductShowcase = () => {
                 </div>
                 
                 <div className="grid grid-cols-3 gap-3">
-                   {['协同办公 (COP)', 'BPM 流程引擎', '企业门户', '项目协同管理', '合同管理系统', '采购管理'].map((item, i) => (
-                     <div key={i} className="bg-white border border-slate-200/60 rounded-lg px-3 py-2 text-xs font-bold text-slate-600 shadow-sm flex items-center gap-2 hover:border-indigo-200 hover:text-indigo-700 transition-colors">
-                        <div className="w-1 h-1 rounded-full bg-indigo-400"></div>
-                        {item}
-                     </div>
+                   {[
+                     { name: '协同办公 (COP)', href: '/products/collaborative-office' },
+                     { name: 'BPM 流程引擎', href: '/products/bpm' },
+                     { name: '企业门户', href: '/products/enterprise-portal' },
+                     { name: '项目协同管理', href: '/products/project-collaboration' },
+                     { name: '合同管理系统', href: '/products/contract-management' },
+                     { name: '采购管理', href: '/products/procurement-management' }
+                   ].map((item, i) => (
+                     <Link href={item.href} key={i} className="bg-white border border-slate-200/60 rounded-lg px-3 py-2 text-xs font-bold text-slate-600 shadow-sm flex items-center gap-2 hover:border-indigo-200 hover:text-indigo-700 transition-colors group">
+                        <div className="w-1 h-1 rounded-full bg-indigo-400 group-hover:bg-indigo-600 transition-colors"></div>
+                        {item.name}
+                     </Link>
                    ))}
                 </div>
               </div>
@@ -164,15 +172,15 @@ export const ProductShowcase = () => {
 
                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                    {[
-                     { icon: Cloud, label: 'AI智能平台' },
-                     { icon: Layers, label: '主数据治理' },
-                     { icon: Code, label: 'Link集成平台' },
-                     { icon: ShieldCheck, label: 'BI数据中台' }
+                     { icon: Cloud, label: 'AI智能平台', href: '/solution/business/aip-intelligent-apps' },
+                     { icon: Layers, label: '主数据治理', href: '/products/mdm' },
+                     { icon: Code, label: 'Link集成平台', href: '/products/ipaas' },
+                     { icon: ShieldCheck, label: 'BI数据中台', href: '/products/bi-data' }
                    ].map((item, i) => (
-                     <div key={i} className="bg-white border border-emerald-100/50 rounded-xl p-3 flex flex-col gap-2 items-start hover:shadow-md transition-shadow">
-                        <item.icon size={16} className="text-emerald-600" />
-                        <span className="text-xs font-bold text-slate-700">{item.label}</span>
-                     </div>
+                     <Link href={item.href} key={i} className="bg-white border border-emerald-100/50 rounded-xl p-3 flex flex-col gap-2 items-start hover:shadow-md transition-all hover:bg-emerald-50/50 group">
+                        <item.icon size={16} className="text-emerald-600 group-hover:scale-110 transition-transform" />
+                        <span className="text-xs font-bold text-slate-700 group-hover:text-emerald-800 transition-colors">{item.label}</span>
+                     </Link>
                    ))}
                  </div>
                </div>

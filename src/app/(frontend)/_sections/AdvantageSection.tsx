@@ -1,10 +1,12 @@
 'use client'
 
-import React from 'react'
-import { Plus } from 'lucide-react'
+import React, { useState } from 'react'
+import { ArrowRight } from 'lucide-react'
 import { SlideUp, StaggerContainer } from '@/components/animations'
+import { DemoRequestModal } from '@/components/DemoRequestModal'
 
 export const AdvantageSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const advantages = [
     {
       number: '14',
@@ -71,11 +73,14 @@ export const AdvantageSection = () => {
             </SlideUp>
 
             <SlideUp delay={0.3} duration={0.8} className="pt-10 border-t border-white/5 flex flex-col gap-4" as="div">
-               <button className="flex items-center gap-4 text-slate-500 hover:text-cyan-400 group transition-colors">
+               <button 
+                  onClick={() => setIsModalOpen(true)}
+                  className="flex items-center gap-4 text-slate-500 hover:text-cyan-400 group transition-colors"
+               >
                   <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-black group-hover:border-cyan-400 transition-all duration-300">
-                     <Plus size={18} />
+                     <ArrowRight size={18} className="group-hover:-rotate-45 transition-transform duration-300" />
                   </div>
-                  <span className="text-xs font-bold uppercase tracking-[0.2em]">启动核心交付协议</span>
+                  <span className="text-xs font-bold uppercase tracking-[0.2em]">预约交付专家咨询</span>
                </button>
             </SlideUp>
           </div>
@@ -122,6 +127,12 @@ export const AdvantageSection = () => {
               </SlideUp>
             ))}
           </div>
+         
+          <DemoRequestModal 
+            isOpen={isModalOpen} 
+            onClose={() => setIsModalOpen(false)} 
+            source="AdvantageSection_DeliveryConsultation" 
+          />
         </StaggerContainer>
       </div>
     </section>

@@ -11,9 +11,9 @@ export const Footer = () => {
         <div className="absolute top-20 -left-20 w-72 h-72 bg-indigo-500/5 rounded-full blur-3xl pointer-events-none"></div>
   
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-12 gap-8 gap-y-12 lg:gap-8 mb-20">
             {/* Brand Column */}
-            <div className="lg:col-span-6 space-y-8">
+            <div className="col-span-2 md:col-span-1 lg:col-span-6 space-y-8 lg:order-1">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="text-2xl font-heading font-black text-slate-900 dark:text-white tracking-tight">泊冉软件</div>
@@ -47,39 +47,43 @@ export const Footer = () => {
               </div>
             </div>
   
-            {/* Links Columns */}
-            <div className="lg:col-span-2 md:col-span-1">
-              <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">产品中心</h4>
-              <ul className="space-y-3 text-sm">
-                <li><Link href="/products/yonsuite" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>YonSuite 成长型云服务</span></Link></li>
-                <li><Link href="/products/collaborative-office" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>协同办公</span></Link></li>
-                <li><Link href="/solution/business/digital-modeling" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>数字化建模</span></Link></li>
-                <li><Link href="/solution/business/aip-intelligent-apps" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>AI 智能应用</span></Link></li>
-              </ul>
+            {/* Links Columns Group (Mobile Col 1) */}
+            <div className="col-span-1 flex flex-col gap-10 md:contents">
+              <div className="lg:col-span-2 md:col-span-1 lg:order-2">
+                <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">产品中心</h4>
+                <ul className="space-y-3 text-sm">
+                  <li><Link href="/products/yonsuite" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>YonSuite 成长型云服务</span></Link></li>
+                  <li><Link href="/products/collaborative-office" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>协同办公</span></Link></li>
+                  <li><Link href="/solution/business/digital-modeling" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>数字化建模</span></Link></li>
+                  <li><Link href="/solution/business/aip-intelligent-apps" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>AI 智能应用</span></Link></li>
+                </ul>
+              </div>
+
+              <div className="lg:col-span-2 md:col-span-1 lg:order-4">
+                <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">关于我们</h4>
+                <ul className="space-y-3 text-sm">
+                  <li><Link href="/about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>公司简介</span></Link></li>
+                  <li><Link href="/posts" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>新闻动态</span></Link></li>
+                  <li><Link href="/about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>加入我们</span></Link></li>
+                  <li><Link href="/contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>联系我们</span></Link></li>
+                </ul>
+              </div>
             </div>
   
-            <div className="lg:col-span-2 md:col-span-1">
+            <div className="lg:col-span-2 md:col-span-1 lg:order-3">
               <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">核心领域</h4>
               <ul className="space-y-3 text-sm">
-                <li><Link href="/solution/business/finance-cloud" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>智能财务</span></Link></li>
-                <li><Link href="/solution/business/s2p" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>供应链管理</span></Link></li>
-                <li><Link href="/solution/business/mes" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>智能制造</span></Link></li>
-                <li><Link href="/solution/business/hrm" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>人力资源</span></Link></li>
-                <li><Link href="/solution/business/p2c-project-to-cost" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>项目管理</span></Link></li>
-                <li><Link href="/solution/business/revenue-cloud" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>营销增长</span></Link></li>
-                <li><Link href="/solution/business/eam" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>资产管理</span></Link></li>
+                <li><Link href="/solution/business/finance-cloud" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>智能财务</span></Link></li>
+                <li><Link href="/solution/business/s2p" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>供应链管理</span></Link></li>
+                <li><Link href="/solution/business/mes" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>智能制造</span></Link></li>
+                <li><Link href="/solution/business/hrm" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>人力资源</span></Link></li>
+                <li><Link href="/solution/business/p2c-project-to-cost" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>项目管理</span></Link></li>
+                <li><Link href="/solution/business/revenue-cloud" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>营销增长</span></Link></li>
+                <li><Link href="/solution/business/eam" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>资产管理</span></Link></li>
               </ul>
             </div>
   
-            <div className="lg:col-span-2 md:col-span-1">
-              <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-6">关于我们</h4>
-              <ul className="space-y-3 text-sm">
-                <li><Link href="/about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>公司简介</span></Link></li>
-                <li><Link href="/posts" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>新闻动态</span></Link></li>
-                <li><Link href="/about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>加入我们</span></Link></li>
-                <li><Link href="/about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 group"><span className="w-0 overflow-hidden group-hover:w-2 transition-all duration-300 opacity-0 group-hover:opacity-100 text-blue-600 dark:text-blue-400">•</span> <span>联系我们</span></Link></li>
-              </ul>
-            </div>
+            {/* About Us moved up to wrapper */}
           </div>
   
           {/* Bottom Bar */}

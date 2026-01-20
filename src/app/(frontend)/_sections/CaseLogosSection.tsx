@@ -19,7 +19,7 @@ export const CaseLogosSection = () => {
        clients: ['南极电商', '西域供应链', '爱数科技', '仕卿人力'] 
      },
      { 
-       name: '跨境物流', 
+       name: '物流交通', 
        breakthrough: '打通运输轨迹、汇率结算与自动账期管控',
        clients: ['安能物流', '强生交通', '久事公交', '交运集团'] 
      }
@@ -47,7 +47,7 @@ export const CaseLogosSection = () => {
   return (
     <>
       {/* Snap Page 1: Industry Cards */}
-      <div className="h-screen flex flex-col justify-center snap-start snap-always py-20 overflow-hidden relative isolate">
+      <div className="min-h-screen flex flex-col justify-center snap-start snap-always py-24 lg:py-20 relative isolate">
         <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
@@ -68,9 +68,7 @@ export const CaseLogosSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-200 border border-slate-200 rounded-[32px] overflow-hidden shadow-xl">
           {industries.map((industry, idx) => (
             <div key={idx} className="bg-white p-10 hover:bg-slate-50 transition-all duration-500 group flex flex-col justify-between relative">
-               <div className="absolute top-0 right-0 p-6 font-mono text-[10px] text-slate-100 font-bold uppercase tracking-widest whitespace-nowrap">
-                  行业部门 0{idx + 1}
-               </div>
+
               <div>
                  <div className="flex items-center gap-3 mb-8">
                     <div className="w-1.5 h-6 bg-slate-200 group-hover:bg-blue-600 transition-colors rounded-full"></div>

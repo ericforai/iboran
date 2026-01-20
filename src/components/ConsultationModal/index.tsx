@@ -22,8 +22,17 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
 
     const handleCopy = () => {
         navigator.clipboard.writeText(wechatId)
-        setCopied(true)
-        setTimeout(() => setCopied(false), 2000)
+            .then(() => {
+                setCopied(true)
+                setTimeout(() => setCopied(false), 2000)
+                // Attempt to open WeChat
+                window.location.href = 'weixin://'
+            })
+            .catch(() => {
+                // Fallback for older browsers or if permission denied
+                setCopied(true)
+                setTimeout(() => setCopied(false), 2000)
+            })
     }
 
     return (
@@ -64,22 +73,13 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
 
                             {/* QR Code Container */}
                             <div className="relative aspect-square w-48 mx-auto mb-8 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center p-2 overflow-hidden">
-                                {qrUrl ? (
-                                    <Image 
-                                        src={qrUrl} 
-                                        alt="WeChat QR" 
-                                        fill 
-                                        className="object-contain p-2"
-                                        priority
-                                    />
-                                ) : (
-                                    <>
-                                        <div className="text-slate-300 mb-2">
-                                            <MessageSquare className="w-12 h-12" />
-                                        </div>
-                                        <span className="text-[10px] text-slate-400 font-medium text-center px-4">请在后台上传<br/>企业微信二维码</span>
-                                    </>
-                                )}
+                                <Image 
+                                    src="/assets/wechat-consultant-v2.jpg" 
+                                    alt="WeChat QR" 
+                                    fill 
+                                    className="object-contain p-2"
+                                    priority
+                                />
                             </div>
 
                             <div className="space-y-4">

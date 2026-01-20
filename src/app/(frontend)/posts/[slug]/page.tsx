@@ -48,6 +48,8 @@ type Args = {
 }
 
 
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
+
 export default async function Post({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
@@ -64,10 +66,17 @@ export default async function Post({ params: paramsPromise }: Args) {
   const heroImageUrl = post.heroImage && typeof post.heroImage !== 'string' && post.heroImage.url 
     ? `${serverUrl}${post.heroImage.url}` 
     : undefined
+  
+  const breadcrumbItems = [
+      { name: '首页', url: '/' },
+      { name: '文章', url: '/posts' },
+      { name: post.title, url: `/posts/${slug}` }
+  ]
 
   return (
     <article className="pb-16">
       <PageClient />
+      <BreadcrumbJsonLd items={breadcrumbItems} />
 
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />

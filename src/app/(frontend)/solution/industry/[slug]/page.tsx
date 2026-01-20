@@ -40,6 +40,8 @@ type Args = {
   }>
 }
 
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
+
 export default async function IndustrySolutionPage({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
@@ -50,6 +52,12 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
   const contactData = await getCachedGlobal('contact', 1)() as Contact
 
   if (!solution) return <PayloadRedirects url={url} />
+  
+  const breadcrumbItems = [
+      { name: '首页', url: '/' },
+      { name: '行业解决方案', url: '/solution' },
+      { name: solution.title, url: `/solution/industry/${slug}` }
+  ]
 
   // Fetch related resources
   const payload = await getPayload({ config: configPromise })
