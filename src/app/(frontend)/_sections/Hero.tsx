@@ -25,7 +25,7 @@ export const Hero = () => {
   const y2 = useTransform(scrollY, [0, 500], [0, -40])
 
   return (
-    <section className="relative min-h-[auto] lg:min-h-screen lg:h-screen flex items-start lg:items-center pt-24 pb-16 lg:pt-0 lg:pb-20 overflow-hidden bg-[#0F172A] isolate text-white">
+    <section className="relative min-h-screen flex items-start lg:items-center pt-24 pb-16 lg:pt-16 lg:pb-24 overflow-hidden bg-[#0F172A] isolate text-white">
       {/* 1. Deep Future Background */}
       <div className="absolute inset-0 z-[-1]">
         {/* Digital Grid - Neon Blue - Increased Opacity */}
@@ -77,22 +77,22 @@ export const Hero = () => {
                  14年深耕 <span className="text-cyan-400 font-semibold">半导体、新零售、装备制造</span> 三大行业，帮您避开我们踩过的坑。服务 500+ 企业，其中 80% 是老客户转介绍。
                </motion.p>
 
-               <motion.div
-                 variants={fadeInUp}
-                 className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-400 font-medium mb-6 lg:mb-10 w-full max-w-full lg:max-w-xl"
-               >
-                 {[
-                   '业财数据打通？',
-                   '财务共享建设？',
-                   '供应链协同优化？',
-                   '遗留系统迁移？',
-                 ].map((item, idx) => (
-                   <div key={idx} className="flex items-center gap-2">
-                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                     <span>{item}</span>
-                   </div>
-                 ))}
-               </motion.div>
+                <motion.div
+                  variants={fadeInUp}
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-xs sm:text-sm text-slate-400 font-medium mb-6 lg:mb-10 w-full"
+                >
+                  {[
+                    '业财数据打通？',
+                    '财务共享建设？',
+                    '供应链协同优化？',
+                    '遗留系统迁移？',
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-2 group whitespace-nowrap">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0 shadow-[0_0_8px_rgba(34,211,238,0.4)]"></span>
+                      <span className="group-hover:text-cyan-300 transition-colors">{item}</span>
+                    </div>
+                  ))}
+                </motion.div>
 
                <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 sm:gap-5 relative z-20 w-full">
                  {/* Spotlight Button 1 */}
