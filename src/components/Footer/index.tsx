@@ -1,10 +1,10 @@
 
 import Link from 'next/link'
-import { ArrowRight, MapPin, Phone } from 'lucide-react'
+import { MapPin, Phone } from 'lucide-react'
 
 export const Footer = () => {
     return (
-      <footer className="relative bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-24 pb-12 overflow-hidden">
+      <footer className="relative bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-24 pb-20">
         {/* Decorative background elements */}
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -89,19 +89,18 @@ export const Footer = () => {
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-[10px] font-mono font-medium text-slate-400 dark:text-slate-500 text-center md:text-left">
-              <p>© 2025 泊冉软件集团 版权所有</p>
+              <p>© 2026 上海泊冉软件有限公司 版权所有</p>
               <p className="mt-1 hover:text-slate-600 dark:hover:text-slate-300 transition-colors cursor-pointer">沪ICP备13039056号</p>
             </div>
-            <div className="flex gap-6 text-xs text-slate-500 dark:text-slate-500">
-              <Link href="#" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">隐私政策</Link>
+            <div className="flex gap-4 text-xs text-slate-500 dark:text-slate-500 lg:pr-64">
+              <Link href="/privacy" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">隐私政策</Link>
               <span className="text-slate-300 dark:text-slate-700">|</span>
-              <Link href="#" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">服务条款</Link>
+              <Link href="/terms" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">服务条款</Link>
               <span className="text-slate-300 dark:text-slate-700">|</span>
-              <Link href="#" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">网站地图</Link>
+              <Link href="/sitemap" className="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">网站地图</Link>
             </div>
           </div>
         </div>
       </footer>
     )
   }
-

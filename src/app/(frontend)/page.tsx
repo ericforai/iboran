@@ -1,23 +1,20 @@
 import React from 'react'
-import Link from 'next/link'
 import type { Metadata } from 'next'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import { ArrowRight, ChevronRight, ShieldCheck, Activity, Terminal } from 'lucide-react'
+import type { PaginatedDocs } from 'payload'
+import type { Post } from '@/payload-types'
 
 // Components
-import { SuccessStoriesSection } from './_sections/SuccessStoriesSection'
 import { RecentPostsSection } from './_sections/RecentPostsSection'
 import { ProductShowcase } from './_sections/ProductShowcase'
 import { AdvantageSection } from './_sections/AdvantageSection'
 import { CaseLogosSection } from './_sections/CaseLogosSection'
 import { SEOKeywords } from './_sections/SEOKeywords'
 import { WhitepaperCTA } from './_sections/WhitepaperCTA'
-import { DashboardPreview } from './_sections/DashboardPreview'
 import { Hero } from './_sections/Hero'
 import { LogoWall } from '@/components/LogoWall'
 import { MediaCoverageSection } from './_sections/MediaCoverageSection'
-import { staticStories } from '@/data/static-success-stories'
 
 export const metadata: Metadata = {
   title: '泊冉软件 - 专业的用友软件实施服务商 | 业财一体化与数智化转型专家',
@@ -33,46 +30,11 @@ export const metadata: Metadata = {
 export default async function Page() {
     const payload = await getPayload({ config: configPromise })
 
-    const [successStories, latestPosts] = await Promise.all([
-      payload.find({
-        collection: 'success-stories',
-        limit: 10,
-        sort: '-updatedAt',
-      }),
-      payload.find({
-        collection: 'posts',
-        limit: 3,
-        sort: '-publishedAt',
-      }),
-    ])
-
-    // Merge static stories and database stories
-    const staticSlugs = new Set(staticStories.map(s => s.slug))
-    const mergedStories = [...staticStories]
-    
-    successStories.docs.forEach(story => {
-      if (story.slug && !staticSlugs.has(story.slug)) {
-        mergedStories.push(story as any)
-      }
-    })
-
-    // Explicitly select the requested stories for the homepage
-    const targetSlugs = ['anneng-logistics', 'nanji-ecommerce', 'west-basin', 'jiao-yun-ji-tuan']
-    const displayStories = targetSlugs
-      .map(slug => mergedStories.find(s => s.slug === slug))
-      .filter(Boolean) as any[]
-
-    // Fallback if specific stories aren't found (fill up to 4)
-    if (displayStories.length < 4) {
-      const existingSlugs = new Set(displayStories.map(s => s.slug))
-      for (const story of mergedStories) {
-        if (displayStories.length >= 4) break
-        if (!existingSlugs.has(story.slug)) {
-          displayStories.push(story)
-          existingSlugs.add(story.slug!)
-        }
-      }
-    }
+    const latestPosts = await payload.find({
+      collection: 'posts',
+      limit: 3,
+      sort: '-publishedAt',
+    }) as PaginatedDocs<Post>
 
     return (
         <div className="font-sans text-slate-600 bg-white flex flex-col">

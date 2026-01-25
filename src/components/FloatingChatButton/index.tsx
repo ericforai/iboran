@@ -11,21 +11,24 @@ interface FloatingChatButtonProps {
   showOnMobile?: boolean
 }
 
-export const FloatingChatButton: React.FC<FloatingChatButtonProps> = ({
+export const FloatingChatButton: React.FC<FloatingChatButtonProps> = React.memo(({
   contactData,
   showOnMobile = false,
 }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false)
 
+  const handleOpenModal = React.useCallback(() => setIsModalOpen(true), [])
+  const handleCloseModal = React.useCallback(() => setIsModalOpen(false), [])
+
   return (
     <>
       {!showOnMobile && (
-        <div className="hidden lg:block fixed bottom-8 right-8 z-[60]">
+        <div className="hidden lg:block fixed bottom-8 right-6 z-[60]">
           <AnimatePresence>
             <motion.button
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              onClick={() => setIsModalOpen(true)}
+              onClick={handleOpenModal}
               className="group relative flex items-center gap-3 px-5 py-3 bg-[#0052D9] text-white rounded-full shadow-lg hover:shadow-xl hover:bg-blue-700 transition-all"
             >
               <MessageCircle className="w-5 h-5" />
@@ -39,7 +42,9 @@ export const FloatingChatButton: React.FC<FloatingChatButtonProps> = ({
         </div>
       )}
 
-      <ConsultationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} data={contactData} />
+      <ConsultationModal isOpen={isModalOpen} onClose={handleCloseModal} data={contactData} />
     </>
   )
-}
+})
+
+FloatingChatButton.displayName = 'FloatingChatButton'

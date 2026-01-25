@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, ChevronRight, Sparkles, Zap, Command } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { DashboardPreview } from './DashboardPreview'
 
 const fadeInUp = {
@@ -59,21 +59,40 @@ export const Hero = () => {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                     </span>
-                    用友铂金级合作伙伴
+                     <span className="font-bold text-white mr-1">泊冉软件</span>
+                     <span className="opacity-40 mr-1">|</span>
+                     用友铂金级合作伙伴
                  </div>
-                 <h1 className="text-3xl sm:text-4xl lg:text-[72px] font-heading font-bold leading-[1.1] lg:leading-[0.95] tracking-tighter mb-4 lg:mb-6 text-white drop-shadow-2xl">
-                   构建数智企业 <br className="lg:block" />
-                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 animate-shimmer bg-[length:200%_100%]">
-                     就选泊冉软件
+                 <h1 className="text-2xl sm:text-4xl lg:text-[72px] font-heading font-bold leading-[1.1] lg:leading-[0.95] tracking-tighter mb-4 lg:mb-6 text-white drop-shadow-2xl">
+                   <span className="whitespace-nowrap">您的业财数据</span> <br className="lg:block" />
+                   <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 animate-shimmer bg-[length:200%_100%]">
+                     打通了吗？
                    </span>
                  </h1>
                  {/* Decorative Glitch Element - Refined */}
                  <div className="absolute -top-[20%] -left-[10%] w-[140%] h-[140%] bg-blue-600/5 blur-[80px] -z-10 rounded-full pointer-events-none mix-blend-screen"></div>
                </motion.div>
 
-               <motion.p variants={fadeInUp} className="text-sm sm:text-base lg:text-xl text-slate-400 font-medium leading-relaxed mb-6 lg:mb-10 max-w-full lg:max-w-xl">
-                 作为 <span className="text-slate-200 font-semibold border-b border-blue-500/30 pb-0.5">用友铂金级合作伙伴</span>，我们为您提供 <span className="text-cyan-400 font-semibold">智能财务</span> 与 <span className="text-indigo-400 font-semibold">敏捷供应链</span> 的一体化解决方案，重塑企业核心竞争力。
+               <motion.p variants={fadeInUp} className="text-sm sm:text-base lg:text-xl text-slate-400 font-medium leading-relaxed mb-6 lg:mb-8 max-w-full lg:max-w-xl">
+                 14年深耕 <span className="text-cyan-400 font-semibold">半导体、新零售、装备制造</span> 三大行业，帮您避开我们踩过的坑。服务 500+ 企业，其中 80% 是老客户转介绍。
                </motion.p>
+
+               <motion.div
+                 variants={fadeInUp}
+                 className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-400 font-medium mb-6 lg:mb-10 w-full max-w-full lg:max-w-xl"
+               >
+                 {[
+                   '业财数据打通？',
+                   '财务共享建设？',
+                   '供应链协同优化？',
+                   '遗留系统迁移？',
+                 ].map((item, idx) => (
+                   <div key={idx} className="flex items-center gap-2">
+                     <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                     <span>{item}</span>
+                   </div>
+                 ))}
+               </motion.div>
 
                <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 sm:gap-5 relative z-20 w-full">
                  {/* Spotlight Button 1 */}
@@ -81,7 +100,7 @@ export const Hero = () => {
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                     <div className="relative px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-slate-950 font-bold text-sm rounded-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-cyan-500/20 transition-all active:scale-[0.98]">
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                      <span>预约专家咨询</span>
+                      <span>免费诊断我的企业</span>
                       <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-slate-950 group-hover:translate-x-1 transition-all" />
                     </div>
                  </Link>
@@ -89,7 +108,7 @@ export const Hero = () => {
                  {/* Spotlight Button 2 - Glass */}
                  <Link href="/solution" className="group px-6 sm:px-8 py-3.5 sm:py-4 bg-white/5 border border-white/10 text-white font-bold text-sm rounded-lg hover:bg-white/10 hover:border-white/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2 backdrop-blur-md overflow-hidden relative w-full sm:w-auto">
                    <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out"></div>
-                   <span>探索解决方案</span>
+                   <span>查看行业方案</span>
                  </Link>
                </motion.div>
 
