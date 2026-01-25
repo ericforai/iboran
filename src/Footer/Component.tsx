@@ -11,7 +11,7 @@ import { Logo } from '@/components/Logo/Logo'
 export async function Footer() {
   const footerData = (await getCachedGlobal('footer', 1)()) as Footer
 
-  const navItems = footerData?.navItems || []
+  const navItems = (footerData?.navItems ?? []) as NonNullable<Footer['navItems']>
 
   return (
     <footer className="mt-auto border-t border-border bg-black dark:bg-card text-white">
@@ -22,8 +22,8 @@ export async function Footer() {
 
         <div className="flex flex-col-reverse items-start md:flex-row gap-4 md:items-center">
           <ThemeSelector />
-          <nav className="flex flex-col md:flex-row gap-4">
-            {navItems.map((item: any, i) => {
+          <nav className="flex flex-col md:flex-row gap-4 lg:pr-64">
+            {navItems.map((item, i) => {
               return <CMSLink className="text-white" key={i} {...item.link} />
             })}
           </nav>

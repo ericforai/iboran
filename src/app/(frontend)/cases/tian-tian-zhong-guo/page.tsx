@@ -5,13 +5,14 @@ import Challenge from './Challenge'
 import Solution from './Solution'
 import Results from './Results'
 import CTA from './CTA'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
-  title: '天田中国数字化转型案例 | 泊冉软件',
-  description: '在全球化竞争与供应链波动常态化的背景下，传统制造业正面临从"规模驱动"向"效率与创新驱动"的深刻转型。泊冉软件助力制造企业打通生产、物流与财务的脉络，实现以数据为核心的敏捷制造与精准交付。 项目背景：金属加工机械的销售、维修与技术支持，主要产品包括数控冲床、激光切割机、折弯机等钣金加工设备。',
+  title: '天田中国数字化案例 - 机床设备业财一体化实战 | 泊冉软件',
+  description: '天田中国如何通过业财一体化实现销售-服务-配件全流程打通？解决机床设备售后服务成本核算难、配件库存管理复杂问题。机床设备行业数字化转型实战案例。',
   openGraph: {
-    title: '天田中国数字化转型案例',
-    description: '金属加工机械的销售、维修与技术支持，主要产品包括数控冲床、激光切割机、折弯机等钣金加工设备。',
+    title: '天田中国数字化案例 - 机床设备业财一体化实战',
+    description: '天田中国如何通过业财一体化实现销售-服务-配件全流程打通？解决机床设备售后服务成本核算难、配件库存管理复杂问题。机床设备行业数字化转型实战案例。',
   },
 }
 
@@ -23,6 +24,12 @@ export default function CaseStudyPage() {
       <Challenge />
       <Solution />
       <Results />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        url="https://www.iboran.com/cases/tian-tian-zhong-guo"
+        variant="case"
+      />
       <CTA />
     </main>
   )

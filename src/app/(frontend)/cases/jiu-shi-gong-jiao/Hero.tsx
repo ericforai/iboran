@@ -29,7 +29,7 @@ export default function Hero() {
               <span className="text-cyan-400 text-3xl md:text-5xl">数字化转型实践</span>
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-8">
-              公共交通运营服务，包括城市公交线路运营与管理。构建"集团财务+司库管理+业财融合"一体化平台。
+              公共交通运营服务，包括城市公交线路运营与管理。构建“集团财务+司库管理+业财融合”一体化平台。
             </p>
 
             {/* Quick stats badges */}

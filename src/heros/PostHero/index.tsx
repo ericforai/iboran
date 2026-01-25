@@ -1,22 +1,18 @@
 import { formatDateTime } from '@/utilities/formatDateTime'
 import Link from 'next/link'
-import Image from 'next/image'
 import React from 'react'
 
 import type { Post } from '@/payload-types'
 
-import { Media } from '@/components/Media'
 import { formatAuthors } from '@/utilities/formatAuthors'
 
 export const PostHero: React.FC<{
   post: Post
 }> = ({ post }) => {
-  const { categories, heroImage, populatedAuthors, publishedAt, title } = post
+  const { categories, populatedAuthors, publishedAt, title } = post
 
   const hasAuthors =
     populatedAuthors && populatedAuthors.length > 0 && formatAuthors(populatedAuthors) !== ''
-
-  const hasHeroImage = heroImage && typeof heroImage !== 'string'
 
   return (
     <div className="relative py-16 overflow-hidden bg-white border-b border-slate-100">

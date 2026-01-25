@@ -1,4 +1,4 @@
-import { AlertCircle, ArrowRight, Clock, Database, FileText } from 'lucide-react'
+import { Clock, Database, FileText } from 'lucide-react'
 
 const challenges = [
   {

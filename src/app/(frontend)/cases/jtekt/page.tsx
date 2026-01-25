@@ -5,6 +5,7 @@ import Challenge from './Challenge'
 import Solution from './Solution'
 import Results from './Results'
 import CTA from './CTA'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
   title: '捷太格特数字化转型案例 | 泊冉软件',
@@ -23,6 +24,12 @@ export default function CaseStudyPage() {
       <Challenge />
       <Solution />
       <Results />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        url="https://www.iboran.com/cases/jtekt"
+        variant="case"
+      />
       <CTA />
     </main>
   )

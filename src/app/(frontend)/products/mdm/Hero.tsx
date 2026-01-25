@@ -21,12 +21,12 @@ export function Hero() {
                 <span>高标准 · 高质量 · 高效率</span>
               </div>
               
-              <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-6">
                 管理企业主数据 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                   打造企业黄金数据资产
                 </span>
-              </h1>
+              </h2>
               
               <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl">
                 用友 BIP 主数据管理平台帮助企业建立统一的数据标准，打通数据孤岛。

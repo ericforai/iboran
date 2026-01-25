@@ -7,6 +7,8 @@ import SecuritySection from './SecuritySection'
 import CustomerCases from './CustomerCases'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '银企联解决方案 | 2500+银行直联 | 泊冉软件',
@@ -21,6 +23,7 @@ export const metadata: Metadata = {
 export default function BankEnterpriseLinkPage() {
   return (
     <main className="min-h-screen bg-white">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <PainPoints />
       <Features />
@@ -28,6 +31,14 @@ export default function BankEnterpriseLinkPage() {
       <SecuritySection />
       <CustomerCases />
       <ValueSection />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/business/bank-enterprise-link"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

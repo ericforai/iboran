@@ -12,15 +12,14 @@ import {
   Building2,
   Bell,
   Search,
-  ChevronDown,
-  ArrowUpRight,
   ShieldCheck,
   Settings as SettingsIcon, // Renamed import
 } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
 // ... existing MetricCard definition ...
 
-function SidebarIcon({ icon: Icon, active = false }: { icon: any, active?: boolean }) {
+function SidebarIcon({ icon: Icon, active = false }: { icon: LucideIcon; active?: boolean }) {
   return (
     <div className={`w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer transition-all ${active ? 'bg-[#E60012] text-white shadow-lg shadow-red-900/20' : 'text-slate-500 hover:bg-slate-800 hover:text-slate-300'}`}>
       <Icon size={16} strokeWidth={2} />
@@ -192,16 +191,6 @@ export default function TaxDashboardMockup() {
   )
 }
 
-function SidebarItem({ icon: Icon, label, active = false }: { icon: any, label: string, active?: boolean }) {
-  return (
-    <div className={`flex items-center gap-3 px-4 py-3 mx-2 rounded-lg cursor-pointer transition-colors ${active ? 'bg-[#0052D9] text-white shadow-md' : 'hover:bg-slate-800 text-slate-400 hover:text-white'}`}>
-      <Icon size={16} />
-      <span className="hidden md:inline font-medium">{label}</span>
-    </div>
-  )
-}
-
-
 interface MetricCardProps {
   title: string
   value: string
@@ -209,54 +198,7 @@ interface MetricCardProps {
   trendUp: boolean
   trendGood?: boolean
   color: 'blue' | 'amber' | 'purple'
-  icon: any
-}
-
-function MetricCard({ title, value, trend, trendUp, trendGood = trendUp, color, icon: Icon }: MetricCardProps) {
-  const isPositive = trendUp ? trendGood : !trendGood // Good if trend matches desired direction
-  
-  const colorMap: Record<string, string> = {
-    blue: "bg-blue-50 text-blue-600",
-    amber: "bg-amber-50 text-amber-600",
-    purple: "bg-purple-50 text-purple-600"
-  }
-
-  return (
-    <motion.div 
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow"
-    >
-      <div className="flex justify-between items-start mb-3">
-        <div className={`p-2 rounded-lg ${colorMap[color]}`}>
-          <Icon size={16} />
-        </div>
-        <div className={`flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded ${isPositive ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-600'}`}>
-          {trendUp ? '↑' : '↓'} {trend}
-        </div>
-      </div>
-      <div className="text-slate-500 text-[10px] mb-1">{title}</div>
-      <div className="text-lg font-bold text-slate-800">{value}</div>
-    </motion.div>
-  )
-}
-
-interface StatusItemProps {
-  label: string
-  status: 'completed' | 'pending'
-  date: string
-}
-
-function StatusItem({ label, status, date }: StatusItemProps) {
-  return (
-    <div className="flex items-center justify-between text-[11px]">
-      <div className="flex items-center gap-2">
-        <div className={`w-2 h-2 rounded-full ${status === 'completed' ? 'bg-green-500' : 'bg-amber-400'}`}></div>
-        <span className="text-slate-600">{label}</span>
-      </div>
-      <span className={`font-medium ${status === 'completed' ? 'text-slate-400' : 'text-amber-600'}`}>{date}</span>
-    </div>
-  )
+  icon: LucideIcon
 }
 
 interface RiskAlertCardProps {

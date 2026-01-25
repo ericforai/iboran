@@ -2,9 +2,19 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Database, BrainCircuit, Activity, PieChart, Layers } from 'lucide-react'
+import { Database, Activity, PieChart, Layers } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const tabs = [
+type DashboardType = 'modeling' | 'budgeting' | 'control' | 'analysis'
+
+const tabs: Array<{
+  id: DashboardType
+  label: string
+  icon: LucideIcon
+  title: string
+  description: string
+  details: string[]
+}> = [
   {
     id: 'modeling',
     label: '多维建模与平台',
@@ -58,7 +68,7 @@ const tabs = [
 import SPEDashboardMockup from './SPEDashboardMockup'
 
 export default function Features() {
-  const [activeTab, setActiveTab] = useState(tabs[0].id)
+  const [activeTab, setActiveTab] = useState<DashboardType>(tabs[0].id)
 
   return (
     <section className="py-24 bg-white">
@@ -143,7 +153,7 @@ export default function Features() {
                       transition={{ delay: 0.2 }}
                       className="bg-white rounded-2xl p-2 shadow-2xl border border-slate-200 overflow-hidden"
                     >
-                      <SPEDashboardMockup type={tab.id as any} />
+                      <SPEDashboardMockup type={tab.id} />
                     </motion.div>
                   </motion.div>
                 )

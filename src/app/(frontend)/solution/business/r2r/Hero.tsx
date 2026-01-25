@@ -27,10 +27,10 @@ export default function Hero() {
                   YonBIP & YonSuite 事项法财务解决方案
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-5xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
                 R2R 核算到报告 <br />
                 <span className="text-[#E60012]">业财转换 智能控制</span>
-              </h1>
+              </h2>
               <p className="text-xl text-[#0052D9] font-medium mb-6">
                 基于&quot;事项法会计&quot;驱动财务管理数智化转型
               </p>

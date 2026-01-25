@@ -31,7 +31,11 @@ export const RecentPostsSection: React.FC<Props> = ({ posts }) => {
         {/* Text-First Grid */}
         {posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
-            {posts.map((post, index) => (
+            {posts.map((post) => {
+              const firstCategory = post.categories?.[0]
+              const categoryTitle =
+                typeof firstCategory === 'object' && firstCategory ? firstCategory.title : '深度分析'
+              return (
               <article 
                 key={post.id}
                 className="group flex flex-col h-full border-t border-gray-200 pt-6 hover:border-black transition-colors duration-500"
@@ -39,7 +43,7 @@ export const RecentPostsSection: React.FC<Props> = ({ posts }) => {
                 {/* Meta Header */}
                 <div className="flex justify-between items-center mb-4">
                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#E60012]">
-                      {(post.categories as any[])?.[0]?.title || '深度分析'}
+                      {categoryTitle}
                    </span>
                    <span className="text-[10px] font-mono text-gray-400">
                       {new Date(post.createdAt).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -69,7 +73,7 @@ export const RecentPostsSection: React.FC<Props> = ({ posts }) => {
                    </Link>
                 </div>
               </article>
-            ))}
+            )})}
           </div>
         ) : (
           <div className="py-20 text-center border-y border-dashed border-gray-200">

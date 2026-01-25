@@ -26,10 +26,10 @@ export default function Hero() {
                 商务服务行业解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
-                <span className="text-blue-600">项目化经营</span><br/>
-                <span className="text-[#E60012]">人才化</span>运营
-              </h1>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+                商务服务行业<span className="text-blue-600">数字化解决方案</span><br/>
+                项目化经营 · <span className="text-[#E60012]">人才化</span>运营
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP助力商务服务企业实现项目全生命周期管理、精细化成本核算与人才高效运营

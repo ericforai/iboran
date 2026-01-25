@@ -2,28 +2,26 @@
 
 import React from 'react'
 
-export interface ScaleInProps {
+export type ScaleInProps<T extends React.ElementType = 'div'> = {
   children: React.ReactNode
   delay?: number
   duration?: number
-  from?: number // Starting scale (default 0.9)
   className?: string
-  as?: React.ElementType
-}
+  as?: T
+} & Omit<React.ComponentPropsWithoutRef<T>, 'as'>
 
 /**
  * CSS-based scale animation - lightweight alternative to Framer Motion
  * Scales up from a smaller size with fade in
  */
-export function ScaleIn({
+export function ScaleIn<T extends React.ElementType = 'div'>({
   children,
   delay = 0,
   duration = 500,
-  from = 0.95,
   className = '',
-  as: Component = 'div',
+  as: Component = 'div' as T,
   ...props
-}: ScaleInProps) {
+}: ScaleInProps<T>) {
   return (
     <Component
       className={`animate-scale-in opacity-0 ${className}`}
@@ -43,31 +41,30 @@ export function ScaleIn({
  * StaggerContainer - wraps children for staggered animations
  * Uses CSS custom properties to delay child animations
  */
-export interface StaggerContainerProps {
+export type StaggerContainerProps<T extends React.ElementType = 'div'> = {
   children: React.ReactNode
   staggerDelay?: number // Delay between each child in ms
   className?: string
-  as?: React.ElementType
-}
+  as?: T
+} & Omit<React.ComponentPropsWithoutRef<T>, 'as'>
 
-export function StaggerContainer({
+export function StaggerContainer<T extends React.ElementType = 'div'>({
   children,
   staggerDelay = 100,
   className = '',
-  as: Component = 'div',
+  as: Component = 'div' as T,
   ...props
-}: StaggerContainerProps) {
+}: StaggerContainerProps<T>) {
   // Clone children and add stagger delay
   const childrenWithDelay = React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
-      const childProps: any = child.props
+      const childProps = child.props as { style?: React.CSSProperties }
       return React.cloneElement(child, {
-        ...childProps,
         style: {
           ...(childProps.style || {}),
           animationDelay: `${index * staggerDelay}ms`,
         },
-      })
+      } as any)
     }
     return child
   })

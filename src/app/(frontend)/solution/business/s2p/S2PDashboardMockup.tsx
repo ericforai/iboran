@@ -12,8 +12,6 @@ import {
   Truck,
   FileText,
   Users,
-  CheckCircle2,
-  Clock
 } from 'lucide-react'
 
 // Type definition for dashboard types

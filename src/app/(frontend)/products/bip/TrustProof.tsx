@@ -1,5 +1,3 @@
-import { Award, Building, Users } from 'lucide-react'
-
 export default function TrustProof() {
   return (
     <section className="py-24 bg-white">

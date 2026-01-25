@@ -1,6 +1,6 @@
 'use client'
 
-import { Layers, MousePointer2, Smartphone, ShieldCheck, Share2, BarChart3, Bot, Settings2, Globe } from 'lucide-react'
+import { Layers, MousePointer2, Smartphone, Share2, BarChart3, Bot, Globe } from 'lucide-react'
 
 const mainCapabilities = [
   {

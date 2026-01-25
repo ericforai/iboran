@@ -40,13 +40,13 @@ export default function CTASection() {
 
             {/* Contact Info */}
             <div className="flex flex-wrap items-center justify-center gap-8 text-slate-600">
-              <a href="tel:400-616-0036" className="flex items-center gap-2 hover:text-[#0052D9] transition">
+              <a href="tel:400-9955-161" className="flex items-center gap-2 hover:text-[#0052D9] transition">
                 <Phone size={18} />
-                <span>400-616-0036</span>
+                <span>400-9955-161</span>
               </a>
-              <a href="mailto:contact@iboran.cn" className="flex items-center gap-2 hover:text-[#0052D9] transition">
+              <a href="mailto:wyz@iboran.com" className="flex items-center gap-2 hover:text-[#0052D9] transition">
                 <Mail size={18} />
-                <span>contact@iboran.cn</span>
+                <span>wyz@iboran.com</span>
               </a>
             </div>
           </div>

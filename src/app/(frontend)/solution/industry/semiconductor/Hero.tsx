@@ -31,10 +31,10 @@ export default function Hero() {
               </div>
               
               {/* Main Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 <span className="text-blue-400">智造</span>芯未来<br/>
                 CIM赋能<span className="text-[#E60012]">数字化</span>转型
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 国产12寸量产FAB线CIM供应商，为半导体前道制造提供从Auto1到Auto3全自动化解决方案

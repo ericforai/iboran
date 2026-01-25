@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { ContactForm } from './ContactForm'
 import { Phone, MapPin, Mail, ShieldCheck } from 'lucide-react'
@@ -97,8 +96,8 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900 text-sm mb-0.5">商务合作</h3>
-                        <a href="mailto:contact@iboran.com" className="text-gray-600 text-sm hover:text-[#0052D9] transition-colors">
-                          contact@iboran.com
+                        <a href="mailto:wyz@iboran.com" className="text-gray-600 text-sm hover:text-[#0052D9] transition-colors">
+                          wyz@iboran.com
                         </a>
                       </div>
                     </CardContent>
@@ -118,7 +117,7 @@ export default function ContactPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1 h-1 rounded-full bg-[#E60012] mt-1.5 shrink-0" />
-                      <span>10+ 年企业数智化转型服务经验，服务客户 2500+</span>
+                      <span>14年企业数智化转型服务经验，累计服务客户 2500+</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1 h-1 rounded-full bg-[#E60012] mt-1.5 shrink-0" />

@@ -7,7 +7,6 @@ import {
   CheckSquare,
   BarChart,
   Calendar,
-  Mail,
   Bell,
   Search,
   User,

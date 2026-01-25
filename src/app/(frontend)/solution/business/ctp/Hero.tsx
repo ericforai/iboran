@@ -26,10 +26,10 @@ export default function Hero() {
                   YonBIP 技术平台底座
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
+              <h2 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
                 CTP 云原生技术 <br />
                 <span className="text-[#E60012]">平台底座</span>
-              </h1>
+              </h2>
               <p className="text-xl text-[#0052D9] font-medium mb-6">
                 统一技术架构：构建企业数智化创新基石
               </p>

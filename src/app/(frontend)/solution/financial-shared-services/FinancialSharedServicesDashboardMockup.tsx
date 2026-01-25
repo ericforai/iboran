@@ -14,6 +14,7 @@ import {
   ScanLine,
   Zap
 } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
 export default function FinancialSharedServicesDashboardMockup({ type: _type = 'default' }: { type?: string }) {
   return (
@@ -192,7 +193,7 @@ export default function FinancialSharedServicesDashboardMockup({ type: _type = '
   )
 }
 
-function SidebarItem({ icon: Icon, label, active = false }: { icon: any, label: string, active?: boolean }) {
+function SidebarItem({ icon: Icon, label, active = false }: { icon: LucideIcon; label: string; active?: boolean }) {
   return (
     <div className={`
       px-3 py-2.5 rounded-lg flex items-center gap-3 cursor-pointer transition-all
@@ -208,7 +209,17 @@ function SidebarItem({ icon: Icon, label, active = false }: { icon: any, label: 
   )
 }
 
-function MetricCard({ title, value, trend, trendUp, icon: Icon, color, bg }: any) {
+interface MetricCardProps {
+  title: string
+  value: string
+  trend: string
+  trendUp: boolean
+  icon: LucideIcon
+  color: string
+  bg: string
+}
+
+function MetricCard({ title, value, trend, trendUp, icon: Icon, color, bg }: MetricCardProps) {
   return (
     <div className="bg-white p-3 rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between h-20 hover:shadow-md transition-shadow shrink-0">
       <div className="flex justify-between items-start">
@@ -228,7 +239,13 @@ function MetricCard({ title, value, trend, trendUp, icon: Icon, color, bg }: any
   )
 }
 
-function EfficiencyBar({ label, score, color }: any) {
+interface EfficiencyBarProps {
+  label: string
+  score: number
+  color: string
+}
+
+function EfficiencyBar({ label, score, color }: EfficiencyBarProps) {
   return (
     <div>
       <div className="flex justify-between text-[10px] mb-1.5">

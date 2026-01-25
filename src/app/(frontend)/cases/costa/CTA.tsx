@@ -30,7 +30,7 @@ export default function CTA() {
 
           {/* Description */}
           <p className="text-xl text-red-100 mb-10 max-w-2xl mx-auto">
-            了解泊冉软件如何帮助您的连锁餐饮企业实现数字化转型，获取专属解决方案与报价。
+            获取同行业业财一体化解决方案与报价。Costa 咖啡如何打通 300+ 门店业务-财务-税务-资金全链路？
           </p>
 
           {/* CTA Buttons */}
@@ -39,7 +39,7 @@ export default function CTA() {
               href="/contact"
               className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-[#E60012] rounded-full font-bold text-lg hover:bg-slate-50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <span>预约专家演示</span>
+              <span>获取餐饮行业方案及报价</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
 

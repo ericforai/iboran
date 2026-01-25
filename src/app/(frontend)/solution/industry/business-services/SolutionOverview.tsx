@@ -1,4 +1,4 @@
-import { Layers, Zap, BarChart, ShieldCheck } from 'lucide-react'
+import { Layers, Zap, BarChart, ShieldCheck, CheckCircle2 } from 'lucide-react'
 
 export default function SolutionOverview() {
   const highlights = [
@@ -22,6 +22,24 @@ export default function SolutionOverview() {
       title: "合规与风控",
       desc: "内置行业典型实践，确保业务流程合规，降低经营风险。"
     }
+  ]
+  const deliverables = [
+    {
+      title: 'LTC 流程蓝图',
+      desc: '从线索到回款的端到端流程与权限配置清单。',
+    },
+    {
+      title: '项目成本核算模型',
+      desc: '工时、费用、资源分摊规则与项目损益模板。',
+    },
+    {
+      title: '人才资源池与角色模型',
+      desc: '技能标签、忙闲状态与岗位职责矩阵。',
+    },
+    {
+      title: '经营指标与看板',
+      desc: '签单、交付、回款、利润等关键指标体系。',
+    },
   ]
 
   return (
@@ -75,6 +93,26 @@ export default function SolutionOverview() {
                  <p className="text-xs text-slate-400 mt-2">（此处展示 YonSuite 业务架构）</p>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-14 bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-50 text-[#0052D9] text-sm font-bold">
+              交付
+            </span>
+            <h3 className="text-xl font-bold text-[#1F2329]">交付物清单</h3>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {deliverables.map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-[#0052D9] shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-semibold text-[#1F2329]">{item.title}</div>
+                  <div className="text-sm text-slate-600 mt-1">{item.desc}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ export default function Hero() {
                   YonBIP 数字化供应链
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.1] tracking-tight">
+              <h2 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.1] tracking-tight">
                 构建韧性、合规、<br />
                 高效的 <span className="text-[#E60012] relative inline-block">
                    S2P 供应链
@@ -37,7 +37,7 @@ export default function Hero() {
                      <path d="M0 5 Q 50 10 100 5 L 100 10 L 0 10 Z" fill="currentColor" />
                    </svg>
                 </span>
-              </h1>
+              </h2>
               <p className="text-xl text-[#0052D9] font-medium mb-6">
                 从战略寻源到付款结算，实现全流程数字化闭环
               </p>

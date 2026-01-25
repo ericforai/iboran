@@ -1,7 +1,5 @@
 'use client'
 
-import Image from 'next/image'
-
 // Generic logos for enterprise clients
 const CUSTOMERS = [
   '中国建筑', '国家电网', '中国移动', '南方航空', 

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next/types'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import { getCachedGlobal } from '@/utilities/getGlobals'
-import type { Contact } from '@/payload-types'
+import type { PaginatedDocs } from 'payload'
+import type { Resource } from '@/payload-types'
 
 import { Footer as SiteFooter } from '@/components/Footer'
 import ResourcesClient from './page.client'
@@ -12,14 +12,13 @@ export const revalidate = 600
 
 export default async function ResourcesPage() {
   const payload = await getPayload({ config: configPromise })
-  const contactData = await getCachedGlobal('contact', 1)() as Contact
 
   const resources = await payload.find({
     collection: 'resources',
     depth: 1,
     limit: 100,
     sort: '-updatedAt',
-  })
+  }) as PaginatedDocs<Resource>
 
   return (
     <>
@@ -38,7 +37,7 @@ export default async function ResourcesPage() {
           </div>
         </header>
 
-        <ResourcesClient initialResources={resources.docs as any} />
+        <ResourcesClient initialResources={resources.docs} />
       </div>
       <SiteFooter />
     </>

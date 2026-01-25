@@ -96,7 +96,7 @@ export default function Solution() {
             <div>
               <h4 className="font-bold text-lg text-white mb-2">业财融合一体化 + 集团财务集中管控</h4>
               <p className="text-slate-300 text-sm leading-relaxed">
-                构建以"集团财务"为核心的数字化管控平台，打通合同全生命周期管理、自动化收入确认、
+                构建以“集团财务”为核心的数字化管控平台，打通合同全生命周期管理、自动化收入确认、
                 多渠道支付对账协同及资金流闭环管控，全面支撑市级国资体系下集团财务战略落地。
               </p>
             </div>

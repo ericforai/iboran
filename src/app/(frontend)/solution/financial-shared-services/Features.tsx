@@ -3,8 +3,17 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ScanLine, FileCheck, Calculator, Globe } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const FEATURES = [
+type Feature = {
+  id: string
+  title: string
+  description: string
+  icon: LucideIcon
+  metrics: string[]
+}
+
+const FEATURES: Feature[] = [
   {
     id: 'ocr',
     title: '智能影像与票据',
@@ -116,7 +125,7 @@ export default function Features() {
   )
 }
 
-function FeatureVisual({ feature }: { feature: any }) {
+function FeatureVisual({ feature }: { feature: Feature }) {
   // Simple visual simulation based on feature type
   const Icon = feature.icon
   

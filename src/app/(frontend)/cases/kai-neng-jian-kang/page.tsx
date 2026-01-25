@@ -5,13 +5,14 @@ import Challenge from './Challenge'
 import Solution from './Solution'
 import Results from './Results'
 import CTA from './CTA'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
-  title: '开能健康数字化转型案例 | 泊冉软件',
-  description: '在全球化竞争与供应链波动常态化的背景下，传统制造业正面临从规模驱动向效率与创新驱动的深刻转型。泊冉软件助力制造企业打通生产、物流与财务的脉络，实现以数据为核心的敏捷制造与精准交付。项目背景：开能健康提供居家水处理设备、全屋净水系统及相关服务。',
+  title: '开能健康数字化案例 - 制造业业财一体化实战 | 泊冉软件',
+  description: '开能健康如何通过业财一体化打通生产-库存-销售全链路？解决制造业成本核算不准、生产计划排程难问题。制造业数字化转型实战案例。',
   openGraph: {
-    title: '开能健康数字化转型案例',
-    description: '开能健康提供居家水处理设备、全屋净水系统及相关服务。',
+    title: '开能健康数字化案例 - 制造业业财一体化实战',
+    description: '开能健康如何通过业财一体化打通生产-库存-销售全链路？解决制造业成本核算不准、生产计划排程难问题。制造业数字化转型实战案例。',
   },
 }
 
@@ -23,6 +24,12 @@ export default function CaseStudyPage() {
       <Challenge />
       <Solution />
       <Results />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        url="https://www.iboran.com/cases/kai-neng-jian-kang"
+        variant="case"
+      />
       <CTA />
     </main>
   )

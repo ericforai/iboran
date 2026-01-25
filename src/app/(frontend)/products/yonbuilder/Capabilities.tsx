@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Code2, Smartphone, Cpu, Share2, Database, Layout } from 'lucide-react'
+import { Smartphone, Cpu, Share2, Layout } from 'lucide-react'
 
 const capabilities = [
   {

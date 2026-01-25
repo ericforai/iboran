@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, useEffect, useRef } from 'react'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 interface AttributionData {
   utm_source: string
@@ -29,7 +29,6 @@ export const useAttribution = () => useContext(AttributionContext)
 
 export const AttributionProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
   
   // Use refs to keep track of state without triggering re-renders for children
   // (We only need to read this data when a form is submitted)
@@ -89,7 +88,7 @@ export const AttributionProvider: React.FC<{ children: React.ReactNode }> = ({ c
       dataRef.current.history = newHistory
       sessionStorage.setItem('boran_attribution', JSON.stringify(dataRef.current))
     }
-  }, [pathname, searchParams])
+  }, [pathname])
 
   return (
     <AttributionContext.Provider value={dataRef.current}>

@@ -6,6 +6,8 @@ import DetailModel from './DetailModel'
 import RollingDiff from './RollingDiff'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '营收云解决方案 | 泊冉软件',
@@ -20,12 +22,21 @@ export const metadata: Metadata = {
 export default function RevenueCloudPage() {
   return (
     <>
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <PainPoints />
       <FeatureHub />
       <DetailModel />
       <RollingDiff />
       <ValueSection />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/business/revenue-cloud"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </>
   )

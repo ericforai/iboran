@@ -46,7 +46,7 @@ export function Features() {
               </p>
               
               <div className="grid sm:grid-cols-2 gap-8">
-                {features.map((feature, index) => (
+                {features.map((feature) => (
                   <div key={feature.title} className="flex flex-col gap-3">
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-blue-100 rounded-lg text-blue-600">

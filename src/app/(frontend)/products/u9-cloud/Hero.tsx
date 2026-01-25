@@ -16,9 +16,9 @@ export const Hero = () => {
               </span>
               离散制造数智制造全场景平台
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
               数智制造选 <span className="text-blue-600 text-brand-red">U9 cloud</span>
-            </h1>
+            </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl">
               深度融合移动互联网、大数据、物联网、人工智能，为离散制造企业提供项目化制造、个性化定制、智能工厂等全场景闭环应用，护航企业高速成长。
             </p>

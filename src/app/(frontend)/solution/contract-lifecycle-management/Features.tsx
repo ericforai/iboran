@@ -2,10 +2,20 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { PenTool, Search, Key, ShieldCheck, BarChart3 } from 'lucide-react'
+import { PenTool, Key, ShieldCheck, BarChart3 } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import CLMDashboardMockup from './CLMDashboardMockup'
 
-const features = [
+type CLMViewType = 'drafting' | 'review' | 'signing' | 'monitoring'
+
+const features: Array<{
+  id: string
+  icon: LucideIcon
+  title: string
+  description: string
+  bullets: string[]
+  viewType: CLMViewType
+}> = [
   {
     id: 'drafting',
     icon: PenTool,
@@ -117,7 +127,7 @@ export default function Features() {
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
                     >
-                       <CLMDashboardMockup type={features[activeTab].viewType as any} />
+                       <CLMDashboardMockup type={features[activeTab].viewType} />
                     </motion.div>
                  </AnimatePresence>
               </div>

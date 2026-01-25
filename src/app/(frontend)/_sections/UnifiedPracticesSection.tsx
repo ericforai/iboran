@@ -8,7 +8,6 @@ import {
     Settings2,
     ListChecks,
     ShieldCheck,
-    ArrowRight,
     CheckCircle2,
     ChevronDown
 } from 'lucide-react'

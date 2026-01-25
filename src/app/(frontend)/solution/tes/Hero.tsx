@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ArrowRight, Download } from 'lucide-react'
@@ -31,9 +30,9 @@ export default function Hero({ title, tagline, description }: HeroProps) {
               transition={{ duration: 0.6 }}
               className="w-full lg:w-1/2 px-4 mb-12 lg:mb-0"
             >
-              <h1 className="text-5xl md:text-6xl font-bold text-[#1F2329] mb-6 leading-tight">
+              <h2 className="text-5xl md:text-6xl font-bold text-[#1F2329] mb-6 leading-tight">
                 {title}
-              </h1>
+              </h2>
               <p className="text-2xl md:text-3xl text-[#0052D9] font-semibold mb-6">
                 {tagline}
               </p>

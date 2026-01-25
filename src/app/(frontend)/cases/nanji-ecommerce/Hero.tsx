@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { ChevronRight, ShoppingBag, Truck, BarChart3, Database, Globe } from 'lucide-react'
+import { ChevronRight, ShoppingBag, Truck, BarChart3, Database } from 'lucide-react'
 
 export default function Hero() {
   return (

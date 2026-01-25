@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowRight, CheckCircle, Shield, Coins, Image as ImageIcon } from 'lucide-react'
+import { ArrowRight, CheckCircle, Shield, Coins } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { motion } from 'framer-motion'
 import IPDashboardMockup from './IPDashboardMockup'
@@ -34,13 +34,13 @@ export default function Hero() {
                   IP/品牌授权行业解决方案
                 </div>
                 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#1F2329] leading-tight mb-8 tracking-tight">
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#1F2329] leading-tight mb-8 tracking-tight">
                   <span className="text-purple-600">IP 创意</span>到<br/>
                   <span className="text-[#E60012]">现金流</span>的闭环
-                </h1>
+                </h2>
                 
                 <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-                  基于用友 YonBIP 底座，打造 "四位一体" IP 数智化管理体系：资产中心、授权闭环、自动结算、AI 维权。
+                  基于用友 YonBIP 底座，打造“四位一体” IP 数智化管理体系：资产中心、授权闭环、自动结算、AI 维权。
                 </p>
                 
                 <div className="flex flex-col sm:flex-row items-center gap-5 justify-center lg:justify-start mb-12">

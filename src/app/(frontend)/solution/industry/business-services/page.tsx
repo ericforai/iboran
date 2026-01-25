@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { DollarSign, Users, FileCheck2, Box } from 'lucide-react'
 import Hero from './Hero'
 import IndustryChallenges from './IndustryChallenges'
 import SolutionOverview from './SolutionOverview'
@@ -7,13 +6,15 @@ import KeyScenarios from './KeyScenarios'
 import IndustryCases from './IndustryCases'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 const industryName = "商务服务"
 const tagline = "项目化经营 · 精细化核算 · 人才化运营"
 const description = "面向咨询服务、人才服务、科技服务、检验检测等商务服务企业，提供“项目+财务+人力”一体化数智解决方案，助力企业实现从商机到交付的全流程闭环管理，提升服务效能与经营利润。"
 
 export const metadata: Metadata = {
-  title: `${industryName}行业解决方案 - 数字化转型 | 泊冉软件`,
+  title: `${industryName}（现代服务业）数字化解决方案 | 泊冉软件`,
   description: `泊冉软件为${industryName}企业提供一站式数字化解决方案，${tagline}。${description}`,
 }
 
@@ -69,9 +70,42 @@ export default function BusinessServicesPage() {
     { value: "15天", label: "回款周期缩短" },
     { value: "100%", label: "业务合规达标" }
   ]
+  const geoContent = {
+    tldr: '现代服务业（咨询、人力、科技服务）数智化方案，打通商机-项目-交付-回款与人力成本核算，实现项目利润可视化。',
+    faqs: [
+      {
+        question: '适合哪些服务型企业？',
+        answer: '适合以项目交付为核心的咨询、人才服务、科技服务与检验检测企业，项目多、团队协同复杂。',
+      },
+      {
+        question: '如何提升项目利润可视化？',
+        answer: '工时、费用与采购自动归集到项目，形成实时项目损益与回款预测。',
+      },
+      {
+        question: '是否支持多角色与灵活用工？',
+        answer: '支持多组织、多角色权限与人员成本归集，覆盖项目型用工的核算需求。',
+      },
+      {
+        question: '能否与现有 CRM/财务系统对接？',
+        answer: '可根据现有系统制定接口与数据规范，分阶段完成数据贯通与业务协同。',
+      },
+    ],
+    boundaries: [
+      { condition: '以项目交付为核心，人员成本占比高', type: 'suitable' as const },
+      { condition: '多部门/多区域协同，需要统一项目与财务口径', type: 'suitable' as const },
+      { condition: '仅需要单一 CRM 或记账系统，无项目管理诉求', type: 'unsuitable' as const },
+      { condition: '纯产品制造型企业且项目化比例很低', type: 'unsuitable' as const },
+    ],
+  }
+  const breadcrumbItems = [
+    { name: '首页', url: '/' },
+    { name: '解决方案', url: '/solution' },
+    { name: '商务服务行业解决方案', url: '/solution/industry/business-services' },
+  ]
 
   return (
     <main>
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       
       <IndustryChallenges 
@@ -92,9 +126,22 @@ export default function BusinessServicesPage() {
         metrics={metrics}
       />
       
+      <GeoSection
+        title="商务服务行业数字化解决方案"
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/industry/business-services"
+        tldr={geoContent.tldr}
+        faqs={geoContent.faqs}
+        boundaries={geoContent.boundaries}
+        breadcrumbs={breadcrumbItems}
+        showDecisionFramework
+        decisionFrameworkTitle="现代服务业是否适合 (判断逻辑)"
+        identityTitle="本回答由【泊冉软件（上海）】提供。"
+        identityDescription="泊冉是用友 BIP / YonSuite 实施与交付服务商，专注项目型服务企业数字化落地。"
+        variant="solution"
+      />
       <CTASection />
     </main>
   )
 }
-
-

@@ -14,7 +14,7 @@ interface ScrollTriggerDrawerProps {
 // Pages where the drawer should NOT auto-trigger
 const DISABLED_PAGES = ['/solution', '/pricing', '/contact']
 
-export const ScrollTriggerDrawer: React.FC<ScrollTriggerDrawerProps> = ({
+export const ScrollTriggerDrawer: React.FC<ScrollTriggerDrawerProps> = React.memo(({
   isEnabled = true,
   onOpenLeadForm,
 }) => {
@@ -23,10 +23,13 @@ export const ScrollTriggerDrawer: React.FC<ScrollTriggerDrawerProps> = ({
   const [hasShown, setHasShown] = useState(false)
 
   // Check if current page should disable the drawer
-  const isDisabledPage = DISABLED_PAGES.some(page => pathname?.startsWith(page))
+  const isDisabledPage = React.useMemo(() => 
+    DISABLED_PAGES.some(page => pathname?.startsWith(page)),
+    [pathname]
+  )
 
   const handleTrigger = React.useCallback(
-    (metrics: any) => {
+    (_metrics: unknown) => {
       if (isEnabled && !isDisabledPage && !hasShown && !isOpen) {
         setTimeout(() => {
           setIsOpen(true)
@@ -37,25 +40,28 @@ export const ScrollTriggerDrawer: React.FC<ScrollTriggerDrawerProps> = ({
     [isEnabled, isDisabledPage, hasShown, isOpen],
   )
 
-  // Use engagement tracking hook
-  useEngagementTracking({
+  // Memoize thresholds to keep hook dependencies stable
+  const trackingOptions = React.useMemo(() => ({
     triggerThreshold: {
       scrollDepth: 60,
       timeOnPage: 90,
     },
     onTrigger: handleTrigger,
-  })
+  }), [handleTrigger])
 
-  const handleClose = () => setIsOpen(false)
+  // Use engagement tracking hook
+  useEngagementTracking(trackingOptions)
 
-  const handlePrimaryAction = () => {
+  const handleClose = React.useCallback(() => setIsOpen(false), [])
+
+  const handlePrimaryAction = React.useCallback(() => {
     if (onOpenLeadForm) {
       onOpenLeadForm()
     } else {
       window.dispatchEvent(new CustomEvent('open-demo-modal'))
     }
     handleClose()
-  }
+  }, [onOpenLeadForm, handleClose])
 
   return (
     <AnimatePresence>
@@ -151,4 +157,6 @@ export const ScrollTriggerDrawer: React.FC<ScrollTriggerDrawerProps> = ({
       )}
     </AnimatePresence>
   )
-}
+})
+
+ScrollTriggerDrawer.displayName = 'ScrollTriggerDrawer'

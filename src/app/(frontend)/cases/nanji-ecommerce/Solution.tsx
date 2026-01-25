@@ -44,7 +44,7 @@ export default function Solution() {
               基于泊冉数智化底座的<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">一体化架构</span>
             </h2>
             <p className="text-slate-600 text-lg">
-              针对南极电商的业务特性，我们构建了"1+N"的数字化架构体系，以数据中台为核心，赋能N个业务场景。
+              针对南极电商的业务特性，我们构建了“1+N”的数字化架构体系，以数据中台为核心，赋能 N 个业务场景。
             </p>
           </div>
           <div className="flex-shrink-0">

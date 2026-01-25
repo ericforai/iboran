@@ -22,8 +22,10 @@ const blockComponents = {
   code: CodeBlock,
 }
 
+type BlockType = keyof typeof blockComponents
+
 export const RenderBlocks: React.FC<{
-  blocks: any[]
+  blocks?: any[]
 }> = (props) => {
   const { blocks } = props
 
@@ -33,10 +35,12 @@ export const RenderBlocks: React.FC<{
     return (
       <Fragment>
         {blocks.map((block, index) => {
+          if (!block) return null
+
           const { blockType } = block
 
           if (blockType && blockType in blockComponents) {
-            const Block = blockComponents[blockType as keyof typeof blockComponents]
+            const Block = blockComponents[blockType as BlockType]
 
             if (Block) {
               return (

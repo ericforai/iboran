@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next/types'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import type { PaginatedDocs } from 'payload'
 import { Footer } from '@/components/Footer'
 import { Navbar } from '@/components/Navbar'
 import { WhitepaperClient } from './client'
@@ -22,11 +23,11 @@ export async function generateStaticParams() {
         { category: { equals: 'whitepaper' } },
       ],
     },
-  })
+  }) as PaginatedDocs<Resource>
 
   return resources.docs
-    .filter((doc: any) => doc.slug)
-    .map((doc: any) => ({
+    .filter((doc) => doc.slug)
+    .map((doc) => ({
       slug: doc.slug,
     }))
 }

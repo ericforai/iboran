@@ -28,10 +28,10 @@ export default function Hero() {
               </div>
               
               {/* Main Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
                 让管理规则<span className="text-blue-600">自动</span>落地<br/>
                 消除组织<span className="text-[#E60012]">协作</span>断层
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 连接人、系统与业务，构建企业级流程运营中枢。实现流程从设计、执行到优化的闭环治理，助力企业数字化转型从“系统集成”迈向“业务卓越”。

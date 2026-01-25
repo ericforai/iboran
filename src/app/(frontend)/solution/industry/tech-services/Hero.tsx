@@ -26,10 +26,10 @@ export default function Hero() {
                 科技服务行业解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 <span className="text-violet-600">项目与人才</span><br/>
                 <span className="text-[#E60012]">双轮</span>驱动
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP为科技服务企业提供L2C项目管理、精细化成本核算与人才高效运营一体化解决方案

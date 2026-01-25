@@ -26,10 +26,10 @@ export default function Hero() {
                 餐饮行业解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 <span className="text-orange-600">业财一体</span><br/>
                 餐饮<span className="text-[#E60012]">连锁</span>高效经营
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP为餐饮连锁企业提供门店运营、供应链协同、成本管控与会员营销一体化数智解决方案

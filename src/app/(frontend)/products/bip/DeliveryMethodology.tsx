@@ -1,4 +1,4 @@
-import { ClipboardList, PenTool, Layout, Server, CheckSquare } from 'lucide-react'
+import { ClipboardList, PenTool, Server, CheckSquare } from 'lucide-react'
 
 export default function DeliveryMethodology() {
   const steps = [

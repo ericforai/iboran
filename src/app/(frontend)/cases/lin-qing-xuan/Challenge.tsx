@@ -1,4 +1,4 @@
-import { AlertCircle, FileText, Link2, Wallet, TrendingDown } from 'lucide-react'
+import { AlertCircle, FileText, Link2, Wallet } from 'lucide-react'
 
 const challenges = [
   {

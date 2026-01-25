@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { ChevronRight } from 'lucide-react'
 
 // Medical/Healthcare themed SVG illustration

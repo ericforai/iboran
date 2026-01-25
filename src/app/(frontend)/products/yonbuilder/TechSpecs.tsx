@@ -1,6 +1,6 @@
 'use client'
 
-import { Server, Shield, Code, Globe, Cpu, Database } from 'lucide-react'
+import { Server, Shield, Code, Globe, Database } from 'lucide-react'
 
 export default function TechSpecs() {
   return (

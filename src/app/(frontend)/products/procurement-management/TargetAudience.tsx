@@ -1,5 +1,4 @@
-import React from 'react'
-import { Users, AlertTriangle, CheckCircle2, XCircle } from 'lucide-react'
+import { Users, CheckCircle2, XCircle } from 'lucide-react'
 
 export const TargetAudience = () => {
   const painPoints = [

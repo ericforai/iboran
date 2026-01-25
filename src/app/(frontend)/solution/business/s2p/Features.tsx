@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Search, ShoppingCart, Users, BarChart3 } from 'lucide-react'
 import S2PDashboardMockup from './S2PDashboardMockup'
 
+type DashboardType = 'sourcing' | 'procurement' | 'supplier' | 'analysis'
+
 const features = [
   {
     id: 'sourcing',
@@ -57,7 +59,7 @@ const features = [
 ]
 
 export default function Features() {
-  const [activeTab, setActiveTab] = useState('sourcing')
+  const [activeTab, setActiveTab] = useState<DashboardType>('sourcing')
 
   return (
     <section className="py-24 bg-white overflow-hidden">
@@ -78,7 +80,7 @@ export default function Features() {
              {features.map((feature) => (
                <div 
                  key={feature.id}
-                 onClick={() => setActiveTab(feature.id)}
+                 onClick={() => setActiveTab(feature.id as DashboardType)}
                  className={`
                    p-6 rounded-xl cursor-pointer transition-all duration-300 border
                    ${activeTab === feature.id 
@@ -139,7 +141,7 @@ export default function Features() {
                    transition={{ duration: 0.4 }}
                    className="w-full h-full"
                  >
-                    <S2PDashboardMockup type={activeTab as any} />
+                    <S2PDashboardMockup type={activeTab} />
                  </motion.div>
                </AnimatePresence>
              </div>
@@ -149,4 +151,3 @@ export default function Features() {
     </section>
   )
 }
-

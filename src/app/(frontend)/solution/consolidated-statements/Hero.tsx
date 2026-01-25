@@ -30,10 +30,10 @@ export default function Hero() {
                 </span>
                 R2R：核算到报告 2.0
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1F2329] leading-tight mb-6">
                 合并报表管理<br />
                 <span className="text-[#0052D9]">加速全球财务报告</span>
-              </h1>
+              </h2>
               <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-xl">
                 面向全球化大企业的智能合并解决方案。实现多准则一键转换、自动化权益抵销，将复杂的合并周期从周缩短至天。
               </p>

@@ -6,6 +6,8 @@ import ValueSection from './ValueSection'
 import CTASection from './CTASection'
 import HowItWorks from './HowItWorks'
 import CustomerSuccess from './CustomerSuccess'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 const SOLUTION_NAME = '财务共享'
 const DESCRIPTION = '基于用友 BIP 打造的新一代财务共享服务平台，深度融合业财数据，应用 AI 智能技术，实现从交易到核算的端到端自动化，推动财务从管控型向价值创造型转型。'
@@ -23,6 +25,7 @@ export const metadata: Metadata = {
 export default function FinancialSharedServicesPage() {
   return (
     <main className="min-h-screen bg-white">
+      <SeoH1 title={metadata.title as string} />
       <Hero 
         title="业财融合 智能共享"
         tagline="新一代全球财务共享服务平台"
@@ -38,6 +41,21 @@ export default function FinancialSharedServicesPage() {
       <ValueSection />
       
       <CustomerSuccess />
+      
+      <GeoSection
+      
+        title={metadata.title as string}
+      
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+      
+        url="https://www.iboran.com/solution/financial-shared-services"
+      
+        variant="solution"
+      
+        showDecisionFramework
+      
+      />
       
       <CTASection />
     </main>

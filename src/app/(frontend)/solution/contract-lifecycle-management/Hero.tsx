@@ -30,10 +30,10 @@ export default function Hero() {
                 <span className="w-2 h-2 rounded-full bg-[#E60012] mr-2 animate-pulse"></span>
                 YonBIP & YonSuite 数智合同
               </div>
-              <h1 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-8 leading-[1.15]">
+              <h2 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-8 leading-[1.15]">
                 CLM 合同全生命周期 <br />
                 <span className="text-[#E60012]">业财法融合缔约中心</span>
-              </h1>
+              </h2>
               <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 从合同起草、智能审批到电子签约、履约监控，全链路数智化升级。汇集业务与财务数据，实现合规风险实时管控。
               </p>

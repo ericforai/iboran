@@ -9,6 +9,8 @@ import TechSpecs from './TechSpecs'
 import TrustProof from './TrustProof'
 import FAQ from './FAQ'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '合同管理系统 - 合同全生命周期数智化管理解决方案 | 泊冉',
@@ -23,6 +25,7 @@ export const metadata: Metadata = {
 export default function ContractManagementPage() {
   return (
     <div className="bg-white">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <TargetAudience />
       <DeliveryMethodology />
@@ -31,6 +34,14 @@ export default function ContractManagementPage() {
       <TechSpecs />
       <TrustProof />
       <FAQ />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/products/contract-management"
+        variant="product"
+        showDecisionFramework
+      />
       <CTASection />
       
       {/* Schema.org JSON-LD for SEO */}

@@ -31,10 +31,10 @@ export default function Hero() {
                 智能分析 V3.0 全新发布
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
                 释放数据价值 <br/>
                 <span className="text-blue-600">驱动敏捷决策</span>
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed">
                 融合企业级数据中台与智能分析能力，提供从数据采集、治理、建模到可视化的全链路解决方案，助力企业构建数智化经营大脑，实现数据驱动的精细化运营。

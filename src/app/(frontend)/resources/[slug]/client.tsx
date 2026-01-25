@@ -15,11 +15,17 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [isUnlocking, setIsUnlocking] = useState(false)
 
-  // 类型断言：扩展的 Resource 类型
-  const extendedResource = resource as any
-
-  const coverImage = extendedResource.coverImage
-  const coverUrl = coverImage?.url || coverImage?.sizes?.card?.url || '/images/placeholder-cover.png'
+  const coverImage = resource.coverImage
+  const coverUrl = (() => {
+    if (!coverImage) return '/images/placeholder-cover.png'
+    if (typeof coverImage === 'string') return coverImage
+    return (
+      coverImage.url ||
+      coverImage.sizes?.medium?.url ||
+      coverImage.sizes?.large?.url ||
+      '/images/placeholder-cover.png'
+    )
+  })()
 
   // 检查解锁状态
   useEffect(() => {
@@ -84,6 +90,7 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
             {/* 封面图 */}
             <div className="w-full md:w-1/3 flex-shrink-0">
               <div className="aspect-[3/4] rounded-xl shadow-lg overflow-hidden bg-slate-100">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={coverUrl}
                   alt={resource.title}
@@ -100,8 +107,8 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
               <h1 className="text-3xl md:text-4xl font-bold text-[#1F2329] mb-3">
                 {resource.title}
               </h1>
-              {extendedResource.subtitle && (
-                <p className="text-xl text-[#4B5563] mb-6">{extendedResource.subtitle}</p>
+              {resource.subtitle && (
+                <p className="text-xl text-[#4B5563] mb-6">{resource.subtitle}</p>
               )}
 
               {resource.summary && (
@@ -109,14 +116,14 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
               )}
 
               <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-                {extendedResource.readTime && (
+                {resource.readTime && (
                   <span className="flex items-center gap-1">
-                    📖 {extendedResource.readTime}
+                    📖 {resource.readTime}
                   </span>
                 )}
-                {extendedResource.publishedDate && (
+                {resource.publishedDate && (
                   <span className="flex items-center gap-1">
-                    📅 {new Date(extendedResource.publishedDate).toLocaleDateString('zh-CN')}
+                    📅 {new Date(resource.publishedDate).toLocaleDateString('zh-CN')}
                   </span>
                 )}
               </div>
@@ -131,7 +138,7 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
           {/* 主内容 */}
           <article className="flex-1 max-w-3xl">
             {/* 预览内容 */}
-            {extendedResource.previewContent && (
+            {resource.previewContent && (
               <div className="bg-white rounded-xl p-8 shadow-sm mb-8">
                 <div className="flex items-center gap-2 mb-6 pb-4 border-b">
                   <span className="w-8 h-8 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 text-sm font-bold">
@@ -139,7 +146,7 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
                   </span>
                   <h2 className="text-xl font-bold text-[#1F2329]">内容预览</h2>
                 </div>
-                <RichText data={extendedResource.previewContent} enableGutter={false} />
+                <RichText data={resource.previewContent} enableGutter={false} />
               </div>
             )}
 
@@ -153,7 +160,7 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
             )}
 
             {/* 完整内容 */}
-            {isUnlocked && extendedResource.fullContent && (
+            {isUnlocked && resource.fullContent && (
               <div className="bg-white rounded-xl p-8 shadow-sm border-2 border-green-200">
                 <div className="flex items-center gap-2 mb-6 pb-4 border-b">
                   <span className="w-8 h-8 bg-green-50 rounded-full flex items-center justify-center text-green-600 text-sm font-bold">
@@ -161,14 +168,14 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
                   </span>
                   <h2 className="text-xl font-bold text-[#1F2329]">完整内容</h2>
                 </div>
-                <RichText data={extendedResource.fullContent} enableGutter={false} />
+                <RichText data={resource.fullContent} enableGutter={false} />
               </div>
             )}
 
             {/* 不需要门控的情况 */}
-            {!resource.gated && extendedResource.fullContent && (
+            {!resource.gated && resource.fullContent && (
               <div className="bg-white rounded-xl p-8 shadow-sm">
-                <RichText data={extendedResource.fullContent} enableGutter={false} />
+                <RichText data={resource.fullContent} enableGutter={false} />
               </div>
             )}
           </article>
@@ -183,7 +190,7 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
               />
             )}
 
-            {isUnlocked && extendedResource.ctaText && (
+            {isUnlocked && resource.ctaText && (
               <div className="bg-white rounded-xl shadow-lg p-6 sticky top-4">
                 <h3 className="text-lg font-bold text-[#1F2329] mb-3">
                   需要落地实施？
@@ -192,10 +199,10 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
                   泊冉是用友官方实施服务商，可为您提供专业的业财一体化实施服务
                 </p>
                 <a
-                  href={extendedResource.ctaLink || '/contact'}
+                  href={resource.ctaLink || '/contact'}
                   className="block w-full py-3 bg-[#E60012] hover:bg-red-700 text-white text-center font-bold rounded-lg transition-colors"
                 >
-                  {extendedResource.ctaText}
+                  {resource.ctaText}
                 </a>
               </div>
             )}

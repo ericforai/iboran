@@ -6,6 +6,8 @@ import Features from './Features'
 import CustomerSuccess from './CustomerSuccess'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: 'SPE 纵向 PDCA 解决方案 | 泊冉软件',
@@ -26,12 +28,21 @@ export default function SPEPage() {
 
   return (
     <main>
+      <SeoH1 title={metadata.title as string} />
       <Hero {...content} />
       <PainPoints />
       <HowItWorks />
       <Features />
       <CustomerSuccess />
       <ValueSection />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/spe"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

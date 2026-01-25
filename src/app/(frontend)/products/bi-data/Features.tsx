@@ -146,6 +146,7 @@ export default function Features() {
                           For now, using placeholders or the generic mockup with tweaks, or keeping the image logic.
                           We'll use an image placeholder with overlay for style.
                         */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
                           src={activeFeature.image} 
                           alt={activeFeature.title}

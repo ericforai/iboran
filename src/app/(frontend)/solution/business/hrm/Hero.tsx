@@ -26,10 +26,10 @@ export default function Hero() {
                   YonBIP & YonSuite 人力资源
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-7xl font-extrabold text-[#1F2329] mb-6 leading-[1.1]">
+              <h2 className="text-4xl lg:text-7xl font-extrabold text-[#1F2329] mb-6 leading-[1.1]">
                 赋能员工 <br />
                 <span className="text-[#E60012]">激活组织</span>
-              </h1>
+              </h2>
               <p className="text-xl text-[#0052D9] font-medium mb-6">
                 数字化人力资源：构建高绩效的敏捷组织
               </p>

@@ -202,7 +202,7 @@ function DraftingView() {
          </div>
          <div className="flex-1 p-8 bg-slate-100 overflow-y-auto">
             <div className="max-w-3xl mx-auto bg-white shadow-sm p-12 min-h-[500px] text-slate-800 leading-relaxed text-sm">
-               <h1 className="text-center text-lg font-bold mb-8">采购框架合同</h1>
+               <h3 className="text-center text-lg font-bold mb-8">采购框架合同</h3>
                <p className="mb-4">甲方（采购方）：<span className="bg-blue-50 px-2 py-0.5 border-b border-blue-200 text-blue-800">北京某某科技有限公司</span></p>
                <p className="mb-4">乙方（供应方）：<span className="bg-yellow-50 px-2 py-0.5 border-b border-yellow-200 text-slate-500">[请选择供应商]</span></p>
                <p className="mb-4 indent-8">

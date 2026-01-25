@@ -138,7 +138,7 @@ async function seedStories() {
 
   console.log('Seeding stories...')
 
-  for (const [key, data] of Object.entries(casesData)) {
+  for (const data of Object.values(casesData)) {
     console.log(`Processing ${data.title}...`)
     
     // Check if exists

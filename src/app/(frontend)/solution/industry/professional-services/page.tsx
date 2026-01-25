@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { Calculator, Users, FolderKanban, BarChart3 } from 'lucide-react'
 import Hero from './Hero'
 import IndustryChallenges from './IndustryChallenges'
 import SolutionOverview from './SolutionOverview'
@@ -7,6 +6,8 @@ import KeyScenarios from './KeyScenarios'
 import IndustryCases from './IndustryCases'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 const industryName = "专业服务"
 const tagline = "财务人力一体 · 项目精细管控 · 销售全程闭环"
@@ -64,6 +65,7 @@ export default function ProfessionalServicesPage() {
 
   return (
     <main>
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       
       <IndustryChallenges 
@@ -82,6 +84,21 @@ export default function ProfessionalServicesPage() {
       
       <ValueSection 
         metrics={metrics}
+      />
+      
+      <GeoSection
+      
+        title={metadata.title as string}
+      
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+      
+        url="https://www.iboran.com/solution/industry/professional-services"
+      
+        variant="solution"
+      
+        showDecisionFramework
+      
       />
       
       <CTASection />

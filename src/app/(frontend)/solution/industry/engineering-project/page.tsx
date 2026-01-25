@@ -6,6 +6,8 @@ import KeyScenarios from './KeyScenarios'
 import IndustryCases from './IndustryCases'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '业主方工程项目管理解决方案 - 业财一体深度管控 | 泊冉软件',
@@ -20,12 +22,21 @@ export const metadata: Metadata = {
 export default function EngineeringProjectSolutionPage() {
   return (
     <>
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <IndustryChallenges />
       <SolutionOverview />
       <KeyScenarios />
       <IndustryCases />
       <ValueSection />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/industry/engineering-project"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </>
   )

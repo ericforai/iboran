@@ -5,13 +5,14 @@ import Challenge from './Challenge'
 import Solution from './Solution'
 import Results from './Results'
 import CTA from './CTA'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
-  title: '羚牛新能源数字化转型案例 | 泊冉软件',
-  description: '羚牛新能源提供新能源汽车充电解决方案及相关服务，包括充电桩销售、安装及运维，涵盖智能充电设备与能源管理服务。',
+  title: '羚牛新能源数字化案例 - 充电设施业财一体化实战 | 泊冉软件',
+  description: '羚牛新能源如何通过业财一体化实现设备-运营-结算全流程打通？解决充电设施运营成本核算难、多站点收入确认效率低问题。新能源行业数字化转型实战案例。',
   openGraph: {
-    title: '羚牛新能源数字化转型案例',
-    description: '羚牛新能源提供新能源汽车充电解决方案及相关服务，包括充电桩销售、安装及运维，涵盖智能充电设备与能源管理服务。',
+    title: '羚牛新能源数字化案例 - 充电设施业财一体化实战',
+    description: '羚牛新能源如何通过业财一体化实现设备-运营-结算全流程打通？解决充电设施运营成本核算难、多站点收入确认效率低问题。新能源行业数字化转型实战案例。',
   },
 }
 
@@ -23,6 +24,12 @@ export default function CaseStudyPage() {
       <Challenge />
       <Solution />
       <Results />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        url="https://www.iboran.com/cases/ling-niu-xin-neng-yuan"
+        variant="case"
+      />
       <CTA />
     </main>
   )

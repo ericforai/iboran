@@ -14,7 +14,7 @@ const solutions = [
   {
     icon: TrendingUp,
     title: '产销协同计划 (S&OP)',
-    description: '基于大数据的销量预测模型，拉通销售计划与生产排程，实现"以销定产"与"快速补货"，提升供应链柔性。'
+    description: '基于大数据的销量预测模型，拉通销售计划与生产排程，实现“以销定产”与“快速补货”，提升供应链柔性。'
   }
 ]
 
@@ -26,7 +26,7 @@ export default function Solution() {
           <span className="text-yellow-600 font-semibold tracking-wider text-sm uppercase">Our Solution</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-4 text-slate-900">泊冉数智化解决方案</h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            以"连接"与"数据"为核心，为光合植造打造适配新消费快节奏的数字化运营底座。
+            以“连接”与“数据”为核心，为光合植造打造适配新消费快节奏的数字化运营底座。
           </p>
         </div>
 

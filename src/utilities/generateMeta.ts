@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import type { Media, Page, Post, Config } from '../payload-types'
+import type { Media, Config } from '../payload-types'
 
 import { mergeOpenGraph, mergeTwitter } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
@@ -19,8 +19,18 @@ const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   return url
 }
 
+type MetaDoc = {
+  slug?: string | null
+  meta?: {
+    title?: string | null
+    description?: string | null
+    image?: Media | Config['db']['defaultIDType'] | null
+    keywords?: string | null
+  }
+}
+
 export const generateMeta = async (args: {
-  doc: Partial<Page> | Partial<Post> | any | null
+  doc: MetaDoc | null
   collection?: string
 }): Promise<Metadata> => {
   const { doc, collection } = args
@@ -40,7 +50,7 @@ export const generateMeta = async (args: {
 
   const path = getPath()
 
-  const keywords = (doc as any)?.meta?.keywords || '用友网络, 上海泊冉软件, 数字化转型, ERP实施, 业财一体化'
+  const keywords = doc?.meta?.keywords || '用友网络, 上海泊冉软件, 数字化转型, ERP实施, 业财一体化'
 
   const openGraphData = {
     description: doc?.meta?.description || '',

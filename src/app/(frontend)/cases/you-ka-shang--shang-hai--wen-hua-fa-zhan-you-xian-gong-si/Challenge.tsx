@@ -1,4 +1,4 @@
-import { AlertCircle, Ghost, ShoppingCart, Wallet, TrendingDown } from 'lucide-react'
+import { AlertCircle, Ghost, ShoppingCart, Wallet } from 'lucide-react'
 
 const challenges = [
   {

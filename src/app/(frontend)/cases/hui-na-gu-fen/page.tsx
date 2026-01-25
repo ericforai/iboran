@@ -5,13 +5,14 @@ import Challenge from './Challenge'
 import Solution from './Solution'
 import Results from './Results'
 import CTA from './CTA'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
-  title: '汇纳股份数字化转型案例 | 泊冉软件',
-  description: '汇纳股份提供商业客流分析系统、智慧商场解决方案、数据采集设备及大数据运营服务。',
+  title: '汇纳股份数字化案例 - 数据服务企业业财一体化实战 | 泊冉软件',
+  description: '汇纳股份如何通过业财一体化实现项目-交付-回款全流程打通？解决数据服务项目成本核算难、应收账款管理复杂问题。数据服务行业数字化转型实战案例。',
   openGraph: {
-    title: '汇纳股份数字化转型案例',
-    description: '汇纳股份提供商业客流分析系统、智慧商场解决方案、数据采集设备及大数据运营服务。',
+    title: '汇纳股份数字化案例 - 数据服务企业业财一体化实战',
+    description: '汇纳股份如何通过业财一体化实现项目-交付-回款全流程打通？解决数据服务项目成本核算难、应收账款管理复杂问题。数据服务行业数字化转型实战案例。',
   },
 }
 
@@ -23,6 +24,12 @@ export default function CaseStudyPage() {
       <Challenge />
       <Solution />
       <Results />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        url="https://www.iboran.com/cases/hui-na-gu-fen"
+        variant="case"
+      />
       <CTA />
     </main>
   )

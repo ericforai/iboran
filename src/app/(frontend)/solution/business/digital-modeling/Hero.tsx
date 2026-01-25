@@ -18,10 +18,10 @@ export default function Hero() {
               animate={{ opacity: 1, x: 0 }}
               className="lg:w-1/2"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] mb-6 leading-tight">
                 打造敏捷高效的<br />
                 <span className="text-[#0052D9]">企业数智化底座</span>
-              </h1>
+              </h2>
               <p className="text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl">
                 YonBIP 数字化建模通过多维组织模型、可视化流程设计与主数据治理，
                 帮助企业在复杂业务环境下实现快速敏捷的系统配置与合规管控。

@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface EngagementMetrics {
   hasScrolled60Percent: boolean
@@ -33,6 +33,12 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
     pageViews: 1,
   })
 
+  // Keep onTrigger in a ref to keep effect dependencies stable
+  const onTriggerRef = useRef(onTrigger)
+  useEffect(() => {
+    onTriggerRef.current = onTrigger
+  }, [onTrigger])
+
   // We only enable this state if we need to force a re-render (e.g. for debugging or if the UI displayed these live values)
   // In the current usage, only the trigger matters.
   const [, forceUpdate] = useState({})
@@ -41,7 +47,8 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
   const startTimeRef = useRef(Date.now())
   const timerRef = useRef<NodeJS.Timeout | undefined>(undefined)
 
-  const checkAndTrigger = useCallback(() => {
+  // Store checkAndTrigger in a ref to keep it stable for effects
+  const checkAndTriggerRef = useRef(() => {
     if (hasTriggeredRef.current) return
 
     const current = metricsRef.current
@@ -50,26 +57,13 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
       current.hasSpent90Seconds ||
       current.pageViews >= 2
 
-    if (shouldTrigger && onTrigger) {
+    if (shouldTrigger && onTriggerRef.current) {
       hasTriggeredRef.current = true
-      onTrigger({ ...current })
+      onTriggerRef.current({ ...current })
       // Force update to reflect "has..." state changes if needed by UI
       forceUpdate({})
     }
-  }, [onTrigger])
-
-  // Restore previous session data
-  useEffect(() => {
-    try {
-      const stored = sessionStorage.getItem(STORAGE_KEY)
-      if (stored) {
-        const data = JSON.parse(stored)
-        metricsRef.current.pageViews = (data.pageViews || 0) + 1
-      }
-    } catch {
-      // ignore storage errors
-    }
-  }, [])
+  })
 
   // Scroll depth tracking
   useEffect(() => {
@@ -85,7 +79,7 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
 
           if (depth >= scrollThreshold && !metricsRef.current.hasScrolled60Percent) {
             metricsRef.current.hasScrolled60Percent = true
-            checkAndTrigger()
+            checkAndTriggerRef.current()
           }
           ticking = false
         })
@@ -95,7 +89,7 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [scrollThreshold, checkAndTrigger])
+  }, [scrollThreshold])
 
   // Time on page tracking
   useEffect(() => {
@@ -105,12 +99,25 @@ export const useEngagementTracking = (options: UseEngagementTrackingOptions = {}
 
       if (elapsed >= timeThreshold && !metricsRef.current.hasSpent90Seconds) {
         metricsRef.current.hasSpent90Seconds = true
-        checkAndTrigger()
+        checkAndTriggerRef.current()
       }
     }, 1000)
 
     return () => clearInterval(timerRef.current)
-  }, [timeThreshold, checkAndTrigger])
+  }, [timeThreshold])
+
+  // Restore previous session data
+  useEffect(() => {
+    try {
+      const stored = sessionStorage.getItem(STORAGE_KEY)
+      if (stored) {
+        const data = JSON.parse(stored)
+        metricsRef.current.pageViews = (data.pageViews || 0) + 1
+      }
+    } catch {
+      // ignore storage errors
+    }
+  }, [])
 
   // Save metrics on page unload
   useEffect(() => {

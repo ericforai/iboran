@@ -25,10 +25,10 @@ export default function Hero() {
                 用友银企联 · 数智化金融服务底座
               </div>
               
-              <h1 className="text-5xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-tight">
+              <h2 className="text-5xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-tight">
                 2500+ <span className="text-[#0052D9]">银企直联</span><br />
                 构建全量收付管理闭环
-              </h1>
+              </h2>
               
               <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl">
                 屏蔽银行差异，连接全球资源。泊冉软件银企联解决方案，为您提供开箱即用的“银账通、快结算、电票通”产品组合，让资金管理更简单、更安全、更高效。

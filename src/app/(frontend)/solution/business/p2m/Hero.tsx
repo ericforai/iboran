@@ -27,10 +27,10 @@ export default function Hero() {
                   YonBIP & YonSuite 制造解决方案
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
+              <h2 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
                 P2M 制造全生命周期 <br />
                 <span className="text-[#E60012]">数字化转型</span> 专家
-              </h1>
+              </h2>
               <p className="text-xl text-[#0052D9] font-medium mb-6">
                 产销协同 · 料动账动 · 精细核算
               </p>

@@ -24,10 +24,10 @@ export default function Hero() {
                 {industryName}解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 <span className="text-blue-400">数智驱动产业链</span><br/>
                 守护国民健康<span className="text-[#E60012]">每一滴</span>
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 全产业链协同 · 守护每一滴品质。基于用友 BIP 原生一体化数智底座，为乳企提供“研、产、供、销、服”端到端解决方案。

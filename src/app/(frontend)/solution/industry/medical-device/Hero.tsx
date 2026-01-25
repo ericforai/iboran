@@ -26,10 +26,10 @@ export default function Hero() {
                 医疗器械行业解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 <span className="text-teal-600">质量合规</span><br/>
                 数智<span className="text-[#E60012]">引擎</span>
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 面对集采压力与合规重塑，泊冉软件联合用友 YonSuite 为医疗器械企业提供从研发创新、智能制造、质量合规到客户服务的全链路数智化解决方案

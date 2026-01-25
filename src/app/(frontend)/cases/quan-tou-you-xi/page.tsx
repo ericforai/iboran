@@ -5,13 +5,14 @@ import Challenge from './Challenge'
 import Solution from './Solution'
 import Results from './Results'
 import CTA from './CTA'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
-  title: '拳头游戏数字化转型案例 | 泊冉软件',
-  description: '拳头游戏提供电子游戏开发与发行服务，主要产品为《英雄联盟》（League of Legends）、《云顶之弈》（Teamfight Tactics）、《英雄联盟手游》（Wild Rift）及《VALORANT》等在线多人竞技游戏。',
+  title: '拳头游戏数字化案例 - 游戏行业业财一体化实战 | 泊冉软件',
+  description: '拳头游戏如何通过业财一体化实现全球业务财务数据打通？解决游戏行业多地区收入确认难、虚拟资产对账复杂问题。游戏行业数字化转型实战案例。',
   openGraph: {
-    title: '拳头游戏数字化转型案例',
-    description: '拳头游戏提供电子游戏开发与发行服务，主要产品为《英雄联盟》（League of Legends）、《云顶之弈》（Teamfight Tactics）、《英雄联盟手游》（Wild Rift）及《VALORANT》等在线多人竞技游戏。',
+    title: '拳头游戏数字化案例 - 游戏行业业财一体化实战',
+    description: '拳头游戏如何通过业财一体化实现全球业务财务数据打通？解决游戏行业多地区收入确认难、虚拟资产对账复杂问题。游戏行业数字化转型实战案例。',
   },
 }
 
@@ -23,6 +24,12 @@ export default function CaseStudyPage() {
       <Challenge />
       <Solution />
       <Results />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        url="https://www.iboran.com/cases/quan-tou-you-xi"
+        variant="case"
+      />
       <CTA />
     </main>
   )

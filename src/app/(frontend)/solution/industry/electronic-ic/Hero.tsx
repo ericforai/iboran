@@ -29,10 +29,10 @@ export default function Hero() {
                 电子IC行业解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 <span className="text-cyan-400">精细化</span>委外协同<br/>
                 <span className="text-[#E60012]">全局</span>追溯
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP为电子IC企业提供批号/刻号全局追溯、实时成本/效益模拟与精细化委外协同管理

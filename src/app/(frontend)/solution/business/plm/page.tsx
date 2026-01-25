@@ -5,6 +5,8 @@ import HowItWorks from './HowItWorks'
 import Features from './Features'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: 'YonBIP PLM 研发云解决方案 | 泊冉软件',
@@ -19,11 +21,20 @@ export const metadata: Metadata = {
 export default function PLMSolutionPage() {
   return (
     <>
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <PainPoints />
       <HowItWorks />
       <Features />
       <ValueSection />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/business/plm"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </>
   )

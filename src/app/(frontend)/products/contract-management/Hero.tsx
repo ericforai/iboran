@@ -28,10 +28,10 @@ export default function Hero() {
               </div>
               
               {/* Main Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
                 让合同管理从<span className="text-blue-600">风险监管</span><br/>
                 转变为<span className="text-[#E60012]">价值驱动</span>
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 实现从合同起草、智能内审、电子签章到履约监控、财务对账及自动归档的闭环管理。规范业务流程，规避法律风险，提升组织风控能力与运营效率。

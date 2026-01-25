@@ -28,10 +28,10 @@ export default function Hero() {
                 中药行业解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 <span className="text-emerald-600">传承精华</span><br/>
                 <span className="text-[#E60012]">全产业链</span>追溯
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP构建&ldquo;种植-加工-生产-流通&rdquo;全链路数智化平台，满足GAP/GMP/GSP合规要求，实现中药质量全程可追溯

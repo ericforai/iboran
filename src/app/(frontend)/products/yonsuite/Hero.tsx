@@ -24,12 +24,12 @@ export default function Hero() {
                 <span>成长型企业商业创新平台</span>
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 用友 YonSuite <br/>
                 <span className="text-2xl lg:text-4xl text-slate-600 font-semibold mt-2 block leading-snug">
                   数智飞轮驱动，全场景 SaaS 商业创新
                 </span>
-              </h1>
+              </h2>
               
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 作为成长型企业数智化 2.0 时代的领先选择，YonSuite 通过“数智飞轮”模型，

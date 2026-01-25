@@ -6,6 +6,8 @@ import HowItWorks from './HowItWorks'
 import ValueSection from './ValueSection'
 import CustomerSuccess from './CustomerSuccess'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '电子会计档案解决方案 | 泊冉软件',
@@ -26,6 +28,7 @@ export default function ElectronicArchivesPage() {
 
   return (
     <main className="min-h-screen bg-white">
+      <SeoH1 title={metadata.title as string} />
       <Hero 
         title={content.title}
         tagline={content.tagline}
@@ -36,6 +39,14 @@ export default function ElectronicArchivesPage() {
       <HowItWorks />
       <ValueSection />
       <CustomerSuccess />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/electronic-archives"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

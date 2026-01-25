@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { 
   BarChart3, FileText, Receipt, Brain, Bell, Search, MapPin, 
-  Globe, CheckCircle, AlertTriangle, Image, Download, DollarSign,
+  Globe, CheckCircle, AlertTriangle, Image as ImageIcon, Download, DollarSign,
   ShoppingBag, TrendingUp, Eye, Shield
 } from 'lucide-react'
 
@@ -23,7 +23,7 @@ export default function IPDashboardMockup({ type = 'overview' }: IPDashboardMock
         <div className="p-2 space-y-1 flex-1">
           {[
             { icon: BarChart3, label: '工作台', active: type === 'overview' },
-            { icon: Image, label: 'IP 资产', active: type === 'asset' },
+            { icon: ImageIcon, label: 'IP 资产', active: type === 'asset' },
             { icon: FileText, label: '授权管理', active: type === 'license' },
             { icon: Receipt, label: '结算中心', active: type === 'settlement' },
             { icon: Brain, label: 'AI 维权', active: type === 'ai' },
@@ -82,7 +82,7 @@ function OverviewContent() {
       {/* Top Stats */}
       <div className="grid grid-cols-4 gap-2">
         {[
-          { label: 'IP 资产总数', value: '2,458', icon: Image, color: 'purple' },
+          { label: 'IP 资产总数', value: '2,458', icon: ImageIcon, color: 'purple' },
           { label: '有效授权', value: '1,832', icon: FileText, color: 'blue' },
           { label: '本月 Royalty', value: '¥2.8M', icon: DollarSign, color: 'green' },
           { label: '待处理预警', value: '12', icon: AlertTriangle, color: 'red' },
@@ -178,7 +178,7 @@ function AssetContent() {
             className="bg-white rounded-lg border border-slate-100 shadow-sm overflow-hidden group cursor-pointer"
           >
             <div className="aspect-square bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center relative">
-              <Image size={20} className="text-purple-300" />
+              <ImageIcon size={20} className="text-purple-300" />
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                 <Download size={12} className="text-white" />
                 <Eye size={12} className="text-white" />

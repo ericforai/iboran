@@ -2,17 +2,16 @@ import type { Metadata } from 'next'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import type { PaginatedDocs } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import type { Contact } from '@/payload-types'
 import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { StoryCard } from '@/components/StoryCard'
 import { ResourceCard } from '@/components/ResourceCard'
-
-import { Footer as SiteFooter } from '@/components/Footer'
-import { getCachedGlobal } from '@/utilities/getGlobals'
+import { GeoSection } from '@/components/GeoSection'
+import type { Resource } from '@/payload-types'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -40,8 +39,6 @@ type Args = {
   }>
 }
 
-import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
-
 export default async function IndustrySolutionPage({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
@@ -49,16 +46,12 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
   const url = '/solution/industry/' + decodedSlug
   
   const solution = await querySolutionBySlug({ slug: decodedSlug })
-  const contactData = await getCachedGlobal('contact', 1)() as Contact
 
   if (!solution) return <PayloadRedirects url={url} />
-  
-  const breadcrumbItems = [
-      { name: '首页', url: '/' },
-      { name: '行业解决方案', url: '/solution' },
-      { name: solution.title, url: `/solution/industry/${slug}` }
-  ]
 
+  const geoDescription =
+    solution.summary || `泊冉软件提供${solution.title}数智化解决方案，聚焦业财一体化与交付落地。`
+  
   // Fetch related resources
   const payload = await getPayload({ config: configPromise })
   const resources = await payload.find({
@@ -69,13 +62,20 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
         contains: solution.id,
       }
     }
-  })
+  }) as PaginatedDocs<Resource>
 
   return (
     <article className="pb-24 pt-16">
       <PayloadRedirects disableNotFound url={url} />
       {draft && <LivePreviewListener />}
       <RenderBlocks blocks={solution.layout} />
+      <GeoSection
+        title={solution.title}
+        description={geoDescription}
+        url={`https://www.iboran.com${url}`}
+        variant="solution"
+        showDecisionFramework
+      />
       
       <div className="container mt-24 px-4 space-y-24">
           {solution.relatedSuccessStories && solution.relatedSuccessStories.length > 0 && (
@@ -103,7 +103,7 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {resources.docs.map((resource, index) => (
-                  <ResourceCard key={index} resource={resource as any} variant="horizontal" />
+                  <ResourceCard key={index} resource={resource} variant="horizontal" />
                 ))}
               </div>
             </div>

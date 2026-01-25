@@ -7,6 +7,8 @@ import Methodology from './Methodology'
 import ValueSection from './ValueSection'
 import FAQ from './FAQ'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: 'TES 智能差旅与费控解决方案 | 泊冉软件',
@@ -27,6 +29,7 @@ export default function TESPage() {
 
   return (
     <main>
+      <SeoH1 title={metadata.title as string} />
       <Hero {...content} />
       <PainPoints />
       <Architecture />
@@ -34,6 +37,14 @@ export default function TESPage() {
       <Methodology />
       <ValueSection />
       <FAQ />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/tes"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

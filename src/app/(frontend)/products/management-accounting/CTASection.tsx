@@ -1,9 +1,7 @@
 'use client'
 
-import React from 'react'
-import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, MessageSquare, Calendar } from 'lucide-react'
+import { MessageSquare, Calendar } from 'lucide-react'
 
 export default function CTASection() {
   return (

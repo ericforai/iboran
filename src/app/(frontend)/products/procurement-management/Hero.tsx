@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import Image from 'next/image'
 
 export const Hero = () => {
   return (
@@ -15,12 +16,12 @@ export const Hero = () => {
               </span>
               数字化采购解决方案
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
+            <h2 className="text-4xl lg:text-6xl font-bold text-slate-900 leading-tight mb-6">
               数字化采购管理平台
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
                 驱动采购降本增效
               </span>
-            </h1>
+            </h2>
             <p className="text-xl text-slate-600 mb-8 leading-relaxed">
               基于 COP 平台打造，实现从请购、寻源、合同到支付的全流程闭环管理。规范采购流程，强化过程监控，提升供应链协同效率。
             </p>
@@ -46,9 +47,11 @@ export const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-100/50 to-transparent rounded-3xl -rotate-3 mb-10 translate-x-4 translate-y-4"></div>
             <div className="relative bg-white p-4 rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
                <div className="w-full h-full min-h-[400px] bg-slate-50 flex items-center justify-center rounded-2xl overflow-hidden">
-                  <img 
+                  <Image 
                     src="/procurement-management-hero.png" 
                     alt="数字化采购管理平台架构" 
+                    width={1200}
+                    height={900}
                     className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
                   />
                </div>

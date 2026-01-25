@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { cn } from '@/utilities/ui'
 
 type Category = {
@@ -12,7 +12,6 @@ type Category = {
 }
 
 export const CategoryFilter: React.FC<{ categories: Category[] }> = ({ categories }) => {
-  const router = useRouter()
   const searchParams = useSearchParams()
   const activeCategory = searchParams.get('category')
 

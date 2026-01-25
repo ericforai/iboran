@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Database, Cpu, Send, TrendingUp, ArrowRight } from 'lucide-react'
+import { Database, Cpu, Send, TrendingUp } from 'lucide-react'
 
 const steps = [
   {

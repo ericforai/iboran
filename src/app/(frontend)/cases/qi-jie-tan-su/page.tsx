@@ -5,13 +5,14 @@ import Challenge from './Challenge'
 import Solution from './Solution'
 import Results from './Results'
 import CTA from './CTA'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
-  title: '骐杰碳素数字化转型案例 | 泊冉软件',
-  description: '在全球化竞争与供应链波动常态化的背景下，传统制造业正面临从"规模驱动"向"效率与创新驱动"的深刻转型。泊冉软件助力制造企业打通生产、物流与财务的脉络，实现以数据为核心的敏捷制造与精准交付。 项目背景：碳素材料的研发、生产与销售。',
+  title: '骐杰碳素数字化案例 - 新材料业财一体化实战 | 泊冉软件',
+  description: '骐杰碳素如何通过业财一体化打通生产-质检-交付全流程？解决新材料批次管理难、成本追溯不准确问题。新材料行业数字化转型实战案例。',
   openGraph: {
-    title: '骐杰碳素数字化转型案例',
-    description: '碳素材料的研发、生产与销售 - 数字化升级解决方案',
+    title: '骐杰碳素数字化案例 - 新材料业财一体化实战',
+    description: '骐杰碳素如何通过业财一体化打通生产-质检-交付全流程？解决新材料批次管理难、成本追溯不准确问题。新材料行业数字化转型实战案例。',
   },
 }
 
@@ -23,6 +24,12 @@ export default function CaseStudyPage() {
       <Challenge />
       <Solution />
       <Results />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        url="https://www.iboran.com/cases/qi-jie-tan-su"
+        variant="case"
+      />
       <CTA />
     </main>
   )

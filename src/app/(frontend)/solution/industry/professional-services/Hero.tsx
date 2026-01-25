@@ -26,10 +26,10 @@ export default function Hero() {
                 专业服务行业解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 <span className="text-indigo-600">合伙人</span>机制<br/>
                 <span className="text-[#E60012]">精细化</span>运营
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP赋能会计师、律师、咨询等专业服务机构，实现以合伙人为核心的项目全生命周期管理与精细化核算

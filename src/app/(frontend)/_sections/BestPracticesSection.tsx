@@ -143,7 +143,7 @@ export function BestPracticesSection() {
                     {/* Desktop: Active Practice Content */}
                     <div className="hidden lg:block">
                         {practices.filter(p => p.id === activeId).map((practice) => (
-                            <PracticeCard key={practice.id} practice={practice} isExpanded={true} />
+                            <PracticeCard key={practice.id} practice={practice} />
                         ))}
                     </div>
 
@@ -216,7 +216,7 @@ export function BestPracticesSection() {
 }
 
 // Desktop Practice Card
-function PracticeCard({ practice, isExpanded }: { practice: Practice; isExpanded: boolean }) {
+function PracticeCard({ practice }: { practice: Practice }) {
     return (
         <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
             <div className="flex items-start gap-6">

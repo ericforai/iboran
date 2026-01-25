@@ -36,7 +36,7 @@ function markAsShown() {
   }
 }
 
-export const ExitIntentModal: React.FC = () => {
+export const ExitIntentModal: React.FC = React.memo(() => {
   const [isOpen, setIsOpen] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -78,7 +78,7 @@ export const ExitIntentModal: React.FC = () => {
     }
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setError(null)
@@ -129,7 +129,7 @@ export const ExitIntentModal: React.FC = () => {
     } finally {
       setIsSubmitting(false)
     }
-  }
+  }, [formData, attribution])
 
   const handleClose = useCallback(() => {
     setIsOpen(false)
@@ -275,4 +275,6 @@ export const ExitIntentModal: React.FC = () => {
       )}
     </AnimatePresence>
   )
-}
+})
+
+ExitIntentModal.displayName = 'ExitIntentModal'

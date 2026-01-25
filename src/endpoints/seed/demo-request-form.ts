@@ -54,7 +54,7 @@ export const demoRequestForm: RequiredDataFromCollectionSlug<'forms'> = {
     createdAt: new Date().toISOString(),
     emails: [
         {
-            emailFrom: '"泊冉软件" <demo@iboran.com>',
+            emailFrom: '"泊冉软件" <wyz@iboran.com>',
             emailTo: '{{email}}',
             message: {
                 root: {

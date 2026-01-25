@@ -108,7 +108,7 @@ export default function Hero() {
             </h1>
             
             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-10 font-light">
-              从"实验台"到"数字化平台"。泊冉软件助力原启生物构建合规高效的研发数据中台，加速创新药上市进程。
+              从“实验台”到“数字化平台”。泊冉软件助力原启生物构建合规高效的研发数据中台，加速创新药上市进程。
             </p>
 
              <div className="flex flex-wrap gap-4">

@@ -10,6 +10,8 @@ import CustomerStories from './CustomerStories'
 import Resources from './Resources'
 import FAQ from './FAQ'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: 'BIP 管理会计｜业财融合、财管分离的数智化管理体系｜泊冉软件',
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
 export default function ManagementAccountingPage() {
   return (
     <main className="min-h-screen bg-slate-50">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <PainPoints />
       <Architecture />
@@ -34,6 +37,14 @@ export default function ManagementAccountingPage() {
       <CustomerStories />
       <Resources />
       <FAQ />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/products/management-accounting"
+        variant="product"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

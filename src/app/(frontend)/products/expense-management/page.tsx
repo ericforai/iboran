@@ -9,6 +9,8 @@ import { TechSpecs } from './TechSpecs'
 import { TrustProof } from './TrustProof'
 import { FAQ } from './FAQ'
 import { CTASection } from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '费控管理系统 - 业财一体化费控解决方案 - 泊冉软件',
@@ -23,6 +25,7 @@ export const metadata: Metadata = {
 export default function ExpenseManagementPage() {
   return (
     <div className="min-h-screen">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <TargetAudience />
       <DeliveryMethodology />
@@ -31,6 +34,14 @@ export default function ExpenseManagementPage() {
       <TechSpecs />
       <TrustProof />
       <FAQ />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/products/expense-management"
+        variant="product"
+        showDecisionFramework
+      />
       <CTASection />
     </div>
   )

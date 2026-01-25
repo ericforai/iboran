@@ -33,10 +33,10 @@ export default function Hero() {
                   用友 BIP 核心领域解决方案
                 </div>
                 
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#1F2329] leading-tight mb-8 tracking-tight">
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-[#1F2329] leading-tight mb-8 tracking-tight">
                   <span className="text-[#0052D9]">线索</span>驱动增长<br/>
                   <span className="text-[#E60012]">回款</span>保障经营
-                </h1>
+                </h2>
                 
                 <p className="text-xl text-slate-600 mb-10 leading-relaxed">
                   连接营销、销售、商务与财务，打通 L2C (Lead to Cash) 全流程，构建“营-销-服”一体化增长引擎。

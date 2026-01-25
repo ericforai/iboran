@@ -8,7 +8,8 @@ import {
   Zap,
   Layers,
   Settings,
-  ArrowRight
+  ArrowRight,
+  CheckCircle2
 } from 'lucide-react';
 
 const SolutionOverview = () => {
@@ -17,6 +18,24 @@ const SolutionOverview = () => {
     { title: '委外加工 (WIP)', icon: Layers, desc: '实时穿透 Foundry/CP/AB/FT 节点，同步在制品、良率与计划。' },
     { title: '质量追溯 (Trace)', icon: ShieldCheck, desc: '晶圆级、批次级正反向追溯，自动生成质量分析报告与客诉处理。' },
     { title: '精细化成本 (Cost)', icon: Zap, desc: 'Turnkey 模式成本核算，实现从 Wafer 到 Dice 的多层级成本还原。' },
+  ];
+  const deliverables = [
+    {
+      title: '研发流程与主数据蓝图',
+      desc: '项目阶段、物料与版本规则统一，沉淀可执行蓝图。',
+    },
+    {
+      title: '委外节点穿透清单',
+      desc: 'Foundry/CP/AB/FT 节点管控清单与协同规则。',
+    },
+    {
+      title: '质量追溯规则与模板',
+      desc: '晶圆/批次追溯规则与质量报告模板沉淀。',
+    },
+    {
+      title: '成本还原模型与指标',
+      desc: 'WIP 成本还原模型与关键看板指标定义。',
+    },
   ];
 
   return (
@@ -123,6 +142,26 @@ const SolutionOverview = () => {
             </motion.div>
           </div>
           
+        </div>
+
+        <div className="mt-16 bg-slate-50 rounded-2xl p-8 md:p-10 border border-slate-100">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-50 text-blue-600 text-sm font-bold">
+              交付
+            </span>
+            <h3 className="text-xl font-bold text-slate-900">交付物清单</h3>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {deliverables.map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-semibold text-slate-900">{item.title}</div>
+                  <div className="text-sm text-slate-600 mt-1">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

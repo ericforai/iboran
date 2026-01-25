@@ -6,6 +6,8 @@ import HowItWorks from './HowItWorks'
 import CustomerSuccess from './CustomerSuccess'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '业财融合解决方案 | 事项驱动·实时·精细的业财数据底座 | 泊冉软件',
@@ -20,12 +22,21 @@ export const metadata: Metadata = {
 export default function BusinessFinanceIntegrationPage() {
   return (
     <div className="bg-white">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <PainPoints />
       <Features />
       <HowItWorks />
       <CustomerSuccess />
       <ValueSection />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/business/business-finance-integration"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </div>
   )

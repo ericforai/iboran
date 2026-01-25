@@ -10,18 +10,23 @@ import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/
 import { searchFields } from '@/search/fieldOverrides'
 import { beforeSyncWithSearch } from '@/search/beforeSync'
 
-import { Page, Post } from '@/payload-types'
+import { IndustrySolution, Page, Post, Resource, SuccessStory } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 
 export const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
   return doc?.title ? `${doc.title} | 泊冉软件` : '泊冉软件'
 }
 
-export const generateDescription: GenerateDescription<Post | Page | any> = ({ doc }) => {
-  return doc?.summary || ''
+type SeoDoc = Page | Post | IndustrySolution | SuccessStory | Resource
+
+export const generateDescription: GenerateDescription<SeoDoc> = ({ doc }) => {
+  if (!doc) return ''
+  if ('summary' in doc && doc.summary) return doc.summary
+  if ('meta' in doc && doc.meta?.description) return doc.meta.description
+  return ''
 }
 
-export const generateURL: GenerateURL<Post | Page | any> = ({ doc, collectionConfig }) => {
+export const generateURL: GenerateURL<SeoDoc> = ({ doc, collectionConfig }) => {
   const url = getServerSideURL()
   const collection = collectionConfig?.slug
 

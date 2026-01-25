@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useForm, type FieldErrors } from 'react-hook-form'
-import { Lock, ChevronRight, Loader2, CheckCircle2, Eye } from 'lucide-react'
+import { useForm } from 'react-hook-form'
+import { Lock, ChevronRight, Loader2, CheckCircle2 } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export interface WhitepaperGateProps {
@@ -66,6 +66,7 @@ export const WhitepaperGate: React.FC<WhitepaperGateProps> = ({
         <div>
           <h3 className="text-lg font-bold text-[#1F2329]">解锁完整内容</h3>
           <p className="text-xs text-slate-500">填写信息即可免费阅读全文</p>
+          <p className="text-[11px] text-slate-400 mt-1">《{title}》</p>
         </div>
       </div>
 

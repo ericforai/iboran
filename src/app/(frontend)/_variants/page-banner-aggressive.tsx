@@ -9,14 +9,14 @@ import {
 } from 'lucide-react'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import { getCachedGlobal } from '@/utilities/getGlobals'
-import type { Contact } from '@/payload-types'
+import type { IndustrySolution, SuccessStory } from '@/payload-types'
+import type { PaginatedDocs } from 'payload'
+import Image from 'next/image'
 
 // Components
 import { IndustrySolutionsSection } from '../_sections/IndustrySolutionsSection'
 import { SuccessStoriesSection } from '../_sections/SuccessStoriesSection'
-import { RecentPostsSection } from '../_sections/RecentPostsSection'
-
+ 
 
 const Hero = () => {
     return (
@@ -105,10 +105,12 @@ const Hero = () => {
                     {/* Right: Illustration */}
                     <div className="w-full lg:w-1/2 relative mt-12 lg:mt-0">
                         <div className="relative z-10 w-full aspect-[4/3] max-w-2xl mx-auto">
-                            <img
+                            <Image
                                 src="/banner-hero.png"
                                 alt="项目从延期到成功上线的转变"
-                                className="w-full h-full object-contain drop-shadow-2xl rounded-lg"
+                                fill
+                                sizes="(min-width: 1024px) 50vw, 100vw"
+                                className="object-contain drop-shadow-2xl rounded-lg"
                             />
 
                             {/* Stats Floating Card */}
@@ -230,24 +232,18 @@ const SocialProof = () => {
 
 export default async function Page() {
     const payload = await getPayload({ config: configPromise })
-    const contactData = await getCachedGlobal('contact', 1)() as Contact
 
-    const [industrySolutions, successStories, latestPosts] = await Promise.all([
+    const [industrySolutions, successStories] = await Promise.all([
       payload.find({
         collection: 'industry-solutions',
         limit: 3,
         sort: '-updatedAt',
-      }),
+      }) as Promise<PaginatedDocs<IndustrySolution>>,
       payload.find({
         collection: 'success-stories',
         limit: 4,
         sort: '-updatedAt',
-      }),
-      payload.find({
-        collection: 'posts',
-        limit: 3,
-        sort: '-publishedAt',
-      }),
+      }) as Promise<PaginatedDocs<SuccessStory>>,
     ])
 
     return (
@@ -255,8 +251,8 @@ export default async function Page() {
             <main className="flex-grow">
                 <Hero />
                 <CoreValueGrid />
-                <IndustrySolutionsSection solutions={industrySolutions.docs as any} />
-                <SuccessStoriesSection stories={successStories.docs as any} />
+                <IndustrySolutionsSection solutions={industrySolutions.docs} />
+                <SuccessStoriesSection stories={successStories.docs} />
             <SocialProof />
           </main>
         </div>

@@ -7,6 +7,8 @@ import ValueSection from './ValueSection'
 import HowItWorks from './HowItWorks'
 import CustomerSuccess from './CustomerSuccess'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '多维数据智能分析平台 | 用友 BIP',
@@ -21,12 +23,21 @@ export const metadata: Metadata = {
 export default function BIDataPage() {
   return (
     <main className="min-h-screen">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <PainPoints />
       <HowItWorks />
       <Features />
       <ValueSection />
       <CustomerSuccess />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/products/bi-data"
+        variant="product"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

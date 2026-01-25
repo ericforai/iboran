@@ -1,8 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-
 const customers = [
   "中国建筑", "国家电网", "中国移动", "三一重工", "海尔集团", "美的集团"
 ]

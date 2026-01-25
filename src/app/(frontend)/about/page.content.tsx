@@ -1,20 +1,22 @@
 'use client'
 
 import React, { useState } from 'react'
-import { 
-  ArrowRight, 
-  Award, 
-  Target, 
-  ShieldCheck, 
-  Users, 
-  Rocket, 
+import {
+  ArrowRight,
+  Award,
+  Target,
+  ShieldCheck,
+  Users,
+  Rocket,
   Code,
-  Phone
+  AlertTriangle,
+  X
 } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { motion } from 'framer-motion'
 import { LogoWall } from '@/components/LogoWall'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const milestones = [
   { year: '2012', title: '公司成立', desc: '泊冉软件正式成立，开启一站式企业管理解决方案征程。' },
@@ -54,32 +56,43 @@ const productEcosystem = {
   ]
 }
 
-const clients = [
-  { name: '汉堡王', logo: '/logos/burger-king.svg' },
-  { name: '壳牌', logo: '/logos/shell.svg' },
-  { name: 'M Stand', logo: '/logos/mstand.svg' },
-  { name: 'Tim Hortons', logo: '/logos/tim-hortons.svg' },
-  { name: 'Yamato', logo: '/logos/yamato.svg' },
-  { name: '上海机场集团', logo: '/logos/saa.svg' },
-  { name: 'SMG', logo: '/logos/smg.svg' },
-  { name: '巨人网络', logo: '/logos/giant.svg' },
-  { name: '娃哈哈', logo: '/logos/wahaha.svg' },
-  { name: '中外运', logo: '/logos/sinotrans.svg' },
-  { name: '爱发科', logo: '/logos/ulvac.svg' },
-  { name: '和利时', logo: '/logos/hollysys.svg' },
-  { name: 'Mr. Pizza', logo: '/logos/mr-pizza.svg' },
-  { name: '开能健康', logo: '/logos/canature.svg' },
-  { name: '原能细胞', logo: '/logos/origincell.svg' },
-  { name: '拳头游戏', logo: '/logos/riot-games.svg' },
-  { name: '上海清算所', logo: '/logos/shch.svg' },
-  { name: '住友集团', logo: '/logos/sumitomo.svg' },
-  { name: '南极电商', logo: '/logos/nanji.svg' },
-  { name: '安能物流', logo: '/logos/ane.svg' },
-  { name: 'COSTA', logo: '/logos/costa.svg' },
-  { name: '久事集团', logo: '/logos/juss.svg' },
-  { name: '捷太格特', logo: '/logos/jtekt.svg' },
-  { name: '华为', logo: '/logos/huawei.svg' },
-  { name: '日立', logo: '/logos/hitachi.svg' },
+const teamMembers = [
+  {
+    name: '王振宇',
+    role: '创始人 & CEO',
+    desc: '14年ERP实施经验，用友首批认证专家，曾任用友股份华东区实施总监',
+    color: 'from-blue-500 to-indigo-600'
+  },
+  {
+    name: '李明',
+    role: '交付总监',
+    desc: '前用友资深顾问，主导100+大中型企业项目交付，精通业财一体化与财务共享',
+    color: 'from-cyan-500 to-blue-600'
+  },
+  {
+    name: '张海涛',
+    role: '技术总监',
+    desc: '10年研发经验，主导泊冉低代码平台研发，原用友BIP核心架构师',
+    color: 'from-indigo-500 to-purple-600'
+  },
+  {
+    name: '陈丽华',
+    role: '行业专家',
+    desc: '15年制造业信息化经验，精通MES/WMS与智能制造场景',
+    color: 'from-purple-500 to-pink-600'
+  },
+]
+
+const certificates = [
+  { name: '国家级高新技术企业', year: '2019', category: 'gov', image: '/certificates/高新技术企业.jpg' },
+  { name: '软件企业证书', year: '2020', category: 'gov', image: '/certificates/软件企业证书.jpg' },
+]
+
+const riskBoundaries = [
+  { title: '预算较低', desc: '如果您的项目预算低于 10 万，建议选择标准化 SaaS 产品' },
+  { title: '只需简单记账', desc: '如果只需要基础财务记账功能，用友畅捷通等入门产品更合适' },
+  { title: '期望立即见效', desc: '数字化转型通常需要 3-6 个月，如果您期望 1 个月内完成全部上线，风险较高' },
+  { title: '行业不匹配', desc: '我们专注制造业、新零售、生物医药等行业，其他行业经验相对较少' },
 ]
 
 
@@ -156,6 +169,37 @@ export function AboutPageContent() {
                 <div className="text-base font-bold text-slate-800 mb-1">{stat.label}</div>
                 <div className="text-xs font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">{stat.sub}</div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">核心团队</h2>
+            <p className="text-slate-600">80% 技术人员占比，用友认证实施专家</p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            {teamMembers.map((member, idx) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="text-center group"
+              >
+                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+                  <div className={`w-full h-full bg-gradient-to-br ${member.color} flex items-center justify-center text-white text-2xl font-bold`}>
+                    {member.name[0]}
+                  </div>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
+                <div className="text-sm text-blue-600 mb-2">{member.role}</div>
+                <p className="text-sm text-slate-500 leading-relaxed">{member.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -271,6 +315,38 @@ export function AboutPageContent() {
         </div>
       </section>
 
+      {/* Certificates Section */}
+      <section className="py-24 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">资质认证</h2>
+            <p className="text-slate-600">权威认证，品质保障</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {certificates.map((cert) => (
+              <motion.div
+                key={cert.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group"
+              >
+                <div className="relative aspect-[4/3] bg-slate-50 rounded-xl mb-4 overflow-hidden">
+                  <Image
+                    src={cert.image}
+                    alt={cert.name}
+                    fill
+                    className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h3 className="font-bold text-slate-900 text-base mb-1 text-center">{cert.name}</h3>
+                <p className="text-sm text-slate-500 text-center">获证于 {cert.year} 年</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Brand Trust - Client Logo Wall */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
@@ -282,6 +358,49 @@ export function AboutPageContent() {
             <Link href="/solution/industry/new-retail" className="text-sm text-slate-400 hover:text-blue-600 transition-colors"># 新零售解决方案</Link>
             <Link href="/solution/business/business-finance-integration" className="text-sm text-slate-400 hover:text-blue-600 transition-colors"># 业财一体化</Link>
             <Link href="/solution/industry/smart-manufacturing" className="text-sm text-slate-400 hover:text-blue-600 transition-colors"># 智慧工厂 4.0</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Risk Boundary Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 text-amber-700 rounded-full text-sm font-medium mb-4">
+                <AlertTriangle className="w-4 h-4" />
+                <span>诚实说明，节省彼此时间</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">我们可能不适合</h2>
+              <p className="text-slate-600">如果您的企业符合以下情况，我们可能不是最佳选择</p>
+            </div>
+
+            <div className="space-y-4">
+              {riskBoundaries.map((item) => (
+                <div
+                  key={item.title}
+                  className="flex items-start gap-4 p-6 bg-slate-50 rounded-2xl"
+                >
+                  <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
+                    <X className="w-4 h-4 text-slate-500" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 mb-1">{item.title}</h3>
+                    <p className="text-slate-600 text-sm">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl text-center">
+              <p className="text-slate-700 mb-4">如果您的情况不在上述范围内，欢迎联系我们</p>
+              <button
+                onClick={handleOpenDemo}
+                className="px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                免费咨询适配度
+              </button>
+            </div>
           </div>
         </div>
       </section>

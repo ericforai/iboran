@@ -30,7 +30,6 @@ import {
   Milk,
   Sparkles,
   Beer,
-  Sun,
   Microscope,
   Apple,
   Crown,

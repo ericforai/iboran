@@ -5,12 +5,32 @@ import { CMSLink } from '@/components/Link'
 import Link from 'next/link'
 import { SearchIcon, ChevronDown } from 'lucide-react'
 
-export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
-  const navItems = data?.navItems || []
+import type { Header } from '@/payload-types'
+
+type HeaderNavItem = NonNullable<Header['navItems']>[number]
+type NavGroupItem = Extract<HeaderNavItem, { blockType: 'navGroup' }>
+type NavGroupChildItem = NonNullable<NavGroupItem['items']>[number]
+type CollectionDoc = { slug?: string | null; title?: string | null }
+type CollectionMenuChildItem = Extract<NavGroupChildItem, { blockType: 'collectionMenu' }>
+type CollectionMenuItem = Extract<HeaderNavItem, { blockType: 'collectionMenu' }>
+type NavGroupChildItemWithDocs =
+  | Exclude<NavGroupChildItem, { blockType: 'collectionMenu' }>
+  | (CollectionMenuChildItem & { docs?: CollectionDoc[] })
+type HeaderNavItemWithDocs =
+  | Exclude<HeaderNavItem, { blockType: 'collectionMenu' | 'navGroup' }>
+  | (CollectionMenuItem & { docs?: CollectionDoc[] })
+  | (NavGroupItem & { items?: NavGroupChildItemWithDocs[] | null })
+
+type HeaderNavData = {
+  navItems?: HeaderNavItemWithDocs[] | null
+}
+
+export const HeaderNav: React.FC<{ data: HeaderNavData }> = ({ data }) => {
+  const navItems = data?.navItems ?? []
 
   return (
     <nav className="flex gap-3 items-center">
-      {navItems.map((item: any, i: number) => {
+      {navItems.map((item, i) => {
         if (item.blockType === 'singleLink') {
              return <CMSLink key={i} {...item.link} appearance="link" />
         }
@@ -39,7 +59,7 @@ export const HeaderNav: React.FC<{ data: any }> = ({ data }) => {
   )
 }
 
-const NavGroupItem = ({ item }: { item: any }) => {
+const NavGroupItem = ({ item }: { item: NavGroupItem & { items?: NavGroupChildItemWithDocs[] | null } }) => {
     return (
         <div className="relative group z-50">
             <button className="flex items-center gap-1 px-2 py-1 text-sm font-medium hover:text-primary transition-colors">
@@ -48,7 +68,7 @@ const NavGroupItem = ({ item }: { item: any }) => {
             </button>
             <div className="absolute left-0 top-full pt-2 hidden group-hover:block min-w-64 max-w-sm">
                 <div className="bg-white dark:bg-zinc-900 shadow-lg rounded-md p-4 border border-zinc-200 dark:border-zinc-800 flex flex-col gap-4">
-                     {item.items?.map((subItem: any, k: number) => (
+                     {item.items?.map((subItem, k) => (
                          <NavSubItem key={k} item={subItem} />
                      ))}
                 </div>
@@ -57,7 +77,7 @@ const NavGroupItem = ({ item }: { item: any }) => {
     )
 }
 
-const NavSubItem = ({ item }: { item: any }) => {
+const NavSubItem = ({ item }: { item: NavGroupChildItemWithDocs }) => {
     if (item.blockType === 'singleLink') {
         return <CMSLink {...item.link} appearance="link" className="block w-full text-left text-sm" />
     }
@@ -74,7 +94,7 @@ const NavSubItem = ({ item }: { item: any }) => {
             <div className="">
                 <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 px-2">{item.label}</div>
                 <div className="flex flex-col gap-1 pl-2 border-l border-zinc-100 dark:border-zinc-800">
-                    {item.items?.map((child: any, j: number) => (
+                    {item.items?.map((child, j) => (
                         <NavSubItem key={j} item={child} />
                     ))}
                 </div>
@@ -84,7 +104,7 @@ const NavSubItem = ({ item }: { item: any }) => {
     return null
 }
 
-const CollectionMenuItem = ({ item }: { item: any }) => {
+const CollectionMenuItem = ({ item }: { item: CollectionMenuItem & { docs?: CollectionDoc[] } }) => {
      return (
         <div className="relative group z-50">
             <button className="flex items-center gap-1 px-2 py-1 text-sm font-medium hover:text-primary transition-colors">
@@ -100,8 +120,9 @@ const CollectionMenuItem = ({ item }: { item: any }) => {
     )
 }
 
-const CollectionSubMenu = ({ item }: { item: any }) => {
-    const getHref = (slug: string) => {
+const CollectionSubMenu = ({ item }: { item: CollectionMenuItem & { docs?: CollectionDoc[] } }) => {
+    const getHref = (slug?: string | null) => {
+        if (!slug) return '#'
         if (item.collectionSlug === 'industry-solutions') return `/solution/industry/${slug}`
         if (item.collectionSlug === 'success-stories') return `/success-stories/${slug}`
         return `/${item.collectionSlug}/${slug}`
@@ -109,11 +130,18 @@ const CollectionSubMenu = ({ item }: { item: any }) => {
 
     return (
         <div className="flex flex-col gap-1">
-             {item.docs?.map((doc: any, i: number) => (
-                 <Link key={i} href={getHref(doc.slug)} className="text-sm px-2 py-1 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-primary block transition-colors">
-                     {doc.title}
-                 </Link>
-             ))}
+             {item.docs?.map((doc, i) => {
+                 if (!doc.slug) return null
+                 return (
+                     <Link
+                         key={i}
+                         href={getHref(doc.slug)}
+                         className="text-sm px-2 py-1 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-primary block transition-colors"
+                     >
+                         {doc.title}
+                     </Link>
+                 )
+             })}
              {!item.docs?.length && <span className="text-xs text-muted-foreground px-2">No items found.</span>}
         </div>
     )

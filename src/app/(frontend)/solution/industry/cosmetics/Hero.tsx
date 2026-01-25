@@ -32,10 +32,10 @@ export default function Hero() {
               </div>
               
               {/* Main Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 <span className="text-pink-500">全域营销</span>驱动<br/>
                 美妆企业<span className="text-[#E60012]">数智化</span>升级
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP赋能化妆品行业高质量发展，涵盖全域数字化营销、B2B/B2C一体化运营、供应链高效协同

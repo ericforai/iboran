@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
 import { motion } from 'framer-motion'
-import { PieChart, BarChart2, TrendingUp, DollarSign, Activity, Users, Database } from 'lucide-react'
+import { TrendingUp, Activity, Users, Database } from 'lucide-react'
 
 interface MockupProps {
   type: 'cost-analysis' | 'smart-closing' | 'standard-cost' | 'multi-org' | 'hero-banner'

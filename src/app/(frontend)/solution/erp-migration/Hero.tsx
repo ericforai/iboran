@@ -1,4 +1,4 @@
-import { ArrowRight, ShieldCheck, Rocket } from 'lucide-react'
+import { ShieldCheck, Rocket } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Hero() {
@@ -20,7 +20,7 @@ export default function Hero() {
             传统 ERP 升级首选伙伴
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-200">
               用友 U8/U9/NC/U8 Cloud
             </span>
@@ -28,7 +28,7 @@ export default function Hero() {
             <span className="text-3xl md:text-5xl text-slate-300 mt-2 block">
               专属服务与升迁方案
             </span>
-          </h1>
+          </h2>
           
           <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
             泊冉软件为您提供原厂级专属运维保障，确保现有系统稳定运行。同时提供平滑升级用友 BIP 的专业方案，助力企业无感迁移，激发数智新动能。

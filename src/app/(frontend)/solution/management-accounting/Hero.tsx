@@ -39,9 +39,9 @@ export default function Hero({ title, tagline, description }: HeroProps) {
                 YonBIP 大财税 · 管理会计
               </div>
 
-              <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
+              <h2 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
                 {title}
-              </h1>
+              </h2>
               <p className="text-2xl text-transparent bg-clip-text bg-gradient-to-r from-[#0052D9] to-blue-600 font-semibold mb-6">
                 {tagline}
               </p>

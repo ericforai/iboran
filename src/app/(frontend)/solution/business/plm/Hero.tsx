@@ -26,10 +26,10 @@ export default function Hero() {
                 YonBIP PLM 研发云
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 从<span className="text-[#0052D9]">需求规划</span>到<br/>
                 <span className="text-[#E60012]">产品创新</span>
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 打破设计与制造壁垒。用友BIP PLM通过数据驱动的全生命周期管理，助力企业实现高效率、高质量、低成本的产品创新。

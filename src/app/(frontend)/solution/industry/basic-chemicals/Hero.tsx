@@ -31,10 +31,10 @@ export default function Hero() {
               </div>
               
               {/* Main Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 <span className="text-emerald-400">绿色·高端·智能</span><br/>
                 驱动化工行业<span className="text-[#E60012]">数智转型</span>
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP超级版为基础化工行业提供从营销、采购、生产到财务的全链路数字化解决方案

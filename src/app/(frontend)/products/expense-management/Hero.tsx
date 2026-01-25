@@ -3,6 +3,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { MoveRight, PhoneCall } from 'lucide-react'
+import Image from 'next/image'
 
 export const Hero = () => {
   return (
@@ -14,10 +15,10 @@ export const Hero = () => {
               <span className="inline-block py-1.5 px-4 mb-6 text-[10px] font-bold text-blue-600 bg-blue-50 rounded-full uppercase tracking-[0.2em]">
                 费控管理解决方案
               </span>
-              <h1 className="text-4xl lg:text-6xl font-bold font-heading mb-8 leading-[1.15] text-slate-900 font-display">
+              <h2 className="text-4xl lg:text-6xl font-bold font-heading mb-8 leading-[1.15] text-slate-900 font-display">
                 数智化强劲赋能 <br />
                 <span className="text-blue-600">打破业财管理壁垒</span>
-              </h1>
+              </h2>
               <p className="text-lg text-slate-500 mb-12 leading-loose max-w-xl">
                 融合协同、费控、财务系统，实现从预算、报销、票据到商旅、支付、档案的全链条闭环管理，提升财务效率 [30]% 以上。
               </p>
@@ -51,9 +52,11 @@ export const Hero = () => {
             <div className="relative group">
               {/* 核心产品图 - 采用 mix-blend-multiply 或 match 背景来实现无缝融合 */}
               <div className="relative z-10 flex justify-center items-center animate-float">
-                <img
+                <Image
                   src="/expense-management-hero.png"
                   alt="费控管理系统架构"
+                  width={1200}
+                  height={900}
                   className="w-full h-auto max-w-md lg:max-w-none mix-blend-multiply transition-all duration-700 group-hover:scale-105 drop-shadow-[0_30px_60px_rgba(0,0,0,0.12)]"
                 />
               </div>

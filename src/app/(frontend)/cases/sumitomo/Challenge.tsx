@@ -1,4 +1,4 @@
-import { AlertCircle, Unplug, TrendingDown, FileSearch } from 'lucide-react'
+import { Unplug, TrendingDown, FileSearch } from 'lucide-react'
 
 export default function Challenge() {
   const challenges = [

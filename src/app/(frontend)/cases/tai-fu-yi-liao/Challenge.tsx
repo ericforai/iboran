@@ -1,4 +1,4 @@
-import { AlertCircle, ShieldX, Network, TrendingDown } from 'lucide-react'
+import { ShieldX, Network, TrendingDown } from 'lucide-react'
 
 export default function Challenge() {
   const challenges = [

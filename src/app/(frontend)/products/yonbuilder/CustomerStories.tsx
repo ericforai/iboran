@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Quote, ArrowRight, Building2, ShoppingBag, Factory } from 'lucide-react'
+import { Quote, Building2, ShoppingBag, Factory } from 'lucide-react'
 
 const stories = [
   {

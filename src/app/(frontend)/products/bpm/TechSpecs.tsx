@@ -1,6 +1,6 @@
 'use client'
 
-import { Server, Shield, Cpu, Cloud, Database, Lock } from 'lucide-react'
+import { Shield, Cloud, Database, Lock, Cpu } from 'lucide-react'
 
 const specs = [
   {

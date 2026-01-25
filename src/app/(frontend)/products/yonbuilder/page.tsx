@@ -11,6 +11,8 @@ import CustomerStories from './CustomerStories'
 import Resources from './Resources'
 import FAQ from './FAQ'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: 'YonBuilder 低代码开发平台 - 企业级云原生应用构建引擎 | 用友',
@@ -28,6 +30,7 @@ export default function YonBuilderPage() {
       {/* 0. SEO (Handled by metadata) */}
       
       {/* 1. Immersive Hero */}
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       
       {/* 2. Pain Points */}
@@ -58,6 +61,14 @@ export default function YonBuilderPage() {
       <FAQ />
       
       {/* 11. CTA */}
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/products/yonbuilder"
+        variant="product"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

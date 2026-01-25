@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Award, Users, Wrench, Check } from 'lucide-react'
+import { Award, Users, Wrench } from 'lucide-react'
 
 const advantages = [
   {

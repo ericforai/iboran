@@ -5,13 +5,14 @@ import Challenge from './Challenge'
 import Solution from './Solution'
 import Results from './Results'
 import CTA from './CTA'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
-  title: '上海清算所数字化转型案例 | 泊冉软件',
-  description: '提供金融交易清算服务，包括登记、托管、结算、保证金管理等。',
+  title: '上海清算所数字化案例 - 金融机构业财一体化实战 | 泊冉软件',
+  description: '上海清算所如何通过业财一体化实现清算-结算-风控全流程打通？解决金融机构对账效率低、保证金管理复杂问题。金融行业数字化转型实战案例。',
   openGraph: {
-    title: '上海清算所数字化转型案例',
-    description: '提供金融交易清算服务，包括登记、托管、结算、保证金管理等 - 数字化升级解决方案',
+    title: '上海清算所数字化案例 - 金融机构业财一体化实战',
+    description: '上海清算所如何通过业财一体化实现清算-结算-风控全流程打通？解决金融机构对账效率低、保证金管理复杂问题。金融行业数字化转型实战案例。',
   },
 }
 
@@ -23,6 +24,12 @@ export default function CaseStudyPage() {
       <Challenge />
       <Solution />
       <Results />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        url="https://www.iboran.com/cases/shang-hai-qing-suan-suo"
+        variant="case"
+      />
       <CTA />
     </main>
   )

@@ -4,6 +4,8 @@ import PainPoints from './PainPoints'
 import FeatureHub from './FeatureHub'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '数字化建模解决方案 | 泊冉软件',
@@ -18,10 +20,19 @@ export const metadata: Metadata = {
 export default function DigitalModelingPage() {
   return (
     <>
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <PainPoints />
       <FeatureHub />
       <ValueSection />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/business/digital-modeling"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </>
   )

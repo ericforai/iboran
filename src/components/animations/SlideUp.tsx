@@ -2,33 +2,30 @@
 
 import React from 'react'
 
-export interface SlideUpProps extends Omit<React.HTMLAttributes<HTMLElement>, 'as'> {
+export type SlideUpProps<T extends React.ElementType = 'div'> = {
   children: React.ReactNode
   delay?: number
   duration?: number
-  distance?: number
   className?: string
-  as?: React.ElementType
+  as?: T
   staggerIndex?: number // For staggered animations with CSS variable
-}
+} & Omit<React.ComponentPropsWithoutRef<T>, 'as'>
 
 /**
  * CSS-based slide up animation - lightweight alternative to Framer Motion
  * Slides up from below with fade in
  */
-export const SlideUp = React.forwardRef<HTMLElement, SlideUpProps>(({
+export function SlideUp<T extends React.ElementType = 'div'>({
   children,
   delay = 0,
   duration = 600,
-  distance = 30,
   className = '',
-  as: Component = 'div',
+  as: Component = 'div' as T,
   staggerIndex,
   ...props
-}, ref) => {
+}: SlideUpProps<T>) {
   return (
     <Component
-      ref={ref as any}
       className={`animate-slide-up opacity-0 ${className}`}
       style={{
         animationDelay: `${delay}ms`,
@@ -41,6 +38,4 @@ export const SlideUp = React.forwardRef<HTMLElement, SlideUpProps>(({
       {children}
     </Component>
   )
-})
-
-SlideUp.displayName = 'SlideUp'
+}

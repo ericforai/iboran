@@ -9,6 +9,8 @@ import { TechSpecs } from './TechSpecs'
 import { TrustProof } from './TrustProof'
 import { FAQ } from './FAQ'
 import { CTASection } from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '项目协同管理系统_全生命周期进度监控与跨部门协作平台 - 泊冉软件',
@@ -23,6 +25,7 @@ export const metadata: Metadata = {
 export default function ProjectCollaborationPage() {
   return (
     <div className="bg-white">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <TargetAudience />
       <DeliveryMethodology />
@@ -31,6 +34,14 @@ export default function ProjectCollaborationPage() {
       <TechSpecs />
       <TrustProof />
       <FAQ />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/products/project-collaboration"
+        variant="product"
+        showDecisionFramework
+      />
       <CTASection />
       
       {/* Schema.org JSON-LD for SEO */}

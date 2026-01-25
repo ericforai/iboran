@@ -60,7 +60,7 @@ export default function Hero() {
               className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-12"
             >
               <Link
-                href="/about/contact"
+                href="/contact"
                 className="group inline-flex items-center gap-2 px-8 py-4 bg-[#E60012] text-white font-bold rounded-xl hover:bg-red-700 transition-all shadow-lg shadow-red-500/25"
               >
                 免费预约行业方案演示

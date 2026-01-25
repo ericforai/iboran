@@ -6,6 +6,8 @@ import { KeyScenarios } from './KeyScenarios'
 import { IndustryCases } from './IndustryCases'
 import { ValueSection } from './ValueSection'
 import { CTASection } from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '生物医药行业解决方案 - GMP/GSP合规与研产一体化 | 泊冉软件',
@@ -16,12 +18,21 @@ export const metadata: Metadata = {
 export default function BiopharmaceuticalSolutionPage() {
   return (
     <main className="flex min-h-screen flex-col">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <IndustryChallenges />
       <SolutionOverview />
       <KeyScenarios />
       <ValueSection />
       <IndustryCases />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/industry/biopharmaceutical"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

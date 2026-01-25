@@ -26,10 +26,10 @@ export default function Hero() {
                 啤酒行业解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 <span className="text-amber-600">数智酿造</span><br/>
                 品质<span className="text-[#E60012]">升级</span>
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP赋能啤酒行业高质量发展，涵盖智能酿造、数字工厂、产销协同、全渠道营销及业财一体化

@@ -17,29 +17,43 @@ type NodeTypes =
   | SerializedBlockNode<CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
 
 // We pass components in to avoid circular dependencies without using 'require'
+type BlockComponent = React.ComponentType<Record<string, unknown>>
+
 export const getBlockConverters = (components: {
-  BannerBlock: React.FC<any>
-  CallToActionBlock: React.FC<any>
-  MediaBlock: React.FC<any>
-  CodeBlock: React.FC<any>
+  BannerBlock: BlockComponent
+  CallToActionBlock: BlockComponent
+  MediaBlock: BlockComponent
+  CodeBlock: BlockComponent
 }): JSXConvertersFunction<NodeTypes> => {
   const { BannerBlock, CallToActionBlock, MediaBlock, CodeBlock } = components
 
-  return ({ defaultConverters }) => ({
+  return ({ defaultConverters: _defaultConverters }) => ({
     blocks: {
-      banner: ({ node }) => <BannerBlock className="col-start-2 mb-4" {...node.fields} />,
-      mediaBlock: ({ node }) => (
-        <MediaBlock
-          className="col-start-1 col-span-3"
-          imgClassName="m-0"
-          {...node.fields}
-          captionClassName="mx-auto max-w-[48rem]"
-          enableGutter={false}
-          disableInnerContainer={true}
-        />
-      ),
-      code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
-      cta: ({ node }) => <CallToActionBlock {...node.fields} />,
+      banner: ({ node }) => {
+        if (!BannerBlock) return null
+        return <BannerBlock className="col-start-2 mb-4" {...node.fields} />
+      },
+      mediaBlock: ({ node }) => {
+        if (!MediaBlock) return null
+        return (
+          <MediaBlock
+            className="col-start-1 col-span-3"
+            imgClassName="m-0"
+            {...node.fields}
+            captionClassName="mx-auto max-w-[48rem]"
+            enableGutter={false}
+            disableInnerContainer={true}
+          />
+        )
+      },
+      code: ({ node }) => {
+        if (!CodeBlock) return null
+        return <CodeBlock className="col-start-2" {...node.fields} />
+      },
+      cta: ({ node }) => {
+        if (!CallToActionBlock) return null
+        return <CallToActionBlock {...node.fields} />
+      },
     },
   })
 }

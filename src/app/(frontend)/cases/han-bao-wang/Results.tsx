@@ -1,4 +1,4 @@
-import { Store, TrendingUp, ShieldCheck, Zap } from 'lucide-react'
+import { Store, TrendingUp, ShieldCheck } from 'lucide-react'
 
 const results = [
   {

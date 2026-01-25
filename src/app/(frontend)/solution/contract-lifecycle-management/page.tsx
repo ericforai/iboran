@@ -6,6 +6,8 @@ import HowItWorks from './HowItWorks'
 import CustomerSuccess from './CustomerSuccess'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: 'CLM 数智合同管理解决方案 | 业财法融合 | 泊冉软件',
@@ -16,12 +18,21 @@ export const metadata: Metadata = {
 export default function SolutionPage() {
   return (
     <main>
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <CustomerSuccess />
       <PainPoints />
       <HowItWorks />
       <Features />
       <ValueSection />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/contract-lifecycle-management"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

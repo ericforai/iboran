@@ -32,10 +32,10 @@ export function Hero() {
                 <span className="text-sm font-medium text-blue-700">企业级统一入口解决方案</span>
               </div>
               
-              <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight mb-6">
                 连接人员、业务与数据<br />
                 <span className="text-blue-600">重塑企业数字工作台</span>
-              </h1>
+              </h2>
               
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 YonBIP 企业门户是企业统一的应用入口与价值聚合平台。通过场景化、个性化、沉浸式的体验，实现应用、消息、待办与数据的一站式触达，让协作更高效，让管理更从容。

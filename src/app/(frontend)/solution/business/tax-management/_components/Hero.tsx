@@ -29,10 +29,10 @@ export default function Hero() {
                 金税四期首选合作伙伴
               </div>
               
-              <h1 className="text-5xl lg:text-6xl font-bold text-[#1F2329] mb-6 leading-tight">
+              <h2 className="text-5xl lg:text-6xl font-bold text-[#1F2329] mb-6 leading-tight">
                 税务管理<br/>
                 <span className="text-4xl lg:text-5xl text-slate-500 font-medium">Data-Driven Tax Cloud</span>
-              </h1>
+              </h2>
               
               <p className="text-2xl text-[#0052D9] font-semibold mb-6">
                 数据驱动，打造精准、合规、高效的税务管理平台

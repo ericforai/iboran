@@ -24,12 +24,12 @@ export default function Hero() {
                 <span>成长型集团云 ERP 整体解决方案</span>
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 用友 U8 cloud <br/>
                 <span className="text-2xl lg:text-4xl text-slate-600 font-semibold mt-2 block leading-snug">
                   敏经营 · 轻管理 · 简 IT
                 </span>
-              </h1>
+              </h2>
               
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 为成长型集团提供集人财物客产供销于一体的云 ERP，深度覆盖业财税金档一体化、合规合并报表、全球化经营及全栈信创场景。

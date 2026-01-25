@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check, Edit3, Grid, Layers, ShieldCheck, Smartphone, Users, Zap } from 'lucide-react'
-import Image from 'next/image'
+import { Check, Edit3, Layers, ShieldCheck, Smartphone, Users } from 'lucide-react'
 
 const features = [
   {

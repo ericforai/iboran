@@ -34,9 +34,14 @@ export async function generateStaticParams() {
     },
   })
 
-  const params = posts.docs.map(({ slug }) => {
-    return { slug }
-  })
+  // Filter out problematic posts that cause build errors
+  const problematicSlugs = ['roi-post-implementation-review']
+
+  const params = posts.docs
+    .filter(({ slug }) => !problematicSlugs.includes(slug))
+    .map(({ slug }) => {
+      return { slug }
+    })
 
   return params
 }
@@ -58,7 +63,14 @@ export default async function Post({ params: paramsPromise }: Args) {
   // Decode to support slugs with special characters
   const decodedSlug = decodeURIComponent(slug)
   const url = '/posts/' + decodedSlug
-  const post = await queryPostBySlug({ slug: decodedSlug })
+
+  let post
+  try {
+    post = await queryPostBySlug({ slug: decodedSlug })
+  } catch (e) {
+    console.error(`Error loading post ${decodedSlug}:`, e)
+    return <PayloadRedirects url={url} />
+  }
 
   if (!post) return <PayloadRedirects url={url} />
 
@@ -118,7 +130,7 @@ export default async function Post({ params: paramsPromise }: Args) {
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
-                      href="/demo"
+                      href="/contact"
                       className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-lg transition-all text-center"
                     >
                       预约专家演示

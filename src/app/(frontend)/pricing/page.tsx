@@ -1,7 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Check, Minus, HelpCircle, ArrowRight, MessageSquare, Phone, Layers, Globe } from 'lucide-react'
+import { Check, Minus, HelpCircle, MessageSquare, Phone, Layers, Globe } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: '价格体系 | 泊冉软件',

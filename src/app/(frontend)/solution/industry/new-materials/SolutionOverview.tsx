@@ -23,6 +23,25 @@ const coreProducts = [
   },
 ]
 
+const deliverables = [
+  {
+    title: 'IPO 合规数据口径',
+    desc: '成本核算、存货计价与审计口径统一，形成可复用模板。',
+  },
+  {
+    title: '多组织对账规则',
+    desc: '内部往来自动对账与合并规则，支撑集团化管理。',
+  },
+  {
+    title: '生产与委外管理规范',
+    desc: '工序、委外、报工与质量追溯标准化落地。',
+  },
+  {
+    title: '上线节奏与 SOP',
+    desc: '阶段里程碑、培训与移交流程，保障快速上线。',
+  },
+]
+
 export default function SolutionOverview() {
   return (
     <section className="py-24 bg-[#F7F8FA]">
@@ -106,6 +125,26 @@ export default function SolutionOverview() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-14 bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 text-sm font-bold">
+              交付
+            </span>
+            <h3 className="text-xl font-bold text-[#1F2329]">交付物清单</h3>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {deliverables.map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-semibold text-[#1F2329]">{item.title}</div>
+                  <div className="text-sm text-slate-600 mt-1">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

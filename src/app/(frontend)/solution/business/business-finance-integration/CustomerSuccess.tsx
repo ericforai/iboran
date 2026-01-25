@@ -1,4 +1,5 @@
 import { Quote } from 'lucide-react'
+import Image from 'next/image'
 
 export default function CustomerSuccess() {
   return (
@@ -41,11 +42,13 @@ export default function CustomerSuccess() {
                  &quot;通过业财融合的实施，我们不仅解决了财管分离的对账痛点，更建立了一套实时、穿透的数字化经营体系。现在，哪怕是集团级别的月结，我们也能在 24 小时内高质量完成。&quot;
                </p>
                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
-                    <img 
+                  <div className="w-12 h-12 rounded-full bg-slate-200 overflow-hidden relative">
+                    <Image 
                       src="/images/solutions/bfi/cfo_avatar_male_professional_1767345817773.png" 
                       alt="财务总监" 
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="48px"
+                      className="object-cover"
                     />
                   </div>
                   <div>
@@ -58,11 +61,13 @@ export default function CustomerSuccess() {
  
           <div className="lg:w-1/2 grid grid-cols-2 gap-4">
              <div className="space-y-4">
-                <div className="h-48 rounded-2xl bg-slate-200 overflow-hidden shadow-lg border border-white/20">
-                   <img 
+                <div className="h-48 rounded-2xl bg-slate-200 overflow-hidden shadow-lg border border-white/20 relative">
+                   <Image 
                      src="/images/solutions/bfi/steel_plant_digital_twin_1767345768567.png" 
                      alt="Steel Plant Digital Twin" 
-                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                     fill
+                     sizes="(min-width: 1024px) 25vw, 50vw"
+                     className="object-cover hover:scale-110 transition-transform duration-700"
                    />
                 </div>
                 <div className="h-64 rounded-2xl bg-blue-100 flex items-center justify-center p-8 shadow-sm">
@@ -79,11 +84,13 @@ export default function CustomerSuccess() {
                       <div className="text-sm font-bold text-slate-500">集团级月结时效</div>
                    </div>
                 </div>
-                <div className="h-48 rounded-2xl bg-slate-200 overflow-hidden shadow-lg border border-white/20">
-                   <img 
+                <div className="h-48 rounded-2xl bg-slate-200 overflow-hidden shadow-lg border border-white/20 relative">
+                   <Image 
                      src="/images/solutions/bfi/global_finance_dashboard_abstract_1767345785341.png" 
                      alt="Global Finance Connection" 
-                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                     fill
+                     sizes="(min-width: 1024px) 25vw, 50vw"
+                     className="object-cover hover:scale-110 transition-transform duration-700"
                    />
                 </div>
              </div>

@@ -27,10 +27,10 @@ export default function Hero() {
               </div>
               
               {/* 静态标题 - SEO 友好 */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 从<span className="text-[#E60012]">大海捞针</span>到<br/>
                 <span className="text-[#0052D9]">精准穿透</span>
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 消灭人工对账的繁琐与误差。用友BIP收入云，通过「明细级对账模型+滚动式差异处理」双重引擎，让企业资金流向清晰可查，每一笔收入精准入账。

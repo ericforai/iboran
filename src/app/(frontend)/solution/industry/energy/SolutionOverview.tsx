@@ -23,6 +23,25 @@ const coreProducts = [
   },
 ]
 
+const deliverables = [
+  {
+    title: '业务蓝图与流程梳理',
+    desc: '能源生产、运维、项目与财务流程统一梳理，输出可执行蓝图。',
+  },
+  {
+    title: '设备与资产编码标准',
+    desc: '五码合一编码规范与主数据治理清单，确保全生命周期一致。',
+  },
+  {
+    title: 'IOT 运维规则与告警策略',
+    desc: '设备点检、工单、告警与维保规则落地，形成可运维闭环。',
+  },
+  {
+    title: '项目物资一体化模型',
+    desc: '计划、物资、成本、结算联动模型与可视化指标体系。',
+  },
+]
+
 export default function SolutionOverview() {
   return (
     <section className="py-24 bg-[#F7F8FA]">
@@ -106,6 +125,26 @@ export default function SolutionOverview() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-14 bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-slate-100">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-amber-50 text-amber-600 text-sm font-bold">
+              交付
+            </span>
+            <h3 className="text-xl font-bold text-[#1F2329]">交付物清单</h3>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {deliverables.map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-semibold text-[#1F2329]">{item.title}</div>
+                  <div className="text-sm text-slate-600 mt-1">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -14,10 +14,10 @@ export const Hero = () => {
               <span className="inline-block py-1.5 px-4 mb-6 text-[10px] font-bold text-blue-600 bg-blue-50 rounded-full uppercase tracking-[0.2em]">
                 薪事力 · HR & 薪税云平台
               </span>
-              <h1 className="text-4xl lg:text-6xl font-bold font-heading mb-8 leading-[1.15] text-slate-900 font-display">
+              <h2 className="text-4xl lg:text-6xl font-bold font-heading mb-8 leading-[1.15] text-slate-900 font-display">
                 随需应变 <br />
                 <span className="text-blue-600">全模块人力资源管理</span>
-              </h1>
+              </h2>
               <p className="text-lg text-slate-500 mb-12 leading-loose max-w-xl">
                 打造从组织人事、薪酬考勤到招聘绩效的全流程闭环。AI 算薪赋能，深度集成协同 OA，提升算薪效率 [50]% 以上，助力企业数智化转型。
               </p>
@@ -54,6 +54,7 @@ export const Hero = () => {
                   Note: Using an existing image or a placeholder that represents HR/SaaS architecture.
                   For consistent delivery, we'd ideally have a specific image like /hr-salary-hero.png
                 */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/products/hr-salary-hero.png"
                   alt="薪事力系统架构"

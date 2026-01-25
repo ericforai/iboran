@@ -27,10 +27,10 @@ export default function Hero() {
                   YonBIP & YonSuite 制造执行系统
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
+              <h2 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
                 MES 生产执行系统 <br />
                 <span className="text-[#E60012]">透明化</span> 智能车间
-              </h1>
+              </h2>
               <p className="text-xl text-[#0052D9] font-medium mb-6">
                 连接计划与现场：让生产进度与质量实时可见
               </p>

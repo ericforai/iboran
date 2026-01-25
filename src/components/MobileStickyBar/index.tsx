@@ -6,9 +6,14 @@ import type { Contact } from '@/payload-types'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
 
-export const MobileStickyBar = ({ contactData }: { contactData?: Contact }) => {
+export const MobileStickyBar: React.FC<{ contactData?: Contact }> = React.memo(({ contactData }) => {
     const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
     const [isConsultModalOpen, setIsConsultModalOpen] = useState(false)
+
+    const handleOpenDemo = React.useCallback(() => setIsDemoModalOpen(true), [])
+    const handleCloseDemo = React.useCallback(() => setIsDemoModalOpen(false), [])
+    const handleOpenConsult = React.useCallback(() => setIsConsultModalOpen(true), [])
+    const handleCloseConsult = React.useCallback(() => setIsConsultModalOpen(false), [])
 
     const phone = contactData?.phone || '400-9955-161'
 
@@ -25,7 +30,7 @@ export const MobileStickyBar = ({ contactData }: { contactData?: Contact }) => {
                     </a>
                     
                     <button
-                        onClick={() => setIsDemoModalOpen(true)}
+                        onClick={handleOpenDemo}
                         className="flex-[2] flex items-center justify-center gap-2 py-3.5 bg-[#E60012] text-white rounded-xl shadow-[0_4px_12px_0_rgba(230,0,18,0.3)] active:scale-[0.98] transition-all"
                     >
                         <Presentation className="w-5 h-5" />
@@ -34,7 +39,7 @@ export const MobileStickyBar = ({ contactData }: { contactData?: Contact }) => {
                     
                     <button
                         className="flex-1 flex flex-col items-center justify-center gap-1 py-2 text-[#4B5563] active:bg-slate-50 transition-colors rounded-lg"
-                        onClick={() => setIsConsultModalOpen(true)}
+                        onClick={handleOpenConsult}
                     >
                         <MessageSquare className="w-5 h-5" />
                         <span className="text-[10px] font-bold">在线咨询</span>
@@ -44,14 +49,16 @@ export const MobileStickyBar = ({ contactData }: { contactData?: Contact }) => {
             
             <DemoRequestModal
                 isOpen={isDemoModalOpen}
-                onClose={() => setIsDemoModalOpen(false)}
+                onClose={handleCloseDemo}
             />
 
             <ConsultationModal 
                 isOpen={isConsultModalOpen}
-                onClose={() => setIsConsultModalOpen(false)}
+                onClose={handleCloseConsult}
                 data={contactData}
             />
         </>
     )
-}
+})
+
+MobileStickyBar.displayName = 'MobileStickyBar'

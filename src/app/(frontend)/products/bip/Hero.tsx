@@ -24,13 +24,13 @@ export default function Hero() {
                 <span>企业数智化底座</span>
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 用友 BIP <br/>
                 <span className="text-3xl lg:text-5xl text-slate-600 font-semibold mt-2 block">
                   AI X 数据 X 流程 <br/>
                   <span className="text-2xl lg:text-4xl">原生一体，让 AI 真正落地</span>
                 </span>
-              </h1>
+              </h2>
               
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 全球领先的企业软件与智能服务平台（Business Innovation Platform）。

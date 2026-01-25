@@ -29,10 +29,10 @@ export default function Hero() {
                 家用电器及消费电子行业解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 激发<span className="text-[#E60012]">全渠道</span>价值<br/>
                 实现<span className="text-blue-400">一盘货</span>管理
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友YonSuite为3C家电企业打通「工厂-终端-消费者」全链路，实现序列号全生命周期追溯与多仓库存协同管理。

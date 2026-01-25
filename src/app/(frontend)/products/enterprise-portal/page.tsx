@@ -10,6 +10,8 @@ import { CustomerStories } from './CustomerStories'
 import { Resources } from './Resources'
 import { FAQ } from './FAQ'
 import { CTASection } from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '企业门户系统 - 统一入口与应用聚合平台 | 用友 BIP',
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
 export default function EnterprisePortalPage() {
   return (
     <main className="min-h-screen bg-white">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <PainPoints />
       <Architecture />
@@ -34,6 +37,14 @@ export default function EnterprisePortalPage() {
       <CustomerStories />
       <Resources />
       <FAQ />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/products/enterprise-portal"
+        variant="product"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

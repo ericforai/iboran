@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { PieChart, Activity, Globe, ArrowRightLeft, Building2 } from 'lucide-react'
 
 export default function BankLinkIllustration() {
   const nodes = [

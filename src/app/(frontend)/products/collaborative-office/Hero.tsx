@@ -24,12 +24,12 @@ export default function Hero() {
                 <span>数智化协同运营平台 COP</span>
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 A8 协同办公 <br/>
                 <span className="text-2xl lg:text-4xl text-slate-600 font-semibold mt-2 block leading-snug">
                   AI+协同深度融合，成就高绩效组织
                 </span>
-              </h1>
+              </h2>
               
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 面向中大型及集团化组织，打造“智能、集成、信创”的协同运营底座。

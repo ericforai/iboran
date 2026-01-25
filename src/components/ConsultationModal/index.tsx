@@ -74,7 +74,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                             {/* QR Code Container */}
                             <div className="relative aspect-square w-48 mx-auto mb-8 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 flex flex-col items-center justify-center p-2 overflow-hidden">
                                 <Image 
-                                    src="/assets/wechat-consultant-v2.jpg" 
+                                    src={qrUrl || '/assets/wechat-consultant-v2.jpg'} 
                                     alt="WeChat QR" 
                                     fill 
                                     className="object-contain p-2"

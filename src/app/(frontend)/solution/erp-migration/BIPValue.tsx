@@ -1,6 +1,6 @@
 'use client'
 
-import { Globe, Cpu, Users, Layers, Sparkles, Brain, Database, Rocket, Shield } from 'lucide-react'
+import { Globe, Cpu, Users, Layers, Brain, Database, Rocket, Shield } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function BIPValue() {

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ExternalLink, Newspaper, Award, ArrowUpRight } from 'lucide-react'
+import { Newspaper, Award, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 
 const fadeInUp = {

@@ -8,6 +8,8 @@ import TechSpecs from './TechSpecs'
 import TrustProof from './TrustProof'
 import FAQ from './FAQ'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: 'BPM 流程管理平台 | 企业级智能敏捷流程治理专家 - 泊冉软件',
@@ -22,6 +24,7 @@ export const metadata: Metadata = {
 export default function BPMProductPage() {
   return (
     <>
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <TargetAudience />
       <DeliveryMethodology />
@@ -30,6 +33,14 @@ export default function BPMProductPage() {
       <TechSpecs />
       <TrustProof />
       <FAQ />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/products/bpm"
+        variant="product"
+        showDecisionFramework
+      />
       <CTASection />
     </>
   )

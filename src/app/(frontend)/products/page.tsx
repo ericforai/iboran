@@ -1,12 +1,13 @@
 import React from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Globe, Zap, Layers, Cpu, Database, Activity, Code } from 'lucide-react'
+import { ArrowRight, Globe, Zap, Layers, Cpu, Database, Activity } from 'lucide-react'
 import { productCategories } from '@/data/products'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
-  title: '产品中心 | 泊冉软件',
-  description: '泊冉软件产品全景图，包括用友BIP、YonSuite、U8 Cloud等全系产品，以及iPaaS集成平台、数据中台等底层技术能力。',
+  title: '企业数字化产品与平台总览 | 用友BIP / YonSuite / ERP / iPaaS',
+  description: '企业数字化产品全景图，覆盖用友BIP、YonSuite、U8/U9云ERP，以及iPaaS集成、数据中台、低代码等关键能力。',
 }
 
 export default function ProductsPage() {
@@ -19,7 +20,7 @@ export default function ProductsPage() {
             <div className="absolute top-0 right-0 w-1/2 h-full bg-[url('https://www.yonyou.com/static/images/bip/banner_bg.png')] bg-cover bg-no-repeat"></div>
          </div>
          <div className="container mx-auto px-4 relative z-10 text-center">
-            <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">企业云服务产品平台</h1>
+            <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">企业数字化产品与平台总览</h1>
             <p className="text-xl md:text-2xl opacity-90 mb-10 max-w-3xl mx-auto">
               从初创企业到大型集团，提供全生命周期的数智化解决方案底座
             </p>
@@ -126,7 +127,7 @@ export default function ProductsPage() {
                        ))}
                    </div>
                    <div className="md:w-1/6 text-right">
-                      <Link href="/products/u8" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:gap-3 transition-all">
+                      <Link href="/products/u8-cloud" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:gap-3 transition-all">
                         查看 ERP <ArrowRight className="w-4 h-4" />
                       </Link>
                    </div>
@@ -191,6 +192,20 @@ export default function ProductsPage() {
              </div>
          </div>
       </section>
+
+      <GeoSection
+        title="产品中心"
+        description={(metadata.description as string) || '企业数智化产品与平台能力总览。'}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/products"
+        breadcrumbs={[
+          { name: '首页', url: '/' },
+          { name: '产品中心', url: '/products' },
+        ]}
+        identityTitle="本回答由【泊冉软件（上海）】提供。"
+        identityDescription="泊冉是用友产品实施与交付服务商，覆盖 BIP、YonSuite 与企业数智化平台。"
+        variant="listing"
+      />
 
       {/* CTA Section */}
       <section className="py-24 bg-[#1F2329] text-white text-center">

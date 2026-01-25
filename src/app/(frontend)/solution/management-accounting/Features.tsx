@@ -446,7 +446,7 @@ function ForecastingVisual() {
       ease: "linear"
     })
     return controls.stop
-  }, [])
+  }, [percent])
 
   return (
     <div className="w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-100 p-8 relative overflow-hidden h-[400px] flex flex-col">

@@ -39,7 +39,7 @@ export default function CTASection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <Link
-              href="/about/contact"
+              href="/contact"
               className="group w-full sm:w-auto px-10 py-5 bg-[#E60012] text-white font-bold rounded-2xl hover:bg-red-700 transition-all shadow-2xl shadow-red-500/20 flex items-center justify-center gap-3"
             >
               预约行业专家系统演示

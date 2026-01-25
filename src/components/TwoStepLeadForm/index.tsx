@@ -126,7 +126,7 @@ const Step1: React.FC<Step1Props> = ({ register, errors, isLoading }) => (
           {...register('name', { required: '请输入姓名' })}
           type="text"
           placeholder="您的姓名"
-          className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0052D9]/20 ${
+          className={`w-full px-4 py-2.5 border rounded-lg text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-[#0052D9]/20 ${
             errors.name ? 'border-red-300' : 'border-slate-200'
           }`}
         />
@@ -139,7 +139,7 @@ const Step1: React.FC<Step1Props> = ({ register, errors, isLoading }) => (
           {...register('company', { required: '请输入公司名称' })}
           type="text"
           placeholder="您的公司"
-          className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0052D9]/20 ${
+          className={`w-full px-4 py-2.5 border rounded-lg text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-[#0052D9]/20 ${
             errors.company ? 'border-red-300' : 'border-slate-200'
           }`}
         />
@@ -156,7 +156,7 @@ const Step1: React.FC<Step1Props> = ({ register, errors, isLoading }) => (
         })}
         type="tel"
         placeholder="您的手机号"
-        className={`w-full px-4 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0052D9]/20 ${
+        className={`w-full px-4 py-2.5 border rounded-lg text-base md:text-sm focus:outline-none focus:ring-2 focus:ring-[#0052D9]/20 ${
           errors.phone ? 'border-red-300' : 'border-slate-200'
         }`}
       />

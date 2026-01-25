@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import BusinessFinanceDashboardMockup from './BusinessFinanceDashboardMockup'
+import Image from 'next/image'
 
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
@@ -12,10 +13,12 @@ export default function Hero() {
     <section className="relative bg-[#FAFBFF] pt-24 pb-32 overflow-hidden">
       {/* Background patterns */}
       <div className="absolute top-0 left-0 w-full h-full z-0 opacity-40">
-        <img 
-          src="/images/solutions/bfi/hero_background_abstract_mesh_1767345849960.png" 
-          alt="Background" 
-          className="w-full h-full object-cover"
+        <Image 
+          src="/images/solutions/hero-abstract.png" 
+          alt="泊冉软件业财一体化数字化转型背景图"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-20"
         />
       </div>
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-blue-50/50 to-transparent z-0" />
@@ -34,11 +37,11 @@ export default function Hero() {
                 事项中台：财管同源分流・智能月结
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-[1.2] mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-[1.2] mb-6">
                 业财融合<br />
                 <span className="text-[#0052D9]">实时·精细·智能</span>的<br />
                 业财数据底座
-              </h1>
+              </h2>
               
               <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl">
                 基于全新“事项法”会计架构，重塑企业财务底座。从事务到会计，从核算到分析，打造具备全球视野、实时洞察、高效协同的新一代智慧财税体系。

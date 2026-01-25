@@ -1,6 +1,4 @@
 import { Award, CheckCircle2, Building } from 'lucide-react'
-import Image from 'next/image'
-
 export default function TrustProof() {
   const stats = [
     { label: '服务组织', value: '50,000+', desc: '跨行业数字化转型实践' },

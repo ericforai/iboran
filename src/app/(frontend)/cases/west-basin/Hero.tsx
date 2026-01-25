@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from "framer-motion"
-import { ChevronRight, TrendingUp, Activity, Globe } from 'lucide-react'
+import { ChevronRight, TrendingUp, Activity } from 'lucide-react'
 
 export default function Hero() {
   return (

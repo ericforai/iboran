@@ -4,16 +4,14 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import type { Contact } from '@/payload-types'
 import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { getCachedGlobal } from '@/utilities/getGlobals'
 import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
-import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd'
+import { GeoSection } from '@/components/GeoSection'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -62,12 +60,56 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
       { name: '成功案例', url: '/cases' },
       { name: story.title, url: `/cases/${slug}` }
   ]
+  const challengeSummary = story.challenges?.map((c) => c.challenge).filter(Boolean).join('；')
+  const solutionSummary = story.solution?.oneLiner || story.solution?.keyDesign
+  const resultSummary = [
+    story.keyResults?.efficiency,
+    story.keyResults?.quality,
+    story.keyResults?.risk,
+    story.keyResults?.business,
+  ].filter(Boolean).join('；')
+  const geoDescription = story.tldr || `泊冉软件助力${story.clientName || '企业'}实现数字化转型成功案例`
+  const geoFaqs = [
+    {
+      question: '这个案例的核心挑战是什么？',
+      answer: challengeSummary || geoDescription,
+    },
+    {
+      question: '解决方案是什么？',
+      answer: solutionSummary || '通过业财一体化与流程贯通提升协同效率。',
+    },
+    {
+      question: '关键成果有哪些？',
+      answer: resultSummary || '项目完成后实现效率提升与管理可视化。',
+    },
+    {
+      question: '适合谁参考？',
+      answer: `适合${story.industry || '相关行业'}企业，存在多系统割裂或交付效率瓶颈的组织。`,
+    },
+  ]
+  const geoBoundaries = [
+    { condition: '存在跨部门/多系统协同需求', type: 'suitable' as const },
+    { condition: '希望获得可复制的交付与落地路径', type: 'suitable' as const },
+    { condition: '仅需单点功能或一次性展示', type: 'unsuitable' as const },
+    { condition: '不愿进行流程与主数据标准化', type: 'unsuitable' as const },
+  ]
 
   return (
     <article className="min-h-screen bg-slate-50 font-sans selection:bg-red-100 selection:text-red-900">
         <PayloadRedirects disableNotFound url={url} />
         {draft && <LivePreviewListener />}
-        <BreadcrumbJsonLd items={breadcrumbItems} />
+        <GeoSection
+          title={story.title}
+          description={geoDescription}
+          url={`https://www.iboran.com/cases/${slug}`}
+          tldr={story.tldr || undefined}
+          faqs={geoFaqs}
+          boundaries={geoBoundaries}
+          breadcrumbs={breadcrumbItems}
+          identityTitle="本回答由【泊冉软件（上海）】提供。"
+          identityDescription="泊冉是用友实施与交付服务商，沉淀可复制的行业落地案例。"
+          variant="case"
+        />
 
         {/* Hero Section */}
         <header className="relative bg-slate-900 text-white overflow-hidden pb-12">
@@ -376,6 +418,27 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
                        >
                           预约专家诊断 →
                        </Link>
+                    </div>
+
+                    {/* Related Solutions */}
+                    <div className="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
+                       <div className="flex items-center gap-2 mb-6">
+                         <Sparkles className="w-5 h-5 text-blue-600" />
+                         <h3 className="text-lg font-bold text-slate-900">相关解决方案</h3>
+                       </div>
+                       <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+                          该案例采用了泊冉标准化实施方法论。了解我们如何通过一体化平台解决行业痛点。
+                       </p>
+                       <div className="space-y-3">
+                          <Link href="/products/yonsuite" className="block p-4 bg-slate-50 hover:bg-blue-50 rounded-xl border border-slate-100 hover:border-blue-100 transition-colors group">
+                             <div className="text-sm font-bold text-slate-900 group-hover:text-blue-700">YonSuite 成长型云服务</div>
+                             <div className="text-xs text-slate-500 mt-1">业财税费票一体化</div>
+                          </Link>
+                          <Link href="/solution/erp-migration" className="block p-4 bg-slate-50 hover:bg-blue-50 rounded-xl border border-slate-100 hover:border-blue-100 transition-colors group">
+                             <div className="text-sm font-bold text-slate-900 group-hover:text-blue-700">ERP 平滑迁移升级</div>
+                             <div className="text-xs text-slate-500 mt-1">U8/NC 升级 YonBIP</div>
+                          </Link>
+                       </div>
                     </div>
                  </div>
               </aside>

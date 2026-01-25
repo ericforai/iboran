@@ -29,10 +29,10 @@ export default function Hero() {
                 互联网行业解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 <span className="text-purple-400">数智驱动</span><br/>
                 <span className="text-[#E60012]">全球化</span>运营
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP为互联网企业提供集团管控、全球化运营、业财融合的一站式数智化解决方案

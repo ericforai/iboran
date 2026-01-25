@@ -23,9 +23,6 @@ export const Pagination: React.FC<{
   const hasNextPage = page < totalPages
   const hasPrevPage = page > 1
 
-  const hasExtraPrevPages = page - 1 > 1
-  const hasExtraNextPages = page + 1 < totalPages
-
   return (
     <div className={cn('my-12', className)}>
       <PaginationComponent>

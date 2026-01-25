@@ -37,9 +37,9 @@ export default function Hero({ title, tagline, description }: HeroProps) {
                 符合国家标准 GB/T 18894
               </div>
               
-              <h1 className="text-5xl lg:text-6xl font-bold text-[#1F2329] mb-6 leading-[1.1]">
+              <h2 className="text-5xl lg:text-6xl font-bold text-[#1F2329] mb-6 leading-[1.1]">
                 {title}
-              </h1>
+              </h2>
               
               <p className="text-2xl text-[#0052D9] font-bold mb-6">
                 {tagline}

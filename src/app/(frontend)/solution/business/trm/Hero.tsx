@@ -26,10 +26,10 @@ export default function Hero() {
                   YonBIP & YonSuite 资金管理
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
+              <h2 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
                 TRM 资金 <br />
                 <span className="text-[#E60012]">流动性到投融资</span>
-              </h1>
+              </h2>
               <p className="text-xl text-[#0052D9] font-medium mb-6">
                 司库管理：资金全流程数智化
               </p>

@@ -1,4 +1,4 @@
-import { Trophy, TrendingUp, Timer, CheckCircle } from 'lucide-react'
+import { Trophy, CheckCircle } from 'lucide-react'
 
 export default function Results() {
   return (

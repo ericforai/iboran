@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Database, ArrowRight, Layers, Users, Server, Share2, Workflow } from 'lucide-react'
+import { Database, ArrowRight, Server, Share2, Workflow } from 'lucide-react'
 
 export function Architecture() {
   return (

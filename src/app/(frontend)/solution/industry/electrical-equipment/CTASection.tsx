@@ -40,9 +40,9 @@ export default function CTASection() {
                 <Phone size={18} />
                 <span>0571-87176121</span>
               </a>
-              <a href="mailto:biz@iboran.com" className="flex items-center gap-2 hover:text-[#0052D9] transition-colors">
+              <a href="mailto:wyz@iboran.com" className="flex items-center gap-2 hover:text-[#0052D9] transition-colors">
                 <Mail size={18} />
-                <span>biz@iboran.com</span>
+                <span>wyz@iboran.com</span>
               </a>
             </div>
           </div>

@@ -76,8 +76,6 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
   const [mobileSolutionTab, setMobileSolutionTab] = useState<'business' | 'industry'>('business')
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  const phone = contactData?.phone || '400-9955-161'
-
   // Close menu on route change
   useEffect(() => {
     setActiveDropdown(null)
@@ -198,11 +196,9 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
       {isMounted && (
         <>
           <NavbarMegaMenus
-            menuItems={menuItems}
             handleMenuEnter={handleMenuEnter}
             handleMenuLeave={handleMenuLeave}
             handleOpenDemo={handleOpenDemo}
-            contactData={contactData}
           />
           <NavbarMobileMenu
             menuItems={menuItems}
@@ -220,7 +216,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
 }
 
 // Inline navigation and actions component
-const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData, onOpenDemo }: NavbarClientProps) {
+const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }: NavbarClientProps) {
   const { activeDropdown, setActiveDropdown, handleMenuEnter, handleMenuLeave, setIsMobileMenuOpen, isMobileMenuOpen, handleOpenDemo } = useNavbarState()
   const phone = contactData?.phone || '400-9955-161'
 
@@ -291,17 +287,13 @@ const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData, 
 
 // Mega menus component (rendered via Portal)
 const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
-  menuItems,
   handleMenuEnter,
   handleMenuLeave,
   handleOpenDemo,
-  contactData,
 }: {
-  menuItems: NavbarClientProps['menuItems']
   handleMenuEnter: (label: string) => void
   handleMenuLeave: () => void
   handleOpenDemo: () => void
-  contactData?: Contact
 }) {
   const { activeDropdown, setActiveDropdown, megaMenuTab, setMegaMenuTab } = useNavbarState()
   const menuRef = useRef<HTMLDivElement>(null)
@@ -637,11 +629,8 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
     isMobileMenuOpen,
     setIsMobileMenuOpen,
     mobileActiveDropdown,
-    megaMenuTab,
-    setMegaMenuTab,
     mobileSolutionTab,
     setMobileSolutionTab,
-    setActiveDropdown,
   } = useNavbarState()
 
   const phone = contactData?.phone || '400-9955-161'

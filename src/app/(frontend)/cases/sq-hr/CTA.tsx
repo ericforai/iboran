@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Phone, Mail } from 'lucide-react'
+import { ArrowRight, Phone } from 'lucide-react'
 
 export default function CTA() {
   return (

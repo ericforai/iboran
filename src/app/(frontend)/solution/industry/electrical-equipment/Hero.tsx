@@ -31,10 +31,10 @@ export default function Hero() {
               </div>
               
               {/* Main Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 <span className="text-cyan-400">智造</span>电气未来<br/>
                 <span className="text-[#E60012]">数智驱动</span>产业升级
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP超级版为电气装备行业提供智能制造、项目型生产、供应链协同的一站式数字化解决方案

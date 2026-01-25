@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { TrendingUp, TrendingDown, AlertCircle, CheckCircle, PieChart, BarChart } from 'lucide-react'
+import { TrendingUp, AlertCircle, CheckCircle } from 'lucide-react'
 
 // 模拟仪表盘数据
 const stats = [

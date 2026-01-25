@@ -6,6 +6,8 @@ import { Features } from './Features'
 import { CoreCapabilities } from './CoreCapabilities'
 import { ValueSection } from './ValueSection'
 import { CTASection } from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '主数据管理 MDM - 企业级主数据治理平台 | 用友 BIP',
@@ -20,12 +22,21 @@ export const metadata: Metadata = {
 export default function MDMPage() {
   return (
     <main className="min-h-screen bg-white">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <PainPoints />
       <Architecture />
       <Features />
       <CoreCapabilities />
       <ValueSection />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/products/mdm"
+        variant="product"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

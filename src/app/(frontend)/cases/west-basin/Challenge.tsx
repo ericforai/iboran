@@ -1,4 +1,4 @@
-import { AlertCircle, ZapOff, FileWarning, Wallet } from 'lucide-react'
+import { ZapOff, FileWarning, Wallet } from 'lucide-react'
 
 export default function Challenge() {
   const challenges = [

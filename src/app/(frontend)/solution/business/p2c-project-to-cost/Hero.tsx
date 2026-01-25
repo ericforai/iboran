@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { ArrowRight, CheckCircle, TrendingUp, BarChart3, Layers } from 'lucide-react'
+import { ArrowRight, CheckCircle, TrendingUp, BarChart3 } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 
 export default function Hero() {
@@ -26,10 +26,10 @@ export default function Hero() {
                 P2C: Project to Cost 解决方案
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 实现<span className="text-[#0052D9]">项目</span>到<br/>
                 <span className="text-[#E60012]">成本</span>的精细化管控
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 全生命周期数字化管理闭环。打通立项、计划、预算、采购、合同、劳务、分包到最终成本结转，让每一分钱都花在明处。

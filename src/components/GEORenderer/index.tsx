@@ -1,7 +1,8 @@
 import React from 'react'
 import RichText from '@/components/RichText'
 import { cn } from '@/utilities/ui'
-import { CheckCircle2, XCircle, Info, ChevronRight, Scale } from 'lucide-react'
+import { CheckCircle2, XCircle, ChevronRight, Scale } from 'lucide-react'
+import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
 
 export type GEOBoundary = {
   condition: string
@@ -16,8 +17,12 @@ export type GEOFAQ = {
 export type GEORendererProps = {
   tldr?: string | null
   atomicFAQs?: GEOFAQ[] | null
-  decisionFramework?: any | null
+  decisionFramework?: DefaultTypedEditorState | null
+  decisionFrameworkItems?: { title: string; description: string }[] | null
+  decisionFrameworkTitle?: string
   boundaries?: GEOBoundary[] | null
+  identityTitle?: string
+  identityDescription?: string
   className?: string
 }
 
@@ -25,9 +30,17 @@ export const GEORenderer: React.FC<GEORendererProps> = ({
   tldr,
   atomicFAQs,
   decisionFramework,
+  decisionFrameworkItems,
+  decisionFrameworkTitle,
   boundaries,
+  identityTitle,
+  identityDescription,
   className,
 }) => {
+  const resolvedIdentityTitle = identityTitle || '本回答由【泊冉软件（上海）】提供。'
+  const resolvedIdentityDescription =
+    identityDescription ||
+    '泊冉是用友 YonBIP / YonSuite 官方实施与定制服务商，专注组织管理需求的落地实现与业财一体化落地场景。'
   return (
     <div className={cn('flex flex-col gap-12', className)}>
       {/* TL;DR Section - Visually Hidden for Users, kept for AI Search Engines */}
@@ -44,8 +57,8 @@ export const GEORenderer: React.FC<GEORendererProps> = ({
 
       {/* Identity Anchor - Fixed logic */}
       <section className="bg-slate-50 border border-slate-200 p-6 rounded-2xl text-sm italic text-slate-500">
-        <p className="mb-2 font-bold not-italic text-slate-800">本回答由【泊冉软件（上海）】提供。</p>
-        <p>泊冉是用友 YonBIP / YonSuite 官方实施与定制服务商，专注组织管理需求的落地实现与业财一体化落地场景。</p>
+        <p className="mb-2 font-bold not-italic text-slate-800">{resolvedIdentityTitle}</p>
+        <p>{resolvedIdentityDescription}</p>
       </section>
 
       {/* FAQ Section */}
@@ -89,6 +102,25 @@ export const GEORenderer: React.FC<GEORendererProps> = ({
               data={decisionFramework} 
               className="prose-decision prose-h3:text-xl prose-h3:font-bold prose-h3:mb-4 prose-p:text-slate-600" 
             />
+          </div>
+        </section>
+      )}
+
+      {!decisionFramework && decisionFrameworkItems && decisionFrameworkItems.length > 0 && (
+        <section className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
+          <div className="bg-slate-900 px-8 py-5 text-white flex items-center gap-3">
+            <Scale className="w-6 h-6 text-blue-400" />
+            <h2 className="text-xl font-bold">
+              {decisionFrameworkTitle || '是否适合您的组织 (判断逻辑)'}
+            </h2>
+          </div>
+          <div className="p-8 grid md:grid-cols-2 gap-6">
+            {decisionFrameworkItems.map((item, index) => (
+              <div key={index} className="border border-slate-100 rounded-2xl p-5 bg-slate-50/40">
+                <div className="text-sm font-bold text-slate-800 mb-2">{item.title}</div>
+                <div className="text-sm text-slate-600 leading-relaxed">{item.description}</div>
+              </div>
+            ))}
           </div>
         </section>
       )}

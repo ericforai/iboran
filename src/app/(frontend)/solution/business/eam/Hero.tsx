@@ -27,10 +27,10 @@ export default function Hero() {
                   YonBIP & YonSuite 资产管理
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-5xl font-extrabold text-[#1F2329] mb-8 leading-[1.25]">
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1F2329] mb-8 leading-[1.25]">
                 EAM 资产 <br />
                 <span className="text-[#E60012]">全生命周期</span> 数智化平台
-              </h1>
+              </h2>
               <p className="text-xl text-[#0052D9] font-medium mb-8">
                 从获取到退役：实现资产全生命周期端到端管理
               </p>

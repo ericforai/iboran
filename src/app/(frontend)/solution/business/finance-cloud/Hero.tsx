@@ -28,10 +28,10 @@ export default function Hero() {
                   YonBIP & YonSuite 财务云
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-5xl font-extrabold text-[#1E293B] mb-6 leading-[1.15] tracking-tight">
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1E293B] mb-6 leading-[1.15] tracking-tight">
                 BIP 智能财务 <br />
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2563EB] to-[#F97316]">从价值记录到价值创造</span>
-              </h1>
+              </h2>
               <p className="text-xl text-[#2563EB] font-semibold mb-6">
                 事项法会计 · 业财联动 · 智能核算 · 全球司库
               </p>

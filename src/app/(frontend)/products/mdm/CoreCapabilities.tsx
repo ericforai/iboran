@@ -8,8 +8,7 @@ import {
   GitBranch, 
   FileSpreadsheet, 
   UploadCloud,
-  Globe2,
-  Lock
+  Globe2
 } from 'lucide-react'
 
 const capabilities = [

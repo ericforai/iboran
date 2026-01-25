@@ -6,6 +6,7 @@ import { PageRange } from '@/components/PageRange'
 import { Pagination } from '@/components/Pagination'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import type { Where } from 'payload'
 import PageClient from './page.client'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { Phone } from 'lucide-react'
@@ -36,7 +37,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   const page = searchParams.page ? parseInt(searchParams.page) : 1
   const categorySlug = searchParams.category
 
-  const where: any = {}
+  const where: Where = {}
   if (categorySlug) {
     const activeCategory = categories.docs.find((cat) => cat.slug === categorySlug)
 

@@ -2,8 +2,16 @@
 
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
-const clients = [
+type Client = {
+  name: string
+  logo?: string
+  href?: string
+  className?: string
+}
+
+const clients: Client[] = [
   { name: '汉堡王', logo: '/logos/burger-king.svg', href: '/cases/han-bao-wang' },
   { name: 'M Stand', logo: '/logos/mstand.png', href: '/cases/mstand' },
   { name: 'Tim Hortons', logo: '/logos/tim-hortons.svg', href: '/cases/tims' },
@@ -48,13 +56,15 @@ export const LogoWall = () => {
             const content = (
               <>
                 {client.logo ? (
-                  <img
+                  <Image
                     src={client.logo}
                     alt={client.name}
-                    className={`max-h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-110 ${(client as any).className || ''}`}
+                    width={160}
+                    height={96}
+                    className={`max-h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-110 ${client.className || ''}`}
                     onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                      e.currentTarget.style.display = 'none'
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden')
                     }}
                   />
                 ) : null}

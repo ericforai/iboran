@@ -2,26 +2,26 @@
 
 import React from 'react'
 
-export interface FadeInProps {
+export type FadeInProps<T extends React.ElementType = 'div'> = {
   children: React.ReactNode
   delay?: number
   duration?: number
   className?: string
-  as?: React.ElementType
-}
+  as?: T
+} & Omit<React.ComponentPropsWithoutRef<T>, 'as'>
 
 /**
  * CSS-based fade in animation - lightweight alternative to Framer Motion
  * Uses Tailwind's animate-fade-in with inline styles for delay/duration control
  */
-export function FadeIn({
+export function FadeIn<T extends React.ElementType = 'div'>({
   children,
   delay = 0,
   duration = 600,
   className = '',
-  as: Component = 'div',
+  as: Component = 'div' as T,
   ...props
-}: FadeInProps) {
+}: FadeInProps<T>) {
   return (
     <Component
       className={`animate-fade-in opacity-0 ${className}`}

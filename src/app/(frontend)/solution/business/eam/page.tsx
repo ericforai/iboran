@@ -6,6 +6,8 @@ import HowItWorks from './HowItWorks'
 import ValueSection from './ValueSection'
 import CustomerSuccess from './CustomerSuccess'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: 'EAM 资产全生命周期管理 | 泊冉软件',
@@ -20,12 +22,21 @@ export const metadata: Metadata = {
 export default function EAMPage() {
   return (
     <>
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <PainPoints />
       <Features />
       <HowItWorks />
       <ValueSection />
       <CustomerSuccess />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/business/eam"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </>
   )

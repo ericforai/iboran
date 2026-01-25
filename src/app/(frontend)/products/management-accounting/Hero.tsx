@@ -25,11 +25,11 @@ export default function Hero() {
             <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wider text-blue-400 uppercase bg-blue-400/10 border border-blue-400/20 rounded-full">
               BIP 管理会计解决方案
             </span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
               业财融合 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">财管分离</span>
               <br />
               数智化成本决策引擎
-            </h1>
+            </h2>
             <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
               基于事项会计中台，构建财务合规与管理决策双重体系。
               实现从实时模拟到智能月结的全链路数字化管控，助力大型企业降本增效。

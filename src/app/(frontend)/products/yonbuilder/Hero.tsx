@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Sparkles, ArrowRight, Code2, Zap, Smartphone, Layers } from 'lucide-react'
+import { ArrowRight, Code2, Zap, Smartphone, Layers } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { DashboardMockup } from './DashboardMockup'
 
@@ -31,12 +31,12 @@ export default function Hero() {
                 <span>企业级低代码开发平台</span>
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
+              <h2 className="text-4xl lg:text-6xl font-bold text-[#1F2329] leading-tight mb-6">
                 YonBuilder <br/>
                 <span className="text-2xl lg:text-4xl text-slate-600 font-semibold mt-2 block leading-snug">
                   让创新触手可及，构建未来企业级应用
                 </span>
-              </h1>
+              </h2>
               
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 基于云原生模型驱动架构，提供“零代码、低代码、全代码”一体化开发能力。

@@ -25,10 +25,10 @@ export default function Hero() {
                   YonBIP & YonSuite 数据平台
                 </span>
               </div>
-              <h1 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
+              <h2 className="text-4xl lg:text-6xl font-extrabold text-[#1F2329] mb-6 leading-[1.15]">
                 DMP 数据开发 <br />
                 <span className="text-[#E60012]">与应用</span> 平台
-              </h1>
+              </h2>
               <p className="text-xl text-[#0052D9] font-medium mb-6">
                 数据驱动决策：构建企业数据中台
               </p>

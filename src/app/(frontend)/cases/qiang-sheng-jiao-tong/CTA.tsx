@@ -62,7 +62,7 @@ export default function CTA() {
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-5 h-5" />
-              <span>contact@iboran.com</span>
+              <span>wyz@iboran.com</span>
             </div>
           </div>
         </div>

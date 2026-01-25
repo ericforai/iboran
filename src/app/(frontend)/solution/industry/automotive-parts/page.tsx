@@ -6,6 +6,8 @@ import KeyScenarios from './KeyScenarios'
 import IndustryCases from './IndustryCases'
 import ValueSection from './ValueSection'
 import CTASection from './CTASection'
+import { GeoSection } from '@/components/GeoSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '汽配行业解决方案 - 数字化转型 | 泊冉软件',
@@ -15,12 +17,21 @@ export const metadata: Metadata = {
 export default function AutomotivePartsSolutionPage() {
   return (
     <main className="min-h-screen bg-white">
+      <SeoH1 title={metadata.title as string} />
       <Hero />
       <IndustryChallenges />
       <SolutionOverview />
       <KeyScenarios />
       <ValueSection />
       <IndustryCases />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        keywords={metadata.keywords}
+        url="https://www.iboran.com/solution/industry/automotive-parts"
+        variant="solution"
+        showDecisionFramework
+      />
       <CTASection />
     </main>
   )

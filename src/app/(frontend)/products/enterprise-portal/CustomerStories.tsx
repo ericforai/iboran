@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Quote } from 'lucide-react'
+import { Quote } from 'lucide-react'
 
 export function CustomerStories() {
   return (

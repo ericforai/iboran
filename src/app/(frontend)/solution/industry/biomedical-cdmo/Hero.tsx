@@ -26,12 +26,12 @@ export function Hero() {
                 <span>生物医药 CDMO 研产一体化</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6 leading-tight">
                 AI助力CDMO企业
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
                   提效、高质、合规
                 </span>
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 聚焦 CDMO 企业项目管理、精细成本核算与 GMP/CSV 质量合规，打通研发创新到商业化生产的全链路，培育医药新质生产力。

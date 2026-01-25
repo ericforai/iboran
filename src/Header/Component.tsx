@@ -3,6 +3,7 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import React from 'react'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import type { CollectionSlug } from 'payload'
 
 import type { Header } from '@/payload-types'
 
@@ -10,7 +11,7 @@ export async function Header() {
   const headerData = (await getCachedGlobal('header', 1)()) as Header
   const payload = await getPayload({ config: configPromise })
 
-  const navItems = headerData.navItems || []
+  const navItems = (headerData.navItems ?? []) as NonNullable<Header['navItems']>
   
   const enrichedNavItems = await Promise.all(navItems.map(async (item) => {
     if (item.blockType === 'navGroup') {
@@ -19,7 +20,7 @@ export async function Header() {
             if (nestedItem.blockType === 'collectionMenu') {
                  try {
                     const { docs } = await payload.find({
-                        collection: nestedItem.collectionSlug as any,
+                        collection: nestedItem.collectionSlug as CollectionSlug,
                         limit: nestedItem.limit || 5,
                     })
                     return { ...nestedItem, docs }
@@ -36,7 +37,7 @@ export async function Header() {
     if (item.blockType === 'collectionMenu') {
         try {
             const { docs } = await payload.find({
-                collection: item.collectionSlug as any,
+                collection: item.collectionSlug as CollectionSlug,
                 limit: item.limit || 5,
             })
             return { ...item, docs }

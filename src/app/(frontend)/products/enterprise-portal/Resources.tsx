@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Download, FileText, Play, Video } from 'lucide-react'
+import type { SVGProps } from 'react'
+import { Download, FileText, Video } from 'lucide-react'
 
 const resources = [
   {
@@ -92,6 +93,6 @@ function ArrowRightIcon() {
     return <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
 }
 
-function CodeIcon(props: any) {
+function CodeIcon(props: SVGProps<SVGSVGElement>) {
     return <svg {...props} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
 }

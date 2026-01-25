@@ -4,6 +4,11 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
+## [x] Track: Pre-launch Audit Fixes (SEO/GEO/Conversion)
+*Link: [./conductor/tracks/pre_launch_audit_20260121/](./conductor/tracks/pre_launch_audit_20260121/)*
+
+---
+
 ## [x] Track: Implement the "Industry Solutions" and "Success Stories" framework
 *Link: [./conductor/tracks/solutions_success_20251220/](./conductor/tracks/solutions_success_20251220/)*
 

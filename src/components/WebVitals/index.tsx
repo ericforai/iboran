@@ -7,7 +7,7 @@ export function WebVitals() {
     // 动态导入 web-vitals 库
     // @ts-expect-error - next/dist/compiled/web-vitals is an internal module
     import('next/dist/compiled/web-vitals').then(({ onCLS, onFCP, onLCP, onTTFB, onINP }) => {
-      const reportMetric = (metric: any) => {
+      const reportMetric = (metric: { name: string; value: number; rating?: string }) => {
         const rating = metric.rating || 'unknown'
         const emoji = rating === 'good' ? '✅' : rating === 'needs-improvement' ? '⚠️' : '❌'
         const color = rating === 'good' ? '#0CCE6B' : rating === 'needs-improvement' ? '#FFA400' : '#FF4E42'

@@ -31,10 +31,10 @@ export default function Hero() {
               </div>
               
               {/* Main Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                <span className="text-emerald-400">数智驱动</span>负极材料<br/>
-                企业<span className="text-[#E60012]">IPO</span>进程
-              </h1>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                新材料行业<span className="text-emerald-400">数字化解决方案</span><br/>
+                支撑<span className="text-[#E60012]">IPO合规</span>与成本精细化
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 U9 cloud为新材料企业提供IPO合规、成本精细化核算、多组织协同的一站式数字化解决方案

@@ -35,9 +35,9 @@ export default function Hero({ title, tagline, description }: HeroProps) {
                 <ShieldCheck size={16} />
                 纵向 PDCA 全闭环管理
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold text-[#1F2329] mb-8 leading-[1.1] tracking-tight">
+              <h2 className="text-5xl md:text-7xl font-bold text-[#1F2329] mb-8 leading-[1.1] tracking-tight">
                 {title}
-              </h1>
+              </h2>
               <p className="text-2xl md:text-3xl text-[#0052D9] font-bold mb-8 flex items-center gap-3">
                 <span className="w-12 h-1 bg-[#E60012] rounded-full hidden md:block" />
                 {tagline}

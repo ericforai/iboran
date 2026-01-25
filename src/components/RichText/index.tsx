@@ -43,10 +43,10 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
   ...defaultConverters,
   ...LinkJSXConverter({ internalDocToHref }),
   ...getBlockConverters({
-    BannerBlock: BannerBlock as any,
-    CallToActionBlock: CallToActionBlock as any,
-    MediaBlock: MediaBlock as any,
-    CodeBlock: CodeBlock as any,
+    BannerBlock: BannerBlock as unknown as React.ComponentType<Record<string, unknown>>,
+    CallToActionBlock: CallToActionBlock as unknown as React.ComponentType<Record<string, unknown>>,
+    MediaBlock: MediaBlock as unknown as React.ComponentType<Record<string, unknown>>,
+    CodeBlock: CodeBlock as unknown as React.ComponentType<Record<string, unknown>>,
   })({ defaultConverters }).blocks,
 })
 

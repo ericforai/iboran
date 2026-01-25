@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Server, Share2, ShieldCheck, Database, Layers, Cloud, Boxes, Network } from 'lucide-react'
+import { Share2, Database, Boxes, Network, ShieldCheck } from 'lucide-react'
 
 const layers = [
   {

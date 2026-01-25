@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Database, Layout, Smartphone, Monitor, Server, Workflow, Key, Shield } from 'lucide-react'
+import { Database, Layout, Smartphone, Monitor, Workflow, Key, Shield } from 'lucide-react'
 
 export function Architecture() {
   return (

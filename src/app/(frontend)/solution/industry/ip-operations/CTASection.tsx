@@ -33,7 +33,7 @@ export default function CTASection() {
               </button>
               
               <a
-                href="tel:400-000-0000"
+                href="tel:400-9955-161"
                 className="px-10 py-4 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-lg font-bold hover:bg-white/20 transition-all flex items-center gap-2 text-lg"
               >
                 <Phone size={20} />

@@ -31,10 +31,10 @@ export default function Hero() {
               </div>
               
               {/* Main Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
                 <span className="text-blue-400">数智引领</span> 驱动工程<br/>
                 <span className="text-[#E60012]">全生命周期</span> 管控
-              </h1>
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP超级版为投资业主方提供从规划立项、招标、合同、进度到验收转固的业财一体化深度解决方案

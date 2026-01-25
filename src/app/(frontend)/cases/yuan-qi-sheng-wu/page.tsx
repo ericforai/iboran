@@ -5,13 +5,14 @@ import Challenge from './Challenge'
 import Solution from './Solution'
 import Results from './Results'
 import CTA from './CTA'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
-  title: '原启生物数字化转型案例 | 泊冉软件',
-  description: '医药与医疗健康行业正处于高合规要求与数字化转型的交汇点。从研发创新、合规生产到精准流通，企业亟需构建一套符合 GXP 标准的一体化管理体系。泊冉软件通过数智化平台，确保企业在严苛监管下实现效率与安全的双重跨越。 项目背景：原启生物提供创新生物药研发、细胞治疗产品开发及相关的技术服务平台。',
+  title: '原启生物数字化案例 - 生物医药业财一体化实战 | 泊冉软件',
+  description: '原启生物如何通过业财一体化实现研发-临床-商业化全流程打通？解决生物医药研发成本归集难、合规管理复杂问题。生物医药行业数字化转型实战案例。',
   openGraph: {
-    title: '原启生物数字化转型案例',
-    description: '原启生物提供创新生物药研发、细胞治疗产品开发及相关的技术服务平台。',
+    title: '原启生物数字化案例 - 生物医药业财一体化实战',
+    description: '原启生物如何通过业财一体化实现研发-临床-商业化全流程打通？解决生物医药研发成本归集难、合规管理复杂问题。生物医药行业数字化转型实战案例。',
   },
 }
 
@@ -23,6 +24,12 @@ export default function CaseStudyPage() {
       <Challenge />
       <Solution />
       <Results />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        url="https://www.iboran.com/cases/yuan-qi-sheng-wu"
+        variant="case"
+      />
       <CTA />
     </main>
   )

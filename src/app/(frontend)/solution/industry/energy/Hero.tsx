@@ -31,10 +31,10 @@ export default function Hero() {
               </div>
               
               {/* Main Title */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                <span className="text-amber-400">数智驱动</span>能源企业<br/>
-                <span className="text-[#E60012]">高质量</span>发展
-              </h1>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                能源行业<span className="text-amber-400">数智化解决方案</span><br/>
+                安全生产与<span className="text-[#E60012]">资产效率</span>双提升
+              </h2>
               
               <p className="text-lg md:text-xl text-slate-300 mb-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 用友BIP超级版为能源行业提供智能化生产、精细化管控、数字化转型的一站式解决方案

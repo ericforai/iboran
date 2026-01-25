@@ -50,11 +50,11 @@ const Hero = () => {
                 <span>芯片研发 (Fabless) 行业解决方案</span>
               </div>
               
-              <h1 className="text-4xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-                穿透委外黑盒<br />
-                <span className="text-blue-600">重塑芯片全生命周期</span><br />
-                数字化价值链
-              </h1>
+              <h2 className="text-4xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                芯片研发行业<span className="text-blue-600">数字化解决方案</span><br />
+                穿透委外与全生命周期<br />
+                可视化管控
+              </h2>
               
               <p className="text-lg lg:text-xl text-slate-600 mb-10 max-w-2xl mx-auto lg:mx-0">
                 针对 Fabless 芯片设计企业量身定制，打通研发创新、委外监控、精细化成本与全链路追溯，助力企业实现从设计到交付的端到端管控。

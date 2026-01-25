@@ -82,7 +82,7 @@ export default function Hero() {
             </h1>
             
             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-10 font-light">
-              从"网红爆款"到"长红品牌"。泊冉软件助力光合植造打通 ERP 与电商 OMS，构建营销费用精细化管控体系。
+              从“网红爆款”到“长红品牌”。泊冉软件助力光合植造打通 ERP 与电商 OMS，构建营销费用精细化管控体系。
             </p>
 
              <div className="flex flex-wrap gap-4">

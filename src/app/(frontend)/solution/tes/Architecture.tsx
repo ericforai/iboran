@@ -1,7 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
-
 export default function Architecture() {
   return (
     <section className="py-24 bg-slate-50">

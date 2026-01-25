@@ -1,138 +1,116 @@
+'use client'
+
 import React from 'react'
-import { Quote, CheckCircle2, Trophy, Globe } from 'lucide-react'
+import { Quote, ArrowRight } from 'lucide-react'
+import { SlideUp, FadeIn } from '@/components/animations'
+import { Badge } from '@/components/ui/badge'
 
-export const CaseLogosSection = () => {
-  const industries = [
-     { 
-       name: '新零售', 
-       breakthrough: '解决门店对账延迟与多平台核算孤岛',
-       clients: ['汉堡王', 'Tims', 'Costa', '林清轩'] 
-     },
-     { 
-       name: '智能制造', 
-       breakthrough: '实现 ERP 与 WMS/MES 生产全链路闭环',
-       clients: ['正帆科技', '开能健康', '捷太格特', '天田中国'] 
-     },
-     { 
-       name: '服务/互联网', 
-       breakthrough: '解决多组织精细化成本与全球财税合规',
-       clients: ['南极电商', '西域供应链', '爱数科技', '仕卿人力'] 
-     },
-     { 
-       name: '物流交通', 
-       breakthrough: '打通运输轨迹、汇率结算与自动账期管控',
-       clients: ['安能物流', '强生交通', '久事公交', '交运集团'] 
-     }
-  ]
+export interface CaseLogosSectionProps {
+  title?: string
+  subtitle?: string
+}
 
-  const testimonials = [
-    {
-      quote: "泊冉不仅是软件商，更是我们的业务顾问。通过业财一体化方案，我们的月度结账时间缩短了 40%，数据准确率提升至 99.9%。",
-      author: "某知名餐饮连锁",
-      role: "财务总监",
-      metric: "效率提升 +40%"
-    },
-    {
-      quote: "在跨国实施的复杂场景下，泊冉展示了极强的交付能力，解决了中国与亚洲多地数据合规痛点，是值得信赖的伙伴。",
-      author: "汉盛科技",
-      role: "IT 负责人",
-      metric: "全球运营稳健"
-    }
-  ]
+const industries = [
+  { 
+    name: '新零售', 
+    icon: '🛍️',
+    desc: '解决门店对账延迟与多平台核算孤岛',
+  },
+  { 
+    name: '智能制造', 
+    icon: '⚙️',
+    desc: '实现 ERP 与 WMS/MES 生产全链路闭环',
+  },
+  { 
+    name: '服务/互联网', 
+    icon: '🌐',
+    desc: '解决多组织精细化成本与全球财税合规',
+  },
+  { 
+    name: '物流交通', 
+    icon: '🚛',
+    desc: '打通运输轨迹、汇率结算与自动账期管控',
+  }
+]
 
-  const logos = [
-    'BURGER KING', 'SHELL', 'BILIBILI', 'SCHNEIDER', 'JONGSON', 'SF INTERNATIONAL', 'YTO EXPRESS', 'SHANGHAI BUS'
-  ]
-
+export const CaseLogosSection: React.FC<CaseLogosSectionProps> = React.memo(({
+  title = '深耕行业场景 驱动数智增长',
+  subtitle = '泊冉软件助力各行业领军企业实现业财合一，提升全球化经营竞争力',
+}) => {
   return (
-    <>
-      {/* Snap Page 1: Industry Cards */}
-      <div className="min-h-screen flex flex-col justify-center snap-start snap-always py-24 lg:py-20 relative isolate">
-        <div className="container mx-auto px-4">
+    <section className="py-24 bg-white relative overflow-hidden">
+      <div className="container px-4 mx-auto">
         {/* Section Header */}
-        <div className="max-w-3xl mb-12">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-8 h-[1px] bg-blue-600"></div>
-            <div className="text-[10px] font-mono font-bold text-blue-600 uppercase tracking-[0.4em]">价值交付记录 V3</div>
-          </div>
-          <h2 className="text-4xl lg:text-6xl font-heading font-black text-slate-950 tracking-tight leading-[1.1] mb-8">
-            赋能全球标杆<br />
-            见证数智进化
-          </h2>
-          <p className="text-xl text-slate-500 font-medium leading-relaxed">
-            从初创先锋到世界500强，2500+ 企业在泊冉的陪伴下，攻克业财孤岛，建立实时响应的数字底座。
-          </p>
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <Badge variant="blue" className="mb-4">SUCCESS STORIES</Badge>
+          <SlideUp>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2329] mb-6 tracking-tight">
+              {title}
+            </h2>
+          </SlideUp>
+          <FadeIn delay={200}>
+            <p className="text-lg text-slate-500">
+              {subtitle}
+            </p>
+          </FadeIn>
         </div>
 
-        {/* Industry Card Ledger */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-200 border border-slate-200 rounded-[32px] overflow-hidden shadow-xl">
-          {industries.map((industry, idx) => (
-            <div key={idx} className="bg-white p-10 hover:bg-slate-50 transition-all duration-500 group flex flex-col justify-between relative">
-
-              <div>
-                 <div className="flex items-center gap-3 mb-8">
-                    <div className="w-1.5 h-6 bg-slate-200 group-hover:bg-blue-600 transition-colors rounded-full"></div>
-                    <h3 className="text-xl font-heading font-bold text-slate-950 tracking-tight">{industry.name}</h3>
-                 </div>
-                 <div className="text-[10px] font-mono font-black text-blue-600 uppercase tracking-widest mb-4">核心突破节点</div>
-                 <p className="text-sm text-slate-500 font-medium leading-relaxed mb-10">
-                   {industry.breakthrough}
-                 </p>
+        {/* Industry Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {industries.map((item, index) => (
+            <SlideUp key={item.name} delay={index * 50}>
+              <div className="group bg-slate-50 p-8 rounded-2xl border border-transparent hover:border-blue-500/20 hover:bg-white hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-500 cursor-pointer h-full flex flex-col">
+                <div className="mb-6 w-12 h-12 rounded-xl bg-white flex items-center justify-center text-2xl shadow-sm group-hover:bg-blue-600 group-hover:scale-110 transition-all">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold text-[#1F2329] mb-3 group-hover:text-blue-600 transition-colors uppercase">{item.name}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-1">
+                  {item.desc}
+                </p>
+                <div className="flex items-center gap-2 text-sm font-bold text-[#1F2329] group-hover:text-blue-600 transition-all mt-auto">
+                  查看行业案例
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
               </div>
-              
-              <div className="space-y-3 pt-6 border-t border-slate-100">
-                {industry.clients.map((client, cIdx) => (
-                  <div key={cIdx} className="text-slate-400 font-bold text-[10px] uppercase tracking-wider flex items-center gap-2">
-                    <CheckCircle2 className="w-3 h-3 text-blue-600/30" />
-                    {client}
-                  </div>
-                ))}
-              </div>
-            </div>
+            </SlideUp>
           ))}
         </div>
-      </div>
-     </div>
 
-      {/* Page 2: Testimonials */}
-      <div className="py-32 bg-slate-50 overflow-hidden relative isolate border-b border-slate-100">
-        <div className="container mx-auto px-4">
-
-        {/* Precision Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-200 border border-slate-200 rounded-[48px] overflow-hidden mb-24 shadow-2xl">
-           {testimonials.map((t, i) => (
-             <div key={i} className="group relative bg-slate-950 p-12 lg:p-16 text-white overflow-hidden">
-                <div className="absolute top-0 right-0 p-12 font-mono text-white/5 text-[120px] font-black leading-none select-none">
-                   {i === 0 ? '“' : '”'}
-                </div>
-                
-                <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white mb-10">
-                   <Quote size={20} fill="currentColor" />
-                </div>
-                
-                <p className="text-xl lg:text-2xl font-medium leading-relaxed mb-12 relative z-10 tracking-tight text-slate-300">
-                   {t.quote}
-                </p>
-                
-                <div className="flex items-center justify-between border-t border-white/10 pt-10 mt-auto">
-                   <div className="flex items-center gap-6">
-                      <div className="hidden sm:block w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-blue-400 border border-white/10">
-                         <Globe size={20} />
+        {/* Global Testimonial Bar */}
+        <div className="relative">
+          <div className="absolute inset-0 bg-[#001529] rounded-[2rem] transform -rotate-1 hidden lg:block"></div>
+          <div className="relative bg-[#001529] rounded-[2rem] p-8 md:p-16 overflow-hidden shadow-2xl">
+             <div className="absolute inset-0 opacity-[0.03] bg-[url('/grid.svg')]" />
+             
+             <div className="flex flex-col lg:flex-row gap-12 items-center relative z-10">
+                <div className="lg:w-1/2">
+                   <Quote className="text-blue-500/30 w-16 h-16 mb-6" />
+                   <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-8">
+                     &ldquo;泊冉软件的全球司库与业财合一方案，帮助我们实现了全球 15 个国家的实时资金调配，月度对账效率提升了 80% 以上。&rdquo;
+                   </h3>
+                   <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold">
+                        张
                       </div>
                       <div>
-                         <div className="font-heading font-black text-lg tracking-tight">{t.author}</div>
-                         <div className="text-[10px] font-mono text-white/40 font-bold uppercase tracking-widest">{t.role}</div>
+                        <div className="text-white font-bold">张强</div>
+                        <div className="text-slate-500 text-sm">某全球领军科技企业 · CFO</div>
                       </div>
                    </div>
-                   <div className="px-4 py-2 bg-blue-600/10 border border-blue-500/20 rounded-md text-[10px] font-mono font-black text-blue-400 uppercase">
-                      {t.metric}
-                   </div>
+                </div>
+                <div className="lg:w-1/2 grid grid-cols-2 md:grid-cols-3 gap-8 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                    {[1,2,3,4,5,6].map(i => (
+                        <div key={i} className="h-12 flex items-center justify-center border border-white/5 rounded-lg bg-white/5 backdrop-blur-sm">
+                            <div className="w-24 h-4 bg-white/10 rounded-full animate-pulse"></div>
+                        </div>
+                    ))}
                 </div>
              </div>
-           ))}
+          </div>
         </div>
       </div>
-    </div>
-    </>
+    </section>
   )
-}
+})
+
+CaseLogosSection.displayName = 'CaseLogosSection'

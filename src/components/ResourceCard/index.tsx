@@ -10,32 +10,29 @@ export const ResourceCard: React.FC<{
   resource: Resource
   variant?: 'vertical' | 'horizontal'
 }> = ({ className, resource, variant = 'vertical' }) => {
-  // 扩展类型以支持网页版白皮书
-  const extendedResource = resource as any
-
-  const { title, summary, gated, url, filesize } = resource
+  const { title, summary, gated, url, filesize, contentType, slug } = resource
 
   const fileSizeString = filesize
     ? `${(filesize / 1024 / 1024).toFixed(2)} MB `
     : ''
 
-  const isWebpage = extendedResource.contentType === 'webpage'
-  const slug = extendedResource.slug || ''
+  const isWebpage = contentType === 'webpage'
+  const resourceSlug = slug || ''
 
   // 网页版白皮书的链接
-  const webPageUrl = isWebpage && slug ? `/resources/${slug}` : null
+  const webPageUrl = isWebpage && resourceSlug ? `/resources/${resourceSlug}` : null
   const fileUrl = url || '#'
 
   // 解锁状态检查
   const [isUnlocked, setIsUnlocked] = React.useState(false)
 
   React.useEffect(() => {
-    if (isWebpage && slug) {
+    if (isWebpage && resourceSlug) {
       try {
         const unlockedData = localStorage.getItem('unlocked-whitepapers')
         if (unlockedData) {
           const unlocked: Record<string, boolean> = JSON.parse(unlockedData)
-          if (unlocked[resource.id] || unlocked[slug]) {
+          if (unlocked[resource.id] || unlocked[resourceSlug]) {
             setIsUnlocked(true)
           }
         }
@@ -43,7 +40,7 @@ export const ResourceCard: React.FC<{
         // ignore
       }
     }
-  }, [isWebpage, slug, resource.id])
+  }, [isWebpage, resourceSlug, resource.id])
 
   const handleClick = (e: React.MouseEvent) => {
     if (isWebpage && webPageUrl) {

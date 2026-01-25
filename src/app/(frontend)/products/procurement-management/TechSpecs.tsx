@@ -1,5 +1,4 @@
-import React from 'react'
-import { Server, ShieldCheck, Database, Cpu } from 'lucide-react'
+import { Server, ShieldCheck, Database } from 'lucide-react'
 
 export const TechSpecs = () => {
   const specs = [

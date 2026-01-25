@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Download } from 'lucide-react'
+import Image from 'next/image'
 
 export const Hero = () => {
   return (
@@ -9,10 +10,10 @@ export const Hero = () => {
         <div className="flex flex-wrap items-center -mx-4">
           <div className="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
             <div className="max-w-lg">
-              <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 leading-tight">
                 项目协同管理系统：<br />
                 <span className="text-brand-blue">让项目执行从“黑盒”走向透明</span>
-              </h1>
+              </h2>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 解决渐进明细管理差、跨部门协作难、进度不可控等核心痛点，实现项目从立项到交付的全过程数智化监管。
               </p>
@@ -45,9 +46,11 @@ export const Hero = () => {
           <div className="w-full lg:w-1/2 px-4">
             <div className="relative">
               <div className="absolute -inset-4 bg-brand-blue/5 rounded-3xl transform rotate-2"></div>
-              <img
+              <Image
                 src="/images/solutions/project-management-hero.png"
                 alt="项目协同管理架构图"
+                width={1200}
+                height={900}
                 className="relative z-10 w-full h-auto rounded-2xl shadow-2xl border border-gray-100"
               />
             </div>

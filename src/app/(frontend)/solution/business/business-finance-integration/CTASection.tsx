@@ -23,10 +23,10 @@ export default function CTASection() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">
-              开启您的<span className="text-[#E60012]">数智化</span>业财升级之旅
+              30分钟免费诊断您的业财一体化痛点
             </h2>
             <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-              联系我们的行业专家，获取为您定制的“业财融合”数字化转型蓝图。
+              联系我们的行业专家，获取为您定制的“业财融合”数字化转型蓝图。解决数据孤岛、对账效率低、报表难产等难题。
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -35,7 +35,7 @@ export default function CTASection() {
                 className="w-full sm:w-auto px-10 py-5 bg-[#E60012] text-white font-bold rounded-xl hover:bg-red-700 transition-all shadow-xl hover:shadow-red-600/30 flex items-center justify-center gap-2 group"
               >
                 <MessageSquare size={20} />
-                预约专家演示
+                免费诊断业财痛点
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
               

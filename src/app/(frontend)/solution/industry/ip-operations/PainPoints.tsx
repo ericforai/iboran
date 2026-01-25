@@ -35,7 +35,7 @@ export default function PainPoints() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-bold text-[#1F2329] mb-4">
-              行业深度洞察：IP 运营的三大"效率杀手"
+              行业深度洞察：IP 运营的三大“效率杀手”
             </h2>
             <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6" />
             <p className="text-slate-600 max-w-2xl mx-auto">

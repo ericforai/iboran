@@ -12,17 +12,17 @@ export default function CTASection() {
       <section className="py-24 bg-[#1F2329]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            开启您的企业「财务数智化」升级之旅
+            下载 R2R 实施路线图白皮书
           </h2>
           <p className="text-slate-400 mb-10 max-w-2xl mx-auto text-lg">
-            泊冉软件作为用友铂金级合作伙伴，深耕企业财务数智化多年。我们不仅提供专业的 R2R 解决方案，更为您提供从管理咨询到技术实施的全方位支持。
+            从事项核算到全球报告，获取完整的 R2R 实施方法论与典型案例参考。泊冉作为用友铂金级合作伙伴，为您提供从管理咨询到技术实施的全方位支持。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
               onClick={() => setIsDemoOpen(true)}
               className="px-12 py-5 bg-[#E60012] text-white font-bold rounded-lg hover:bg-red-700 transition-all shadow-xl shadow-red-900/40 flex items-center gap-2 group text-lg"
             >
-              获取实施方案
+              下载实施路线图
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </button>
             <a

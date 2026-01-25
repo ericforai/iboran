@@ -6,9 +6,17 @@ export type GEOJsonLdProps = {
   faqs?: { question: string; answer: string }[] | null
   url: string
   image?: string
+  articleBody?: string
 }
 
-export const GEOJsonLd: React.FC<GEOJsonLdProps> = ({ title, description, faqs, url, image }) => {
+export const GEOJsonLd: React.FC<GEOJsonLdProps> = ({
+  title,
+  description,
+  faqs,
+  url,
+  image,
+  articleBody,
+}) => {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -38,6 +46,7 @@ export const GEOJsonLd: React.FC<GEOJsonLdProps> = ({ title, description, faqs, 
     headline: title,
     description: description,
     image: image,
+    articleBody: articleBody,
     author: {
       '@type': 'Organization',
       name: '泊冉软件（上海）',

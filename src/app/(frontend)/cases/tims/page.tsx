@@ -5,13 +5,14 @@ import Challenge from './Challenge'
 import Solution from './Solution'
 import Results from './Results'
 import CTA from './CTA'
+import { GeoSection } from '@/components/GeoSection'
 
 export const metadata: Metadata = {
-  title: 'tims数字化转型案例 | 泊冉软件',
-  description: 'tims（Tim Hortons）主要提供咖啡、茶饮、烘焙食品（如甜甜圈、贝果、三明治）、快餐简餐及轻食，同时提供外带、外卖和移动点餐服务。',
+  title: 'Tims咖啡数字化案例 - 连锁咖啡品牌业财一体化 | 泊冉软件',
+  description: 'Tims咖啡如何通过业财一体化打通多门店业务-财务-税务全链路？解决移动点餐数据对账、会员订单同步难题。连锁咖啡品牌数字化转型实战案例。',
   openGraph: {
-    title: 'Tims 数字化转型案例',
-    description: 'tims（Tim Hortons）主要提供咖啡、茶饮、烘焙食品（如甜甜圈、贝果、三明治）、快餐简餐及轻食，同时提供外带、外卖和移动点餐服务。',
+    title: 'Tims咖啡数字化案例 - 连锁咖啡品牌业财一体化',
+    description: 'Tims咖啡如何通过业财一体化打通多门店业务-财务-税务全链路？解决移动点餐数据对账、会员订单同步难题。连锁咖啡品牌数字化转型实战案例。',
   },
 }
 
@@ -23,6 +24,12 @@ export default function CaseStudyPage() {
       <Challenge />
       <Solution />
       <Results />
+      <GeoSection
+        title={metadata.title as string}
+        description={metadata.description as string}
+        url="https://www.iboran.com/cases/tims"
+        variant="case"
+      />
       <CTA />
     </main>
   )
