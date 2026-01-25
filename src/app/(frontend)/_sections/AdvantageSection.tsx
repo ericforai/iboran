@@ -100,36 +100,37 @@ export const AdvantageSection: React.FC<AdvantageSectionProps> = React.memo(({
           </div>
 
           {/* Advantage Grid */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            <StaggerContainer staggerDelay={100}>
-              {advantages.map((adv, idx) => (
-                <div
-                  key={idx}
-                  className="p-8 lg:p-12 bg-white/[0.03] border border-white/10 rounded-[32px] backdrop-blur-sm hover:bg-white/[0.05] hover:border-cyan-500/30 transition-all duration-500 group relative overflow-hidden hover:-translate-y-2"
-                >
-                  <div className="absolute top-0 right-0 p-6 font-mono text-[9px] font-bold text-slate-600 uppercase tracking-widest z-0 flex items-center gap-2">
-                     <div className="w-1 h-1 bg-cyan-500/40 rounded-full"></div>
-                     DATA_INDEX_0{idx + 1}
-                  </div>
-
-                  <div className="flex items-baseline gap-2 mb-8 relative z-10">
-                     <span className="text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tighter group-hover:text-cyan-400 transition-colors duration-500">
-                        <AnimatedNumber value={adv.number} />
-                     </span>
-                     <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest">{adv.unit}</span>
-                  </div>
-
-                  <div className="relative z-10">
-                     <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 tracking-tight flex items-center gap-3">
-                        {adv.label}
-                        <div className="h-px flex-1 bg-white/5 group-hover:bg-cyan-500/20 transition-colors"></div>
-                     </h3>
-                     <p className="text-slate-400 font-medium leading-relaxed text-sm lg:text-base">{adv.desc}</p>
-                  </div>
+          <StaggerContainer 
+            staggerDelay={100} 
+            className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+          >
+            {advantages.map((adv, idx) => (
+              <div
+                key={idx}
+                className="p-8 lg:p-12 bg-white/[0.03] border border-white/10 rounded-[32px] backdrop-blur-sm hover:bg-white/[0.05] hover:border-cyan-500/30 transition-all duration-500 group relative overflow-hidden hover:-translate-y-2"
+              >
+                <div className="absolute top-0 right-0 p-6 font-mono text-[9px] font-bold text-slate-600 uppercase tracking-widest z-0 flex items-center gap-2">
+                   <div className="w-1 h-1 bg-cyan-500/40 rounded-full"></div>
+                   DATA_INDEX_0{idx + 1}
                 </div>
-              ))}
-            </StaggerContainer>
-          </div>
+
+                <div className="flex items-baseline gap-2 mb-8 relative z-10">
+                   <span className="text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tighter group-hover:text-cyan-400 transition-colors duration-500">
+                      <AnimatedNumber value={adv.number} />
+                   </span>
+                   <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest">{adv.unit}</span>
+                </div>
+
+                <div className="relative z-10">
+                   <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 tracking-tight flex items-center gap-3">
+                      {adv.label}
+                      <div className="h-px flex-1 bg-white/5 group-hover:bg-cyan-500/20 transition-colors"></div>
+                   </h3>
+                   <p className="text-slate-400 font-medium leading-relaxed text-sm lg:text-base">{adv.desc}</p>
+                </div>
+              </div>
+            ))}
+          </StaggerContainer>
         </div>
 
         <DemoRequestModal 
