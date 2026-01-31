@@ -23,6 +23,7 @@ import { productCategories } from '@/data/products'
 import type { Contact } from '@/payload-types'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
+import { useConversionTracking } from '@/hooks/useConversionTracking'
 
 interface NavbarClientProps {
   menuItems: Array<{
@@ -54,6 +55,7 @@ const NavbarStateContext = React.createContext<{
   handleMenuEnter: (label: string) => void
   handleMenuLeave: () => void
   handleOpenDemo: () => void
+  handlePhoneClick: () => void
 } | null>(null)
 
 function useNavbarState() {
@@ -75,6 +77,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
   const [megaMenuTab, setMegaMenuTab] = useState<'business' | 'industry'>('business')
   const [mobileSolutionTab, setMobileSolutionTab] = useState<'business' | 'industry'>('business')
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const { trackWeChatOpen, trackPhoneCall } = useConversionTracking()
 
   // Close menu on route change
   useEffect(() => {
@@ -150,8 +153,13 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
 
   const handleOpenConsult = React.useCallback(() => {
     setIsMobileMenuOpen(false)
+    trackWeChatOpen('navbar')
     setIsConsultModalOpen(true)
-  }, [])
+  }, [trackWeChatOpen])
+
+  const handlePhoneClick = React.useCallback(() => {
+    trackPhoneCall('navbar')
+  }, [trackPhoneCall])
 
   const toggleMobileDropdown = React.useCallback((label: string) => {
     setMobileActiveDropdown((prev) =>
@@ -177,6 +185,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     handleMenuEnter,
     handleMenuLeave,
     handleOpenDemo,
+    handlePhoneClick,
   }), [
     activeDropdown,
     isMobileMenuOpen,
@@ -187,7 +196,8 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     isConsultModalOpen,
     handleMenuEnter,
     handleMenuLeave,
-    handleOpenDemo
+    handleOpenDemo,
+    handlePhoneClick,
   ])
 
   return (
@@ -217,7 +227,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
 
 // Inline navigation and actions component
 const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }: NavbarClientProps) {
-  const { activeDropdown, setActiveDropdown, handleMenuEnter, handleMenuLeave, setIsMobileMenuOpen, isMobileMenuOpen, handleOpenDemo } = useNavbarState()
+  const { activeDropdown, setActiveDropdown, handleMenuEnter, handleMenuLeave, setIsMobileMenuOpen, isMobileMenuOpen, handleOpenDemo, handlePhoneClick } = useNavbarState()
   const phone = contactData?.phone || '400-9955-161'
 
   return (
@@ -254,6 +264,7 @@ const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }
       <div className="flex items-center gap-4 lg:gap-6">
         <Link
           href={`tel:${phone.replace(/\s+/g, '')}`}
+          onClick={handlePhoneClick}
           className="hidden xl:flex items-center gap-2 text-sm font-semibold text-[#1F2329] hover:text-[#0052D9] transition-colors"
         >
           <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
@@ -631,6 +642,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
     mobileActiveDropdown,
     mobileSolutionTab,
     setMobileSolutionTab,
+    handlePhoneClick,
   } = useNavbarState()
 
   const phone = contactData?.phone || '400-9955-161'
@@ -842,7 +854,10 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
           <div className="p-4 border-t border-gray-100 space-y-3">
             <Link
               href="tel:4009955161"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false)
+                handlePhoneClick()
+              }}
               className="flex items-center justify-center gap-2 py-3 text-sm font-medium text-[#0052D9] hover:bg-blue-50 rounded-md transition-colors"
             >
               <Phone className="w-4 h-4" />

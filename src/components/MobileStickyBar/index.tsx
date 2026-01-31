@@ -5,15 +5,23 @@ import { Phone, MessageSquare, Presentation } from 'lucide-react'
 import type { Contact } from '@/payload-types'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
+import { useConversionTracking } from '@/hooks/useConversionTracking'
 
 export const MobileStickyBar: React.FC<{ contactData?: Contact }> = React.memo(({ contactData }) => {
     const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
     const [isConsultModalOpen, setIsConsultModalOpen] = useState(false)
+    const { trackWeChatOpen, trackPhoneCall } = useConversionTracking()
 
     const handleOpenDemo = React.useCallback(() => setIsDemoModalOpen(true), [])
     const handleCloseDemo = React.useCallback(() => setIsDemoModalOpen(false), [])
-    const handleOpenConsult = React.useCallback(() => setIsConsultModalOpen(true), [])
+    const handleOpenConsult = React.useCallback(() => {
+        trackWeChatOpen('mobile-sticky')
+        setIsConsultModalOpen(true)
+    }, [trackWeChatOpen])
     const handleCloseConsult = React.useCallback(() => setIsConsultModalOpen(false), [])
+    const handlePhoneClick = React.useCallback(() => {
+        trackPhoneCall('mobile-sticky')
+    }, [trackPhoneCall])
 
     const phone = contactData?.phone || '400-9955-161'
 
@@ -23,6 +31,7 @@ export const MobileStickyBar: React.FC<{ contactData?: Contact }> = React.memo((
                 <div className="flex items-center gap-3">
                     <a
                         href={`tel:${phone.replace(/\s+/g, '')}`}
+                        onClick={handlePhoneClick}
                         className="flex-1 flex flex-col items-center justify-center gap-1 py-2 text-[#4B5563] active:bg-slate-50 transition-colors rounded-lg"
                     >
                         <Phone className="w-5 h-5" />

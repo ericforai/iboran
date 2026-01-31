@@ -5,6 +5,7 @@ import { MessageCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ConsultationModal } from '@/components/ConsultationModal'
 import type { Contact } from '@/payload-types'
+import { useConversionTracking } from '@/hooks/useConversionTracking'
 
 interface FloatingChatButtonProps {
   contactData?: Contact
@@ -16,8 +17,12 @@ export const FloatingChatButton: React.FC<FloatingChatButtonProps> = React.memo(
   showOnMobile = false,
 }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const { trackWeChatOpen } = useConversionTracking()
 
-  const handleOpenModal = React.useCallback(() => setIsModalOpen(true), [])
+  const handleOpenModal = React.useCallback(() => {
+    trackWeChatOpen('floating')
+    setIsModalOpen(true)
+  }, [trackWeChatOpen])
   const handleCloseModal = React.useCallback(() => setIsModalOpen(false), [])
 
   return (
