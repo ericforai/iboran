@@ -8,6 +8,17 @@ export interface LeadRequestData {
   phone: string
   source?: string
   resourceTitle?: string
+  // UTM 归因数据
+  utmData?: {
+    utm_source?: string
+    utm_medium?: string
+    utm_campaign?: string
+    utm_content?: string
+    utm_term?: string
+    referrer?: string
+    landingPage?: string
+    pageHistory?: string[]
+  }
 }
 
 export async function POST(req: Request) {
@@ -71,7 +82,7 @@ export async function POST(req: Request) {
       })
     }
 
-    // Create the lead
+    // Create the lead with UTM data
     await payload.create({
       collection: 'leads',
       data: {
@@ -80,6 +91,16 @@ export async function POST(req: Request) {
         phone: body.phone,
         source: body.source || 'unknown',
         resourceTitle: body.resourceTitle || '',
+        utmData: body.utmData || {
+          utm_source: '',
+          utm_medium: '',
+          utm_campaign: '',
+          utm_content: '',
+          utm_term: '',
+          referrer: '',
+          landingPage: '',
+          pageHistory: [],
+        },
       },
     })
 
