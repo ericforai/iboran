@@ -1116,6 +1116,43 @@ export interface Lead {
    */
   source?: string | null;
   resourceTitle?: string | null;
+  /**
+   * 自动捕获的 UTM 参数和归因信息
+   */
+  utmData?: {
+    /**
+     * 流量来源: baidu, google, wechat, douyin, email
+     */
+    utm_source?: string | null;
+    /**
+     * 媒介类型: cpc, organic, social, email
+     */
+    utm_medium?: string | null;
+    /**
+     * 活动名称: yonsuite_launch, spring_promo
+     */
+    utm_campaign?: string | null;
+    /**
+     * 内容标识: hero_cta, sidebar_banner
+     */
+    utm_content?: string | null;
+    /**
+     * 关键词: 用友实施, ERP系统
+     */
+    utm_term?: string | null;
+    /**
+     * 来源页面 URL
+     */
+    referrer?: string | null;
+    /**
+     * 首次访问页面 URL
+     */
+    landingPage?: string | null;
+    /**
+     * 访问路径历史 (JSON 数组)
+     */
+    pageHistory?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -1991,6 +2028,18 @@ export interface LeadsSelect<T extends boolean = true> {
   phone?: T;
   source?: T;
   resourceTitle?: T;
+  utmData?:
+    | T
+    | {
+        utm_source?: T;
+        utm_medium?: T;
+        utm_campaign?: T;
+        utm_content?: T;
+        utm_term?: T;
+        referrer?: T;
+        landingPage?: T;
+        pageHistory?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
