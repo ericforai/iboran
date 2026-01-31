@@ -1,3 +1,7 @@
+// Input: useAnalytics hook, process.env (GA_MEASUREMENT_ID, BAIDU_SITE_ID)
+// Output: GA4/百度统计事件发送，页面浏览跟踪
+// Pos: providers/Analytics - 根级 Provider，与 AttributionProvider 配合使用
+// 一旦我被更新，务必更新我的开头注释，以及所属的文件夹的 md。
 'use client'
 
 import React, { useEffect } from 'react'

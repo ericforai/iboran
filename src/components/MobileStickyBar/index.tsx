@@ -1,3 +1,7 @@
+// Input: useConversionTracking hook, DemoRequestModal, ConsultationModal, Contact global data
+// Output: 移动端底部栏组件，跟踪微信打开和电话点击转化
+// Pos: components/MobileStickyBar - 移动端底部栏组件
+// 一旦我被更新，务必更新我的开头注释，以及所属的文件夹的 md。
 'use client'
 
 import React, { useState } from 'react'

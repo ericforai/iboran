@@ -1,3 +1,7 @@
+// Input: useConversionTracking hook, ConsultationModal component, Contact global data
+// Output: 悬浮聊天按钮，跟踪微信咨询打开转化
+// Pos: components/FloatingChatButton - 悬浮按钮组件
+// 一旦我被更新，务必更新我的开头注释，以及所属的文件夹的 md。
 'use client'
 
 import React from 'react'

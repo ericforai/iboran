@@ -1,3 +1,7 @@
+// Input: useAnalytics hook, useAttribution hook
+// Output: 转化跟踪接口 (getAttributionData, trackLeadSubmit, trackWeChatOpen, trackWeChatCopy, trackPhoneCall, trackEvent)
+// Pos: hooks - 业务层 Hook，供组件调用转化跟踪功能
+// 一旦我被更新，务必更新我的开头注释，以及所属的文件夹的 md。
 'use client'
 
 import { useCallback } from 'react'

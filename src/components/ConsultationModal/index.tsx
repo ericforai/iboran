@@ -1,3 +1,7 @@
+// Input: useConversionTracking hook, Contact global data
+// Output: 咨询模态框 UI 组件，跟踪微信复制和电话点击转化
+// Pos: components/ConsultationModal - 模态框组件
+// 一旦我被更新，务必更新我的开头注释，以及所属的文件夹的 md。
 'use client'
 
 import React from 'react'

@@ -1,3 +1,7 @@
+// Input: 无外部依赖 (仅 UI 组件)
+// Output: UTM 链接生成器页面，供营销团队创建跟踪链接
+// Pos: app/(frontend)/tools/utm-builder - 工具页面
+// 一旦我被更新，务必更新我的开头注释，以及所属的文件夹的 md。
 'use client'
 
 import React, { useState, useMemo } from 'react'

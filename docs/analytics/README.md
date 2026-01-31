@@ -1,8 +1,57 @@
 # UTM 转化跟踪系统
 
+> 一旦我所属的文件夹有所变化，请更新我。
+
 **实施日期：** 2025-01-31
 **版本：** 1.0.0
 **状态：** ✅ 已上线
+
+---
+
+## 目录功能
+
+UTM 转化跟踪系统提供流量归因和转化分析能力，支持 GA4、百度统计和后端数据存储。
+
+---
+
+## 文件清单
+
+### 代码文件
+
+| 文件 | 类型 | 功能描述 |
+|------|------|----------|
+| `src/providers/Analytics/index.tsx` | React 组件/Provider | GA4 和百度统计事件发送，初始化跟踪脚本 |
+| `src/providers/Attribution/index.tsx` | React 组件/Provider | UTM 参数捕获到 sessionStorage（已有） |
+| `src/hooks/useConversionTracking.ts` | React Hook | 转化跟踪统一接口，获取归因数据 |
+| `src/collections/Leads.ts` | Payload Collection | 线索数据模型，扩展 UTM 归因字段 |
+| `src/app/(frontend)/api/leads/route.ts` | API Route | 线索提交 API，接收 UTM 数据 |
+| `src/app/(frontend)/resources/[slug]/client.tsx` | 页面组件 | 白皮书页面，表单提交附带 UTM |
+| `src/components/ConsultationModal/index.tsx` | UI 组件 | 咨询模态框，跟踪微信复制和电话点击 |
+| `src/components/FloatingChatButton/index.tsx` | UI 组件 | 悬浮聊天按钮，跟踪微信打开 |
+| `src/components/MobileStickyBar/index.tsx` | UI 组件 | 移动端底部栏，跟踪微信打开和电话点击 |
+| `src/components/Navbar/NavbarClient.tsx` | UI 组件 | 导航栏，跟踪微信打开和电话点击 |
+| `src/app/(frontend)/tools/utm-builder/page.tsx` | 工具页面 | UTM 链接生成器，营销团队使用 |
+
+### 配置文件
+
+| 文件 | 类型 | 功能描述 |
+|------|------|----------|
+| `.env.example` | 环境变量示例 | GA4 和百度统计 ID 配置模板 |
+
+### 数据库
+
+| Collection | 字段 | 说明 |
+|-----------|------|------|
+| `leads` | `utmData.utm_source` | 流量来源 |
+| `leads` | `utmData.utm_medium` | 媒介类型 |
+| `leads` | `utmData.utm_campaign` | 活动名称 |
+| `leads` | `utmData.utm_content` | 内容标识 |
+| `leads` | `utmData.utm_term` | 关键词 |
+| `leads` | `utmData.referrer` | 来源页面 |
+| `leads` | `utmData.landingPage` | 着陆页面 |
+| `leads` | `utmData.pageHistory` | 访问路径 |
+
+---
 
 ---
 
