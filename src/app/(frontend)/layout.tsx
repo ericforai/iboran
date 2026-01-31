@@ -7,7 +7,7 @@ import './globals.css'
 import { MobileStickyBar } from '@/components/MobileStickyBar'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { ReactScan } from '@/components/ReactScan'
+// import { ReactScan } from '@/components/ReactScan'
 import { WebVitals } from '@/components/WebVitals'
 import { ScrollTriggerDrawer } from '@/components/ScrollTriggerDrawer'
 import { FloatingChatButton } from '@/components/FloatingChatButton'
@@ -15,6 +15,7 @@ import { ExitIntentModal } from '@/components/ExitIntentModal'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Contact } from '@/payload-types'
 import { AttributionProvider } from '@/providers/Attribution'
+import { AnalyticsProvider } from '@/providers/Analytics'
 
 const lexend = Lexend({
   subsets: ['latin'],
@@ -37,21 +38,23 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body suppressHydrationWarning className="antialiased font-sans lg:pb-0 pb-20">
         <OrganizationJsonLd />
-        <ReactScan />
+        {/* <ReactScan /> */}
         <WebVitals />
         {/* Cinematic Grain Overlay - DISABLED for Performance
         { <div className="fixed inset-0 z-[9999] pointer-events-none bg-cinematic-grain mix-blend-overlay"></div> }
         */}
         <Suspense fallback={<div />}>
-          <AttributionProvider>
-            <Navbar contactData={contactData} />
-            {children}
-            <Footer />
-            <MobileStickyBar contactData={contactData} />
-            <ScrollTriggerDrawer />
-            <FloatingChatButton contactData={contactData} />
-            <ExitIntentModal />
-          </AttributionProvider>
+          <AnalyticsProvider>
+            <AttributionProvider>
+              <Navbar contactData={contactData} />
+              {children}
+              <Footer />
+              <MobileStickyBar contactData={contactData} />
+              <ScrollTriggerDrawer />
+              <FloatingChatButton contactData={contactData} />
+              <ExitIntentModal />
+            </AttributionProvider>
+          </AnalyticsProvider>
         </Suspense>
       </body>
     </html>
