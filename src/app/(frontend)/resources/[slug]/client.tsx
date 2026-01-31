@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import type { Resource } from '@/payload-types'
 import RichText from '@/components/RichText'
 import { WhitepaperGate, WhitepaperGateInline } from '@/components/whitepaper'
+import { useConversionTracking } from '@/hooks/useConversionTracking'
 
 interface WhitepaperClientProps {
   resource: Resource
@@ -14,6 +15,7 @@ const UNLOCKED_STORAGE_KEY = 'unlocked-whitepapers'
 export function WhitepaperClient({ resource }: WhitepaperClientProps) {
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [isUnlocking, setIsUnlocking] = useState(false)
+  const { getAttributionData, trackLeadSubmit } = useConversionTracking()
 
   const coverImage = resource.coverImage
   const coverUrl = (() => {
@@ -47,6 +49,8 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
     setIsUnlocking(true)
 
     try {
+      const attributionData = getAttributionData()
+
       // 提交线索数据到 API
       const response = await fetch('/api/leads', {
         method: 'POST',
@@ -55,12 +59,16 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
           ...data,
           source: `whitepaper:${resource.slug}`,
           resourceTitle: resource.title,
+          utmData: attributionData,
         }),
       })
 
       if (!response.ok) {
         throw new Error('提交失败，请稍后重试')
       }
+
+      // 发送转化事件
+      trackLeadSubmit('whitepaper', resource.slug)
 
       // 保存解锁状态到 localStorage
       try {
