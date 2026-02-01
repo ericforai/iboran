@@ -17,7 +17,7 @@ export const IndustrySolutionsSection: React.FC<Props> = ({ solutions }) => {
             <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">行业深耕，场景赋能</h2>
             <div className="w-16 h-1 bg-[#E60012] mb-6 rounded-full"></div>
             <p className="text-lg text-slate-600">
-              基于用友产品底座，结合泊冉 14 年实施经验，为半导体、装备制造及医疗等行业提供专属方案。
+              基于用友产品底座，结合泊冉 14 年实施经验，为半导体、新零售、装备制造、消费品及专业服务等五大行业提供专属方案。
             </p>
           </div>
           <Link href="/solution" className="hidden md:flex items-center gap-1 text-[#0052D9] font-bold hover:underline mb-2">

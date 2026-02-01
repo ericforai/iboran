@@ -80,9 +80,9 @@ export const HeroV2 = () => {
                    </span>
                  </h1>
                  
-                 <p className="text-base lg:text-[19px] text-slate-400 font-normal leading-relaxed max-w-xl">
-                   14年深耕 <span className="text-white font-semibold underline decoration-cyan-500/30 underline-offset-4">半导体、新零售、装备制造</span> 三大行业。服务超过 500+ 企业，其中 80% 的增长来自老客户的口碑传承。
-                 </p>
+                  <p className="text-base lg:text-[19px] text-slate-400 font-normal leading-relaxed max-w-xl">
+                    14年深耕 <span className="text-white font-semibold underline decoration-cyan-500/30 underline-offset-4">半导体、新零售、装备制造、消费品、专业服务</span> 五大行业。服务超过 500+ 企业，其中 80% 的增长来自老客户的口碑传承。
+                  </p>
                </motion.div>
 
                {/* Value Grid */}

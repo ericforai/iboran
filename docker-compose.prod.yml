@@ -5,34 +5,42 @@ services:
       dockerfile: Dockerfile
     image: iboran-app:latest
     container_name: iboran-app
-    restart: always
+    restart: unless-stopped
     ports:
-      - '3000:3000'
+      - "3000:3000"
     env_file:
       - .env
     environment:
       - NODE_ENV=production
-      - PORT=3000
-      - HOSTNAME=0.0.0.0
-    command: node server.js
+      - DATABASE_URI=mongodb://172.18.0.2:27017/iboran
+    volumes:
+      # Mount .env file so changes persist
+      - ./.env:/app/.env:ro
     depends_on:
       mongo:
         condition: service_healthy
+    networks:
+      - iboran_default
 
   mongo:
     image: mongo:7
-    container_name: iboran-mongo
-    restart: always
-    ports:
-      - '27018:27017'
+    container_name: iboran-mongo-1
+    restart: unless-stopped
     volumes:
       - mongo_data:/data/db
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
-      interval: 10s
+      interval: 5s
       timeout: 5s
       retries: 5
-      start_period: 20s
+      start_period: 10s
+    networks:
+      - iboran_default
 
 volumes:
   mongo_data:
+    external: true
+
+networks:
+  iboran_default:
+    external: true

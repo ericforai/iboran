@@ -65,22 +65,27 @@ rm -rf .next/standalone .next/static public iboran_data.gz
 tar -xzf ~/deploy.tar.gz
 
 # 导入数据库
-docker cp iboran_data.gz iboran-mongo:/tmp/iboran_data.gz
-docker exec iboran-mongo mongorestore --db=iboran --archive=/tmp/iboran_data.gz
-docker exec iboran-mongo rm /tmp/iboran_data.gz
+docker cp iboran_data.gz iboran-mongo-1:/tmp/iboran_data.gz
+docker exec iboran-mongo-1 mongorestore --db=iboran --archive=/tmp/iboran_data.gz 2>/dev/null || true
+docker exec iboran-mongo-1 rm -f /tmp/iboran_data.gz
 
 # 重建镜像
-docker build -f Dockerfile.simple -t iboran-app:latest . -q
+echo "构建Docker镜像..."
+docker build -f Dockerfile.simple -t iboran-app:latest .
 
-# 启动容器
-docker run -d --name iboran-app --restart always -p 3000:3000 \
-  --link iboran-mongo:mongo \
+# 创建共享网络（如果不存在）
+docker network create iboran-net 2>/dev/null || true
+docker network connect iboran-net iboran-mongo-1 2>/dev/null || true
+
+# 启动容器（使用Docker网络代替--link）
+echo "启动容器..."
+docker run -d --name iboran-app --restart always \
+  --network iboran-net \
+  -p 3000:3000 \
+  -e DATABASE_URI=mongodb://iboran-mongo-1:27017/iboran \
+  -e MONGODB_URI=mongodb://iboran-mongo-1:27017/iboran \
+  -e NEXT_PUBLIC_SERVER_URL=http://47.111.2.171 \
   iboran-app:latest
-
-# 修正 DATABASE_URI（自动）
-sleep 3
-docker exec iboran-app sh -c 'sed -i "s/DATABASE_URI=mongodb:\/\/localhost:27018\//DATABASE_URI=mongodb:\/\/mongo:27017\//" .env'
-docker restart iboran-app
 
 # 清理
 rm ~/deploy.tar.gz

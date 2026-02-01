@@ -1117,6 +1117,10 @@ export interface Lead {
   source?: string | null;
   resourceTitle?: string | null;
   /**
+   * 文章或产品页面的URL标识，用于查找标题
+   */
+  pageSlug?: string | null;
+  /**
    * 自动捕获的 UTM 参数和归因信息
    */
   utmData?: {
@@ -2028,6 +2032,7 @@ export interface LeadsSelect<T extends boolean = true> {
   phone?: T;
   source?: T;
   resourceTitle?: T;
+  pageSlug?: T;
   utmData?:
     | T
     | {

@@ -15,17 +15,7 @@ const nextConfig = {
   },
   output: 'standalone',
   images: {
-    remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
-        const url = new URL(item)
-
-        return {
-          hostname: url.hostname,
-          protocol: url.protocol.replace(':', ''),
-          pathname: '/**',
-        }
-      }),
-    ],
+    unoptimized: true,
   },
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
@@ -46,7 +36,6 @@ const nextConfig = {
       'node_modules/sass/**/*',
       'node_modules/terser/**/*',
       'node_modules/webpack/**/*',
-      'node_modules/sharp/**/*',
       'node_modules/@swc/core/**/*',
     ],
   },

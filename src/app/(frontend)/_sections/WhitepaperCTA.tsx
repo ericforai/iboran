@@ -97,7 +97,7 @@ export const WhitepaperCTA = () => {
               </SlideUp>
 
               <SlideUp delay={200} as="p" className="text-slate-400 text-xl lg:text-2xl mb-14 max-w-2xl leading-relaxed font-medium">
-                覆盖半导体、新零售、装备制造等行业的 20+ 真实案例。为您梳理出&quot;业财一体&quot;落地的 5 大核心红线与技术方案建议。
+                覆盖半导体、新零售、装备制造、消费品、专业服务等 5 大行业的 20+ 真实案例。为您梳理出&quot;业财一体&quot;落地的 5 大核心红线与技术方案建议。
               </SlideUp>
 
               <SlideUp delay={300} className="flex flex-col sm:flex-row items-center gap-8 justify-center lg:justify-start">

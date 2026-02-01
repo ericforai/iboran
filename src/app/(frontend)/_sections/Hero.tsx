@@ -73,9 +73,9 @@ export const Hero = () => {
                  <div className="absolute -top-[20%] -left-[10%] w-[140%] h-[140%] bg-blue-600/5 blur-[80px] -z-10 rounded-full pointer-events-none mix-blend-screen"></div>
                </motion.div>
 
-               <motion.p variants={fadeInUp} className="text-sm sm:text-base lg:text-xl text-slate-400 font-medium leading-relaxed mb-6 lg:mb-8 max-w-full lg:max-w-xl">
-                 14年深耕 <span className="text-cyan-400 font-semibold">半导体、新零售、装备制造</span> 三大行业，帮您避开我们踩过的坑。服务 500+ 企业，其中 80% 是老客户转介绍。
-               </motion.p>
+                <motion.p variants={fadeInUp} className="text-sm sm:text-base lg:text-xl text-slate-400 font-medium leading-relaxed mb-6 lg:mb-8 max-w-full lg:max-w-xl">
+                  14年深耕 <span className="text-cyan-400 font-semibold">半导体、新零售、装备制造、消费品、专业服务</span> 五大行业，帮您避开我们踩过的坑。服务 500+ 企业，其中 80% 是老客户转介绍。
+                </motion.p>
 
                 <motion.div
                   variants={fadeInUp}

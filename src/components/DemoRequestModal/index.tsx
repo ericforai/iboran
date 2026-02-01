@@ -25,7 +25,7 @@ interface LeadFormData {
     source?: string
 }
 
-export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onClose, source = 'demo-modal' }) => {
+export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onClose, source: sourceProp = 'demo-modal' }) => {
     const [isMounted, setIsMounted] = React.useState(false)
     const attribution = useAttribution()
 
@@ -34,6 +34,32 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
     }, [])
 
     const onSubmit = useCallback(async (data: LeadFormData) => {
+        // Generate dynamic source based on current page path
+        const currentPath = typeof window !== 'undefined' ? window.location.pathname : ''
+        let finalSource = sourceProp
+        let pageSlug = ''  // Store article/product slug for title lookup
+
+        // If source is the default demo-modal, enhance it with current path
+        if (sourceProp === 'demo-modal' && currentPath) {
+            if (currentPath.startsWith('/posts/')) {
+                // Extract article slug: /posts/erp-budget-overrun-reasons -> erp-budget-overrun-reasons
+                pageSlug = currentPath.split('/')[2] || ''
+                finalSource = 'blog-post-demo'
+            } else if (currentPath.startsWith('/products/')) {
+                const productSlug = currentPath.split('/')[2]
+                pageSlug = productSlug
+                finalSource = `product-${productSlug}-demo`
+            } else if (currentPath.startsWith('/solution/')) {
+                pageSlug = currentPath.split('/')[2] || ''
+                finalSource = 'solution-page-demo'
+            } else if (currentPath.startsWith('/cases/')) {
+                pageSlug = currentPath.split('/')[2] || ''
+                finalSource = 'case-study-demo'
+            } else if (currentPath === '/about') {
+                finalSource = 'about-page-demo'
+            }
+        }
+
         // Submit directly to /api/leads (no form ID needed)
         const response = await fetch(`${getClientSideURL()}/api/leads`, {
             method: 'POST',
@@ -46,7 +72,8 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
                 role: data.role,
                 currentSystem: data.currentSystem,
                 message: data.message,
-                source: source,
+                source: finalSource,
+                pageSlug: pageSlug,  // Include slug for server-side title lookup
                 utmData: attribution ? {
                     utm_source: attribution.utm_source || '',
                     utm_medium: attribution.utm_medium || '',
@@ -69,7 +96,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
         }
 
         return resJson
-    }, [attribution, source])
+    }, [attribution, sourceProp])
 
     const handleClose = useCallback(() => {
         onClose()
@@ -121,7 +148,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
 
                         {/* Content */}
                         <div className="p-6">
-                            <TwoStepLeadForm onSubmit={onSubmit} source={source} />
+                            <TwoStepLeadForm onSubmit={onSubmit} source={sourceProp} />
                         </div>
                     </motion.div>
                 </motion.div>

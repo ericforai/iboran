@@ -17,8 +17,18 @@ const getSourceLabel = (source: string | undefined): string => {
   if (!source) return '未知来源'
 
   const sourceMap: Record<string, string> = {
-    // Modal sources
+    // Modal sources (dynamic based on page)
     'demo-modal': '演示请求弹窗',
+    'blog-post-demo': '博客文章演示',
+    'product-yonsuite-demo': 'YonSuite产品演示',
+    'product-u8cloud-demo': 'U8Cloud产品演示',
+    'product-yonbuilder-demo': 'YonBuilder产品演示',
+    'product-bip-demo': 'YonBIP产品演示',
+    'product-collaborative-office-demo': '协同办公产品演示',
+    'product-enterprise-portal-demo': '企业门户产品演示',
+    'solution-page-demo': '解决方案演示',
+    'case-study-demo': '成功案例演示',
+    'about-page-demo': '关于我们演示',
     'exit-intent-modal': '离开意图弹窗',
 
     // Page sources
@@ -79,6 +89,7 @@ type LeadData = {
   phone: string
   source?: string
   resourceTitle?: string
+  pageSlug?: string
   utmData?: {
     utm_source?: string
     utm_medium?: string
@@ -98,7 +109,27 @@ const sendLeadEmail = [
 
     const lead = doc as LeadData
     const adminEmail = process.env.LEAD_EMAIL_TO || 'hzwyz@qq.com'
+    // Support multiple recipients (comma-separated or array)
+    const emailRecipients = adminEmail.includes(',') ? adminEmail.split(',').map((e: string) => e.trim()) : adminEmail
     const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.iboran.com'
+
+    // Fetch post title for blog posts
+    let postTitle: string | null = null
+    if (lead.source === 'blog-post-demo' && lead.pageSlug) {
+      try {
+        const post = await req.payload.findByID({
+          collection: 'posts',
+          slug: lead.pageSlug,
+          depth: 0,
+        })
+        if (post && typeof post === 'object' && 'title' in post) {
+          postTitle = (post as any).title as string
+        }
+      } catch (e) {
+        // Silently fail if post not found
+        console.log(`Post not found for slug: ${lead.pageSlug}`)
+      }
+    }
 
     // Escape all user-provided data to prevent XSS
     const utmRows = lead.utmData ? [
@@ -110,13 +141,17 @@ const sendLeadEmail = [
 
     const escapedName = escapeHtml(lead.name)
     const escapedCompany = escapeHtml(lead.company)
-    const sourceLabel = getSourceLabel(lead.source)
+    // Generate source label with title for blog posts
+    let sourceLabel = getSourceLabel(lead.source)
+    if (lead.source === 'blog-post-demo' && postTitle) {
+      sourceLabel = `博客文章: ${postTitle}`
+    }
     const escapedSource = escapeHtml(sourceLabel)
 
     try {
       await req.payload.sendEmail({
         from: process.env.SMTP_FROM || 'noreply@iboran.com',
-        to: adminEmail,
+        to: emailRecipients,
         subject: `🔔 新客户咨询 - ${escapedCompany} - ${escapedName}`,
         html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;"><div style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><h2 style="color: #E60012; margin: 0 0 20px 0;">🔔 新客户咨询</h2><div style="background-color: #f9f9f9; padding: 15px; border-radius: 4px; margin-bottom: 20px;"><h3 style="margin: 0 0 10px 0; color: #1F2329;">客户信息</h3><table style="width: 100%; border-collapse: collapse;"><tr><td style="padding: 8px 0; color: #666;"><strong>姓名:</strong></td><td style="padding: 8px 0;">${escapedName}</td></tr><tr><td style="padding: 8px 0; color: #666;"><strong>公司:</strong></td><td style="padding: 8px 0;">${escapedCompany}</td></tr><tr><td style="padding: 8px 0; color: #666;"><strong>电话:</strong></td><td style="padding: 8px 0;"><a href="tel:${lead.phone}" style="color: #0052D9;">${escapeHtml(lead.phone)}</a></td></tr>${escapedSource ? `<tr><td style="padding: 8px 0; color: #666;"><strong>来源:</strong></td><td style="padding: 8px 0;">${escapedSource}</td></tr>` : ''}</table></div>${utmRows ? `<div style="background-color: #f0f7ff; padding: 15px; border-radius: 4px; margin-bottom: 20px;"><h4 style="margin: 0 0 10px 0; color: #0052D9;">UTM 归因信息</h4><table style="width: 100%; border-collapse: collapse; font-size: 14px;">${utmRows}</table></div>` : ''}<p style="color: #999; font-size: 12px; margin: 20px 0 0 0;">提交时间: ${new Date(lead.createdAt).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</p><div style="text-align: center; margin-top: 30px;"><a href="${siteUrl}/admin/collections/leads/${lead.id}" style="display: inline-block; padding: 12px 30px; background-color: #E60012; color: #ffffff; text-decoration: none; border-radius: 4px;">查看详情</a></div></div></div>`,
       })
@@ -131,8 +166,8 @@ export const Leads: CollectionConfig = {
   slug: 'leads',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'company', 'phone', 'utmData.utm_source', 'utmData.utm_campaign', 'createdAt'],
-    listSearchableFields: ['name', 'company', 'phone', 'source'],
+    defaultColumns: ['name', 'company', 'phone', 'source', 'pageSlug', 'utmData.utm_source', 'utmData.utm_campaign', 'createdAt'],
+    listSearchableFields: ['name', 'company', 'phone', 'source', 'pageSlug'],
   },
   access: {
     read: authenticated,
@@ -174,6 +209,14 @@ export const Leads: CollectionConfig = {
       name: 'resourceTitle',
       type: 'text',
       label: '资源标题',
+    },
+    {
+      name: 'pageSlug',
+      type: 'text',
+      label: '页面Slug',
+      admin: {
+        description: '文章或产品页面的URL标识，用于查找标题',
+      },
     },
     {
       name: 'utmData',

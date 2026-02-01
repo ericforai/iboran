@@ -8,6 +8,11 @@ export interface LeadRequestData {
   phone: string
   source?: string
   resourceTitle?: string
+  pageSlug?: string
+  email?: string
+  role?: string
+  currentSystem?: string
+  message?: string
   // UTM 归因数据
   utmData?: {
     utm_source?: string
@@ -85,6 +90,7 @@ export async function POST(req: Request) {
         phone: body.phone,
         source: body.source || 'unknown',
         resourceTitle: body.resourceTitle || '',
+        pageSlug: body.pageSlug || '',
         utmData: body.utmData ? {
           ...body.utmData,
           pageHistory: Array.isArray(body.utmData.pageHistory)

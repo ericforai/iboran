@@ -35,20 +35,36 @@ rsync -avz --include='sitemap*.xml' --include='robots*.txt' --exclude='*' \
   public/ \
   $SERVER:/opt/iboran/public/
 
-# 3. 重启容器（不重建镜像）
+# 3. 重启容器并确保文件正确
 echo -e "${GREEN}>>> [3/4] 重启容器...${NC}"
 ssh $SERVER << 'EOF'
-docker restart iboran-app-1
+# Copy .env into container
+docker cp /opt/iboran/.env iboran-app:/app/.env
+
+# Copy public files (sitemap, robots) into container
+docker cp /opt/iboran/public/sitemap.xml iboran-app:/app/public/
+docker cp /opt/iboran/public/sitemap-0.xml iboran-app:/app/public/
+
+# Restart container
+docker restart iboran-app
 sleep 5
 EOF
 
 # 4. 验证
 echo -e "${GREEN}>>> [4/4] 验证...${NC}"
-HOME_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://47.111.2.171/)
-POSTS_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://47.111.2.171/posts)
+HOME_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://www.iboran.com/)
+POSTS_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://www.iboran.com/posts)
 
 echo "首页: $HOME_STATUS"
 echo "Posts: $POSTS_STATUS"
+
+# 验证 sitemap 域名
+SITEMAP_URL=$(curl -s https://www.iboran.com/sitemap-0.xml | grep -o '<loc>[^<]*</loc>' | head -1)
+if echo "$SITEMAP_URL" | grep -q "www.iboran.com"; then
+    echo "Sitemap: ✅ $SITEMAP_URL"
+else
+    echo "Sitemap: ❌ $SITEMAP_URL (域名错误!)"
+fi
 
 if [ "$HOME_STATUS" = "200" ] && [ "$POSTS_STATUS" = "200" ]; then
     echo -e "${GREEN}✅ 部署成功！${NC}"
