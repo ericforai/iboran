@@ -7,9 +7,14 @@ import { cn } from '@/utilities/ui'
 export const caseCategories = [
   { id: 'all', label: '全部案例' },
   { id: 'manufacturing', label: '智能制造' },
-  { id: 'retail', label: '新零售' },
-  { id: 'semiconductor', label: '半导体' },
-  { id: 'logistics', label: '智慧物流' },
+  { id: 'retail', label: '消费零售' },
+  { id: 'pharma', label: '医药医疗' },
+  { id: 'services', label: '现代服务' },
+  { id: 'logistics', label: '物流交通' },
+  { id: 'internet', label: '互联网' },
+  { id: 'semiconductor', label: '芯片半导体' },
+  { id: 'state-owned', label: '国资央企' },
+  { id: 'finance', label: '泛金融' },
 ]
 
 export const CaseFilter: React.FC<{
@@ -17,7 +22,7 @@ export const CaseFilter: React.FC<{
   onCategoryChange: (category: string) => void
   className?: string
   counts?: Record<string, number>
-}> = ({ activeCategory, onCategoryChange, className, counts }) => {
+}> = React.memo(({ activeCategory, onCategoryChange, className, counts }) => {
   return (
     <div
       className={cn(
@@ -66,4 +71,6 @@ export const CaseFilter: React.FC<{
       })}
     </div>
   )
-}
+})
+
+CaseFilter.displayName = 'CaseFilter'

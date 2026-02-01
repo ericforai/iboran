@@ -44,11 +44,11 @@ export async function POST(req: Request) {
 
     const payload = await getPayload({ config: configPromise })
 
-    // Check if phone already exists in last 30 days (prevent spam)
-    const thirtyDaysAgo = new Date()
-    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
+    // Check for duplicate submission within 10 minutes (prevent spam)
+    const tenMinutesAgo = new Date()
+    tenMinutesAgo.setMinutes(tenMinutesAgo.getMinutes() - 10)
 
-    const existingLeads = await payload.find({
+    const recentLead = await payload.find({
       collection: 'leads',
       where: {
         and: [
@@ -58,13 +58,8 @@ export async function POST(req: Request) {
             },
           },
           {
-            source: {
-            equals: body.source || '',
-            },
-          },
-          {
             createdAt: {
-              greater_than: thirtyDaysAgo.toISOString(),
+              greater_than: tenMinutesAgo.toISOString(),
             },
           },
         ],
@@ -72,14 +67,13 @@ export async function POST(req: Request) {
       limit: 1,
     })
 
-    // If already submitted for this resource, allow but don't create duplicate
-    // Just return success (idempotent)
-    if (existingLeads.docs.length > 0) {
+    // Reject if same phone submitted within 10 minutes
+    if (recentLead.docs.length > 0) {
       return NextResponse.json({
-        success: true,
-        message: '您已经解锁过此内容',
-        existing: true,
-      })
+        success: false,
+        message: '请稍后再试，您刚刚提交过',
+        retryAfter: 600, // seconds
+      }, { status: 429 })
     }
 
     // Create the lead with UTM data
@@ -91,7 +85,12 @@ export async function POST(req: Request) {
         phone: body.phone,
         source: body.source || 'unknown',
         resourceTitle: body.resourceTitle || '',
-        utmData: body.utmData || {
+        utmData: body.utmData ? {
+          ...body.utmData,
+          pageHistory: Array.isArray(body.utmData.pageHistory)
+            ? JSON.stringify(body.utmData.pageHistory)
+            : body.utmData.pageHistory || '',
+        } : {
           utm_source: '',
           utm_medium: '',
           utm_campaign: '',
@@ -99,7 +98,7 @@ export async function POST(req: Request) {
           utm_term: '',
           referrer: '',
           landingPage: '',
-          pageHistory: [],
+          pageHistory: '',
         },
       },
     })

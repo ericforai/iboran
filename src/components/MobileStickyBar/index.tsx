@@ -31,7 +31,7 @@ export const MobileStickyBar: React.FC<{ contactData?: Contact }> = React.memo((
 
     return (
         <>
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[60] bg-white/95 backdrop-blur-md border-t border-slate-100 shadow-[0_-4px_20px_0_rgba(0,0,0,0.08)] px-4 py-3 pb-safe-offset-2">
+            <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[110] bg-white/95 backdrop-blur-md border-t border-slate-100 shadow-[0_-4px_20px_0_rgba(0,0,0,0.08)] px-4 py-3 pb-safe-offset-2">
                 <div className="flex items-center gap-3">
                     <a
                         href={`tel:${phone.replace(/\s+/g, '')}`}

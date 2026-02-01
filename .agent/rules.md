@@ -4,6 +4,19 @@
 
 ---
 
+## 0. 数据安全与环境维护 [最高优先级]
+
+### 🚨 绝对禁令 (Iron Rule)
+- **严禁直接运行 `docker compose down -v`**。该命令会永久删除数据库持久化卷，导致所有内容丢失。
+- **环境修复流程**：如遇 `ELOOP` 或启动失败，必须先运行 `pnpm db:safe-reset`。该脚本已内置自动备份逻辑。
+- **备份优先**：在进行任何破坏性操作（如删除 `node_modules`、重置卷、迁移数据库）前，必须手动确认 `backups/` 目录下有最新的 `.archive` 文件。
+
+### 🔧 环境维护
+- 遇到 `ELOOP` 错误时，优先在 Host 端执行 `rm -rf .next node_modules`，然后重新 `pnpm install`。
+- 确保 `NEXT_PUBLIC_SERVER_URL` 与 `docker-compose.yml` 中的映射端口保持一致（默认 3000）。
+
+---
+
 ## 1. 项目定位 [核心]
 
 ### 1.1 身份定位

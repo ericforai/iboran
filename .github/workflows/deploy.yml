@@ -1,4 +1,4 @@
-name: Deploy to Aliyun ECS
+name: Deploy to Aliyun ECS (PM2 Mode)
 
 on:
   push:
@@ -14,29 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install pnpm
-        run: corepack enable pnpm && pnpm -v
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build Next.js
-        run: pnpm build
-        env:
-          NEXT_PUBLIC_SERVER_URL: https://www.iboran.com
-          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
-          DATABASE_URI: mongodb://localhost:27018/iboran
-
-      - name: Prepare deployment files
-        run: |
-          rm -f .next/Dockerfile
-          tar -czf deploy.tar.gz .next/standalone .next/static public --transform='s|.next/standalone/||'
-
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
@@ -44,25 +21,12 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Upload to server
-        run: |
-          scp -o StrictHostKeyChecking=no deploy.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:~/deploy.tar.gz
-
-      - name: Deploy on server
+      - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'ENDSSH'
           set -e
-          cd /opt/iboran
-          docker stop iboran-app 2>/dev/null || true
-          docker rm iboran-app 2>/dev/null || true
-          rm -rf .next/standalone .next/static public
-          tar -xzf ~/deploy.tar.gz
-          docker build -f Dockerfile.simple -t iboran-app:latest . -q
-          docker run -d --name iboran-app --restart always -p 3000:3000 --link iboran-mongo:mongo iboran-app:latest
-          sleep 3
-          docker exec iboran-app sh -c 'sed -i "s/DATABASE_URI=mongodb:\/\/localhost:27018\//DATABASE_URI=mongodb:\/\/mongo:27017\//" .env' 2>/dev/null || true
-          docker restart iboran-app
-          rm ~/deploy.tar.gz
+          cd /home/iboran
+          ./deploy.sh
           ENDSSH
 
       - name: Verify deployment

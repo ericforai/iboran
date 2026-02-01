@@ -80,8 +80,11 @@ export default buildConfig({
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
           },
-          port: Number(process.env.SMTP_PORT),
+          port: Number(process.env.SMTP_PORT) || 465,
           secure: Number(process.env.SMTP_PORT) === 465,
+          tls: {
+            rejectUnauthorized: false,
+          },
         }
       : {
           streamTransport: true, // Log to console if no SMTP

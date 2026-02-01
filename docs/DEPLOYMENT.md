@@ -1,265 +1,154 @@
-# 部署文档
+# 部署指南 (PM2 方案)
 
 ## 概述
 
-iboran.com 使用本地构建 + 远程部署的方式，将 Next.js 应用部署到阿里云 ECS 服务器。
+本文档说明如何将代码部署到阿里云 ECS 服务器。
 
-## 架构
+**架构**：
+- Next.js 应用：PM2 进程管理（源码部署）
+- MongoDB：Docker 容器（数据持久化）
 
-```
-本地开发环境                    远程生产服务器
-┌──────────────────┐          ┌──────────────────┐
-│  pnpm build      │          │  Docker          │
-│  ↓               │  SCP     │  ├── iboran-app  │
-│  .next/standalone │ ───────> │  ├── iboran-mongo│
-│  .next/static    │          │  └── Dockerfile  │
-└──────────────────┘          └──────────────────┘
-```
+## 首次设置（服务器端）
 
-## 前置条件
-
-### 本地环境
-- Docker Desktop 运行中
-- MongoDB 容器运行（端口 27018）
-- `pnpm` 已安装
-
-### 远程服务器
-- 阿里云 ECS: `47.111.2.171`
-- SSH 访问: `root@47.111.2.171`
-- Docker 已安装
-
-## 部署步骤
-
-### 方法一：使用部署脚本（推荐）
+### 1. 登录服务器
 
 ```bash
-bash deploy-remote.sh
+ssh root@your-server-ip
 ```
 
-脚本会自动执行以下步骤：
-1. 本地构建 (`pnpm build`)
-2. 导出本地数据库
-3. 打包部署文件
-4. 上传到服务器
-5. 服务器部署
-6. 验证部署
-
-### 方法二：手动部署
-
-#### 1. 本地构建
+### 2. 运行初始化脚本
 
 ```bash
-# 确保容器运行
-docker compose up -d
-docker stop iboran-app-1  # 停止应用容器，保留 MongoDB
+# 下载脚本
+curl -o init-server.sh https://raw.githubusercontent.com/your-username/iboran/main/scripts/init-server.sh
 
-# 构建生产版本
+# 运行（记得先修改 REPO_URL）
+bash init-server.sh
+```
+
+初始化脚本会自动安装：
+- Node.js 20
+- pnpm
+- PM2
+- 克隆代码仓库
+
+### 3. 配置环境变量
+
+```bash
+cd /home/iboran
+cp .env.example .env
+vi .env  # 编辑配置
+```
+
+### 4. 首次启动
+
+```bash
 pnpm build
+pm2 start ecosystem.config.js
+pm2 save
+pm2 startup  # 按提示执行命令，设置开机自启
 ```
 
-#### 2. 导出数据库
+## 日常部署
+
+### 方式一：本地一键部署（推荐）
 
 ```bash
-docker exec iboran-mongo-1 mongodump --db=iboran --archive=/tmp/iboran_data.gz
-docker cp iboran-mongo-1:/tmp/iboran_data.gz ./iboran_data.gz
+# 修改 scripts/deploy-remote.sh 中的服务器信息
+./scripts/deploy-remote.sh
 ```
 
-#### 3. 打包文件
+### 方式二：手动部署
 
 ```bash
-tar -czf /tmp/iboran-deploy.tar.gz .next/standalone .next/static public iboran_data.gz
+# 1. 推送代码
+git push
+
+# 2. SSH 到服务器部署
+ssh root@your-server
+cd /home/iboran
+./deploy.sh
 ```
 
-#### 4. 上传到服务器
+### 方式三：GitHub Actions 自动部署
+
+推送到 `main` 分支后自动触发部署。
+
+需要先配置 GitHub Secrets：
+- `SSH_PRIVATE_KEY`: SSH 私钥
+- `SERVER_HOST`: 服务器 IP
+- `SERVER_USER`: 服务器用户名
+
+## 服务器管理
+
+### 查看 PM2 状态
 
 ```bash
-scp /tmp/iboran-deploy.tar.gz root@47.111.2.171:~/deploy.tar.gz
+pm2 status          # 查看进程状态
+pm2 logs iboran     # 查看日志
+pm2 monit           # 实时监控
 ```
 
-#### 5. 服务器部署
+### 重启应用
 
 ```bash
-ssh root@47.111.2.171 << 'EOF'
-cd /opt/iboran
-
-# 停止并删除旧容器
-docker stop iboran-app 2>/dev/null || true
-docker rm iboran-app 2>/dev/null || true
-
-# 解压新文件
-rm -rf .next/standalone .next/static public iboran_data.gz
-tar -xzf ~/deploy.tar.gz
-
-# 导入数据库
-docker cp iboran_data.gz iboran-mongo:/tmp/iboran_data.gz
-docker exec iboran-mongo mongorestore --db=iboran --archive=/tmp/iboran_data.gz
-docker exec iboran-mongo rm /tmp/iboran_data.gz
-
-# 重建镜像
-docker build -f Dockerfile.simple -t iboran-app:latest . -q
-
-# 启动容器
-docker run -d --name iboran-app --restart always -p 3000:3000 \
-  --link iboran-mongo:mongo \
-  iboran-app:latest
-
-# 修正 DATABASE_URI（容器内使用 mongo:27017）
-sleep 3
-docker exec iboran-app sh -c 'sed -i "s/DATABASE_URI=mongodb:\/\/localhost:27018\//DATABASE_URI=mongodb:\/\/mongo:27017\//" .env'
-docker restart iboran-app
-
-# 清理
-rm ~/deploy.tar.gz
-EOF
+pm2 restart iboran
 ```
 
-#### 6. 验证部署
+### MongoDB 管理
 
 ```bash
-curl -s -o /dev/null -w "首页: %{http_code}\n" http://47.111.2.171/
-curl -s -o /dev/null -w "Posts: %{http_code}\n" http://47.111.2.171/posts
-```
+# 查看 MongoDB 状态
+docker ps | grep mongo
 
-#### 7. 清理本地文件
+# 重启 MongoDB
+docker compose restart mongo
 
-```bash
-rm -f iboran_data.gz /tmp/iboran-deploy.tar.gz
-```
+# 备份数据库
+mongodump --host=localhost:27018 --db=iboran --out=/backup/$(date +%Y%m%d)
 
-#### 8. 恢复本地开发环境
-
-```bash
-docker compose up -d
+# 恢复数据库
+mongorestore --host=localhost:27018 --db=iboran /backup/20240101
 ```
 
 ## 故障排查
 
-### 构建失败
-
-#### MongoDB 连接错误
-```
-Error: cannot connect to MongoDB: connect ECONNREFUSED 127.0.0.1:27018
-```
-
-**原因**: MongoDB 容器未运行
-
-**解决**:
-```bash
-docker compose up -d
-```
-
-#### TypeScript 类型错误
-```
-Type error: Type 'string' is not assignable to type 'xxx'
-```
-
-**原因**: useState 泛型类型缺失
-
-**解决**: 添加明确的类型注解
-```typescript
-// 修复前
-const [activeTab, setActiveTab] = useState(features[0].id)
-
-// 修复后
-const [activeTab, setActiveTab] = useState<"type1" | "type2">("type1")
-```
-
-### 本地开发服务无法访问
-
-#### ELOOP 错误
-```
-Error: ELOOP: too many symbolic links encountered
-```
-
-**原因**: `.next/standalone` 目录包含循环符号链接，与开发服务器冲突
-
-**解决**:
-```bash
-docker compose down
-rm -rf .next node_modules/.cache
-docker compose up -d
-```
-
-#### 容器运行但服务无响应
-```bash
-# 检查容器日志
-docker logs iboran-app-1
-
-# 重启容器
-docker compose restart
-```
-
-### 部署后远程服务异常
-
-#### 检查容器状态
-```bash
-ssh root@47.111.2.171 'docker ps'
-ssh root@47.111.2.171 'docker logs iboran-app'
-```
-
-#### 重新部署
-如果部署出现问题，重新执行部署步骤。
-
-## 注意事项
-
-### 1. 构建顺序
-```
-1. docker compose up -d      # 启动 MongoDB
-2. docker stop iboran-app-1  # 停止应用容器
-3. pnpm build                # 构建生产版本
-4. 部署
-5. docker compose up -d      # 恢复开发环境
-```
-
-### 2. 端口映射
-| 服务 | 本地端口 | 远程端口 |
-|------|----------|----------|
-| MongoDB | 27018 | 27017 |
-| App (开发) | 3009 | 3000 |
-| App (生产) | - | 3000 |
-
-### 3. 数据库连接
-- **本地**: `mongodb://localhost:27018/iboran`
-- **远程容器**: `mongodb://mongo:27017/iboran`
-
-部署脚本会自动修正 `.env` 中的 `DATABASE_URI`。
-
-### 4. 不要在部署前清理 `.next`
-```bash
-# ❌ 错误：删除后开发服务器会出问题
-rm -rf .next
-
-# ✅ 正确：只删除 node_modules/.cache
-rm -rf node_modules/.cache
-```
-
-## 文件说明
-
-```
-deploy-remote.sh     # 一键部署脚本
-deploy.sh            # 服务器端部署脚本（已废弃）
-Dockerfile.simple    # 远程服务器使用的 Dockerfile
-docker-compose.yml   # 本地开发环境配置
-```
-
-## 快速命令参考
+### 应用无法启动
 
 ```bash
-# 完整部署
-bash deploy-remote.sh
+# 检查日志
+pm2 logs iboran --lines 100
 
-# 仅构建
+# 检查端口占用
+lsof -i :3000
+
+# 重建并启动
 pnpm build
+pm2 delete iboran
+pm2 start ecosystem.config.js
+```
 
-# 本地开发
-docker compose up -d
+### MongoDB 连接失败
 
-# 查看日志
-docker logs iboran-app-1
+```bash
+# 检查 MongoDB 是否运行
+docker ps | grep mongo
 
-# 重启服务
-docker compose restart
+# 查看 MongoDB 日志
+docker logs mongo
 
-# 进入容器
-docker compose exec app sh
+# 重启 MongoDB
+docker compose up -d mongo
+```
+
+## 目录结构
+
+```
+/home/iboran/
+├── .env                 # 环境变量
+├── ecosystem.config.js  # PM2 配置
+├── deploy.sh            # 部署脚本
+├── logs/                # 日志目录
+├── .next/               # Next.js 构建产物
+└── src/                 # 源代码
 ```

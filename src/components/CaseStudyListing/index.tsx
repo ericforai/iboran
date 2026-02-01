@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { CaseFilter, caseCategories } from '@/components/CaseFilter'
 import { StoryCard } from '@/components/StoryCard'
 import type { SuccessStory } from '@/payload-types'
@@ -9,43 +10,87 @@ import { FadeIn } from '@/components/animations'
 export const CaseStudyListing: React.FC<{
   stories: SuccessStory[]
 }> = ({ stories }) => {
+  return (
+    <Suspense fallback={<div className="container px-4 py-24 text-center">加载中...</div>}>
+      <CaseStudyListingContent stories={stories} />
+    </Suspense>
+  )
+}
+
+const categoryMatchers: Record<string, (industry: string) => boolean> = {
+  manufacturing: (ind) => ind.includes('制造') || ind.includes('新能源'),
+  retail: (ind) =>
+    ind.includes('零售') ||
+    ind.includes('电商') ||
+    ind.includes('消费品') ||
+    ind.includes('餐饮') ||
+    ind.includes('IP') ||
+    ind.includes('宠物') ||
+    ind.includes('化妆品'),
+  pharma: (ind) => ind.includes('医药') || ind.includes('医疗'),
+  services: (ind) => ind.includes('现代服务业') && !ind.includes('物流'),
+  logistics: (ind) => ind.includes('物流') || ind.includes('货代') || ind.includes('运输') || ind.includes('交通'),
+  internet: (ind) => ind.includes('互联网') || ind.includes('高科技') || ind.includes('IT'),
+  semiconductor: (ind) =>
+    ind.includes('芯片') || ind.includes('半导体') || ind.includes('电子'),
+  'state-owned': (ind) => ind.includes('国资') || ind.includes('央企'),
+  finance: (ind) => ind.includes('金融'),
+}
+
+const matchesCategory = (industry: string, categoryId: string) => {
+  if (categoryId === 'all') return true
+  const matcher = categoryMatchers[categoryId]
+  return matcher ? matcher(industry) : false
+}
+
+const CaseStudyListingContent: React.FC<{
+  stories: SuccessStory[]
+}> = React.memo(({ stories }) => {
+  const searchParams = useSearchParams()
   const [activeCategory, setActiveCategory] = useState('all')
 
-  const categoryMatchers: Record<string, (industry: string) => boolean> = {
-    manufacturing: (industry) => industry.includes('制造'),
-    retail: (industry) => industry.includes('零售') || industry.includes('电商'),
-    semiconductor: (industry) => industry.includes('半导体') || industry.includes('电子'),
-    logistics: (industry) => industry.includes('物流'),
-  }
+  useEffect(() => {
+    const category = searchParams.get('category')
+    if (category && caseCategories.some((c) => c.id === category)) {
+      setActiveCategory(category)
 
-  const matchesCategory = (industry: string, categoryId: string) => {
-    if (categoryId === 'all') return true
-    const matcher = categoryMatchers[categoryId]
-    return matcher ? matcher(industry) : false
-  }
+      // Scroll to filter section if category is provided
+      const timer = setTimeout(() => {
+        const element = document.getElementById('case-library')
+        element?.scrollIntoView({ behavior: 'smooth' })
+      }, 0)
 
-  const filteredStories = stories.filter((story) => {
-    const industry = story.industry as string | undefined
-    if (!industry) return activeCategory === 'all'
-    return matchesCategory(industry, activeCategory)
-  })
+      return () => clearTimeout(timer)
+    }
+  }, [searchParams])
 
-  const counts = caseCategories.reduce<Record<string, number>>((acc, category) => {
-    acc[category.id] = 0
-    return acc
-  }, {})
-
-  counts.all = stories.length
-
-  stories.forEach((story) => {
-    const industry = story.industry as string | undefined
-    if (!industry) return
-    Object.keys(categoryMatchers).forEach((categoryId) => {
-      if (matchesCategory(industry, categoryId)) {
-        counts[categoryId] = (counts[categoryId] || 0) + 1
-      }
+  const filteredStories = React.useMemo(() => {
+    return stories.filter((story) => {
+      const industry = story.industry as string | undefined
+      if (!industry) return activeCategory === 'all'
+      return matchesCategory(industry, activeCategory)
     })
-  })
+  }, [stories, activeCategory])
+
+  const counts = React.useMemo(() => {
+    const countsMap = caseCategories.reduce<Record<string, number>>((acc, category) => {
+      acc[category.id] = 0
+      return acc
+    }, {})
+
+    countsMap.all = stories.length
+
+    stories.forEach((story) => {
+      const industry = story.industry as string | undefined
+      if (!industry) return
+      Object.keys(categoryMatchers).forEach((categoryId) => {
+        if (matchesCategory(industry, categoryId)) {
+          countsMap[categoryId] = (countsMap[categoryId] || 0) + 1
+        }
+      })
+    })
+    return countsMap
+  }, [stories])
 
   const activeCount = counts[activeCategory] ?? filteredStories.length
 
@@ -99,4 +144,6 @@ export const CaseStudyListing: React.FC<{
       </div>
     </section>
   )
-}
+})
+
+CaseStudyListingContent.displayName = 'CaseStudyListingContent'

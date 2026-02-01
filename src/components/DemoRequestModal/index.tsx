@@ -3,8 +3,10 @@
 import React, { useCallback } from 'react'
 import { X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { createPortal } from 'react-dom'
 import { useAttribution } from '@/providers/Attribution'
 import { TwoStepLeadForm } from '@/components/TwoStepLeadForm'
+import { getClientSideURL } from '@/utilities/getURL'
 
 interface DemoRequestModalProps {
     isOpen: boolean
@@ -23,43 +25,38 @@ interface LeadFormData {
     source?: string
 }
 
-export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onClose, source }) => {
+export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onClose, source = 'demo-modal' }) => {
+    const [isMounted, setIsMounted] = React.useState(false)
     const attribution = useAttribution()
 
+    React.useEffect(() => {
+        setIsMounted(true)
+    }, [])
+
     const onSubmit = useCallback(async (data: LeadFormData) => {
-        // 1. Get Form ID by title
-        const idRes = await fetch('/api/identify-form?title=Expert Demo')
-        if (!idRes.ok) {
-            console.error('Form ID fetch failed:', await idRes.text())
-            throw new Error('未找到对应表单配置，请联系管理员')
-        }
-        const { id: formID } = await idRes.json()
-
-        // 2. Format data for Payload form submission
-        const submissionData = Object.entries(data)
-            .filter(([, value]) => value !== undefined && value !== '')
-            .map(([field, value]) => ({ field, value }))
-
-        // Add Attribution Data
-        if (attribution) {
-            if (attribution.utm_source) submissionData.push({ field: 'utm_source', value: attribution.utm_source })
-            if (attribution.utm_medium) submissionData.push({ field: 'utm_medium', value: attribution.utm_medium })
-            if (attribution.utm_campaign) submissionData.push({ field: 'utm_campaign', value: attribution.utm_campaign })
-            if (attribution.utm_term) submissionData.push({ field: 'utm_term', value: attribution.utm_term })
-            if (attribution.referrer) submissionData.push({ field: 'referrer', value: attribution.referrer })
-            if (attribution.landing_page) submissionData.push({ field: 'landing_page', value: attribution.landing_page })
-            if (attribution.history && attribution.history.length > 0) {
-                submissionData.push({ field: 'viewed_pages', value: attribution.history.join(' -> ') })
-            }
-        }
-
-        // 3. Submit to Payload Form Builder API
-        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || ''}/api/form-submissions`, {
+        // Submit directly to /api/leads (no form ID needed)
+        const response = await fetch(`${getClientSideURL()}/api/leads`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                form: formID,
-                submissionData,
+                name: data.name,
+                company: data.company,
+                phone: data.phone,
+                email: data.email,
+                role: data.role,
+                currentSystem: data.currentSystem,
+                message: data.message,
+                source: source,
+                utmData: attribution ? {
+                    utm_source: attribution.utm_source || '',
+                    utm_medium: attribution.utm_medium || '',
+                    utm_campaign: attribution.utm_campaign || '',
+                    utm_content: attribution.utm_content || '',
+                    utm_term: attribution.utm_term || '',
+                    referrer: attribution.referrer || '',
+                    landingPage: attribution.landing_page || window.location.href,
+                    pageHistory: attribution.history || [],
+                } : undefined,
             }),
         })
 
@@ -67,22 +64,27 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
 
         if (!response.ok) {
             console.error('Submission failed:', resJson)
-            throw new Error(resJson.errors?.[0]?.message || '提交失败，请稍后重试')
+            const errorMsg = resJson.error || resJson.message || '提交失败，请稍后重试'
+            throw new Error(errorMsg)
         }
-    }, [attribution])
+
+        return resJson
+    }, [attribution, source])
 
     const handleClose = useCallback(() => {
         onClose()
     }, [onClose])
 
-    return (
+    if (!isMounted) return null
+
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+                    className="fixed inset-0 z-[201] flex items-center justify-center p-4"
                 >
                     {/* Backdrop */}
                     <motion.div
@@ -124,7 +126,8 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
                     </motion.div>
                 </motion.div>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     )
 }
 

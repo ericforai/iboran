@@ -15,6 +15,7 @@ import { WhitepaperCTA } from './_sections/WhitepaperCTA'
 import { Hero } from './_sections/Hero'
 import { LogoWall } from '@/components/LogoWall'
 import { MediaCoverageSection } from './_sections/MediaCoverageSection'
+import { SeoH1 } from '@/components/SeoH1'
 
 export const metadata: Metadata = {
   title: '泊冉软件 - 专业的用友软件实施服务商 | 业财一体化与数智化转型专家',
@@ -39,6 +40,7 @@ export default async function Page() {
     return (
         <div className="font-sans text-slate-600 bg-white flex flex-col">
 
+              <SeoH1 title="泊冉软件 - 专业的用友软件实施服务商 | 业财一体化与数智化转型专家" />
               <main className="flex-grow">
                   <Hero />
                   <ProductShowcase />

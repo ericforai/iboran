@@ -143,19 +143,21 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
   }, [])
 
   const handleOpenDemo = React.useCallback(() => {
+    setActiveDropdown(null)
     setIsMobileMenuOpen(false)
     if (onOpenDemo) {
       onOpenDemo()
     } else {
       setIsDemoModalOpen(true)
     }
-  }, [onOpenDemo])
+  }, [onOpenDemo, setActiveDropdown])
 
   const handleOpenConsult = React.useCallback(() => {
+    setActiveDropdown(null)
     setIsMobileMenuOpen(false)
     trackWeChatOpen('navbar')
     setIsConsultModalOpen(true)
-  }, [trackWeChatOpen])
+  }, [trackWeChatOpen, setActiveDropdown])
 
   const handlePhoneClick = React.useCallback(() => {
     trackPhoneCall('navbar')

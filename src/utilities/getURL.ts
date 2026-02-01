@@ -10,14 +10,13 @@ export const getServerSideURL = () => {
 }
 
 export const getClientSideURL = () => {
+  // 客户端始终使用当前页面的 origin，避免跨域问题
+  // 这确保无论从哪个 IP/域名访问，API 请求都发到同一个源
   if (canUseDOM) {
-    const protocol = window.location.protocol
-    const domain = window.location.hostname
-    const port = window.location.port
-
-    return `${protocol}//${domain}${port ? `:${port}` : ''}`
+    return window.location.origin
   }
 
+  // 服务端降级处理（仅用于 SSR 阶段）
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
     return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   }

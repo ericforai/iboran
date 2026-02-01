@@ -1,6 +1,132 @@
 import { CollectionConfig } from 'payload'
 import { authenticated } from '../access/authenticated'
 
+// HTML escape function to prevent XSS attacks in email content
+const escapeHtml = (unsafe: string | undefined): string => {
+  if (typeof unsafe !== 'string') return ''
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
+// Source code to Chinese label mapping
+const getSourceLabel = (source: string | undefined): string => {
+  if (!source) return '未知来源'
+
+  const sourceMap: Record<string, string> = {
+    // Modal sources
+    'demo-modal': '演示请求弹窗',
+    'exit-intent-modal': '离开意图弹窗',
+
+    // Page sources
+    'contact-page': '联系我们页面',
+
+    // Product pages
+    'Product_YonSuite': 'YonSuite 产品页',
+    'Product_YonSuite_Bottom': 'YonSuite 底部CTA',
+    'Product_YonBuilder': 'YonBuilder 产品页',
+    'Product_U8Cloud': 'U8Cloud 产品页',
+    'Product_BIP': 'YonBIP 产品页',
+    'Product_BIP_Bottom': 'YonBIP 底部CTA',
+    'Product_Collaborative_Office': '协同办公产品页',
+    'Product_Collaborative_Office_Footer': '协同办公底部CTA',
+    'CTA_U8Cloud': 'U8Cloud CTA',
+
+    // Industry solutions
+    'industry-catering': '餐饮行业方案',
+    'industry-catering-cta': '餐饮行业方案CTA',
+    'industry-beer': '啤酒行业方案',
+    'industry-beer-cta': '啤酒行业方案CTA',
+    'industry-baijiu': '白酒行业方案',
+    'industry-baijiu-cta': '白酒行业方案CTA',
+    'industry-cosmetics': '化妆品行业方案',
+    'industry-cosmetics-cta': '化妆品行业方案CTA',
+    'industry-home-appliances': '家电行业方案',
+    'industry-home-appliances-cta': '家电行业方案CTA',
+    'biomedical-cdmo': '生物医药CDMO方案',
+    'biomedical-cdmo-hero': '生物医药CDMO首屏',
+    'biomedical-cdmo-cta': '生物医药CDMO CTA',
+    'industry-business-services': '商务服务业方案',
+    'industry-business-services-bottom': '商务服务业底部CTA',
+    'industry-medical-device': '医疗器械行业方案',
+    'industry-medical-device-cta': '医疗器械行业CTA',
+    'industry-electronic-ic': '电子IC行业方案',
+    'industry-electronic-ic-cta': '电子IC行业CTA',
+    'industry-state-owned': '国企央企方案',
+    'industry-internet': '互联网行业方案',
+    'industry-internet-cta': '互联网行业CTA',
+    'industry-professional-services': '专业服务业方案',
+    'industry-professional-services-cta': '专业服务业CTA',
+    'industry-tech-services': '科技服务业方案',
+    'industry-traditional-chinese-medicine': '中医药行业方案',
+
+    // Business solutions
+    'AdvantageSection_DeliveryConsultation': '交付咨询',
+
+    // Default fallback - show original code with description prefix
+  }
+
+  return sourceMap[source] || `${source}`
+}
+
+type LeadData = {
+  id: string
+  name: string
+  company: string
+  phone: string
+  source?: string
+  resourceTitle?: string
+  utmData?: {
+    utm_source?: string
+    utm_medium?: string
+    utm_campaign?: string
+    utm_content?: string
+    utm_term?: string
+    referrer?: string
+    landingPage?: string
+    pageHistory?: string
+  }
+  createdAt: string
+}
+
+const sendLeadEmail = [
+  async ({ doc, operation, req }: { doc: any; operation: string; req: any }) => {
+    if (operation !== 'create') return
+
+    const lead = doc as LeadData
+    const adminEmail = process.env.LEAD_EMAIL_TO || 'hzwyz@qq.com'
+    const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.iboran.com'
+
+    // Escape all user-provided data to prevent XSS
+    const utmRows = lead.utmData ? [
+      lead.utmData.utm_source ? `<tr><td style="padding: 4px 0; color: #666;">来源:</td><td>${escapeHtml(lead.utmData.utm_source)}</td></tr>` : '',
+      lead.utmData.utm_medium ? `<tr><td style="padding: 4px 0; color: #666;">媒介:</td><td>${escapeHtml(lead.utmData.utm_medium)}</td></tr>` : '',
+      lead.utmData.utm_campaign ? `<tr><td style="padding: 4px 0; color: #666;">活动:</td><td>${escapeHtml(lead.utmData.utm_campaign)}</td></tr>` : '',
+      lead.utmData.landingPage ? `<tr><td style="padding: 4px 0; color: #666;">落地页:</td><td>${escapeHtml(lead.utmData.landingPage)}</td></tr>` : '',
+    ].filter(Boolean).join('') : ''
+
+    const escapedName = escapeHtml(lead.name)
+    const escapedCompany = escapeHtml(lead.company)
+    const sourceLabel = getSourceLabel(lead.source)
+    const escapedSource = escapeHtml(sourceLabel)
+
+    try {
+      await req.payload.sendEmail({
+        from: process.env.SMTP_FROM || 'noreply@iboran.com',
+        to: adminEmail,
+        subject: `🔔 新客户咨询 - ${escapedCompany} - ${escapedName}`,
+        html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;"><div style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><h2 style="color: #E60012; margin: 0 0 20px 0;">🔔 新客户咨询</h2><div style="background-color: #f9f9f9; padding: 15px; border-radius: 4px; margin-bottom: 20px;"><h3 style="margin: 0 0 10px 0; color: #1F2329;">客户信息</h3><table style="width: 100%; border-collapse: collapse;"><tr><td style="padding: 8px 0; color: #666;"><strong>姓名:</strong></td><td style="padding: 8px 0;">${escapedName}</td></tr><tr><td style="padding: 8px 0; color: #666;"><strong>公司:</strong></td><td style="padding: 8px 0;">${escapedCompany}</td></tr><tr><td style="padding: 8px 0; color: #666;"><strong>电话:</strong></td><td style="padding: 8px 0;"><a href="tel:${lead.phone}" style="color: #0052D9;">${escapeHtml(lead.phone)}</a></td></tr>${escapedSource ? `<tr><td style="padding: 8px 0; color: #666;"><strong>来源:</strong></td><td style="padding: 8px 0;">${escapedSource}</td></tr>` : ''}</table></div>${utmRows ? `<div style="background-color: #f0f7ff; padding: 15px; border-radius: 4px; margin-bottom: 20px;"><h4 style="margin: 0 0 10px 0; color: #0052D9;">UTM 归因信息</h4><table style="width: 100%; border-collapse: collapse; font-size: 14px;">${utmRows}</table></div>` : ''}<p style="color: #999; font-size: 12px; margin: 20px 0 0 0;">提交时间: ${new Date(lead.createdAt).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</p><div style="text-align: center; margin-top: 30px;"><a href="${siteUrl}/admin/collections/leads/${lead.id}" style="display: inline-block; padding: 12px 30px; background-color: #E60012; color: #ffffff; text-decoration: none; border-radius: 4px;">查看详情</a></div></div></div>`,
+      })
+      console.log(`✅ Lead email sent to ${adminEmail} for ${lead.name} from ${lead.company}`)
+    } catch (error) {
+      console.error('❌ Failed to send lead email:', error)
+    }
+  },
+]
+
 export const Leads: CollectionConfig = {
   slug: 'leads',
   admin: {
@@ -13,6 +139,9 @@ export const Leads: CollectionConfig = {
     create: () => true,
     update: authenticated,
     delete: authenticated,
+  },
+  hooks: {
+    afterChange: sendLeadEmail,
   },
   fields: [
     {

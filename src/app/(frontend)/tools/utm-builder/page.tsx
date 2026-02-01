@@ -4,7 +4,7 @@
 // 一旦我被更新，务必更新我的开头注释，以及所属的文件夹的 md。
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect, useRef } from 'react'
 import { Copy, Check } from 'lucide-react'
 
 const SOURCE_OPTIONS = [
@@ -53,6 +53,17 @@ export default function UTMBuilderPage() {
     utm_term: '',
   })
   const [copied, setCopied] = useState(false)
+  // Store timer ID for cleanup to prevent memory leak
+  const copiedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Cleanup: clear any pending timeout when component unmounts
+  useEffect(() => {
+    return () => {
+      if (copiedTimerRef.current) {
+        clearTimeout(copiedTimerRef.current)
+      }
+    }
+  }, [])
 
   const generatedUrl = useMemo(() => {
     const url = new URL(params.url)
@@ -65,7 +76,12 @@ export default function UTMBuilderPage() {
   const handleCopy = () => {
     navigator.clipboard.writeText(generatedUrl)
     setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    // Clear previous timer if exists to prevent duplicate timers
+    if (copiedTimerRef.current) {
+      clearTimeout(copiedTimerRef.current)
+    }
+    // Store timer ID for cleanup
+    copiedTimerRef.current = setTimeout(() => setCopied(false), 2000)
   }
 
   return (

@@ -7,8 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { useAttribution } from '@/providers/Attribution'
-
-const FORM_TITLES = ['Expert Demo', 'Demo Request Form', 'Contact Form']
+import { getClientSideURL } from '@/utilities/getURL'
 
 export function ContactForm() {
   const attribution = useAttribution()
@@ -16,26 +15,18 @@ export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const getFormMeta = async () => {
-    for (const title of FORM_TITLES) {
-      const res = await fetch(`/api/identify-form?title=${encodeURIComponent(title)}`)
-      if (res.ok) {
-        const { id } = await res.json()
-        return { id, title }
-      }
-    }
-    throw new Error('未找到对应表单配置，请联系管理员')
-  }
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (loading) return
     setLoading(true)
     setError(null)
 
+    // Capture form reference BEFORE async operation
+    // React synthetic events are pooled and nullified after async operations
+    const form = e.currentTarget
+
     try {
-      const formMeta = await getFormMeta()
-      const formData = new FormData(e.currentTarget)
+      const formData = new FormData(form)
       const payload = {
         name: String(formData.get('name') || '').trim(),
         company: String(formData.get('company') || '').trim(),
@@ -45,50 +36,33 @@ export function ContactForm() {
         source: 'contact-page',
       }
 
-      const messageWithCompany =
-        formMeta.title === 'Contact Form' && payload.company
-          ? `公司：${payload.company}\n${payload.message || ''}`.trim()
-          : payload.message
-
-      const submissionData = Object.entries({
-        ...payload,
-        message: messageWithCompany,
-      })
-        .filter(([, value]) => value !== undefined && value !== '')
-        .map(([field, value]) => ({ field, value }))
-
-      if (formMeta.title === 'Contact Form') {
-        submissionData.push({ field: 'full-name', value: payload.name })
-      }
-
-      if (attribution) {
-        if (attribution.utm_source) submissionData.push({ field: 'utm_source', value: attribution.utm_source })
-        if (attribution.utm_medium) submissionData.push({ field: 'utm_medium', value: attribution.utm_medium })
-        if (attribution.utm_campaign) submissionData.push({ field: 'utm_campaign', value: attribution.utm_campaign })
-        if (attribution.utm_term) submissionData.push({ field: 'utm_term', value: attribution.utm_term })
-        if (attribution.utm_content) submissionData.push({ field: 'utm_content', value: attribution.utm_content })
-        if (attribution.referrer) submissionData.push({ field: 'referrer', value: attribution.referrer })
-        if (attribution.landing_page) submissionData.push({ field: 'landing_page', value: attribution.landing_page })
-        if (attribution.history && attribution.history.length > 0) {
-          submissionData.push({ field: 'viewed_pages', value: attribution.history.join(' -> ') })
-        }
-      }
-
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || ''}/api/form-submissions`, {
+      const response = await fetch(`${getClientSideURL()}/api/leads`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          form: formMeta.id,
-          submissionData,
+          ...payload,
+          utmData: attribution ? {
+            utm_source: attribution.utm_source || '',
+            utm_medium: attribution.utm_medium || '',
+            utm_campaign: attribution.utm_campaign || '',
+            utm_content: attribution.utm_content || '',
+            utm_term: attribution.utm_term || '',
+            referrer: attribution.referrer || '',
+            landingPage: attribution.landing_page || window.location.href,
+            pageHistory: attribution.history || [],
+          } : undefined,
         }),
       })
 
+      const resJson = await response.json()
+
       if (!response.ok) {
-        const resJson = await response.json().catch(() => null)
-        throw new Error(resJson?.errors?.[0]?.message || '提交失败，请稍后重试')
+        // Handle both 'error' and 'message' fields from API response
+        const errorMsg = resJson.error || resJson.message || '提交失败，请稍后重试'
+        throw new Error(errorMsg)
       }
 
-      e.currentTarget.reset()
+      form.reset()
       setSubmitted(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : '提交失败，请稍后重试')
@@ -125,7 +99,7 @@ export function ContactForm() {
           <Input id="company" name="company" autoComplete="organization" required placeholder="请输入公司名称" className="bg-white/50 h-9" />
         </div>
       </div>
-      
+
       <div className="grid md:grid-cols-2 gap-3">
         <div className="space-y-1.5">
           <Label htmlFor="phone" className="text-xs">电话 <span className="text-red-500">*</span></Label>
@@ -136,7 +110,7 @@ export function ContactForm() {
             autoComplete="tel"
             required
             placeholder="请输入手机号码"
-            pattern="^1[3-9]\\d{9}$"
+            pattern="1[3-9][0-9]{9}"
             inputMode="tel"
             className="bg-white/50 h-9"
           />
@@ -156,10 +130,10 @@ export function ContactForm() {
 
       <div className="space-y-1.5">
         <Label htmlFor="message" className="text-xs">需求描述</Label>
-        <Textarea 
-          id="message" 
+        <Textarea
+          id="message"
           name="message"
-          placeholder="请简要描述您的业务需求..." 
+          placeholder="请简要描述您的业务需求..."
           className="min-h-[80px] bg-white/50 text-sm resize-none"
         />
       </div>
@@ -168,9 +142,9 @@ export function ContactForm() {
         <p className="text-[10px] text-muted-foreground">
           提交即同意 <Link href="/privacy" className="underline hover:text-[#0052D9]">隐私政策</Link>
         </p>
-        <Button 
-          type="submit" 
-          className="px-6 bg-[#E60012] hover:bg-[#c4000f] text-white h-9 text-xs" 
+        <Button
+          type="submit"
+          className="px-6 bg-[#E60012] hover:bg-[#c4000f] text-white h-9 text-xs"
           isLoading={loading}
           disabled={loading}
         >

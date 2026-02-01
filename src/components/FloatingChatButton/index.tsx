@@ -32,7 +32,7 @@ export const FloatingChatButton: React.FC<FloatingChatButtonProps> = React.memo(
   return (
     <>
       {!showOnMobile && (
-        <div className="hidden lg:block fixed bottom-8 right-6 z-[60]">
+        <div className="hidden lg:block fixed bottom-8 right-6 z-[110]">
           <AnimatePresence>
             <motion.button
               initial={{ scale: 0, opacity: 0 }}

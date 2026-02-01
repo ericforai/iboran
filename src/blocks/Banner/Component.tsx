@@ -24,3 +24,4 @@ export const BannerBlock: React.FC<Props> = ({ className, content, style }) => {
     </div>
   )
 }
+

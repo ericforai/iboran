@@ -4,6 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAttribution } from '@/providers/Attribution'
+import { getClientSideURL } from '@/utilities/getURL'
 
 interface LeadFormData {
   name: string
@@ -84,43 +85,33 @@ export const ExitIntentModal: React.FC = React.memo(() => {
     setError(null)
 
     try {
-      // 1. Get Form ID by title
-      const idRes = await fetch('/api/identify-form?title=Expert Demo')
-      if (!idRes.ok) {
-        throw new Error('未找到对应表单配置，请联系管理员')
-      }
-      const { id: formID } = await idRes.json()
-
-      // 2. Format data for Payload form submission
-      const submissionData = Object.entries({
-        ...formData,
-        source: 'exit-intent-modal',
-      })
-        .filter(([, value]) => value !== undefined && value !== '')
-        .map(([field, value]) => ({ field, value }))
-
-      // Add Attribution Data
-      if (attribution) {
-        if (attribution.utm_source) submissionData.push({ field: 'utm_source', value: attribution.utm_source })
-        if (attribution.utm_medium) submissionData.push({ field: 'utm_medium', value: attribution.utm_medium })
-        if (attribution.utm_campaign) submissionData.push({ field: 'utm_campaign', value: attribution.utm_campaign })
-        if (attribution.referrer) submissionData.push({ field: 'referrer', value: attribution.referrer })
-      }
-
-      // 3. Submit to Payload Form Builder API
-      const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL || ''}/api/form-submissions`, {
+      // Submit directly to /api/leads (no form ID needed)
+      const response = await fetch(`${getClientSideURL()}/api/leads`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          form: formID,
-          submissionData,
+          name: formData.name,
+          company: formData.company,
+          phone: formData.phone,
+          source: 'exit-intent-modal',
+          utmData: attribution ? {
+            utm_source: attribution.utm_source || '',
+            utm_medium: attribution.utm_medium || '',
+            utm_campaign: attribution.utm_campaign || '',
+            utm_content: attribution.utm_content || '',
+            utm_term: attribution.utm_term || '',
+            referrer: attribution.referrer || '',
+            landingPage: attribution.landing_page || window.location.href,
+            pageHistory: attribution.history || [],
+          } : undefined,
         }),
       })
 
       const resJson = await response.json()
 
       if (!response.ok) {
-        throw new Error(resJson.errors?.[0]?.message || '提交失败，请稍后重试')
+        const errorMsg = resJson.error || resJson.message || '提交失败，请稍后重试'
+        throw new Error(errorMsg)
       }
 
       setIsSubmitted(true)

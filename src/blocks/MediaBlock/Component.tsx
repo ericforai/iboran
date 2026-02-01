@@ -1,12 +1,10 @@
 import type { StaticImageData } from 'next/image'
-
 import { cn } from '@/utilities/ui'
 import React from 'react'
 import RichText from '@/components/RichText'
-
 import type { MediaBlock as MediaBlockProps } from '@/payload-types'
-
 import { Media } from '../../components/Media'
+
 
 type Props = MediaBlockProps & {
   breakout?: boolean
@@ -17,6 +15,7 @@ type Props = MediaBlockProps & {
   staticImage?: StaticImageData
   disableInnerContainer?: boolean
 }
+
 
 export const MediaBlock: React.FC<Props> = (props) => {
   const {
@@ -65,3 +64,4 @@ export const MediaBlock: React.FC<Props> = (props) => {
     </div>
   )
 }
+

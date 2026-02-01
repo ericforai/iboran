@@ -21,6 +21,8 @@ node_modules/
 /playwright/.cache/
 
 # Agent and temporary files
+.claude/
+.gemini-clipboard/
 # .agent/
 .pnpm-store/
 *.zip
@@ -53,3 +55,4 @@ dbs.json
 *.tar
 *.gz
 *.bak
+logs

@@ -11,7 +11,7 @@ export const StoryCard: React.FC<{
   className?: string
   doc: SuccessStory
   index?: number
-}> = ({ className, doc, index = 0 }) => {
+}> = React.memo(({ className, doc, index = 0 }) => {
   const { card, link } = useClickableCard({})
   const { slug, title, clientName, industry } = doc
 
@@ -29,11 +29,11 @@ export const StoryCard: React.FC<{
 
       <div className="relative z-10">
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-500">
-          {industry && (
-            <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-600">
-              {industry}
+          {industry && industry.split(' / ').map((tag, i) => (
+            <span key={i} className="rounded-full bg-slate-100 px-3 py-1 text-slate-600">
+              {tag}
             </span>
-          )}
+          ))}
           <span className="tracking-[0.2em] text-slate-400">案例</span>
         </div>
 
@@ -57,4 +57,6 @@ export const StoryCard: React.FC<{
       </SlideUp>
     </article>
   )
-}
+})
+
+StoryCard.displayName = 'StoryCard'

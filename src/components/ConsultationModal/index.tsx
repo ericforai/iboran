@@ -7,6 +7,7 @@
 import React from 'react'
 import { X, MessageSquare, Phone, Copy, Check } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import type { Contact } from '@/payload-types'
 import { useConversionTracking } from '@/hooks/useConversionTracking'
@@ -18,8 +19,22 @@ interface ConsultationModalProps {
 }
 
 export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, onClose, data }) => {
+    const [isMounted, setIsMounted] = React.useState(false)
     const [copied, setCopied] = React.useState(false)
     const { trackWeChatCopy, trackPhoneCall } = useConversionTracking()
+
+    // Store timer ID for cleanup to prevent memory leak
+    const copiedTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
+
+    React.useEffect(() => {
+        setIsMounted(true)
+        // Cleanup: clear any pending timeout when component unmounts
+        return () => {
+            if (copiedTimerRef.current) {
+                clearTimeout(copiedTimerRef.current)
+            }
+        }
+    }, [])
 
     // Use dynamic data with hardcoded fallbacks just in case
     const wechatId = data?.wechatId || 'boran_software'
@@ -27,27 +42,56 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
     const qrUrl = typeof data?.wechatQR === 'object' ? data.wechatQR?.url : null
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(wechatId)
-            .then(() => {
+        const copyToClipboard = (text: string): Promise<boolean> => {
+            // Check if clipboard API is available
+            if (navigator.clipboard && window.isSecureContext) {
+                return navigator.clipboard.writeText(text)
+                    .then(() => true)
+                    .catch(() => false)
+            }
+            // Fallback for non-secure contexts or older browsers
+            return Promise.resolve().then(() => {
+                const textArea = document.createElement('textarea')
+                textArea.value = text
+                textArea.style.position = 'fixed'
+                textArea.style.left = '-9999px'
+                textArea.style.top = '0'
+                textArea.setAttribute('readonly', '')
+                document.body.appendChild(textArea)
+                textArea.focus()
+                textArea.select()
+                try {
+                    const successful = document.execCommand('copy')
+                    document.body.removeChild(textArea)
+                    return successful
+                } catch {
+                    document.body.removeChild(textArea)
+                    return false
+                }
+            })
+        }
+
+        copyToClipboard(wechatId).then((success) => {
+            if (success) {
                 setCopied(true)
                 trackWeChatCopy('modal')
-                setTimeout(() => setCopied(false), 2000)
-                // Attempt to open WeChat
-                window.location.href = 'weixin://'
-            })
-            .catch(() => {
-                // Fallback for older browsers or if permission denied
-                setCopied(true)
-                trackWeChatCopy('modal')
-                setTimeout(() => setCopied(false), 2000)
-            })
+                // Clear previous timer if exists to prevent duplicate timers
+                if (copiedTimerRef.current) {
+                    clearTimeout(copiedTimerRef.current)
+                }
+                // Store timer ID for cleanup
+                copiedTimerRef.current = setTimeout(() => setCopied(false), 2000)
+            }
+        })
     }
 
     const handlePhoneClick = () => {
         trackPhoneCall('modal')
     }
 
-    return (
+    if (!isMounted) return null
+
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <>
@@ -57,12 +101,12 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200]"
                     />
 
                     {/* Modal Wrapper - Ensures absolute centering and handles click-outside */}
                     <div 
-                        className="fixed inset-0 z-[101] flex items-center justify-center p-4"
+                        className="fixed inset-0 z-[201] flex items-center justify-center p-4"
                         onClick={onClose}
                     >
                         <motion.div
@@ -139,7 +183,8 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                     </div>
                 </>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     )
 }
 
