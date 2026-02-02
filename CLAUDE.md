@@ -289,20 +289,31 @@ SMTP_PASS=your-authorization-code  # QQ邮箱授权码，不是密码
 5. 约 3-4 分钟完成
 
 **Secrets** (https://github.com/ericforai/iboran/settings/secrets/actions):
-- `SSH_PRIVATE_KEY`: 完整私钥（包含 BEGIN/END 行）
+- `SSH_PRIVATE_KEY`: 服务器私钥（完整 BEGIN/END 行）
 - `SERVER_HOST`: 47.111.2.171
 - `SERVER_USER`: root
+- `PAYLOAD_SECRET`: Payload CMS 密钥
+- `CRON_SECRET`: 定时任务密钥
+- `PREVIEW_SECRET`: 预览密钥
 
-**重要经验**：
-- SSH_PRIVATE_KEY 必须包含完整的 `-----BEGIN OPENSSH PRIVATE KEY-----` 和 `-----END OPENSSH PRIVATE KEY-----` 行
-- 如果 Secret 显示为空，需要删除重新创建（不要用 Update）
+**Deploy Key** (https://github.com/ericforai/iboran/settings/keys):
+- Title: "Production Server"
+- Key: `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGTFvgusy5IlgqeB1Yx5w0kRH6xJLmsWolXTaky/JAt5 github-deploy-iboran`
+- ✅ Allow write access
+
+**最终方案**（2026-02-02 验证成功）：
+- GitHub Actions 上构建（服务 `mongo:7`，端口 27018）
+- 通过 SSH tar 传输 `.next public` 到服务器
+- 服务器无需访问 GitHub（解决网络问题）
+- 构建时需要数据库连接，使用临时 MongoDB service
 
 ### Common Issues & Solutions
 
 1. **GitHub Actions exit code 255** → SSH_PRIVATE_KEY 格式不对，确保包含 BEGIN/END 行
-2. **Sitemap 显示 localhost** → 检查 NEXT_PUBLIC_SERVER_URL
-3. **邮件发送失败** → 检查 SMTP_PASS 是授权码不是密码，LEAD_EMAIL_TO 多个收件人用逗号分隔
-4. **MongoDB 连接失败** → 检查容器是否运行，端口映射是否正确
+2. **构建失败 - MongoDB 连接** → 已解决：GitHub Actions 现在启动临时 MongoDB service
+3. **Sitemap 显示 localhost** → 检查 NEXT_PUBLIC_SERVER_URL
+4. **邮件发送失败** → 检查 SMTP_PASS 是授权码不是密码，LEAD_EMAIL_TO 多个收件人用逗号分隔
+5. **服务器无法访问 GitHub** → 不需要，构建在 GitHub Actions 上完成
 
 ### Data Backup
 MongoDB 数据在 Docker volume `iboran_mongo_data` 中，不受代码部署影响。
