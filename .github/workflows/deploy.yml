@@ -17,12 +17,20 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "Checking if SSH_PRIVATE_KEY exists..."
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
+          echo "Key file size:"
+          ls -la ~/.ssh/deploy_key
+          echo "Key file first line:"
+          head -1 ~/.ssh/deploy_key
           ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Test SSH connection
-        run: ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo 'SSH connection successful' && pwd"
+      - name: Test SSH
+        run: |
+          echo "Testing SSH connection..."
+          ssh -v -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -o ConnectTimeout=10 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo 'Success' && pwd"
 
       - name: Deploy
         run: ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "cd /home/iboran && git pull && pnpm install && pnpm build && pm2 restart iboran"
