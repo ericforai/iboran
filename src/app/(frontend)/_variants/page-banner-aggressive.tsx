@@ -158,7 +158,7 @@ const CoreValueGrid = () => {
         },
         {
             title: "跨厂商乐高式集成",
-            desc: "打通 用友YonSuite + 钉钉 + 协同COP + 达索SOLIDWORKS，消除企业数据孤岛。",
+            desc: "打通 用友YonSuite + 协同COP，消除企业数据孤岛。",
             icon: Layers
         },
         {

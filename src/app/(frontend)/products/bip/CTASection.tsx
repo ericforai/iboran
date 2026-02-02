@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 
@@ -26,9 +27,13 @@ export default function CTASection() {
               获取选型对比表
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-md hover:bg-white/10 transition-all">
-              下载实施路线图
-            </button>
+            <Link 
+              href="/products/bip/roadmap"
+              className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-md hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+            >
+              了解实施路线图
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>

@@ -71,6 +71,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
   const pathname = usePathname()
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+  const [demoSource, setDemoSource] = useState<string | undefined>(undefined)
   const [isConsultModalOpen, setIsConsultModalOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string[]>([])
@@ -109,6 +110,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -142,9 +144,10 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     }, 150)
   }, [])
 
-  const handleOpenDemo = React.useCallback(() => {
+  const handleOpenDemo = React.useCallback((source?: string) => {
     setActiveDropdown(null)
     setIsMobileMenuOpen(false)
+    setDemoSource(source)
     if (onOpenDemo) {
       onOpenDemo()
     } else {
@@ -162,6 +165,16 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
   const handlePhoneClick = React.useCallback(() => {
     trackPhoneCall('navbar')
   }, [trackPhoneCall])
+
+  // Listen for global "open-demo-modal" event
+  useEffect(() => {
+    const handleOpenEvent = (event: any) => {
+      const source = event.detail?.source || 'global-event'
+      handleOpenDemo(source)
+    }
+    window.addEventListener('open-demo-modal', handleOpenEvent)
+    return () => window.removeEventListener('open-demo-modal', handleOpenEvent)
+  }, [handleOpenDemo])
 
   const toggleMobileDropdown = React.useCallback((label: string) => {
     setMobileActiveDropdown((prev) =>
@@ -219,7 +232,13 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
             handleOpenConsult={handleOpenConsult}
             contactData={contactData}
           />
-          {!onOpenDemo && <DemoRequestModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />}
+          {!onOpenDemo && (
+            <DemoRequestModal 
+              isOpen={isDemoModalOpen} 
+              onClose={() => setIsDemoModalOpen(false)} 
+              source={demoSource}
+            />
+          )}
           <ConsultationModal isOpen={isConsultModalOpen} onClose={() => setIsConsultModalOpen(false)} data={contactData} />
         </>
       )}
