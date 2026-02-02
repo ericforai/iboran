@@ -14,26 +14,36 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        run: corepack enable pnpm && pnpm -v
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build application
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_SERVER_URL: https://www.iboran.com
+
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-          echo "Checking if SSH_PRIVATE_KEY exists..."
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          echo "Key file size:"
-          ls -la ~/.ssh/deploy_key
-          echo "Key file first line:"
-          head -1 ~/.ssh/deploy_key
           ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Test SSH
+      - name: Deploy to server
         run: |
-          echo "Testing SSH connection..."
-          ssh -v -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no -o ConnectTimeout=10 ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo 'Success' && pwd"
-
-      - name: Deploy
-        run: ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "cd /home/iboran && git pull && pnpm install && pnpm build && pm2 restart iboran"
+          # Copy build output and files to server
+          tar -czf - .next public package.json pnpm-lock.yaml ecosystem.config.cjs | \
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
+          "cd /home/iboran && tar -xzf - && pm2 restart iboran"
 
       - name: Cleanup
         if: always()
