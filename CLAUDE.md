@@ -192,3 +192,120 @@ Located in tests/e2e - verify user flows and UI functionality.
 
 ### Self-Verifying Tests
 Cross-layer verification (UI ↔ Database) using manifest-based testing.
+
+---
+
+## Deployment Guide (CRITICAL - Updated 2026-02-02)
+
+### Production Architecture
+```
+┌─────────────────────────────────────────────────────────┐
+│                   阿里云 ECS 服务器                      │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │   PM2 → Next.js 应用 (源码部署)                 │   │
+│  │   - 通过 git pull 更新代码                      │   │
+│  │   - 本地 pnpm build 构建                        │   │
+│  │   - pm2 管理进程                                │   │
+│  └─────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │   Docker → MongoDB 7 (数据持久化)               │   │
+│  │   - 端口映射: 27018:27017                       │   │
+│  │   - Volume: iboran_mongo_data                   │   │
+│  │   - 数据安全，不受代码部署影响                  │   │
+│  └─────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Deployment Mode Decision (WHY PM2 instead of pure Docker?)
+
+**问题背景**：
+- 之前每次改一行代码都要构建 Docker 镜像（10-15分钟）
+- 服务器：阿里云 ECS
+- 维护者：单人
+- 源码不保密，无合规要求
+
+**决策**：PM2 源码部署 + MongoDB Docker 混合模式
+
+**原因**：
+1. Docker 镜像构建太慢（10-15分钟 vs 2-3分钟）
+2. 单人维护不需要环境隔离
+3. MongoDB 数据独立更安全
+4. 部署流程简化：git push → 自动部署
+
+### Server Details
+- **IP**: 47.111.2.171
+- **User**: root
+- **App Dir**: /home/iboran
+- **Next.js Port**: 3000
+- **MongoDB Port**: 27018 (external) / 27017 (container)
+
+### Quick Deploy Commands
+
+```bash
+# 自动部署（推荐）- git push 后自动触发
+git push
+
+# 手动部署（紧急情况）
+ssh root@47.111.2.171 "cd /home/iboran && git pull && pnpm install && pnpm build && pm2 restart iboran"
+
+# 服务器上直接操作
+ssh root@47.111.2.171
+cd /home/iboran
+git pull && pnpm build && pm2 restart iboran && pm2 save
+```
+
+### PM2 Management
+```bash
+pm2 status                 # 查看状态
+pm2 logs iboran            # 查看日志
+pm2 restart iboran         # 重启
+pm2 save                   # 保存配置
+```
+
+### MongoDB Management
+```bash
+docker ps | grep mongo                     # 查看状态
+docker compose restart mongo                # 重启
+docker exec iboran-mongo-1 mongosh         # 进入 mongo shell
+```
+
+### Environment Variables (.env on server)
+```bash
+DATABASE_URI=mongodb://localhost:27018/iboran
+NEXT_PUBLIC_SERVER_URL=https://www.iboran.com  # Sitemap 用
+LEAD_EMAIL_TO=user1@qq.com,user2@qq.com         # 多收件人用逗号分隔
+SMTP_HOST=smtp.qq.com
+SMTP_USER=your@qq.com
+SMTP_PASS=your-authorization-code  # QQ邮箱授权码，不是密码
+```
+
+### GitHub Actions Auto-Deploy
+
+**配置完成后的流程**：
+1. 本地 `git push`
+2. GitHub Actions 自动触发
+3. SSH 连接服务器
+4. 执行部署（git pull + build + restart）
+5. 约 3-4 分钟完成
+
+**Secrets** (https://github.com/ericforai/iboran/settings/secrets/actions):
+- `SSH_PRIVATE_KEY`: 完整私钥（包含 BEGIN/END 行）
+- `SERVER_HOST`: 47.111.2.171
+- `SERVER_USER`: root
+
+**重要经验**：
+- SSH_PRIVATE_KEY 必须包含完整的 `-----BEGIN OPENSSH PRIVATE KEY-----` 和 `-----END OPENSSH PRIVATE KEY-----` 行
+- 如果 Secret 显示为空，需要删除重新创建（不要用 Update）
+
+### Common Issues & Solutions
+
+1. **GitHub Actions exit code 255** → SSH_PRIVATE_KEY 格式不对，确保包含 BEGIN/END 行
+2. **Sitemap 显示 localhost** → 检查 NEXT_PUBLIC_SERVER_URL
+3. **邮件发送失败** → 检查 SMTP_PASS 是授权码不是密码，LEAD_EMAIL_TO 多个收件人用逗号分隔
+4. **MongoDB 连接失败** → 检查容器是否运行，端口映射是否正确
+
+### Data Backup
+MongoDB 数据在 Docker volume `iboran_mongo_data` 中，不受代码部署影响。
+
+### Documentation
+详细部署文档：`docs/DEPLOYMENT.md`
