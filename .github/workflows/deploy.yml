@@ -29,6 +29,10 @@ jobs:
         run: pnpm build
         env:
           NEXT_PUBLIC_SERVER_URL: https://www.iboran.com
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          DATABASE_URI: mongodb://localhost:27018/iboran
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          PREVIEW_SECRET: ${{ secrets.PREVIEW_SECRET }}
 
       - name: Configure SSH
         run: |
