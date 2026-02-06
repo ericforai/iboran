@@ -6,7 +6,6 @@ import {
   Award,
   Target,
   ShieldCheck,
-  Users,
   Rocket,
   Code,
   AlertTriangle,
@@ -21,25 +20,25 @@ import Image from 'next/image'
 const milestones = [
   { year: '2012', title: '公司成立', desc: '泊冉软件正式成立，开启一站式企业管理解决方案征程。' },
   { year: '2017', title: '杰出合作伙伴', desc: '凭借卓越的实施交付能力，获评用友 TOP 10 杰出合作伙伴。' },
-  { year: '2019', title: '高新技术企业', desc: '正式获评国家级“高新技术企业”认定，迈入技术驱动新阶段。' },
-  { year: '2023', title: '专精特新', desc: '获评上海市“专精特新”中小企业及宝山区企业技术中心认定。' },
+  { year: '2019', title: '高新技术企业', desc: '正式获评国家级"高新技术企业"认定，迈入技术驱动新阶段。' },
+  { year: '2023', title: '专精特新', desc: '获评上海市"专精特新"中小企业及宝山区企业技术中心认定。' },
 ]
 
 const values = [
-  { 
-    icon: Target, 
-    title: '使命 Mission', 
-    desc: '懂变，才安稳。泊冉，14年未雨绸缪。助力企业在变局中实现稳健增长与数智化跨越。' 
+  {
+    icon: Target,
+    title: '使命 Mission',
+    desc: '懂变，才安稳。泊冉，14年未雨绸缪。助力企业在变局中实现稳健增长与数智化跨越。'
   },
-  { 
-    icon: ShieldCheck, 
-    title: '核心实力 Strength', 
-    desc: '80% 以上技术人员占比，深耕现代服务业与智能制造 (C2M 工业 4.0)。' 
+  {
+    icon: ShieldCheck,
+    title: '核心实力 Strength',
+    desc: '80% 以上技术人员占比，深耕现代服务业与智能制造 (C2M 工业 4.0)。'
   },
-  { 
-    icon: Award, 
-    title: '行业信任 Trust', 
-    desc: '500+ 集团型客户及 2000+ 中小型客户的共同选择。' 
+  {
+    icon: Award,
+    title: '行业信任 Trust',
+    desc: '500+ 集团型客户及 2000+ 中小型客户的共同选择。'
   },
 ]
 
@@ -53,33 +52,6 @@ const productEcosystem = {
     { name: 'DMS 经销商管理', desc: '全渠道营销与分销掌控力', icon: Target },
   ]
 }
-
-const teamMembers = [
-  {
-    name: '王振宇',
-    role: '创始人 & CEO',
-    desc: '14年ERP实施经验，用友首批认证专家，曾任用友股份华东区实施总监',
-    color: 'from-blue-500 to-indigo-600'
-  },
-  {
-    name: '李明',
-    role: '交付总监',
-    desc: '前用友资深顾问，主导100+大中型企业项目交付，精通业财一体化与财务共享',
-    color: 'from-cyan-500 to-blue-600'
-  },
-  {
-    name: '张海涛',
-    role: '技术总监',
-    desc: '10年研发经验，主导泊冉低代码平台研发，原用友BIP核心架构师',
-    color: 'from-indigo-500 to-purple-600'
-  },
-  {
-    name: '陈丽华',
-    role: '行业专家',
-    desc: '15年制造业信息化经验，精通MES/WMS与智能制造场景',
-    color: 'from-purple-500 to-pink-600'
-  },
-]
 
 const certificates = [
   { name: '国家级高新技术企业', year: '2019', category: 'gov', image: '/certificates/高新技术企业.jpg' },
@@ -167,37 +139,6 @@ export function AboutPageContent() {
                 <div className="text-base font-bold text-slate-800 mb-1">{stat.label}</div>
                 <div className="text-xs font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">{stat.sub}</div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">核心团队</h2>
-            <p className="text-slate-600">80% 技术人员占比，用友认证实施专家</p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {teamMembers.map((member, idx) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="text-center group"
-              >
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
-                  <div className={`w-full h-full bg-gradient-to-br ${member.color} flex items-center justify-center text-white text-2xl font-bold`}>
-                    {member.name[0]}
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
-                <div className="text-sm text-blue-600 mb-2">{member.role}</div>
-                <p className="text-sm text-slate-500 leading-relaxed">{member.desc}</p>
-              </motion.div>
             ))}
           </div>
         </div>
@@ -431,7 +372,7 @@ export function AboutPageContent() {
           </div>
         </div>
       </section>
-      
+
       {/* Demo Modal */}
       <DemoRequestModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
     </div>

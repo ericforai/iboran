@@ -5,7 +5,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Phone, MessageSquare, Presentation } from 'lucide-react'
+import { Phone, MessageSquare, Presentation, Sparkles } from 'lucide-react'
 import type { Contact } from '@/payload-types'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { ConsultationModal } from '@/components/ConsultationModal'
@@ -19,9 +19,8 @@ export const MobileStickyBar: React.FC<{ contactData?: Contact }> = React.memo((
     const handleOpenDemo = React.useCallback(() => setIsDemoModalOpen(true), [])
     const handleCloseDemo = React.useCallback(() => setIsDemoModalOpen(false), [])
     const handleOpenConsult = React.useCallback(() => {
-        trackWeChatOpen('mobile-sticky')
-        setIsConsultModalOpen(true)
-    }, [trackWeChatOpen])
+        window.dispatchEvent(new CustomEvent('open-ai-consultant'))
+    }, [])
     const handleCloseConsult = React.useCallback(() => setIsConsultModalOpen(false), [])
     const handlePhoneClick = React.useCallback(() => {
         trackPhoneCall('mobile-sticky')
@@ -31,31 +30,31 @@ export const MobileStickyBar: React.FC<{ contactData?: Contact }> = React.memo((
 
     return (
         <>
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[110] bg-white/95 backdrop-blur-md border-t border-slate-100 shadow-[0_-4px_20px_0_rgba(0,0,0,0.08)] px-4 py-3 pb-safe-offset-2">
-                <div className="flex items-center gap-3">
+            <div className="lg:hidden fixed bottom-0 inset-x-0 z-[110] bg-white/95 backdrop-blur-md border-t border-slate-100 shadow-[0_-4px_20px_0_rgba(0,0,0,0.08)] px-4 pt-3 pb-safe-offset-2 overflow-hidden touch-pan-y select-none">
+                <div className="grid grid-cols-4 items-center gap-2 w-full max-w-full">
                     <a
                         href={`tel:${phone.replace(/\s+/g, '')}`}
                         onClick={handlePhoneClick}
-                        className="flex-1 flex flex-col items-center justify-center gap-1 py-2 text-[#4B5563] active:bg-slate-50 transition-colors rounded-lg"
+                        className="col-span-1 flex flex-col items-center justify-center gap-1 py-1.5 text-[#4B5563] active:bg-slate-50 transition-colors rounded-lg min-w-0"
                     >
-                        <Phone className="w-5 h-5" />
-                        <span className="text-[10px] font-bold">拨打电话</span>
+                        <Phone className="w-5 h-5 flex-shrink-0" />
+                        <span className="text-[10px] font-bold truncate w-full text-center">拨打电话</span>
                     </a>
                     
                     <button
                         onClick={handleOpenDemo}
-                        className="flex-[2] flex items-center justify-center gap-2 py-3.5 bg-[#E60012] text-white rounded-xl shadow-[0_4px_12px_0_rgba(230,0,18,0.3)] active:scale-[0.98] transition-all"
+                        className="col-span-2 flex flex-col items-center justify-center gap-1 py-2.5 bg-[#E60012] text-white rounded-xl shadow-[0_4px_12px_0_rgba(230,0,18,0.3)] active:scale-[0.98] transition-all min-w-0"
                     >
-                        <Presentation className="w-5 h-5" />
-                        <span className="text-sm font-bold tracking-wide">预约专家评估</span>
+                        <Presentation className="w-5 h-5 flex-shrink-0" />
+                        <span className="text-[10px] font-bold tracking-wide truncate w-full text-center px-1">预约专家评估</span>
                     </button>
                     
                     <button
-                        className="flex-1 flex flex-col items-center justify-center gap-1 py-2 text-[#4B5563] active:bg-slate-50 transition-colors rounded-lg"
+                        className="col-span-1 flex flex-col items-center justify-center gap-1 py-1.5 text-[#4B5563] active:bg-slate-50 transition-colors rounded-lg min-w-0"
                         onClick={handleOpenConsult}
                     >
-                        <MessageSquare className="w-5 h-5" />
-                        <span className="text-[10px] font-bold">在线咨询</span>
+                        <Sparkles className="w-5 h-5 flex-shrink-0" />
+                        <span className="text-[10px] font-bold truncate w-full text-center">AI 客服</span>
                     </button>
                 </div>
             </div>

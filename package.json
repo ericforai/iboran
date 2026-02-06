@@ -40,6 +40,7 @@
     "db:safe-reset": "bash scripts/safe-docker-reset.sh"
   },
   "dependencies": {
+    "@google/genai": "^1.39.0",
     "@payloadcms/admin-bar": "3.68.5",
     "@payloadcms/db-mongodb": "3.68.5",
     "@payloadcms/email-nodemailer": "3.68.5",
@@ -71,6 +72,7 @@
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "react-hook-form": "7.70.0",
+    "react-markdown": "^10.1.0",
     "sharp": "0.34.5",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"

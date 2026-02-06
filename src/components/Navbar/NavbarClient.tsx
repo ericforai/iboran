@@ -173,8 +173,17 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
       handleOpenDemo(source)
     }
     window.addEventListener('open-demo-modal', handleOpenEvent)
-    return () => window.removeEventListener('open-demo-modal', handleOpenEvent)
-  }, [handleOpenDemo])
+    
+    const handleConsultEvent = () => {
+      handleOpenConsult()
+    }
+    window.addEventListener('open-consult-modal', handleConsultEvent)
+
+    return () => {
+      window.removeEventListener('open-demo-modal', handleOpenEvent)
+      window.removeEventListener('open-consult-modal', handleConsultEvent)
+    }
+  }, [handleOpenDemo, handleOpenConsult])
 
   const toggleMobileDropdown = React.useCallback((label: string) => {
     setMobileActiveDropdown((prev) =>
