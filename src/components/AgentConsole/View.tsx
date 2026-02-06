@@ -96,6 +96,15 @@ const AgentConsoleView: React.FC = () => {
     return Object.values(unreadMap).reduce((sum, value) => sum + value, 0)
   }, [unreadMap])
 
+  // Memoize parsed sources to avoid recalculating on every render
+  const parsedSourcesMap = useMemo(() => {
+    const map = new Map<string, ReturnType<typeof parseSource>>()
+    for (const conversation of conversations) {
+      map.set(conversation.id, parseSource(conversation.sourcePage))
+    }
+    return map
+  }, [conversations])
+
   const persistReadMarkers = useCallback((nextMarkers: Record<string, string>) => {
     readMarkersRef.current = nextMarkers
     try {
@@ -484,7 +493,7 @@ const AgentConsoleView: React.FC = () => {
               conversations.map((conversation) => {
                 const selected = conversation.id === selectedConversationId
                 const unread = unreadMap[conversation.id] || 0
-                const source = parseSource(conversation.sourcePage)
+                const source = parsedSourcesMap.get(conversation.id) || parseSource(conversation.sourcePage)
 
                 return (
                   <button

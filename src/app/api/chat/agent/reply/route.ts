@@ -15,6 +15,12 @@ const MAX_CLIENT_MESSAGE_ID_LEN = 120
 
 export async function POST(req: NextRequest) {
   try {
+    // Validate Content-Type
+    const contentType = req.headers.get('content-type')
+    if (!contentType?.includes('application/json')) {
+      return NextResponse.json({ error: 'Unsupported media type' }, { status: 415 })
+    }
+
     const payload = await getPayload({ config })
     const { user } = await payload.auth({ headers: req.headers })
     const effectiveRole = user?.role || 'agent'

@@ -47,6 +47,12 @@ const resolveConversation = async (payload: Awaited<ReturnType<typeof getPayload
 
 export async function POST(req: NextRequest) {
   try {
+    // Validate Content-Type
+    const contentType = req.headers.get('content-type')
+    if (!contentType?.includes('application/json')) {
+      return NextResponse.json({ error: 'Unsupported media type' }, { status: 415 })
+    }
+
     const ip = getRequestIP(req.headers)
     const limit = checkRateLimit(`chat-message:${ip}`, { limit: 40, windowMs: 60_000 })
     if (!limit.allowed) {

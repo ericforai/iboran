@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 import config from '@payload-config'
 import { checkRateLimit, getRequestIP } from '@/utilities/rateLimit'
-import { verifyVisitorId } from '../../visitor/route'
+import { verifyVisitorId } from '@/utilities/visitorId'
 
 export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
   try {

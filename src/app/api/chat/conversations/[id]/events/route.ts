@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 
 import config from '@payload-config'
 import { checkRateLimit, getRequestIP } from '@/utilities/rateLimit'
+import { verifyVisitorId } from '@/utilities/visitorId'
 
 type MessageDoc = {
   id: string
@@ -50,7 +51,8 @@ export async function GET(req: Request, context: { params: Promise<{ id: string 
   const isAgent = role === 'agent' || role === 'admin'
   if (!isAgent) {
     const visitorId = req.headers.get('x-chat-visitor-id')?.trim() || searchParams.get('visitorId')?.trim() || ''
-    if (!visitorId || visitorId !== conversation.visitorId) {
+    const verification = verifyVisitorId(visitorId)
+    if (!verification.valid || visitorId !== conversation.visitorId) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
   }

@@ -9,6 +9,12 @@ const MAX_SOURCE_PAGE_LEN = 400
 
 export async function POST(req: NextRequest) {
   try {
+    // Validate Content-Type
+    const contentType = req.headers.get('content-type')
+    if (!contentType?.includes('application/json')) {
+      return NextResponse.json({ error: 'Unsupported media type' }, { status: 415 })
+    }
+
     const ip = getRequestIP(req.headers)
     const limit = checkRateLimit(`chat-handoff:${ip}`, { limit: 12, windowMs: 60_000 })
     if (!limit.allowed) {
