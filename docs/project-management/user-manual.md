@@ -160,3 +160,22 @@ Related Success Stories
 
 ---
 *泊冉软件市场部专用 | 2025版 | Conductor 生成*
+
+---
+
+## 4. AI 转人工客服（新功能）
+
+### 4.1 用户侧行为
+1. 用户在右下角 AI 聊天窗口点击 `转人工`。
+2. 系统提示“已为你转人工，工作时间内会优先回复”。
+3. 人工未接入前，AI 会继续兜底回答。
+
+### 4.2 客服操作路径（Payload Admin）
+1. 登录后台后进入 `Conversations`。
+2. 找到 `handoffStatus = requested` 的会话。
+3. 进入会话后在 `Messages` 中发送 `role = agent` 的回复内容。
+4. 首条人工回复后，会话状态进入 `active`。
+
+### 4.3 运营注意事项
+- 若临时停用人工接入，设置 `ENABLE_HUMAN_HANDOFF=false` 即可降级为纯 AI。
+- 建议值班期间优先处理 `requested` 会话，缩短首响时间。

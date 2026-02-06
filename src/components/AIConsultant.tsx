@@ -1,11 +1,19 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { MessageSquare, X, Send, Bot, Minimize2, Lightbulb, Sparkles, PhoneCall, Link as LinkIcon, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import DOMPurify from 'dompurify';
 import { aiService, ChatMessage } from '../utilities/aiService';
 import { chatService } from '../utilities/chatService';
 import { AIWidgetConfig, GroundingChunk } from '../types/ai';
+
+// Configure DOMPurify for markdown sanitization
+const purify = (html: string) => DOMPurify.sanitize(html, {
+  ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'a', 'ul', 'ol', 'li', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'code', 'pre'],
+  ALLOWED_ATTR: ['href', 'className', 'target', 'rel'],
+  ALLOW_DATA_ATTR: false,
+});
 
 interface AIConsultantProps {
   /** 机器人的配置信息（人设、欢迎语、建议等） */
@@ -554,9 +562,30 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
             blockquote: ({ node, ...props }) => (
               <blockquote className={`border-l-4 ${t.blockquote} pl-4 py-3 my-6 text-[13px] text-slate-700 bg-slate-50/80 rounded-r-2xl shadow-inner italic`} {...props} />
             ),
-            a: ({ node, ...props }) => (
-              <a className={`${t.text} underline underline-offset-2 hover:text-slate-900 transition-colors font-medium`} target="_blank" rel="noopener noreferrer" {...props} />
-            )
+            a: ({ node, ...props }) => {
+              // Prevent XSS by validating href
+              const href = props.href || '';
+              const safeProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
+              const isSafe = safeProtocols.some(protocol => href.startsWith(protocol));
+
+              if (!isSafe) {
+                // Render as span with class instead of anchor for unsafe links
+                return (
+                  <span className={`${t.text} underline underline-offset-2 opacity-60`}>
+                    {props.children}
+                  </span>
+                );
+              }
+
+              return (
+                <a
+                  className={`${t.text} underline underline-offset-2 hover:text-slate-900 transition-colors font-medium`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  {...props}
+                />
+              );
+            }
           }}
         >
           {content}
@@ -695,7 +724,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
             )}
             {chatHistory.map((m, i) => (
               <div
-                key={i}
+                key={m.clientMessageId || `msg-${m.role}-${i}`}
                 data-chat-index={i}
                 data-chat-role={m.role}
                 className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}

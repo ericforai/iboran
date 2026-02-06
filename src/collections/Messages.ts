@@ -2,6 +2,19 @@ import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '@/access/authenticated'
 
+/**
+ * Create compound indexes for better query performance.
+ * This should be called after the collection is created.
+ * Run in MongoDB shell or through a migration script.
+ *
+ * db.messages.createIndex({ conversation: 1, createdAt: 1 })
+ */
+const ensureIndexes = async () => {
+  // This would be called in a migration script or database setup
+  // For now, documenting the required index
+  console.log('Messages collection requires compound index: { conversation: 1, createdAt: 1 }')
+}
+
 export const Messages: CollectionConfig = {
   slug: 'messages',
   admin: {
