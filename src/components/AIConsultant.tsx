@@ -1,19 +1,11 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { MessageSquare, X, Send, Bot, Minimize2, Lightbulb, Sparkles, PhoneCall, Link as LinkIcon, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import DOMPurify from 'dompurify';
 import { aiService, ChatMessage } from '../utilities/aiService';
 import { chatService } from '../utilities/chatService';
 import { AIWidgetConfig, GroundingChunk } from '../types/ai';
-
-// Configure DOMPurify for markdown sanitization
-const purify = (html: string) => DOMPurify.sanitize(html, {
-  ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'a', 'ul', 'ol', 'li', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'code', 'pre'],
-  ALLOWED_ATTR: ['href', 'className', 'target', 'rel'],
-  ALLOW_DATA_ATTR: false,
-});
 
 interface AIConsultantProps {
   /** 机器人的配置信息（人设、欢迎语、建议等） */
@@ -137,7 +129,6 @@ const HANDOFF_POLL_INTERVAL_MS = Math.max(
   2500,
   Number(process.env.NEXT_PUBLIC_HUMAN_HANDOFF_POLLING_MS || 1200),
 );
-const VISITOR_PROFILE_KEY = 'chat-visitor-profile-v2';
 const VISITOR_ID_KEY = 'chat-visitor-id-v2';
 
 /**
@@ -539,32 +530,30 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     };
   }, [applyServerMessages, conversationId, handoffStatus, isOpen, syncConversationMessages]);
 
-  // Memoize render components to prevent re-creation on every render
-  const MarkdownRenderer = useMemo(() => {
-    return ({ content }: { content: string }) => {
+  const MarkdownRenderer = ({ content }: { content: string }) => {
     return (
       <div className="markdown-content">
         <ReactMarkdown
           components={{
-            h3: ({ node, ...props }) => (
+            h3: ({ node: _node, ...props }) => (
               <h3 className="text-[15px] font-bold text-slate-900 mt-6 mb-3 flex items-center gap-2 border-b border-slate-100 pb-2" {...props} />
             ),
-            p: ({ node, ...props }) => <p className="mb-4 last:mb-0 leading-relaxed text-slate-600" {...props} />,
-            ul: ({ node, ...props }) => <ul className="list-none pl-1 mb-4 space-y-3" {...props} />,
-            ol: ({ node, ...props }) => <ol className="list-decimal pl-5 mb-4 space-y-3" {...props} />,
-            li: ({ node, ...props }) => (
+            p: ({ node: _node, ...props }) => <p className="mb-4 last:mb-0 leading-relaxed text-slate-600" {...props} />,
+            ul: ({ node: _node, ...props }) => <ul className="list-none pl-1 mb-4 space-y-3" {...props} />,
+            ol: ({ node: _node, ...props }) => <ol className="list-decimal pl-5 mb-4 space-y-3" {...props} />,
+            li: ({ node: _node, ...props }) => (
               <li className="flex gap-2 text-slate-600">
                 <span className={`${t.marker} font-bold shrink-0`}>•</span>
                 <span>{props.children}</span>
               </li>
             ),
-            strong: ({ node, ...props }) => (
+            strong: ({ node: _node, ...props }) => (
               <strong className={`font-bold text-slate-900 ${t.lightBg} px-1.5 py-0.5 rounded border ${t.borderLight}/50`} {...props} />
             ),
-            blockquote: ({ node, ...props }) => (
+            blockquote: ({ node: _node, ...props }) => (
               <blockquote className={`border-l-4 ${t.blockquote} pl-4 py-3 my-6 text-[13px] text-slate-700 bg-slate-50/80 rounded-r-2xl shadow-inner italic`} {...props} />
             ),
-            a: ({ node, ...props }) => {
+            a: ({ node: _node, ...props }) => {
               // Prevent XSS by validating href
               const href = props.href || '';
               const safeProtocols = ['http:', 'https:', 'mailto:', 'tel:'];
@@ -595,10 +584,8 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       </div>
     );
   };
-  }, [t]);
 
-  const SourcesDisplay = useMemo(() => {
-    return ({ chunks }: { chunks: GroundingChunk[] }) => {
+  const SourcesDisplay = ({ chunks }: { chunks: GroundingChunk[] }) => {
     if (!chunks || chunks.length === 0) return null;
 
     const validChunks = chunks.filter((c) => c.web?.title || c.source);
@@ -647,7 +634,6 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       </div>
     );
   };
-}, [t]);
 
   if (!mounted) return null;
 

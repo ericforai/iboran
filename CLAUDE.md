@@ -72,13 +72,35 @@ src/
 │   │   ├── posts/          # Blog posts
 │   │   ├── cases/          # Success story case studies
 │   │   └── layout.tsx      # Root layout with Navbar/Footer
+│   ├── (payload)/          # Payload Admin UI
 │   └── api/                # API routes
+│       ├── ai/             # AI chat endpoints
+│       ├── chat/           # Human handoff chat endpoints
+│       └── admin/          # Admin utilities
 ├── blocks/                 # Payload block components (Banner, CTA, etc.)
-├── collections/            # Payload CMS collections (Posts, Media, SuccessStories)
+├── collections/            # Payload CMS collections
+│   ├── Conversations.ts    # Chat conversations (AI → Human handoff)
+│   ├── Messages.ts         # Chat messages
+│   └── ...
 ├── components/             # Shared React components
+│   ├── AIConsultant.tsx    # AI chat widget
+│   ├── AgentConsole/       # Payload admin chat console
+│   └── ...
 ├── globals/                # Payload globals (Contact)
 ├── heros/                  # Hero section components
+├── hooks/                  # Custom React hooks
+│   └── useConversionTracking.ts
+├── providers/              # React context providers
+│   ├── AttributionProvider.tsx
+│   └── AnalyticsProvider.tsx
+├── types/                  # TypeScript type definitions
+│   ├── ai.ts               # AI consultant types
+│   └── chat.ts             # Chat/handoff types
 ├── utilities/              # Helper functions
+│   ├── aiService.ts        # AI service (DeepSeek API)
+│   ├── chatService.ts      # Chat service
+│   ├── knowledgeGrounding.ts  # Knowledge base retrieval
+│   └── rateLimit.ts        # Rate limiting
 └── payload.config.ts       # Payload CMS configuration
 ```
 
@@ -89,6 +111,9 @@ src/
 - **Animation**: Framer Motion
 - **Icons**: Lucide React
 - **Fonts**: Geist Sans/Mono, Lexend
+- **AI**: DeepSeek API (chat completions)
+- **Markdown**: react-markdown (AI responses)
+- **Real-time**: Server-Sent Events (SSE) for chat
 
 ### Architecture Rules (dependency-cruiser)
 - No circular dependencies (exception: RichText ↔ Block components)
@@ -320,3 +345,205 @@ MongoDB 数据在 Docker volume `iboran_mongo_data` 中，不受代码部署影�
 
 ### Documentation
 详细部署文档：`docs/DEPLOYMENT.md`
+
+---
+
+## Feature: AI Consultant (智能咨询顾问)
+
+### Overview
+Floating AI chat widget that provides instant responses to visitor questions about Yonyou products and services. Built with DeepSeek API and knowledge grounding.
+
+### Files
+- `src/components/AIConsultant.tsx` - Chat widget component
+- `src/utilities/aiService.ts` - AI service layer
+- `src/app/api/ai/chat/route.ts` - Server-side API proxy (security)
+- `src/utilities/knowledgeGrounding.ts` - Knowledge base retrieval
+
+### Configuration
+Located in `src/app/(frontend)/layout.tsx`:
+```tsx
+const AI_CONFIG: AIWidgetConfig = {
+  theme: 'red',
+  name: '泊冉顾问',
+  subTitle: '用友实施专家',
+  systemInstruction: "...",  // AI system prompt
+  welcomeTitle: "你好！我是泊冉的AI顾问",
+  welcomeMessage: "我可以帮您解答关于用友产品、实施服务等问题...",
+  suggestions: [
+    { title: "YonSuite", desc: "企业云服务平台", query: "YonSuite是什么？" },
+    // ...
+  ],
+  errorMessage: "抱歉，暂时无法回复。",
+};
+```
+
+### Security
+- API Key stored server-side (`DEEPSEEK_API_KEY`)
+- Client never calls DeepSeek directly
+- All requests go through `/api/ai/chat` proxy
+- Link href validation prevents XSS
+
+---
+
+## Feature: Human Handoff (人工转接)
+
+### Overview
+Seamless AI → Human agent handoff system. Visitors can request human assistance, and agents can respond via Payload Admin console.
+
+### State Machine
+```
+none → requested → active → closed
+  ↑                   ↓
+  └─────── (reopen) ───┘
+```
+
+### Collections
+- `Conversations` - Chat sessions with handoff status
+- `Messages` - Individual messages (visitor/ai/agent/system)
+
+### API Endpoints
+- `POST /api/chat/messages` - Send visitor message
+- `POST /api/chat/handoff` - Request human agent
+- `GET /api/chat/conversations/{id}/messages` - Fetch message history
+- `GET /api/chat/conversations/{id}/events` - SSE stream for real-time updates
+- `POST /api/chat/agent/reply` - Agent sends reply (authenticated)
+- `POST /api/chat/visitor` - Get secure visitor ID
+
+### Agent Console
+Access via Payload Admin: `/admin/agent-console`
+- View pending conversations
+- Real-time message streaming
+- Sound & browser notifications
+- Reply to visitors
+
+### Security
+- Server-signed visitor IDs (HMAC verification)
+- Rate limiting per IP
+- Content-Type validation
+- Agent-only endpoints require authentication
+
+---
+
+## Feature: Analytics & Conversion Tracking
+
+### Analytics Provider
+`src/providers/AnalyticsProvider.tsx` wraps the app with:
+- Google Analytics 4 (`NEXT_PUBLIC_GA_MEASUREMENT_ID`)
+- Baidu Tongji (`NEXT_PUBLIC_BAIDU_SITE_ID`)
+
+### Conversion Tracking
+`src/hooks/useConversionTracking.ts` tracks:
+- Page views with UTM parameters
+- Scroll depth milestones
+- Engagement time
+- Form submissions
+- Phone link clicks
+- Exit intent
+
+### Attribution
+`src/providers/AttributionProvider.tsx` captures:
+- UTM source/medium/campaign
+- Referrer
+- Landing page
+- Session data
+
+---
+
+## Feature: Sales Optimization Components
+
+### ScrollTriggerDrawer
+Drawer that appears after scrolling 50% of page, showing relevant products.
+
+### ExitIntentModal
+Modal shown when user attempts to leave the page (desktop only).
+
+### MobileStickyBar
+Sticky CTA bar on mobile for easy contact access.
+
+---
+
+## Environment Variables Reference
+
+```bash
+# === Core ===
+DATABASE_URI=mongodb://localhost:27018/iboran
+PAYLOAD_SECRET=your-payload-secret-here
+NEXT_PUBLIC_SERVER_URL=https://www.iboran.com
+
+# === Email / SMTP ===
+SMTP_HOST=smtp.qq.com
+SMTP_USER=your@qq.com
+SMTP_PASS=your-authorization-code
+SMTP_PORT=465
+SMTP_FROM=your@qq.com
+LEAD_EMAIL_TO=user1@qq.com,user2@qq.com
+
+# === Secrets ===
+CRON_SECRET=your-cron-secret
+PREVIEW_SECRET=your-preview-secret
+VISITOR_SECRET=your-visitor-secret-for-signing-ids
+
+# === AI Chat ===
+DEEPSEEK_API_KEY=sk-your-deepseek-key
+DEEPSEEK_BASE_URL=https://api.deepseek.com
+
+# === Chat Handoff ===
+ENABLE_HUMAN_HANDOFF=true
+HUMAN_HANDOFF_POLLING_MS=3000
+NEXT_PUBLIC_HUMAN_HANDOFF_POLLING_MS=1200
+
+# === Analytics ===
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_BAIDU_SITE_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+---
+
+## API Documentation
+
+### AI Chat API
+**Endpoint**: `POST /api/ai/chat`
+**Auth**: None (public, rate-limited)
+**Request**:
+```json
+{
+  "history": [
+    { "role": "user", "content": "YonSuite是什么？" }
+  ],
+  "systemInstruction": "You are a helpful assistant..."
+}
+```
+**Response**:
+```json
+{
+  "text": "YonSuite是...",
+  "groundingChunks": [
+    { "web": { "uri": "/products/yonsuite", "title": "YonSuite" } }
+  ]
+}
+```
+
+### Visitor ID API
+**Endpoint**: `POST /api/chat/visitor`
+**Auth**: None
+**Response**:
+```json
+{
+  "visitorId": "abc123.signature",
+  "expiresAt": 1738368000000
+}
+```
+
+### Agent Reply API
+**Endpoint**: `POST /api/chat/agent/reply`
+**Auth**: Requires agent/admin session
+**Request**:
+```json
+{
+  "conversationId": "64f7a8b9...",
+  "content": "您好，我是客服...",
+  "clientMessageId": "agent-123456"
+}
+```
+
+---
