@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { MessageSquare, X, Send, Bot, Minimize2, Lightbulb, Sparkles, PhoneCall, Link as LinkIcon, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { aiService, ChatMessage } from '../utilities/aiService';
@@ -530,7 +530,10 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     };
   }, [applyServerMessages, conversationId, handoffStatus, isOpen, syncConversationMessages]);
 
-  const MarkdownRenderer = ({ content }: { content: string }) => {
+  // Memoize render components to prevent re-creation on every render
+  // This keeps component identities stable and prevents remounting of all message subtrees
+  const MarkdownRenderer = useMemo(() => {
+    return ({ content }: { content: string }) => {
     return (
       <div className="markdown-content">
         <ReactMarkdown
@@ -584,8 +587,10 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       </div>
     );
   };
+  }, [t]);
 
-  const SourcesDisplay = ({ chunks }: { chunks: GroundingChunk[] }) => {
+  const SourcesDisplay = useMemo(() => {
+    return ({ chunks }: { chunks: GroundingChunk[] }) => {
     if (!chunks || chunks.length === 0) return null;
 
     const validChunks = chunks.filter((c) => c.web?.title || c.source);
@@ -634,6 +639,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       </div>
     );
   };
+}, [t]);
 
   if (!mounted) return null;
 
