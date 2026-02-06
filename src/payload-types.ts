@@ -76,6 +76,8 @@ export interface Config {
     'success-stories': SuccessStory;
     resources: Resource;
     leads: Lead;
+    conversations: Conversation;
+    messages: Message;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -102,6 +104,8 @@ export interface Config {
     'success-stories': SuccessStoriesSelect<false> | SuccessStoriesSelect<true>;
     resources: ResourcesSelect<false> | ResourcesSelect<true>;
     leads: LeadsSelect<false> | LeadsSelect<true>;
+    conversations: ConversationsSelect<false> | ConversationsSelect<true>;
+    messages: MessagesSelect<false> | MessagesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -462,6 +466,7 @@ export interface Category {
 export interface User {
   id: string;
   name?: string | null;
+  role: 'admin' | 'agent';
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1162,6 +1167,44 @@ export interface Lead {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "conversations".
+ */
+export interface Conversation {
+  id: string;
+  visitorId: string;
+  sourcePage?: string | null;
+  mode: 'ai' | 'human' | 'hybrid';
+  handoffStatus: 'none' | 'requested' | 'active' | 'closed';
+  needsHuman?: boolean | null;
+  lastMessageAt?: string | null;
+  assignedAgent?: (string | null) | User;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "messages".
+ */
+export interface Message {
+  id: string;
+  conversation: string | Conversation;
+  role: 'visitor' | 'ai' | 'agent' | 'system';
+  content: string;
+  clientMessageId: string;
+  meta?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1398,6 +1441,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'leads';
         value: string | Lead;
+      } | null)
+    | ({
+        relationTo: 'conversations';
+        value: string | Conversation;
+      } | null)
+    | ({
+        relationTo: 'messages';
+        value: string | Message;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1763,6 +1814,7 @@ export interface CategoriesSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -2045,6 +2097,34 @@ export interface LeadsSelect<T extends boolean = true> {
         landingPage?: T;
         pageHistory?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "conversations_select".
+ */
+export interface ConversationsSelect<T extends boolean = true> {
+  visitorId?: T;
+  sourcePage?: T;
+  mode?: T;
+  handoffStatus?: T;
+  needsHuman?: T;
+  lastMessageAt?: T;
+  assignedAgent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "messages_select".
+ */
+export interface MessagesSelect<T extends boolean = true> {
+  conversation?: T;
+  role?: T;
+  content?: T;
+  clientMessageId?: T;
+  meta?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -8,6 +8,8 @@ export interface ChatMessage {
   role: 'user' | 'model';
   parts: ChatMessagePart[];
   groundingChunks?: GroundingChunk[];
+  clientMessageId?: string;
+  deliveryStatus?: 'sending' | 'sent' | 'read';
 }
 
 export interface AIResponse {

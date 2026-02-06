@@ -14,6 +14,8 @@ import { IndustrySolutions } from './collections/IndustrySolutions'
 import { SuccessStories } from './collections/SuccessStories'
 import { Resources } from './collections/Resources'
 import { Leads } from './collections/Leads'
+import { Conversations } from './collections/Conversations'
+import { Messages } from './collections/Messages'
 import { Footer } from './Footer/config'
 import { Header } from './Header/config'
 import { Contact } from './globals/Contact'
@@ -23,6 +25,7 @@ import { getServerSideURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+const useSMTPInRuntime = process.env.NODE_ENV === 'production' && Boolean(process.env.SMTP_HOST)
 
 export default buildConfig({
   admin: {
@@ -33,6 +36,13 @@ export default buildConfig({
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
       beforeDashboard: ['@/components/BeforeDashboard'],
+      beforeNavLinks: ['@/components/AgentConsole/NavLink'],
+      views: {
+        agentConsole: {
+          Component: '@/components/AgentConsole/View',
+          path: '/agent-console',
+        },
+      },
     },
     importMap: {
       baseDir: path.resolve(dirname),
@@ -66,14 +76,26 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [Pages, Posts, Media, Categories, Users, IndustrySolutions, SuccessStories, Resources, Leads],
+  collections: [
+    Pages,
+    Posts,
+    Media,
+    Categories,
+    Users,
+    IndustrySolutions,
+    SuccessStories,
+    Resources,
+    Leads,
+    Conversations,
+    Messages,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, Contact],
   plugins,
   email: nodemailerAdapter({
     defaultFromAddress: process.env.SMTP_FROM || 'info@boran.cn',
     defaultFromName: 'Boran Software',
-    transportOptions: process.env.SMTP_HOST
+    transportOptions: useSMTPInRuntime
       ? {
           host: process.env.SMTP_HOST,
           auth: {
@@ -87,7 +109,10 @@ export default buildConfig({
           },
         }
       : {
-          streamTransport: true, // Log to console if no SMTP
+          // Keep local/dev requests independent from external SMTP latency/failures.
+          streamTransport: true,
+          newline: 'unix',
+          buffer: true,
       },
   }),
   secret: process.env.PAYLOAD_SECRET,

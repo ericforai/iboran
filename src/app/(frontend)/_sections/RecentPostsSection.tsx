@@ -9,6 +9,13 @@ interface Props {
   posts: Post[]
 }
 
+const formatDateStable = (value?: string | null) => {
+  if (!value) return ''
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return ''
+  return date.toISOString().slice(0, 10)
+}
+
 export const RecentPostsSection: React.FC<Props> = ({ posts }) => {
   return (
     <section className="py-24 bg-white border-t border-gray-100">
@@ -46,7 +53,7 @@ export const RecentPostsSection: React.FC<Props> = ({ posts }) => {
                       {categoryTitle}
                    </span>
                    <span className="text-[10px] font-mono text-gray-400">
-                      {new Date(post.createdAt).toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+                      {formatDateStable(post.createdAt)}
                    </span>
                 </div>
 

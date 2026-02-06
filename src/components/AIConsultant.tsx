@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, Minimize2, Lightbulb, Sparkles, ArrowRight, Link as LinkIcon, ExternalLink } from 'lucide-react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { MessageSquare, X, Send, Bot, Minimize2, Lightbulb, Sparkles, PhoneCall, Link as LinkIcon, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { aiService, ChatMessage } from '../utilities/aiService';
+import { chatService } from '../utilities/chatService';
 import { AIWidgetConfig, GroundingChunk } from '../types/ai';
 
 interface AIConsultantProps {
@@ -124,15 +125,115 @@ const THEMES = {
   }
 };
 
+const HANDOFF_POLL_INTERVAL_MS = Math.max(
+  2500,
+  Number(process.env.NEXT_PUBLIC_HUMAN_HANDOFF_POLLING_MS || 1200),
+);
+const VISITOR_PROFILE_KEY = 'chat-visitor-profile-v2';
+const VISITOR_ID_KEY = 'chat-visitor-id-v2';
+
+/**
+ * Fetch a secure, server-signed visitor ID.
+ * This prevents unauthorized access to conversations.
+ */
+const fetchSecureVisitorId = async (): Promise<string> => {
+  try {
+    const response = await fetch('/api/chat/visitor', {
+      method: 'POST',
+    })
+    if (!response.ok) {
+      throw new Error('Failed to get visitor ID')
+    }
+    const data = (await response.json()) as { visitorId: string }
+    return data.visitorId
+  } catch {
+    // Fallback to a random ID (not ideal, but prevents total failure)
+    return `fallback-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
+  }
+}
+
+/**
+ * Get or create a secure visitor ID.
+ * Uses localStorage to cache the ID across sessions.
+ */
+const getOrCreateVisitorId = async (): Promise<string> => {
+  if (typeof window === 'undefined') {
+    return 'server-visitor'
+  }
+
+  // Try to get existing visitor ID from localStorage
+  try {
+    const existing = window.localStorage.getItem(VISITOR_ID_KEY)
+    if (existing) {
+      const parsed = JSON.parse(existing) as { visitorId: string; expiresAt: number }
+      // Check if expired (30 days)
+      if (parsed.expiresAt > Date.now()) {
+        return parsed.visitorId
+      }
+      // Remove expired ID
+      window.localStorage.removeItem(VISITOR_ID_KEY)
+    }
+  } catch {
+    // Ignore invalid cache
+  }
+
+  // Fetch new visitor ID from server
+  const visitorId = await fetchSecureVisitorId()
+  const expiresAt = Date.now() + 30 * 24 * 60 * 60 * 1000 // 30 days
+
+  try {
+    window.localStorage.setItem(
+      VISITOR_ID_KEY,
+      JSON.stringify({ visitorId, expiresAt }),
+    )
+  } catch {
+    // Ignore storage errors
+  }
+
+  return visitorId
+}
+
+const buildVisitorContext = async () => {
+  if (typeof window === 'undefined') {
+    return {
+      visitorId: 'site-visitor',
+      sourcePage: '/',
+    };
+  }
+
+  const search = new URLSearchParams(window.location.search);
+  const utmSource = search.get('utm_source')?.trim().toLowerCase();
+  const referrerHost = (() => {
+    if (!document.referrer) return '';
+    try {
+      return new URL(document.referrer).hostname.replace(/^www\./, '');
+    } catch {
+      return '';
+    }
+  })();
+  const channel = utmSource || (referrerHost ? 'referral' : 'direct');
+
+  const visitorId = await getOrCreateVisitorId()
+
+  return {
+    visitorId,
+    sourcePage: `${window.location.pathname}${window.location.search} | channel=${channel}${referrerHost ? ` | ref=${referrerHost}` : ''}`,
+  };
+};
+
 const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false, className = '' }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [isMinimized, setIsMinimized] = useState(false);
   const [input, setInput] = useState('');
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isHandoffLoading, setIsHandoffLoading] = useState(false);
+  const [handoffStatus, setHandoffStatus] = useState<'none' | 'requested' | 'active' | 'closed'>('none');
+  const [conversationId, setConversationId] = useState<string>();
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const syncedServerMessageIds = useRef<Set<string>>(new Set());
   
   // 获取当前主题样式，默认为 red
   const t = THEMES[config.theme || 'red'];
@@ -147,10 +248,104 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  const createClientMessageId = () => {
+    return `msg-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+  };
+
+  const markMessageAsSent = useCallback((clientMessageId: string) => {
+    setChatHistory((prev) =>
+      prev.map((message) =>
+        message.role === 'user' && message.clientMessageId === clientMessageId
+          ? { ...message, deliveryStatus: 'sent' }
+          : message,
+      ),
+    );
+  }, []);
+
+  const markLatestSentMessageAsRead = useCallback(() => {
+    setChatHistory((prev) => {
+      const next = [...prev];
+      for (let i = next.length - 1; i >= 0; i -= 1) {
+        const item = next[i];
+        if (item.role === 'user' && item.deliveryStatus === 'sent') {
+          next[i] = { ...item, deliveryStatus: 'read' };
+          break;
+        }
+      }
+      return next;
+    });
+  }, []);
+
+  const applyServerMessages = useCallback((messages: { id: string; role: 'visitor' | 'ai' | 'agent' | 'system'; content: string }[]) => {
+    const newMessages: ChatMessage[] = [];
+    let hasAgentMessage = false;
+
+    for (const message of messages) {
+      if (syncedServerMessageIds.current.has(message.id)) continue;
+      syncedServerMessageIds.current.add(message.id);
+
+      if (message.role === 'agent') {
+        hasAgentMessage = true;
+        newMessages.push({
+          role: 'model',
+          parts: [{ text: `人工客服：${message.content}` }],
+        });
+        continue;
+      }
+
+      if (message.role === 'system' || message.role === 'ai') {
+        newMessages.push({
+          role: 'model',
+          parts: [{ text: message.content }],
+        });
+      }
     }
+
+    if (newMessages.length > 0) {
+      setChatHistory(prev => [...prev, ...newMessages]);
+      markLatestSentMessageAsRead();
+    }
+
+    if (hasAgentMessage) {
+      setHandoffStatus('active');
+    }
+  }, [markLatestSentMessageAsRead]);
+
+  const syncConversationMessages = useCallback(async (targetConversationId?: string) => {
+    const id = targetConversationId || conversationId;
+    if (!id) return;
+
+    try {
+      const visitorContext = await buildVisitorContext();
+      const messages = await chatService.getConversationMessages(id, 80, visitorContext.visitorId);
+      applyServerMessages(messages);
+    } catch {
+      // Silent fallback to avoid interrupting chat interaction.
+    }
+  }, [applyServerMessages, conversationId]);
+
+  useEffect(() => {
+    if (!scrollRef.current) return;
+    const lastMessage = chatHistory[chatHistory.length - 1];
+    const shouldStickToBottom = isLoading || lastMessage?.role === 'user';
+    if (!shouldStickToBottom) return;
+    scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  }, [chatHistory, isLoading]);
+
+  useEffect(() => {
+    if (!scrollRef.current || isLoading || chatHistory.length === 0) return;
+    const lastIndex = chatHistory.length - 1;
+    const lastMessage = chatHistory[lastIndex];
+    if (lastMessage?.role !== 'model') return;
+
+    const timer = window.setTimeout(() => {
+      const selector = `[data-chat-role="model"][data-chat-index="${lastIndex}"]`;
+      const target = scrollRef.current?.querySelector(selector) as HTMLElement | null;
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 20);
+
+    return () => window.clearTimeout(timer);
   }, [chatHistory, isLoading]);
 
   useEffect(() => {
@@ -165,19 +360,10 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
   const handleSend = async (customText?: string) => {
     const messageToSend = customText || input;
     if (!messageToSend.trim() || isLoading) return;
-    
-    setInput('');
-    
-    // Check if this is a suggestion with a pre-defined answer
-    const suggestionWithAnswer = config.suggestions.find(s => s.query === messageToSend && s.answer);
-    
-    const newUserMessage: ChatMessage = { 
-      role: 'user', 
-      parts: [{ text: messageToSend }] 
-    };
-    
-    setChatHistory(prev => [...prev, newUserMessage]);
 
+    setInput('');
+
+    // Check if this is a trigger event
     if (messageToSend.startsWith('trigger:')) {
       const eventName = messageToSend.split(':')[1];
       window.dispatchEvent(new CustomEvent(eventName, { detail: { source: 'ai-consultant' } }));
@@ -185,15 +371,65 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       return;
     }
 
+    // Check if this is a suggestion with a pre-defined answer
+    const suggestionWithAnswer = config.suggestions.find(s => s.query === messageToSend && s.answer);
     if (suggestionWithAnswer?.answer) {
+      // Still add user message to history
+      const clientMessageId = createClientMessageId();
+      const newUserMessage: ChatMessage = {
+        role: 'user',
+        parts: [{ text: messageToSend }],
+        clientMessageId,
+      };
+      setChatHistory(prev => [...prev, newUserMessage]);
+
       // Return pre-defined answer immediately without calling API
       setTimeout(() => {
-        const assistantMessage: ChatMessage = { 
-          role: 'model', 
-          parts: [{ text: suggestionWithAnswer.answer! }] 
+        const assistantMessage: ChatMessage = {
+          role: 'model',
+          parts: [{ text: suggestionWithAnswer.answer! }]
         };
         setChatHistory(prev => [...prev, assistantMessage]);
-      }, 300); // Slight delay for better UX
+      }, 300);
+      return;
+    }
+
+    // Normal message flow
+    const clientMessageId = createClientMessageId();
+    const newUserMessage: ChatMessage = {
+      role: 'user',
+      parts: [{ text: messageToSend }],
+      clientMessageId,
+      deliveryStatus: 'sending',
+    };
+
+    setChatHistory(prev => [...prev, newUserMessage]);
+
+    // Get visitor context and send message to server
+    const visitorContext = await buildVisitorContext();
+
+    void chatService.sendVisitorMessage({
+      conversationId,
+      visitorId: visitorContext.visitorId,
+      sourcePage: visitorContext.sourcePage,
+      content: messageToSend,
+      clientMessageId,
+    }).then((result) => {
+      markMessageAsSent(clientMessageId);
+      if (result.conversation?.id) {
+        setConversationId(prev => prev || result.conversation?.id);
+        void syncConversationMessages(result.conversation.id);
+      }
+      if (result.conversation?.handoffStatus) {
+        setHandoffStatus(result.conversation.handoffStatus);
+      }
+    }).catch(() => {
+      markMessageAsSent(clientMessageId);
+      // Keep chat UX responsive even if persistence API is temporarily unavailable.
+    });
+
+    // Don't call AI if human is taking over
+    if (handoffStatus === 'requested' || handoffStatus === 'active') {
       return;
     }
 
@@ -202,23 +438,98 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     try {
       // Pass the specific System Instruction from config to the service
       const response = await aiService.getConsultantResponse([...chatHistory, newUserMessage], config.systemInstruction);
-      
-      const assistantMessage: ChatMessage = { 
-        role: 'model', 
+
+      const assistantMessage: ChatMessage = {
+        role: 'model',
         parts: [{ text: response.text || '抱歉，暂时无法回复您的咨询。' }],
         groundingChunks: response.groundingChunks
       };
-      
+
       setChatHistory(prev => [...prev, assistantMessage]);
-    } catch (e) {
-      setChatHistory(prev => [...prev, { 
-        role: 'model', 
-        parts: [{ text: config.errorMessage }] 
+    } catch {
+      setChatHistory(prev => [...prev, {
+        role: 'model',
+        parts: [{ text: config.errorMessage }]
       }]);
     } finally {
       setIsLoading(false);
     }
   };
+
+  const handleRequestHuman = async () => {
+    if (isHandoffLoading || handoffStatus === 'requested' || handoffStatus === 'active') return;
+
+    setIsHandoffLoading(true);
+    setHandoffStatus('requested');
+    setChatHistory((prev) => [
+      ...prev,
+      {
+        role: 'model',
+        parts: [{ text: '已为你转人工，正在连接客服，请稍候。' }],
+      },
+    ]);
+    const visitorContext = await buildVisitorContext();
+    try {
+      const response = await chatService.requestHandoff({
+        conversationId,
+        visitorId: visitorContext.visitorId,
+        sourcePage: visitorContext.sourcePage,
+      });
+
+      if (response.conversation?.id) {
+        setConversationId(response.conversation.id);
+        void syncConversationMessages(response.conversation.id);
+      }
+
+    } catch {
+      setHandoffStatus('none');
+      setChatHistory(prev => [
+        ...prev,
+        {
+          role: 'model',
+          parts: [{ text: '转人工请求发送失败，请稍后重试。' }],
+        },
+      ]);
+    } finally {
+      setIsHandoffLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!conversationId || !isOpen) return;
+    if (handoffStatus !== 'requested' && handoffStatus !== 'active') return;
+
+    let unsubscribe: (() => void) | undefined;
+    let timer: ReturnType<typeof setInterval> | undefined;
+
+    const setupSubscription = async () => {
+      void syncConversationMessages(conversationId);
+
+      const visitorContext = await buildVisitorContext();
+      unsubscribe = chatService.subscribeConversation(conversationId, visitorContext.visitorId, {
+        onMessages: (messages) => {
+          applyServerMessages(messages);
+        },
+      });
+
+      timer = window.setInterval(() => {
+        void syncConversationMessages(conversationId);
+      }, Math.max(8000, Math.floor(HANDOFF_POLL_INTERVAL_MS * 3)));
+    };
+
+    void setupSubscription();
+
+    return () => {
+      if (timer) window.clearInterval(timer);
+      if (unsubscribe) {
+        try {
+          unsubscribe();
+        } catch (e) {
+          console.warn('EventSource cleanup failed:', e);
+        }
+      }
+    };
+  }, [applyServerMessages, conversationId, handoffStatus, isOpen, syncConversationMessages]);
 
   const MarkdownRenderer = ({ content }: { content: string }) => {
     return (
@@ -257,8 +568,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
   const SourcesDisplay = ({ chunks }: { chunks: GroundingChunk[] }) => {
     if (!chunks || chunks.length === 0) return null;
 
-    // Filter chunks that have web data
-    const validChunks = chunks.filter(c => c.web?.title && c.web?.uri);
+    const validChunks = chunks.filter((c) => c.web?.title || c.source);
 
     if (validChunks.length === 0) return null;
 
@@ -269,18 +579,37 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
           <span>参考来源</span>
         </div>
         <div className="flex flex-wrap gap-2">
-          {validChunks.map((chunk, idx) => (
-            <a 
-              key={idx}
-              href={chunk.web?.uri}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg ${t.citationBg} ${t.citationText} hover:bg-white border border-transparent hover:border-slate-200 hover:shadow-sm transition-all max-w-full`}
-            >
-              <ExternalLink className="w-3 h-3 shrink-0" />
-              <span className="truncate max-w-[150px]">{chunk.web?.title}</span>
-            </a>
-          ))}
+          {validChunks.map((chunk, idx) => {
+            const label = chunk.web?.title || chunk.source || `来源 ${idx + 1}`;
+            const description = chunk.source || '';
+
+            if (chunk.web?.uri) {
+              return (
+                <a
+                  key={idx}
+                  href={chunk.web.uri}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={description}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg ${t.citationBg} ${t.citationText} hover:bg-white border border-transparent hover:border-slate-200 hover:shadow-sm transition-all max-w-full`}
+                >
+                  <ExternalLink className="w-3 h-3 shrink-0" />
+                  <span className="truncate max-w-[180px]">{label}</span>
+                </a>
+              );
+            }
+
+            return (
+              <div
+                key={idx}
+                title={description}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg ${t.citationBg} ${t.citationText} border border-transparent max-w-full`}
+              >
+                <LinkIcon className="w-3 h-3 shrink-0" />
+                <span className="truncate max-w-[220px]">{label}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     );
@@ -322,6 +651,29 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
             </div>
           </div>
 
+          {/* 顶部固定快捷问题 */}
+          {config.suggestions.length > 0 && (
+            <div className="shrink-0 border-b border-slate-100 bg-white/95 px-4 py-3 sm:px-7 sm:py-4">
+              <div className="mb-2 flex items-center gap-2">
+                <Lightbulb className="h-4 w-4 text-amber-500 fill-amber-500" />
+                <span className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400">
+                  快捷问题
+                </span>
+              </div>
+              <div className="flex gap-2 overflow-x-auto pb-1">
+                {config.suggestions.map((s, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleSend(s.query)}
+                    className={`shrink-0 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-left text-[12px] font-bold text-slate-700 transition-all hover:bg-white ${t.textHover}`}
+                  >
+                    {s.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* 消息区域 */}
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6 sm:space-y-8 bg-[#FAFAFA] scroll-smooth">
             {chatHistory.length === 0 && (
@@ -338,34 +690,16 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
                   <div className="text-slate-500 mb-6 text-sm leading-loose">
                     <MarkdownRenderer content={config.welcomeMessage} />
                   </div>
-
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Lightbulb className="w-4 h-4 text-amber-500 fill-amber-500" />
-                      <span className="text-[11px] text-slate-400 font-black uppercase tracking-[0.2em]">您可以这样咨询：</span>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 gap-3">
-                      {config.suggestions.map((s, idx) => (
-                        <button 
-                          key={idx}
-                          onClick={() => handleSend(s.query)}
-                          className={`flex flex-col items-start p-4 sm:p-5 bg-slate-50 border border-slate-100 rounded-3xl text-left ${t.border.replace('focus:', 'hover:')} hover:bg-white hover:shadow-xl ${t.shadowHover} transition-all group relative overflow-hidden active:scale-98`}
-                        >
-                          <div className="absolute right-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-4 transition-all">
-                             <ArrowRight className={`w-5 h-5 ${t.text}`} />
-                          </div>
-                          <span className={`text-[14px] font-black text-slate-900 mb-1 ${t.textHover} transition-colors`}>{s.title}</span>
-                          <span className="text-[12px] text-slate-400 group-hover:text-slate-600 transition-colors">{s.desc}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </div>
             )}
             {chatHistory.map((m, i) => (
-              <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+              <div
+                key={i}
+                data-chat-index={i}
+                data-chat-role={m.role}
+                className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
                 <div className={`max-w-[95%] p-4 sm:p-6 rounded-[24px] sm:rounded-[28px] text-[14px] leading-relaxed shadow-sm ${
                   m.role === 'user' 
                   ? `${t.msgUser} text-white rounded-tr-none font-medium` 
@@ -379,6 +713,15 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
                         </>
                       ) 
                     : m.parts[0].text}
+                  {m.role === 'user' && m.deliveryStatus && (
+                    <div className="mt-2 text-[11px] text-white/75 text-right">
+                      {m.deliveryStatus === 'sending'
+                        ? '发送中'
+                        : m.deliveryStatus === 'sent'
+                          ? '已送达'
+                          : '已读'}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -398,6 +741,15 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
 
           {/* 输入区域 */}
           <div className="p-5 sm:p-8 bg-white border-t border-slate-100 shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.03)] relative z-10 shrink-0">
+            {handoffStatus !== 'none' && (
+              <div className={`mb-3 rounded-xl px-3 py-2 text-xs ${t.lightBg} ${t.textDark}`}>
+                {handoffStatus === 'requested'
+                  ? '人工客服接入中，当前由 AI 继续为你服务。'
+                  : handoffStatus === 'active'
+                    ? '人工客服已接入当前会话。'
+                    : '本次人工会话已结束。'}
+              </div>
+            )}
             <div className="relative flex items-center">
               <input 
                 type="text" 
@@ -415,7 +767,26 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
                 <Send className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
-            <div className={`flex ${config.actionButton ? 'justify-end' : 'justify-center'} items-center mt-4 sm:mt-5`}>
+            <div className={`flex ${config.actionButton ? 'justify-between' : 'justify-end'} items-center mt-4 sm:mt-5 gap-3`}>
+               <button
+                 type="button"
+                 onClick={handleRequestHuman}
+                 disabled={isHandoffLoading || handoffStatus === 'requested' || handoffStatus === 'active'}
+                 className={`text-[10px] sm:text-[11px] font-black px-3 py-1.5 rounded-full border transition-all ${
+                   handoffStatus === 'requested' || handoffStatus === 'active'
+                     ? 'text-slate-400 border-slate-200 cursor-not-allowed'
+                     : `${t.text} border-current hover:bg-slate-50`
+                 }`}
+               >
+                 {isHandoffLoading ? '提交中...' : handoffStatus === 'active' ? '人工已接入' : '转人工'}
+               </button>
+               <a
+                 href="tel:4009955161"
+                 className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[10px] sm:text-[11px] font-black ${t.text} ${t.lightBg} border-current hover:bg-white transition-colors`}
+               >
+                 <PhoneCall className="h-3.5 w-3.5" />
+                 <span>热线电话 400-9955-161</span>
+               </a>
                {config.actionButton && (
                  <div className="flex items-center gap-2 group cursor-pointer active:scale-95 transition-all" onClick={() => {
                    if (config.actionButton?.command?.startsWith('trigger:')) {

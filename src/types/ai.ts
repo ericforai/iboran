@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface AISuggestion {
   title: string;
   desc: string;
@@ -41,4 +39,6 @@ export interface GroundingChunk {
     uri: string;
     title: string;
   };
+  source?: string;
+  excerpt?: string;
 }
