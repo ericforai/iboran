@@ -19,11 +19,11 @@ export async function POST(req: NextRequest) {
 
     const baseUrl = process.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com';
 
-    // Convert history format to DeepSeek/OpenAI format
+    // Build messages for DeepSeek API
     const messages = [
       { role: 'system', content: systemInstruction },
       ...history.map(msg => ({
-        role: msg.role === 'model' ? 'assistant' : 'user',
+        role: msg.role,
         content: msg.content
       }))
     ];
