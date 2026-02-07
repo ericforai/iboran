@@ -178,7 +178,6 @@ const AgentConsoleView: React.FC = () => {
       const notification = new Notification(title, {
         body,
         tag: `chat-${conversation.id}`,
-        // @ts-expect-error - renotify is supported by browsers but not in TypeScript types
         renotify: true,
       } as NotificationOptions)
       notification.onclick = () => {
