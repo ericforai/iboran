@@ -54,7 +54,7 @@ export default function Hero() {
                 <div className="text-sm text-slate-400 uppercase tracking-wider">效率提升</div>
               </div>
               <div>
-                 <div className="text-3xl font-bold text-white mb-1">100%</div>
+                 <div className="text-3xl font-bold text-white mb-1">99%以上</div>
                 <div className="text-sm text-slate-400 uppercase tracking-wider">全流程追溯</div>
               </div>
             </div>

@@ -78,7 +78,7 @@ export default function Hero() {
                 <span className="text-sm text-slate-500 mt-1 uppercase tracking-wide">网点实时核算</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-3xl font-bold text-white font-heading">100%</span>
+                <span className="text-3xl font-bold text-white font-heading">99%以上</span>
                 <span className="text-sm text-slate-500 mt-1 uppercase tracking-wide">会计准则合规</span>
               </div>
             </div>

@@ -131,7 +131,7 @@ export default function Results() {
             <div className="text-sm text-slate-400">系统可用性</div>
           </div>
           <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">
-            <div className="text-3xl font-bold text-indigo-400 mb-2">100%</div>
+            <div className="text-3xl font-bold text-indigo-400 mb-2">99%以上</div>
             <div className="text-sm text-slate-400">国产信创达标</div>
           </div>
           <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">
