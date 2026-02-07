@@ -76,7 +76,7 @@ export default function TargetAudience() {
             <div>
               <h4 className="font-bold text-[#1F2329] mb-2 text-lg">不适用情况</h4>
               <p className="text-slate-500 text-sm leading-relaxed">
-                如果您是极小规模的初创个体（无需业财一体化），或需要高度深度定制、无法接受标准化 SaaS 迭代的项目，YonSuite 可能并不完全契合。
+                如果您是极小规模的初创个体（无需业财一体化），或需要高度深度定制、无法接受标准化 SaaS 迭代的项目，YonSuite 可能并不充分契合。
                 针对此类需求，我们建议咨询我们的私有化部署方案。
               </p>
             </div>

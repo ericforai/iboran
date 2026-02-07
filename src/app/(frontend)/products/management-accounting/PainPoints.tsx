@@ -22,7 +22,7 @@ const painPoints = [
   {
     icon: <Clock className="w-8 h-8 text-yellow-600" />,
     title: '月结周期漫长',
-    symptom: '依赖结转自动化程度低，跨组织协同完全靠邮件。',
+    symptom: '依赖结转自动化程度低，跨组织协同高度依赖邮件。',
     consequence: '月初 10 号才出数，错失市场反应先机，运营响应龟速。',
     color: 'bg-yellow-50'
   },

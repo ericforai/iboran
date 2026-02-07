@@ -53,7 +53,7 @@ export default function Hero() {
             </h1>
             
             <p className="text-xl text-slate-400 leading-relaxed max-w-xl mb-10 border-l-2 border-blue-500 pl-6">
-              打破业务与财务的数据孤岛，为中国领先的零担快运服务商打造以&quot;利润中心&quot;为导向的数字化运营体系。
+              打破业务与财务的数据孤岛，为中国优质的零担快运服务商打造以&quot;利润中心&quot;为导向的数字化运营体系。
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">

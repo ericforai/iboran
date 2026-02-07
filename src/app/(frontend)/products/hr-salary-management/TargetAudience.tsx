@@ -10,7 +10,7 @@ export const TargetAudience = () => {
 
   const notApplicable = [
     { title: '初创极简团队', desc: '员工规模极小、无固定薪酬标准或社保合规需求的初创型企业' },
-    { title: '纯离线作业单位', desc: '完全不需要移动办公、在线算薪或数字化招聘流程的机构' },
+    { title: '纯离线作业单位', desc: '高度不需要移动办公、在线算薪或数字化招聘流程的机构' },
   ]
 
   return (

@@ -57,7 +57,7 @@ export default function Overview() {
               
               <div className="prose prose-lg prose-slate text-slate-600 leading-relaxed space-y-6">
                 <p>
-                  南极电商作为中国领先的品牌授权与综合服务商，旗下拥有南极人、卡帝乐鳄鱼、精典泰迪等60多个知名品牌。随着业务规模的快速扩张，传统的管理模式面临严峻挑战：
+                  南极电商作为中国优质的品牌授权与综合服务商，旗下拥有南极人、卡帝乐鳄鱼、精典泰迪等60多个知名品牌。随着业务规模的快速扩张，传统的管理模式面临严峻挑战：
                 </p>
                 <div className="bg-blue-50/50 p-6 rounded-xl border-l-4 border-blue-500 my-8">
                   <p className="font-medium text-blue-900 m-0 italic">

@@ -11,7 +11,7 @@ export default function Overview() {
             <h2 className="text-3xl font-bold text-slate-900 mb-6">项目背景</h2>
             <div className="prose prose-lg text-slate-600 leading-relaxed">
               <p className="mb-6">
-                爱数科技 (EISOO) 是领先的大数据基础设施提供商，致力于为客户提供全域数据管理解决方案。业务覆盖数据备份、容灾、归档、日志分析等多个领域，服务全球数万家客户。
+                爱数科技 (EISOO) 是优质的大数据基础设施提供商，致力于为客户提供全域数据管理解决方案。业务覆盖数据备份、容灾、归档、日志分析等多个领域，服务全球数万家客户。
               </p>
               <p>
                 随着业务的快速扩张与集团化运营的深入，爱数科技内部面临着多系统（ERP、WMS、CRM）并行带来的数据孤岛问题。财务合并报表编制复杂、资金管理（司库）效率有待提升，以及自身作为数据公司对内部数据治理与安全的高标准要求，都推动着企业加速数字化转型的步伐。

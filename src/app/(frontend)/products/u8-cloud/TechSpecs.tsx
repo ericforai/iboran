@@ -17,7 +17,7 @@ const specs = [
   {
     title: '信创与合规',
     icon: <ShieldCheck className="w-6 h-6 text-blue-600" />,
-    content: '业界领先的全栈信创 ERP，适配华为鲲鹏、飞腾 CPU，麒麟、统信 OS，达梦、人大金仓数据库。通过三级等保认证。'
+    content: '业界先进的全栈信创 ERP，适配华为鲲鹏、飞腾 CPU，麒麟、统信 OS，达梦、人大金仓数据库。通过三级等保认证。'
   },
   {
     title: '二次开发能力',

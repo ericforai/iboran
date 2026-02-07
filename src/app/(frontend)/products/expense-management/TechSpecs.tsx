@@ -58,7 +58,7 @@ export const TechSpecs = () => {
                     </div>
                     <div className="border border-white/10 p-6 rounded-2xl bg-white/5">
                       <h5 className="font-bold mb-2 text-red-400">私有化部署</h5>
-                      <p className="text-xs text-gray-400">数据完全掌控，内网访问，高安全性需求组织首选。</p>
+                      <p className="text-xs text-gray-400">数据高度掌控，内网访问，高安全性需求组织首选。</p>
                     </div>
                   </div>
                   <div className="mt-10 pt-10 border-t border-white/10 text-sm text-gray-400">
