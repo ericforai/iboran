@@ -1,4 +1,6 @@
 import { NextResponse } from 'next/server'
+import { getPayload } from 'payload'
+import config from '@payload-config'
 import { ensureChatIndexes } from '@/utilities/ensureIndexes'
 
 /**
@@ -10,9 +12,7 @@ import { ensureChatIndexes } from '@/utilities/ensureIndexes'
  */
 export async function POST(req: Request) {
   try {
-    const payload = await (await import('payload')).getPayload({
-      config: await import('@payload-config'),
-    })
+    const payload = await getPayload({ config })
 
     // Verify user is authenticated and is admin
     const { user } = await payload.auth({ headers: req.headers })
