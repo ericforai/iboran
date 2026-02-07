@@ -75,7 +75,7 @@ export default function SolutionOverview() {
                   <div className="text-xs text-slate-500 mt-1">结算效率提升</div>
                 </div>
                 <div className="bg-white rounded-lg p-4 shadow-sm">
-                  <div className="text-2xl font-bold text-[#0052D9]">100%</div>
+                  <div className="text-2xl font-bold text-[#0052D9]">99%以上</div>
                   <div className="text-xs text-slate-500 mt-1">业务流程合规</div>
                 </div>
                 <div className="bg-white rounded-lg p-4 shadow-sm">
