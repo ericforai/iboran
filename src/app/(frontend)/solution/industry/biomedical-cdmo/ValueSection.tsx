@@ -3,7 +3,7 @@ import React from 'react'
 const values = [
   {
     label: "质量合规",
-    value: "近100%",
+    value: "99%以上",
     desc: "符合 GMP/GSP 监管要求",
   },
   {

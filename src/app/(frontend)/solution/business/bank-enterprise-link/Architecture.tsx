@@ -6,7 +6,7 @@ export default function Architecture() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-[#1F2329] mb-4">
-            混合云部署架构，安全与效率的完美平衡
+            混合云部署架构，安全与效率的优质平衡
           </h2>
           <div className="w-16 h-1 bg-[#0052D9] mx-auto rounded-full mb-6" />
           <p className="text-slate-600 max-w-2xl mx-auto">

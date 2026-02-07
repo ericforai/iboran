@@ -19,7 +19,7 @@ const cases = [
     description: "一站式基因治疗CDMO平台，借助YonSuite实现研发到生产的全流程管理，顺利完成CSV验证，为Pre-IPO打下坚实合规基础。",
     tags: ["CDMO", "CSV验证", "IPO合规"],
     stats: [
-      { label: "合规通过率", value: "近100%" },
+      { label: "合规通过率", value: "99%以上" },
       { label: "项目效率", value: "+40%" },
     ],
     quote: "YonSuite不仅满足了我们在GMP/GSP方面的合规要求，更为我们研发到生产的一体化管理提供了强有力的支撑。"

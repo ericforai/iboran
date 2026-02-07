@@ -20,7 +20,7 @@ const metrics: Metric[] = [
     description: '全渠道订单由系统自动化流转，在大促期间依然能保持秒级响应与精准审单。'
   },
   {
-    value: '近100%',
+    value: '99%以上',
     label: 'SN 码追溯覆盖',
     description: '实现 3C 电子产品序列号从出厂、流转到消费者的全程锁定，售后异常一键溯源。'
   }

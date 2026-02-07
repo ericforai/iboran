@@ -51,7 +51,7 @@ export default function Hero() {
               <div className="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-500">
                 <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-500"/> 核算效率 +50%</span>
                 <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-500"/> 成本偏差率 &lt; 5%</span>
-                <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-500"/> 100% 业财自动对账</span>
+                <span className="flex items-center gap-1.5"><CheckCircle size={16} className="text-green-500"/> 99%以上业财自动对账</span>
               </div>
             </div>
 

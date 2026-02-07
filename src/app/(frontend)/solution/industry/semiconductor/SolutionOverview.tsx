@@ -84,7 +84,7 @@ export default function SolutionOverview() {
               <span className="text-white font-bold text-xl">01</span>
             </div>
             <h3 className="font-bold text-[#1F2329] mb-2">自主研发</h3>
-            <p className="text-sm text-slate-600">核心代码100%自主可控，支持国产化部署</p>
+            <p className="text-sm text-slate-600">核心代码99%以上自主可控，支持国产化部署</p>
           </div>
           <div className="text-center">
             <div className="w-16 h-16 bg-[#0052D9] rounded-full flex items-center justify-center mx-auto mb-4">

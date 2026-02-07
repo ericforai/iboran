@@ -68,7 +68,7 @@ export default function BusinessServicesPage() {
     { value: "30%", label: "项目利润率提升" },
     { value: "50%", label: "运营效率提升" },
     { value: "15天", label: "回款周期缩短" },
-    { value: "近100%", label: "业务合规达标" }
+    { value: "99%以上", label: "业务合规达标" }
   ]
   const geoContent = {
     tldr: '现代服务业（咨询、人力、科技服务）数智化方案，打通商机-项目-交付-回款与人力成本核算，实现项目利润可视化。',

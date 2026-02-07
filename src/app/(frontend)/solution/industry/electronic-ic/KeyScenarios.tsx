@@ -17,7 +17,7 @@ const scenarios: Scenario[] = [
     title: 'Fabless 全程委外协同',
     problem: 'Fabless企业对Foundry/封测厂的WIP状态掌握不及时，回货拆批、并批及良率数据全凭线下Excel，极易出错。',
     solution: '建立委外服务门户，实时对接委外厂商数据，支持在线下达Turnkey指令，自动生成批号继承关系。',
-    outcome: 'WIP数据同步频率从"按周"提升至"准实时"。委外结算准确率提升至近100%。多级委外节点全程可视。'
+    outcome: 'WIP数据同步频率从"按周"提升至"准实时"。委外结算准确率提升至99%以上。多级委外节点全程可视。'
   },
   {
     title: '端到端批号/刻号追溯',

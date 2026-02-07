@@ -11,13 +11,13 @@ const features = [
     icon: CheckCircle,
     title: '智能审核引擎',
     description: '利用 OCR 识别、AI 稽核规则库，实现发票查验、查重及业务规则的自动化校验。',
-    metric: '稽核覆盖率 近100%'
+    metric: '稽核覆盖率 99%以上'
   },
   {
     icon: CreditCard,
     title: '银企互联自动结算',
     description: '直连主流银行通道，审批通过即触发支付指令，实现资金支付的端到端无人值守。',
-    metric: '支付无干预率 近100%'
+    metric: '支付无干预率 99%以上'
   },
   {
     icon: Smartphone,

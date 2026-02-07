@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const metrics = [
   { value: "20%", label: "采购成本降低", sub: "通过战略寻源与集采" },
   { value: "4天", label: "采购周期缩短", sub: "从 15 天优化至 11 天" },
-  { value: "近100%", label: "采购合规率", sub: "全流程阳光透明可视" },
+  { value: "99%以上", label: "采购合规率", sub: "全流程阳光透明可视" },
   { value: "98%", label: "供应商准时交货率", sub: "基于实时绩效协同" }
 ]
 

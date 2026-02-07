@@ -121,7 +121,7 @@ export function SolutionOverview() {
           <div className="bg-slate-900 p-6 text-center">
             <p className="text-slate-300 text-sm md:text-base">
               已帮助 <span className="text-white font-bold">500+</span> 生物医药企业实现合规经营与降本增效，
-              <span className="text-blue-400">IPO通过率100%</span>
+              <span className="text-blue-400">IPO通过率99%以上</span>
             </p>
           </div>
         </div>

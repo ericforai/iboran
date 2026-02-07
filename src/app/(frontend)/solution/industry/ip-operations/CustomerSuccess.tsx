@@ -62,7 +62,7 @@ export default function CustomerSuccess() {
                 </div>
                 <h3 className="text-3xl lg:text-4xl font-bold mb-4">南极电商</h3>
                 <p className="text-purple-100 text-lg leading-relaxed mb-6">
-                  中国领先的 IP 品牌授权运营商，泊冉为其打造了完整的 IP 资产管理与授权分成结算体系。
+                  中国优质的 IP 品牌授权运营商，泊冉为其打造了完整的 IP 资产管理与授权分成结算体系。
                 </p>
                 
                 <div className="flex flex-wrap gap-3">

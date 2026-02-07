@@ -29,7 +29,7 @@ const metrics = [
     bg: 'bg-green-50'
   },
   {
-    value: '近100%',
+    value: '99%以上',
     label: '档案安全性保障',
     description: '多重加密与备份机制，通过四性检测，以保障数据永不丢失。',
     icon: ShieldCheck,

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const metrics = [
   {
-    value: '近100%',
+    value: '99%以上',
     label: '行业准入与监管合规满足',
     description: '全面通过 GMP/GSP 体系验证'
   },

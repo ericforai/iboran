@@ -37,7 +37,7 @@ const FEATURES = [
     title: '精细化成本管理',
     description: '支持成本组件细分、上下游制程分层核算及分项/综合双结转视图。不仅记录总额，更能穿透还原到每一份原材料与作业人力的明细。',
     icon: Layers,
-    metrics: ['组件核算 40+', '还原率 近100%']
+    metrics: ['组件核算 40+', '还原率 99%以上']
   },
   {
     id: 'intelligence',
@@ -275,7 +275,7 @@ function IntegrationVisual() {
       <div className="mt-6 p-4 bg-blue-50 rounded-2xl border border-blue-100 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Zap size={14} className="text-blue-600" />
-            <span className="text-[11px] font-bold text-blue-800">业务驱动财务，同步率 100%</span>
+            <span className="text-[11px] font-bold text-blue-800">业务驱动财务，同步率 99%以上</span>
           </div>
           <motion.div 
             animate={{ scale: [1, 1.1, 1] }}

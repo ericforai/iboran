@@ -31,7 +31,7 @@ const metrics = [
     stats: [
       { label: "违规支付", value: "零容忍" },
       { label: "风险识别", value: "实时" },
-      { label: "合规覆盖率", value: "近100%" }
+      { label: "合规覆盖率", value: "99%以上" }
     ]
   }
 ]

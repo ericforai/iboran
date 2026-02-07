@@ -92,7 +92,7 @@ export function Hero() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-3 rounded-lg bg-slate-50">
                   <span className="text-sm font-medium text-slate-600">合规通过率</span>
-                  <span className="text-lg font-bold text-green-600">100%</span>
+                  <span className="text-lg font-bold text-green-600">99%以上</span>
                 </div>
                 <div className="flex items-center justify-between p-3 rounded-lg bg-slate-50">
                   <span className="text-sm font-medium text-slate-600">研发效率提升</span>

@@ -15,7 +15,7 @@ const metrics = [
   },
   {
     icon: ShieldCheck,
-    value: '近100%',
+    value: '99%以上',
     label: '核心主数据一致性',
     description: '通过元数据驱动的主数据治理，以保障全集团数据标准统一。',
   },

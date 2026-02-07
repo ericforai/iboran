@@ -27,7 +27,7 @@ const values = [
   },
   {
     label: '质量追溯准确率',
-    value: '近100%',
+    value: '99%以上',
     direction: 'up',
     icon: ShieldCheck,
     desc: 'IATF16949标准自动落地，满足整车厂严格追溯合规。'

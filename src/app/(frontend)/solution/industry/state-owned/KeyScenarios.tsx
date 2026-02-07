@@ -10,7 +10,7 @@ const scenarios = [
     title: '智慧国资监管',
     problem: '监管指标分散，数据时效性差，难以实现"穿透式"监管，风险预警能力不足。',
     solution: '构建"三重一大"、大额资金、投资管理等在线监管应用，实现监管数据自动采集与实时监测。',
-    outcome: '提升监管效能，实现"事前、事中、事后"全过程闭环监管，风险识别率提升 近100%。',
+    outcome: '提升监管效能，实现"事前、事中、事后"全过程闭环监管，风险识别率提升 99%以上。',
     screenshot: '/images/solutions/state-owned-monitor.png' 
   },
   {

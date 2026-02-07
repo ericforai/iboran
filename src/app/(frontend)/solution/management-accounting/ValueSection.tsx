@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const METRICS = [
   { value: '1日', label: '集团结算周期' },
-  { value: '近100%', label: '成本还原率' },
+  { value: '99%以上', label: '成本还原率' },
   { value: '40+', label: '成本组件量' },
   { value: '98%', label: '会计分录自动化' }
 ]

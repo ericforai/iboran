@@ -2,7 +2,7 @@ export default function ValueSection() {
   const metrics = [
     { value: '30%+', label: '生产效率提升', description: '通过MOM系统优化生产节拍与调度' },
     { value: '25%-', label: '库存周转优化', description: '产销协同与库存共享降低积压' },
-    { value: '近100%', label: '数据采集率', description: '糖化、发酵、包装全流程实时采集' },
+    { value: '99%以上', label: '数据采集率', description: '糖化、发酵、包装全流程实时采集' },
     { value: '40%+', label: '线上渠道增长', description: '全渠道营销与即时零售驱动' }
   ]
 

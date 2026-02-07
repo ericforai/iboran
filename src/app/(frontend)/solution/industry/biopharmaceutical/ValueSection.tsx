@@ -21,7 +21,7 @@ export function ValueSection() {
             <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-900/20">
               <CheckCircle className="w-8 h-8 text-white" />
             </div>
-            <div className="text-4xl font-bold text-white mb-2">100%</div>
+            <div className="text-4xl font-bold text-white mb-2>">99%以上</div>
             <div className="text-blue-200 font-medium">合规通过率</div>
             <p className="text-sm text-blue-300 mt-2">
               GMP/GSP/CSV验证<br/>一次性通过

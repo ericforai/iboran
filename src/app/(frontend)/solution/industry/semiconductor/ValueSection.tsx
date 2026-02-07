@@ -27,7 +27,7 @@ const metrics = [
   },
   {
     icon: ShieldCheck,
-    value: '近100%',
+    value: '99%以上',
     label: '国产自主可控',
     description: '核心代码自研，支持信创环境',
     color: 'text-purple-600',

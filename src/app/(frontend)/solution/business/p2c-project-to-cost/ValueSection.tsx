@@ -15,7 +15,7 @@ const values = [
   },
   {
     icon: Shield,
-    value: '近100%',
+    value: '99%以上',
     label: '业财数据一致性',
     desc: '彻底解决对账难、数据不一的问题'
   },
