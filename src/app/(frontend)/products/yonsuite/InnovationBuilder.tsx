@@ -12,7 +12,7 @@ const builderFeatures = [
   },
   {
     title: '原生移动化体验',
-    desc: '一次开发，多端自适应，完美集成在移动端工作台',
+    desc: '一次开发，多端自适应，充分集成在移动端工作台',
     icon: <Smartphone className="w-5 h-5 text-blue-500" />
   },
   {

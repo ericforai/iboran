@@ -24,7 +24,7 @@ export default function Results() {
             unit: "%",
             label: "品质追溯达标率",
             desc: "实现了全生命周期追溯，顺利通过全球头部客户的供应商体系审核",
-            highlight: "合规性完美达成"
+            highlight: "合规性高效达成"
         }
     ]
 

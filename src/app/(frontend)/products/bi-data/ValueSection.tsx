@@ -10,8 +10,8 @@ const metrics = [
     desc: '从IT开发转变为业务自助构建'
   },
   {
-    value: '100%',
-    label: '移动端完美适配',
+    value: '99%以上',
+    label: '移动端充分适配',
     desc: '一次设计，PC、App、H5多端自动发布'
   },
   {

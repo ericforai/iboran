@@ -21,7 +21,7 @@ const phases = [
     id: "01",
     title: "筹建准备 (Preparation)",
     subtitle: "扎实起步，奠定成功基石",
-    description: "通过科学的售前评估与资源筹备，确保项目在正确的轨道上启动。",
+    description: "通过科学的售前评估与资源筹备，以保障项目在正确的轨道上启动。",
     icon: ClipboardList,
     color: "blue",
     details: [
@@ -41,7 +41,7 @@ const phases = [
     details: [
       { label: "领先实践 POC", desc: "展示标准流程，引导客户识别差异化需求" },
       { label: "流程治理", desc: "梳理 L1-L4 流程，定义业财一体化核心红线" },
-      { label: "方案评审", desc: "多级专家评审，确保方案质量与可落地性" }
+      { label: "方案评审", desc: "多级专家评审，以保障方案质量与可落地性" }
     ],
     outputs: ["业财一体化蓝图", "系统详细设计方案", "数据治理方案"]
   },
@@ -49,7 +49,7 @@ const phases = [
     id: "03",
     title: "系统建设 (Construction)",
     subtitle: "敏捷构建, 高质高效交付",
-    description: "利用 A/B 类工具实现资产复用与快速配置，确保功能完美集成。",
+    description: "利用 A/B 类工具实现资产复用与快速配置，以保障功能优质集成。",
     icon: Settings,
     color: "purple",
     details: [
@@ -67,8 +67,8 @@ const phases = [
     icon: Rocket,
     color: "red",
     details: [
-      { label: "压力测试", desc: "确保系统在高并发场景下的稳定表现" },
-      { label: "赋能培训", desc: "针对不同角色提供差异化培训，确保人人会用" },
+      { label: "压力测试", desc: "以保障系统在高并发场景下的稳定表现" },
+      { label: "赋能培训", desc: "针对不同角色提供差异化培训，以保障人人会用" },
       { label: "持续运营", desc: "上线不代表结束，持续跟踪价值实现情况" }
     ],
     outputs: ["生产执行环境", "项目验收单", "运维交接文档"]
@@ -78,7 +78,7 @@ const phases = [
 const stats = [
   { label: "交付周期缩短", value: "30%", icon: Zap },
   { label: "流程标准化率", value: "85%+", icon: ShieldCheck },
-  { label: "用户参与度", value: "100%", icon: Users }
+  { label: "用户参与度", value: "99%以上", icon: Users }
 ]
 
 export default function RoadmapPage() {

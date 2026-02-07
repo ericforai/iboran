@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { Quote } from 'lucide-react'
 
 const CUSTOMERS = [
-  '大型钢铁集团', '装备制造企业', '高新科技龙头', '能源电力集团', 
-  '现代服务领军', '跨国制药企业', '汽车零部件商', '快消品巨头'
+  '大型钢铁集团', '装备制造企业', '高新科技头部', '能源电力集团', 
+  '现代服务头部', '跨国制药企业', '汽车零部件商', '快消品巨头'
 ]
 
 export default function CustomerSuccess() {
@@ -31,7 +31,7 @@ export default function CustomerSuccess() {
             <div className="relative z-10">
               <h3 className="text-xl font-bold text-[#0052D9] mb-4">某大型钢铁集团 (H企业) 成功案例</h3>
               <p className="text-lg text-slate-700 italic mb-8 leading-relaxed">
-                “通过引入 YonBIP 管理会计，我们实现了全国数十家分支机构的‘一日结账’目标。更为关键的是，事项会计模式让我们第一次看清了产成品到原材料明细的100%还原，真正做到了业财深度融合，为反倾销应对与内部绩效考核提供了坚实的数据底座。”
+                "通过引入 YonBIP 管理会计，我们实现了全国数十家分支机构的'一日结账'目标。更为关键的是，事项会计模式让我们第一次看清了产成品到原材料明细的99%以上还原，真正做到了业财深度融合，为反倾销应对与内部绩效考核提供了坚实的数据底座。"
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
