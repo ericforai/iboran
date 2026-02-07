@@ -6,7 +6,7 @@ const METRICS = [
   { value: '40%', label: '运营成本降低' },
   { value: '80%', label: '核算效率提升' },
   { value: '99%', label: '业务处理准确率' },
-  { value: '100%', label: '合规风险管控' }
+  { value: '99%以上', label: '合规风险管控' }
 ]
 
 export default function ValueSection() {

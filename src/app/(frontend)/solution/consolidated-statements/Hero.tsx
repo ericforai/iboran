@@ -63,7 +63,7 @@ export default function Hero() {
                 </div>
                 <div className="w-px h-8 bg-slate-200" />
                 <div>
-                  <div className="text-2xl font-bold text-[#1F2329]">100%</div>
+                  <div className="text-2xl font-bold text-[#1F2329]">99%以上</div>
                   <div className="text-sm text-slate-500">审计追溯合规</div>
                 </div>
               </div>

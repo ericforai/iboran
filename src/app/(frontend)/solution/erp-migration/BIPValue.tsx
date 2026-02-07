@@ -79,7 +79,7 @@ export default function BIPValue() {
             <div className="bg-slate-800/50 backdrop-blur-sm rounded-3xl border border-white/10 p-8 relative overflow-hidden">
               <div className="relative z-10 space-y-6">
                 <div className="text-center mb-6">
-                  <h3 className="text-lg font-bold text-white mb-1">BIP 3.0 领先架构</h3>
+                  <h3 className="text-lg font-bold text-white mb-1">BIP 3.0 先进架构</h3>
                   <p className="text-slate-400 text-sm">数智底座 + 创新服务</p>
                 </div>
 

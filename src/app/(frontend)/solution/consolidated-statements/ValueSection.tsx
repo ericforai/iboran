@@ -24,7 +24,7 @@ const metrics = [
   },
   {
     icon: ShieldCheck,
-    value: '100%',
+    value: '99%以上',
     label: '审计合规与追溯',
     description: '每一笔抵销调整均有迹可循，满足境内外监管及国际准则的严苛审计要求。'
   }
