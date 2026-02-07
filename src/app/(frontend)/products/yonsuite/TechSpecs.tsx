@@ -48,7 +48,7 @@ export default function TechSpecs() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">技术规格与集成能力</h2>
-          <p className="text-slate-600">领先的云原生架构，以保障系统高性能、高可靠与强扩展性。</p>
+          <p className="text-slate-600">先进的云原生架构，以保障系统高性能、高可靠与强扩展性。</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

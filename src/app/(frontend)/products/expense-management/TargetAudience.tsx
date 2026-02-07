@@ -10,7 +10,7 @@ export const TargetAudience = () => {
 
   const notApplicable = [
     { title: '初创小微团队', desc: '报销频次极低、无需复杂预算控制的初创团队' },
-    { title: '纯手工账管理', desc: '完全不接受任何电子化流程，且无合规化意愿的组织' },
+    { title: '纯手工账管理', desc: '高度不接受任何电子化流程，且无合规化意愿的组织' },
   ]
 
   return (

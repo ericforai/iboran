@@ -25,7 +25,7 @@ const phases = [
     icon: ClipboardList,
     color: "blue",
     details: [
-      { label: "售前评估", desc: "基于领先实践进行差距分析与价值评估" },
+      { label: "售前评估", desc: "基于成熟实践进行差距分析与价值评估" },
       { label: "团队组建", desc: "确定项目组织架构，任命核心顾问与关键用户" },
       { label: "环境准备", desc: "部署敏捷交付工作台 (AW)，初始化各阶段运行环境" }
     ],
@@ -39,7 +39,7 @@ const phases = [
     icon: Map,
     color: "indigo",
     details: [
-      { label: "领先实践 POC", desc: "展示标准流程，引导客户识别差异化需求" },
+      { label: "成熟实践 POC", desc: "展示标准流程，引导客户识别差异化需求" },
       { label: "流程治理", desc: "梳理 L1-L4 流程，定义业财一体化核心红线" },
       { label: "方案评审", desc: "多级专家评审，以保障方案质量与可落地性" }
     ],
@@ -105,7 +105,7 @@ export default function RoadmapPage() {
               YonBIP <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">敏捷交付</span>方法论
             </h1>
             <p className="text-slate-400 text-xl max-w-2xl mx-auto leading-relaxed">
-              基于 14 年行业沉淀，融合 A/B 类工具与领先实践资产，为您提供“高质量、高效率、高效益”的数智化交付体验。
+              基于 14 年行业沉淀，融合 A/B 类工具与成熟实践资产，为您提供“高质量、高效率、高效益”的数智化交付体验。
             </p>
           </SlideUp>
         </div>
@@ -137,7 +137,7 @@ export default function RoadmapPage() {
                 全生命周期敏捷路线图
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                YonBIP 敏捷交付以项目经理为主导，由方案、技术、数据顾问引领客户需求。基于 BIP 产品的强大特性，我们不再是从零开始的实施，而是基于<strong>领先实践资产包</strong>的选配与迁移。
+                YonBIP 敏捷交付以项目经理为主导，由方案、技术、数据顾问引领客户需求。基于 BIP 产品的强大特性，我们不再是从零开始的实施，而是基于<strong>成熟实践资产包</strong>的选配与迁移。
               </p>
               <div className="space-y-4">
                 {[
