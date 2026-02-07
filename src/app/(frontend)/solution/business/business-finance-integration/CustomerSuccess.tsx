@@ -72,7 +72,7 @@ export default function CustomerSuccess() {
                 </div>
                 <div className="h-64 rounded-2xl bg-blue-100 flex items-center justify-center p-8 shadow-sm">
                    <div className="text-center">
-                      <div className="text-3xl font-black text-[#0052D9] mb-2">100%</div>
+                      <div className="text-3xl font-black text-[#0052D9] mb-2">99%以上</div>
                       <div className="text-sm font-bold text-slate-500">内部往来对账自动化</div>
                    </div>
                 </div>

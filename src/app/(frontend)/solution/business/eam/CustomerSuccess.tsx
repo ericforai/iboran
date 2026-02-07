@@ -56,7 +56,7 @@ export default function CustomerSuccess() {
               </div>
               <div className="border-t border-slate-100 w-full" />
               <div className="flex items-center gap-4">
-                <div className="text-3xl font-black text-[#E60012]">100%</div>
+                <div className="text-3xl font-black text-[#E60012]">99%以上</div>
                 <div className="text-slate-600 leading-tight">实现移动化作业<br /><span className="text-xs font-bold text-slate-400">全场景覆盖</span></div>
               </div>
               <div className="border-t border-slate-100 w-full" />

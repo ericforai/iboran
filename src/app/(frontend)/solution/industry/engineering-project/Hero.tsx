@@ -98,7 +98,7 @@ export default function Hero() {
                       <div className="text-xs text-slate-400">结算效率提升</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-blue-400">100%</div>
+                      <div className="text-2xl font-bold text-blue-400">99%以上</div>
                       <div className="text-xs text-slate-400">过程追溯能力</div>
                     </div>
                     <div>

@@ -47,7 +47,7 @@ export default function ValueSection() {
                    <div className="text-sm text-slate-300">WIP 在制品降低</div>
                 </div>
                 <div className="bg-white/5 backdrop-blur border border-white/10 p-6 rounded-2xl text-center">
-                   <div className="text-4xl font-bold text-blue-400 mb-2">100%</div>
+                   <div className="text-4xl font-bold text-blue-400 mb-2">99%以上</div>
                    <div className="text-sm text-slate-300">质量可追溯</div>
                 </div>
                 <div className="bg-white/5 backdrop-blur border border-white/10 p-6 rounded-2xl text-center">

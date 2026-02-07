@@ -100,7 +100,7 @@ export default function ValueSection() {
                 <div className="text-xs text-slate-500">利润核算</div>
               </div>
               <div className="bg-slate-50 p-3 rounded text-center">
-                <div className="text-purple-600 font-bold text-xl">100%</div>
+                <div className="text-purple-600 font-bold text-xl">99%以上</div>
                 <div className="text-xs text-slate-500">数据闭环</div>
               </div>
             </div>

@@ -90,7 +90,7 @@ export default function Hero() {
                   
                   <div className="mt-6 pt-6 border-t border-teal-100 grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-[#E60012]">100%</div>
+                      <div className="text-2xl font-bold text-[#E60012]">99%以上</div>
                       <div className="text-xs text-slate-400">合规达标</div>
                     </div>
                     <div>

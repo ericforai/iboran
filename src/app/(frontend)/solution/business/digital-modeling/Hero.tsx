@@ -47,7 +47,7 @@ export default function Hero() {
                 </div>
                 <div className="w-px h-10 bg-slate-200" />
                 <div className="flex flex-col">
-                  <span className="text-2xl font-bold text-slate-800">100%</span>
+                  <span className="text-2xl font-bold text-slate-800">99%以上</span>
                   <span className="text-xs uppercase tracking-wider">信创适配率</span>
                 </div>
               </div>
