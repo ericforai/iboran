@@ -54,7 +54,7 @@ const Chapter1 = () => (
             </svg>
           </div>
           <h4 className="font-bold text-[#1F2329] mb-2">降低风险</h4>
-          <p className="text-sm">数据源头唯一，减少人为错误，合规性检查内嵌于业务流程，风险可控</p>
+          <p className="text-sm">数据源头统一，减少人为错误，合规性检查内嵌于业务流程，风险可控</p>
         </div>
         <div className="bg-gradient-to-br from-purple-50 to-white p-6 rounded-xl border border-purple-100">
           <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 text-purple-600">
@@ -72,7 +72,7 @@ const Chapter1 = () => (
         <div className="relative">
           <div className="absolute -left-10 w-6 h-6 bg-[#E60012] rounded-full flex items-center justify-center text-white text-xs font-bold">1</div>
           <h4 className="font-bold text-[#1F2329] mb-1">手工记账时代（1980s-1990s）</h4>
-          <p className="text-sm">业务与财务完全分离，依赖纸质单据传递，信息滞后严重</p>
+          <p className="text-sm">业务与财务高度分离，依赖纸质单据传递，信息滞后严重</p>
         </div>
         <div className="relative">
           <div className="absolute -left-10 w-6 h-6 bg-[#E60012] rounded-full flex items-center justify-center text-white text-xs font-bold">2</div>
@@ -162,7 +162,7 @@ const Chapter2 = () => (
             <tbody>
               <tr className="border-b border-slate-100">
                 <td className="py-3 font-medium">L1 级别：初始</td>
-                <td>完全分离</td>
+                <td>高度分离</td>
                 <td>手工传递</td>
                 <td>事后报告</td>
               </tr>
@@ -394,7 +394,7 @@ const Chapter4 = () => (
             </div>
             <h4 className="font-bold text-[#1F2329]">数据同步中心</h4>
           </div>
-          <p className="text-sm text-slate-600">实时/定时同步业务数据到财务系统，确保数据一致性和时效性。</p>
+          <p className="text-sm text-slate-600">实时/定时同步业务数据到财务系统，以保障数据一致性和时效性。</p>
         </div>
 
         <div className="border border-slate-200 rounded-xl p-5">

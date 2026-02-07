@@ -32,7 +32,7 @@ export default function Hero() {
               </h2>
               
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                作为成长型企业数智化 2.0 时代的领先选择，YonSuite 通过“数智飞轮”模型，
+                作为成长型企业数智化 2.0 时代的优质选择，YonSuite 通过"数智飞轮"模型，
                 深度覆盖 12 大业务场景，为创新企业提供云原生、微服务、低代码的一体化 SaaS 服务。
               </p>
 

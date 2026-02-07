@@ -26,7 +26,7 @@ const casesData = {
     },
     "keyResults": {
       "efficiency": "付款自动化率提升至90%以上",
-      "quality": "数据准确性达到100%，消除人工核算误差",
+      "quality": "数据准确性达到99%以上，消除人工核算误差",
       "risk": "资金流转透明可控，降低财务风险",
       "business": "全面支撑集团化运营与可持续发展"
     },
@@ -58,7 +58,7 @@ const casesData = {
     },
     "keyResults": {
       "efficiency": "收入确认时效性提升50%",
-      "quality": "核算口径统一，报表准确率100%",
+      "quality": "核算口径统一，报表准确率99%以上",
       "risk": "合规性显著增强，审计风险降低",
       "business": "支撑品牌授权业务规模化扩张"
     },
@@ -91,7 +91,7 @@ const casesData = {
     "keyResults": {
       "efficiency": "审批流转时间缩短 50%",
       "quality": "产品良品率提升明显，SPC 实时闭环预警",
-      "risk": "数据差错率降低 90%，作业精度 100%",
+      "risk": "数据差错率降低 90%，作业精度 99%以上",
       "business": "利润核算更清晰，订单执行全程可视化"
     },
     "projectOverview": {

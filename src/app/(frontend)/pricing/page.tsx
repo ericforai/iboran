@@ -76,7 +76,7 @@ const faqs = [
   },
   {
     q: '可以后续升级版本吗？',
-    a: '完全支持。随着您企业的发展，您可以随时从标准版平滑升级到专业版或旗舰版，历史数据可以无缝迁移。'
+    a: '充分支持。随着您企业的发展，您可以随时从标准版平滑升级到专业版或旗舰版，历史数据可以无缝迁移。'
   },
   {
     q: '是否支持按模块购买？',
@@ -107,7 +107,7 @@ export default function PricingPage() {
                   <div key={tier.name} className={`bg-white rounded-2xl p-8 shadow-xl flex flex-col ${tier.popular ? 'ring-4 ring-[#0052D9]/20 relative' : 'border border-slate-100'}`}>
                      {tier.popular && (
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0052D9] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
-                           最受欢迎
+                           热门推荐
                         </div>
                      )}
                      <div className="mb-8 text-center">
@@ -174,7 +174,7 @@ export default function PricingPage() {
                      购买永久许可，部署在企业自有的数据中心或私有云上。适合对数据合规性有极高要求、需要深度定制的大型集团。
                   </p>
                   <ul className="space-y-2 text-sm text-slate-500">
-                     <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500"/> 数据完全自主掌控</li>
+                     <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500"/> 数据高度自主掌控</li>
                      <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500"/> 支持内网隔离环境</li>
                   </ul>
                </div>

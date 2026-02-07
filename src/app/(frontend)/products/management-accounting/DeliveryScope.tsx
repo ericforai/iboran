@@ -21,10 +21,10 @@ export default function DeliveryScope() {
         <div className="flex flex-col lg:flex-row gap-16 items-center">
            <div className="w-full lg:w-1/2">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                 清晰的交付界定，<br />确保项目高确定性落地。
+                 清晰的交付界定，<br />以保障项目高确定性落地。
               </h2>
               <p className="text-slate-500 mb-8 leading-relaxed">
-                 泊冉秉持“所见即所得”的服务理念。通过颗粒度极细的交付范围表，消除双方在实施过程中的模糊地带，确保项目工期与质量完全受控。
+                 泊冉秉持"所见即所得"的服务理念。通过颗粒度极细的交付范围表，消除双方在实施过程中的模糊地带，以保障项目工期与质量高度受控。
               </p>
               <div className="bg-blue-50 border border-blue-100 p-6 rounded-2xl flex items-start space-x-4">
                  <Info className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
