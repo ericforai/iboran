@@ -499,7 +499,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     if (handoffStatus !== 'requested' && handoffStatus !== 'active') return;
 
     let unsubscribe: (() => void) | undefined;
-    let timer: ReturnType<typeof setInterval> | undefined;
+    let timer: ReturnType<typeof window.setInterval> | undefined;
 
     const setupSubscription = async () => {
       void syncConversationMessages(conversationId);
