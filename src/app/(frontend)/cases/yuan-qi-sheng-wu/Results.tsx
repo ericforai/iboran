@@ -1,7 +1,7 @@
 export default function Results() {
   const stats = [
     {
-      value: "近100%",
+      value: "99%以上",
       label: "数据完整性",
       desc: "实现了实验数据的全流程电子化记录与审计追踪，彻底消除了数据造假风险，满足 IND 申报要求。"
     },

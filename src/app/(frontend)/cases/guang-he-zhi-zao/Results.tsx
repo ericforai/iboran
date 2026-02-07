@@ -1,7 +1,7 @@
 export default function Results() {
   const stats = [
     {
-      value: "近100%",
+      value: "99%以上",
       label: "订单自动化率",
       desc: "彻底告别手工导单，全渠道订单 自动化同步与拆分，错发漏发率降至 0.01% 以下。"
     },

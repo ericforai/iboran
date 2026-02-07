@@ -10,7 +10,7 @@ const results = [
   },
   {
     icon: Link2,
-    value: "近100%",
+    value: "99%以上",
     label: "多系统集成覆盖率",
     description: "打通ERP系统与供应链、销售、库存等外部多系统间的数据壁垒，实现全业务链条信息协同。",
     color: "pink"

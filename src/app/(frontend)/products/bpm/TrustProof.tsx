@@ -6,7 +6,7 @@ const stats = [
   { label: '服务客户', value: '500+', desc: '跨行业大型企业实践' },
   { label: '流程实例', value: '1.2亿', desc: '平台安全稳定流转量' },
   { label: '平均提效', value: '35%', desc: '业务审批周期缩短' },
-  { label: '合规追溯', value: '近100%', desc: '全过程留痕与审计' }
+  { label: '合规追溯', value: '99%以上', desc: '全过程留痕与审计' }
 ]
 
 const cases = [

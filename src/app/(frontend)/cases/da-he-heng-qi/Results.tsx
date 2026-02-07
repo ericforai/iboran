@@ -25,7 +25,7 @@ const results: Array<{
   },
   {
     icon: ShieldCheck,
-    value: "近100%",
+    value: "99%以上",
     label: "品质追溯达标",
     description: "实现全生命周期质量追溯，顺利通过全球头部客户的供应商体系审核",
     color: "cyan"

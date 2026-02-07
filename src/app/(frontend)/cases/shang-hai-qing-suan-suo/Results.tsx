@@ -10,7 +10,7 @@ const results = [
   },
   {
     icon: Shield,
-    value: "近100%",
+    value: "99%以上",
     label: "国产信创合规率",
     description: "构建自主可控的技术架构，全面满足国有金融机构国产信创合规要求。",
     color: "purple"

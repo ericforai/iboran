@@ -11,9 +11,9 @@ const results: Array<{
 }> = [
   {
     icon: Link2,
-    value: "近100%",
+    value: "99%以上",
     label: "库存数据准确率",
-    description: "ERP 与 WMS 深度集成后，库存信息实现实时同步，数据准确率达到 近100%",
+    description: "ERP 与 WMS 深度集成后，库存信息实现实时同步，数据准确率达到 99%以上",
     color: "amber"
   },
   {

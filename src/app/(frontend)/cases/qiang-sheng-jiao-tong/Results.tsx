@@ -10,7 +10,7 @@ const results = [
   },
   {
     icon: Landmark,
-    value: "近100%",
+    value: "99%以上",
     label: "资金集中管控覆盖率",
     description: "构建统一司库管理机制，实现资金归集、集中管控与高效使用，满足国资监管要求。",
     color: "cyan"

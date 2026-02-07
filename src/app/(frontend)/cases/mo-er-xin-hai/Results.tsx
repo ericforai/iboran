@@ -1,7 +1,7 @@
 export default function Results() {
   const stats = [
     {
-      value: "近100%",
+      value: "99%以上",
       label: "全链路可追溯",
       desc: "实现了从 Wafer 到最终成品的 Lot 级全生命周期追溯，满足了车规级及高标准工业客户的严苛审核要求。"
     },

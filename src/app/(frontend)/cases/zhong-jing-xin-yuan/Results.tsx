@@ -10,7 +10,7 @@ const results = [
   },
   {
     icon: Server,
-    value: "近100%",
+    value: "99%以上",
     label: "ERP系统覆盖度",
     description: "构建统一ERP平台，统一科目体系、强化资金集中管理与成本精细核算，支撑高层高效决策。",
     color: "blue"
