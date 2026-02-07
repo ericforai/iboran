@@ -24,7 +24,7 @@ const results = [
   },
   {
     icon: Landmark,
-    value: "100%",
+    value: "99%以上",
     label: "资金集中管控覆盖率",
     description: "建设集团财务集中管控平台，实现资金流闭环管理、集中调度与实时监控。",
     color: "teal"
@@ -131,7 +131,7 @@ export default function Results() {
             <div className="text-sm text-slate-400">报表准时交付率</div>
           </div>
           <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">
-            <div className="text-3xl font-bold text-blue-400 mb-2">100%</div>
+            <div className="text-3xl font-bold text-blue-400 mb-2">99%以上</div>
             <div className="text-sm text-slate-400">国资合规达标率</div>
           </div>
           <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">

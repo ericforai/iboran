@@ -3,9 +3,9 @@ import { TrendingUp, Link2, Zap, BarChart3 } from 'lucide-react'
 const results = [
   {
     icon: Link2,
-    value: "100%",
+    value: "99%以上",
     label: "数据集成覆盖率",
-    description: "多系统数据完全打通，实现销售、库存、供应链、财务数据实时同步，消除数据孤岛",
+    description: "多系统数据充分打通，实现销售、库存、供应链、财务数据实时同步，消除数据孤岛",
     color: "orange"
   },
   {
