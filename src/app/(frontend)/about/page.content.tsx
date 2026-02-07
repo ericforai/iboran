@@ -44,7 +44,7 @@ const values = [
 
 const productEcosystem = {
   agency: [
-    { name: '用友 ERP', level: '铂金级合作伙伴', icon: Award },
+    { name: '用友 ERP', level: '合作伙伴', icon: Award },
   ],
   selfDeveloped: [
     { name: '泊冉动态建模平台', desc: '自主知识产权的低代码开发引擎', icon: Code },
@@ -176,13 +176,13 @@ export function AboutPageContent() {
               优势生态：集成与自研并重
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed">
-              我们不仅提供全球领先的软件平台，更具备深度的自主研发能力，为现代服务业与智能制造提供定制化行业护城河。
+              我们不仅提供行业实践成熟的软件平台，更具备深度的自主研发能力，为现代服务业与智能制造提供定制化行业护城河。
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             <div className="space-y-6">
-              <h3 className="text-sm font-bold text-blue-600 uppercase tracking-widest">铂金级代理体系</h3>
+              <h3 className="text-sm font-bold text-blue-600 uppercase tracking-widest">代理体系</h3>
               {productEcosystem.agency.map((p) => (
                 <div key={p.name} className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
                   <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
@@ -219,7 +219,7 @@ export function AboutPageContent() {
         <div className="container mx-auto px-4">
            <div className="text-center mb-20">
               <h2 className="text-3xl md:text-5xl font-black mb-4">进阶历程与荣誉</h2>
-              <p className="text-slate-400">从深耕华东到服务全国，泊冉始终坚持技术领先</p>
+              <p className="text-slate-400">从深耕华东到服务全国，泊冉始终坚持技术精进</p>
            </div>
 
            <div className="max-w-6xl mx-auto">
@@ -259,7 +259,7 @@ export function AboutPageContent() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">资质认证</h2>
-            <p className="text-slate-600">权威认证，品质保障</p>
+            <p className="text-slate-600">合规认证，品质保障</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {certificates.map((cert) => (
@@ -311,7 +311,7 @@ export function AboutPageContent() {
                 <span>诚实说明，节省彼此时间</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">我们可能不适合</h2>
-              <p className="text-slate-600">如果您的企业符合以下情况，我们可能不是最佳选择</p>
+              <p className="text-slate-600">如果您的企业符合以下情况，我们可能暂不匹配</p>
             </div>
 
             <div className="space-y-4">

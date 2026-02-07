@@ -40,7 +40,7 @@ const industries = [
 
 export const CaseLogosSection: React.FC<CaseLogosSectionProps> = React.memo(({
   title = '深耕行业场景 驱动数智增长',
-  subtitle = '泊冉软件助力各行业领军企业实现业财合一，提升全球化经营竞争力',
+  subtitle = '泊冉软件助力各行业头部企业实现业财合一，提升全球化经营竞争力',
 }) => {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
@@ -102,7 +102,7 @@ export const CaseLogosSection: React.FC<CaseLogosSectionProps> = React.memo(({
                       </div>
                       <div>
                         <div className="text-white font-bold">张强</div>
-                        <div className="text-slate-500 text-sm">某全球领军科技企业 · CFO</div>
+                        <div className="text-slate-500 text-sm">某全球头部科技企业 · CFO</div>
                       </div>
                    </div>
                 </div>
@@ -111,7 +111,7 @@ export const CaseLogosSection: React.FC<CaseLogosSectionProps> = React.memo(({
                       { label: '覆盖国家', value: '15+', sub: 'Global Coverage' },
                       { label: '对账效率', value: '80%↑', sub: 'Efficiency Gain' },
                       { label: '资金调配', value: '实时', sub: 'Real-time Sync' },
-                      { label: '合规准则', value: '100%', sub: 'Global Compliance' },
+                      { label: '合规准则', value: '99%以上', sub: 'Global Compliance' },
                       { label: '多币种支', value: '支持', sub: 'Multi-Currency' },
                       { label: '财资安全', value: '银行级', sub: 'Bank-grade Security' }
                     ].map((metric) => (
