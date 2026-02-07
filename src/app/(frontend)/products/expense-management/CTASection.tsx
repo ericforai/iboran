@@ -48,7 +48,7 @@ export const CTASection = () => {
               <div className="text-xs text-slate-500 uppercase tracking-widest font-bold">应急响应</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-white mb-2 font-heading">100%</div>
+              <div className="text-3xl font-bold text-white mb-2 font-heading">99%以上</div>
               <div className="text-xs text-slate-500 uppercase tracking-widest font-bold">合规保证</div>
             </div>
           </div>

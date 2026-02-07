@@ -48,7 +48,7 @@ export function CustomerStories() {
                         <div className="text-sm text-slate-400">系统切换时间减少</div>
                     </div>
                     <div>
-                        <div className="text-3xl font-bold text-green-400 mb-1">100%</div>
+                        <div className="text-3xl font-bold text-green-400 mb-1">99%以上</div>
                         <div className="text-sm text-slate-400">业务入口统一</div>
                     </div>
                 </div>
