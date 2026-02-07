@@ -40,7 +40,7 @@ export default function DeliveryMethodology() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">交付方法论</h2>
-          <p className="text-slate-600">标准化的“四步走”交付体系，确保系统从蓝图设计到平稳运行的闭环落地。</p>
+          <p className="text-slate-600">标准化的“四步走”交付体系，以保障系统从蓝图设计到平稳运行的闭环落地。</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

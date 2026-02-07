@@ -29,7 +29,7 @@ export default function Hero() {
               <span className="text-amber-400 text-3xl md:text-5xl">数字化转型实践</span>
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-8">
-              芝神堂药业提供中成药、保健品及健康食品，专注于灵芝类产品的研发、生产与销售。通过数智化平台，确保企业在严苛监管下实现效率与安全的双重跨越。
+              芝神堂药业提供中成药、保健品及健康食品，专注于灵芝类产品的研发、生产与销售。通过数智化平台，以保障企业在严苛监管下实现效率与安全的双重跨越。
             </p>
 
             {/* Quick stats badges */}

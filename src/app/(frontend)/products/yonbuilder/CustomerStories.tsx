@@ -48,7 +48,7 @@ export default function CustomerStories() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">
-            领军企业选择 <span className="text-[#E60012]">YonBuilder</span>
+            头部企业选择 <span className="text-[#E60012]">YonBuilder</span>
           </h2>
           <p className="text-lg text-slate-600">
             赋能各行各业实现数智化创新，见证低代码的商业价值

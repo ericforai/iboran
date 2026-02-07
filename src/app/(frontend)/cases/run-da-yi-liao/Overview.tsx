@@ -49,7 +49,7 @@ export default function Overview() {
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">医疗诊断数字化升级</h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                润达医疗提供体外诊断产品、实验室综合服务及医疗信息化解决方案。通过数智化平台，确保企业在严苛监管下实现效率与安全的双重跨越。
+                润达医疗提供体外诊断产品、实验室综合服务及医疗信息化解决方案。通过数智化平台，以保障企业在严苛监管下实现效率与安全的双重跨越。
               </p>
             </div>
 

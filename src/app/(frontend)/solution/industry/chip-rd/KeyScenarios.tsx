@@ -16,7 +16,7 @@ const scenarios = [
     title: '研发项目协同',
     icon: Workflow,
     subtitle: '打通从立项到 mass production 的全旅程',
-    desc: '集成项目时间表、关键里程碑（Tape-out, CP, FT）及技术文档管控。实现多角色（PM, 设计, 运营）的高效实时协同，确保流片进度可控。',
+    desc: '集成项目时间表、关键里程碑（Tape-out, CP, FT）及技术文档管控。实现多角色（PM, 设计, 运营）的高效实时协同，以保障流片进度可控。',
     features: ['5阶段生命周期节点管控', 'IP资产与版本安全管控', '流片异常预警机制'],
     stats: '项目周期缩短 15-20%'
   },

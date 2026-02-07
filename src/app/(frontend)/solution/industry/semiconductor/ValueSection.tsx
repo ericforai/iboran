@@ -27,7 +27,7 @@ const metrics = [
   },
   {
     icon: ShieldCheck,
-    value: '100%',
+    value: '近100%',
     label: '国产自主可控',
     description: '核心代码自研，支持信创环境',
     color: 'text-purple-600',
@@ -81,7 +81,7 @@ export default function ValueSection() {
               率先实现可同时对三个类型工厂进行智能化管理的国产工业软件项目
             </h3>
             <p className="text-blue-100 leading-relaxed">
-              泊冉软件作为国产CIM解决方案的领军者，已成功在多个头部半导体企业实现落地，
+              泊冉软件作为国产CIM解决方案的代表企业，已成功在多个头部半导体企业实现落地，
               助力中国芯片制造迈向自主可控的智能化新时代。
             </p>
           </div>

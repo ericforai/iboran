@@ -18,14 +18,14 @@ export default function DeliveryMethodology() {
     },
     {
       title: '系统集成与数据迁移',
-      desc: '打通财务（NC/U8/SAP）及业务系统，实现收付款关联。自动化迁移历史存量合同，确保数据闭环。',
+      desc: '打通财务（NC/U8/SAP）及业务系统，实现收付款关联。自动化迁移历史存量合同，以保障数据闭环。',
       icon: <Rocket className="text-blue-600" />,
       output: '集成接口文档、千万级合同历史归档数据',
       delay: 'Week 5-6'
     },
     {
       title: '法务合规验证与交付',
-      desc: '模拟多维度风控场景测试，确保电子签、存证等环节法律合效。进行全员宣贯与管路赋能。',
+      desc: '模拟多维度风控场景测试，以保障电子签、存证等环节法律合效。进行全员宣贯与管路赋能。',
       icon: <ShieldCheck className="text-blue-600" />,
       output: '《系统验收报告》、法务合规审计通过证明',
       delay: 'Week 7-8'

@@ -20,7 +20,7 @@ export default function CTASection() {
               开启 IP 运营数智化之旅
             </h2>
             <p className="text-xl text-blue-100 mb-10 leading-relaxed">
-              泊冉软件，用友铂金级合作伙伴，为您提供 IP 行业全生命周期数智化解决方案
+              泊冉软件，用友合作伙伴，为您提供 IP 行业全生命周期数智化解决方案
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-5">

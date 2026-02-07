@@ -24,7 +24,7 @@ const capabilities = [
   },
   {
     title: '项目模板库',
-    desc: '沉淀企业最佳实践，定制统一管理模板，实现同类项目的高效复用。',
+    desc: '沉淀企业成熟实践，定制统一管理模板，实现同类项目的高效复用。',
     icon: <Database className="w-6 h-6" />
   },
   {

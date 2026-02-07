@@ -2,7 +2,7 @@ export default function ValueSection() {
   const metrics = [
     { value: '50%', label: '监管效率提升', description: '实时在线监管' },
     { value: '90%+', label: '报表自动生成', description: '减少人工干预' },
-    { value: '100%', label: '风险预警准确', description: '穿透式风险识别' },
+    { value: '近100%', label: '风险预警准确', description: '穿透式风险识别' },
     { value: '15%', label: '融资成本降低', description: '资金集中管理' },
   ]
 

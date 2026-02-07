@@ -36,7 +36,7 @@ export default function DeliveryMethodology() {
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">交付不仅仅是安装，更是管理的“转基因”</h2>
           <p className="text-slate-600">
-            我们坚持“管理先行，技术落地”的交付原则，通过 4 阶段标准化路径确保 BPM 真正服务于业务增长。
+            我们坚持“管理先行，技术落地”的交付原则，通过 4 阶段标准化路径以保障 BPM 真正服务于业务增长。
           </p>
         </div>
 

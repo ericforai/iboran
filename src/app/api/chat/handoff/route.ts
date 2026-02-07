@@ -61,6 +61,8 @@ export async function POST(req: NextRequest) {
         handoffStatus: 'requested',
         mode: 'hybrid',
         needsHuman: true,
+        handoffReminderSent: false,
+        handoffReminderSentAt: null,
         lastMessageAt: new Date().toISOString(),
       },
     })

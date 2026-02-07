@@ -1,9 +1,9 @@
 export default function Results() {
   const stats = [
     {
-      value: "100%",
+      value: "近100%",
       label: "GSP 合规率",
-      desc: "通过系统硬约束，杜绝了人为操作失误，确保首营、验收、养护等关键环节 100% 符合 GSP 规范。"
+      desc: "通过系统硬约束，杜绝了人为操作失误，以保障首营、验收、养护等关键环节 近100% 符合 GSP 规范。"
     },
     {
       value: "50%",

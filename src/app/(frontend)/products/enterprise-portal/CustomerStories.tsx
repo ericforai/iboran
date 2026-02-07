@@ -9,7 +9,7 @@ export function CustomerStories() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">
-            领先企业的共同选择
+            多家企业的共同选择
           </h2>
           <p className="text-lg text-slate-600">
             赋能 1000+ 数智化先行企业，打造高效协同的数字工作环境。

@@ -15,7 +15,7 @@ export default function CTASection() {
             开启资产智能管理新时代
           </h2>
           <p className="text-slate-400 mb-10 max-w-2xl mx-auto text-lg">
-            泊冉软件作为用友铂金级合作伙伴，拥有丰富的资产管理数字化实施经验。我们不仅提供 EAM 解决方案能力，更为您提供从方案规划到落地运营的全程支持。
+            泊冉软件作为用友合作伙伴，拥有丰富的资产管理数字化实施经验。我们不仅提供 EAM 解决方案能力，更为您提供从方案规划到落地运营的全程支持。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
@@ -33,7 +33,7 @@ export default function CTASection() {
             </a>
           </div>
           <div className="mt-12 text-slate-500 text-sm">
-            用友 BIP Platinum Partner | 资产管理数字化专家
+            用友 BIP Partner | 资产管理数字化专家
           </div>
         </div>
       </section>

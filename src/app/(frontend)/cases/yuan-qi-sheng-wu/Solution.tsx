@@ -4,7 +4,7 @@ const solutions = [
   {
     icon: DatabaseZap,
     title: '实验室信息管理 (LIMS)',
-    description: '构建全流程 LIMS 系统，实现从样本接收、任务分配、实验执行到报告生成的全链路数字化管理，确保数据可追溯。'
+    description: '构建全流程 LIMS 系统，实现从样本接收、任务分配、实验执行到报告生成的全链路数字化管理，以保障数据可追溯。'
   },
   {
     icon: FileText,
@@ -14,7 +14,7 @@ const solutions = [
   {
     icon: ShieldAlert,
     title: '研发质量体系 (QMS)',
-    description: '建立研发质量管理平台，对偏差、变更、CAPA 等质量事件进行闭环管理，确保研发过程始终处于受控状态。'
+    description: '建立研发质量管理平台，对偏差、变更、CAPA 等质量事件进行闭环管理，以保障研发过程始终处于受控状态。'
   }
 ]
 

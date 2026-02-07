@@ -9,7 +9,7 @@ export default function DeliveryScope() {
             典型交付范围与边界
           </h2>
           <p className="text-slate-600">
-            清晰定义“做什么”和“不做什么”，确保项目目标明确，避免交付扯皮。
+            清晰定义“做什么”和“不做什么”，以保障项目目标明确，避免交付扯皮。
           </p>
         </div>
 

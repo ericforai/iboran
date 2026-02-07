@@ -181,7 +181,7 @@ export default function Hero() {
             {/* Description */}
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl mb-10">
               泊冉软件助力宣泰药业构建<span className="text-white font-semibold">符合 GXP 标准的一体化管理体系</span>，
-              确保企业在严苛监管下实现效率与安全的双重跨越。
+              以保障企业在严苛监管下实现效率与安全的双重跨越。
             </p>
 
             {/* Key Stats */}

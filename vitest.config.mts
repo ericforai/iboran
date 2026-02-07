@@ -8,5 +8,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./vitest.setup.ts'],
     include: ['tests/int/**/*.int.spec.ts', 'tests/int/**/*.int.spec.tsx', 'tests/unit/**/*.spec.ts'],
+    // Container and Payload bootstrap can exceed the 10s Vitest defaults.
+    // Keep a stable baseline to avoid flaky false negatives in CI/local Docker.
+    hookTimeout: 30000,
+    testTimeout: 30000,
   },
 })

@@ -1,7 +1,7 @@
 export default function ValueSection() {
   const values = [
     { label: '集成效率', value: '50%', suffix: '↑', desc: '缩短项目对接与部署周期' },
-    { label: '接口安全', value: '100%', suffix: '', desc: '数据脱敏与全流程日志审计' },
+    { label: '接口安全', value: '近100%', suffix: '', desc: '数据脱敏与全流程日志审计' },
     { label: '并发支撑', value: 'TB', suffix: '级', desc: '稳定支撑高并发数据交换' },
     { label: '预置连接', value: '100', suffix: '+', desc: '跨行业主流应用开箱即用' },
   ]

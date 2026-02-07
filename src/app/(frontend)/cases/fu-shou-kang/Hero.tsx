@@ -64,7 +64,7 @@ export default function Hero() {
 
             <p className="mt-6 text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl">
               医药与医疗健康行业处于高合规要求与数字化转型的交汇点。从研发创新、合规生产到精准流通，
-              企业亟需构建符合 GXP 标准的一体化管理体系。泊冉软件通过数智化平台，确保效率与安全同步提升。
+              企业亟需构建符合 GXP 标准的一体化管理体系。泊冉软件通过数智化平台，以保障效率与安全同步提升。
             </p>
 
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">

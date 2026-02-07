@@ -10,7 +10,7 @@ const scenarios = [
     id: 'rd-mfg',
     icon: Microscope,
     title: "研产一体化协同",
-    description: "打通临床前研究、工艺开发到商业化生产的全链路。实现研发BOM向生产BOM的分钟级转化，确保工艺参数的准确传递。",
+    description: "打通临床前研究、工艺开发到商业化生产的全链路。实现研发BOM向生产BOM的分钟级转化，以保障工艺参数的准确传递。",
     features: [
       "多项目并行进度与里程碑管理",
       "研发工艺配方到生产工单自动转换",

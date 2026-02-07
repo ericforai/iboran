@@ -61,7 +61,7 @@ export const Hero = () => {
                     </span>
                      <span className="font-bold text-white mr-1">泊冉软件</span>
                      <span className="opacity-40 mr-1">|</span>
-                     用友铂金级合作伙伴
+                     用友合作伙伴
                  </div>
                  <h1 className="text-2xl sm:text-4xl lg:text-[72px] font-heading font-bold leading-[1.1] lg:leading-[0.95] tracking-tighter mb-4 lg:mb-6 text-white drop-shadow-2xl">
                    <span className="whitespace-nowrap">您的业财数据</span> <br className="lg:block" />

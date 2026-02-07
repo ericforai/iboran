@@ -3,7 +3,7 @@ import { TrendingUp, Package, ShoppingCart, BarChart3 } from 'lucide-react'
 const results = [
   {
     icon: Package,
-    value: "100%",
+    value: "近100%",
     label: "IP全流程数字化覆盖率",
     description: "实现从IP授权、创意立项到销售回款的全流程数字化管理，IP衍生品生命周期可追溯。",
     color: "purple"

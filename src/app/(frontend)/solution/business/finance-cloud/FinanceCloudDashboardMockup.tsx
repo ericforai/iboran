@@ -165,14 +165,14 @@ export default function FinanceCloudDashboardMockup() {
                     <div className="text-[10px] text-slate-400 mb-1">今日开票总额</div>
                     <div className="text-xl font-bold text-slate-800">¥ 1,245,000</div>
                     <div className="flex items-center text-[10px] text-green-500 mt-1">
-                      <ArrowUpRight size={10} /> 自动化率 100%
+                      <ArrowUpRight size={10} /> 自动化率 近100%
                     </div>
                   </div>
                   <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-100">
                     <div className="text-[10px] text-slate-400 mb-1">进项采集验真</div>
                     <div className="text-xl font-bold text-slate-800">2,456 张</div>
                     <div className="flex items-center text-[10px] text-blue-500 mt-1">
-                      查验成功率 100%
+                      查验成功率 近100%
                     </div>
                   </div>
                 </div>

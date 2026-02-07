@@ -45,7 +45,7 @@ export function Methodology() {
             标准化的实施交付路径
           </h2>
           <p className="text-lg text-slate-600">
-            经过数百家大型企业验证的成熟交付方法论，确保项目快速落地、价值即刻显现。
+            经过数百家大型企业验证的成熟交付方法论，以保障项目快速落地、价值即刻显现。
           </p>
         </div>
 

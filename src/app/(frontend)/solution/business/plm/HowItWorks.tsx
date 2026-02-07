@@ -7,7 +7,7 @@ const steps = [
   {
     icon: Lightbulb,
     title: "1. 需求与规划",
-    desc: "捕捉市场机会，定义产品路线图，确保研发方向与商业目标一致。"
+    desc: "捕捉市场机会，定义产品路线图，以保障研发方向与商业目标一致。"
   },
   {
     icon: FileCode,

@@ -46,7 +46,7 @@ export default function TechSpecs() {
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">技术规范与集成架构</h2>
           <p className="text-lg text-slate-600">
-            基于成熟的集成底座与协同能力，确保系统在复杂 IT 环境下的高可用性与安全性。
+            基于成熟的集成底座与协同能力，以保障系统在复杂 IT 环境下的高可用性与安全性。
           </p>
         </div>
 

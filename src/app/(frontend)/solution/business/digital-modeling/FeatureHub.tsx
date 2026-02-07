@@ -54,7 +54,7 @@ const features: Feature[] = [
       'UI 模板一键更新与跨终端同步，实现千人千面配置',
       '支持多语言、多时区、多格式的全球化基础建模服务'
     ],
-    metric: '系统配置灵活度 100%'
+    metric: '系统配置灵活度 近100%'
   },
   {
     id: 'data',
@@ -73,7 +73,7 @@ const features: Feature[] = [
     id: 'compliance',
     title: '合规与风险管理',
     icon: ShieldCheck,
-    description: '构建智能合规风控闭环，确保企业经营的安全性与透明度。',
+    description: '构建智能合规风控闭环，以保障企业经营的安全性与透明度。',
     details: [
       '智能审计感知系统，对安全行为进行全方位监控记录',
       '支持三员密级管理与四级数据分级权限动态控制',

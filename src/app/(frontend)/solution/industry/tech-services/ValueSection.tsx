@@ -1,6 +1,6 @@
 export default function ValueSection() {
   const metrics = [
-    { value: '100%', label: '财务凭证自动化', description: '基于事项会计，业务单据自动生成凭证' },
+    { value: '近100%', label: '财务凭证自动化', description: '基于事项会计，业务单据自动生成凭证' },
     { value: '70%', label: '算薪效率提升', description: '一键自动算薪，告别繁琐 Excel' },
     { value: '8x', label: '流程审批提效', description: '移动端随时随地审批，业务不等待' },
     { value: '45%', label: '项目利润率提升', description: '精准成本管控与风险预警' },

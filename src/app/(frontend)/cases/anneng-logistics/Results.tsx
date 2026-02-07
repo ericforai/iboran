@@ -56,7 +56,7 @@ export default function Results() {
                     <Counter value={100} suffix="%" />
                 </div>
                 <div className="text-lg text-white font-medium mb-2">业财数据实时一致</div>
-                <p className="text-sm text-slate-400">彻底打通业务与财务数据，消除了人工对账，确保报表数据源头单一、真实可信。</p>
+                <p className="text-sm text-slate-400">彻底打通业务与财务数据，消除了人工对账，以保障报表数据源头单一、真实可信。</p>
             </motion.div>
 
              <motion.div 

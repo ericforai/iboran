@@ -24,7 +24,7 @@ export default function Overview() {
             <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-slate-900">项目背景</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
-                医药与医疗健康行业正处于高合规要求与数字化转型的交汇点。从研发创新、合规生产到精准流通，企业亟需构建一套符合 GXP 标准的一体化管理体系。泊冉软件通过数智化平台，确保企业在严苛监管下实现效率与安全的双重跨越。
+                医药与医疗健康行业正处于高合规要求与数字化转型的交汇点。从研发创新、合规生产到精准流通，企业亟需构建一套符合 GXP 标准的一体化管理体系。泊冉软件通过数智化平台，以保障企业在严苛监管下实现效率与安全的双重跨越。
               </p>
               <p className="text-base sm:text-lg text-slate-700 leading-relaxed mt-4">
                 项目背景：提供医疗器械研发、生产及医疗信息化解决方案。

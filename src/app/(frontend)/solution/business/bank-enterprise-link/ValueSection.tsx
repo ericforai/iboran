@@ -3,7 +3,7 @@ export default function ValueSection() {
     { value: '2500+', label: '预制银行直连接口', desc: '覆盖国内外主流各级商业银行' },
     { value: '7天', label: '平均交付上线周期', desc: '基于成熟交付模型，快速投产' },
     { value: '1000+', label: '大型集团共同选择', desc: '助力千行百业实现数智司库' },
-    { value: '100%', label: '合规安全保障', desc: '等级保护3级认证，交易不做留存' },
+    { value: '近100%', label: '合规安全保障', desc: '等级保护3级认证，交易不做留存' },
   ]
 
   return (

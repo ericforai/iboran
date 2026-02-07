@@ -15,7 +15,7 @@ export default function CTASection() {
             开启低代码开发新时代
           </h2>
           <p className="text-slate-400 mb-10 max-w-2xl mx-auto text-lg">
-            泊冉软件作为用友铂金级合作伙伴，拥有丰富的低代码平台实施经验。我们不仅提供 DEV 开发平台的技术能力，更为您提供从培训赋能到项目落地的全程支持。
+            泊冉软件作为用友合作伙伴，拥有丰富的低代码平台实施经验。我们不仅提供 DEV 开发平台的技术能力，更为您提供从培训赋能到项目落地的全程支持。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
@@ -33,7 +33,7 @@ export default function CTASection() {
             </a>
           </div>
           <div className="mt-12 text-slate-500 text-sm">
-            用友 BIP Platinum Partner | 低代码开发专家
+            用友 BIP Partner | 低代码开发专家
           </div>
         </div>
       </section>

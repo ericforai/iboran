@@ -20,7 +20,7 @@ export default function SolutionOverview() {
     {
       icon: ShieldCheck,
       title: "合规与风控",
-      desc: "内置行业典型实践，确保业务流程合规，降低经营风险。"
+      desc: "内置行业典型实践，以保障业务流程合规，降低经营风险。"
     }
   ]
   const deliverables = [

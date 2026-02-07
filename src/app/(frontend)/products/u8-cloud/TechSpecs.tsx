@@ -7,7 +7,7 @@ const specs = [
   {
     title: '部署与架构',
     icon: <Server className="w-6 h-6 text-blue-600" />,
-    content: '采用公有云原生架构（Public Cloud Native），支持多租户隔离与单租户独享模式。支持多IDC容灾部署，确保 99.9% 以上的可用性。'
+    content: '采用公有云原生架构（Public Cloud Native），支持多租户隔离与单租户独享模式。支持多IDC容灾部署，以保障 99.9% 以上的可用性。'
   },
   {
     title: '连接与集成',

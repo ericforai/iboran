@@ -24,7 +24,7 @@ export const DeliveryMethodology = () => {
     {
       icon: ShieldCheck,
       title: '运维支持与持续优化',
-      desc: '提供驻场/远程上线保障，根据运行数据进行报表调优，确保持续合规与效率。',
+      desc: '提供驻场/远程上线保障，根据运行数据进行报表调优，以保障持续合规与效率。',
       deliverables: ['《上线运维保障方案》', '《二期优化路线图》']
     }
   ]

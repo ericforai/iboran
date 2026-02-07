@@ -92,6 +92,21 @@ export const Conversations: CollectionConfig = {
       type: 'relationship',
       relationTo: 'users',
     },
+    {
+      name: 'handoffReminderSent',
+      type: 'checkbox',
+      defaultValue: false,
+      index: true,
+    },
+    {
+      name: 'handoffReminderSentAt',
+      type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+      },
+    },
   ],
   timestamps: true,
 }

@@ -18,11 +18,11 @@ export const Footer = () => {
                 <div className="flex items-center gap-3">
                   <div className="text-2xl font-heading font-black text-slate-900 dark:text-white tracking-tight">泊冉软件</div>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-amber-100 to-amber-50 text-amber-700 border border-amber-200/50 shadow-sm whitespace-nowrap dark:from-amber-900/30 dark:to-amber-950/30 dark:text-amber-400 dark:border-amber-700/50">
-                    铂金级合作伙伴
+                    用友合作伙伴
                   </span>
                 </div>
                 <p className="text-sm leading-relaxed max-w-sm text-slate-500 dark:text-slate-400">
-                  致力为高成长型企业提供全面的数智化解决方案。作为用友网络铂金级合作伙伴，我们专注于通过技术创新推动企业数字化转型。
+                  致力为高成长型企业提供全面的数智化解决方案。作为用友网络合作伙伴，我们专注于通过技术创新推动企业数字化转型。
                 </p>
               </div>
   

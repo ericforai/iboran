@@ -23,7 +23,7 @@ const scenarios = [
     id: 'compliance',
     icon: FileCheck,
     title: "全流程合规管控",
-    description: "内置符合NMPA/FDA标准的GMP/GSP管理规范，支持Csv计算机化系统验证，确保数据完整性与追溯合规。",
+    description: "内置符合NMPA/FDA标准的GMP/GSP管理规范，支持Csv计算机化系统验证，以保障数据完整性与追溯合规。",
     features: [
       "基于GAMP5的全生命周期CSV验证",
       "质量管理QMS/DMS/TMS一体化",

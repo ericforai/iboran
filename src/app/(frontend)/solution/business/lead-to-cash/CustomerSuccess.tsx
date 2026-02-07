@@ -19,10 +19,10 @@ export default function CustomerSuccess() {
           
           <div className="lg:w-1/3 text-center lg:text-left">
             <h2 className="text-2xl font-bold text-[#1F2329] mb-4">
-              500+ 行业领军企业的共同选择
+              500+ 行业头部企业的共同选择
             </h2>
             <p className="text-slate-600 mb-6">
-              无论是制造业巨头还是新零售先锋，泊冉软件 L2C 解决方案通过标准化产品与行业化最佳实践，助力企业实现销售业绩的指数级增长。
+              无论是制造业巨头还是新零售先锋，泊冉软件 L2C 解决方案通过标准化产品与行业化成熟实践，助力企业实现销售业绩的指数级增长。
             </p>
             <div className="flex items-center justify-center lg:justify-start gap-8">
               <div>

@@ -533,7 +533,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
   // Memoize render components to prevent re-creation on every render
   // This keeps component identities stable and prevents remounting of all message subtrees
   const MarkdownRenderer = useMemo(() => {
-    return ({ content }: { content: string }) => {
+    const MarkdownRendererComponent: React.FC<{ content: string }> = ({ content }) => {
     return (
       <div className="markdown-content">
         <ReactMarkdown
@@ -587,10 +587,12 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       </div>
     );
   };
+    MarkdownRendererComponent.displayName = 'MarkdownRenderer';
+    return MarkdownRendererComponent;
   }, [t]);
 
   const SourcesDisplay = useMemo(() => {
-    return ({ chunks }: { chunks: GroundingChunk[] }) => {
+    const SourcesDisplayComponent: React.FC<{ chunks: GroundingChunk[] }> = ({ chunks }) => {
     if (!chunks || chunks.length === 0) return null;
 
     const validChunks = chunks.filter((c) => c.web?.title || c.source);
@@ -639,6 +641,8 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       </div>
     );
   };
+    SourcesDisplayComponent.displayName = 'SourcesDisplay';
+    return SourcesDisplayComponent;
 }, [t]);
 
   if (!mounted) return null;

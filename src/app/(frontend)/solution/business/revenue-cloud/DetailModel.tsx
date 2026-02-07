@@ -19,7 +19,7 @@ export default function DetailModel() {
               明细级对账模型<br/>全维度覆盖业务场景
             </h2>
             <p className="text-slate-600 mb-6 leading-relaxed">
-              打破传统总额匹配的局限。构建多维度、全场景核对体系，确保每一笔交易清晰可追溯，精准捕捉任何环节的异常。
+              打破传统总额匹配的局限。构建多维度、全场景核对体系，以保障每一笔交易清晰可追溯，精准捕捉任何环节的异常。
             </p>
             
             <div className="space-y-6">

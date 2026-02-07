@@ -7,7 +7,7 @@ export const OrganizationJsonLd: React.FC = () => {
     name: '泊冉软件',
     url: 'https://www.iboran.com',
     logo: 'https://www.iboran.com/logo.png', // Assuming logo path
-    description: '用友全球首批铂金级合作伙伴，深耕智能制造、新零售及生物医药行业12年。',
+    description: '用友合作伙伴，深耕智能制造、新零售及生物医药行业12年。',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '曹杨路1888号星光耀广场1号楼1005室',

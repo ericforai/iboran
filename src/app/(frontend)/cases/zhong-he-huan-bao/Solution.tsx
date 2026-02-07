@@ -9,7 +9,7 @@ const solutions = [
   {
     icon: GitMerge,
     title: '设计生产一体化 (PLM)',
-    description: '集成 PLM 与 ERP 系统，实现 BOM 数据的自动同步与变更闭环管理，确保设计数据与生产数据的一致性。'
+    description: '集成 PLM 与 ERP 系统，实现 BOM 数据的自动同步与变更闭环管理，以保障设计数据与生产数据的一致性。'
   },
   {
     icon: Radio,

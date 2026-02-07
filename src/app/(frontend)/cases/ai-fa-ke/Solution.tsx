@@ -29,7 +29,7 @@ export default function Solution() {
                       一站式业财一体化
                   </h3>
                   <p className="text-slate-600 leading-relaxed group-hover:text-blue-100 transition-colors mb-8 flex-grow">
-                      构建统一数据中台，集成 ERP、MES、SRM 及财务模块。实现业务单据自动转化为财务凭证，确保账实相符。
+                      构建统一数据中台，集成 ERP、MES、SRM 及财务模块。实现业务单据自动转化为财务凭证，以保障账实相符。
                   </p>
                   
                   <div className="pt-6 border-t border-slate-200 group-hover:border-blue-500/30 transition-colors">

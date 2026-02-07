@@ -2,8 +2,8 @@ import React from 'react'
 import { Trophy, Award, MapPin, Building2, Quote, ExternalLink } from 'lucide-react'
 
 const stats = [
-  { icon: Trophy, label: '离散制造稳居第一', value: '2023年行业地位' },
-  { icon: Award, label: '获得权威大奖', value: '8项年度奖项' },
+  { icon: Trophy, label: '离散制造处于前列', value: '2023年行业地位' },
+  { icon: Award, label: '获得行业奖项', value: '8项年度奖项' },
   { icon: MapPin, label: '省区覆盖', value: '29个省级行政区' },
   { icon: Building2, label: '新签客户替换率', value: '近 50%' },
 ]

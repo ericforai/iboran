@@ -41,7 +41,7 @@ export default function TargetAudience() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">精准匹配您的经营需求</h2>
-          <p className="text-lg text-slate-600">明确适用边界，确保 U8 cloud 能在最适宜的土壤中创造最大的业务增量。</p>
+          <p className="text-lg text-slate-600">明确适用边界，以保障 U8 cloud 能在最适宜的土壤中创造最大的业务增量。</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

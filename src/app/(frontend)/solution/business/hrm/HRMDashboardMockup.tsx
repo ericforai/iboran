@@ -116,7 +116,7 @@ export const HRMDashboardMockup = () => {
             </div>
             <div className="flex flex-col gap-3">
               {[
-                { label: '简历投递', count: 4200, percent: '100%' },
+                { label: '简历投递', count: 4200, percent: '近100%' },
                 { label: '初步筛选', count: 1250, percent: '30%' },
                 { label: '技术面试', count: 480, percent: '11%' },
                 { label: '录用沟通', count: 120, percent: '3%' },

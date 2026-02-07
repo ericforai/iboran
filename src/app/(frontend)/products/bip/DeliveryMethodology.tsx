@@ -13,7 +13,7 @@ export default function DeliveryMethodology() {
     {
       id: "02",
       name: "方案设计与验证",
-      desc: "所见即所得，确保需求准确落地。",
+      desc: "所见即所得，以保障需求准确落地。",
       icon: PenTool,
       inputs: ["蓝图确认书", "关键用户需求"],
       outputs: ["系统详细设计方案", "原型演示系统", "集成接口规范", "数据迁移方案"]
@@ -44,7 +44,7 @@ export default function DeliveryMethodology() {
             泊冉交付方法论
           </h2>
           <p className="text-slate-600">
-            从咨询到上线，我们提供全生命周期的专业交付服务，确保项目按时、保质交付。
+            从咨询到上线，我们提供全生命周期的专业交付服务，以保障项目按时、保质交付。
           </p>
         </div>
 

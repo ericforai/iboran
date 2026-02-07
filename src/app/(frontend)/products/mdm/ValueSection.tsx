@@ -7,7 +7,7 @@ const values = [
   {
     icon: TrendingUp,
     title: '高标准 · 统一规范',
-    description: '制定企业级主数据管理体系，统一定义数据标准。消除“数出多门”，确保各业务系统间数据语言的一致性。'
+    description: '制定企业级主数据管理体系，统一定义数据标准。消除“数出多门”，以保障各业务系统间数据语言的一致性。'
   },
   {
     icon: CheckCircle,

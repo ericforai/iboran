@@ -42,7 +42,7 @@ export default function DeliveryScope() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">交付范围与边界检查</h2>
-          <p className="text-slate-400 italic">明确边界，拒绝扯皮，确保交付成果可预期。</p>
+          <p className="text-slate-400 italic">明确边界，拒绝扯皮，以保障交付成果可预期。</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">

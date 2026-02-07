@@ -21,7 +21,7 @@ export default function CTASection() {
               准备好开启半导体智造之旅了吗？
             </h2>
             <p className="text-slate-300 mb-8 text-lg leading-relaxed">
-              泊冉软件作为用友铂金级合作伙伴，提供专业的半导体CIM解决方案咨询与实施服务。
+              泊冉软件作为用友合作伙伴，提供专业的半导体CIM解决方案咨询与实施服务。
               立即预约半导体行业专家，了解如何为您的工厂定制智能化升级方案。
             </p>
             

@@ -26,7 +26,7 @@ export default function CTASection() {
               立即开启<br />集团财务数智化合并之旅
             </h2>
             <p className="text-xl text-blue-100/80 mb-12 leading-relaxed">
-              加入 500+ 世界级及中国大型集团，体验一键合并带来的财务报告革命。
+              加入 500+ 大型及中国大型集团，体验一键合并带来的财务报告革命。
             </p>
             
             <div className="flex flex-wrap justify-center gap-6">

@@ -63,7 +63,7 @@ export const HeroV2 = () => {
                     <div className="flex items-center gap-2">
                       <span className="text-[11px] font-black tracking-[0.2em] text-cyan-400">泊冉软件</span>
                       <span className="w-px h-3 bg-white/20"></span>
-                      <span className="text-[10px] sm:text-xs font-medium text-slate-400">用友铂金级合作伙伴</span>
+                      <span className="text-[10px] sm:text-xs font-medium text-slate-400">用友合作伙伴</span>
                     </div>
                     <div className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-40"></span>

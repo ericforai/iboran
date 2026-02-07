@@ -27,7 +27,7 @@ const metrics = [
   },
   {
     label: "合规风险识别",
-    value: "100%",
+    value: "近100%",
     desc: "多准则、多币种实时监控",
     icon: ShieldCheck,
     color: "text-blue-900"

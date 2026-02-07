@@ -10,7 +10,7 @@ const scenarios = [
     icon: ClipboardCheck,
     problem: '质量体系与业务系统割裂，GMP 控制点难落实，手工批记录复核慢、易出错。',
     solution: '在 YonSuite 框架下实现供应商审计、首营审批、生产全过程 GMP 控制，应用电子批记录提升合规性。',
-    outcome: '质量合规 100% 达标，批记录审核时间缩短 60% 以上。'
+    outcome: '质量合规 近100% 达标，批记录审核时间缩短 60% 以上。'
   },
   {
     title: 'UDI 全链路追溯',

@@ -86,7 +86,7 @@ export default function HowItWorks() {
             className="mt-20 p-8 bg-blue-600 rounded-2xl shadow-xl text-white flex flex-col md:flex-row items-center justify-between gap-8"
         >
             <div>
-                <h4 className="text-2xl font-bold mb-2">开箱即用的行业最佳实践</h4>
+                <h4 className="text-2xl font-bold mb-2">开箱即用的行业成熟实践</h4>
                 <p className="text-blue-100">预置 100+ 财务、供应链、人力等领域分析模型</p>
             </div>
             <div className="flex -space-x-4">

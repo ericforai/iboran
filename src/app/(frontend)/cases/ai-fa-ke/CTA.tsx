@@ -9,7 +9,7 @@ export default function CTA() {
           准备好开启您的 <span className="text-blue-600">数字化转型</span> 了吗？
         </h2>
         <p className="text-xl text-slate-600 font-light mb-12 max-w-2xl mx-auto">
-          与爱发科等行业领先者一起，携手泊冉实现运营变革。
+          与爱发科等行业成熟者一起，携手泊冉实现运营变革。
         </p>
         
         <Link 

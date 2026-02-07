@@ -18,7 +18,7 @@ export default function CustomerSuccess() {
     <section className="py-24 bg-[#F8FAFC]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">深受 10,000+ 领先企业的信赖</h2>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">深受 10,000+ 多家企业的信赖</h2>
           <p className="text-slate-600">助力各行业实现资产管理的数智化转型</p>
         </div>
 

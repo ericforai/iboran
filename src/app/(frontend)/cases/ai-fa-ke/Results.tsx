@@ -58,7 +58,7 @@ export default function Results() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">质量追溯达标率</h3>
                 <p className="text-slate-400 leading-relaxed px-4">
-                    实现 100% 生产品质追溯合规，顺利通过全球头部客户的严格体系审核。
+                    实现 近100% 生产品质追溯合规，顺利通过全球头部客户的严格体系审核。
                 </p>
             </div>
         </div>

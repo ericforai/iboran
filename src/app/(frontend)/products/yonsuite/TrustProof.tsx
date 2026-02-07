@@ -6,17 +6,17 @@ import { Award, Star, Quote } from 'lucide-react'
 const honors = [
   {
     title: 'Gartner',
-    desc: '全球 ERP SaaS 市场亚太区厂商排名第一',
+    desc: '全球 ERP SaaS 市场亚太区厂商排名靠前',
     icon: <Award className="w-8 h-8 text-[#E60012]" />
   },
   {
     title: 'IDC',
-    desc: '中国应用平台化云服务 (APaaS) 市场占有率第一',
+    desc: '中国应用平台化云服务 (APaaS) 市场份额位居前列',
     icon: <Star className="w-8 h-8 text-[#0052D9]" />
   },
   {
     title: 'CCID',
-    desc: '全球企业级应用软件 TOP10 中唯一上榜中国厂商',
+    desc: '全球企业级应用软件 TOP10 中少数上榜中国厂商',
     icon: <Award className="w-8 h-8 text-[#E60012]" />
   }
 ]

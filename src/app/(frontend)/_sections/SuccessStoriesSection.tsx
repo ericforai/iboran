@@ -33,7 +33,7 @@ export const SuccessStoriesSection: React.FC<Props> = ({ stories }) => {
                     </div>
                     <div>
                       <div className="font-bold text-[#1F2329] text-lg">{story.clientName}</div>
-                      <div className="text-sm text-[#0052D9] font-semibold">{story.industry || '行业领军企业'}</div>
+                      <div className="text-sm text-[#0052D9] font-semibold">{story.industry || '行业头部企业'}</div>
                     </div>
                   </div>
                   

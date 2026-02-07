@@ -9,7 +9,7 @@ const solutions = [
   {
     icon: Barcode,
     title: '精细化 WMS',
-    description: '构建基于条码与 RFID 技术的智能仓储系统，支持批号管理、效期预警与先进先出（FEFO）策略，确保药品流转安全。'
+    description: '构建基于条码与 RFID 技术的智能仓储系统，支持批号管理、效期预警与先进先出（FEFO）策略，以保障药品流转安全。'
   },
   {
     icon: ShoppingBag,

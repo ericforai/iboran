@@ -18,7 +18,7 @@ const steps = [
   },
   {
     title: '敏捷实施 (Execution)',
-    desc: '快速配置、连接集成、数据迁移，确保最快 1 个月核心上线。',
+    desc: '快速配置、连接集成、数据迁移，以保障最快 1 个月核心上线。',
     outputs: ['《配置说明书》', '《用户测试报告》'],
     icon: <Rocket className="w-6 h-6 text-[#0052D9]" />
   },
@@ -36,7 +36,7 @@ export default function DeliveryMethodology() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">YonSuite 敏捷交付方法论</h2>
-          <p className="text-slate-600 italic">4个阶段，标准化输出，确保项目高质量、快节奏落地</p>
+          <p className="text-slate-600 italic">4个阶段，标准化输出，以保障项目高质量、快节奏落地</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -11,7 +11,7 @@ export default function Overview() {
                 <h3 className="text-blue-600 font-bold tracking-wider uppercase mb-2">项目概览</h3>
                 <h2 className="text-4xl font-bold text-slate-900 mb-6">打造供应链数智化底座</h2>
                 <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                  西域供应链作为MRO行业的领军企业，在快速扩张中面临着多业务协同的巨大挑战。
+                  西域供应链作为MRO行业的头部企业，在快速扩张中面临着多业务协同的巨大挑战。
                   泊冉软件通过构建一体化架构，不仅解决了系统孤岛问题，更通过深度集成银企直联与供应链金融，
                   为其打造了坚实的数智化底座。
                 </p>

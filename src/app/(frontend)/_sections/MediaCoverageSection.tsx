@@ -25,7 +25,7 @@ export const MediaCoverageSection = () => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-[10px] font-mono font-bold uppercase tracking-widest mb-8">
               <Award className="w-3 h-3" />
-              权威媒体报道
+              主流媒体报道
             </div>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-black text-slate-950 tracking-tight leading-[1.1] mb-6 lg:mb-8">
@@ -34,13 +34,13 @@ export const MediaCoverageSection = () => {
             </h2>
             
             <p className="text-base sm:text-lg text-slate-500 font-medium leading-relaxed mb-8 lg:mb-10 max-w-sm">
-              从技术突破到行业标杆，泊冉软件的交付价值多次获得国家级权威媒体关注与报道。
+              从技术突破到行业标杆，泊冉软件的交付价值多次获得国家级主流媒体关注与报道。
             </p>
 
             <div className="flex flex-col gap-4 pt-10 border-t border-slate-100 w-full mt-auto">
                <div className="flex flex-wrap gap-4">
                  {[
-                   { source: '新华网', type: '权威媒体专访', icon: <Newspaper size={14} />, color: 'text-red-600', bg: 'bg-red-50' },
+                   { source: '新华网', type: '主流媒体专访', icon: <Newspaper size={14} />, color: 'text-red-600', bg: 'bg-red-50' },
                    { source: '主流报道', type: '数字化排头兵', icon: <Award size={14} />, color: 'text-blue-600', bg: 'bg-blue-50' }
                  ].map((item, i) => (
                    <div key={i} className="flex items-center gap-4 p-3 pr-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-all group/item cursor-default">
@@ -116,7 +116,7 @@ export const MediaCoverageSection = () => {
                   target="_blank"
                   className="inline-flex items-center gap-2 group/btn px-6 py-3 bg-slate-950 text-white text-sm font-bold rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-lg shadow-slate-950/10"
                 >
-                  阅读权威报道原文
+                  阅读媒体报道原文
                   <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                 </Link>
 

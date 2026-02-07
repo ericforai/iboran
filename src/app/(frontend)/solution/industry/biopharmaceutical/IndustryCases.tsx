@@ -19,7 +19,7 @@ const cases = [
     description: "一站式基因治疗CDMO平台，借助YonSuite实现研发到生产的全流程管理，顺利完成CSV验证，为Pre-IPO打下坚实合规基础。",
     tags: ["CDMO", "CSV验证", "IPO合规"],
     stats: [
-      { label: "合规通过率", value: "100%" },
+      { label: "合规通过率", value: "近100%" },
       { label: "项目效率", value: "+40%" },
     ],
     quote: "YonSuite不仅满足了我们在GMP/GSP方面的合规要求，更为我们研发到生产的一体化管理提供了强有力的支撑。"
@@ -90,7 +90,7 @@ export function IndustryCases() {
               <div className="mt-auto bg-slate-50 p-4 rounded-xl relative">
                 <Quote className="absolute top-2 left-2 w-4 h-4 text-blue-200" />
                 <p className="text-xs text-slate-600 italic pl-4 relative z-10">
-                  &ldquo;我们始终认为，实现信息化项目成功的最优路径就是用成功去复制成功。YonSuite帮助我们打破了20多个异构系统的孤岛，实现了研产一体化的高度融合。&rdquo;
+                  &ldquo;我们始终认为，实现信息化项目成功的更优路径就是用成功去复制成功。YonSuite帮助我们打破了20多个异构系统的孤岛，实现了研产一体化的高度融合。&rdquo;
                 </p>
               </div>
             </div>

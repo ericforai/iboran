@@ -44,7 +44,7 @@ export default function DeliveryScope() {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">界定清晰，减少扯皮</h2>
-          <p className="text-lg text-slate-600">我们始终坚持“透明交付”，明确每一分投入所对应的颗粒度，确保项目按期保质上线。</p>
+          <p className="text-lg text-slate-600">我们始终坚持“透明交付”，明确每一分投入所对应的颗粒度，以保障项目按期保质上线。</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

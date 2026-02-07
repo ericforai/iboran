@@ -27,7 +27,7 @@ const features = [
     label: "授权闭环",
     icon: FileCheck,
     title: "授权全链路闭环（L2C + CLM）",
-    desc: "录入合同意向时，系统基于已签合同库自动扫描，确保 100% 合规。",
+    desc: "录入合同意向时，系统基于已签合同库自动扫描，实现合规可核验。",
     color: "blue",
     points: [
       "冲突自动预警：品类或地域冲突即时拦截",

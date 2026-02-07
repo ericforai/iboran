@@ -21,9 +21,9 @@ const metrics: Metric[] = [
     description: '打通外部Foundry/封测厂协作节点，缩短订单周期与沟通成本。'
   },
   {
-    value: '100%',
+    value: '近100%',
     label: '合规追溯准确率',
-    description: '从晶圆刻号到成品Reel号的全程链路锁定，确保每一颗芯片可溯源。'
+    description: '从晶圆刻号到成品Reel号的全程链路锁定，以保障每一颗芯片可溯源。'
   }
 ]
 

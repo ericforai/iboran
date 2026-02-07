@@ -3,14 +3,14 @@ import { TrendingUp, Store, Link2, BarChart3 } from 'lucide-react'
 const results = [
   {
     icon: Store,
-    value: "100%",
+    value: "近100%",
     label: "门店管理数字化覆盖率",
     description: "实现门店全生命周期数字化管理，从立项到关闭全流程追踪，运营效率显著提升。",
     color: "red"
   },
   {
     icon: Link2,
-    value: "100%",
+    value: "近100%",
     label: "SAP系统集成完成度",
     description: "前端业务系统与SAP深度集成，数据实时互通，业财一体化管控目标达成。",
     color: "orange"

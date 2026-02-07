@@ -196,7 +196,7 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-xl text-slate-300 leading-relaxed mb-8">
-              运动用品销售与配套服务领军企业。通过一体化 ERP 解决方案，
+              运动用品销售与配套服务头部企业。通过一体化 ERP 解决方案，
               实现业财融合、供应链优化，构建精细化管理体系。
             </p>
 

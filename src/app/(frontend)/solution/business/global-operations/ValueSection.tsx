@@ -82,7 +82,7 @@ export default function ValueSection() {
         <div className="mt-16 grid md:grid-cols-3 gap-8">
           <div className="bg-white/5 rounded-xl p-6 border border-white/10">
             <h4 className="text-lg font-bold text-white mb-3">🏢 双数据中心</h4>
-            <p className="text-slate-300 text-sm">国内+新加坡双数据中心部署，确保数据合规与低延迟访问</p>
+            <p className="text-slate-300 text-sm">国内+新加坡双数据中心部署，以保障数据合规与低延迟访问</p>
           </div>
           <div className="bg-white/5 rounded-xl p-6 border border-white/10">
             <h4 className="text-lg font-bold text-white mb-3">🔒 安全合规</h4>

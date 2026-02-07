@@ -15,7 +15,7 @@ export default function CTASection() {
             准备好打造您的销售增长引擎了吗？
           </h2>
           <p className="text-slate-400 mb-8 max-w-xl mx-auto">
-            泊冉软件作为用友铂金级合作伙伴，提供专业的 L2C 解决方案实施与定制服务。立即预约演示，了解如何为您的企业量身定制方案。
+            泊冉软件作为用友合作伙伴，提供专业的 L2C 解决方案实施与定制服务。立即预约演示，了解如何为您的企业量身定制方案。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button

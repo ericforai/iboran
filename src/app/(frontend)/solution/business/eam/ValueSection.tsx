@@ -8,7 +8,7 @@ const metrics = [
     description: "通过闭环工单体系与移动化作业，显著提升现场响应速度与作业标准化水平。",
     stats: [
       { label: "运维效率", value: "+35%" },
-      { label: "全员移动化", value: "100%" },
+      { label: "全员移动化", value: "近100%" },
       { label: "计划完成率", value: "98%" }
     ]
   },
@@ -27,11 +27,11 @@ const metrics = [
     title: "安全合规保障",
     icon: ShieldCheck,
     color: "red",
-    description: "全方位的特种设备与基础设施监控，实现非计划停机风险可控，确保生产连续性。",
+    description: "全方位的特种设备与基础设施监控，实现非计划停机风险可控，以保障生产连续性。",
     stats: [
       { label: "故障频次", value: "-45%" },
       { label: "由于故障停机", value: "-60%" },
-      { label: "安全达标率", value: "100%" }
+      { label: "安全达标率", value: "近100%" }
     ]
   }
 ]

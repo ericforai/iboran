@@ -31,7 +31,7 @@ export default function Hero() {
           </h2>
           
           <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-            泊冉软件为您提供原厂级专属运维保障，确保现有系统稳定运行。同时提供平滑升级用友 BIP 的专业方案，助力企业无感迁移，激发数智新动能。
+            泊冉软件为您提供原厂级专属运维保障，以保障现有系统稳定运行。同时提供平滑升级用友 BIP 的专业方案，助力企业无感迁移，激发数智新动能。
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

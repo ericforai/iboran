@@ -27,7 +27,7 @@ export default function CustomerCases() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-[#1F2329] mb-4">
-            1000+ 行业领军企业的共同选择
+            1000+ 行业头部企业的共同选择
           </h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full" />
         </div>

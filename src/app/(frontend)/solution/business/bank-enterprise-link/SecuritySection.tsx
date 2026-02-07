@@ -3,7 +3,7 @@ import { ShieldCheck, Lock, FileKey, Server } from 'lucide-react'
 const securityFeatures = [
   {
     icon: ShieldCheck,
-    title: '权威资质认证',
+    title: '主流资质认证',
     items: [
       '国家信息安全等级保护三级认证',
       'PCI DSS 全球支付卡行业数据安全标准',
@@ -58,7 +58,7 @@ export default function SecuritySection() {
               <span className="text-blue-400">保驾护航</span>
             </h2>
             <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-              用友银企联深耕金融科技领域，构建了从物理层到应用层的全方位防御体系，确保您的资金与数据万无一失。
+              用友银企联深耕金融科技领域，构建了从物理层到应用层的全方位防御体系，以保障您的资金与数据更稳妥可控。
             </p>
             <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
               <div className="text-4xl font-bold text-white mb-2">0</div>

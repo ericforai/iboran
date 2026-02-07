@@ -15,7 +15,7 @@ export default function CTASection() {
             准备好升级您的财务管理了吗？
           </h2>
           <p className="text-slate-400 mb-8 max-w-xl mx-auto">
-            泊冉软件作为用友铂金级合作伙伴，提供专业的营收云实施与定制服务。立即预约演示，了解如何为您的企业定制解决方案。
+            泊冉软件作为用友合作伙伴，提供专业的营收云实施与定制服务。立即预约演示，了解如何为您的企业定制解决方案。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button

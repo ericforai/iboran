@@ -16,7 +16,7 @@ const challenges = [
     title: '品质合规追溯难',
     description: 'IATF16949体系落地难，产品批次、序列号追溯不完整，难以快速应对主机厂召回要求。',
     icon: ShieldCheck,
-    dataPoint: '100%',
+    dataPoint: '近100%',
     dataLabel: '正反向追溯率要求',
     color: 'red'
   },

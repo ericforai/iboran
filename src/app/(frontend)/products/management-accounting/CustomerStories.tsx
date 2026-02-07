@@ -14,7 +14,7 @@ const cases = [
     metrics: { value: '1 DAY', label: '结账周期' }
   },
   {
-    logo: '离散制造业某领军企业',
+    logo: '离散制造业某头部企业',
     title: '精准洞察每一道工序的获利能力',
     challenge: '产品种类繁多，材料价波动剧烈，传统核算无法精准归集。',
     challengeDesc: '传统 ERP 仅能实现简单的成品核算，无法支撑精细化的成本管控与 PDCA 循环。',
@@ -34,7 +34,7 @@ export default function CustomerStories() {
              先行者的选择：赋能管理精细化转型
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto">
-             从钢铁巨人到制造精兵，泊冉助力各行业领军者构建可信的数据决策体系。
+             从钢铁巨人到制造精兵，泊冉助力各行业代表企业构建可信的数据决策体系。
           </p>
         </div>
 

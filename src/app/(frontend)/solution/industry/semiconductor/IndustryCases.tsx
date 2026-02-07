@@ -22,7 +22,7 @@ const cases = [
   {
     company: '华虹半导体(临港厂)',
     type: '12寸前道先导线',
-    scale: '汽车电子芯片制造领军企业',
+    scale: '汽车电子芯片制造头部企业',
     challenge: '作为大陆首家通过VDA 6.3过程审核的A级汽车芯片供应商，对系统要求极高',
     solution: '部署MES、EAP、SPC、Report、RMS解决方案，建立符合汽车行业标准的制造体系',
     result: 'Auto1全线顺利上线并运行，满足汽车电子严苛品质要求',

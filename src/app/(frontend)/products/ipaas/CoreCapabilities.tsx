@@ -14,7 +14,7 @@ export default function CoreCapabilities() {
     },
     {
       title: "主数据智能清洗",
-      desc: "内置多维度质检规则，支持实时数据质检与清洗。提供数据质量概览报告，确保主数据在分发前的一致性与准确性。",
+      desc: "内置多维度质检规则，支持实时数据质检与清洗。提供数据质量概览报告，以保障主数据在分发前的一致性与准确性。",
       icon: RefreshCw,
       color: "text-emerald-600",
       bg: "bg-emerald-50"

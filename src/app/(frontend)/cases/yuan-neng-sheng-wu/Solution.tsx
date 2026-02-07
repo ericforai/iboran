@@ -4,7 +4,7 @@ const solutions = [
   {
     icon: Database,
     title: "一站式业财一体化平台",
-    description: "构建统一的数据中台，集成 ERP、MES、SRM 及财务模块，实现业务单据自动转化为财务凭证，确保账实相符。",
+    description: "构建统一的数据中台，集成 ERP、MES、SRM 及财务模块，实现业务单据自动转化为财务凭证，以保障账实相符。",
     features: ["统一数据中台", "业务财务一体化", "单据自动转化"]
   },
   {

@@ -7,7 +7,7 @@ export default function TrustProof() {
             行业领袖的共同选择
           </h2>
           <p className="text-slate-600">
-            30+ 年企业服务经验，承载全球众多顶尖企业的数智化创新。
+            30+ 年企业服务经验，承载全球众多头部企业的数智化创新。
           </p>
         </div>
 

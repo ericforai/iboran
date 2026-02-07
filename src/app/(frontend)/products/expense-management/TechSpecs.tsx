@@ -40,7 +40,7 @@ export const TechSpecs = () => {
                 <div>
                   <h4 className="text-lg font-bold mb-2">军工级安全合规</h4>
                   <p className="text-gray-600 text-sm">
-                    支持国密加密算法，符合电子会计档案管理规范。提供颗粒化权限管理，确保财务数据全程可审计、防篡改。
+                    支持国密加密算法，符合电子会计档案管理规范。提供颗粒化权限管理，以保障财务数据全程可审计、防篡改。
                   </p>
                 </div>
               </div>

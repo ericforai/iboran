@@ -14,14 +14,14 @@ const steps = [
   {
     phase: '02 方案设计',
     title: '蓝图规划与设计',
-    description: '结合 U8 cloud 最佳实践，设计多组织协同方案、业财一体化流程及信创迁移策略。',
+    description: '结合 U8 cloud 成熟实践，设计多组织协同方案、业财一体化流程及信创迁移策略。',
     icon: <PencilRuler className="w-6 h-6" />,
     deliverables: ['《数智化蓝图方案》', '《技术实施建议书》']
   },
   {
     phase: '03 敏捷交付',
     title: '系统配置与上线',
-    description: '标准化快速部署，进行参数配置、数据迁移、员工培训，确保业务平滑切换。',
+    description: '标准化快速部署，进行参数配置、数据迁移、员工培训，以保障业务平滑切换。',
     icon: <Rocket className="w-6 h-6" />,
     deliverables: ['《系统配置手册》', '《正式运行确认书》']
   },
@@ -50,7 +50,7 @@ export default function DeliveryMethodology() {
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <CheckSquare className="w-5 h-5 text-blue-600 mt-1" />
-                <span className="text-slate-700 font-medium">标准化：行业领先 practice 快速平移</span>
+                <span className="text-slate-700 font-medium">标准化：行业成熟实践 快速平移</span>
               </div>
               <div className="flex items-start gap-3">
                 <CheckSquare className="w-5 h-5 text-blue-600 mt-1" />

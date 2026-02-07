@@ -20,7 +20,7 @@ const metrics = [
     stats: [
       { label: "绩效核算周期", value: "10天→3天" },
       { label: "数据统计提效", value: "3天→1时" },
-      { label: "关键数据准确率", value: "100%" }
+      { label: "关键数据准确率", value: "近100%" }
     ]
   },
   {
@@ -30,7 +30,7 @@ const metrics = [
     description: "以员工为中心，融入数智化服务体验，提升全员敬业度与组织凝聚力。",
     stats: [
       { label: "员工满意度", value: "+30%" },
-      { label: "自助服务覆盖", value: "100%" },
+      { label: "自助服务覆盖", value: "近100%" },
       { label: "人才发现精准度", value: "95%" }
     ]
   }

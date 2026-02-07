@@ -26,7 +26,7 @@ const points = [
     icon: AlertTriangle,
     title: '数据安全风险',
     description: '纸质档案面临丢失、损毁、受潮等物理损坏风险，且缺乏全生命周期的权限管控与操作留痕。',
-    stat: '数据 100% 备份保障'
+    stat: '数据 近100% 备份保障'
   }
 ]
 

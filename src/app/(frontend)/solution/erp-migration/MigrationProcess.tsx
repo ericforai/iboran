@@ -20,7 +20,7 @@ export default function MigrationProcess() {
     {
       num: "04",
       title: "验证上线",
-      desc: "进行多轮数据校验与业务模拟，确保新旧系统平滑切换，无缝上线。"
+      desc: "进行多轮数据校验与业务模拟，以保障新旧系统平滑切换，无缝上线。"
     }
   ]
 
@@ -30,7 +30,7 @@ export default function MigrationProcess() {
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">科学严谨的升迁路径</h2>
           <p className="text-lg text-slate-600">
-            标准化实施方法论，确保升级过程可控、可视、可交付
+            标准化实施方法论，以保障升级过程可控、可视、可交付
           </p>
         </div>
 

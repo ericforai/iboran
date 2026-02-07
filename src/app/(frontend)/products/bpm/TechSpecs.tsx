@@ -71,7 +71,7 @@ export default function TechSpecs() {
               </div>
               <h4 className="text-2xl font-bold text-slate-900 mb-4">全栈国产化环境兼容</h4>
               <p className="text-slate-600 leading-relaxed mb-6">
-                响应国家自主可控策略，BPM 平台已完成从芯片（鲲鹏、飞腾）、操作系统（麒麟、统信）到数据库（达梦、人大金仓）的全栈国产化适配测试，确保核心业务链条的绝对安全。
+                响应国家自主可控策略，BPM 平台已完成从芯片（鲲鹏、飞腾）、操作系统（麒麟、统信）到数据库（达梦、人大金仓）的全栈国产化适配测试，以保障核心业务链条的高安全性。
               </p>
               <div className="flex flex-wrap gap-4">
                 {['华为鲲鹏', '麒麟软件', '达梦数据库', '金蝶中间件'].map((tag, tIdx) => (

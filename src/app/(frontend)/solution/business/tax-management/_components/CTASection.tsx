@@ -27,7 +27,7 @@ export default function CTASection() {
             开启智慧税务新篇章
           </h2>
           <p className="text-white/90 text-xl mb-10 max-w-2xl mx-auto">
-            立即预约专家演示，体验金税四期背景下的企业税务合规最佳实践。
+            立即预约专家演示，体验金税四期背景下的企业税务合规成熟实践。
           </p>
           
           <button

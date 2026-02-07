@@ -49,7 +49,7 @@ export default function Overview() {
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">中药现代化升级</h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                芝神堂药业提供中成药、保健品及健康食品，专注于灵芝类产品的研发、生产与销售。通过数智化平台，确保企业在严苛监管下实现效率与安全的双重跨越。
+                芝神堂药业提供中成药、保健品及健康食品，专注于灵芝类产品的研发、生产与销售。通过数智化平台，以保障企业在严苛监管下实现效率与安全的双重跨越。
               </p>
             </div>
 

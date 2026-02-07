@@ -36,7 +36,7 @@ export default function TrustProof() {
     <section className="py-20 lg:py-28 bg-[#F8FAFC]">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">领先企业的数智化选择</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">多家企业的数智化选择</h2>
           <p className="text-lg text-slate-600">深耕成长型集团市场，以过硬的技术与成熟的行业经验，助力企业稳健发展。</p>
         </div>
 

@@ -15,7 +15,7 @@ const valueMetrics = [
     description: '项目型生产全程管控保障交付',
   },
   {
-    value: '100%',
+    value: '近100%',
     label: '成本透明度',
     description: '项目维度成本归集精准核算',
   },

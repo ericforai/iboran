@@ -37,7 +37,7 @@ export default function CTASection() {
               </h2>
               
               <p className="text-blue-100 text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
-                泊冉软件作为用友铂金级合作伙伴，提供深度的 AIP 智能化应用咨询与实施服务。加入我们，与数千家企业共同见证 AI 如何重塑业务流程。
+                泊冉软件作为用友合作伙伴，提供深度的 AIP 智能化应用咨询与实施服务。加入我们，与数千家企业共同见证 AI 如何重塑业务流程。
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

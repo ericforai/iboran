@@ -9,7 +9,7 @@ const features = [
   {
     icon: Database,
     title: '数据统一驱动',
-    description: '统一元数据、统一流程和表单，确保业务数据与规范统一治理，过程规范化，结果数据化。'
+    description: '统一元数据、统一流程和表单，以保障业务数据与规范统一治理，过程规范化，结果数据化。'
   },
   {
     icon: Link,

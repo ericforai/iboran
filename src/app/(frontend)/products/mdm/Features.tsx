@@ -7,7 +7,7 @@ const features = [
   {
     icon: Database,
     title: '全生命周期闭环',
-    description: '建立从定义、管理到使用的完整闭环。涵盖申请、校验、审批、发布、变更到归档，确保数据来源可控、过程可溯。'
+    description: '建立从定义、管理到使用的完整闭环。涵盖申请、校验、审批、发布、变更到归档，以保障数据来源可控、过程可溯。'
   },
   {
     icon: GitMerge,

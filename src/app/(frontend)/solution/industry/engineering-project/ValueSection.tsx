@@ -11,7 +11,7 @@ const metrics = [
   },
   {
     icon: ShieldCheck,
-    value: '100%',
+    value: '近100%',
     label: '过程追溯能力',
     description: '甲方、监理、施工方信息透明共享，权责利清晰明确。',
     color: 'text-green-600',

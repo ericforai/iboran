@@ -35,9 +35,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     theme: 'indigo',
     name: "泊冉智能顾问",
     subTitle: "7x24小时在线",
-    systemInstruction: `你是一个专业的企业数字化转型顾问，来自泊冉软件（用友全球首批铂金级合作伙伴）。
+    systemInstruction: `你是一个专业的企业数字化转型顾问，来自泊冉软件。
 你的核心知识如下：
-1. 泊冉身份：用友铂金级合作伙伴，拥有14年数字化转型深耕经验，总部位于上海。
+1. 泊冉身份：拥有14年数字化转型深耕经验，总部位于上海。
 2. 核心优势：拥有 YonBIP 敏捷交付方法论，擅长处理复杂的业财一体化及集团级数字化管控。
 3. 擅长行业：半导体、新零售、装备制造、生物医药、消费品和专业服务。
 4. 核心产品：用友 YonBIP (大型企业)、YonSuite (成长型企业)、U8C/NCCloud 升级方案。
@@ -51,7 +51,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         title: "了解泊冉", 
         desc: "关于我们的实力与资质", 
         query: "泊冉软件有哪些核心优势？",
-        answer: "泊冉软件是用友全球首批铂金级合作伙伴，拥有14年数字化转型深耕经验。我们专注于为制造、零售、医药等行业提供从业务咨询到系统交付的全生命周期服务。总部位于上海，已助力数百家企业实现数智化升级。"
+        answer: "泊冉软件拥有14年数字化转型深耕经验。我们专注于为制造、零售、医药等行业提供从业务咨询到系统交付的全生命周期服务。总部位于上海，已助力数百家企业实现数智化升级。"
       },
       { 
         title: "数字化转型建议", 
@@ -108,9 +108,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.iboran.com'),
-  title: '泊冉软件 - 专业的用友软件实施服务商 | Yonyou Platinum Partner',
-  description: '泊冉软件是用友全球首批铂金级合作伙伴，深耕智能制造、新零售及生物医药行业，提供从业务咨询到系统交付的全生命周期数智化转型服务。',
-  keywords: '泊冉软件, 用友实施商, YonBIP, YonSuite, 用友铂金级合作伙伴, 数智化转型, ERP实施, 业财一体化',
+  title: '泊冉软件 - 专业的用友软件实施服务商 | Yonyou Partner',
+  description: '泊冉软件是用友合作伙伴，深耕智能制造、新零售及生物医药行业，提供从业务咨询到系统交付的全生命周期数智化转型服务。',
+  keywords: '泊冉软件, 用友实施商, YonBIP, YonSuite, 用友合作伙伴, 数智化转型, ERP实施, 业财一体化',
 }
 
 export const viewport = {

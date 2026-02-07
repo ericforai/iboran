@@ -1178,6 +1178,8 @@ export interface Conversation {
   needsHuman?: boolean | null;
   lastMessageAt?: string | null;
   assignedAgent?: (string | null) | User;
+  handoffReminderSent?: boolean | null;
+  handoffReminderSentAt?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -2112,6 +2114,8 @@ export interface ConversationsSelect<T extends boolean = true> {
   needsHuman?: T;
   lastMessageAt?: T;
   assignedAgent?: T;
+  handoffReminderSent?: T;
+  handoffReminderSentAt?: T;
   updatedAt?: T;
   createdAt?: T;
 }

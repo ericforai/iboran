@@ -25,7 +25,7 @@ const caseStudies = [
     solution: "依托用友领先的人力资源数智化解决方案，重构人才供应链与共享服务体系。",
     results: [
       { label: "业务处理效能", value: "+68%", desc: "单一业务处理时长大幅缩短" },
-      { label: "数据准确率", value: "100%", desc: "关键数据实现实时同步与纠偏" },
+      { label: "数据准确率", value: "近100%", desc: "关键数据实现实时同步与纠偏" },
       { label: "离职预测能力", value: "具备", desc: "利用大数据实现人才风险提前预警" },
       { label: "员工满意度", value: "优秀", desc: "数智化员工服务提升全员体验" }
     ],
@@ -38,7 +38,7 @@ export default function CustomerSuccess() {
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-3xl font-bold text-[#1F2329] mb-4">领先企业的一致选择</h2>
+          <h2 className="text-3xl font-bold text-[#1F2329] mb-4">多家企业的一致选择</h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6"></div>
           <p className="text-slate-600 max-w-2xl mx-auto">
             助力大型企业实现从人事管理到人才经营的质变，已有超过 10,000+ 家知名企业选择了用友。

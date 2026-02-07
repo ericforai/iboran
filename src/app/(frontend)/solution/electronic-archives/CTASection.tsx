@@ -45,7 +45,7 @@ export default function CTASection() {
             </div>
             
             <p className="mt-10 text-slate-500 text-sm">
-              已有 500+ 领先企业通过泊冉软件实现档案数智化转型
+              已有 500+ 多家企业通过泊冉软件实现档案数智化转型
             </p>
           </div>
         </motion.div>

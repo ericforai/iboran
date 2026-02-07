@@ -3,7 +3,7 @@ import { Shield, TrendingUp, Zap, Search } from 'lucide-react'
 const values = [
   {
     icon: Shield,
-    title: '合规零风险',
+    title: '合规低风险',
     description: '全面满足新GAP、GMP、GSP监管要求，内置合规控制点与预警机制。',
   },
   {

@@ -4,7 +4,7 @@ const solutions = [
   {
     icon: Layers,
     title: '一站式业财一体化平台',
-    description: '构建统一的数据中台，集成 ERP、MES、SRM 及财务模块，实现业务单据自动转化为财务凭证，确保账实相符，打破信息孤岛。'
+    description: '构建统一的数据中台，集成 ERP、MES、SRM 及财务模块，实现业务单据自动转化为财务凭证，以保障账实相符，打破信息孤岛。'
   },
   {
     icon: Activity,
@@ -14,7 +14,7 @@ const solutions = [
   {
     icon: ShieldCheck,
     title: '智能化车间管理',
-    description: '通过条码化与物联网手段，实时采集生产实绩与工艺数据，实现精细化成本核算与质量追溯闭环，确保生产过程可控。'
+    description: '通过条码化与物联网手段，实时采集生产实绩与工艺数据，实现精细化成本核算与质量追溯闭环，以保障生产过程可控。'
   }
 ]
 

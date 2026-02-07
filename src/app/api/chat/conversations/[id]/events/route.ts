@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server'
 import config from '@payload-config'
 import { checkRateLimit, getRequestIP } from '@/utilities/rateLimit'
 import { verifyVisitorId } from '@/utilities/visitorId'
+import { maybeSendHandoffPhoneReminder } from '@/utilities/handoffReminder'
 
 type MessageDoc = {
   id: string
@@ -97,6 +98,8 @@ export async function GET(req: Request, context: { params: Promise<{ id: string 
         isPolling = true
 
         try {
+          await maybeSendHandoffPhoneReminder(payload, id)
+
           const result = await payload.find({
             collection: 'messages',
             where: {

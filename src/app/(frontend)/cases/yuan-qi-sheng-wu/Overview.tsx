@@ -11,7 +11,7 @@ export default function Overview() {
             <h2 className="text-3xl font-bold text-slate-900 mb-6">项目背景</h2>
             <div className="prose prose-lg text-slate-600 leading-relaxed">
               <p className="mb-6">
-                原启生物 (OriCell Therapeutics) 是一家处于临床阶段的生物科技公司，致力于开发肿瘤免疫治疗领域的创新药物。公司拥有自主知识产权的技术平台，在 CAR-T 等细胞治疗领域处于行业领先地位。
+                原启生物 (OriCell Therapeutics) 是一家处于临床阶段的生物科技公司，致力于开发肿瘤免疫治疗领域的创新药物。公司拥有自主知识产权的技术平台，在 CAR-T 等细胞治疗领域处于行业成熟地位。
               </p>
               <p>
                 随着研发管线的丰富和临床试验的推进，海量的实验数据、复杂的合规要求以及跨部门的协作效率成为制约研发速度的瓶颈。如何构建一个符合 GXP 规范、数据真实完整、流程高效协同的研发数字化平台，是原启生物加速创新药上市的关键。

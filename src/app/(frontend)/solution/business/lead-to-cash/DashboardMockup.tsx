@@ -151,7 +151,7 @@ function CRMDashboard() {
         <h4 className="text-sm font-bold text-slate-700 mb-4">销售漏斗</h4>
         <div className="space-y-3">
           {[
-            { l: '线索', v: '100%', c: 'bg-blue-100' },
+            { l: '线索', v: '近100%', c: 'bg-blue-100' },
             { l: '商机', v: '75%', c: 'bg-blue-200' },
             { l: '报价', v: '50%', c: 'bg-blue-400' },
             { l: '合同', v: '25%', c: 'bg-blue-600' }

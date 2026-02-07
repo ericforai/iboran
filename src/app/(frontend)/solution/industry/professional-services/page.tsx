@@ -32,7 +32,7 @@ export default function ProfessionalServicesPage() {
       title: "项目全生命周期管理",
       problem: "项目进度、收入、成本分散在不同系统，PMO无法一览项目全貌，盈亏状况模糊。",
       solution: "项目云提供统一工作台，从立项→进度→工时→收款→采购全维度可视化，实时掌握项目损益。",
-      outcome: "项目毛利可视化 100%，回款周期缩短 20 天。",
+      outcome: "项目毛利可视化 近100%，回款周期缩短 20 天。",
       image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
     },
     {
@@ -59,7 +59,7 @@ export default function ProfessionalServicesPage() {
   const metrics = [
     { value: "60%", label: "财务处理效率提升" },
     { value: "40%", label: "人力事务成本节省" },
-    { value: "100%", label: "项目毛利可视化" },
+    { value: "近100%", label: "项目毛利可视化" },
     { value: "20天", label: "回款周期缩短" }
   ]
 

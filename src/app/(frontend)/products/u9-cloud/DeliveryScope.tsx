@@ -20,7 +20,7 @@ export const DeliveryScope = () => {
       <div className="container px-4 mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">交付范围清单</h2>
-          <p className="text-gray-600">明确边界，确保交付质量与预期一致。</p>
+          <p className="text-gray-600">明确边界，以保障交付质量与预期一致。</p>
         </div>
 
         <div className="max-w-3xl mx-auto bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">

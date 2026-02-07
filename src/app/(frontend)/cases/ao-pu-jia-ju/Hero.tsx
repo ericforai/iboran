@@ -191,7 +191,7 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-xl text-slate-300 leading-relaxed mb-8">
-              集成吊顶、浴霸、照明及智能家居系统领军企业。通过 ERP 与 WMS 深度集成，
+              集成吊顶、浴霸、照明及智能家居系统头部企业。通过 ERP 与 WMS 深度集成，
               构建多品类、小批量、柔性化交付的数字化运营底座。
             </p>
 

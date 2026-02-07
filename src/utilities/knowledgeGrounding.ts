@@ -150,7 +150,7 @@ const getKnowledgeCacheStore = () => {
 
 const loadKnowledgeSnippets = async (opts: { includeDocs: boolean; includeSite: boolean }): Promise<KnowledgeSnippet[]> => {
   const now = Date.now()
-  const cacheKey = `docs:${opts.includeDocs ? '1' : '0'}|site:${opts.includeSite ? '1' : '0'}`
+  const cacheKey = `v2|docs:${opts.includeDocs ? '1' : '0'}|site:${opts.includeSite ? '1' : '0'}`
   const cacheStore = getKnowledgeCacheStore()
   const cached = cacheStore.get(cacheKey)
   if (cached && cached.expiresAt > now) {
@@ -164,7 +164,8 @@ const loadKnowledgeSnippets = async (opts: { includeDocs: boolean; includeSite: 
   const snippets = [...docSnippets, ...siteSnippets]
 
   cacheStore.set(cacheKey, {
-    expiresAt: now + CACHE_TTL_MS,
+    // Avoid long-lived empty cache when upstream data source is temporarily unavailable.
+    expiresAt: now + (snippets.length > 0 ? CACHE_TTL_MS : 10_000),
     cacheKey,
     snippets,
   })
@@ -173,8 +174,21 @@ const loadKnowledgeSnippets = async (opts: { includeDocs: boolean; includeSite: 
 }
 
 const tokenize = (input: string) => {
-  const matches = input.toLowerCase().match(/[\p{L}\p{N}]{2,}/gu) || []
-  return Array.from(new Set(matches))
+  const normalized = input.toLowerCase()
+  const tokens = new Set<string>()
+
+  const latinTokens = normalized.match(/[a-z0-9]{2,}/g) || []
+  for (const token of latinTokens) tokens.add(token)
+
+  const hanSequences = normalized.match(/[\p{Script=Han}]{2,}/gu) || []
+  for (const seq of hanSequences) {
+    tokens.add(seq)
+    for (let i = 0; i < seq.length - 1; i += 1) {
+      tokens.add(seq.slice(i, i + 2))
+    }
+  }
+
+  return Array.from(tokens)
 }
 
 const scoreSnippet = (snippet: KnowledgeSnippet, query: string, tokens: string[]) => {
@@ -184,7 +198,6 @@ const scoreSnippet = (snippet: KnowledgeSnippet, query: string, tokens: string[]
   for (const token of tokens) {
     if (haystack.includes(token)) score += 2
   }
-  if (snippet.source.startsWith('site:')) score += 1
   return score
 }
 
@@ -193,6 +206,9 @@ export const retrieveKnowledge = async (
   limit = 6,
   options?: { includeDocs?: boolean; includeSite?: boolean },
 ): Promise<KnowledgeSnippet[]> => {
+  const MIN_MATCH_SCORE = 2
+  const MIN_MATCHED_TOKENS = 2
+  const MIN_MATCH_RATIO = 0.15
   const cleanedQuery = query.trim().toLowerCase()
   if (!cleanedQuery) return []
 
@@ -206,8 +222,19 @@ export const retrieveKnowledge = async (
     .map((snippet) => ({
       snippet,
       score: scoreSnippet(snippet, cleanedQuery, tokens),
+      matchedTokens: tokens.filter((token) => {
+        const haystack = `${snippet.title} ${snippet.content}`.toLowerCase()
+        return haystack.includes(token)
+      }).length,
     }))
-    .filter((item) => item.score > 0)
+    .filter((item) => {
+      const ratio = item.matchedTokens / Math.max(1, tokens.length)
+      return (
+        item.score >= MIN_MATCH_SCORE &&
+        (item.matchedTokens >= MIN_MATCHED_TOKENS || item.score >= 12) &&
+        ratio >= MIN_MATCH_RATIO
+      )
+    })
     .sort((left, right) => right.score - left.score)
     .slice(0, limit)
     .map((item) => item.snippet)

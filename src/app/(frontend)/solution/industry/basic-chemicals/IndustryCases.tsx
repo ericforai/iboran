@@ -18,10 +18,10 @@ const featuredCases = [
   {
     company: '万华化学',
     industry: '化工新材料',
-    scale: '全球聚氨酯龙头',
+    scale: '全球聚氨酯头部',
     challenge: '多业务板块全球化协作复杂，产销协同效率需进一步提升。原有系统无法支撑全栈信创国产化替代',
     solution: '基于用友BIP超级版构建统一数智底座，实现研供产销服、人财物客项一体化管理。全面适配信创国产化环境',
-    result: '运营效率显著提升，支撑全球化敏捷运营。成功实现国产化平替，确保核心业务数据安全可控',
+    result: '运营效率显著提升，支撑全球化敏捷运营。成功实现国产化平替，以保障核心业务数据安全可控',
   },
 ]
 
@@ -43,7 +43,7 @@ export default function IndustryCases() {
             行业标杆客户案例
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto">
-            服务17+基础化工行业龙头企业，助力行业数智化转型
+            服务17+基础化工行业头部企业，助力行业数智化转型
           </p>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mt-4" />
         </div>

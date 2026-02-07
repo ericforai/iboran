@@ -6,13 +6,13 @@ const stats = [
   { label: '服务客户', value: '500+', desc: '跨行业大型企业实践' },
   { label: '流程实例', value: '1.2亿', desc: '平台安全稳定流转量' },
   { label: '平均提效', value: '35%', desc: '业务审批周期缩短' },
-  { label: '合规追溯', value: '100%', desc: '全过程留痕与审计' }
+  { label: '合规追溯', value: '近100%', desc: '全过程留痕与审计' }
 ]
 
 const cases = [
   {
     industry: '离散制造',
-    title: '某全球领先电子零部件厂商',
+    title: '某行业实践成熟电子零部件厂商',
     content: '通过 BPM 深度集成 SAP 系统，将原本分散在 3 个国家的 20 余道生产变更流程标准化，审批时间由 5 天缩短至 24 小时以内，极大提升了供应链响应能力。',
     result: '成本降低 15%，效率提升 80%'
   },
@@ -32,7 +32,7 @@ export default function TrustProof() {
           <div className="max-w-2xl">
             <h2 className="text-3xl font-bold text-slate-900 mb-4">他们正在使用泊冉 BPM 驱动增长</h2>
             <p className="text-slate-600">
-              从中国 500 强到细分行业领军者，BPM 平台已在制造、服务、高科技等多个领域完成深度交付。
+              从中国 500 强到细分行业代表企业，BPM 平台已在制造、服务、高科技等多个领域完成深度交付。
             </p>
           </div>
           <div className="flex items-center gap-2 text-[#E60012] font-bold">

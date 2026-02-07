@@ -108,7 +108,7 @@ export default function HowItWorks() {
               <span className="text-[#E60012]">数智平台筑基</span> 全级次共享运营
             </h3>
             <p className="text-slate-400 leading-relaxed mb-6">
-              基于用友BIP数智化底座，支持多中心运营、多元化作业模式。内置智能审核规则引擎与数智员工，实现端到端的业务流程全生命周期管理，确保全球化合规与本地化敏捷平衡。
+              基于用友BIP数智化底座，支持多中心运营、多元化作业模式。内置智能审核规则引擎与数智员工，实现端到端的业务流程全生命周期管理，以保障全球化合规与本地化敏捷平衡。
             </p>
             <div className="flex flex-wrap gap-4">
               <span className="px-4 py-2 bg-slate-700/50 rounded-lg text-sm font-medium border border-slate-600">业人财一体化</span>

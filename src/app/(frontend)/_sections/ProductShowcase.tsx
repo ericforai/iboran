@@ -90,7 +90,7 @@ export const ProductShowcase: React.FC = React.memo(() => {
           </motion.h2>
           
           <motion.p variants={fadeInUp} className="text-base sm:text-lg lg:text-xl text-slate-500 font-medium leading-relaxed max-w-full">
-            基于用友顶级技术底座，深度融合“业财合一”管理思想。通过工业级实施交付，构建企业全局数据中枢。
+            基于用友成熟技术底座，深度融合“业财合一”管理思想。通过工业级实施交付，构建企业全局数据中枢。
           </motion.p>
         </motion.div>
 

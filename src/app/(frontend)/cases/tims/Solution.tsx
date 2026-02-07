@@ -97,7 +97,7 @@ export default function Solution() {
               <h4 className="font-bold text-lg text-white mb-2">SAP深度集成</h4>
               <p className="text-slate-300 text-sm leading-relaxed">
                 所有解决方案均与SAP系统深度集成，实现数据互通、流程衔接、业务财务联动，
-                确保前端业务操作与后端财务核算的实时一致性。
+                以保障前端业务操作与后端财务核算的实时一致性。
               </p>
             </div>
           </div>

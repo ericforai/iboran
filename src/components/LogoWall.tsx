@@ -48,7 +48,7 @@ export const LogoWall = () => {
             行业认可与标杆客户
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            众多行业领军企业选择泊冉作为数字化转型合作伙伴
+            众多行业头部企业选择泊冉作为数字化转型合作伙伴
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8">

@@ -27,7 +27,7 @@ export default function CustomerSuccess() {
              <h2 className="text-4xl font-bold text-[#1F2329] mb-6">值得信赖的选择</h2>
              <div className="w-16 h-1 bg-[#E60012] mb-8" />
              <p className="text-slate-500 mb-10 leading-relaxed">
-               从世界 500 强到中大型企业，泊冉软件已帮助众多行业领军者建立了合规、高效、可持续的电子档案管理体系。
+               从世界 500 强到中大型企业，泊冉软件已帮助众多行业代表企业建立了合规、高效、可持续的电子档案管理体系。
              </p>
              
              {/* Simple Logo Placeholder Grid */}

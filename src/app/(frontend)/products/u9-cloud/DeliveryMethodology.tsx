@@ -39,7 +39,7 @@ export const DeliveryMethodology = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-brand-red">交付方法论</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            我们不只是提供软件，更提供一套可落地的制造执行标准，确保“上线即创造价值”。
+            我们不只是提供软件，更提供一套可落地的制造执行标准，以保障“上线即创造价值”。
           </p>
         </div>
 

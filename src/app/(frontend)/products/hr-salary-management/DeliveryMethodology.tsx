@@ -38,7 +38,7 @@ export const DeliveryMethodology = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold mb-4">标准化交付方法论</h2>
           <p className="text-gray-600">
-            我们不仅仅交付一个云平台，更是一套可落地的人力资源管理体系。通过四阶段标准化实施，确保核心模块 [2-4] 周快速上线。
+            我们不仅仅交付一个云平台，更是一套可落地的人力资源管理体系。通过四阶段标准化实施，以保障核心模块 [2-4] 周快速上线。
           </p>
         </div>
 

@@ -15,7 +15,7 @@ export default function CTASection() {
             开启您的企业「智造」升级之旅
           </h2>
           <p className="text-slate-400 mb-10 max-w-2xl mx-auto text-lg">
-            泊冉软件作为用友铂金级合作伙伴，深耕制造行业多年。我们不仅提供专业的 P2M 解决方案，更为您提供从管理咨询到技术实施的全方位支持。
+            泊冉软件作为用友合作伙伴，深耕制造行业多年。我们不仅提供专业的 P2M 解决方案，更为您提供从管理咨询到技术实施的全方位支持。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
@@ -33,7 +33,7 @@ export default function CTASection() {
             </a>
           </div>
           <div className="mt-12 text-slate-500 text-sm">
-            用友 BIP Platinum Partner | 数字化制造服务商
+            用友 BIP Partner | 数字化制造服务商
           </div>
         </div>
       </section>

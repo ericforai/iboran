@@ -42,7 +42,7 @@ export default function Solution() {
                 
                 <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">业财深度融合平台</h3>
                 <p className="text-slate-600 leading-relaxed mb-8">
-                    打通业务系统（快递、零担、仓储）与财务系统的全链路数据通道，消除人工干预，确保数据源头的一致性与实时性。
+                    打通业务系统（快递、零担、仓储）与财务系统的全链路数据通道，消除人工干预，以保障数据源头的一致性与实时性。
                 </p>
 
                 <div className="flex items-center text-blue-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 text-sm">

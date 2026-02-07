@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 const metrics = [
   { value: "20%", label: "采购成本降低", sub: "通过战略寻源与集采" },
   { value: "4天", label: "采购周期缩短", sub: "从 15 天优化至 11 天" },
-  { value: "100%", label: "采购合规率", sub: "全流程阳光透明可视" },
+  { value: "近100%", label: "采购合规率", sub: "全流程阳光透明可视" },
   { value: "98%", label: "供应商准时交货率", sub: "基于实时绩效协同" }
 ]
 
@@ -19,7 +19,7 @@ export default function CustomerSuccess() {
     <section className="py-24 bg-white border-t border-slate-100">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-[#1F2329] mb-4">500+ 行业领军企业的共同选择</h2>
+          <h2 className="text-3xl font-bold text-[#1F2329] mb-4">500+ 行业头部企业的共同选择</h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6"></div>
           <p className="text-slate-600 max-w-2xl mx-auto">
             来自制造、零售、医药、建筑等行业的头部企业，正在通过我们的 S2P 平台重塑数字化供应链竞争力。

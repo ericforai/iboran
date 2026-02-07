@@ -76,7 +76,7 @@ export default function Hero() {
                     <CheckCircle size={14} />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-slate-900">100% 合规执行</p>
+                    <p className="text-sm font-bold text-slate-900">合规执行可追溯</p>
                     <p className="text-xs text-slate-500">流程审计自动追溯</p>
                   </div>
                 </div>

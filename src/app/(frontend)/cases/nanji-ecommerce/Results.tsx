@@ -55,7 +55,7 @@ export default function Results() {
             </div>
             <div className="text-lg font-medium text-slate-300 mb-4">业务覆盖</div>
             <p className="text-slate-400 text-sm">
-              实现核心业务流程100%线上化闭环，消除了信息孤岛与断点
+              实现核心业务流程近100%线上化闭环，消除了信息孤岛与断点
             </p>
           </div>
         </div>

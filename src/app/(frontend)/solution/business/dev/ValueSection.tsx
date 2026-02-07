@@ -92,7 +92,7 @@ export default function ValueSection() {
               企业级安全管控
             </h3>
             <p className="text-slate-600 leading-relaxed">
-              低代码不等于低安全。DEV 平台提供细粒度权限控制、数据加密、操作审计等企业级安全能力，确保应用开发便捷与安全兼得。
+              低代码不等于低安全。DEV 平台提供细粒度权限控制、数据加密、操作审计等企业级安全能力，以保障应用开发便捷与安全兼得。
             </p>
           </div>
           <div className="flex-shrink-0">

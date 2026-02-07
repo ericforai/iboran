@@ -38,7 +38,7 @@ export default function BusinessServicesPage() {
     {
       title: "人才资源池管理",
       problem: "不知道谁有空，技能标签不清晰，项目选人靠“吼”，资源调配效率低。",
-      solution: "建立数字化人才库，通过技能标签、忙闲状态、项目经历精准通过，实现资源最优配置。",
+      solution: "建立数字化人才库，通过技能标签、忙闲状态、项目经历精准通过，实现资源更优配置。",
       outcome: "资源调度响应时间缩短 50%，人员利用率提升 15%。",
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
     }
@@ -68,7 +68,7 @@ export default function BusinessServicesPage() {
     { value: "30%", label: "项目利润率提升" },
     { value: "50%", label: "运营效率提升" },
     { value: "15天", label: "回款周期缩短" },
-    { value: "100%", label: "业务合规达标" }
+    { value: "近100%", label: "业务合规达标" }
   ]
   const geoContent = {
     tldr: '现代服务业（咨询、人力、科技服务）数智化方案，打通商机-项目-交付-回款与人力成本核算，实现项目利润可视化。',

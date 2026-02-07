@@ -16,7 +16,7 @@ const metrics = [
     title: "数据质量改善",
     icon: TrendingUp,
     color: "green",
-    description: "统一数据标准与治理规范，持续监控与改进数据质量，确保分析结果可信。",
+    description: "统一数据标准与治理规范，持续监控与改进数据质量，以保障分析结果可信。",
     stats: [
       { label: "数据一致性", value: "+85%" },
       { label: "重复数据减少", value: "-70%" },

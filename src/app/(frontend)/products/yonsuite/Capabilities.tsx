@@ -56,7 +56,7 @@ const capabilities = [
   },
   {
     name: '合规税务',
-    desc: '自动化纳税申报，实时税务风险监控，确保企业在全球化经营中的税务合规。',
+    desc: '自动化纳税申报，实时税务风险监控，以保障企业在全球化经营中的税务合规。',
     icon: <Scale className="w-6 h-6 shrink-0" />
   }
 ]

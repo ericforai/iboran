@@ -55,7 +55,7 @@ const features = [
     label: "业财融合",
     icon: Megaphone, // Changed icon conceptually, though using Megaphone as requested/existing
     title: "营销费用与资金管控",
-    desc: "实现营销费用的精准投放与管控，确保每一笔资金发挥最大价值。",
+    desc: "实现营销费用的精准投放与管控，以保障每一笔资金发挥最大价值。",
     color: "red",
     points: [
       "营销预算全流程闭环控制",

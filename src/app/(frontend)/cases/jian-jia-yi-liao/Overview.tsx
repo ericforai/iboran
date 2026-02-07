@@ -13,7 +13,7 @@ export default function Overview() {
           </div>
           <div className="lg:col-span-8">
             <h2 className="text-3xl font-bold mb-8">项目背景</h2>
-            <p className="text-lg text-slate-600 leading-relaxed">医药与医疗健康行业正处于高合规要求与数字化转型的交汇点。从研发创新、合规生产到精准流通，企业亟需构建一套符合 GXP 标准的一体化管理体系。泊冉软件通过数智化平台，确保企业在严苛监管下实现效率与安全的双重跨越。 项目背景：提供医疗设备、康复器械及相关医疗服务。</p>
+            <p className="text-lg text-slate-600 leading-relaxed">医药与医疗健康行业正处于高合规要求与数字化转型的交汇点。从研发创新、合规生产到精准流通，企业亟需构建一套符合 GXP 标准的一体化管理体系。泊冉软件通过数智化平台，以保障企业在严苛监管下实现效率与安全的双重跨越。 项目背景：提供医疗设备、康复器械及相关医疗服务。</p>
           </div>
         </div>
       </div>

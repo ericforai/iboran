@@ -5,7 +5,7 @@ import { Quote } from 'lucide-react'
 
 const testimonials = [
   {
-    quote: "使用 YonBIP 数智合同后，我们要管理的不仅是每年几万份的合同文件，更是背后数千亿的采购资金安全。系统帮助我们实现了 100% 的合同履约自动监控，大大降低了经营风险。",
+    quote: "使用 YonBIP 数智合同后，我们要管理的不仅是每年几万份的合同文件，更是背后数千亿的采购资金安全。系统帮助我们实现了 近100% 的合同履约自动监控，大大降低了经营风险。",
     author: "法务总监",
     company: "某大型能源集团",
     industry: "能源化工",
@@ -21,7 +21,7 @@ const testimonials = [
 const stats = [
     { label: "平均签约周期", value: "3天", desc: "从 15 天缩短至 3 天" },
     { label: "人工审核成本", value: "-60%", desc: "AI 辅助降低重复劳动" },
-    { label: "履约风控覆盖", value: "100%", desc: "杜绝超付、漏付风险" }
+    { label: "履约风控覆盖", value: "近100%", desc: "杜绝超付、漏付风险" }
 ]
 
 const logos = [
@@ -35,11 +35,11 @@ export default function CustomerSuccess() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-[#1F2329] mb-4">
-            行业领军企业的共同选择
+            行业头部企业的共同选择
           </h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6"></div>
           <p className="text-slate-500 max-w-2xl mx-auto">
-            从央国企到行业龙头，已有 2000+ 大型企业使用我们的 CLM 平台实现业财法一体化管理
+            从央国企到行业头部，已有 2000+ 大型企业使用我们的 CLM 平台实现业财法一体化管理
           </p>
         </div>
 

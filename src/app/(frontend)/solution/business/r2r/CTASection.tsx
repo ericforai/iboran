@@ -15,7 +15,7 @@ export default function CTASection() {
             下载 R2R 实施路线图白皮书
           </h2>
           <p className="text-slate-400 mb-10 max-w-2xl mx-auto text-lg">
-            从事项核算到全球报告，获取完整的 R2R 实施方法论与典型案例参考。泊冉作为用友铂金级合作伙伴，为您提供从管理咨询到技术实施的全方位支持。
+            从事项核算到全球报告，获取完整的 R2R 实施方法论与典型案例参考。泊冉作为用友合作伙伴，为您提供从管理咨询到技术实施的全方位支持。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
@@ -33,7 +33,7 @@ export default function CTASection() {
             </a>
           </div>
           <div className="mt-12 text-slate-500 text-sm">
-            用友 BIP Platinum Partner | 财务数智化服务商
+            用友 BIP Partner | 财务数智化服务商
           </div>
         </div>
       </section>

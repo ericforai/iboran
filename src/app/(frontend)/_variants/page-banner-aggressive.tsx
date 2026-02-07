@@ -200,7 +200,7 @@ const SocialProof = () => {
     return (
         <section className="py-20 bg-[#1F2329] text-white">
             <div className="container mx-auto px-4 text-center">
-                <h2 className="text-3xl font-bold mb-12">500+ 行业领军企业的共同选择</h2>
+                <h2 className="text-3xl font-bold mb-12">500+ 行业头部企业的共同选择</h2>
 
                 <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-16 opacity-70 mb-16 grayscale">
                     <div className="text-xl font-bold font-serif tracking-widest">BURGER KING</div>

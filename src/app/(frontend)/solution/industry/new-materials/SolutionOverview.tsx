@@ -69,7 +69,7 @@ export default function SolutionOverview() {
               </h3>
               <p className="text-slate-600 mb-6 leading-relaxed">
                 U9 cloud采用业财一体化设计，从销售订单到生产执行，从成本归集到财务核算，
-                全流程数据自动流转，确保业务数据与财务数据实时一致，满足IPO审计对数据准确性的严格要求。
+                全流程数据自动流转，以保障业务数据与财务数据实时一致，满足IPO审计对数据准确性的严格要求。
               </p>
               <ul className="space-y-3">
                 {[

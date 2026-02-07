@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server'
 import config from '@payload-config'
 import { checkRateLimit, getRequestIP } from '@/utilities/rateLimit'
 import { verifyVisitorId } from '@/utilities/visitorId'
+import { maybeSendHandoffPhoneReminder } from '@/utilities/handoffReminder'
 
 export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
   try {
@@ -42,6 +43,8 @@ export async function GET(req: Request, context: { params: Promise<{ id: string 
         return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
       }
     }
+
+    await maybeSendHandoffPhoneReminder(payload, id)
 
     const messages = await payload.find({
       collection: 'messages',

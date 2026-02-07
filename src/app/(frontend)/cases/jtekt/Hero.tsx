@@ -83,7 +83,7 @@ export default function Hero() {
             </h1>
             
             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-10 font-light">
-              作为全球领先的轴承与机床制造商，捷太格特携手泊冉软件打破数据孤岛，构建端到端的数字化供应链网络，重塑精益制造新标杆。
+              作为行业实践成熟的轴承与机床制造商，捷太格特携手泊冉软件打破数据孤岛，构建端到端的数字化供应链网络，重塑精益制造新标杆。
             </p>
 
              <div className="flex flex-wrap gap-4">

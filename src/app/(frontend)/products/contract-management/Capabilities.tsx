@@ -9,7 +9,7 @@ export default function Capabilities() {
     },
     {
       title: '电子签章集成',
-      desc: '集成法大大等权威平台，实现实名认证、电子签约及司法存证。',
+      desc: '集成法大大等主流平台，实现实名认证、电子签约及司法存证。',
       icon: <PenTool className="text-blue-600" />,
     },
     {
@@ -29,7 +29,7 @@ export default function Capabilities() {
     },
     {
       title: '全生命周期审计',
-      desc: '支持修改留痕、权责匹配，确保每一份合同签署都符合公司内控。',
+      desc: '支持修改留痕、权责匹配，以保障每一份合同签署都符合公司内控。',
       icon: <ShieldCheck className="text-blue-600" />,
     },
     {

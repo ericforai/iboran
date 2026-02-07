@@ -34,7 +34,7 @@ const steps = [
   },
   {
     title: '故障修复与备件',
-    desc: '闭环工单体系联动备品备件库存，缩短停机时间，确保业务持续稳定运行。',
+    desc: '闭环工单体系联动备品备件库存，缩短停机时间，以保障业务持续稳定运行。',
     icon: <Wrench className="text-red-500" />,
     color: 'bg-red-50'
   },
@@ -66,7 +66,7 @@ export default function HowItWorks() {
             transition={{ delay: 0.1 }}
             className="text-lg text-slate-600"
           >
-            从资产获取、运行维护到退役置换，YonBIP EAM 提供端到端的数智化支撑，确保每一项资产都在最优状态下运行。
+            从资产获取、运行维护到退役置换，YonBIP EAM 提供端到端的数智化支撑，以保障每一项资产都在更优状态下运行。
           </motion.p>
         </div>
 

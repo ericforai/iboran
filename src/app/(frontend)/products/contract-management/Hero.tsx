@@ -76,7 +76,7 @@ export default function Hero() {
                     <CheckCircle size={14} />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-slate-900">100% 履约可追溯</p>
+                    <p className="text-sm font-bold text-slate-900">履约全程可追溯</p>
                     <p className="text-xs text-slate-500">关键节点自动预警提醒</p>
                   </div>
                 </div>

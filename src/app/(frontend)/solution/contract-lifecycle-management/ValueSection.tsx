@@ -2,7 +2,7 @@ export default function ValueSection() {
   const metrics = [
     { value: '50%+', label: '合同起草效率提升' },
     { value: '70%', label: '平均签署周期缩短' },
-    { value: '100%', label: '履约执行动态监控' },
+    { value: '近100%', label: '履约执行动态监控' },
     { value: 'ZERO', label: '合规性校验风险漏洞' },
   ]
 

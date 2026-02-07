@@ -20,7 +20,7 @@ export default function CustomerSuccess() {
             千行百业的共同选择
           </h2>
           <p className="text-lg text-slate-600">
-            助力众多行业领军企业通过数据创造价值
+            助力众多行业头部企业通过数据创造价值
           </p>
         </div>
 

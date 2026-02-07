@@ -29,7 +29,7 @@ export default function Hero() {
               <span className="text-violet-400 text-3xl md:text-5xl">数字化转型实践</span>
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mb-8">
-              润达医疗提供体外诊断产品、实验室综合服务及医疗信息化解决方案。通过数智化平台，确保企业在严苛监管下实现效率与安全的双重跨越。
+              润达医疗提供体外诊断产品、实验室综合服务及医疗信息化解决方案。通过数智化平台，以保障企业在严苛监管下实现效率与安全的双重跨越。
             </p>
 
             {/* Quick stats badges */}

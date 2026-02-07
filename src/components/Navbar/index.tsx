@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { NavbarClient } from './NavbarClient'
+import Image from 'next/image'
 import type { Contact } from '@/payload-types'
 
 // 主菜单项 - static data, no client-side interactivity needed
@@ -31,17 +32,24 @@ export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
       <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
         {/* Left: Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="flex flex-col">
-            <span className="text-xl font-heading font-black text-[#1F2329] tracking-tight">泊冉软件</span>
-            <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-tighter">
+        <Link href="/" className="flex items-end gap-0 group h-11">
+          <div className="flex flex-col pr-2 pb-[2px]">
+            <span className="text-2xl font-heading font-black text-[#1F2329] tracking-tight leading-none mb-0.5">泊冉软件</span>
+            <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-tighter leading-none">
               BORAN SOFTWARE
             </span>
           </div>
-          <div className="h-6 w-px bg-slate-200 mx-1"></div>
-          <span className="px-2 py-0.5 rounded text-xs font-semibold text-[#E60012] bg-red-50 border border-red-100 group-hover:bg-[#E60012] group-hover:text-white transition-colors duration-300">
-            用友铂金级合作伙伴
-          </span>
+          <div className="h-6 w-px bg-slate-200 mb-2 mx-1"></div>
+          <div className="flex items-center pl-1 pb-[2px]">
+            <Image
+              src="/yongyoulogo.png"
+              alt="用友合作伙伴"
+              width={48}
+              height={24}
+              className="object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+              priority
+            />
+          </div>
         </Link>
 
         {/* Center & Right: Interactive Client Component (includes mega menus via Portal) */}

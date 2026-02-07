@@ -1,7 +1,7 @@
 export default function Results() {
   const stats = [
     {
-      value: "100%",
+      value: "近100%",
       label: "数据完整性",
       desc: "实现了实验数据的全流程电子化记录与审计追踪，彻底消除了数据造假风险，满足 IND 申报要求。"
     },
@@ -30,7 +30,7 @@ export default function Results() {
           <span className="text-purple-400 font-semibold tracking-wider text-sm uppercase">Outcomes</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-3 mb-6">数字化转型的显著成效</h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            原启生物成功构建了国际领先的研发数据中台，为创新药的快速孵化与全球化布局奠定了坚实基础。
+            原启生物成功构建了行业前沿的研发数据中台，为创新药的快速孵化与全球化布局奠定了坚实基础。
           </p>
         </div>
 

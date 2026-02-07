@@ -4,8 +4,8 @@ import { ContactForm } from './ContactForm'
 import { Phone, MapPin, Mail, ShieldCheck } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: '联系我们 - 泊冉软件 | 用友铂金级合作伙伴',
-  description: '联系泊冉软件，获取专业的企业数智化解决方案咨询服务。作为用友铂金级合作伙伴，我们为高成长型企业提供YonSuite、YonBIP等产品实施服务。',
+  title: '联系我们 - 泊冉软件 | 用友合作伙伴',
+  description: '联系泊冉软件，获取专业的企业数智化解决方案咨询服务。作为用友合作伙伴，我们为高成长型企业提供YonSuite、YonBIP等产品实施服务。',
   alternates: {
     canonical: '/contact',
   },
@@ -113,7 +113,7 @@ export default function ContactPage() {
                   <ul className="space-y-2 text-gray-300 text-xs">
                     <li className="flex items-start gap-2">
                       <div className="w-1 h-1 rounded-full bg-[#E60012] mt-1.5 shrink-0" />
-                      <span>用友网络铂金级合作伙伴，行业领先的交付能力</span>
+                      <span>用友网络合作伙伴，行业成熟的交付能力</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <div className="w-1 h-1 rounded-full bg-[#E60012] mt-1.5 shrink-0" />

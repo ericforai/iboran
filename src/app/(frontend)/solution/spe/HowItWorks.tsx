@@ -7,7 +7,7 @@ const steps = [
   {
     icon: Target,
     title: 'Strategic Planning (从战略到计划)',
-    description: '承接企业 3-5 年战略规划，通过 MDS 建模进行多维度测算，确保战略直达业务末梢。',
+    description: '承接企业 3-5 年战略规划，通过 MDS 建模进行多维度测算，以保障战略直达业务末梢。',
     details: ['纵向指标对齐', '沙箱模拟测算', '目标下达落实']
   },
   {
@@ -19,7 +19,7 @@ const steps = [
   {
     icon: Activity,
     title: 'Execution & Control (执行与控制)',
-    description: '通过预算中台实现贯穿立项、采购、费控的实时刚性控制，确保业务始终在管理轨道内运行。',
+    description: '通过预算中台实现贯穿立项、采购、费控的实时刚性控制，以保障业务始终在管理轨道内运行。',
     details: ['全链路实时控制', '柔性预警机制', '控制策略统管']
   },
   {

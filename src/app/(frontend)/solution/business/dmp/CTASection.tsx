@@ -15,7 +15,7 @@ export default function CTASection() {
             开启数据驱动的转型之旅
           </h2>
           <p className="text-slate-400 mb-10 max-w-2xl mx-auto text-lg">
-            泊冉软件作为用友铂金级合作伙伴，拥有丰富的数据中台建设经验。我们不仅提供 DMP 数据平台能力，更为您提供从数据规划到落地实施的全程服务。
+            泊冉软件作为用友合作伙伴，拥有丰富的数据中台建设经验。我们不仅提供 DMP 数据平台能力，更为您提供从数据规划到落地实施的全程服务。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <button
@@ -33,7 +33,7 @@ export default function CTASection() {
             </a>
           </div>
           <div className="mt-12 text-slate-500 text-sm">
-            用友 BIP Platinum Partner | 数据中台专家
+            用友 BIP Partner | 数据中台专家
           </div>
         </div>
       </section>

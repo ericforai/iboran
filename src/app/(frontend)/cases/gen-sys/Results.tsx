@@ -15,9 +15,9 @@ const results = [
   },
   {
     icon: ShieldCheck,
-    value: '100%',
+    value: '近100%',
     label: '全生命周期追溯',
-    description: '实现了 100% 的生产品质追溯达标，顺利通过全球头部客户的供应商体系审核。'
+    description: '实现了 近100% 的生产品质追溯达标，顺利通过全球头部客户的供应商体系审核。'
   }
 ]
 

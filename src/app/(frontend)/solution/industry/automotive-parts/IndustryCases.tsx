@@ -34,7 +34,7 @@ export default function IndustryCases() {
         <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">
-              见证 <span className="text-[#0052D9]">汽车领军企业</span> 的数智化蝶变
+              见证 <span className="text-[#0052D9]">汽车头部企业</span> 的数智化蝶变
             </h2>
             <p className="text-lg text-slate-600">
               从中国一汽到江铃汽车，我们已助力众多汽配及整车企业迈向数智化新高度。

@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { generateTitle, generateDescription, generateURL } from '../../src/plugins/index'
 import { generateMeta } from '../../src/utilities/generateMeta'
+import { getServerSideURL } from '../../src/utilities/getURL'
 
 describe('SEO Plugin', () => {
   describe('generateTitle', () => {
@@ -62,13 +63,13 @@ describe('SEO Plugin', () => {
     it('should include alternates.canonical with correct path', async () => {
       const doc = { slug: 'test-slug' } as any
       const meta = await generateMeta({ doc, collection: 'industry-solutions' })
-      expect(meta.alternates?.canonical).toBe('http://localhost:3000/solution/industry/test-slug')
+      expect(meta.alternates?.canonical).toBe(`${getServerSideURL()}/solution/industry/test-slug`)
     })
 
     it('should use root as canonical if no slug', async () => {
       const doc = {} as any
       const meta = await generateMeta({ doc })
-      expect(meta.alternates?.canonical).toBe('http://localhost:3000/')
+      expect(meta.alternates?.canonical).toBe(`${getServerSideURL()}/`)
     })
   })
 })

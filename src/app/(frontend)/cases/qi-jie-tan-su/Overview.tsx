@@ -61,7 +61,7 @@ export default function Overview() {
               </div>
               <div className="p-5 bg-slate-50 rounded-xl border border-slate-200">
                 <div className="text-2xl font-bold text-[#E60012] mb-1">精准交付</div>
-                <p className="text-sm text-slate-600">确保全球顶级客户的 100% 质量追溯与按时交付。</p>
+                <p className="text-sm text-slate-600">以保障全球成熟客户的 质量追溯可核验与按时交付。</p>
               </div>
             </div>
           </div>

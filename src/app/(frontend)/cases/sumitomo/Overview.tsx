@@ -61,7 +61,7 @@ export default function Overview() {
             <h2 className="text-3xl font-bold text-slate-900 mb-8 tracking-tight">项目背景</h2>
             <div className="prose prose-lg prose-slate text-slate-600 leading-8">
               <p className="mb-6">
-                住矿电子浆料（Sumitomo Metal Mining Electronic Materials）是全球领先的电子浆料供应商，其产品广泛应用于电阻器、电容器等被动元件以及半导体封装领域，是电子信息产业链中的关键一环。
+                住矿电子浆料（Sumitomo Metal Mining Electronic Materials）是行业实践成熟的电子浆料供应商，其产品广泛应用于电阻器、电容器等被动元件以及半导体封装领域，是电子信息产业链中的关键一环。
               </p>
               <p className="mb-6">
                  随着半导体行业的周期性波动与市场竞争的加剧，传统的“规模驱动”模式已难以适应客户对交期、品质及成本的极致要求。住矿浆料面临着内部生产既有系统孤岛林立、数据流转不畅，外部供应链协同效率低下的双重挑战。

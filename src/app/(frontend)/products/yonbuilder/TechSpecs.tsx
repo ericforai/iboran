@@ -12,7 +12,7 @@ export default function TechSpecs() {
               技术规格与<br/>环境支持
             </h2>
             <p className="text-slate-600 mb-8">
-              全面兼容主流技术栈，支持多种部署模式，确保系统安全、稳定、高效运行。
+              全面兼容主流技术栈，支持多种部署模式，以保障系统安全、稳定、高效运行。
             </p>
             <div className="p-6 bg-slate-50 rounded-xl border border-slate-200">
               <div className="flex items-center gap-3 mb-2">

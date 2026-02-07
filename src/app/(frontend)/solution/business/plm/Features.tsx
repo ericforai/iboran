@@ -14,7 +14,7 @@ const tabs = [
     details: [
       { icon: FileText, text: "结构化需求管理，全程可追溯" },
       { icon: Database, text: "市场竞争分析与产品组合规划" },
-      { icon: Layers, text: "IPD 流程固化，确保商业成功" }
+      { icon: Layers, text: "IPD 流程固化，以保障商业成功" }
     ],
     metric: { value: "25%", label: "需求实现率提升" }
   },
@@ -27,7 +27,7 @@ const tabs = [
     details: [
       { icon: Briefcase, text: "图文档与 BOM 一体化管理" },
       { icon: Workflow, text: "零部件分类管理与标准化重用" },
-      { icon: Settings, text: "多版本管理，确保数据准确唯一" }
+      { icon: Settings, text: "多版本管理，以保障数据准确唯一" }
     ],
     metric: { value: "80%", label: "数据查找时间减少" }
   },
@@ -49,7 +49,7 @@ const tabs = [
     label: '工艺与变更',
     icon: Workflow,
     title: "闭环变更与制造衔接",
-    desc: "打通设计到制造的最后一公里，确保变更准确执行，降低废品率。",
+    desc: "打通设计到制造的最后一公里，以保障变更准确执行，降低废品率。",
     details: [
       { icon: Settings, text: "EBOM 到 MBOM 的自动转换" },
       { icon: FileText, text: "CMII 标准工程变更闭环管理" },
