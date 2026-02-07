@@ -128,7 +128,7 @@ const loadSiteSnippets = async (): Promise<KnowledgeSnippet[]> => {
       })
 
       for (let i = 0; i < result.docs.length; i += 1) {
-        const snippet = fromSiteDoc(collection, result.docs[i] as Record<string, unknown>, i)
+        const snippet = fromSiteDoc(collection, result.docs[i] as unknown as Record<string, unknown>, i)
         if (!snippet) continue
         snippets.push(snippet)
         if (snippets.length >= MAX_SITE_SNIPPETS) return snippets
