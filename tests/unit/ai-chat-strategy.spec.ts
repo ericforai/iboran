@@ -7,7 +7,7 @@ import {
   detectRiskLevel,
   extractConsultationContext,
   isConsultativeQuestion,
-} from '../../src/app/api/ai/chat/route'
+} from '../../src/utilities/aiChatStrategy'
 
 describe('ai chat strategy helpers', () => {
   it('detects contact intent for hotline style queries', () => {

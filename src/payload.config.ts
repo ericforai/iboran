@@ -25,7 +25,11 @@ import { getServerSideURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-const useSMTPInRuntime = process.env.NODE_ENV === 'production' && Boolean(process.env.SMTP_HOST)
+const isBuildPhase =
+  process.env.npm_lifecycle_event === 'build' ||
+  process.env.NEXT_PHASE === 'phase-production-build'
+const useSMTPInRuntime =
+  process.env.NODE_ENV === 'production' && Boolean(process.env.SMTP_HOST) && !isBuildPhase
 
 export default buildConfig({
   admin: {
@@ -95,6 +99,8 @@ export default buildConfig({
   email: nodemailerAdapter({
     defaultFromAddress: process.env.SMTP_FROM || 'info@boran.cn',
     defaultFromName: 'Boran Software',
+    // Avoid external SMTP auth/latency during Next build.
+    skipVerify: isBuildPhase,
     transportOptions: useSMTPInRuntime
       ? {
           host: process.env.SMTP_HOST,
