@@ -176,4 +176,165 @@ describe('chat api routes', () => {
       }).catch(() => undefined)
     }
   })
+
+  it('switches conversation to ai_takeover when human_online times out for 30s', async () => {
+    const visitorId = generateSignedVisitorId()
+    const conversation = await payload.create({
+      collection: 'conversations',
+      data: {
+        visitorId,
+        mode: 'hybrid',
+        handoffStatus: 'requested',
+        serviceMode: 'human_online',
+        needsHuman: true,
+      },
+    })
+
+    const visitorMessage = await payload.create({
+      collection: 'messages',
+      data: {
+        conversation: conversation.id,
+        role: 'visitor',
+        content: '我们想了解BIP私有化部署',
+        clientMessageId: `visitor-timeout-${Date.now()}`,
+      },
+    })
+
+    const { GET } = await import('../../src/app/api/chat/conversations/[id]/messages/route')
+    const originalNow = Date.now
+    const baseNow = originalNow()
+
+    try {
+      Date.now = () => baseNow + 31_000
+
+      const req = new NextRequest(`http://localhost/api/chat/conversations/${conversation.id}/messages?limit=100`, {
+        method: 'GET',
+        headers: {
+          'x-chat-visitor-id': visitorId,
+        },
+      })
+
+      const response = await GET(req, { params: Promise.resolve({ id: conversation.id }) })
+      expect(response.status).toBe(200)
+
+      const aiMessages = await payload.find({
+        collection: 'messages',
+        where: {
+          and: [
+            {
+              conversation: {
+                equals: conversation.id,
+              },
+            },
+            {
+              role: {
+                equals: 'ai',
+              },
+            },
+          ],
+        },
+        limit: 10,
+        pagination: false,
+      })
+      expect(aiMessages.docs.length).toBeGreaterThan(0)
+
+      const updatedConversation = await payload.findByID({
+        collection: 'conversations',
+        id: conversation.id,
+      })
+      expect(updatedConversation.serviceMode).toBe('ai_takeover')
+    } finally {
+      Date.now = originalNow
+      await payload.delete({
+        collection: 'messages',
+        id: visitorMessage.id,
+      }).catch(() => undefined)
+      await payload.delete({
+        collection: 'conversations',
+        id: conversation.id,
+      }).catch(() => undefined)
+    }
+  })
+
+  it('does not auto-takeover when human has already replied after visitor message', async () => {
+    const visitorId = generateSignedVisitorId()
+    const conversation = await payload.create({
+      collection: 'conversations',
+      data: {
+        visitorId,
+        mode: 'hybrid',
+        handoffStatus: 'active',
+        serviceMode: 'human_online',
+        needsHuman: true,
+      },
+    })
+
+    const visitorMessage = await payload.create({
+      collection: 'messages',
+      data: {
+        conversation: conversation.id,
+        role: 'visitor',
+        content: '请给我报价建议',
+        clientMessageId: `visitor-human-replied-${Date.now()}`,
+      },
+    })
+
+    const humanReplyAt = new Date(Date.now() + 2_000).toISOString()
+    await payload.update({
+      collection: 'conversations',
+      id: conversation.id,
+      data: {
+        lastHumanReplyAt: humanReplyAt,
+      },
+    })
+
+    const { GET } = await import('../../src/app/api/chat/conversations/[id]/messages/route')
+    const originalNow = Date.now
+    const baseNow = originalNow()
+
+    try {
+      Date.now = () => baseNow + 31_000
+
+      const req = new NextRequest(`http://localhost/api/chat/conversations/${conversation.id}/messages?limit=100`, {
+        method: 'GET',
+        headers: {
+          'x-chat-visitor-id': visitorId,
+        },
+      })
+
+      const response = await GET(req, { params: Promise.resolve({ id: conversation.id }) })
+      expect(response.status).toBe(200)
+
+      const aiMessages = await payload.find({
+        collection: 'messages',
+        where: {
+          and: [
+            {
+              conversation: {
+                equals: conversation.id,
+              },
+            },
+            {
+              role: {
+                equals: 'ai',
+              },
+            },
+          ],
+        },
+        limit: 10,
+        pagination: false,
+      })
+      expect(aiMessages.docs).toHaveLength(0)
+    } finally {
+      Date.now = originalNow
+      await payload.delete({
+        collection: 'messages',
+        id: visitorMessage.id,
+      }).catch(() => undefined)
+      await payload.delete({
+        collection: 'conversations',
+        id: conversation.id,
+      }).catch(() => undefined)
+    }
+  })
 })

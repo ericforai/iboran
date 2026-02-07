@@ -228,11 +228,13 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
   const [isLoading, setIsLoading] = useState(false);
   const [isHandoffLoading, setIsHandoffLoading] = useState(false);
   const [handoffStatus, setHandoffStatus] = useState<'none' | 'requested' | 'active' | 'closed'>('none');
+  const [serviceMode, setServiceMode] = useState<'human_offline' | 'human_online' | 'ai_takeover'>('human_offline');
   const [conversationId, setConversationId] = useState<string>();
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const syncedServerMessageIds = useRef<Set<string>>(new Set());
+  const hasInitializedHandoff = useRef(false);
   
   // 获取当前主题样式，默认为 red
   const t = THEMES[config.theme || 'red'];
@@ -278,6 +280,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
   const applyServerMessages = useCallback((messages: { id: string; role: 'visitor' | 'ai' | 'agent' | 'system'; content: string }[]) => {
     const newMessages: ChatMessage[] = [];
     let hasAgentMessage = false;
+    let hasAITakeoverMessage = false;
 
     for (const message of messages) {
       if (syncedServerMessageIds.current.has(message.id)) continue;
@@ -287,12 +290,17 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
         hasAgentMessage = true;
         newMessages.push({
           role: 'model',
-          parts: [{ text: `人工客服：${message.content}` }],
+          parts: [{ text: `泊冉客服：${message.content}` }],
         });
         continue;
       }
 
       if (message.role === 'system' || message.role === 'ai') {
+        if (message.role === 'system' && message.content.includes('人工客服已接管当前会话')) {
+          setServiceMode('human_online');
+          setHandoffStatus('active');
+        }
+        if (message.role === 'ai') hasAITakeoverMessage = true;
         newMessages.push({
           role: 'model',
           parts: [{ text: message.content }],
@@ -307,6 +315,10 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
 
     if (hasAgentMessage) {
       setHandoffStatus('active');
+      setServiceMode('human_online');
+    } else if (hasAITakeoverMessage) {
+      setHandoffStatus('active');
+      setServiceMode('ai_takeover');
     }
   }, [markLatestSentMessageAsRead]);
 
@@ -422,13 +434,16 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       if (result.conversation?.handoffStatus) {
         setHandoffStatus(result.conversation.handoffStatus);
       }
+      if (result.conversation?.serviceMode) {
+        setServiceMode(result.conversation.serviceMode);
+      }
     }).catch(() => {
       markMessageAsSent(clientMessageId);
       // Keep chat UX responsive even if persistence API is temporarily unavailable.
     });
 
     // Don't call AI if human is taking over
-    if (handoffStatus === 'requested' || handoffStatus === 'active') {
+    if ((handoffStatus === 'requested' || handoffStatus === 'active') && serviceMode === 'human_online') {
       return;
     }
 
@@ -455,18 +470,20 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     }
   };
 
-  const handleRequestHuman = async () => {
+  const handleRequestHuman = async (silent = false) => {
     if (isHandoffLoading || handoffStatus === 'requested' || handoffStatus === 'active') return;
 
     setIsHandoffLoading(true);
     setHandoffStatus('requested');
-    setChatHistory((prev) => [
-      ...prev,
-      {
-        role: 'model',
-        parts: [{ text: '已为你转人工，正在连接客服，请稍候。' }],
-      },
-    ]);
+    if (!silent) {
+      setChatHistory((prev) => [
+        ...prev,
+        {
+          role: 'model',
+          parts: [{ text: '已为你连接客服，请稍候。' }],
+        },
+      ]);
+    }
     const visitorContext = await buildVisitorContext();
     try {
       const response = await chatService.requestHandoff({
@@ -478,6 +495,9 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       if (response.conversation?.id) {
         setConversationId(response.conversation.id);
         void syncConversationMessages(response.conversation.id);
+      }
+      if (response.conversation?.serviceMode) {
+        setServiceMode(response.conversation.serviceMode);
       }
 
     } catch {
@@ -493,6 +513,13 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       setIsHandoffLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!isOpen) return;
+    if (hasInitializedHandoff.current) return;
+    hasInitializedHandoff.current = true;
+    void handleRequestHuman(true);
+  }, [isOpen]);
 
   useEffect(() => {
     if (!conversationId || !isOpen) return;
@@ -763,7 +790,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
                     <span className={`w-2.5 h-2.5 ${t.bg} rounded-full animate-bounce [animation-delay:0.2s]`}></span>
                     <span className={`w-2.5 h-2.5 ${t.textDark.replace('text', 'bg')} rounded-full animate-bounce [animation-delay:0.4s]`}></span>
                   </div>
-                  <span className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.2em]">AI 正在查阅资料...</span>
+                  <span className="text-[11px] text-slate-400 font-bold uppercase tracking-[0.2em]">客服正在处理中...</span>
                 </div>
               </div>
             )}
@@ -774,10 +801,10 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
             {handoffStatus !== 'none' && (
               <div className={`mb-3 rounded-xl px-3 py-2 text-xs ${t.lightBg} ${t.textDark}`}>
                 {handoffStatus === 'requested'
-                  ? '人工客服接入中，当前由 AI 继续为你服务。'
+                  ? '客服已收到，正在为您处理。'
                   : handoffStatus === 'active'
-                    ? '人工客服已接入当前会话。'
-                    : '本次人工会话已结束。'}
+                    ? '客服正在为您服务。'
+                    : '本次会话已结束。'}
               </div>
             )}
             <div className="relative flex items-center">
@@ -798,18 +825,6 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
               </button>
             </div>
             <div className={`flex ${config.actionButton ? 'justify-between' : 'justify-end'} items-center mt-4 sm:mt-5 gap-3`}>
-               <button
-                 type="button"
-                 onClick={handleRequestHuman}
-                 disabled={isHandoffLoading || handoffStatus === 'requested' || handoffStatus === 'active'}
-                 className={`text-[10px] sm:text-[11px] font-black px-3 py-1.5 rounded-full border transition-all ${
-                   handoffStatus === 'requested' || handoffStatus === 'active'
-                     ? 'text-slate-400 border-slate-200 cursor-not-allowed'
-                     : `${t.text} border-current hover:bg-slate-50`
-                 }`}
-               >
-                 {isHandoffLoading ? '提交中...' : handoffStatus === 'active' ? '人工已接入' : '转人工'}
-               </button>
                <a
                  href="tel:4009955161"
                  className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[10px] sm:text-[11px] font-black ${t.text} ${t.lightBg} border-current hover:bg-white transition-colors`}
@@ -846,7 +861,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
         >
           <div className={`absolute inset-0 bg-gradient-to-r ${t.gradient} -translate-x-full group-hover:translate-x-full transition-transform duration-1000`}></div>
           <div className="flex flex-col items-start pr-2 relative z-10">
-             <span className={`text-[10px] sm:text-[11px] font-black ${t.text} uppercase tracking-[0.25em] mb-1 leading-none`}>AI Consultant</span>
+             <span className={`text-[10px] sm:text-[11px] font-black ${t.text} uppercase tracking-[0.25em] mb-1 leading-none`}>Online Service</span>
              <span className={`text-[14px] sm:text-[16px] font-black text-slate-900 ${t.textHover} transition-colors tracking-tight`}>
               {config.name}
             </span>

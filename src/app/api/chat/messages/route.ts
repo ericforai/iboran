@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import config from '@payload-config'
 import { checkRateLimit, getRequestIP } from '@/utilities/rateLimit'
+import { hasAnyOnlineAgent } from '@/utilities/serviceMode'
 
 type MessagePayload = {
   conversationId?: string
@@ -39,6 +40,7 @@ const resolveConversation = async (payload: Awaited<ReturnType<typeof getPayload
       sourcePage: data.sourcePage,
       mode: 'ai',
       handoffStatus: 'none',
+      serviceMode: 'human_offline',
       needsHuman: false,
       lastMessageAt: new Date().toISOString(),
     },
@@ -115,11 +117,24 @@ export async function POST(req: NextRequest) {
     })
 
     // Preserve existing handoffStatus - don't reset 'active' or 'closed' back to 'none'
+    const now = new Date().toISOString()
+    const onlineAgentExists = await hasAnyOnlineAgent(payload)
+    const serviceMode =
+      conversation.handoffStatus === 'requested' || conversation.handoffStatus === 'active'
+        ? conversation.serviceMode === 'ai_takeover'
+          ? 'ai_takeover'
+          : onlineAgentExists
+            ? 'human_online'
+            : 'human_offline'
+        : conversation.serviceMode || 'human_offline'
+
     const updatedConversation = await payload.update({
       collection: 'conversations',
       id: conversation.id,
       data: {
-        lastMessageAt: new Date().toISOString(),
+        serviceMode,
+        lastUserMessageAt: now,
+        lastMessageAt: now,
       },
     })
 

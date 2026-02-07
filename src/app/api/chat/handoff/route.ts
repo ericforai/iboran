@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 import config from '@payload-config'
 import { checkRateLimit, getRequestIP } from '@/utilities/rateLimit'
+import { hasAnyOnlineAgent } from '@/utilities/serviceMode'
 
 const MAX_VISITOR_ID_LEN = 120
 const MAX_SOURCE_PAGE_LEN = 400
@@ -40,6 +41,7 @@ export async function POST(req: NextRequest) {
     let activeConversationId = conversationId
 
     if (!activeConversationId) {
+      const onlineAgentExists = await hasAnyOnlineAgent(payload)
       const createdConversation = await payload.create({
         collection: 'conversations',
         data: {
@@ -47,6 +49,7 @@ export async function POST(req: NextRequest) {
           sourcePage,
           mode: 'ai',
           handoffStatus: 'none',
+          serviceMode: onlineAgentExists ? 'human_online' : 'human_offline',
           needsHuman: false,
           lastMessageAt: new Date().toISOString(),
         },
@@ -54,6 +57,7 @@ export async function POST(req: NextRequest) {
       activeConversationId = createdConversation.id
     }
 
+    const onlineAgentExists = await hasAnyOnlineAgent(payload)
     const updatedConversation = await payload.update({
       collection: 'conversations',
       id: activeConversationId,
@@ -61,6 +65,7 @@ export async function POST(req: NextRequest) {
         handoffStatus: 'requested',
         mode: 'hybrid',
         needsHuman: true,
+        serviceMode: onlineAgentExists ? 'human_online' : 'human_offline',
         handoffReminderSent: false,
         handoffReminderSentAt: null,
         lastMessageAt: new Date().toISOString(),

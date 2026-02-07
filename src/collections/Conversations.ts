@@ -6,7 +6,15 @@ export const Conversations: CollectionConfig = {
   slug: 'conversations',
   admin: {
     useAsTitle: 'visitorId',
-    defaultColumns: ['visitorId', 'mode', 'handoffStatus', 'needsHuman', 'lastMessageAt', 'updatedAt'],
+    defaultColumns: [
+      'visitorId',
+      'mode',
+      'handoffStatus',
+      'serviceMode',
+      'needsHuman',
+      'lastMessageAt',
+      'updatedAt',
+    ],
     listSearchableFields: ['visitorId', 'sourcePage'],
   },
   access: {
@@ -78,6 +86,27 @@ export const Conversations: CollectionConfig = {
       index: true,
     },
     {
+      name: 'serviceMode',
+      type: 'select',
+      required: true,
+      defaultValue: 'human_offline',
+      index: true,
+      options: [
+        {
+          label: 'Human Offline',
+          value: 'human_offline',
+        },
+        {
+          label: 'Human Online',
+          value: 'human_online',
+        },
+        {
+          label: 'AI Takeover',
+          value: 'ai_takeover',
+        },
+      ],
+    },
+    {
       name: 'lastMessageAt',
       type: 'date',
       admin: {
@@ -86,6 +115,33 @@ export const Conversations: CollectionConfig = {
         },
       },
       index: true,
+    },
+    {
+      name: 'lastUserMessageAt',
+      type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+      },
+    },
+    {
+      name: 'lastHumanReplyAt',
+      type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+      },
+    },
+    {
+      name: 'lastAutoReplyAt',
+      type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+      },
     },
     {
       name: 'assignedAgent',

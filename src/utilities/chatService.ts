@@ -10,6 +10,7 @@ export type ChatMessageWriteResponse = {
   conversation?: {
     id: string
     handoffStatus?: 'none' | 'requested' | 'active' | 'closed'
+    serviceMode?: 'human_offline' | 'human_online' | 'ai_takeover'
   }
   deduped?: boolean
 }
@@ -18,6 +19,7 @@ export type HandoffResponse = {
   conversation?: {
     id: string
     handoffStatus?: 'none' | 'requested' | 'active' | 'closed'
+    serviceMode?: 'human_offline' | 'human_online' | 'ai_takeover'
   }
 }
 

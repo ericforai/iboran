@@ -96,7 +96,9 @@ export async function POST(req: NextRequest) {
         mode: 'human',
         handoffStatus: 'active',
         needsHuman: true,
+        serviceMode: 'human_online',
         assignedAgent: user.id,
+        lastHumanReplyAt: new Date().toISOString(),
         lastMessageAt: new Date().toISOString(),
       },
     })

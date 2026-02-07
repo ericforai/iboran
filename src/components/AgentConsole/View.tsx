@@ -8,6 +8,7 @@ type Conversation = {
   visitorId?: string
   sourcePage?: string
   handoffStatus: 'none' | 'requested' | 'active' | 'closed'
+  serviceMode?: 'human_offline' | 'human_online' | 'ai_takeover'
   updatedAt?: string
 }
 
@@ -74,6 +75,9 @@ const AgentConsoleView: React.FC = () => {
   const [unreadMap, setUnreadMap] = useState<Record<string, number>>({})
   const [input, setInput] = useState('')
   const [isSending, setIsSending] = useState(false)
+  const [isPresenceUpdating, setIsPresenceUpdating] = useState(false)
+  const [isTakingOver, setIsTakingOver] = useState(false)
+  const [agentOnline, setAgentOnline] = useState(false)
   const [error, setError] = useState<string>()
   const [soundReady, setSoundReady] = useState(false)
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>(() => {
@@ -444,6 +448,7 @@ const AgentConsoleView: React.FC = () => {
             ? {
                 ...conversation,
                 handoffStatus: 'active',
+                serviceMode: 'human_online',
                 updatedAt: new Date().toISOString(),
               }
             : conversation,
@@ -456,11 +461,107 @@ const AgentConsoleView: React.FC = () => {
     }
   }
 
+  const loadMyPresence = useCallback(async () => {
+    try {
+      const response = await fetch('/api/users/me', { credentials: 'include' })
+      if (!response.ok) return
+      const data = (await response.json()) as { user?: { isOnline?: boolean } }
+      setAgentOnline(Boolean(data.user?.isOnline))
+    } catch {
+      // noop
+    }
+  }, [])
+
+  const togglePresence = useCallback(
+    async (online: boolean) => {
+      if (isPresenceUpdating) return
+      setIsPresenceUpdating(true)
+      setError(undefined)
+      try {
+        const response = await fetch('/api/chat/agent/presence', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ online }),
+        })
+
+        if (!response.ok) {
+          const detail = await response.json().catch(() => ({ error: '更新坐席状态失败' }))
+          throw new Error(detail.error || '更新坐席状态失败')
+        }
+
+        setAgentOnline(online)
+        await refresh()
+      } catch (err) {
+        setError(err instanceof Error ? err.message : '更新坐席状态失败')
+      } finally {
+        setIsPresenceUpdating(false)
+      }
+    },
+    [isPresenceUpdating, refresh],
+  )
+
+  const handleTakeover = useCallback(async () => {
+    if (!selectedConversationId || isTakingOver) return
+    setIsTakingOver(true)
+    setError(undefined)
+    try {
+      const response = await fetch(`/api/chat/conversations/${selectedConversationId}/takeover`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      })
+
+      if (!response.ok) {
+        const detail = await response.json().catch(() => ({ error: '接管会话失败' }))
+        throw new Error(detail.error || '接管会话失败')
+      }
+
+      setConversations((prev) =>
+        prev.map((conversation) =>
+          conversation.id === selectedConversationId
+            ? {
+                ...conversation,
+                handoffStatus: 'active',
+                serviceMode: 'human_online',
+                updatedAt: new Date().toISOString(),
+              }
+            : conversation,
+        ),
+      )
+      await refresh()
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '接管会话失败')
+    } finally {
+      setIsTakingOver(false)
+    }
+  }, [isTakingOver, refresh, selectedConversationId])
+
+  useEffect(() => {
+    void loadMyPresence()
+  }, [loadMyPresence])
+
   return (
     <div style={{ padding: 20 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
         <h1 style={{ margin: 0, fontSize: 24 }}>Agent Console{totalUnread > 0 ? ` (${totalUnread})` : ''}</h1>
         <div style={{ display: 'flex', gap: 8 }}>
+          <button
+            onClick={() => void togglePresence(!agentOnline)}
+            disabled={isPresenceUpdating}
+            style={{ padding: '8px 12px', cursor: 'pointer' }}
+          >
+            {isPresenceUpdating
+              ? '更新中...'
+              : agentOnline
+                ? '我已上线（点击下线）'
+                : '我已下线（点击上线）'}
+          </button>
           <button onClick={() => void ensureSoundReady()} style={{ padding: '8px 12px', cursor: 'pointer' }}>
             {soundReady ? '声音已启用' : '启用声音'}
           </button>
@@ -519,6 +620,9 @@ const AgentConsoleView: React.FC = () => {
                     <div style={{ marginTop: 6, fontSize: 12, color: '#344054' }}>
                       {conversation.handoffStatus.toUpperCase()} · {formatTime(conversation.updatedAt)}
                     </div>
+                    <div style={{ marginTop: 6, fontSize: 12, color: '#344054' }}>
+                      {(conversation.serviceMode || 'human_offline').toUpperCase()}
+                    </div>
                     {unread > 0 ? (
                       <div
                         style={{
@@ -551,6 +655,17 @@ const AgentConsoleView: React.FC = () => {
             {selectedConversation
               ? `会话：${parseSource(selectedConversation.sourcePage).channelLabel}访客 · ${(selectedConversation.visitorId || selectedConversation.id).slice(-6)}`
               : '请选择会话'}
+            {selectedConversation ? (
+              <div style={{ marginTop: 8 }}>
+                <button
+                  onClick={() => void handleTakeover()}
+                  disabled={isTakingOver}
+                  style={{ padding: '6px 10px', cursor: 'pointer' }}
+                >
+                  {isTakingOver ? '接管中...' : '人工接管此会话'}
+                </button>
+              </div>
+            ) : null}
           </div>
 
           <div style={{ flex: 1, overflowY: 'auto', padding: 12, background: '#f9fafb' }}>

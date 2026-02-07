@@ -5,6 +5,7 @@ import config from '@payload-config'
 import { checkRateLimit, getRequestIP } from '@/utilities/rateLimit'
 import { verifyVisitorId } from '@/utilities/visitorId'
 import { maybeSendHandoffPhoneReminder } from '@/utilities/handoffReminder'
+import { maybeRunAutoTakeover } from '@/utilities/autoTakeover'
 
 export async function GET(req: Request, context: { params: Promise<{ id: string }> }) {
   try {
@@ -45,6 +46,7 @@ export async function GET(req: Request, context: { params: Promise<{ id: string 
     }
 
     await maybeSendHandoffPhoneReminder(payload, id)
+    await maybeRunAutoTakeover(payload, id)
 
     const messages = await payload.find({
       collection: 'messages',

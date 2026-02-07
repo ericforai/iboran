@@ -33,7 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   const AI_CONFIG: AIWidgetConfig = {
     theme: 'indigo',
-    name: "泊冉智能顾问",
+    name: "泊冉在线客服",
     subTitle: "7x24小时在线",
     systemInstruction: `你是一个专业的企业数字化转型顾问，来自泊冉软件。
 你的核心知识如下：
@@ -44,8 +44,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 5. 服务范围：管理咨询、系统实施、定制开发、运维支持。
 
 你的目标是专业、耐心地解答用户的业务挑战，回答应尽可能基于上述泊冉的真实资料。在合适的时候通过“预约专业演示”引导用户咨询泊冉的专业服务。`,
-    welcomeTitle: "您好！我是泊冉智能顾问",
-    welcomeMessage: "泊冉软件深耕数智化转型14年，我是您的专属 AI 助手。您可以问我关于 **YonBIP**、**智能制造方案** 或 **行业实践案例** 的任何问题。",
+    welcomeTitle: "您好！我是泊冉在线客服",
+    welcomeMessage: "泊冉软件深耕数智化转型14年，我来协助您对接方案与顾问服务。您可以直接咨询 **YonBIP**、**智能制造方案** 或 **行业实践案例**。",
     suggestions: [
       { 
         title: "了解泊冉", 

@@ -33,6 +33,15 @@ const FIXED_SYSTEM_PROMPT =
 const TRACEABLE_FALLBACK =
   `当前问题涉及关键结论，需要基于可核验资料回答。请补充具体场景，或直接联系人工客服 ${HOTLINE}。`
 
+type TakeoverTone = '轻松' | '专业' | '犀利' | '克制'
+type TakeoverBrevity = '短' | '中' | '长'
+
+const DEFAULT_TAKEOVER_TONE: TakeoverTone =
+  (process.env.AI_TAKEOVER_TONE as TakeoverTone) || '专业'
+const DEFAULT_TAKEOVER_VIVID = Number.parseInt(process.env.AI_TAKEOVER_VIVID || '1', 10)
+const DEFAULT_TAKEOVER_BREVITY: TakeoverBrevity =
+  (process.env.AI_TAKEOVER_BREVITY as TakeoverBrevity) || '短'
+
 const BLOCKED_VENDOR_PATTERNS: RegExp[] = [
   /\bSAP\b/gi,
   /\bOracle\b/gi,
@@ -57,6 +66,52 @@ const applyVendorFence = (text: string) => {
     result = result.replace(pattern, '其他厂商')
   }
   return result
+}
+
+const parseTakeoverStyle = (systemInstruction: string) => {
+  const toneMatch = systemInstruction.match(/\/tone\s*(轻松|专业|犀利|克制)/)
+  const vividMatch = systemInstruction.match(/\/vivid\s*([0-3])/)
+  const brevityMatch = systemInstruction.match(/\/brevity\s*(短|中|长)/)
+
+  const tone = (toneMatch?.[1] as TakeoverTone) || DEFAULT_TAKEOVER_TONE
+  const vividValue = vividMatch?.[1]
+  const vivid = vividValue ? Number.parseInt(vividValue, 10) : DEFAULT_TAKEOVER_VIVID
+  const brevity = (brevityMatch?.[1] as TakeoverBrevity) || DEFAULT_TAKEOVER_BREVITY
+
+  const safeVivid = Number.isFinite(vivid) ? Math.min(3, Math.max(0, vivid)) : 1
+  const safeTone: TakeoverTone = ['轻松', '专业', '犀利', '克制'].includes(tone) ? tone : '专业'
+  const safeBrevity: TakeoverBrevity = ['短', '中', '长'].includes(brevity) ? brevity : '短'
+
+  return {
+    tone: safeTone,
+    vivid: safeVivid,
+    brevity: safeBrevity,
+  }
+}
+
+const buildTakeoverSystemPrompt = (systemInstruction: string) => {
+  const style = parseTakeoverStyle(systemInstruction)
+  return (
+  `${FIXED_SYSTEM_PROMPT}\n\n` +
+  `${systemInstruction.slice(0, MAX_SYSTEM_HINT_LEN)}\n\n` +
+  '你现在是泊冉网站在线客服，使用人工服务语气回复。\n' +
+  '目标：回复自然、有人味、简洁可执行，不让用户感到机器感。\n' +
+  '硬约束：\n' +
+  '1) 不得出现“作为AI/模型/机器人”等表述。\n' +
+  '2) 不得提及除“用友、泊冉”外的厂商名；需要对比时统一写“其他厂商”。\n' +
+  '3) 不得使用绝对化承诺（如：一定、必须、保证、唯一、100%）。\n' +
+  `4) 涉及价格、合同、法律、上线周期等关键决策，给出保守建议并引导人工顾问电话：${HOTLINE}。\n` +
+  '人类化表达规则（仅用于语气，不改变事实）：\n' +
+  'a) 长短句交替，允许轻微停顿。\n' +
+  'b) 多用“我/你/我们”。\n' +
+  'c) 可少量使用“其实/说真的/你知道吗”（每段最多1次）。\n' +
+  'd) 少用报告腔连接词。\n' +
+  'e) 用具体细节替代空洞形容。\n' +
+  'f) 每100-150字有一次自然转折。\n' +
+  'g) 允许温和共鸣，不煽情。\n' +
+  `输出参数：tone=${style.tone}，vivid=${style.vivid}，brevity=${style.brevity}。\n` +
+  '输出要求：先直接回答用户问题，再给1-2步可执行建议；不做“总的来说”式总结。'
+  )
 }
 
 const buildGroundingChunks = (knowledge: Awaited<ReturnType<typeof retrieveKnowledge>>): GroundingChunk[] => {
@@ -229,13 +284,8 @@ export async function POST(req: NextRequest) {
         {
           role: 'system',
           content:
-            `${FIXED_SYSTEM_PROMPT}\n\n` +
-            `${systemInstruction.slice(0, MAX_SYSTEM_HINT_LEN)}\n\n` +
-            '电子围栏：回答中不得出现除“用友”“泊冉”之外的任何厂商或品牌名；若需对比，请统一写为“其他厂商”。\n' +
-            '当前问题未命中站内可直接引用资料，请基于公开信息与通用实施经验给出初步建议，避免编造具体客户事实。\n' +
-            '严禁使用绝对化承诺措辞（如：一定、必须、保证、唯一、100%）。\n' +
-            `如涉及关键决策或高风险判断，请提醒用户联系人工顾问（${HOTLINE}）。\n` +
-            '输出简洁、结构化、可执行。',
+            `${buildTakeoverSystemPrompt(systemInstruction)}\n` +
+            '当前问题未命中站内可直接引用资料，请基于公开信息与通用实施经验给出初步建议，避免编造具体客户事实。',
         },
         { role: 'user', content: effectiveUserMessage },
       ]

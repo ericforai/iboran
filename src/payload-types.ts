@@ -467,6 +467,7 @@ export interface User {
   id: string;
   name?: string | null;
   role: 'admin' | 'agent';
+  isOnline?: boolean | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1176,7 +1177,11 @@ export interface Conversation {
   mode: 'ai' | 'human' | 'hybrid';
   handoffStatus: 'none' | 'requested' | 'active' | 'closed';
   needsHuman?: boolean | null;
+  serviceMode: 'human_offline' | 'human_online' | 'ai_takeover';
   lastMessageAt?: string | null;
+  lastUserMessageAt?: string | null;
+  lastHumanReplyAt?: string | null;
+  lastAutoReplyAt?: string | null;
   assignedAgent?: (string | null) | User;
   handoffReminderSent?: boolean | null;
   handoffReminderSentAt?: string | null;
@@ -1817,6 +1822,7 @@ export interface CategoriesSelect<T extends boolean = true> {
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
   role?: T;
+  isOnline?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -2112,7 +2118,11 @@ export interface ConversationsSelect<T extends boolean = true> {
   mode?: T;
   handoffStatus?: T;
   needsHuman?: T;
+  serviceMode?: T;
   lastMessageAt?: T;
+  lastUserMessageAt?: T;
+  lastHumanReplyAt?: T;
+  lastAutoReplyAt?: T;
   assignedAgent?: T;
   handoffReminderSent?: T;
   handoffReminderSentAt?: T;

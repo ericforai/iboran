@@ -12,7 +12,7 @@ export const Users: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    defaultColumns: ['name', 'email', 'role'],
+    defaultColumns: ['name', 'email', 'role', 'isOnline'],
     useAsTitle: 'name',
   },
   auth: true,
@@ -36,6 +36,12 @@ export const Users: CollectionConfig = {
           value: 'agent',
         },
       ],
+    },
+    {
+      name: 'isOnline',
+      type: 'checkbox',
+      defaultValue: false,
+      index: true,
     },
   ],
   timestamps: true,
