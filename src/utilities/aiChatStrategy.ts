@@ -34,6 +34,8 @@ const HIGH_RISK_RE =
   /(报价|多少钱|价格|合同|条款|承诺|保证|赔偿|法律责任|合规结论|收益承诺|回报率|必须|一定|确保成功)/
 const CONSULTATIVE_RE =
   /(是否|能否|可以|适合|怎么做|如何做|方案|场景|行业|yonbip|bip|yonsuite|erp|实施|迁移|费控|合并报表|主数据|合同管理|银企联)/
+const DIRECT_PRODUCT_Q_RE =
+  /(支持|是否支持|能否|可以|兼容|对接).*(私有化|本地部署|专有云|公有云|混合云|saas|多租户|单租户|信创|国产化|api|接口|部署|集成)|(私有化|本地部署|专有云|公有云|混合云|saas|多租户|单租户|信创|国产化|api|接口|部署|集成).*(支持|是否支持|能否|可以|兼容|对接)/
 const SMALL_TALK_RE = /^(你好|您好|hello|hi|在吗|有人吗|谢谢|好的|嗯|收到|ok)[！!。.\s]*$/i
 
 const INDUSTRY_RULES: Array<[RegExp, string]> = [
@@ -75,6 +77,12 @@ export const isConsultativeQuestion = (text: string) => {
   return CONSULTATIVE_RE.test(normalized) || /(\?|？|吗|呢|如何|怎么)/.test(normalized)
 }
 
+export const isDirectProductQuestion = (text: string) => {
+  const normalized = text.trim().toLowerCase()
+  if (!normalized || SMALL_TALK_RE.test(normalized)) return false
+  return DIRECT_PRODUCT_Q_RE.test(normalized)
+}
+
 export const extractConsultationContext = (userTexts: string[]): ConsultationContext => {
   const combined = userTexts.join('\n').toLowerCase()
   const context: ConsultationContext = {}
@@ -113,6 +121,20 @@ export const detectChoice = (text: string): 'self_service' | 'human' | null => {
   return null
 }
 
+export const pickLastSubstantiveQuestion = (userTexts: string[]): string | null => {
+  for (let i = userTexts.length - 1; i >= 0; i -= 1) {
+    const text = userTexts[i]?.trim()
+    if (!text) continue
+    if (detectChoice(text) === 'self_service') continue
+    if (detectChoice(text) === 'human') continue
+    if (detectContactIntent(text)) continue
+    if (SMALL_TALK_RE.test(text.toLowerCase())) continue
+    return text
+  }
+
+  return null
+}
+
 export const buildChoicePrompt = (context: ConsultationContext) => {
   const industry = context.industry || '当前行业'
   const scene = context.scene || '当前场景'
@@ -140,4 +162,3 @@ export const normalizeSceneReply = (text: string): string | null => {
   if (!custom) return '其他'
   return `其他：${custom}`
 }
-

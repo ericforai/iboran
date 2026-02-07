@@ -6,7 +6,9 @@ import {
   detectContactIntent,
   detectRiskLevel,
   extractConsultationContext,
+  isDirectProductQuestion,
   isConsultativeQuestion,
+  pickLastSubstantiveQuestion,
 } from '../../src/utilities/aiChatStrategy'
 
 describe('ai chat strategy helpers', () => {
@@ -52,11 +54,25 @@ describe('ai chat strategy helpers', () => {
     expect(isConsultativeQuestion('你好')).toBe(false)
   })
 
+  it('recognizes direct product capability questions', () => {
+    expect(isDirectProductQuestion('BIP支持私有化部署吗')).toBe(true)
+    expect(isDirectProductQuestion('我们是地产行业，适合什么方案')).toBe(false)
+  })
+
   it('builds choice prompt with industry and scene', () => {
     const text = buildChoicePrompt({ industry: '银行', scene: '资金/银企联' })
     expect(text).toContain('银行')
     expect(text).toContain('资金/银企联')
     expect(text).toContain('继续自助')
     expect(text).toContain('转人工')
+  })
+
+  it('picks previous substantive question when latest is self-service command', () => {
+    const result = pickLastSubstantiveQuestion([
+      '你好',
+      'BIP支持私有化部署吗',
+      '继续自助',
+    ])
+    expect(result).toBe('BIP支持私有化部署吗')
   })
 })

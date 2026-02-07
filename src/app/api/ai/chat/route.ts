@@ -3,7 +3,6 @@ import { retrieveKnowledge } from '@/utilities/knowledgeGrounding'
 import type { GroundingChunk } from '@/types/ai'
 import { checkRateLimit, getRequestIP } from '@/utilities/rateLimit'
 import {
-  buildChoicePrompt,
   CONTACT_DIRECT_REPLY,
   detectChoice,
   detectContactIntent,
@@ -11,8 +10,10 @@ import {
   extractConsultationContext,
   HOTLINE,
   INDUSTRY_ASK,
+  isDirectProductQuestion,
   isConsultativeQuestion,
   normalizeSceneReply,
+  pickLastSubstantiveQuestion,
   SCENE_ASK,
 } from '@/utilities/aiChatStrategy'
 
@@ -31,6 +32,32 @@ const FIXED_SYSTEM_PROMPT =
 
 const TRACEABLE_FALLBACK =
   `当前问题涉及关键结论，需要基于可核验资料回答。请补充具体场景，或直接联系人工客服 ${HOTLINE}。`
+
+const BLOCKED_VENDOR_PATTERNS: RegExp[] = [
+  /\bSAP\b/gi,
+  /\bOracle\b/gi,
+  /\bSalesforce\b/gi,
+  /\bWorkday\b/gi,
+  /\bOdoo\b/gi,
+  /金蝶/g,
+  /浪潮/g,
+  /鼎捷/g,
+  /明源/g,
+  /致远/g,
+  /泛微/g,
+  /微软/g,
+  /华为/g,
+  /阿里(巴巴)?/g,
+  /腾讯/g,
+]
+
+const applyVendorFence = (text: string) => {
+  let result = text
+  for (const pattern of BLOCKED_VENDOR_PATTERNS) {
+    result = result.replace(pattern, '其他厂商')
+  }
+  return result
+}
 
 const buildGroundingChunks = (knowledge: Awaited<ReturnType<typeof retrieveKnowledge>>): GroundingChunk[] => {
   const toWebURI = (source: string) => {
@@ -134,6 +161,11 @@ export async function POST(req: NextRequest) {
 
     const latestUserMessage = [...history].reverse().find((msg) => msg.role === 'user')?.content || ''
     const userTexts = history.filter((msg) => msg.role === 'user').map((msg) => msg.content)
+    const userChoice = detectChoice(latestUserMessage)
+    const effectiveUserMessage =
+      userChoice === 'self_service'
+        ? pickLastSubstantiveQuestion(userTexts.slice(0, -1)) || latestUserMessage
+        : latestUserMessage
     const contextInfo = extractConsultationContext(userTexts)
     if (contextInfo.industry && !contextInfo.scene) {
       const maybeScene = normalizeSceneReply(latestUserMessage)
@@ -141,9 +173,9 @@ export async function POST(req: NextRequest) {
         contextInfo.scene = maybeScene
       }
     }
-    const userChoice = detectChoice(latestUserMessage)
-    const riskLevel = detectRiskLevel(latestUserMessage)
-    const consultative = isConsultativeQuestion(latestUserMessage)
+    const riskLevel = detectRiskLevel(effectiveUserMessage)
+    const consultative = isConsultativeQuestion(effectiveUserMessage)
+    const directProductQuestion = isDirectProductQuestion(effectiveUserMessage)
 
     if (detectContactIntent(latestUserMessage)) {
       return NextResponse.json({
@@ -159,8 +191,7 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    const forceSelfService = userChoice === 'self_service'
-    if (!forceSelfService && consultative) {
+    if (consultative && !directProductQuestion) {
       if (!contextInfo.industry) {
         return NextResponse.json({
           text: INDUSTRY_ASK,
@@ -174,11 +205,6 @@ export async function POST(req: NextRequest) {
           groundingChunks: [],
         })
       }
-
-      return NextResponse.json({
-        text: buildChoicePrompt(contextInfo),
-        groundingChunks: [],
-      })
     }
 
     const apiKey = process.env.DEEPSEEK_API_KEY
@@ -187,7 +213,7 @@ export async function POST(req: NextRequest) {
     }
 
     const baseUrl = process.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com'
-    const knowledge = await retrieveKnowledge(latestUserMessage, 6, {
+    const knowledge = await retrieveKnowledge(effectiveUserMessage, 6, {
       includeDocs: ENABLE_PUBLIC_DOCS_KB,
       includeSite: true,
     })
@@ -199,21 +225,54 @@ export async function POST(req: NextRequest) {
     const groundingChunks = buildGroundingChunks(knowledge)
 
     if (knowledge.length === 0) {
-      if (riskLevel === 'high') {
-        return NextResponse.json({
-          text: TRACEABLE_FALLBACK,
-          groundingChunks: [],
-        })
-      }
+      const genericMessages = [
+        {
+          role: 'system',
+          content:
+            `${FIXED_SYSTEM_PROMPT}\n\n` +
+            `${systemInstruction.slice(0, MAX_SYSTEM_HINT_LEN)}\n\n` +
+            '电子围栏：回答中不得出现除“用友”“泊冉”之外的任何厂商或品牌名；若需对比，请统一写为“其他厂商”。\n' +
+            '当前问题未命中站内可直接引用资料，请基于公开信息与通用实施经验给出初步建议，避免编造具体客户事实。\n' +
+            '严禁使用绝对化承诺措辞（如：一定、必须、保证、唯一、100%）。\n' +
+            `如涉及关键决策或高风险判断，请提醒用户联系人工顾问（${HOTLINE}）。\n` +
+            '输出简洁、结构化、可执行。',
+        },
+        { role: 'user', content: effectiveUserMessage },
+      ]
 
-      const fallback =
-        contextInfo.industry && contextInfo.scene
-          ? `我暂未命中可直接引用的资料。您可以回复“继续自助”，我先给通用落地建议；也可转人工或拨打 ${HOTLINE}。`
-          : `${INDUSTRY_ASK}\n\n如需人工支持，可直接拨打 ${HOTLINE}。`
-      return NextResponse.json({
-        text: fallback,
-        groundingChunks: [],
+      const fallbackResponse = await fetch(`${baseUrl}/chat/completions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: 'deepseek-chat',
+          messages: genericMessages,
+          temperature: 0.4,
+          max_tokens: 900,
+        }),
       })
+
+      const fallbackData = fallbackResponse.ok ? await fallbackResponse.json().catch(() => ({})) : {}
+      const fallbackRaw = (fallbackData?.choices?.[0]?.message?.content || '').trim()
+      const genericAdvice = applyVendorFence(
+        fallbackRaw ||
+          (riskLevel === 'high'
+            ? '该问题涉及关键决策，建议先明确当前系统版本、部署方式和合规要求后再判断。'
+            : '建议先明确企业规模、现有系统现状、预算和上线周期，再评估产品与实施路径。'),
+      )
+
+      const text = [
+        '当前未命中可直接引用的站内资料。',
+        '以下回答基于公开信息与通用实施经验整理，供您初步参考，具体以顾问评估为准：',
+        '',
+        genericAdvice,
+        '',
+        `建议直接咨询我们的服务顾问：${HOTLINE}。`,
+      ].join('\n')
+
+      return NextResponse.json({ text, groundingChunks: [] })
     }
 
     // Build messages for DeepSeek API
@@ -223,6 +282,7 @@ export async function POST(req: NextRequest) {
         content:
           `${FIXED_SYSTEM_PROMPT}\n\n` +
           `${systemInstruction.slice(0, MAX_SYSTEM_HINT_LEN)}\n\n` +
+          '电子围栏：回答中不得出现除“用友”“泊冉”之外的任何厂商或品牌名；若需对比，请统一写为“其他厂商”。\n' +
           '回答规则：仅基于“知识库”与用户问题回答；若知识不足请明确告知并建议联系人工，不可编造事实。\n' +
           (riskLevel === 'high'
             ? '这是高风险问题：每一句结论后必须附来源编号，格式为 [K1] / [K2]；不得输出没有 [Kx] 的结论句。\n'
@@ -263,10 +323,11 @@ export async function POST(req: NextRequest) {
 
     const data = await response.json()
     const rawText = (data.choices?.[0]?.message?.content || '').trim()
-    const text =
+    const text = applyVendorFence(
       riskLevel === 'high' && !ensureSentenceCitations(rawText, knowledge.length)
         ? buildTraceableFallbackFromKnowledge(knowledge)
-        : rawText || `建议您补充具体场景，或直接拨打热线电话 ${HOTLINE}。`
+        : rawText || `建议您补充具体场景，或直接拨打热线电话 ${HOTLINE}。`,
+    )
 
     return NextResponse.json({ text, groundingChunks })
 
