@@ -56,7 +56,7 @@ export default function TechSpecs() {
             硬核技术底座，<br />支撑海量业财数据实时处理。
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto">
-            BIP 管理会计不仅提供了深厚的业务逻辑，更在技术架构上保持领先，为企业数字化基石赋能。
+            BIP 管理会计不仅提供了深厚的业务逻辑，更在技术架构上保持先进，为企业数字化基石赋能。
           </p>
         </div>
 

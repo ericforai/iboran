@@ -33,7 +33,7 @@ export default function Hero() {
               </h2>
               
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                全球领先的企业软件与智能服务平台（Business Innovation Platform）。
+                行业实践成熟的企业软件与智能服务平台（Business Innovation Platform）。
                 深度融合企业“研供产销服”与“人财物客项”核心场景，以数智使能企业商业创新，成就数智企业。
               </p>
 
@@ -62,7 +62,7 @@ export default function Hero() {
                   </div>
                   <div>
                     <div className="text-sm font-bold text-[#1F2329]">安全可控</div>
-                    <div className="text-xs text-slate-500">100% 国产化适配</div>
+                    <div className="text-xs text-slate-500">99%以上国产化适配</div>
                   </div>
                 </div>
               </div>

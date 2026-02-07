@@ -51,7 +51,7 @@ export function Hero() {
 
               <div className="mt-12 grid grid-cols-3 gap-6">
                 <div className="flex flex-col gap-2">
-                  <div className="text-2xl font-bold text-slate-900">100%</div>
+                  <div className="text-2xl font-bold text-slate-900">99%以上</div>
                   <div className="text-sm text-slate-500">数据标准化</div>
                 </div>
                 <div className="flex flex-col gap-2">

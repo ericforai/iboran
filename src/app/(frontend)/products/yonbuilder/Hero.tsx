@@ -118,7 +118,7 @@ export default function Hero() {
                   </div>
                   <div>
                     <div className="text-xs font-bold text-slate-800">自动生成代码</div>
-                    <div className="text-[10px] text-slate-500">准确率 100%</div>
+                    <div className="text-[10px] text-slate-500">准确率 99%以上</div>
                   </div>
                 </motion.div>
 
@@ -132,7 +132,7 @@ export default function Hero() {
                     <Smartphone className="w-4 h-4 text-[#0052D9]" />
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-slate-800">100% 移动端适配</div>
+                    <div className="text-xs font-bold text-slate-800">99%以上移动端适配</div>
                     <div className="text-[10px] text-slate-500">自动响应式布局</div>
                   </div>
                 </motion.div>

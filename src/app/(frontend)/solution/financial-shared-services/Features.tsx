@@ -17,9 +17,9 @@ const FEATURES: Feature[] = [
   {
     id: 'ocr',
     title: '智能影像与票据',
-    description: '基于 AI OCR 技术，支持全票种自动识别、验真查重。实现发票结构化数据的自动提取，彻底告别手工录入，从源头确保数据准确。',
+    description: '基于 AI OCR 技术，支持全票种自动识别、验真查重。实现发票结构化数据的自动提取，彻底告别手工录入，从源头以保障数据准确。',
     icon: ScanLine,
-    metrics: ['识别准确率 99%+', '发票验真 100%']
+    metrics: ['识别准确率 99%+', '发票验真 99%以上']
   },
   {
     id: 'audit',
