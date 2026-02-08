@@ -130,6 +130,9 @@ const HANDOFF_POLL_INTERVAL_MS = Math.max(
   Number(process.env.NEXT_PUBLIC_HUMAN_HANDOFF_POLLING_MS || 1200),
 );
 const VISITOR_ID_KEY = 'chat-visitor-id-v2';
+const GREETING_SEEN_KEY = 'chat-online-greeting-seen-v1';
+const ONLINE_GREETING_TEXT =
+  '您好，欢迎咨询泊冉在线客服。我先了解下您的需求，方便的话可以说下行业和当前最想解决的问题。';
 
 /**
  * Fetch a secure, server-signed visitor ID.
@@ -506,7 +509,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
         ...prev,
         {
           role: 'model',
-          parts: [{ text: '转人工请求发送失败，请稍后重试。' }],
+          parts: [{ text: '客服连接失败，请稍后重试。' }],
         },
       ]);
     } finally {
@@ -520,6 +523,28 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     hasInitializedHandoff.current = true;
     void handleRequestHuman(true);
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    if (typeof window === 'undefined') return;
+    if (chatHistory.length > 0) return;
+
+    try {
+      const seen = window.localStorage.getItem(GREETING_SEEN_KEY) === '1';
+      if (seen) return;
+      window.localStorage.setItem(GREETING_SEEN_KEY, '1');
+    } catch {
+      // Ignore storage failures.
+    }
+
+    setChatHistory((prev) => [
+      ...prev,
+      {
+        role: 'model',
+        parts: [{ text: ONLINE_GREETING_TEXT }],
+      },
+    ]);
+  }, [chatHistory.length, isOpen]);
 
   useEffect(() => {
     if (!conversationId || !isOpen) return;
@@ -673,6 +698,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
 }, [t]);
 
   if (!mounted) return null;
+  const hasUserMessage = chatHistory.some((message) => message.role === 'user');
 
   // On mobile, if chat is not open, don't render anything at all
   if (isMobile && !isOpen) return null;
@@ -798,7 +824,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
 
           {/* 输入区域 */}
           <div className="p-5 sm:p-8 bg-white border-t border-slate-100 shadow-[0_-20px_60px_-15px_rgba(0,0,0,0.03)] relative z-10 shrink-0">
-            {handoffStatus !== 'none' && (
+            {handoffStatus !== 'none' && hasUserMessage && (
               <div className={`mb-3 rounded-xl px-3 py-2 text-xs ${t.lightBg} ${t.textDark}`}>
                 {handoffStatus === 'requested'
                   ? '客服已收到，正在为您处理。'

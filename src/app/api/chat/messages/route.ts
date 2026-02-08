@@ -17,6 +17,168 @@ const MAX_CONTENT_LEN = 2000
 const MAX_VISITOR_ID_LEN = 120
 const MAX_SOURCE_PAGE_LEN = 400
 const MAX_CLIENT_MESSAGE_ID_LEN = 120
+const globalScope = globalThis as typeof globalThis & {
+  __chatInquiryEmailLocks?: Map<string, Promise<void>>
+}
+const QUICK_GREETING_WINDOW_MS = 20_000
+const QUICK_GREETING_TEXT =
+  '在的，已收到您的消息。我先帮您安排处理，方便的话请说下行业和您当前最想解决的问题。'
+
+const getInquiryEmailLockStore = () => {
+  if (!globalScope.__chatInquiryEmailLocks) {
+    globalScope.__chatInquiryEmailLocks = new Map<string, Promise<void>>()
+  }
+  return globalScope.__chatInquiryEmailLocks
+}
+
+const withConversationEmailLock = async <T>(conversationId: string, task: () => Promise<T>): Promise<T> => {
+  const locks = getInquiryEmailLockStore()
+  const previous = locks.get(conversationId) || Promise.resolve()
+  let release: () => void = () => undefined
+  const current = new Promise<void>((resolve) => {
+    release = resolve
+  })
+  locks.set(conversationId, previous.then(() => current))
+
+  await previous
+  try {
+    return await task()
+  } finally {
+    release()
+    if (locks.get(conversationId) === current) {
+      locks.delete(conversationId)
+    }
+  }
+}
+
+const isQuickGreetingInput = (text: string) => {
+  const normalized = text.trim().toLowerCase()
+  if (!normalized) return false
+
+  const businessKeywordRe =
+    /(报价|价格|合同|部署|私有化|行业|场景|方案|实施|上线|周期|预算|演示|yonbip|yonsuite|erp|对接|接口)/
+  if (businessKeywordRe.test(normalized)) return false
+
+  const greetingRe =
+    /^(你好|您好|在吗|有人吗|hi|hello|嗨|哈喽|你好在吗|您好在吗|在吗你好|在吗您好|hello there|hi there)[！!。.\s]*$/i
+  return greetingRe.test(normalized) || normalized.length <= 8
+}
+
+const maybeSendQuickGreeting = async (
+  payload: Awaited<ReturnType<typeof getPayload>>,
+  conversationId: string,
+  visitorContent: string,
+) => {
+  if (!isQuickGreetingInput(visitorContent)) return false
+
+  const bucket = Math.floor(Date.now() / QUICK_GREETING_WINDOW_MS)
+  const clientMessageId = `quick-greet-${conversationId}-${bucket}`
+  const existing = await payload.find({
+    collection: 'messages',
+    where: {
+      clientMessageId: {
+        equals: clientMessageId,
+      },
+    },
+    limit: 1,
+    pagination: false,
+  })
+  if (existing.docs[0]) return false
+
+  try {
+    await payload.create({
+      collection: 'messages',
+      data: {
+        conversation: conversationId,
+        role: 'system',
+        content: QUICK_GREETING_TEXT,
+        clientMessageId,
+        meta: {
+          source: 'quick-greeting',
+        },
+      },
+    })
+  } catch {
+    // Ignore duplicate-key races and keep main chat flow healthy.
+    return false
+  }
+  return true
+}
+
+const escapeHtml = (unsafe: string | undefined): string => {
+  if (typeof unsafe !== 'string') return ''
+  return unsafe
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
+const maybeSendInquiryEmail = async (
+  payload: Awaited<ReturnType<typeof getPayload>>,
+  conversation: any,
+  content: string,
+) => {
+  return withConversationEmailLock(conversation.id, async () => {
+    const latestConversation = await payload.findByID({
+      collection: 'conversations',
+      id: conversation.id,
+      depth: 0,
+    }).catch(() => null)
+
+    if (!latestConversation || latestConversation.inquiryEmailSent) return false
+
+    await payload.update({
+      collection: 'conversations',
+      id: conversation.id,
+      data: {
+        inquiryEmailSent: true,
+        inquiryEmailSentAt: new Date().toISOString(),
+      },
+    })
+
+    const adminEmail = process.env.LEAD_EMAIL_TO || 'hzwyz@qq.com'
+    const recipients = adminEmail.includes(',')
+      ? adminEmail.split(',').map((item) => item.trim()).filter(Boolean)
+      : adminEmail
+    const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.iboran.com'
+    const safeVisitorId = escapeHtml(conversation?.visitorId || 'anonymous')
+    const safeSource = escapeHtml(conversation?.sourcePage || '')
+    const safeContent = escapeHtml(content)
+
+    try {
+      await payload.sendEmail({
+        from: process.env.SMTP_FROM || 'noreply@iboran.com',
+        to: recipients,
+        subject: `🔔 在线客服新咨询 - ${safeVisitorId}`,
+        html:
+          `<div style="font-family: Arial, sans-serif; max-width: 680px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;">` +
+          `<div style="background-color: #ffffff; padding: 24px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.08);">` +
+          `<h2 style="color: #1F2329; margin: 0 0 16px;">🔔 在线客服收到新咨询</h2>` +
+          `<p style="margin: 0 0 10px; color: #475467;"><strong>访客ID：</strong>${safeVisitorId}</p>` +
+          `${safeSource ? `<p style="margin: 0 0 10px; color: #475467;"><strong>来源页面：</strong>${safeSource}</p>` : ''}` +
+          `<div style="margin: 12px 0 0; padding: 14px; border-radius: 6px; background: #f8fafc; color: #111827; line-height: 1.6;">${safeContent}</div>` +
+          `<p style="margin: 16px 0 0; color: #667085; font-size: 12px;">时间：${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</p>` +
+          `<div style="margin-top: 18px;">` +
+          `<a href="${siteUrl}/admin/agent-console" style="display: inline-block; padding: 10px 18px; background: #4f46e5; color: #fff; text-decoration: none; border-radius: 6px;">进入 Agent Console</a>` +
+          `</div></div></div>`,
+      })
+
+      return true
+    } catch {
+      await payload.update({
+        collection: 'conversations',
+        id: conversation.id,
+        data: {
+            inquiryEmailSent: false,
+            inquiryEmailSentAt: null,
+          },
+      }).catch(() => undefined)
+      return false
+    }
+  })
+}
 
 const resolveConversation = async (payload: Awaited<ReturnType<typeof getPayload>>, data: MessagePayload) => {
   if (data.conversationId) {
@@ -42,6 +204,7 @@ const resolveConversation = async (payload: Awaited<ReturnType<typeof getPayload
       handoffStatus: 'none',
       serviceMode: 'human_offline',
       needsHuman: false,
+      inquiryEmailSent: false,
       lastMessageAt: new Date().toISOString(),
     },
   })
@@ -115,6 +278,9 @@ export async function POST(req: NextRequest) {
         },
       },
     })
+
+    await maybeSendQuickGreeting(payload, conversation.id, data.content)
+    await maybeSendInquiryEmail(payload, conversation, data.content)
 
     // Preserve existing handoffStatus - don't reset 'active' or 'closed' back to 'none'
     const now = new Date().toISOString()

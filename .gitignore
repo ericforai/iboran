@@ -56,3 +56,10 @@ dbs.json
 *.gz
 *.bak
 logs
+
+# TypeScript build cache
+tsconfig.tsbuildinfo
+
+# Baidu push state and script
+scripts/.baidu-push-state.json
+scripts/baidu-push.ts

@@ -28,7 +28,7 @@ const MAX_SYSTEM_HINT_LEN = 800
 const ENABLE_PUBLIC_DOCS_KB = process.env.AI_ALLOW_PUBLIC_DOCS_KB === 'true'
 const FIXED_SYSTEM_PROMPT =
   process.env.AI_SYSTEM_PROMPT ||
-  '你是泊冉软件官网AI客服。你必须基于提供的知识库进行回答，不编造事实；信息不足时明确说明并建议转人工。'
+  '你是泊冉软件官网在线客服。你必须基于提供的知识库进行回答，不编造事实；信息不足时明确说明并建议联系人工客服。'
 
 const TRACEABLE_FALLBACK =
   `当前问题涉及关键结论，需要基于可核验资料回答。请补充具体场景，或直接联系人工客服 ${HOTLINE}。`
@@ -175,7 +175,7 @@ const buildTraceableFallbackFromKnowledge = (knowledge: Awaited<ReturnType<typeo
     return `${item.title}：${item.content.slice(0, 80)} [K${key}]`
   })
 
-  lines.push('以上为已命中的可追溯信息；如需结论建议，请转人工客服。 [K1]')
+  lines.push('以上为已命中的可追溯信息；如需结论建议，请联系人工客服。 [K1]')
   return lines.join('\n')
 }
 
@@ -241,7 +241,7 @@ export async function POST(req: NextRequest) {
 
     if (userChoice === 'human') {
       return NextResponse.json({
-        text: `好的，建议您现在点击“转人工”，或直接拨打热线电话 ${HOTLINE}，我们会优先安排顾问跟进。`,
+        text: `好的，建议您直接留言当前问题，或拨打热线电话 ${HOTLINE}，我们会优先安排顾问跟进。`,
         groundingChunks: [],
       })
     }

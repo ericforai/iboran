@@ -2,7 +2,7 @@ export const HOTLINE = '400-9955-161'
 
 export const CONTACT_DIRECT_REPLY = [
   `您可以直接拨打热线电话 ${HOTLINE}（电话优先）。`,
-  '如果您更希望在线沟通，也可以在当前窗口点击“转人工”。',
+  '如果您更希望在线沟通，直接在当前窗口留言即可，我们会尽快回复。',
 ].join('\n')
 
 export const INDUSTRY_ASK =
@@ -142,7 +142,7 @@ export const buildChoicePrompt = (context: ConsultationContext) => {
     `已了解，您目前是“${industry}”行业，关注“${scene}”场景。`,
     '您可以选择：',
     '1) 继续自助（我给您下一步建议）',
-    `2) 转人工（热线电话 ${HOTLINE}）`,
+    `2) 联系客服（热线电话 ${HOTLINE}）`,
   ].join('\n')
 }
 

@@ -163,6 +163,21 @@ export const Conversations: CollectionConfig = {
         },
       },
     },
+    {
+      name: 'inquiryEmailSent',
+      type: 'checkbox',
+      defaultValue: false,
+      index: true,
+    },
+    {
+      name: 'inquiryEmailSentAt',
+      type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+      },
+    },
   ],
   timestamps: true,
 }

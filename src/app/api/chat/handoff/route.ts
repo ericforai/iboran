@@ -51,6 +51,7 @@ export async function POST(req: NextRequest) {
           handoffStatus: 'none',
           serviceMode: onlineAgentExists ? 'human_online' : 'human_offline',
           needsHuman: false,
+          inquiryEmailSent: false,
           lastMessageAt: new Date().toISOString(),
         },
       })
@@ -72,22 +73,8 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    const systemMessage = await payload.create({
-      collection: 'messages',
-      data: {
-        conversation: activeConversationId,
-        role: 'system',
-        content: '已为你转人工，工作时间内会优先回复。',
-        clientMessageId: `handoff-${activeConversationId}-${Date.now()}`,
-        meta: {
-          source: 'handoff',
-        },
-      },
-    })
-
     return NextResponse.json({
       conversation: updatedConversation,
-      message: systemMessage,
     })
   } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
