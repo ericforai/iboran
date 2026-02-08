@@ -57,7 +57,7 @@ const fallbackPageLabel = (path: string) => {
 
 const formatHHmm = (dateInput?: string | Date | null) => {
   const date = dateInput ? new Date(dateInput) : new Date()
-  if (Number.isNaN(date.getTime())) return '0000'
+  if (Number.isNaN(date.getTime())) return '00:00'
 
   const formatter = new Intl.DateTimeFormat('zh-CN', {
     timeZone: 'Asia/Shanghai',
@@ -65,7 +65,7 @@ const formatHHmm = (dateInput?: string | Date | null) => {
     minute: '2-digit',
     hour12: false,
   })
-  return formatter.format(date).replace(':', '')
+  return formatter.format(date)
 }
 
 const toISOOrNow = (dateInput?: string | Date | null) => {
