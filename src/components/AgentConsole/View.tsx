@@ -12,6 +12,7 @@ type Conversation = {
   visitorRefDomain?: string
   visitorLandingPath?: string
   sourcePage?: string
+  visitorLastSeenAt?: string
   handoffStatus: 'none' | 'requested' | 'active' | 'closed'
   serviceMode?: 'human_offline' | 'human_online' | 'ai_takeover'
   updatedAt?: string
@@ -30,6 +31,8 @@ const AGENT_POLL_INTERVAL_MS = Math.max(
 )
 const MESSAGE_REFRESH_FALLBACK_MS = 12000
 const READ_MARKERS_STORAGE_KEY = 'agent-console-read-markers-v1'
+const VISITOR_ONLINE_WINDOW_MS = 30_000
+const VISITOR_LEFT_WINDOW_MS = 120_000
 
 type ParsedSource = {
   path: string
@@ -63,6 +66,26 @@ const parseSource = (sourcePage?: string): ParsedSource => {
     channelLabel: channel ? getVisitorChannelLabel(channel) : '网站',
     ref: refSegment?.split('=')[1] || '',
   }
+}
+
+const getVisitorPresence = (lastSeenAt?: string) => {
+  if (!lastSeenAt) {
+    return { text: '未知', color: '#98a2b3', bg: '#f2f4f7' }
+  }
+
+  const last = new Date(lastSeenAt).getTime()
+  if (!Number.isFinite(last)) {
+    return { text: '未知', color: '#98a2b3', bg: '#f2f4f7' }
+  }
+
+  const idleMs = Date.now() - last
+  if (idleMs <= VISITOR_ONLINE_WINDOW_MS) {
+    return { text: '在线', color: '#027a48', bg: '#ecfdf3' }
+  }
+  if (idleMs <= VISITOR_LEFT_WINDOW_MS) {
+    return { text: '可能离开', color: '#b54708', bg: '#fffaeb' }
+  }
+  return { text: '已离开', color: '#475467', bg: '#f2f4f7' }
 }
 
 const buildAdminLoginURL = () => {
@@ -603,6 +626,7 @@ const AgentConsoleView: React.FC = () => {
                 const selected = conversation.id === selectedConversationId
                 const unread = unreadMap[conversation.id] || 0
                 const source = parsedSourcesMap.get(conversation.id) || parseSource(conversation.sourcePage)
+                const presence = getVisitorPresence(conversation.visitorLastSeenAt)
 
                 return (
                   <button
@@ -631,6 +655,21 @@ const AgentConsoleView: React.FC = () => {
                     </div>
                     <div style={{ marginTop: 6, fontSize: 12, color: '#344054' }}>
                       {(conversation.serviceMode || 'human_offline').toUpperCase()}
+                    </div>
+                    <div
+                      style={{
+                        marginTop: 6,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        borderRadius: 999,
+                        background: presence.bg,
+                        color: presence.color,
+                        fontSize: 12,
+                        fontWeight: 700,
+                        padding: '2px 8px',
+                      }}
+                    >
+                      访客：{presence.text}
                     </div>
                     {unread > 0 ? (
                       <div
@@ -666,6 +705,12 @@ const AgentConsoleView: React.FC = () => {
               : '请选择会话'}
             {selectedConversation ? (
               <div style={{ marginTop: 8 }}>
+                <div style={{ marginBottom: 8, fontSize: 12, color: '#475467' }}>
+                  在线状态：{getVisitorPresence(selectedConversation.visitorLastSeenAt).text}
+                  {selectedConversation.visitorLastSeenAt
+                    ? ` · 最近心跳 ${formatTime(selectedConversation.visitorLastSeenAt)}`
+                    : ''}
+                </div>
                 <button
                   onClick={() => void handleTakeover()}
                   disabled={isTakingOver}

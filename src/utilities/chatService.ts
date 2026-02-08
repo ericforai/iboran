@@ -23,6 +23,13 @@ export type HandoffResponse = {
   }
 }
 
+export type PresenceResponse = {
+  conversation?: {
+    id: string
+    visitorLastSeenAt?: string
+  }
+}
+
 export type ConversationMessage = {
   id: string
   role: 'visitor' | 'ai' | 'agent' | 'system'
@@ -53,6 +60,10 @@ export const chatService = {
 
   requestHandoff(input: { conversationId?: string; visitorId?: string; sourcePage?: string }) {
     return postJSON<HandoffResponse>('/api/chat/handoff', input)
+  },
+
+  updateVisitorPresence(input: { conversationId: string; visitorId: string }) {
+    return postJSON<PresenceResponse>('/api/chat/presence', input)
   },
 
   async getConversationMessages(conversationId: string, limit = 80, visitorId?: string) {

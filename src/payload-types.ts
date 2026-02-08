@@ -1183,6 +1183,10 @@ export interface Conversation {
   visitorLandingPath?: string | null;
   visitorFirstSeenAt?: string | null;
   visitorShortCode?: string | null;
+  /**
+   * 访客最近在线心跳时间
+   */
+  visitorLastSeenAt?: string | null;
   mode: 'ai' | 'human' | 'hybrid';
   handoffStatus: 'none' | 'requested' | 'active' | 'closed';
   needsHuman?: boolean | null;
@@ -2132,6 +2136,7 @@ export interface ConversationsSelect<T extends boolean = true> {
   visitorLandingPath?: T;
   visitorFirstSeenAt?: T;
   visitorShortCode?: T;
+  visitorLastSeenAt?: T;
   mode?: T;
   handoffStatus?: T;
   needsHuman?: T;

@@ -73,6 +73,17 @@ export const Conversations: CollectionConfig = {
       index: true,
     },
     {
+      name: 'visitorLastSeenAt',
+      type: 'date',
+      index: true,
+      admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+        description: '访客最近在线心跳时间',
+      },
+    },
+    {
       name: 'mode',
       type: 'select',
       required: true,

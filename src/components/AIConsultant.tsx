@@ -129,6 +129,7 @@ const HANDOFF_POLL_INTERVAL_MS = Math.max(
   2500,
   Number(process.env.NEXT_PUBLIC_HUMAN_HANDOFF_POLLING_MS || 1200),
 );
+const VISITOR_PRESENCE_PING_MS = 15000;
 const VISITOR_ID_KEY = 'chat-visitor-id-v2';
 const GREETING_SEEN_KEY = 'chat-online-greeting-seen-v1';
 const ONLINE_GREETING_TEXT =
@@ -238,6 +239,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
   const scrollRef = useRef<HTMLDivElement>(null);
   const syncedServerMessageIds = useRef<Set<string>>(new Set());
   const hasInitializedHandoff = useRef(false);
+  const visitorContextRef = useRef<Awaited<ReturnType<typeof buildVisitorContext>> | null>(null);
   
   // 获取当前主题样式，默认为 red
   const t = THEMES[config.theme || 'red'];
@@ -278,6 +280,13 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
       }
       return next;
     });
+  }, []);
+
+  const getVisitorContextCached = useCallback(async () => {
+    if (visitorContextRef.current) return visitorContextRef.current;
+    const context = await buildVisitorContext();
+    visitorContextRef.current = context;
+    return context;
   }, []);
 
   const applyServerMessages = useCallback((messages: { id: string; role: 'visitor' | 'ai' | 'agent' | 'system'; content: string }[]) => {
@@ -330,13 +339,13 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     if (!id) return;
 
     try {
-      const visitorContext = await buildVisitorContext();
+      const visitorContext = await getVisitorContextCached();
       const messages = await chatService.getConversationMessages(id, 80, visitorContext.visitorId);
       applyServerMessages(messages);
     } catch {
       // Silent fallback to avoid interrupting chat interaction.
     }
-  }, [applyServerMessages, conversationId]);
+  }, [applyServerMessages, conversationId, getVisitorContextCached]);
 
   useEffect(() => {
     if (!scrollRef.current) return;
@@ -420,7 +429,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     setChatHistory(prev => [...prev, newUserMessage]);
 
     // Get visitor context and send message to server
-    const visitorContext = await buildVisitorContext();
+    const visitorContext = await getVisitorContextCached();
 
     void chatService.sendVisitorMessage({
       conversationId,
@@ -487,7 +496,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
         },
       ]);
     }
-    const visitorContext = await buildVisitorContext();
+    const visitorContext = await getVisitorContextCached();
     try {
       const response = await chatService.requestHandoff({
         conversationId,
@@ -556,7 +565,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     const setupSubscription = async () => {
       void syncConversationMessages(conversationId);
 
-      const visitorContext = await buildVisitorContext();
+      const visitorContext = await getVisitorContextCached();
       unsubscribe = chatService.subscribeConversation(conversationId, visitorContext.visitorId, {
         onMessages: (messages) => {
           applyServerMessages(messages);
@@ -580,7 +589,43 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
         }
       }
     };
-  }, [applyServerMessages, conversationId, handoffStatus, isOpen, syncConversationMessages]);
+  }, [applyServerMessages, conversationId, getVisitorContextCached, handoffStatus, isOpen, syncConversationMessages]);
+
+  useEffect(() => {
+    if (!isOpen || !conversationId) return;
+
+    let timer: number | undefined;
+
+    const pingPresence = async () => {
+      try {
+        const visitorContext = await getVisitorContextCached();
+        await chatService.updateVisitorPresence({
+          conversationId,
+          visitorId: visitorContext.visitorId,
+        });
+      } catch {
+        // Keep UI flow stable even when presence ping fails.
+      }
+    };
+
+    void pingPresence();
+    timer = window.setInterval(() => {
+      void pingPresence();
+    }, VISITOR_PRESENCE_PING_MS);
+
+    const onVisibility = () => {
+      if (!document.hidden) {
+        void pingPresence();
+      }
+    };
+
+    document.addEventListener('visibilitychange', onVisibility);
+
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibility);
+      if (timer) window.clearInterval(timer);
+    };
+  }, [conversationId, getVisitorContextCached, isOpen]);
 
   // Memoize render components to prevent re-creation on every render
   // This keeps component identities stable and prevents remounting of all message subtrees
