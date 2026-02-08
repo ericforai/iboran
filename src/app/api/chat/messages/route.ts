@@ -143,6 +143,7 @@ const maybeSendInquiryEmail = async (
       ? adminEmail.split(',').map((item) => item.trim()).filter(Boolean)
       : adminEmail
     const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.iboran.com'
+    const loginUrl = `${siteUrl}/admin/login?redirect=${encodeURIComponent('/admin/agent-console')}`
     const safeVisitorId = escapeHtml(conversation?.visitorId || 'anonymous')
     const safeSource = escapeHtml(conversation?.sourcePage || '')
     const safeContent = escapeHtml(content)
@@ -161,7 +162,7 @@ const maybeSendInquiryEmail = async (
           `<div style="margin: 12px 0 0; padding: 14px; border-radius: 6px; background: #f8fafc; color: #111827; line-height: 1.6;">${safeContent}</div>` +
           `<p style="margin: 16px 0 0; color: #667085; font-size: 12px;">时间：${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</p>` +
           `<div style="margin-top: 18px;">` +
-          `<a href="${siteUrl}/admin/agent-console" style="display: inline-block; padding: 10px 18px; background: #4f46e5; color: #fff; text-decoration: none; border-radius: 6px;">进入 Agent Console</a>` +
+          `<a href="${loginUrl}" style="display: inline-block; padding: 10px 18px; background: #4f46e5; color: #fff; text-decoration: none; border-radius: 6px;">进入 Agent Console</a>` +
           `</div></div></div>`,
       })
 

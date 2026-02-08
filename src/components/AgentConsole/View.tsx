@@ -68,6 +68,11 @@ const parseSource = (sourcePage?: string): ParsedSource => {
   }
 }
 
+const buildAdminLoginURL = () => {
+  const redirect = encodeURIComponent('/admin/agent-console')
+  return `/admin/login?redirect=${redirect}`
+}
+
 const AgentConsoleView: React.FC = () => {
   const [conversations, setConversations] = useState<Conversation[]>([])
   const [selectedConversationId, setSelectedConversationId] = useState<string>()
@@ -237,6 +242,12 @@ const AgentConsoleView: React.FC = () => {
     })
 
     const response = await fetch(`/api/conversations?${query.toString()}`, { credentials: 'include' })
+    if (response.status === 401 || response.status === 403) {
+      if (typeof window !== 'undefined') {
+        window.location.href = buildAdminLoginURL()
+      }
+      throw new Error('请先登录后台后查看会话')
+    }
     if (!response.ok) {
       throw new Error('无法加载会话列表')
     }
