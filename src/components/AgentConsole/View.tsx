@@ -701,7 +701,10 @@ const AgentConsoleView: React.FC = () => {
         <div style={{ border: '1px solid #e4e7ec', borderRadius: 10, background: '#fff', display: 'flex', flexDirection: 'column' }}>
           <div style={{ padding: 12, borderBottom: '1px solid #e4e7ec', fontWeight: 700 }}>
             {selectedConversation
-              ? `会话：${parseSource(selectedConversation.sourcePage).channelLabel}访客 · ${(selectedConversation.visitorId || selectedConversation.id).slice(-6)}`
+              ? `会话：${
+                  selectedConversation.displayVisitorId ||
+                  `${parseSource(selectedConversation.sourcePage).channelLabel}访客 · ${(selectedConversation.visitorId || selectedConversation.id).slice(-6)}`
+                }`
               : '请选择会话'}
             {selectedConversation ? (
               <div style={{ marginTop: 8 }}>
