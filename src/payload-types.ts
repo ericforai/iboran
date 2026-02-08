@@ -1173,7 +1173,16 @@ export interface Lead {
 export interface Conversation {
   id: string;
   visitorId: string;
+  /**
+   * 用于坐席展示的可读访客标识
+   */
+  displayVisitorId?: string | null;
   sourcePage?: string | null;
+  visitorChannel?: string | null;
+  visitorRefDomain?: string | null;
+  visitorLandingPath?: string | null;
+  visitorFirstSeenAt?: string | null;
+  visitorShortCode?: string | null;
   mode: 'ai' | 'human' | 'hybrid';
   handoffStatus: 'none' | 'requested' | 'active' | 'closed';
   needsHuman?: boolean | null;
@@ -2116,7 +2125,13 @@ export interface LeadsSelect<T extends boolean = true> {
  */
 export interface ConversationsSelect<T extends boolean = true> {
   visitorId?: T;
+  displayVisitorId?: T;
   sourcePage?: T;
+  visitorChannel?: T;
+  visitorRefDomain?: T;
+  visitorLandingPath?: T;
+  visitorFirstSeenAt?: T;
+  visitorShortCode?: T;
   mode?: T;
   handoffStatus?: T;
   needsHuman?: T;

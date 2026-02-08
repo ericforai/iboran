@@ -2,10 +2,15 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { chatService } from '@/utilities/chatService'
+import { getVisitorChannelLabel } from '@/utilities/visitorDisplay'
 
 type Conversation = {
   id: string
   visitorId?: string
+  displayVisitorId?: string
+  visitorChannel?: string
+  visitorRefDomain?: string
+  visitorLandingPath?: string
   sourcePage?: string
   handoffStatus: 'none' | 'requested' | 'active' | 'closed'
   serviceMode?: 'human_offline' | 'human_online' | 'ai_takeover'
@@ -52,18 +57,10 @@ const parseSource = (sourcePage?: string): ParsedSource => {
   const refSegment = segments.find((segment) => segment.startsWith('ref='))
 
   const channel = channelSegment?.split('=')[1] || ''
-  const channelMap: Record<string, string> = {
-    direct: '直访',
-    referral: '外链',
-    baidu: '百度',
-    google: 'Google',
-    wechat: '微信',
-    douyin: '抖音',
-  }
 
   return {
     path,
-    channelLabel: channelMap[channel] || (channel ? channel.toUpperCase() : '网站'),
+    channelLabel: channel ? getVisitorChannelLabel(channel) : '网站',
     ref: refSegment?.split('=')[1] || '',
   }
 }
@@ -622,7 +619,8 @@ const AgentConsoleView: React.FC = () => {
                     }}
                   >
                     <div style={{ fontWeight: 700 }}>
-                      {source.channelLabel}访客 · {(conversation.visitorId || conversation.id).slice(-6)}
+                      {conversation.displayVisitorId ||
+                        `${source.channelLabel}访客 · ${(conversation.visitorId || conversation.id).slice(-6)}`}
                     </div>
                     <div style={{ fontSize: 12, color: '#475467', marginTop: 4 }}>
                       入口：{source.path}

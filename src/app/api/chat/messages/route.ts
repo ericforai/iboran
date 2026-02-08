@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import config from '@payload-config'
 import { checkRateLimit, getRequestIP } from '@/utilities/rateLimit'
 import { hasAnyOnlineAgent } from '@/utilities/serviceMode'
+import { buildDisplayVisitorId } from '@/utilities/visitorDisplay'
 
 type MessagePayload = {
   conversationId?: string
@@ -189,6 +190,20 @@ const resolveConversation = async (payload: Awaited<ReturnType<typeof getPayload
         id: data.conversationId,
       })
       if (existing) {
+        if (!existing.displayVisitorId) {
+          const firstSeenAt = existing.visitorFirstSeenAt || existing.createdAt || new Date().toISOString()
+          const displayData = buildDisplayVisitorId({
+            sourcePage: existing.sourcePage || data.sourcePage,
+            firstSeenAt,
+            shortCode: existing.visitorShortCode || undefined,
+          })
+
+          return payload.update({
+            collection: 'conversations',
+            id: existing.id,
+            data: displayData,
+          })
+        }
         return existing
       }
     } catch {
@@ -196,17 +211,24 @@ const resolveConversation = async (payload: Awaited<ReturnType<typeof getPayload
     }
   }
 
+  const firstSeenAt = new Date().toISOString()
+  const displayData = buildDisplayVisitorId({
+    sourcePage: data.sourcePage,
+    firstSeenAt,
+  })
+
   return payload.create({
     collection: 'conversations',
     data: {
       visitorId: data.visitorId || `visitor-${Date.now()}`,
       sourcePage: data.sourcePage,
+      ...displayData,
       mode: 'ai',
       handoffStatus: 'none',
       serviceMode: 'human_offline',
       needsHuman: false,
       inquiryEmailSent: false,
-      lastMessageAt: new Date().toISOString(),
+      lastMessageAt: firstSeenAt,
     },
   })
 }

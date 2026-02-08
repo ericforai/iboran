@@ -5,8 +5,9 @@ import { authenticated } from '@/access/authenticated'
 export const Conversations: CollectionConfig = {
   slug: 'conversations',
   admin: {
-    useAsTitle: 'visitorId',
+    useAsTitle: 'displayVisitorId',
     defaultColumns: [
+      'displayVisitorId',
       'visitorId',
       'mode',
       'handoffStatus',
@@ -15,7 +16,7 @@ export const Conversations: CollectionConfig = {
       'lastMessageAt',
       'updatedAt',
     ],
-    listSearchableFields: ['visitorId', 'sourcePage'],
+    listSearchableFields: ['displayVisitorId', 'visitorId', 'sourcePage', 'visitorRefDomain', 'visitorLandingPath'],
   },
   access: {
     read: authenticated,
@@ -31,8 +32,45 @@ export const Conversations: CollectionConfig = {
       index: true,
     },
     {
+      name: 'displayVisitorId',
+      type: 'text',
+      index: true,
+      admin: {
+        description: '用于坐席展示的可读访客标识',
+      },
+    },
+    {
       name: 'sourcePage',
       type: 'text',
+    },
+    {
+      name: 'visitorChannel',
+      type: 'text',
+      index: true,
+    },
+    {
+      name: 'visitorRefDomain',
+      type: 'text',
+      index: true,
+    },
+    {
+      name: 'visitorLandingPath',
+      type: 'text',
+      index: true,
+    },
+    {
+      name: 'visitorFirstSeenAt',
+      type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayAndTime',
+        },
+      },
+    },
+    {
+      name: 'visitorShortCode',
+      type: 'text',
+      index: true,
     },
     {
       name: 'mode',

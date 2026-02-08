@@ -37,7 +37,8 @@
     "db:backup": "bash scripts/backup-local-db.sh --verify",
     "db:restore": "bash scripts/restore-local-db.sh",
     "db:list-backups": "bash scripts/backup-local-db.sh --list",
-    "db:safe-reset": "bash scripts/safe-docker-reset.sh"
+    "db:safe-reset": "bash scripts/safe-docker-reset.sh",
+    "chat:backfill-display-visitor-id": "tsx scripts/backfill-display-visitor-id.ts"
   },
   "dependencies": {
     "@google/genai": "^1.39.0",

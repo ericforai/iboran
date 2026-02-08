@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import config from '@payload-config'
 import { checkRateLimit, getRequestIP } from '@/utilities/rateLimit'
 import { hasAnyOnlineAgent } from '@/utilities/serviceMode'
+import { buildDisplayVisitorId } from '@/utilities/visitorDisplay'
 
 const MAX_VISITOR_ID_LEN = 120
 const MAX_SOURCE_PAGE_LEN = 400
@@ -42,20 +43,45 @@ export async function POST(req: NextRequest) {
 
     if (!activeConversationId) {
       const onlineAgentExists = await hasAnyOnlineAgent(payload)
+      const firstSeenAt = new Date().toISOString()
+      const displayData = buildDisplayVisitorId({
+        sourcePage,
+        firstSeenAt,
+      })
       const createdConversation = await payload.create({
         collection: 'conversations',
         data: {
           visitorId: visitorId || `visitor-${Date.now()}`,
           sourcePage,
+          ...displayData,
           mode: 'ai',
           handoffStatus: 'none',
           serviceMode: onlineAgentExists ? 'human_online' : 'human_offline',
           needsHuman: false,
           inquiryEmailSent: false,
-          lastMessageAt: new Date().toISOString(),
+          lastMessageAt: firstSeenAt,
         },
       })
       activeConversationId = createdConversation.id
+    } else {
+      const existingConversation = await payload.findByID({
+        collection: 'conversations',
+        id: activeConversationId,
+      }).catch(() => null)
+
+      if (existingConversation && !existingConversation.displayVisitorId) {
+        const firstSeenAt = existingConversation.visitorFirstSeenAt || existingConversation.createdAt || new Date().toISOString()
+        const displayData = buildDisplayVisitorId({
+          sourcePage: existingConversation.sourcePage || sourcePage,
+          firstSeenAt,
+          shortCode: existingConversation.visitorShortCode || undefined,
+        })
+        await payload.update({
+          collection: 'conversations',
+          id: activeConversationId,
+          data: displayData,
+        })
+      }
     }
 
     const onlineAgentExists = await hasAnyOnlineAgent(payload)
