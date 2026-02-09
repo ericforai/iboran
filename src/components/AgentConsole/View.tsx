@@ -33,6 +33,7 @@ const MESSAGE_REFRESH_FALLBACK_MS = 12000
 const READ_MARKERS_STORAGE_KEY = 'agent-console-read-markers-v1'
 const VISITOR_ONLINE_WINDOW_MS = 30_000
 const VISITOR_LEFT_WINDOW_MS = 120_000
+const MOBILE_BREAKPOINT = 1024
 
 type ParsedSource = {
   path: string
@@ -104,6 +105,8 @@ const AgentConsoleView: React.FC = () => {
   const [isTakingOver, setIsTakingOver] = useState(false)
   const [agentOnline, setAgentOnline] = useState(false)
   const [error, setError] = useState<string>()
+  const [isMobileViewport, setIsMobileViewport] = useState(false)
+  const [mobilePane, setMobilePane] = useState<'list' | 'chat'>('list')
   const [soundReady, setSoundReady] = useState(false)
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>(() => {
     if (typeof window === 'undefined' || typeof Notification === 'undefined') return 'default'
@@ -133,6 +136,16 @@ const AgentConsoleView: React.FC = () => {
     }
     return map
   }, [conversations])
+
+  const openConversation = useCallback(
+    (conversationId: string) => {
+      setSelectedConversationId(conversationId)
+      if (isMobileViewport) {
+        setMobilePane('chat')
+      }
+    },
+    [isMobileViewport],
+  )
 
   const persistReadMarkers = useCallback((nextMarkers: Record<string, string>) => {
     readMarkersRef.current = nextMarkers
@@ -211,13 +224,13 @@ const AgentConsoleView: React.FC = () => {
       } as NotificationOptions)
       notification.onclick = () => {
         window.focus()
-        setSelectedConversationId(conversation.id)
+        openConversation(conversation.id)
         notification.close()
       }
     } catch {
       // noop
     }
-  }, [])
+  }, [openConversation])
 
   const mergeMessages = useCallback((incoming: Message[]) => {
     if (incoming.length === 0) return
@@ -360,6 +373,23 @@ const AgentConsoleView: React.FC = () => {
   }, [])
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const updateViewport = () => {
+      const mobile = window.innerWidth < MOBILE_BREAKPOINT
+      setIsMobileViewport(mobile)
+      setMobilePane((current) => {
+        if (!mobile) return 'chat'
+        return current === 'chat' ? 'chat' : 'list'
+      })
+    }
+
+    updateViewport()
+    window.addEventListener('resize', updateViewport)
+    return () => window.removeEventListener('resize', updateViewport)
+  }, [])
+
+  useEffect(() => {
     if (typeof Notification === 'undefined') return
     setNotificationPermission(Notification.permission)
   }, [])
@@ -439,6 +469,13 @@ const AgentConsoleView: React.FC = () => {
     hasUnreadBaselineRef.current = true
     previousTotalUnreadRef.current = total
   }, [playNotification, unreadMap])
+
+  useEffect(() => {
+    if (!isMobileViewport || selectedConversationId) return
+    if (conversations[0]?.id) {
+      setSelectedConversationId(conversations[0].id)
+    }
+  }, [conversations, isMobileViewport, selectedConversationId])
 
   const handleSend = async () => {
     if (!selectedConversationId || !input.trim() || isSending) return
@@ -581,7 +618,7 @@ const AgentConsoleView: React.FC = () => {
     <div style={{ padding: 20 }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
         <h1 style={{ margin: 0, fontSize: 24 }}>Agent Console{totalUnread > 0 ? ` (${totalUnread})` : ''}</h1>
-        <div style={{ display: 'flex', gap: 8 }}>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
           <button
             onClick={() => void togglePresence(!agentOnline)}
             disabled={isPresenceUpdating}
@@ -615,10 +652,24 @@ const AgentConsoleView: React.FC = () => {
         </div>
       ) : null}
 
-      <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: 12, minHeight: 640 }}>
-        <div style={{ border: '1px solid #e4e7ec', borderRadius: 10, overflow: 'hidden', background: '#fff' }}>
+      <div
+        style={
+          isMobileViewport
+            ? { display: 'block', minHeight: 'calc(100vh - 190px)' }
+            : { display: 'grid', gridTemplateColumns: '360px 1fr', gap: 12, minHeight: 640 }
+        }
+      >
+        <div
+          style={{
+            border: '1px solid #e4e7ec',
+            borderRadius: 10,
+            overflow: 'hidden',
+            background: '#fff',
+            display: isMobileViewport && mobilePane === 'chat' ? 'none' : 'block',
+          }}
+        >
           <div style={{ padding: 12, borderBottom: '1px solid #e4e7ec', fontWeight: 700 }}>待处理会话</div>
-          <div style={{ maxHeight: 590, overflowY: 'auto' }}>
+          <div style={{ maxHeight: isMobileViewport ? 'calc(100vh - 260px)' : 590, overflowY: 'auto' }}>
             {conversations.length === 0 ? (
               <div style={{ padding: 12, color: '#667085' }}>暂无请求中的会话</div>
             ) : (
@@ -631,7 +682,7 @@ const AgentConsoleView: React.FC = () => {
                 return (
                   <button
                     key={conversation.id}
-                    onClick={() => setSelectedConversationId(conversation.id)}
+                    onClick={() => openConversation(conversation.id)}
                     style={{
                       width: '100%',
                       textAlign: 'left',
@@ -640,6 +691,7 @@ const AgentConsoleView: React.FC = () => {
                       padding: 12,
                       cursor: 'pointer',
                       background: selected ? '#eef4ff' : '#fff',
+                      touchAction: 'manipulation',
                     }}
                   >
                     <div style={{ fontWeight: 700 }}>
@@ -698,8 +750,33 @@ const AgentConsoleView: React.FC = () => {
           </div>
         </div>
 
-        <div style={{ border: '1px solid #e4e7ec', borderRadius: 10, background: '#fff', display: 'flex', flexDirection: 'column' }}>
+        <div
+          style={{
+            border: '1px solid #e4e7ec',
+            borderRadius: 10,
+            background: '#fff',
+            display: isMobileViewport && mobilePane === 'list' ? 'none' : 'flex',
+            flexDirection: 'column',
+            minHeight: isMobileViewport ? 'calc(100vh - 260px)' : undefined,
+          }}
+        >
           <div style={{ padding: 12, borderBottom: '1px solid #e4e7ec', fontWeight: 700 }}>
+            {isMobileViewport ? (
+              <button
+                onClick={() => setMobilePane('list')}
+                style={{
+                  marginBottom: 8,
+                  border: 0,
+                  background: 'transparent',
+                  color: '#344054',
+                  fontSize: 13,
+                  padding: 0,
+                  cursor: 'pointer',
+                }}
+              >
+                ← 返回会话列表
+              </button>
+            ) : null}
             {selectedConversation
               ? `会话：${
                   selectedConversation.displayVisitorId ||
@@ -725,7 +802,7 @@ const AgentConsoleView: React.FC = () => {
             ) : null}
           </div>
 
-          <div style={{ flex: 1, overflowY: 'auto', padding: 12, background: '#f9fafb' }}>
+          <div style={{ flex: 1, overflowY: 'auto', padding: 12, background: '#f9fafb', minHeight: 280 }}>
             {messages.length === 0 ? (
               <div style={{ color: '#667085' }}>暂无消息</div>
             ) : (
