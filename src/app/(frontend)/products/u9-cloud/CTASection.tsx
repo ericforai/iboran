@@ -28,8 +28,8 @@ export const CTASection = () => {
 
           <div className="mt-12 flex items-center justify-center gap-3 text-blue-200">
              <PhoneCall className="w-5 h-5" /> 
-             <span className="font-bold">咨询专线：400-XXX-XXXX</span>
-          </div>
+             <span className="font-bold">咨询专线：400-9955-161</span>
+            </div>
         </div>
       </div>
       

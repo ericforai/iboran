@@ -40,7 +40,7 @@ export default function CTASection() {
               </button>
               <button className="w-full sm:w-auto px-10 py-5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition-all border border-white/20 flex items-center justify-center gap-3">
                 <Phone size={20} />
-                咨询热线：400-XXX-XXXX
+                咨询热线：400-9955-161
               </button>
             </div>
 

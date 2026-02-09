@@ -1,9 +1,17 @@
 'use client'
 
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { MessageSquare, Calendar } from 'lucide-react'
+import { DemoRequestModal } from '@/components/DemoRequestModal'
 
 export default function CTASection() {
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
+
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 bg-blue-600 relative overflow-hidden">
       {/* Background Decor */}
@@ -38,18 +46,33 @@ export default function CTASection() {
            </div>
 
            <div className="flex flex-col gap-4 w-full max-w-sm">
-              <Button size="lg" className="w-full h-16 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl text-lg font-bold shadow-xl shadow-blue-200 transition-all hover:scale-105 active:scale-95">
+              <Button
+                size="lg"
+                onClick={() => setIsDemoOpen(true)}
+                className="w-full h-16 text-white rounded-2xl text-lg font-bold shadow-xl shadow-red-200 transition-all hover:scale-105 active:scale-95"
+                style={{
+                  background: '#E60012',
+                  boxShadow: '0 10px 40px rgba(230, 0, 18, 0.3), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 -1px 0 rgba(0,0,0,0.1)',
+                }}
+              >
                  立即预约演示 <Calendar className="ml-2 h-6 w-6" />
               </Button>
-              <Button size="lg" variant="outline" className="w-full h-16 border-slate-200 text-slate-700 hover:bg-slate-50 rounded-2xl text-lg font-bold transition-all">
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={handleOpenConsult}
+                className="w-full h-16 border-slate-200 text-slate-700 hover:bg-slate-50 rounded-2xl text-lg font-bold transition-all"
+              >
                  联系技术顾问 <MessageSquare className="ml-2 h-6 w-6" />
               </Button>
               <p className="text-center text-xs text-slate-400 mt-2">
-                 或者拨打我们的专家热线: <span className="text-slate-700 font-bold">400-XXX-XXXX</span>
+                 或者拨打我们的专家热线: <span className="text-slate-700 font-bold">400-9955-161</span>
               </p>
            </div>
         </div>
       </div>
+
+      <DemoRequestModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} source="ma-cta" />
     </section>
   )
 }

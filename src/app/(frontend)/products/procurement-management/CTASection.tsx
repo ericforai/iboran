@@ -36,7 +36,7 @@ export const CTASection = () => {
                 </div>
                 <div>
                   <div className="text-sm text-blue-200 uppercase tracking-wider">咨询热线</div>
-                  <div className="text-xl font-bold">400-XXX-XXXX</div>
+                  <div className="text-xl font-bold">400-9955-161</div>
                 </div>
               </div>
               <div className="pt-6 border-t border-white/10 text-sm text-blue-100 italic">

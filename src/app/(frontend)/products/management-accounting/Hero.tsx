@@ -4,9 +4,14 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Download } from 'lucide-react'
+import Link from 'next/link'
 import DashboardMockup from './DashboardMockup'
 
 export default function Hero() {
+  const handleOpenDemo = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal', { detail: { source: 'ma-hero' } }))
+  }
+
   return (
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-slate-900 pt-20">
       {/* Background Decor */}
@@ -36,11 +41,22 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 h-14 text-base font-semibold transition-all hover:scale-105 active:scale-95">
+              <Button
+                size="lg"
+                onClick={handleOpenDemo}
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 h-14 text-base font-semibold transition-all hover:scale-105 active:scale-95"
+              >
                 预约产品演示 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-slate-700 text-slate-300 hover:bg-slate-800 rounded-full px-8 h-14 text-base font-semibold transition-all">
-                <Download className="mr-2 h-5 w-5" /> 下载方案白皮书
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-slate-700 text-slate-300 hover:bg-slate-800 rounded-full px-8 h-14 text-base font-semibold transition-all"
+              >
+                <Link href="/whitepapers/business-finance-strategic-restructuring">
+                  <Download className="mr-2 h-5 w-5" /> 下载方案白皮书
+                </Link>
               </Button>
             </div>
           </motion.div>

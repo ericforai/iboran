@@ -61,7 +61,7 @@ export default function CTASection() {
                 </div>
                 <div className="text-left">
                   <div className="text-xs uppercase font-bold tracking-widest opacity-60">咨询热线</div>
-                  <div className="text-lg font-bold text-white">400-XXX-XXXX</div>
+                  <div className="text-lg font-bold text-white">400-9955-161</div>
                 </div>
              </div>
              <div className="flex items-center gap-4 group cursor-pointer">

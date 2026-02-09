@@ -211,16 +211,22 @@ http://localhost:3000?utm_source=test&utm_medium=cpc&utm_campaign=test
 ## 渠道命名规范
 
 营销团队请使用以下规范创建 UTM 链接：
+以 `docs/analytics/conversion-events-mapping.md` 为唯一规范源，本文与其保持一致。
 
 | 渠道 | utm_source | utm_medium | 使用场景 |
 |------|------------|------------|----------|
-| 百度搜索 | `baidu` | `organic` | SEO |
-| 百度竞价 | `baidu` | `cpc` | SEM |
-| 微信公众号 | `wechat` | `social` | 公众号文章 |
-| 朋友圈广告 | `wechat` | `cpc` | 朋友圈广告 |
-| 抖音 | `douyin` | `social` | 抖音内容 |
+| 百度搜索 | `baidu` | `organic` | SEO 自然搜索结果 |
+| 百度竞价 | `baidu` | `cpc` | 百度搜索竞价广告 |
+| Google 搜索 | `google` | `organic` | Google SEO |
+| Google Ads | `google` | `cpc` | Google Ads 竞价 |
+| 微信公众号 | `wechat` | `social` | 公众号文章/菜单 |
+| 朋友圈广告 | `wechat` | `cpc` | 朋友圈广告投放 |
+| 抖音 | `douyin` | `social` | 抖音内容/视频 |
+| 抖音信息流 | `douyin` | `cpc` | 抖音竞价广告 |
+| LinkedIn | `linkedin` | `social` | LinkedIn 社交内容 |
 | EDM 邮件 | `email` | `email` | 邮件营销 |
-| 线下二维码 | `direct` | `qr` | 线下活动 |
+| 线下二维码 | `direct` | `qr` | 线下物料扫码 |
+| 引荐链接 | `<域名>` | `referral` | 其他网站链接跳转 |
 
 ---
 

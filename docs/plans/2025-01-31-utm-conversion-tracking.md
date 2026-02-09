@@ -28,13 +28,22 @@
 
 ## 渠道命名规范
 
-| 中文名 | utm_source | utm_medium |
-|--------|------------|------------|
-| 百度搜索 | `baidu` | `organic` |
-| 百度竞价 | `baidu` | `cpc` |
-| 微信公众号 | `wechat` | `social` |
-| 抖音 | `douyin` | `social` |
-| EDM 邮件 | `email` | `email` |
+以 `docs/analytics/conversion-events-mapping.md` 为唯一规范源，以下表格为同步摘录。
+
+| 中文名 | utm_source | utm_medium | 使用场景 |
+|--------|------------|------------|----------|
+| 百度搜索 | `baidu` | `organic` | SEO 自然搜索结果 |
+| 百度竞价 | `baidu` | `cpc` | 百度搜索竞价广告 |
+| Google 搜索 | `google` | `organic` | Google SEO |
+| Google Ads | `google` | `cpc` | Google Ads 竞价 |
+| 微信公众号 | `wechat` | `social` | 公众号文章/菜单 |
+| 朋友圈广告 | `wechat` | `cpc` | 朋友圈广告投放 |
+| 抖音 | `douyin` | `social` | 抖音内容/视频 |
+| 抖音信息流 | `douyin` | `cpc` | 抖音竞价广告 |
+| LinkedIn | `linkedin` | `social` | LinkedIn 社交内容 |
+| EDM 邮件 | `email` | `email` | 邮件营销 |
+| 线下二维码 | `direct` | `qr` | 线下物料扫码 |
+| 引荐链接 | `<域名>` | `referral` | 其他网站链接跳转 |
 
 ---
 
@@ -885,4 +894,3 @@ docs: add conversion events mapping documentation
 
 - [转化事件映射表](../analytics/conversion-events-mapping.md)
 - [项目 CLAUDE.md](../../CLAUDE.md)
-
