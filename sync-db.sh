@@ -55,6 +55,7 @@ EOF
 
     ssh $SERVER << EOF
 docker exec $REMOTE_CONTAINER mongodump --db=iboran --archive=/tmp/iboran.dump 2>/dev/null
+docker cp $REMOTE_CONTAINER:/tmp/iboran.dump /tmp/iboran.dump
 EOF
 
     scp $SERVER:/tmp/iboran.dump /tmp/iboran.dump

@@ -19,6 +19,7 @@ services:
 
   mongo:
     image: mongo:7
+    platform: linux/amd64
     ports:
       - '27018:27017'
     volumes:
