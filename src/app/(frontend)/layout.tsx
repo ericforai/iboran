@@ -80,6 +80,17 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
         <link href="/assets/images/boran-logo-transparent.png" rel="apple-touch-icon" sizes="180x180" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e91dfc82759053f4c922045bf879a7d9";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();`,
+          }}
+        />
       </head>
       <body suppressHydrationWarning className="antialiased font-sans lg:pb-0 pb-20">
         <OrganizationJsonLd />
