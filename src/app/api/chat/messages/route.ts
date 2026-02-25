@@ -145,7 +145,8 @@ const maybeSendInquiryEmail = async (
       : adminEmail
     const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.iboran.com'
     const loginUrl = `${siteUrl}/admin/login?redirect=${encodeURIComponent('/admin/agent-console')}`
-    const safeVisitorId = escapeHtml(conversation?.visitorId || 'anonymous')
+    const readableVisitorId = conversation?.displayVisitorId || conversation?.visitorId || 'anonymous'
+    const safeVisitorId = escapeHtml(readableVisitorId)
     const safeSource = escapeHtml(conversation?.sourcePage || '')
     const safeContent = escapeHtml(content)
 

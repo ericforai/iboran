@@ -355,6 +355,7 @@ describe('chat api routes', () => {
         collection: 'conversations',
         data: {
           visitorId,
+          displayVisitorId: '直访-首页-12:48-XYZ',
           mode: 'hybrid',
           handoffStatus: 'requested',
           serviceMode: 'human_online',
@@ -396,6 +397,7 @@ describe('chat api routes', () => {
         String(item.subject || '').includes('在线客服新咨询'),
       )
       expect(inquiryEmails).toHaveLength(1)
+      expect(String(inquiryEmails[0]?.subject || '')).toContain('直访-首页-12:48-XYZ')
 
       const updatedConversation = await payload.findByID({
         collection: 'conversations',

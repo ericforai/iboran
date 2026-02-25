@@ -64,7 +64,7 @@ describe('ai chat strategy helpers', () => {
     expect(text).toContain('银行')
     expect(text).toContain('资金/银企联')
     expect(text).toContain('继续自助')
-    expect(text).toContain('转人工')
+    expect(text).toContain('联系客服')
   })
 
   it('picks previous substantive question when latest is self-service command', () => {
