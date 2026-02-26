@@ -94,6 +94,8 @@ export const ExitIntentModal: React.FC = React.memo(() => {
           company: formData.company,
           phone: formData.phone,
           source: 'exit-intent-modal',
+          sourcePath: typeof window !== 'undefined' ? window.location.pathname : '',
+          sourcePageUrl: typeof window !== 'undefined' ? window.location.href : '',
           utmData: attribution ? {
             utm_source: attribution.utm_source || '',
             utm_medium: attribution.utm_medium || '',

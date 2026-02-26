@@ -45,6 +45,8 @@ export function BusinessFinanceStrategicRestructuringGated() {
         body: JSON.stringify({
           ...data,
           source: `whitepaper:${WHITEPAPER_ID}`,
+          sourcePath: typeof window !== 'undefined' ? window.location.pathname : '',
+          sourcePageUrl: typeof window !== 'undefined' ? window.location.href : '',
           resourceTitle: WHITEPAPER_TITLE,
         }),
       })

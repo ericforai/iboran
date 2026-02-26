@@ -41,17 +41,17 @@ const clients: Client[] = [
 
 export const LogoWall = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-14 md:py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-3 md:mb-6">
             行业认可与标杆客户
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
             众多行业头部企业选择泊冉作为数字化转型合作伙伴
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 lg:gap-8">
           {clients.map((client) => {
             const content = (
               <>
@@ -61,7 +61,7 @@ export const LogoWall = () => {
                     alt={client.name}
                     width={160}
                     height={96}
-                    className={`max-h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-110 ${client.className || ''}`}
+                    className={`max-h-14 md:max-h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-110 ${client.className || ''}`}
                     onError={(e) => {
                       e.currentTarget.style.display = 'none'
                       e.currentTarget.nextElementSibling?.classList.remove('hidden')
@@ -74,7 +74,7 @@ export const LogoWall = () => {
               </>
             );
 
-            const containerClassName = `group relative flex items-center justify-center p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 h-40 overflow-hidden ${client.href ? 'cursor-pointer' : ''}`;
+            const containerClassName = `group relative flex items-center justify-center p-3 md:p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 h-24 md:h-40 overflow-hidden ${client.href ? 'cursor-pointer' : ''}`;
 
             if (client.href) {
               return (

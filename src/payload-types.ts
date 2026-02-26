@@ -1121,6 +1121,14 @@ export interface Lead {
    * 例如: whitepaper:business-finance-strategic-restructuring
    */
   source?: string | null;
+  /**
+   * 例如: /products/bip
+   */
+  sourcePath?: string | null;
+  /**
+   * 提交时页面完整 URL
+   */
+  sourcePageUrl?: string | null;
   resourceTitle?: string | null;
   /**
    * 文章或产品页面的URL标识，用于查找标题
@@ -2106,6 +2114,8 @@ export interface LeadsSelect<T extends boolean = true> {
   company?: T;
   phone?: T;
   source?: T;
+  sourcePath?: T;
+  sourcePageUrl?: T;
   resourceTitle?: T;
   pageSlug?: T;
   utmData?:

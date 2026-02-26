@@ -313,6 +313,47 @@
 .animate-pulse-slow {
   animation: pulse-slow 6s ease-in-out infinite;
 }
+
+/* Mobile spacing compaction: reduce excessive vertical whitespace globally */
+@media (max-width: 1023px) {
+  .py-20 {
+    padding-top: 2.75rem !important;
+    padding-bottom: 2.75rem !important;
+  }
+
+  .py-24 {
+    padding-top: 3.25rem !important;
+    padding-bottom: 3.25rem !important;
+  }
+
+  .py-28,
+  .py-32 {
+    padding-top: 3.75rem !important;
+    padding-bottom: 3.75rem !important;
+  }
+
+  .pt-32,
+  .pt-40 {
+    padding-top: 4.5rem !important;
+  }
+
+  .pb-32,
+  .pb-36 {
+    padding-bottom: 4rem !important;
+  }
+
+  .mt-20,
+  .mt-24,
+  .mt-32 {
+    margin-top: 2.5rem !important;
+  }
+
+  .mb-20,
+  .mb-24,
+  .mb-32 {
+    margin-bottom: 2.5rem !important;
+  }
+}
 /* ========================================
    Micro-Skeuomorphic Design System
    ======================================== */

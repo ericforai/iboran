@@ -43,39 +43,43 @@ export const CaseLogosSection: React.FC<CaseLogosSectionProps> = React.memo(({
   subtitle = '泊冉软件助力各行业头部企业实现业财合一，提升全球化经营竞争力',
 }) => {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-14 md:py-24 bg-white relative overflow-hidden">
       <div className="container px-4 mx-auto">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-16">
           <Badge variant="blue" className="mb-4">SUCCESS STORIES</Badge>
           <SlideUp>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#1F2329] mb-6 tracking-tight">
+            <h2 className="text-2xl md:text-5xl font-bold text-[#1F2329] mb-4 md:mb-6 tracking-tight">
               {title}
             </h2>
           </SlideUp>
           <FadeIn delay={200}>
-            <p className="text-lg text-slate-500">
+            <p className="text-base md:text-lg text-slate-500">
               {subtitle}
             </p>
           </FadeIn>
         </div>
 
         {/* Industry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-20">
           {industries.map((item, index) => (
             <SlideUp key={item.name} delay={index * 50}>
               <Link 
                 href={item.href}
-                className="group bg-slate-50 p-8 rounded-2xl border border-transparent hover:border-blue-500/20 hover:bg-white hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-500 cursor-pointer h-full flex flex-col block"
+                className="group bg-slate-50 p-4 md:p-8 rounded-2xl border border-transparent hover:border-blue-500/20 hover:bg-white hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-500 cursor-pointer h-full flex flex-col block"
               >
-                <div className="mb-6 w-12 h-12 rounded-xl bg-white flex items-center justify-center text-2xl shadow-sm group-hover:bg-blue-600 group-hover:scale-110 transition-all">
-                  {item.icon}
+                <div className="flex items-center gap-3 mb-3 md:mb-6">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white flex items-center justify-center text-xl md:text-2xl shadow-sm group-hover:bg-blue-600 group-hover:scale-110 transition-all">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl md:text-xl font-bold text-[#1F2329] group-hover:text-blue-600 transition-colors uppercase">
+                    {item.name}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-bold text-[#1F2329] mb-3 group-hover:text-blue-600 transition-colors uppercase">{item.name}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-1">
+                <p className="text-slate-500 text-sm leading-relaxed mb-3 md:mb-6">
                   {item.desc}
                 </p>
-                <div className="flex items-center gap-2 text-sm font-bold text-[#1F2329] group-hover:text-blue-600 transition-all mt-auto">
+                <div className="flex items-center gap-2 text-sm font-bold text-[#1F2329] group-hover:text-blue-600 transition-all">
                   查看行业案例
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -87,16 +91,16 @@ export const CaseLogosSection: React.FC<CaseLogosSectionProps> = React.memo(({
         {/* Global Testimonial Bar */}
         <div className="relative">
           <div className="absolute inset-0 bg-[#001529]/50 rounded-[2rem] hidden lg:block blur-xl"></div>
-          <div className="relative bg-[#001529] rounded-[2rem] p-8 md:p-16 overflow-hidden shadow-2xl">
+          <div className="relative bg-[#001529] rounded-[2rem] p-5 md:p-16 overflow-hidden shadow-2xl">
              <div className="absolute inset-0 opacity-[0.03] bg-[url('/grid.svg')]" />
              
-             <div className="flex flex-col lg:flex-row gap-12 items-center relative z-10">
+             <div className="flex flex-col lg:flex-row gap-6 md:gap-12 items-center relative z-10">
                 <div className="lg:w-1/2">
-                   <Quote className="text-blue-500/30 w-16 h-16 mb-6" />
-                   <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-8">
+                   <Quote className="text-blue-500/30 w-10 h-10 md:w-16 md:h-16 mb-4 md:mb-6" />
+                   <h3 className="text-xl md:text-3xl font-bold text-white leading-tight mb-5 md:mb-8">
                      &ldquo;泊冉软件的全球司库与业财合一方案，帮助我们实现了全球 15 个国家的实时资金调配，月度对账效率提升了 80% 以上。&rdquo;
                    </h3>
-                   <div className="flex items-center gap-4">
+                   <div className="flex items-center gap-3 md:gap-4">
                       <div className="w-12 h-12 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold">
                         张
                       </div>
@@ -106,7 +110,7 @@ export const CaseLogosSection: React.FC<CaseLogosSectionProps> = React.memo(({
                       </div>
                    </div>
                 </div>
-                <div className="lg:w-1/2 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <div className="lg:w-1/2 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
                     {[
                       { label: '覆盖国家', value: '15+', sub: 'Global Coverage' },
                       { label: '对账效率', value: '80%↑', sub: 'Efficiency Gain' },

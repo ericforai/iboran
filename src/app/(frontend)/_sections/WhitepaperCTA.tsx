@@ -7,7 +7,7 @@ import { SlideUp } from '@/components/animations'
 
 export const WhitepaperCTA = () => {
   return (
-    <section className="h-screen flex flex-col justify-center py-24 bg-white relative overflow-hidden isolate snap-start snap-always">
+    <section className="min-h-[64vh] lg:h-screen flex flex-col justify-center py-10 lg:py-24 bg-white relative overflow-hidden isolate snap-none lg:snap-start lg:snap-always">
       {/* Precision Blueprint Grid Background */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.03] z-0">
         <div className="absolute inset-0" style={{
@@ -17,7 +17,7 @@ export const WhitepaperCTA = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="bg-slate-950 rounded-[48px] p-8 lg:p-16 relative overflow-hidden shadow-[0_50px_100px_-20px_rgba(15,23,42,0.3)] border border-white/5 isolate max-w-6xl mx-auto">
+        <div className="bg-slate-950 rounded-[24px] md:rounded-[48px] p-3 sm:p-6 lg:p-16 relative overflow-hidden shadow-[0_50px_100px_-20px_rgba(15,23,42,0.3)] border border-white/5 isolate max-w-6xl mx-auto">
           {/* Internal Texture & Light */}
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-0" style={{
               backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
@@ -26,7 +26,7 @@ export const WhitepaperCTA = () => {
 
           <div className="absolute -top-40 -right-40 w-[800px] h-[800px] bg-blue-600/[0.07] blur-[150px] rounded-full pointer-events-none"></div>
 
-          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-4 lg:gap-24">
             {/* Visual: Industrial Book Mockup V2 */}
             <SlideUp className="w-full lg:w-[450px] flex justify-center">
               <Link href="/whitepapers/business-finance-strategic-restructuring" className="relative group/book block">
@@ -34,31 +34,31 @@ export const WhitepaperCTA = () => {
                 <div className="absolute -inset-10 bg-blue-600/20 blur-[100px] opacity-0 group-hover/book:opacity-100 transition-opacity duration-1000"></div>
 
                 <div
-                  className="relative w-72 h-[410px] bg-white rounded-r-3xl shadow-[40px_40px_80px_rgba(0,0,0,0.6)] flex flex-col overflow-hidden border-l-[20px] border-blue-600 transition-all duration-700 hover:-translate-y-2.5 hover:-rotate-2"
+                  className="relative w-48 h-[280px] sm:w-64 sm:h-[360px] lg:w-72 lg:h-[410px] bg-white rounded-r-3xl shadow-[40px_40px_80px_rgba(0,0,0,0.6)] flex flex-col overflow-hidden border-l-[12px] lg:border-l-[20px] border-blue-600 transition-all duration-700 hover:-translate-y-2.5 hover:-rotate-2"
                 >
                    {/* Book Content: Technical Ledger Style */}
-                   <div className="p-10 flex-1 flex flex-col relative">
-                      <div className="flex justify-between items-start mb-12">
-                         <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center border border-slate-100 shadow-sm">
-                            <BookOpen className="w-7 h-7 text-blue-600" strokeWidth={2.5} />
+                   <div className="p-5 sm:p-8 lg:p-10 flex-1 flex flex-col relative">
+                      <div className="flex justify-between items-start mb-6 lg:mb-12">
+                         <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-2xl bg-slate-50 flex items-center justify-center border border-slate-100 shadow-sm">
+                            <BookOpen className="w-5 h-5 lg:w-7 lg:h-7 text-blue-600" strokeWidth={2.5} />
                          </div>
-                         <div className="text-[10px] font-mono font-black text-slate-300 rotate-90 origin-right tracking-widest">单元 09B 数据集</div>
+                         <div className="hidden sm:block text-[10px] font-mono font-black text-slate-300 rotate-90 origin-right tracking-widest">单元 09B 数据集</div>
                       </div>
 
-                      <div className="font-heading font-black text-3xl lg:text-4xl text-slate-950 leading-[0.95] mb-8 tracking-tighter text-left">
+                      <div className="font-heading font-black text-xl lg:text-4xl text-slate-950 leading-[0.95] mb-5 lg:mb-8 tracking-tight lg:tracking-tighter text-left">
                         业财一体化<br />
                         <span className="text-blue-600 italic">转型实践</span><br />
                         指南报告
                       </div>
 
-                      <div className="flex items-center gap-2 mb-12">
+                      <div className="flex items-center gap-2 mb-8 lg:mb-12">
                          <div className="w-8 h-px bg-blue-600/30"></div>
                          <div className="text-[10px] font-mono font-black text-blue-600 uppercase tracking-widest">
                            泊冉实验室 v3.0
                          </div>
                       </div>
 
-                      <div className="mt-auto space-y-5">
+                      <div className="mt-auto space-y-3 lg:space-y-5">
                          <div className="h-px bg-slate-100 w-full relative">
                             <Plus size={10} className="absolute -top-1.5 -left-1.5 text-slate-200" />
                          </div>
@@ -86,37 +86,37 @@ export const WhitepaperCTA = () => {
 
             {/* Content: Prestige Copywriting */}
             <div className="flex-1 text-center lg:text-left text-white relative">
-              <SlideUp className="flex items-center gap-4 mb-10 justify-center lg:justify-start">
+              <SlideUp className="flex items-center gap-2.5 md:gap-4 mb-4 md:mb-10 justify-center lg:justify-start">
                 <div className="px-3 py-1 bg-white/10 border border-white/10 rounded-md text-[10px] font-mono font-black text-blue-400 uppercase tracking-[0.2em]">知识资产 A01</div>
                 <div className="h-px w-12 bg-white/10"></div>
               </SlideUp>
 
-              <SlideUp delay={100} as="h2" className="text-5xl lg:text-7xl font-heading font-black mb-10 leading-[0.95] tracking-tighter">
+              <SlideUp delay={100} as="h2" className="text-2xl sm:text-4xl lg:text-7xl font-heading font-black mb-4 md:mb-10 leading-[1] lg:leading-[0.95] tracking-tight lg:tracking-tighter">
                 深度避坑：<br className="hidden sm:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">14年行业交付</span>实录
               </SlideUp>
 
-              <SlideUp delay={200} as="p" className="text-slate-400 text-xl lg:text-2xl mb-14 max-w-2xl leading-relaxed font-medium">
+              <SlideUp delay={200} as="p" className="text-slate-400 text-sm sm:text-lg lg:text-2xl mb-5 md:mb-14 max-w-2xl leading-relaxed font-medium">
                 覆盖半导体、新零售、装备制造、消费品、专业服务等 5 大行业的 20+ 真实案例。为您梳理出&quot;业财一体&quot;落地的 5 大核心红线与技术方案建议。
               </SlideUp>
 
-              <SlideUp delay={300} className="flex flex-col sm:flex-row items-center gap-8 justify-center lg:justify-start">
-                 <Link href="/whitepapers/business-finance-strategic-restructuring" className="group relative px-12 py-5 bg-blue-600 text-white font-mono font-black rounded-xl flex items-center gap-4 overflow-hidden shadow-[0_20px_50px_rgba(0,82,217,0.4)] active:scale-95 transition-all uppercase tracking-tighter border border-white/20">
+              <SlideUp delay={300} className="flex flex-col sm:flex-row items-center gap-3 md:gap-8 justify-center lg:justify-start">
+                 <Link href="/whitepapers/business-finance-strategic-restructuring" className="group relative px-6 py-3 md:px-12 md:py-5 bg-blue-600 text-white font-mono font-black rounded-xl flex items-center gap-2.5 md:gap-4 overflow-hidden shadow-[0_20px_50px_rgba(0,82,217,0.4)] active:scale-95 transition-all uppercase tracking-tight md:tracking-tighter border border-white/20">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     免费获取指南
-                    <Download className="w-6 h-6 group-hover:translate-y-1 transition-transform" strokeWidth={3} />
+                    <Download className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-y-1 transition-transform" strokeWidth={3} />
                  </Link>
 
-                 <div className="flex items-center gap-5 py-3 px-8 bg-white/5 border border-white/10 rounded-[20px] backdrop-blur-sm group/stats cursor-default">
-                    <div className="flex -space-x-2.5">
+                 <div className="flex items-center gap-3 md:gap-5 py-2.5 px-5 md:px-8 bg-white/5 border border-white/10 rounded-[20px] backdrop-blur-sm group/stats cursor-default">
+                    <div className="flex -space-x-2">
                        {[1,2,3].map(i => (
-                         <div key={i} className="w-9 h-9 rounded-full border-2 border-slate-950 bg-slate-800 flex items-center justify-center overflow-hidden ring-2 ring-white/5">
+                         <div key={i} className="w-7 h-7 md:w-9 md:h-9 rounded-full border-2 border-slate-950 bg-slate-800 flex items-center justify-center overflow-hidden ring-2 ring-white/5">
                             <div className="w-full h-full bg-gradient-to-br from-blue-600/40 to-indigo-600/40"></div>
                          </div>
                        ))}
                     </div>
                     <div className="flex flex-col">
-                       <span className="text-white text-lg font-heading font-black leading-none">1,480+</span>
+                       <span className="text-white text-base md:text-lg font-heading font-black leading-none">1,480+</span>
                        <span className="text-slate-500 text-[9px] font-mono font-black uppercase tracking-widest mt-1">位管理者已同步</span>
                     </div>
                  </div>

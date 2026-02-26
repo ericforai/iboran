@@ -36,6 +36,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
     const onSubmit = useCallback(async (data: LeadFormData) => {
         // Generate dynamic source based on current page path
         const currentPath = typeof window !== 'undefined' ? window.location.pathname : ''
+        const currentUrl = typeof window !== 'undefined' ? window.location.href : ''
         let finalSource = sourceProp
         let pageSlug = ''  // Store article/product slug for title lookup
 
@@ -73,6 +74,8 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
                 currentSystem: data.currentSystem,
                 message: data.message,
                 source: finalSource,
+                sourcePath: currentPath || '',
+                sourcePageUrl: currentUrl || '',
                 pageSlug: pageSlug,  // Include slug for server-side title lookup
                 utmData: attribution ? {
                     utm_source: attribution.utm_source || '',

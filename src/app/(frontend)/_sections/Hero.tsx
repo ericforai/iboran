@@ -23,9 +23,10 @@ const staggerContainer = {
 export const Hero = () => {
   const { scrollY } = useScroll()
   const y2 = useTransform(scrollY, [0, 500], [0, -40])
+  const [showMoreHonors, setShowMoreHonors] = React.useState(false)
 
   return (
-    <section className="relative min-h-screen flex items-start lg:items-center pt-24 pb-16 lg:pt-16 lg:pb-24 overflow-hidden bg-[#0F172A] isolate text-white">
+    <section className="relative min-h-[58vh] md:min-h-[84vh] lg:min-h-screen flex items-start lg:items-center pt-14 pb-12 md:pt-20 md:pb-12 lg:pt-16 lg:pb-24 overflow-hidden bg-[#0F172A] isolate text-white">
       {/* 1. Deep Future Background */}
       <div className="absolute inset-0 z-[-1]">
         {/* Digital Grid - Neon Blue - Increased Opacity */}
@@ -53,7 +54,7 @@ export const Hero = () => {
               variants={staggerContainer}
               className="flex flex-col items-start text-left w-full"
             >
-               <motion.div variants={fadeInUp} className="relative mb-6 lg:mb-8">
+               <motion.div variants={fadeInUp} className="relative mb-4 lg:mb-8">
                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] sm:text-xs font-mono mb-4 lg:mb-6 backdrop-blur-sm">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -73,13 +74,25 @@ export const Hero = () => {
                  <div className="absolute -top-[20%] -left-[10%] w-[140%] h-[140%] bg-blue-600/5 blur-[80px] -z-10 rounded-full pointer-events-none mix-blend-screen"></div>
                </motion.div>
 
-                <motion.p variants={fadeInUp} className="text-sm sm:text-base lg:text-xl text-slate-400 font-medium leading-relaxed mb-6 lg:mb-8 max-w-full lg:max-w-xl">
+                <motion.p variants={fadeInUp} className="text-sm sm:text-base lg:text-xl text-slate-400 font-medium leading-relaxed mb-4 lg:mb-8 max-w-full lg:max-w-xl">
                   14年深耕 <span className="text-cyan-400 font-semibold">半导体、新零售、装备制造、消费品、专业服务</span> 五大行业，帮您避开我们踩过的坑。服务 500+ 企业，其中 80% 是老客户转介绍。
                 </motion.p>
 
+                <motion.div variants={fadeInUp} className="md:hidden flex flex-wrap gap-2 mb-5 w-full">
+                  {['业财打通', '财务共享', '供应链协同', '系统迁移'].map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/20 bg-white/5 px-2.5 py-1 text-[11px] text-slate-300"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </motion.div>
+
                 <motion.div
                   variants={fadeInUp}
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-xs sm:text-sm text-slate-400 font-medium mb-6 lg:mb-10 w-full"
+                  className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-400 font-medium mb-5 lg:mb-10 w-full"
                 >
                   {[
                     '业财数据打通？',
@@ -114,9 +127,28 @@ export const Hero = () => {
 
                <motion.div
                  variants={fadeInUp}
-                 className="mt-8 lg:mt-12 pt-6 lg:pt-8 border-t border-white/5 w-full max-w-full lg:max-w-lg"
+                 className="mt-6 lg:mt-12 pt-5 lg:pt-8 border-t border-white/5 w-full max-w-full lg:max-w-lg"
                >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 lg:gap-y-4 gap-x-2">
+                  <div className="md:hidden">
+                    <div className="text-xs text-slate-400">
+                      国家级高新技术企业 · 上海市专精特新
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setShowMoreHonors((prev) => !prev)}
+                      className="mt-2 text-[11px] text-cyan-300 hover:text-cyan-200 transition-colors"
+                    >
+                      {showMoreHonors ? '收起更多' : '展开更多资质'}
+                    </button>
+                    {showMoreHonors ? (
+                      <div className="mt-2 space-y-1.5">
+                        <div className="text-xs text-slate-500">国家级科技型中小企业</div>
+                        <div className="text-xs text-slate-500">宝山区企业技术中心</div>
+                      </div>
+                    ) : null}
+                  </div>
+
+                  <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-y-3 lg:gap-y-4 gap-x-2">
                      {[
                        "国家级高新技术企业",
                        "国家级科技型中小企业",

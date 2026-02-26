@@ -48,23 +48,24 @@ export default function DeliveryMethodology() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {steps.map((step) => (
-            <div key={step.id} className="bg-white rounded-xl p-6 relative group overflow-hidden shadow-sm hover:shadow-lg transition-all">
+            <div key={step.id} className="bg-white rounded-xl p-4 lg:p-6 relative group overflow-hidden shadow-sm hover:shadow-lg transition-all">
               {/* Step Number Background */}
-              <div className="absolute -right-4 -top-6 text-9xl font-bold text-slate-50 group-hover:text-blue-50 transition-colors select-none">
+              <div className="hidden lg:block absolute -right-4 -top-6 text-9xl font-bold text-slate-50 group-hover:text-blue-50 transition-colors select-none">
                 {step.id}
               </div>
               
               <div className="relative z-10 h-full flex flex-col">
-                <div className="w-12 h-12 bg-[#0052D9] text-white rounded-lg flex items-center justify-center mb-6 shadow-md shadow-blue-200">
-                  <step.icon className="w-6 h-6" />
+                <div className="flex items-center gap-3 mb-3 lg:block lg:mb-0">
+                  <div className="w-9 h-9 lg:w-12 lg:h-12 bg-[#0052D9] text-white rounded-lg flex items-center justify-center lg:mb-6 shadow-md shadow-blue-200 flex-shrink-0">
+                    <step.icon className="w-5 h-5 lg:w-6 lg:h-6" />
+                  </div>
+                  <h3 className="text-lg lg:text-xl font-bold text-[#1F2329] mb-0 lg:mb-2">{step.name}</h3>
                 </div>
+                <p className="text-xs lg:text-sm text-slate-500 mb-4 lg:mb-6 h-auto lg:h-10">{step.desc}</p>
                 
-                <h3 className="text-xl font-bold text-[#1F2329] mb-2">{step.name}</h3>
-                <p className="text-sm text-slate-500 mb-6 h-10">{step.desc}</p>
-                
-                <div className="mt-auto space-y-4 pt-6 border-t border-slate-100">
+                <div className="mt-auto space-y-3 lg:space-y-4 pt-4 lg:pt-6 border-t border-slate-100">
                   <div>
                     <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">主要输入</div>
                     <ul className="text-xs text-slate-600 space-y-1">

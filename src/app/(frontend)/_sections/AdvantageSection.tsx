@@ -48,7 +48,7 @@ export const AdvantageSection: React.FC<AdvantageSectionProps> = React.memo(({
   const handleCloseModal = React.useCallback(() => setIsModalOpen(false), [])
 
   return (
-    <section className="py-24 bg-[#0B0C15] relative overflow-hidden isolate">
+    <section className="py-14 lg:py-24 bg-[#0B0C15] relative overflow-hidden isolate">
       {/* Background Decor */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.08] z-0">
         <div className="absolute inset-0" style={{
@@ -59,11 +59,11 @@ export const AdvantageSection: React.FC<AdvantageSectionProps> = React.memo(({
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-32">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32">
           {/* Section Header */}
           <div className="lg:w-[420px] shrink-0">
             <FadeIn>
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-8">
                 <Badge variant="outline" className="text-cyan-400 border-cyan-500/30 bg-cyan-500/5">
                   CORE CAPABILITIES 02
                 </Badge>
@@ -72,7 +72,7 @@ export const AdvantageSection: React.FC<AdvantageSectionProps> = React.memo(({
             </FadeIn>
 
             <SlideUp>
-              <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tighter leading-[1] mb-8 lg:mb-10">
+              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight sm:tracking-tighter leading-[1] mb-5 lg:mb-10">
                 {title.split(' ')[0]}<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-500">
                   {title.split(' ')[1]}
@@ -81,12 +81,12 @@ export const AdvantageSection: React.FC<AdvantageSectionProps> = React.memo(({
             </SlideUp>
 
             <FadeIn delay={200}>
-              <p className="text-base sm:text-lg lg:text-xl text-slate-400 font-medium leading-relaxed mb-8 lg:mb-10 max-w-md">
+              <p className="text-sm sm:text-lg lg:text-xl text-slate-400 font-medium leading-relaxed mb-5 lg:mb-10 max-w-md">
                 {subtitle}
               </p>
             </FadeIn>
 
-            <FadeIn delay={300} className="pt-10 border-t border-white/5">
+            <FadeIn delay={300} className="pt-6 lg:pt-10 border-t border-white/5">
                <button 
                   onClick={handleOpenModal}
                   className="flex items-center gap-4 text-slate-500 hover:text-cyan-400 group transition-colors focus:outline-none"
@@ -102,27 +102,27 @@ export const AdvantageSection: React.FC<AdvantageSectionProps> = React.memo(({
           {/* Advantage Grid */}
           <StaggerContainer 
             staggerDelay={100} 
-            className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+            className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8"
           >
             {advantages.map((adv, idx) => (
               <div
                 key={idx}
-                className="p-8 lg:p-12 bg-white/[0.03] border border-white/10 rounded-[32px] backdrop-blur-sm hover:bg-white/[0.05] hover:border-cyan-500/30 transition-all duration-500 group relative overflow-hidden hover:-translate-y-2"
+                className="p-5 sm:p-6 lg:p-12 bg-white/[0.03] border border-white/10 rounded-3xl lg:rounded-[32px] backdrop-blur-sm hover:bg-white/[0.05] hover:border-cyan-500/30 transition-all duration-500 group relative overflow-hidden hover:-translate-y-2"
               >
-                <div className="absolute top-0 right-0 p-6 font-mono text-[9px] font-bold text-slate-600 uppercase tracking-widest z-0 flex items-center gap-2">
+                <div className="absolute top-0 right-0 p-4 lg:p-6 font-mono text-[9px] font-bold text-slate-600 uppercase tracking-widest z-0 flex items-center gap-2">
                    <div className="w-1 h-1 bg-cyan-500/40 rounded-full"></div>
                    DATA_INDEX_0{idx + 1}
                 </div>
 
-                <div className="flex items-baseline gap-2 mb-8 relative z-10">
-                   <span className="text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tighter group-hover:text-cyan-400 transition-colors duration-500">
+                <div className="flex items-baseline gap-2 mb-5 lg:mb-8 relative z-10">
+                   <span className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight sm:tracking-tighter group-hover:text-cyan-400 transition-colors duration-500">
                       <AnimatedNumber value={adv.number} />
                    </span>
                    <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest">{adv.unit}</span>
                 </div>
 
                 <div className="relative z-10">
-                   <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 tracking-tight flex items-center gap-3">
+                   <h3 className="text-lg lg:text-2xl font-bold text-white mb-3 tracking-tight flex items-center gap-2.5 lg:gap-3">
                       {adv.label}
                       <div className="h-px flex-1 bg-white/5 group-hover:bg-cyan-500/20 transition-colors"></div>
                    </h3>

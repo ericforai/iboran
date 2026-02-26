@@ -11,6 +11,7 @@ import { Footer } from '@/components/Footer'
 import { WebVitals } from '@/components/WebVitals'
 import { ScrollTriggerDrawer } from '@/components/ScrollTriggerDrawer'
 import { ExitIntentModal } from '@/components/ExitIntentModal'
+import { DesktopFloatingActions } from '@/components/DesktopFloatingActions'
 import AIConsultant from '@/components/AIConsultant'
 import { AIWidgetConfig } from '@/types/ai'
 import { getCachedGlobal } from '@/utilities/getGlobals'
@@ -103,8 +104,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <AnalyticsProvider>
             <AttributionProvider>
               <Navbar contactData={contactData} />
-              {children}
+              <main className="pt-16 lg:pt-20">
+                {children}
+              </main>
               <Footer />
+              <DesktopFloatingActions contactData={contactData} />
               <MobileStickyBar contactData={contactData} />
               <ScrollTriggerDrawer />
               <ExitIntentModal />

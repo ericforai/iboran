@@ -75,7 +75,10 @@ export default function Hero() {
                   预约专家演示
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <button className="px-8 py-4 border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-md hover:bg-blue-50 transition-all">
+                <button
+                  onClick={() => setIsDemoOpen(true)}
+                  className="px-8 py-4 border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-md hover:bg-blue-50 transition-all"
+                >
                   获取交付报价
                 </button>
               </div>

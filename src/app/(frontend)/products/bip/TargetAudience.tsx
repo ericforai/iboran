@@ -64,7 +64,7 @@ export default function TargetAudience() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-4 lg:gap-8">
           {[
             {
               title: "业务与 AI 割裂",
@@ -85,15 +85,17 @@ export default function TargetAudience() {
               icon: AlertTriangle
             }
           ].map((item, idx) => (
-            <div key={idx} className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all group">
-              <div className="w-12 h-12 bg-red-50 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <item.icon className="w-6 h-6 text-[#E60012]" />
+            <div key={idx} className="bg-white p-5 lg:p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all group">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 lg:w-12 lg:h-12 bg-red-50 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                  <item.icon className="w-5 h-5 lg:w-6 lg:h-6 text-[#E60012]" />
+                </div>
+                <h3 className="text-base lg:text-lg font-bold text-[#1F2329] mb-0">{item.title}</h3>
               </div>
-              <h3 className="text-lg font-bold text-[#1F2329] mb-3">{item.title}</h3>
               <p className="text-slate-600 text-sm mb-4 leading-relaxed">
                 {item.desc}
               </p>
-              <div className="text-xs font-semibold text-[#E60012] bg-red-50 px-3 py-1.5 rounded inline-block">
+              <div className="text-[11px] lg:text-xs font-semibold text-[#E60012] bg-red-50 px-2.5 lg:px-3 py-1 lg:py-1.5 rounded inline-block">
                 风险：{item.risk}
               </div>
             </div>

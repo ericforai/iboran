@@ -88,6 +88,8 @@ type LeadData = {
   company: string
   phone: string
   source?: string
+  sourcePath?: string
+  sourcePageUrl?: string
   resourceTitle?: string
   pageSlug?: string
   utmData?: {
@@ -166,8 +168,8 @@ export const Leads: CollectionConfig = {
   slug: 'leads',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'company', 'phone', 'source', 'pageSlug', 'utmData.utm_source', 'utmData.utm_campaign', 'createdAt'],
-    listSearchableFields: ['name', 'company', 'phone', 'source', 'pageSlug'],
+    defaultColumns: ['name', 'company', 'phone', 'source', 'sourcePath', 'sourcePageUrl', 'pageSlug', 'utmData.utm_source', 'utmData.utm_campaign', 'createdAt'],
+    listSearchableFields: ['name', 'company', 'phone', 'source', 'sourcePath', 'sourcePageUrl', 'pageSlug'],
   },
   access: {
     read: authenticated,
@@ -203,6 +205,22 @@ export const Leads: CollectionConfig = {
       label: '来源',
       admin: {
         description: '例如: whitepaper:business-finance-strategic-restructuring',
+      },
+    },
+    {
+      name: 'sourcePath',
+      type: 'text',
+      label: '来源路径',
+      admin: {
+        description: '例如: /products/bip',
+      },
+    },
+    {
+      name: 'sourcePageUrl',
+      type: 'text',
+      label: '来源页面URL',
+      admin: {
+        description: '提交时页面完整 URL',
       },
     },
     {

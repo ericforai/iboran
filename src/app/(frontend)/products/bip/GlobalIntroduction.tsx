@@ -48,7 +48,7 @@ export default function GlobalIntroduction() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
           {values.map((value, index) => (
             <motion.div
               key={value.title}
@@ -56,13 +56,15 @@ export default function GlobalIntroduction() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
+              className="bg-white p-5 lg:p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow"
             >
-              <div className={`w-12 h-12 ${value.bg} rounded-xl flex items-center justify-center mb-6`}>
-                <value.icon className={`w-6 h-6 ${value.color}`} />
+              <div className="flex items-center gap-3 mb-3 lg:block lg:mb-6">
+                <div className={`w-9 h-9 lg:w-12 lg:h-12 ${value.bg} rounded-lg lg:rounded-xl flex items-center justify-center flex-shrink-0`}>
+                  <value.icon className={`w-5 h-5 lg:w-6 lg:h-6 ${value.color}`} />
+                </div>
+                <h3 className="text-[20px] lg:text-xl font-bold text-[#1F2329] mb-0 lg:mb-4">{value.title}</h3>
               </div>
-              <h3 className="text-xl font-bold text-[#1F2329] mb-4">{value.title}</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <p className="text-slate-600 text-sm leading-normal lg:leading-relaxed">
                 {value.desc}
               </p>
             </motion.div>

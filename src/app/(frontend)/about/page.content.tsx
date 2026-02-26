@@ -73,7 +73,7 @@ export function AboutPageContent() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-slate-900 min-h-[70vh] flex items-center py-20 overflow-hidden">
+      <section className="relative bg-slate-900 min-h-[56vh] md:min-h-[70vh] flex items-center py-14 md:py-20 overflow-hidden">
         {/* Snowy Mountain Background Placeholder */}
         <div className="absolute inset-0 z-0">
             {/* Suggested image path: /Users/user/.gemini/antigravity/brain/fa9f57d1-bc2a-4ee7-89ff-71e535036113/boran_hero_mountain.png */}
@@ -88,30 +88,30 @@ export function AboutPageContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="inline-block px-5 py-2 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-sm font-bold mb-8 backdrop-blur-md shadow-lg shadow-blue-900/20">
+              <div className="inline-block px-4 py-1.5 md:px-5 md:py-2 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-xs md:text-sm font-bold mb-5 md:mb-8 backdrop-blur-md shadow-lg shadow-blue-900/20">
                 安 以 应 变 · 未 雨 会 泊 冉
               </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 tracking-tighter leading-tight">
+              <h1 className="text-3xl md:text-6xl lg:text-7xl font-black text-white mb-5 md:mb-8 tracking-tight md:tracking-tighter leading-tight">
                 一站式企业管理<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
                   解决方案提供商
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto mb-12">
+              <p className="text-base md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto mb-7 md:mb-12">
                 总部位于上海，于南京设立研发中心。泊冉专注于为华东地区及全国企业提供个性化整体解决方案。
                 我们以 80% 的技术人员占比，筑牢您的数智化转型护城河。
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-6">
                 <button
                   onClick={handleOpenDemo}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#E60012] text-white font-bold rounded-2xl hover:bg-red-700 transition-all duration-300 shadow-2xl shadow-red-500/20"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 md:px-10 md:py-4 bg-[#E60012] text-white font-bold rounded-2xl hover:bg-red-700 transition-all duration-300 shadow-2xl shadow-red-500/20"
                 >
                   预约专家咨询
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 <Link
                   href="#trust"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 bg-white/10 text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 backdrop-blur-md transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 md:px-10 md:py-4 bg-white/10 text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 backdrop-blur-md transition-all"
                 >
                   查看核心实力
                 </Link>
@@ -122,21 +122,21 @@ export function AboutPageContent() {
       </section>
 
       {/* Stats Section (Data-Driven) */}
-      <section className="py-16 bg-white border-b border-slate-100">
+      <section className="py-12 md:py-16 bg-white border-b border-slate-100">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {[
               { label: '服务经验', value: '14+', unit: '年', sub: '始于 2012' },
               { label: '技术人员占比', value: '80', unit: '%+', sub: '研发驱动 DNA' },
               { label: '累计服务客户', value: '2500', unit: '+', sub: '包含 500+ 集团客户' },
               { label: '分支机构', value: '4', unit: '城', sub: '沪宁杭甬 协同服务' },
             ].map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center justify-center text-center group p-4 rounded-2xl hover:bg-slate-50 transition-colors duration-300">
+              <div key={stat.label} className="flex flex-col items-center justify-center text-center group p-3 md:p-4 rounded-2xl hover:bg-slate-50 transition-colors duration-300">
                 <div className="flex flex-row flex-nowrap items-baseline mb-2 text-slate-900 group-hover:text-blue-600 transition-colors">
-                  <span className="text-4xl md:text-5xl font-black tracking-tight">{stat.value}</span>
-                  <span className="ml-1 text-lg font-bold text-slate-500 group-hover:text-blue-500">{stat.unit}</span>
+                  <span className="text-3xl md:text-5xl font-black tracking-tight">{stat.value}</span>
+                  <span className="ml-1 text-base md:text-lg font-bold text-slate-500 group-hover:text-blue-500">{stat.unit}</span>
                 </div>
-                <div className="text-base font-bold text-slate-800 mb-1">{stat.label}</div>
+                <div className="text-sm md:text-base font-bold text-slate-800 mb-1">{stat.label}</div>
                 <div className="text-xs font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">{stat.sub}</div>
               </div>
             ))}
@@ -145,9 +145,9 @@ export function AboutPageContent() {
       </section>
 
       {/* Mission & Branding Dimensions */}
-      <section id="trust" className="py-24 bg-slate-50 overflow-hidden">
+      <section id="trust" className="py-14 md:py-24 bg-slate-50 overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-4 md:gap-8">
             {values.map((v, i) => (
               <motion.div
                 key={v.title}
@@ -155,33 +155,35 @@ export function AboutPageContent() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white p-12 rounded-[40px] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 group"
+                className="bg-white p-6 md:p-12 rounded-3xl md:rounded-[40px] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 group"
               >
-                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:rotate-6 transition-all duration-500">
-                  <v.icon className="w-8 h-8 text-[#0052D9] group-hover:text-white transition-colors" />
+                <div className="flex items-center gap-3 mb-4 md:mb-8 md:block">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-blue-50 rounded-2xl flex items-center justify-center md:mb-4 group-hover:bg-blue-600 group-hover:rotate-6 transition-all duration-500">
+                    <v.icon className="w-6 h-6 md:w-8 md:h-8 text-[#0052D9] group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-slate-900">{v.title}</h3>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">{v.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{v.desc}</p>
+                <p className="text-sm md:text-base text-slate-600 leading-relaxed">{v.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-14 md:py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mb-16">
-            <h2 className="text-3xl font-black text-slate-900 mb-8 flex items-center gap-4">
+          <div className="max-w-4xl mb-10 md:mb-16">
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-5 md:mb-8 flex items-center gap-3 md:gap-4">
               <span className="w-2 h-8 bg-blue-600 rounded-full"></span>
               优势生态：集成与自研并重
             </h2>
-            <p className="text-slate-600 text-lg leading-relaxed">
+            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
               我们不仅提供行业实践成熟的软件平台，更具备深度的自主研发能力，为现代服务业与智能制造提供定制化行业护城河。
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-            <div className="space-y-6">
+          <div className="grid lg:grid-cols-2 gap-7 lg:gap-20">
+            <div className="space-y-4 md:space-y-6">
               <h3 className="text-sm font-bold text-blue-600 uppercase tracking-widest">代理体系</h3>
               {productEcosystem.agency.map((p) => (
                 <div key={p.name} className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
@@ -196,7 +198,7 @@ export function AboutPageContent() {
               ))}
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               <h3 className="text-sm font-bold text-red-600 uppercase tracking-widest">自主知识产权产品</h3>
               {productEcosystem.selfDeveloped.map((p) => (
                 <div key={p.name} className="flex items-center gap-4 p-4 rounded-2xl bg-red-50/50 border border-red-100">
@@ -215,10 +217,10 @@ export function AboutPageContent() {
       </section>
 
       {/* History Timeline */}
-      <section className="py-24 bg-slate-950 text-white overflow-hidden">
+      <section className="py-14 md:py-24 bg-slate-950 text-white overflow-hidden">
         <div className="container mx-auto px-4">
-           <div className="text-center mb-20">
-              <h2 className="text-3xl md:text-5xl font-black mb-4">进阶历程与荣誉</h2>
+           <div className="text-center mb-10 md:mb-20">
+              <h2 className="text-2xl md:text-5xl font-black mb-3 md:mb-4">进阶历程与荣誉</h2>
               <p className="text-slate-400">从深耕华东到服务全国，泊冉始终坚持技术精进</p>
            </div>
 
@@ -227,7 +229,7 @@ export function AboutPageContent() {
                 {/* Horizontal Line (Hidden on mobile) */}
                 <div className="absolute top-1/2 left-0 right-0 h-px bg-slate-800 hidden lg:block"></div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-7 md:gap-12 relative z-10">
                   {milestones.map((m, i) => (
                     <motion.div
                       key={m.year}
@@ -255,13 +257,13 @@ export function AboutPageContent() {
       </section>
 
       {/* Certificates Section */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-14 md:py-24 bg-slate-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">资质认证</h2>
+          <div className="text-center mb-9 md:mb-16">
+            <h2 className="text-2xl md:text-4xl font-black text-slate-900 mb-3 md:mb-4">资质认证</h2>
             <p className="text-slate-600">合规认证，品质保障</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
             {certificates.map((cert) => (
               <motion.div
                 key={cert.name}
@@ -287,13 +289,13 @@ export function AboutPageContent() {
       </section>
 
       {/* Brand Trust - Client Logo Wall */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-14 md:py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <h2 className="text-2xl font-bold text-slate-800">行业认可与标杆客户</h2>
           </div>
           <LogoWall />
-          <div className="mt-20 pt-16 border-t border-slate-100 flex flex-wrap justify-center gap-x-10 gap-y-6">
+          <div className="mt-10 md:mt-20 pt-8 md:pt-16 border-t border-slate-100 flex flex-wrap justify-center gap-x-6 md:gap-x-10 gap-y-3 md:gap-y-6">
             <Link href="/solution/industry/new-retail" className="text-sm text-slate-400 hover:text-blue-600 transition-colors"># 新零售解决方案</Link>
             <Link href="/solution/business/business-finance-integration" className="text-sm text-slate-400 hover:text-blue-600 transition-colors"># 业财一体化</Link>
             <Link href="/solution/industry/smart-manufacturing" className="text-sm text-slate-400 hover:text-blue-600 transition-colors"># 智慧工厂 4.0</Link>
@@ -302,23 +304,23 @@ export function AboutPageContent() {
       </section>
 
       {/* Risk Boundary Section */}
-      <section className="py-24 bg-white">
+      <section className="py-14 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-9 md:mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 text-amber-700 rounded-full text-sm font-medium mb-4">
                 <AlertTriangle className="w-4 h-4" />
                 <span>诚实说明，节省彼此时间</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">我们可能不适合</h2>
+              <h2 className="text-2xl md:text-4xl font-black text-slate-900 mb-3 md:mb-4">我们可能不适合</h2>
               <p className="text-slate-600">如果您的企业符合以下情况，我们可能暂不匹配</p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {riskBoundaries.map((item) => (
                 <div
                   key={item.title}
-                  className="flex items-start gap-4 p-6 bg-slate-50 rounded-2xl"
+                  className="flex items-start gap-3 md:gap-4 p-4 md:p-6 bg-slate-50 rounded-2xl"
                 >
                   <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
                     <X className="w-4 h-4 text-slate-500" />
@@ -331,7 +333,7 @@ export function AboutPageContent() {
               ))}
             </div>
 
-            <div className="mt-12 p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl text-center">
+            <div className="mt-8 md:mt-12 p-5 md:p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl text-center">
               <p className="text-slate-700 mb-4">如果您的情况不在上述范围内，欢迎联系我们</p>
               <button
                 onClick={handleOpenDemo}
@@ -345,20 +347,20 @@ export function AboutPageContent() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 bg-slate-900 relative overflow-hidden">
+      <section className="py-14 md:py-24 bg-slate-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop')] bg-cover opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-8">
+            <h2 className="text-2xl md:text-5xl font-black text-white mb-5 md:mb-8">
               开启数字化演进的下一程
             </h2>
-            <p className="text-lg text-slate-400 mb-12">
+            <p className="text-base md:text-lg text-slate-400 mb-7 md:mb-12">
               我们的咨询专家已准备好为您诊断业务痛点，提供落地可控的数智转型蓝图。
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-6">
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
               <button
                 onClick={handleOpenDemo}
-                className="px-12 py-5 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 transition-all transform hover:scale-105 shadow-2xl shadow-blue-500/20"
+                className="px-10 py-3.5 md:px-12 md:py-5 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 transition-all transform hover:scale-105 shadow-2xl shadow-blue-500/20"
               >
                 立即免费咨询
               </button>

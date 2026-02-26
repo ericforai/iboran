@@ -26,14 +26,16 @@ export default function Capabilities() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-4">
           {capabilities.map((item, idx) => (
-            <div key={idx} className="group p-6 rounded-xl border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all bg-white text-center cursor-default">
-              <div className="w-12 h-12 mx-auto bg-slate-50 group-hover:bg-blue-600 rounded-full flex items-center justify-center mb-4 transition-colors">
-                <item.icon className="w-6 h-6 text-slate-500 group-hover:text-white transition-colors" />
+            <div key={idx} className="group p-4 lg:p-6 rounded-xl border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all bg-white text-left lg:text-center cursor-default">
+              <div className="flex items-center gap-2 mb-2 lg:block lg:mb-4">
+                <div className="w-8 h-8 lg:w-12 lg:h-12 lg:mx-auto bg-slate-50 group-hover:bg-blue-600 rounded-md lg:rounded-full flex items-center justify-center transition-colors flex-shrink-0">
+                  <item.icon className="w-4 h-4 lg:w-6 lg:h-6 text-slate-500 group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="font-bold text-[15px] lg:text-base text-[#1F2329]">{item.name}</h3>
               </div>
-              <h3 className="font-bold text-[#1F2329] mb-2">{item.name}</h3>
-              <p className="text-xs text-slate-500 leading-normal group-hover:text-slate-600">
+              <p className="text-[11px] lg:text-xs text-slate-500 leading-snug lg:leading-normal group-hover:text-slate-600">
                 {item.desc}
               </p>
             </div>

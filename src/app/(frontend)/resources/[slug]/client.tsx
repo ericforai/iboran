@@ -58,6 +58,8 @@ export function WhitepaperClient({ resource }: WhitepaperClientProps) {
         body: JSON.stringify({
           ...data,
           source: `whitepaper:${resource.slug}`,
+          sourcePath: typeof window !== 'undefined' ? window.location.pathname : '',
+          sourcePageUrl: typeof window !== 'undefined' ? window.location.href : '',
           resourceTitle: resource.title,
           utmData: attributionData,
         }),

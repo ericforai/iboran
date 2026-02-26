@@ -41,6 +41,8 @@ export function ContactForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...payload,
+          sourcePath: typeof window !== 'undefined' ? window.location.pathname : '',
+          sourcePageUrl: typeof window !== 'undefined' ? window.location.href : '',
           utmData: attribution ? {
             utm_source: attribution.utm_source || '',
             utm_medium: attribution.utm_medium || '',

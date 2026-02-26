@@ -29,7 +29,7 @@ interface NavbarProps {
 
 export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <header className="fixed top-0 inset-x-0 z-50 bg-white border-b border-gray-100 shadow-sm">
       <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
         {/* Left: Logo */}
         <Link href="/" className="flex items-end gap-0 group h-11">

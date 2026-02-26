@@ -7,6 +7,8 @@ export interface LeadRequestData {
   company: string
   phone: string
   source?: string
+  sourcePath?: string
+  sourcePageUrl?: string
   resourceTitle?: string
   pageSlug?: string
   email?: string
@@ -81,6 +83,19 @@ export async function POST(req: Request) {
       }, { status: 429 })
     }
 
+    const sourcePageUrl = (body.sourcePageUrl || body.utmData?.landingPage || '').trim()
+    let sourcePath = (body.sourcePath || '').trim()
+
+    if (!sourcePath && sourcePageUrl) {
+      try {
+        sourcePath = new URL(sourcePageUrl).pathname || ''
+      } catch {
+        if (sourcePageUrl.startsWith('/')) {
+          sourcePath = sourcePageUrl.split('?')[0].split('#')[0] || ''
+        }
+      }
+    }
+
     // Create the lead with UTM data
     await payload.create({
       collection: 'leads',
@@ -89,6 +104,8 @@ export async function POST(req: Request) {
         company: body.company,
         phone: body.phone,
         source: body.source || 'unknown',
+        sourcePath,
+        sourcePageUrl,
         resourceTitle: body.resourceTitle || '',
         pageSlug: body.pageSlug || '',
         utmData: body.utmData ? {

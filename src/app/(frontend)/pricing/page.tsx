@@ -89,36 +89,36 @@ export default function PricingPage() {
     <div className="min-h-screen bg-white font-sans text-slate-600">
       
       {/* Hero Section */}
-      <section className="bg-slate-900 py-24 text-center text-white relative overflow-hidden">
+      <section className="bg-slate-900 py-16 lg:py-24 text-center text-white relative overflow-hidden">
         <div className="absolute top-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-black opacity-50"></div>
         <div className="container mx-auto px-4 relative z-10">
-           <h1 className="text-4xl md:text-5xl font-black mb-6">透明投入，清晰回报</h1>
-           <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+           <h1 className="text-3xl md:text-5xl font-black mb-4 lg:mb-6">透明投入，清晰回报</h1>
+           <p className="text-base lg:text-xl text-slate-400 max-w-2xl mx-auto mb-6 lg:mb-10">
              灵活的定价模式，陪伴企业从起步到上市的每一个阶段
            </p>
         </div>
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-20 -mt-20 relative z-20">
+      <section className="py-14 lg:py-20 -mt-10 lg:-mt-20 relative z-20">
          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 max-w-6xl mx-auto">
                {tiers.map((tier) => (
-                  <div key={tier.name} className={`bg-white rounded-2xl p-8 shadow-xl flex flex-col ${tier.popular ? 'ring-4 ring-[#0052D9]/20 relative' : 'border border-slate-100'}`}>
+                  <div key={tier.name} className={`bg-white rounded-2xl p-5 lg:p-8 shadow-xl flex flex-col ${tier.popular ? 'ring-4 ring-[#0052D9]/20 relative' : 'border border-slate-100'}`}>
                      {tier.popular && (
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0052D9] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
                            热门推荐
                         </div>
                      )}
-                     <div className="mb-8 text-center">
-                        <h3 className="text-2xl font-bold text-[#1F2329] mb-2">{tier.name}</h3>
-                        <p className="text-sm text-slate-500 mb-6">{tier.description}</p>
-                        <div className="text-3xl font-black text-[#0052D9]">{tier.price}</div>
+                     <div className="mb-5 lg:mb-8 text-center">
+                        <h3 className="text-xl lg:text-2xl font-bold text-[#1F2329] mb-2">{tier.name}</h3>
+                        <p className="text-xs lg:text-sm text-slate-500 mb-4 lg:mb-6">{tier.description}</p>
+                        <div className="text-2xl lg:text-3xl font-black text-[#0052D9]">{tier.price}</div>
                      </div>
                      
-                     <ul className="space-y-4 mb-8 flex-1">
+                     <ul className="space-y-3 lg:space-y-4 mb-5 lg:mb-8 flex-1">
                         {tier.features.map((feature) => (
-                           <li key={feature.name} className="flex items-center justify-between text-sm">
+                           <li key={feature.name} className="flex items-center justify-between text-xs lg:text-sm">
                               <span className="text-slate-600">{feature.name}</span>
                               {feature.included === true ? (
                                 <Check className="w-5 h-5 text-emerald-500" />
@@ -133,7 +133,7 @@ export default function PricingPage() {
 
                      <Link 
                         href={tier.href}
-                        className={`w-full py-4 rounded-xl font-bold text-center transition-all ${
+                        className={`w-full py-3.5 lg:py-4 rounded-xl font-bold text-center transition-all ${
                            tier.popular 
                               ? 'bg-[#0052D9] text-white hover:bg-blue-700 shadow-lg shadow-blue-200' 
                               : 'bg-slate-100 text-[#1F2329] hover:bg-slate-200'
@@ -148,34 +148,38 @@ export default function PricingPage() {
       </section>
 
       {/* Deployment Models */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-14 lg:py-20 bg-slate-50">
          <div className="container mx-auto px-4 max-w-4xl text-center">
-            <h2 className="text-3xl font-bold text-[#1F2329] mb-12">灵活的部署方式</h2>
-            <div className="grid md:grid-cols-2 gap-8 text-left">
-               <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-[#0052D9] mb-6">
-                     <Globe className="w-6 h-6" />
+            <h2 className="text-2xl lg:text-3xl font-bold text-[#1F2329] mb-8 lg:mb-12">灵活的部署方式</h2>
+            <div className="grid md:grid-cols-2 gap-4 lg:gap-8 text-left">
+               <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-slate-100">
+                  <div className="flex items-center gap-3 mb-3 lg:mb-6">
+                    <div className="w-9 h-9 lg:w-12 lg:h-12 bg-blue-50 rounded-xl flex items-center justify-center text-[#0052D9] shrink-0">
+                      <Globe className="w-5 h-5 lg:w-6 lg:h-6" />
+                    </div>
+                    <h3 className="text-lg lg:text-xl font-bold text-[#1F2329]">公有云订阅 (SaaS)</h3>
                   </div>
-                  <h3 className="text-xl font-bold text-[#1F2329] mb-4">公有云订阅 (SaaS)</h3>
-                  <p className="text-slate-600 leading-relaxed mb-6">
+                  <p className="text-slate-600 text-sm lg:text-base leading-relaxed mb-4 lg:mb-6">
                      按年付费，无需购买服务器硬件，由用友提供专业的运维与安全保障。适合追求轻资产运营、快速上线的成长型企业。
                   </p>
-                  <ul className="space-y-2 text-sm text-slate-500">
-                     <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500"/> 自动升级，时刻保持最新</li>
-                     <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500"/> 弹性扩容，随业务增长</li>
+                  <ul className="space-y-1.5 text-sm text-slate-500">
+                     <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"/> 自动升级，时刻保持最新</li>
+                     <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"/> 弹性扩容，随业务增长</li>
                   </ul>
                </div>
-               <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
-                  <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-700 mb-6">
-                     <Layers className="w-6 h-6" />
+               <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-slate-100">
+                  <div className="flex items-center gap-3 mb-3 lg:mb-6">
+                    <div className="w-9 h-9 lg:w-12 lg:h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-700 shrink-0">
+                      <Layers className="w-5 h-5 lg:w-6 lg:h-6" />
+                    </div>
+                    <h3 className="text-lg lg:text-xl font-bold text-[#1F2329]">私有化部署 (On-Premise)</h3>
                   </div>
-                  <h3 className="text-xl font-bold text-[#1F2329] mb-4">私有化部署 (On-Premise)</h3>
-                  <p className="text-slate-600 leading-relaxed mb-6">
+                  <p className="text-slate-600 text-sm lg:text-base leading-relaxed mb-4 lg:mb-6">
                      购买永久许可，部署在企业自有的数据中心或私有云上。适合对数据合规性有极高要求、需要深度定制的大型集团。
                   </p>
-                  <ul className="space-y-2 text-sm text-slate-500">
-                     <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500"/> 数据高度自主掌控</li>
-                     <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500"/> 支持内网隔离环境</li>
+                  <ul className="space-y-1.5 text-sm text-slate-500">
+                     <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"/> 数据高度自主掌控</li>
+                     <li className="flex gap-2"><Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5"/> 支持内网隔离环境</li>
                   </ul>
                </div>
             </div>
@@ -183,12 +187,12 @@ export default function PricingPage() {
       </section>
 
       {/* FAQs */}
-      <section className="py-20">
+      <section className="py-14 lg:py-20">
          <div className="container mx-auto px-4 max-w-3xl">
-             <h2 className="text-3xl font-bold text-[#1F2329] mb-12 text-center">常见问题</h2>
-             <div className="space-y-6">
+             <h2 className="text-2xl lg:text-3xl font-bold text-[#1F2329] mb-8 lg:mb-12 text-center">常见问题</h2>
+             <div className="space-y-4 lg:space-y-6">
                 {faqs.map((faq, i) => (
-                   <div key={i} className="bg-slate-50 rounded-2xl p-6 hover:bg-white hover:shadow-md transition-all border border-transparent hover:border-slate-100">
+                   <div key={i} className="bg-slate-50 rounded-2xl p-4 lg:p-6 hover:bg-white hover:shadow-md transition-all border border-transparent hover:border-slate-100">
                       <h4 className="font-bold text-[#1F2329] mb-3 flex items-start gap-3">
                          <HelpCircle className="w-5 h-5 text-[#0052D9] shrink-0 mt-0.5" />
                          {faq.q}
@@ -201,7 +205,7 @@ export default function PricingPage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 border-t border-slate-100">
+      <section className="py-14 lg:py-20 border-t border-slate-100">
          <div className="container mx-auto px-4 text-center">
             <h2 className="text-2xl font-bold text-[#1F2329] mb-6">想获得精准报价？</h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
