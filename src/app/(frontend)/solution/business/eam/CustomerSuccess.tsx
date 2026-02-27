@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 
 import { Quote } from 'lucide-react'
 
@@ -66,9 +67,9 @@ export default function CustomerSuccess() {
               </div>
             </div>
             
-            <button className="mt-10 text-[#0052D9] font-bold flex items-center gap-2 hover:gap-3 transition-all">
+            <Link href="/cases" className="mt-10 text-[#0052D9] font-bold flex items-center gap-2 hover:gap-3 transition-all">
               查看更多行业案例 <ArrowRight size={18} />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

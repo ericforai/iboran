@@ -1,4 +1,5 @@
 import { TrendingUp, Clock, Wrench, ShieldCheck } from 'lucide-react'
+import Link from 'next/link'
 
 const metrics = [
   {
@@ -99,13 +100,12 @@ export default function ValueSection() {
             </p>
           </div>
           <div className="flex-shrink-0">
-             <button className="px-8 py-4 bg-white text-slate-900 font-bold rounded-2xl hover:bg-blue-50 transition-all shadow-xl shadow-white/5">
+             <Link href="/resources" className="px-8 py-4 bg-white text-slate-900 font-bold rounded-2xl hover:bg-blue-50 transition-all shadow-xl shadow-white/5">
                 下载 EAM 业务全景图
-             </button>
+             </Link>
           </div>
         </div>
       </div>
     </section>
   )
 }
-

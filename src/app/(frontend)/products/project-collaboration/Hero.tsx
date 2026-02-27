@@ -1,9 +1,19 @@
+'use client'
+
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Download } from 'lucide-react'
 import Image from 'next/image'
 
 export const Hero = () => {
+  const handleOpenDemo = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal'))
+  }
+
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="relative pt-20 pb-12 overflow-hidden bg-white">
       <div className="container px-4 mx-auto">
@@ -18,11 +28,20 @@ export const Hero = () => {
                 解决渐进明细管理差、跨部门协作难、进度不可控等核心痛点，实现项目从立项到交付的全过程数智化监管。
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                <Button size="lg" className="bg-brand-red hover:bg-red-700 text-white px-8 py-6 text-lg rounded-full">
+                <Button
+                  size="lg"
+                  onClick={handleOpenDemo}
+                  className="bg-brand-red hover:bg-red-700 text-white px-8 py-6 text-lg rounded-full"
+                >
                   预约专家演示
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-brand-blue text-brand-blue hover:bg-blue-50 px-8 py-6 text-lg rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={handleOpenConsult}
+                  className="border-brand-blue text-brand-blue hover:bg-blue-50 px-8 py-6 text-lg rounded-full"
+                >
                   获取交付清单
                   <Download className="ml-2 h-5 w-5" />
                 </Button>

@@ -38,7 +38,7 @@ export function CTASection() {
                     立即预约演示
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
-                  <Button size="lg" variant="outline" className="h-14 px-10 border-slate-700 text-white hover:bg-slate-800 rounded-full text-lg">
+                  <Button onClick={() => setIsDemoOpen(true)} size="lg" variant="outline" className="h-14 px-10 border-slate-700 text-white hover:bg-slate-800 rounded-full text-lg">
                     咨询行业专家
                   </Button>
                 </div>

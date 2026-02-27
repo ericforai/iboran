@@ -94,9 +94,9 @@ export function SolutionPageContent() {
               {solutionByBusiness.map((category) => (
                 <div key={category.name}>
                   {/* Category Header */}
-                  <div className="flex items-center gap-4 mb-8">
-                    <h2 className="text-2xl font-bold text-[#1F2329]">{category.name}</h2>
-                    <div className="flex-1 h-px bg-slate-200"></div>
+                  <div className="flex items-center gap-3 pb-4 border-b border-slate-100 mb-8">
+                    <div className="w-1 h-6 bg-[#E60012] rounded-full"></div>
+                    <h2 className="text-lg font-bold text-[#1F2329]">{category.name}</h2>
                   </div>
                   
                   {/* Solutions Grid */}
@@ -139,9 +139,9 @@ export function SolutionPageContent() {
               {solutionByIndustryCategory.map((category) => (
                 <div key={category.name}>
                   {/* Category Header */}
-                  <div className="flex items-center gap-4 mb-8">
-                    <h2 className="text-2xl font-bold text-[#1F2329]">{category.name}</h2>
-                    <div className="flex-1 h-px bg-slate-200"></div>
+                  <div className="flex items-center gap-3 pb-4 border-b border-slate-100 mb-8">
+                    <div className="w-1 h-6 bg-[#E60012] rounded-full"></div>
+                    <h2 className="text-lg font-bold text-[#1F2329]">{category.name}</h2>
                   </div>
                   
                   {/* Solutions Grid */}

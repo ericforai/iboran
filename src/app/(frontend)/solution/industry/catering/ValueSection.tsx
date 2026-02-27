@@ -1,4 +1,5 @@
 import { TrendingUp, Users, Target, Clock } from 'lucide-react'
+import Link from 'next/link'
 
 const metrics = [
   {
@@ -67,9 +68,9 @@ export default function ValueSection() {
                 用友BIP超级版餐饮行业专家团队，为您提供1对1的架构诊断与建设路径规划咨询。
               </p>
             </div>
-            <button className="px-8 py-4 bg-[#E60012] text-white font-bold rounded-md hover:bg-red-700 transition-all shrink-0">
+            <Link href="/contact" className="px-8 py-4 bg-[#E60012] text-white font-bold rounded-md hover:bg-red-700 transition-all shrink-0">
                获取定制化解决方案
-            </button>
+            </Link>
           </div>
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-[100px]" />
           <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-red-600/10 rounded-full blur-[100px]" />

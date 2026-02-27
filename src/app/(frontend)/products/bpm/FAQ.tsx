@@ -32,6 +32,9 @@ const faqs = [
 
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(0)
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
 
   return (
     <section className="py-20 bg-slate-50">
@@ -75,7 +78,7 @@ export default function FAQ() {
           <div className="mt-12 text-center">
             <p className="text-sm text-slate-500">
               还有其他技术细节或特定方案需要咨询？
-              <button className="ml-2 text-blue-600 font-bold hover:underline">
+              <button onClick={handleOpenConsult} className="ml-2 text-blue-600 font-bold hover:underline">
                 联系我们的产品专家 →
               </button>
             </p>

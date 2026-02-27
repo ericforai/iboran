@@ -3,6 +3,14 @@
 import { ArrowRight, MessageSquare } from 'lucide-react'
 
 export default function CTASection() {
+  const handleOpenDemo = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal'))
+  }
+
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 bg-[#0052D9] relative overflow-hidden">
       {/* Background Patterns */}
@@ -20,12 +28,18 @@ export default function CTASection() {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button className="px-8 py-4 bg-white text-[#0052D9] font-bold rounded-lg hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 min-w-[200px] justify-center">
+          <button
+            onClick={handleOpenDemo}
+            className="px-8 py-4 bg-white text-[#0052D9] font-bold rounded-lg hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 min-w-[200px] justify-center"
+          >
             免费预约演示
             <ArrowRight className="w-5 h-5" />
           </button>
-          
-          <button className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-lg hover:bg-white/10 transition-all flex items-center gap-2 min-w-[200px] justify-center">
+
+          <button
+            onClick={handleOpenConsult}
+            className="px-8 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-lg hover:bg-white/10 transition-all flex items-center gap-2 min-w-[200px] justify-center"
+          >
             <MessageSquare className="w-5 h-5" />
             咨询解决方案顾问
           </button>

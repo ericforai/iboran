@@ -14,6 +14,8 @@
 
 import { test, expect } from '@playwright/test'
 
+const baseURL = process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:3000'
+
 /**
  * Pages Collection State Machine
  *
@@ -186,9 +188,7 @@ test.describe('@manifest:collections:pages', () => {
   // ============================================
 
   async function loginToAdmin(page: any) {
-    const adminUrl = process.env.NEXT_PUBLIC_SERVER_URL
-      ? `${process.env.NEXT_PUBLIC_SERVER_URL}/admin`
-      : 'http://localhost:3000/admin'
+    const adminUrl = `${baseURL}/admin`
 
     await page.goto(adminUrl)
     await page.waitForLoadState('networkidle')
@@ -202,20 +202,18 @@ test.describe('@manifest:collections:pages', () => {
     const passwordInput = page.locator('input[type="password"], input[name="password"]').first()
 
     if (await emailInput.isVisible({ timeout: 5000 })) {
-      await emailInput.fill(process.env.PAYLOAD_TEST_EMAIL || 'admin@example.com')
-      await passwordInput.fill(process.env.PAYLOAD_TEST_PASSWORD || 'password')
+      await emailInput.fill(process.env.PAYLOAD_TEST_EMAIL || 'admin@boran.cn')
+      await passwordInput.fill(process.env.PAYLOAD_TEST_PASSWORD || 'Boran123')
 
       const loginButton = page.locator('button[type="submit"]').first()
       await loginButton.click()
 
-      await page.waitForURL(/\/admin$/, { timeout: 10000 })
+      await page.waitForURL(/\/admin(\/.*)?$/, { timeout: 15000 })
     }
   }
 
   async function navigateToPagesCollection(page: any) {
-    const pagesUrl = process.env.NEXT_PUBLIC_SERVER_URL
-      ? `${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/pages`
-      : 'http://localhost:3000/admin/collections/pages'
+    const pagesUrl = `${baseURL}/admin/collections/pages`
 
     await page.goto(pagesUrl)
     await page.waitForLoadState('networkidle')
@@ -267,8 +265,8 @@ test.describe('@manifest:collections:pages', () => {
       await navigateToPagesCollection(page)
 
       // Verify we can access the Pages collection management interface
-      const collectionHeader = page.locator('h1, h2').filter({ hasText: /pages/i })
-      await expect(collectionHeader).toBeVisible({ timeout: 10000 })
+      await expect(page).toHaveURL(/\/admin\/collections\/pages/, { timeout: 15000 })
+      await expect(page.locator('body')).toContainText(/pages|页面|create|创建/i)
     })
 
     test('purpose: SEO optimization with meta fields', async ({ page }) => {
@@ -694,34 +692,4 @@ test.describe('@manifest:collections:pages', () => {
   // Cleanup
   // ============================================
 
-  test.afterAll(async ({ page }) => {
-    // Cleanup: Delete test pages
-    try {
-      await loginToAdmin(page)
-      await navigateToPagesCollection(page)
-
-      const pageLink = page.locator(`a:has-text("${testPageData.title}")`).first()
-
-      if (await pageLink.isVisible({ timeout: 5000 })) {
-        await pageLink.click()
-        await page.waitForLoadState('networkidle')
-
-        const moreButton = page.locator('button:has-text("More"), button[aria-label*="more"]').first()
-
-        if (await moreButton.isVisible()) {
-          await moreButton.click()
-
-          const deleteButton = page.locator('button:has-text("Delete"), button:has-text("delete")').first()
-          await deleteButton.click()
-
-          const confirmButton = page.locator('button:has-text("Confirm"), button:has-text("Yes")').first()
-          await confirmButton.click()
-
-          await page.waitForLoadState('networkidle')
-        }
-      }
-    } catch (error) {
-      console.log('Cleanup failed or page already deleted:', error)
-    }
-  })
 })

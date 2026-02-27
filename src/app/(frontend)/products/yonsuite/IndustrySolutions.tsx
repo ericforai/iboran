@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { Utensils, Beaker, ShoppingBag, Landmark, ArrowRight } from 'lucide-react'
 
 const industries = [
@@ -45,10 +46,10 @@ export default function IndustrySolutions() {
               YonSuite 不仅提供通用的管理工具，更针对高成长行业的特殊业务场景提供深度适配方案。
             </p>
           </div>
-          <button className="text-[#0052D9] font-bold flex items-center gap-2 hover:underline">
+          <Link href="/solution" className="text-[#0052D9] font-bold flex items-center gap-2 hover:underline">
             查看更多行业方案
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </Link>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

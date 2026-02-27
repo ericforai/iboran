@@ -3,6 +3,10 @@
 import { Check, Plus } from 'lucide-react'
 
 export default function DeliveryScope() {
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 bg-slate-50">
       <div className="container mx-auto px-4">
@@ -43,7 +47,10 @@ export default function DeliveryScope() {
               </ul>
             </div>
             <div className="p-8 bg-slate-50 border-t border-slate-100">
-              <button className="w-full py-3 bg-[#0052D9] text-white font-bold rounded-lg hover:bg-blue-700 transition-colors">
+              <button
+                onClick={handleOpenConsult}
+                className="w-full py-3 bg-[#0052D9] text-white font-bold rounded-lg hover:bg-blue-700 transition-colors"
+              >
                 咨询标准版报价
               </button>
             </div>
@@ -84,7 +91,10 @@ export default function DeliveryScope() {
               </ul>
             </div>
              <div className="p-8 bg-slate-50 border-t border-slate-100">
-              <button className="w-full py-3 bg-[#E60012] text-white font-bold rounded-lg hover:bg-red-700 transition-colors">
+              <button
+                onClick={handleOpenConsult}
+                className="w-full py-3 bg-[#E60012] text-white font-bold rounded-lg hover:bg-red-700 transition-colors"
+              >
                 咨询企业版报价
               </button>
             </div>

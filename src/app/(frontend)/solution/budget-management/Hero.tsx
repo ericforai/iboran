@@ -15,6 +15,10 @@ interface HeroProps {
 export default function Hero({ title, tagline, description }: HeroProps) {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="relative bg-white pt-24 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
@@ -60,7 +64,7 @@ export default function Hero({ title, tagline, description }: HeroProps) {
                   预约专家演示
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="px-8 py-4 border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-lg hover:bg-blue-50 transition-all flex items-center gap-2">
+                <button onClick={handleOpenConsult} className="px-8 py-4 border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-lg hover:bg-blue-50 transition-all flex items-center gap-2">
                   下载解决方案白皮书
                 </button>
               </div>

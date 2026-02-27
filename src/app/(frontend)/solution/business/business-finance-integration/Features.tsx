@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { 
   Zap, 
@@ -53,9 +54,9 @@ export default function Features() {
               不仅仅是连接，更是深度的融合与价值再造。
             </p>
           </div>
-          <button className="flex items-center gap-2 text-[#0052D9] font-bold hover:gap-3 transition-all group">
+          <Link href="/contact" className="flex items-center gap-2 text-[#0052D9] font-bold hover:gap-3 transition-all group">
             查看更多特性详情 <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">

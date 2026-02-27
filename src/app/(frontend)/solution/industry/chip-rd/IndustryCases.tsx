@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Quote, ArrowUpRight } from 'lucide-react';
 
 const cases = [
@@ -35,10 +36,10 @@ const IndustryCases = () => {
               泊冉软件已成功助力多家先锋集成电路设计企业实现业务转型。
             </p>
           </div>
-          <button className="flex items-center space-x-2 text-blue-600 font-bold hover:underline group">
+          <Link href="/cases" className="flex items-center space-x-2 text-blue-600 font-bold hover:underline group">
             <span>浏览更多行业案例</span>
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">

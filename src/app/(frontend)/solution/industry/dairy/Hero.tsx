@@ -6,6 +6,10 @@ import { DemoRequestModal } from '@/components/DemoRequestModal'
 
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
+
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
   const industryName = '乳制品行业'
 
   return (
@@ -41,7 +45,7 @@ export default function Hero() {
                   预约乳制品行业专家咨询
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
                 </button>
-                <button className="px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-md font-semibold hover:bg-white/20 transition flex items-center gap-2">
+                <button onClick={handleOpenConsult} className="px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-md font-semibold hover:bg-white/20 transition flex items-center gap-2">
                   下载行业白皮书
                 </button>
               </div>

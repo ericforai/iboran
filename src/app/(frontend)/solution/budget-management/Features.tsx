@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 import { CheckCircle2, Zap, BarChart3, Target, Layers } from 'lucide-react'
 
 const features = [
@@ -309,7 +310,7 @@ function AnalysisVisual() {
             </motion.div>
           ))}
           <div className="mt-auto text-center">
-            <button className="text-[9px] text-[#0052D9] font-bold hover:underline">查看完整溯源报告 →</button>
+            <Link href="/contact" className="text-[9px] text-[#0052D9] font-bold hover:underline">查看完整溯源报告 →</Link>
           </div>
         </div>
         

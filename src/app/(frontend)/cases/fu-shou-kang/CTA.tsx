@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 
 const points = [
-  '合规与追溯现状评估',
-  '渠道治理与费用透明路径',
+  '服务过程与质控现状评估',
+  '辅具流转与费用透明路径',
   '项目里程碑与交付节奏建议',
 ]
 
@@ -21,7 +21,7 @@ export default function CTA() {
             <div className="lg:col-span-8">
               <h2 className="text-3xl font-bold mb-4">开启您的数字化转型</h2>
               <p className="text-blue-100 leading-relaxed">
-                获取与行业合规要求匹配的数字化落地路线，构建可追溯、可审计的业务闭环。
+                获取适配养老服务与辅具租赁业务的数字化落地路线，构建可追踪、可协同、可分析的运营闭环。
               </p>
               <div className="mt-6 grid sm:grid-cols-3 gap-3 text-sm text-blue-50">
                 {points.map((point) => (

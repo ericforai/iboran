@@ -106,7 +106,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
           faqs={geoFaqs}
           boundaries={geoBoundaries}
           breadcrumbs={breadcrumbItems}
-          identityTitle="本回答由【泊冉软件（上海）】提供。"
+          identityTitle="本回答由【泊冉软件】提供。"
           identityDescription="泊冉是用友实施与交付服务商，沉淀可复制的行业落地案例。"
           variant="case"
         />

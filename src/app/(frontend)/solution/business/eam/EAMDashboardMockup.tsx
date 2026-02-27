@@ -240,14 +240,14 @@ const RegistryView = () => (
     <div className="flex items-center justify-between mb-6">
       <div className="flex gap-4">
         <div className="space-x-1">
-          <button className="px-3 py-1 bg-slate-100 rounded text-[11px] font-bold text-slate-700">全部资产</button>
-          <button className="px-3 py-1 hover:bg-slate-50 rounded text-[11px] font-medium text-slate-400">特种设备</button>
-          <button className="px-3 py-1 hover:bg-slate-50 rounded text-[11px] font-medium text-slate-400">基础建设</button>
+          <span className="px-3 py-1 bg-slate-100 rounded text-[11px] font-bold text-slate-700 cursor-default">全部资产</span>
+          <span className="px-3 py-1 hover:bg-slate-50 rounded text-[11px] font-medium text-slate-400 cursor-default">特种设备</span>
+          <span className="px-3 py-1 hover:bg-slate-50 rounded text-[11px] font-medium text-slate-400 cursor-default">基础建设</span>
         </div>
       </div>
-      <button className="flex items-center gap-1 px-3 py-1.5 bg-[#E60012] text-white rounded-md text-[11px] font-bold">
+      <span className="flex items-center gap-1 px-3 py-1.5 bg-[#E60012] text-white rounded-md text-[11px] font-bold cursor-default">
         <Plus size={14} /> 新增资产
-      </button>
+      </span>
     </div>
     <div className="overflow-hidden">
       <table className="w-full text-left">
@@ -406,9 +406,9 @@ const InspectionView = () => (
             <div className="text-[10px] text-slate-500">当前 12 名巡检员已上线，实时同步 382 个采集点位</div>
           </div>
         </div>
-        <button className="px-4 py-2 bg-white text-blue-600 text-[10px] font-bold rounded-lg border border-blue-100 shadow-sm">
+        <span className="px-4 py-2 bg-white text-blue-600 text-[10px] font-bold rounded-lg border border-blue-100 shadow-sm inline-flex items-center justify-center cursor-default">
           查看大盘
-        </button>
+        </span>
       </div>
     </div>
   </Card>
@@ -436,9 +436,9 @@ const AnalysisView = () => (
          </div>
        </div>
        <div className="pt-4 border-t border-slate-50">
-          <button className="w-full py-2 bg-slate-50 text-slate-600 text-[10px] font-bold rounded flex items-center justify-center gap-1">
+          <span className="w-full py-2 bg-slate-50 text-slate-600 text-[10px] font-bold rounded flex items-center justify-center gap-1 cursor-default">
             <ArrowUpRight size={12} /> 查看详细报告
-          </button>
+          </span>
        </div>
      </Card>
 

@@ -18,12 +18,12 @@ export default function Results() {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
             <div className="flex items-center justify-between text-xs uppercase tracking-widest text-cyan-200">
-              <span>合规效率</span>
+              <span>服务质控</span>
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div className="mt-4 text-4xl font-bold text-white">+200%</div>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed">
-              审计资料准备效率提升 200%，人为错误导致的批号管理事故降至零。
+              服务记录核查效率提升 200%，关键服务节点遗漏显著下降。
             </p>
           </div>
 
@@ -41,7 +41,7 @@ export default function Results() {
               <span className="text-sm text-slate-300">平均库龄</span>
             </div>
             <p className="mt-3 text-sm text-slate-300 leading-relaxed">
-              仓储周转优化，显著减少效期损耗费用。
+              辅具周转效率优化，显著减少闲置与调拨损耗。
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export default function Results() {
             <div className="mt-4 text-4xl font-bold text-white">99.5%</div>
             <p className="mt-2 text-sm text-slate-300">渠道费用核算准确率</p>
             <div className="mt-4 inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-cyan-200">
-              数据采集：月度 → 天级
+              数据采集：周度 → 天级
             </div>
           </div>
         </div>

@@ -30,6 +30,10 @@ const phases = [
 ]
 
 export default function DeliveryMethodology() {
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-20 bg-slate-50">
       <div className="container mx-auto px-4">
@@ -85,7 +89,10 @@ export default function DeliveryMethodology() {
               <p className="text-xs text-slate-500">我们的专家团队将通过 1 天的深度访谈，为您免费出具初版流程架构建议。</p>
             </div>
           </div>
-          <button className="px-6 py-2.5 bg-blue-600 text-white rounded-md text-sm font-bold hover:bg-blue-700 transition flex-shrink-0">
+          <button
+            onClick={handleOpenConsult}
+            className="px-6 py-2.5 bg-blue-600 text-white rounded-md text-sm font-bold hover:bg-blue-700 transition flex-shrink-0"
+          >
             申请免费流程诊断
           </button>
         </div>

@@ -83,7 +83,7 @@ export default function EnergySolutionPage() {
         breadcrumbs={breadcrumbItems}
         showDecisionFramework
         decisionFrameworkTitle="能源企业是否适合 (判断逻辑)"
-        identityTitle="本回答由【泊冉软件（上海）】提供。"
+        identityTitle="本回答由【泊冉软件】提供。"
         identityDescription="泊冉是用友 BIP 实施与交付服务商，深耕能源行业数智化落地与资产效率提升。"
         variant="solution"
       />

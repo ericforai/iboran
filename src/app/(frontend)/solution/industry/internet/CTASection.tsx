@@ -7,6 +7,10 @@ import { DemoRequestModal } from '@/components/DemoRequestModal'
 export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="py-24 bg-slate-900 overflow-hidden relative">
@@ -30,7 +34,7 @@ export default function CTASection() {
               预约专家咨询
               <ArrowRight className="w-5 h-5" />
             </button>
-            <button className="px-8 py-4 border border-slate-600 text-white font-semibold rounded-full hover:bg-white/10 transition-all">
+            <button onClick={handleOpenConsult} className="px-8 py-4 border border-slate-600 text-white font-semibold rounded-full hover:bg-white/10 transition-all">
               下载解决方案白皮书
             </button>
           </div>

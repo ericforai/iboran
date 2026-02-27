@@ -8,6 +8,10 @@ import { motion } from 'framer-motion'
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-b from-slate-50 to-[#F7F8FA]">
@@ -50,7 +54,7 @@ export default function Hero() {
                     预约专家演示
                     <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform"/>
                   </button>
-                  <button className="px-10 py-4 bg-white text-[#1F2329] border border-slate-200 rounded-lg font-bold hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2 text-lg">
+                  <button onClick={handleOpenConsult} className="px-10 py-4 bg-white text-[#1F2329] border border-slate-200 rounded-lg font-bold hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2 text-lg">
                     下载白皮书
                   </button>
                 </div>

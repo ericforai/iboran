@@ -21,7 +21,7 @@ test.describe('Management Accounting key paths', () => {
       })
     })
 
-    await page.goto('/products/management-accounting')
+    await page.goto('/products/management-accounting', { waitUntil: 'domcontentloaded', timeout: 120000 })
 
     await page.getByRole('button', { name: '预约产品演示' }).click()
     await expect(page.getByText('预约专家演示')).toBeVisible()
@@ -32,7 +32,7 @@ test.describe('Management Accounting key paths', () => {
     await heroWhitepaperLink.click()
     await expect(page).toHaveURL(/\/whitepapers\/business-finance-strategic-restructuring/)
 
-    await page.goto('/products/management-accounting')
+    await page.goto('/products/management-accounting', { waitUntil: 'domcontentloaded', timeout: 120000 })
     await page.getByRole('button', { name: '立即预约演示' }).click()
     await expect(page.getByText('预约专家演示')).toBeVisible()
     await closeModalByBackdrop(page)

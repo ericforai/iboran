@@ -3,9 +3,9 @@ import { ArrowRight, BarChart3, ChevronRight, PackageSearch, ShieldCheck } from 
 
 const highlights = [
   {
-    label: '审计准备效率',
+    label: '服务质控效率',
     value: '+200%',
-    detail: '资料准备时间显著缩短',
+    detail: '服务记录核查时间显著缩短',
   },
   {
     label: '仓储拣货效率',
@@ -22,18 +22,18 @@ const highlights = [
 const focusItems = [
   {
     icon: ShieldCheck,
-    title: 'GXP 合规闭环',
-    desc: '批次、效期与温控记录自动校验',
+    title: '服务标准闭环',
+    desc: '服务记录、回访与质控节点自动校验',
   },
   {
     icon: PackageSearch,
-    title: '端到端追溯',
-    desc: '从原料到患者端的全流程可视',
+    title: '辅具全程追踪',
+    desc: '从入库、租赁、上门到回收全流程可视',
   },
   {
     icon: BarChart3,
-    title: '渠道精细化治理',
-    desc: '返利结算与费用透明对账',
+    title: '网点精细化治理',
+    desc: '跨网点费用核算与运营指标透明对账',
   },
 ]
 
@@ -52,7 +52,7 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.2em] text-cyan-100">
               <span>客户案例</span>
               <ChevronRight className="h-3.5 w-3.5" />
-              <span>医药与医疗 · 养老服务</span>
+              <span>养老服务 · 辅具租赁</span>
             </div>
 
             <h1 className="mt-6 text-4xl md:text-6xl font-black tracking-tight leading-tight">
@@ -63,8 +63,8 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl">
-              医药与医疗健康行业处于高合规要求与数字化转型的交汇点。从研发创新、合规生产到精准流通，
-              企业亟需构建符合 GXP 标准的一体化管理体系。泊冉软件通过数智化平台，以保障效率与安全同步提升。
+              面向多网点养老服务与辅具租赁业务，福寿康需要打通服务过程、物资流转与经营核算。
+              泊冉软件通过数智化平台，帮助其建立可追踪、可协同、可分析的一体化运营体系。
             </p>
 
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -106,10 +106,10 @@ export default function Hero() {
                   <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">医疗护理</span>
                 </div>
                 <h3 className="mt-4 text-2xl font-semibold">
-                  合规与追溯驱动的医疗服务数字化
+                  以服务标准与运营效率驱动的养老服务数字化
                 </h3>
                 <p className="mt-3 text-sm text-slate-300">
-                  以合规为核心，贯通研发、生产、流通与营销，构建可信的数据闭环。
+                  以服务过程为核心，贯通照护执行、辅具流转与经营分析，构建可信的数据闭环。
                 </p>
 
                 <div className="mt-6 space-y-4">
@@ -134,13 +134,13 @@ export default function Hero() {
 
                 <div className="mt-6 flex flex-wrap gap-2 text-xs text-slate-200">
                   <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                    GSP / GMP / GXP
+                    服务标准闭环
                   </span>
                   <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                    端到端追溯
+                    辅具全程追踪
                   </span>
                   <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                    渠道费用治理
+                    网点经营治理
                   </span>
                 </div>
               </div>

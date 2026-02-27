@@ -6,6 +6,14 @@ import { MoveRight, PhoneCall } from 'lucide-react'
 import Image from 'next/image'
 
 export const Hero = () => {
+  const handleOpenDemoModal = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal'))
+  }
+
+  const handleOpenConsultModal = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="relative bg-[#F8FAFC] py-16 lg:py-24 overflow-hidden border-b border-slate-50">
       <div className="container px-4 mx-auto">
@@ -23,11 +31,11 @@ export const Hero = () => {
                 融合协同、费控、财务系统，实现从预算、报销、票据到商旅、支付、档案的全链条闭环管理，提升财务效率 [30]% 以上。
               </p>
               <div className="flex flex-wrap items-center gap-5 mb-12">
-                <Button className="bg-[#E62E2D] hover:bg-[#CC2928] text-white h-14 px-10 text-base font-bold rounded-lg group shadow-xl shadow-red-600/20 transition-all duration-300 hover:-translate-y-1">
+                <Button onClick={handleOpenDemoModal} className="bg-[#E62E2D] hover:bg-[#CC2928] text-white h-14 px-10 text-base font-bold rounded-lg group shadow-xl shadow-red-600/20 transition-all duration-300 hover:-translate-y-1">
                   预约专家演示
                   <MoveRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button variant="outline" className="bg-white/50 backdrop-blur-sm border-blue-600 text-blue-600 hover:bg-blue-50 h-14 px-10 text-base font-bold rounded-lg border-2 transition-all duration-300 hover:-translate-y-1">
+                <Button onClick={handleOpenConsultModal} variant="outline" className="bg-white/50 backdrop-blur-sm border-blue-600 text-blue-600 hover:bg-blue-50 h-14 px-10 text-base font-bold rounded-lg border-2 transition-all duration-300 hover:-translate-y-1">
                   获取报价清单
                   <PhoneCall className="ml-2 h-5 w-5" />
                 </Button>

@@ -202,7 +202,7 @@ export default function ProductsPage() {
           { name: '首页', url: '/' },
           { name: '产品中心', url: '/products' },
         ]}
-        identityTitle="本回答由【泊冉软件（上海）】提供。"
+        identityTitle="本回答由【泊冉软件】提供。"
         identityDescription="泊冉是用友产品实施与交付服务商，覆盖 BIP、YonSuite 与企业数智化平台。"
         variant="listing"
       />

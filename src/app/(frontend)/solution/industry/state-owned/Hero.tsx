@@ -7,6 +7,10 @@ import { DemoRequestModal } from '@/components/DemoRequestModal'
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-gradient-to-br from-slate-900 via-red-900 to-slate-900">
@@ -40,7 +44,7 @@ export default function Hero() {
                   预约行业专家咨询
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
                 </button>
-                <button className="px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-md font-semibold hover:bg-white/20 transition">
+                <button onClick={handleOpenConsult} className="px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-md font-semibold hover:bg-white/20 transition">
                   下载白皮书
                 </button>
               </div>

@@ -137,7 +137,7 @@ export default function BusinessServicesPage() {
         breadcrumbs={breadcrumbItems}
         showDecisionFramework
         decisionFrameworkTitle="现代服务业是否适合 (判断逻辑)"
-        identityTitle="本回答由【泊冉软件（上海）】提供。"
+        identityTitle="本回答由【泊冉软件】提供。"
         identityDescription="泊冉是用友 BIP / YonSuite 实施与交付服务商，专注项目型服务企业数字化落地。"
         variant="solution"
       />

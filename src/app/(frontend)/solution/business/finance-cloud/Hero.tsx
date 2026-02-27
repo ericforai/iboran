@@ -8,6 +8,10 @@ import FinanceCloudDashboardMockup from './FinanceCloudDashboardMockup'
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="bg-[#F8FAFC] pt-24 pb-20 overflow-hidden relative">
@@ -46,7 +50,7 @@ export default function Hero() {
                 >
                   预约专家演示
                 </button>
-                <button className="px-10 py-4 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-50 transition-all duration-200 cursor-pointer shadow-sm">
+                <button onClick={handleOpenConsult} className="px-10 py-4 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-50 transition-all duration-200 cursor-pointer shadow-sm">
                   下载财务云白皮书
                 </button>
               </div>

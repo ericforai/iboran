@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { 
   BarChart3, 
@@ -96,9 +97,9 @@ export default function Features() {
               <div className="text-slate-400 text-sm">从合并报表一键穿透至最底层业务凭证</div>
             </div>
           </div>
-          <button className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-lg transition-all border border-white/20">
+          <Link href="/contact" className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-lg transition-all border border-white/20">
             了解钻取详情
-          </button>
+          </Link>
         </div>
       </div>
     </section>

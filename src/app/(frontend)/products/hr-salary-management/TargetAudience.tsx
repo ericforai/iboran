@@ -1,7 +1,13 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { CheckCircle2, XCircle } from 'lucide-react'
 
 export const TargetAudience = () => {
+  const handleOpenConsultModal = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   const applicable = [
     { title: '集团化多组织企业', desc: '需要管理复杂组织架构、多套薪酬标准与多地社保缴纳的企事业单位' },
     { title: 'HR管理数字化转型期', desc: '希望通过 AI 自动化技术减少重复性劳动，提升组织效能的企业' },
@@ -75,7 +81,7 @@ export const TargetAudience = () => {
               <li>• 人事数据与 OA 分离，入转调离流程断层严重</li>
             </ul>
           </div>
-          <Button className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 rounded-md whitespace-nowrap">
+          <Button onClick={handleOpenConsultModal} className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 rounded-md whitespace-nowrap">
             诊断我的人力资源管理
           </Button>
         </div>

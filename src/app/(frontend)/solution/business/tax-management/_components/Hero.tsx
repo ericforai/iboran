@@ -8,6 +8,10 @@ import TaxDashboardMockup from './TaxDashboardMockup'
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="bg-gradient-to-b from-white to-slate-50 pt-24 pb-20 overflow-hidden">
@@ -51,7 +55,7 @@ export default function Hero() {
                 >
                   预约专家演示
                 </button>
-                <button className="px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-lg hover:border-[#0052D9] hover:text-[#0052D9] hover:bg-blue-50 transition-all duration-300">
+                <button onClick={handleOpenConsult} className="px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-lg hover:border-[#0052D9] hover:text-[#0052D9] hover:bg-blue-50 transition-all duration-300">
                   下载解决方案白皮书
                 </button>
               </div>

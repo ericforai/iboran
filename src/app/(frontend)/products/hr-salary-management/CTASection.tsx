@@ -5,6 +5,14 @@ import { Button } from '@/components/ui/button'
 import { MoveRight, DownloadCloud } from 'lucide-react'
 
 export const CTASection = () => {
+  const handleOpenDemoModal = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal'))
+  }
+
+  const handleOpenConsultModal = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* 背景装饰 */}
@@ -24,11 +32,11 @@ export const CTASection = () => {
           </p>
           
           <div className="flex flex-wrap justify-center items-center gap-4">
-            <Button className="bg-red-600 hover:bg-red-700 text-white px-10 py-8 text-xl rounded-xl group transition-all">
+            <Button onClick={handleOpenDemoModal} className="bg-red-600 hover:bg-red-700 text-white px-10 py-8 text-xl rounded-xl group transition-all">
               立刻预约现场演示
               <MoveRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 px-10 py-8 text-xl rounded-xl">
+            <Button onClick={handleOpenConsultModal} variant="outline" className="border-white/20 text-white hover:bg-white/10 px-10 py-8 text-xl rounded-xl">
               下载交付物清单
               <DownloadCloud className="ml-2 h-6 w-6" />
             </Button>

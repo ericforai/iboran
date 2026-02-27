@@ -594,8 +594,6 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
   useEffect(() => {
     if (!isOpen || !conversationId) return;
 
-    let timer: number | undefined;
-
     const pingPresence = async () => {
       try {
         const visitorContext = await getVisitorContextCached();
@@ -609,7 +607,7 @@ const AIConsultant: React.FC<AIConsultantProps> = ({ config, defaultOpen = false
     };
 
     void pingPresence();
-    timer = window.setInterval(() => {
+    const timer = window.setInterval(() => {
       void pingPresence();
     }, VISITOR_PRESENCE_PING_MS);
 

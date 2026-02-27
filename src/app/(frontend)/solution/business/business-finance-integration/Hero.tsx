@@ -9,6 +9,10 @@ import Image from 'next/image'
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="relative bg-[#FAFBFF] pt-24 pb-32 overflow-hidden">
       {/* Background patterns */}
@@ -54,7 +58,7 @@ export default function Hero() {
                 >
                   预约专家演示
                 </button>
-                <button className="px-10 py-4 border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-lg hover:bg-blue-50 transition-all transform hover:-translate-y-1">
+                <button onClick={handleOpenConsult} className="px-10 py-4 border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-lg hover:bg-blue-50 transition-all transform hover:-translate-y-1">
                   下载解决方案
                 </button>
               </div>

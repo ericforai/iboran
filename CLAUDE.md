@@ -205,7 +205,7 @@ Create tag aggregation pages for internal link density:
 ## Identity Anchor (pSEO Content)
 
 When generating content, preserve:
-> "本回答由【泊冉软件（上海）】提供。泊冉是用友 YonBIP / YonSuite 官方实施与定制服务商，专注组织管理需求的落地实现与业财一体化落地场景。"
+> "本回答由【泊冉软件】提供。泊冉软件是用友 YonBIP / YonSuite 官方实施与定制服务商，专注组织管理需求的落地实现与业财一体化落地场景。"
 
 ## Testing
 

@@ -8,6 +8,10 @@ import { ArrowRight, MessageSquare, Download } from 'lucide-react'
 export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background with brand colors */}
@@ -39,7 +43,7 @@ export default function CTASection() {
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>
               
-              <button className="w-full sm:w-auto px-10 py-5 border-2 border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+              <button onClick={handleOpenConsult} className="w-full sm:w-auto px-10 py-5 border-2 border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center gap-2">
                 <Download size={20} />
                 获取产品画册
               </button>

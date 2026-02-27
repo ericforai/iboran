@@ -10,6 +10,10 @@ import BIDashboardMockup from './BIDashboardMockup'
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsultModal = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="relative pt-24 pb-20 overflow-hidden bg-slate-50">
       {/* Background Decor */}
@@ -48,7 +52,8 @@ export default function Hero() {
                   预约专家演示
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button 
+                <button
+                  onClick={handleOpenConsultModal}
                   className="px-8 py-4 bg-white border border-slate-200 text-slate-700 font-bold rounded-lg hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
                 >
                   <Download className="w-4 h-4" />

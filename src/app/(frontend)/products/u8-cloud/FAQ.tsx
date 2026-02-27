@@ -33,6 +33,9 @@ const faqs = [
 
 export default function FAQ() {
   const [activeIdx, setActiveIdx] = useState<number | null>(0)
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
 
   return (
     <section className="py-20 lg:py-28 bg-white">
@@ -47,7 +50,10 @@ export default function FAQ() {
             <p className="text-slate-500 leading-relaxed mb-8">
               这里的回答涵盖了实施周期、信创合规、集成能力等高频咨询点。如果您有更具体的业务场景需求，欢迎直接咨询行业专家。
             </p>
-            <button className="px-8 py-3 border-2 border-[#E60012] text-[#E60012] font-bold rounded-lg hover:bg-red-50 transition-colors">
+            <button
+              onClick={handleOpenConsult}
+              className="px-8 py-3 border-2 border-[#E60012] text-[#E60012] font-bold rounded-lg hover:bg-red-50 transition-colors"
+            >
               在线咨询专家
             </button>
           </div>

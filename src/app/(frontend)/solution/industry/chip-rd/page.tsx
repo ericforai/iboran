@@ -71,7 +71,7 @@ export default function ChipRDSolutionPage() {
         breadcrumbs={breadcrumbItems}
         showDecisionFramework
         decisionFrameworkTitle="芯片研发企业是否适合 (判断逻辑)"
-        identityTitle="本回答由【泊冉软件（上海）】提供。"
+        identityTitle="本回答由【泊冉软件】提供。"
         identityDescription="泊冉是用友 U8+ / BIP 实施与交付服务商，服务芯片研发与委外制造企业。"
         variant="solution"
       />

@@ -213,7 +213,7 @@ function ControlView() {
               <div className="text-slate-400 text-xs mt-0.5">预警触发规则：预算消耗比例 {' > '} 95% 且 无后续节余</div>
             </div>
           </div>
-          <button className="bg-[#E60012] text-white px-3 py-1.5 rounded text-xs font-bold shadow-lg">立即干预</button>
+          <span className="bg-[#E60012] text-white px-3 py-1.5 rounded text-xs font-bold shadow-lg inline-flex items-center justify-center cursor-default">立即干预</span>
        </div>
        <div className="flex-1 grid grid-cols-2 gap-4">
           <div className="bg-slate-900 border border-slate-800 rounded-lg p-4">

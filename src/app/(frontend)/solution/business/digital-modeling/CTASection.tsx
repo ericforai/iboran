@@ -7,6 +7,10 @@ import { DemoRequestModal } from '@/components/DemoRequestModal'
 export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 bg-[#F7F8FA]">
       <div className="container mx-auto px-4">
@@ -32,7 +36,7 @@ export default function CTASection() {
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </button>
               
-              <button className="w-full sm:w-auto px-10 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2">
+              <button onClick={handleOpenConsult} className="w-full sm:w-auto px-10 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-2">
                 <Download size={20} />
                 下载解决方案白皮书
               </button>

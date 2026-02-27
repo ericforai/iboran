@@ -204,7 +204,7 @@ function LicenseContent() {
           <Search size={12} className="text-slate-400" />
           <span className="text-slate-400 text-[10px]">搜索合同...</span>
         </div>
-        <button className="px-3 py-1.5 bg-purple-600 text-white rounded text-[10px] font-medium">新建合同</button>
+        <span className="px-3 py-1.5 bg-purple-600 text-white rounded text-[10px] font-medium inline-flex items-center justify-center cursor-default">新建合同</span>
       </div>
 
       {/* Contract List */}
@@ -260,7 +260,7 @@ function SettlementContent() {
             </span>
           ))}
         </div>
-        <button className="px-3 py-1 bg-white border border-slate-200 rounded text-[10px] text-slate-600">导出报表</button>
+        <span className="px-3 py-1 bg-white border border-slate-200 rounded text-[10px] text-slate-600 inline-flex items-center justify-center cursor-default">导出报表</span>
       </div>
 
       {/* Settlement Stats */}

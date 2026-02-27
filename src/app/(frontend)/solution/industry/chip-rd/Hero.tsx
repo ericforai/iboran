@@ -14,6 +14,14 @@ import {
 } from 'lucide-react';
 
 const Hero = () => {
+  const handleOpenDemo = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal'))
+  }
+
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   const capabilities = [
     { icon: Workflow, text: '研发项目管理' },
     { icon: Layers, text: '委外全流程监控' },
@@ -61,11 +69,17 @@ const Hero = () => {
               </p>
               
               <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                <button className="px-8 py-4 bg-[#E60012] text-white rounded-lg font-bold text-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center">
+                <button
+                  onClick={handleOpenDemo}
+                  className="px-8 py-4 bg-[#E60012] text-white rounded-lg font-bold text-lg hover:bg-red-700 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 flex items-center"
+                >
                   预约行业专家咨询
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </button>
-                <button className="px-8 py-4 border-2 border-[#0052D9] text-[#0052D9] rounded-lg font-bold text-lg hover:bg-blue-50 transition-all">
+                <button
+                  onClick={handleOpenConsult}
+                  className="px-8 py-4 border-2 border-[#0052D9] text-[#0052D9] rounded-lg font-bold text-lg hover:bg-blue-50 transition-all"
+                >
                   查看技术白皮书
                 </button>
               </div>

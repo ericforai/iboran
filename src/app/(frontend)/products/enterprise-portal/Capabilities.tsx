@@ -131,9 +131,9 @@ export function Capabilities() {
                                        <div className="h-4 bg-slate-600 rounded w-3/4 mb-2"></div>
                                        <div className="h-2 bg-slate-600/50 rounded w-1/2"></div>
                                    </div>
-                                   <button className="bg-blue-600 text-white text-xs px-3 py-1.5 rounded hover:bg-blue-500">
+                                   <span className="bg-blue-600 text-white text-xs px-3 py-1.5 rounded inline-flex items-center justify-center cursor-default">
                                        审批
-                                   </button>
+                                   </span>
                                </div>
                            ))}
                         </div>

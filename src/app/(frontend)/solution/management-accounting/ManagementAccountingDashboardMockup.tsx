@@ -140,7 +140,7 @@ export default function ManagementAccountingDashboardMockup({ activeTab = 'defau
           <div className="bg-white p-3 rounded-lg shadow-sm border border-slate-100">
              <div className="flex items-center justify-between mb-3">
                 <h4 className="font-bold text-slate-700">实时业务事项分析</h4>
-                <button className="text-blue-600 text-[10px]">明细追溯</button>
+                <span className="text-blue-600 text-[10px] cursor-default">明细追溯</span>
              </div>
              <div className="space-y-1.5">
                 <AnalysisRow order="ORD-2026-001" entity="精密制造一厂" type="生产领料" cost="¥ 245,600" status="已还原" />

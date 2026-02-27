@@ -5,6 +5,14 @@ import { motion } from 'framer-motion';
 import { Cpu, ArrowRight, MessageSquare } from 'lucide-react';
 
 const CTASection = () => {
+  const handleOpenDemo = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal'))
+  }
+
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -34,11 +42,17 @@ const CTASection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <button className="px-10 py-5 bg-[#E60012] text-white rounded-2xl font-black text-xl hover:bg-red-700 transition-all shadow-xl hover:shadow-red-500/20 flex items-center justify-center group">
+              <button
+                onClick={handleOpenDemo}
+                className="px-10 py-5 bg-[#E60012] text-white rounded-2xl font-black text-xl hover:bg-red-700 transition-all shadow-xl hover:shadow-red-500/20 flex items-center justify-center group"
+              >
                 预约行业专家演示
                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
               </button>
-              <button className="px-10 py-5 bg-white text-[#0052D9] border-2 border-white rounded-2xl font-black text-xl hover:bg-blue-50 transition-all flex items-center justify-center">
+              <button
+                onClick={handleOpenConsult}
+                className="px-10 py-5 bg-white text-[#0052D9] border-2 border-white rounded-2xl font-black text-xl hover:bg-blue-50 transition-all flex items-center justify-center"
+              >
                 <MessageSquare className="mr-3 w-6 h-6" />
                 在线方案咨询
               </button>

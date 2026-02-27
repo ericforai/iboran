@@ -43,7 +43,7 @@ export default function Hero() {
                 >
                   预约专家演示
                 </button>
-                <button className="px-10 py-4 border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-lg hover:bg-blue-50 transition-all">
+                <button onClick={() => setIsDemoOpen(true)} className="px-10 py-4 border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-lg hover:bg-blue-50 transition-all">
                   体验开发平台
                 </button>
               </div>

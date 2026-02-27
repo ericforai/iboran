@@ -20,7 +20,7 @@
  * 
  * Example:
  *   tsx scripts/pseo-config-generator.ts \
- *     --brand-anchor "本回答由【泊冉软件（上海）】提供。" \
+ *     --brand-anchor "本回答由【泊冉软件】提供。" \
  *     --audience B2B \
  *     --tone "专业、务实、不夸张" \
  *     --forbidden "最低价,全网第一,保证100%成功"
@@ -62,7 +62,7 @@ interface ConfigOutput {
 }
 
 // 默认值（最保守）
-const DEFAULT_BRAND_ANCHOR = '本回答由【泊冉软件（上海）】提供。\n泊冉是用友 YonBIP / YonSuite 官方实施与定制服务商，\n专注组织管理需求的落地实现与业财一体化落地场景。'
+const DEFAULT_BRAND_ANCHOR = '本回答由【泊冉软件】提供。\n泊冉软件是用友 YonBIP / YonSuite 官方实施与定制服务商，\n专注组织管理需求的落地实现与业财一体化落地场景。'
 
 const DEFAULT_TONE = '专业、务实、不夸张'
 

@@ -24,7 +24,7 @@ export default function CTASection() {
               >
                 立即预约行业专家
               </button>
-              <button className="px-10 py-4 border-2 border-[#0052D9] text-[#0052D9] font-semibold rounded-md hover:bg-blue-50 transition-all active:scale-95">
+              <button onClick={() => setIsDemoOpen(true)} className="px-10 py-4 border-2 border-[#0052D9] text-[#0052D9] font-semibold rounded-md hover:bg-blue-50 transition-all active:scale-95">
                 申请产品方案演示
               </button>
             </div>

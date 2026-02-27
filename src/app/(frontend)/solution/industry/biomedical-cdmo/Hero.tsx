@@ -45,7 +45,7 @@ export function Hero() {
                 >
                   获取 CDMO 行业方案
                 </Button>
-                <Button size="lg" variant="outline" className="h-12 px-8 rounded-full border-slate-200 hover:bg-slate-50 text-slate-600">
+                <Button onClick={() => setIsDemoOpen(true)} size="lg" variant="outline" className="h-12 px-8 rounded-full border-slate-200 hover:bg-slate-50 text-slate-600">
                   预约专家演示
                 </Button>
               </div>

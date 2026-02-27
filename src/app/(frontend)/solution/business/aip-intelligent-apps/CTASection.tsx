@@ -8,6 +8,10 @@ import { motion } from 'framer-motion'
 export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsultModal = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="py-24 bg-white relative overflow-hidden">
@@ -48,7 +52,8 @@ export default function CTASection() {
                   免费预约专家演示
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button 
+                <button
+                  onClick={handleOpenConsultModal}
                   className="px-10 py-5 border-2 border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-all text-lg"
                 >
                   获取完整产品手册

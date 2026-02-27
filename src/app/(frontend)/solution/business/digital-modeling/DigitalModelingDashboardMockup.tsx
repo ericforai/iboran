@@ -197,9 +197,9 @@ function OrgTreeUI() {
             <BarChart3 size={12} /> 对内核算树
           </div>
         </div>
-        <button className="bg-[#1890FF] text-white px-2 py-1 rounded flex items-center gap-1">
+        <span className="bg-[#1890FF] text-white px-2 py-1 rounded inline-flex items-center gap-1 cursor-default">
           <Plus size={10} /> 新增节点
-        </button>
+        </span>
       </div>
       
       <div className="flex-1 p-4 flex flex-col items-center gap-4 overflow-auto custom-scrollbar">

@@ -15,6 +15,10 @@ interface HeroProps {
 export default function Hero({ title, tagline, description }: HeroProps) {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="relative bg-gradient-to-b from-slate-50 to-white pt-32 pb-24 overflow-hidden">
@@ -57,7 +61,7 @@ export default function Hero({ title, tagline, description }: HeroProps) {
                   预约专家演示
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="px-8 py-4 border border-slate-200 bg-white text-slate-700 font-semibold rounded-lg hover:bg-slate-50 transition-all hover:border-slate-300 flex items-center justify-center">
+                <button onClick={handleOpenConsult} className="px-8 py-4 border border-slate-200 bg-white text-slate-700 font-semibold rounded-lg hover:bg-slate-50 transition-all hover:border-slate-300 flex items-center justify-center">
                   下载白皮书
                 </button>
               </div>

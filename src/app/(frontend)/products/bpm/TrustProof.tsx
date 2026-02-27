@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { Star, TrendingUp, Users, ShieldCheck } from 'lucide-react'
 
 const stats = [
@@ -71,9 +72,9 @@ export default function TrustProof() {
                   <TrendingUp size={18} />
                   <span className="text-sm">{card.result}</span>
                 </div>
-                <button className="text-slate-400 hover:text-blue-600 text-xs font-bold transition">
+                <Link href="/cases" className="text-slate-400 hover:text-blue-600 text-xs font-bold transition">
                   查阅案例详情 &gt;
-                </button>
+                </Link>
               </div>
             </div>
           ))}

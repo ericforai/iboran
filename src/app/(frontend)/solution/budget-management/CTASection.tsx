@@ -8,6 +8,10 @@ import { ArrowRight, Phone } from 'lucide-react'
 export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -38,7 +42,7 @@ export default function CTASection() {
                 预约专家演示
                 <ArrowRight size={20} />
               </button>
-              <button className="w-full sm:w-auto px-10 py-5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition-all border border-white/20 flex items-center justify-center gap-3">
+              <button onClick={handleOpenConsult} className="w-full sm:w-auto px-10 py-5 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition-all border border-white/20 flex items-center justify-center gap-3">
                 <Phone size={20} />
                 咨询热线：400-9955-161
               </button>

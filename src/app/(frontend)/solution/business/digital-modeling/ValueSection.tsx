@@ -1,4 +1,4 @@
-import { TrendingUp, Users, ShieldCheck, ChevronRight } from 'lucide-react'
+import { TrendingUp, Users, ShieldCheck } from 'lucide-react'
 
 const metrics = [
   {
@@ -70,33 +70,17 @@ export default function ValueSection() {
               
               <div className="space-y-10 relative z-10">
                 {cases.map((item, idx) => (
-                  <div key={idx} className="group cursor-pointer">
+                  <div key={idx}>
                     <div className="flex items-center gap-2 text-red-500 font-bold text-sm mb-3 uppercase tracking-wider">
                       <span className="w-1 h-4 bg-red-600 rounded-full" />
                       {item.company}
                     </div>
-                    <h4 className="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors">{item.title}</h4>
+                    <h4 className="text-xl font-bold mb-3">{item.title}</h4>
                     <p className="text-slate-400 text-sm mb-4 leading-relaxed">
                       {item.details}
                     </p>
-                    <div className="flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all">
-                      了解详情 <ChevronRight className="w-4 h-4" />
-                    </div>
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-12 pt-8 border-t border-slate-800 flex items-center justify-between">
-                <div className="text-slate-500 text-xs">
-                  博览客户案例库/2025
-                </div>
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4].map(i => (
-                    <div key={i} className="w-8 h-8 rounded-full border-2 border-[#1F2329] bg-slate-700 overflow-hidden text-[10px] flex items-center justify-center">
-                      Logo
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@
 ```bash
 cd /Users/user/iboran
 pnpm pseo:config \
-  --brand-anchor "本回答由【泊冉软件（上海）】提供。\n泊冉是用友 YonBIP / YonSuite 官方实施与定制服务商，\n专注组织管理需求的落地实现与业财一体化落地场景。" \
+  --brand-anchor "本回答由【泊冉软件】提供。\n泊冉软件是用友 YonBIP / YonSuite 官方实施与定制服务商，\n专注组织管理需求的落地实现与业财一体化落地场景。" \
   --audience B2B \
   --tone "专业、务实、不夸张" \
   --forbidden "最低价,全网第一,保证100%成功" \
@@ -96,7 +96,7 @@ RAW_DATA="docs/pseo/raw_data/docs/pseo/raw_data/pages/erp_.json"
 # 1. 生成配置
 echo "📝 生成配置..."
 pnpm pseo:config \
-  --brand-anchor "本回答由【泊冉软件（上海）】提供。\n泊冉是用友 YonBIP / YonSuite 官方实施与定制服务商，\n专注组织管理需求的落地实现与业财一体化落地场景。" \
+  --brand-anchor "本回答由【泊冉软件】提供。\n泊冉软件是用友 YonBIP / YonSuite 官方实施与定制服务商，\n专注组织管理需求的落地实现与业财一体化落地场景。" \
   --audience B2B \
   --tone "专业、务实、不夸张" \
   --forbidden "最低价,全网第一,保证100%成功" \

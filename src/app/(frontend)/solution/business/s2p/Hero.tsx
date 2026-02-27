@@ -8,6 +8,10 @@ import S2PDashboardMockup from './S2PDashboardMockup'
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="bg-gradient-to-br from-slate-50 to-blue-50/50 pt-28 pb-24 overflow-hidden relative">
@@ -53,7 +57,7 @@ export default function Hero() {
                   预约专家演示
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </button>
-                <button className="px-8 py-4 bg-white border border-slate-200 text-slate-700 font-bold rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm">
+                <button onClick={handleOpenConsult} className="px-8 py-4 bg-white border border-slate-200 text-slate-700 font-bold rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm">
                   下载解决方案白皮书
                 </button>
               </div>

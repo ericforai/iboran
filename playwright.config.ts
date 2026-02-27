@@ -6,6 +6,11 @@ import { defineConfig, devices } from '@playwright/test'
  */
 import 'dotenv/config'
 
+const e2eBaseURL = process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:3000'
+process.env.NEXT_PUBLIC_SERVER_URL = e2eBaseURL
+process.env.PAYLOAD_TEST_EMAIL = process.env.PAYLOAD_TEST_EMAIL || 'admin@boran.cn'
+process.env.PAYLOAD_TEST_PASSWORD = process.env.PAYLOAD_TEST_PASSWORD || 'Boran123'
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -16,13 +21,13 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: e2eBaseURL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -34,8 +39,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm dev',
+    command: `rm -rf .next && SMTP_HOST='' NEXT_PUBLIC_SERVER_URL=${e2eBaseURL} pnpm build && NEXT_PUBLIC_SERVER_URL=${e2eBaseURL} node .next/standalone/server.js`,
     reuseExistingServer: true,
-    url: 'http://localhost:3000',
+    url: e2eBaseURL,
+    timeout: 600000,
   },
 })

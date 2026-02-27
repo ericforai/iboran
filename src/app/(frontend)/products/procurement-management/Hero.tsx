@@ -1,9 +1,19 @@
+'use client'
+
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import Image from 'next/image'
 
 export const Hero = () => {
+  const handleOpenDemoModal = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal'))
+  }
+
+  const handleOpenConsultModal = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="relative min-h-[80vh] flex items-center pt-20 overflow-hidden bg-slate-50">
       <div className="container mx-auto px-4 relative z-10">
@@ -34,11 +44,11 @@ export const Hero = () => {
               ))}
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 h-14 text-lg">
+              <Button onClick={handleOpenDemoModal} size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 h-14 text-lg">
                 预约专家演示
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 h-14 text-lg">
+              <Button onClick={handleOpenConsultModal} size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 h-14 text-lg">
                 获取报价方案
               </Button>
             </div>

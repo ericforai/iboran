@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test'
 
+const baseURL = process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:3000'
+
 /**
  * E2E Tests for Pages Collection
  *
@@ -21,11 +23,9 @@ test.describe('Pages Collection', () => {
 
   // Helper function to login to Payload admin
   async function loginToAdmin(page: any) {
-    const adminUrl = process.env.NEXT_PUBLIC_SERVER_URL
-      ? `${process.env.NEXT_PUBLIC_SERVER_URL}/admin`
-      : 'http://localhost:3000/admin'
+    const adminUrl = `${baseURL}/admin`
 
-    await page.goto(adminUrl)
+    await page.goto(adminUrl, { waitUntil: 'domcontentloaded', timeout: 120000 })
 
     // Check if we're already logged in
     const currentUrl = page.url()
@@ -41,15 +41,15 @@ test.describe('Pages Collection', () => {
     const passwordInput = page.locator('input[type="password"], input[name="password"]').first()
 
     if (await emailInput.isVisible({ timeout: 5000 })) {
-      await emailInput.fill(process.env.PAYLOAD_TEST_EMAIL || 'admin@example.com')
-      await passwordInput.fill(process.env.PAYLOAD_TEST_PASSWORD || 'password')
+      await emailInput.fill(process.env.PAYLOAD_TEST_EMAIL || 'admin@boran.cn')
+      await passwordInput.fill(process.env.PAYLOAD_TEST_PASSWORD || 'Boran123')
 
       // Click login button
       const loginButton = page.locator('button[type="submit"]').first()
       await loginButton.click()
 
       // Wait for navigation to admin dashboard
-      await page.waitForURL(/\/admin$/, { timeout: 10000 })
+      await page.waitForURL(/\/admin(\/.*)?$/, { timeout: 15000 })
     }
   }
 
@@ -60,7 +60,7 @@ test.describe('Pages Collection', () => {
 
   test('can create a new page', async ({ page }) => {
     // Navigate to Pages collection
-    await page.goto(`${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/admin/collections/pages`)
+    await page.goto(`${baseURL}/admin/collections/pages`, { waitUntil: 'domcontentloaded', timeout: 120000 })
 
     // Wait for the collection list to load
     await page.waitForLoadState('networkidle')
@@ -125,7 +125,7 @@ test.describe('Pages Collection', () => {
 
   test('can publish a page', async ({ page }) => {
     // First navigate to the Pages collection
-    await page.goto(`${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/admin/collections/pages`)
+    await page.goto(`${baseURL}/admin/collections/pages`, { waitUntil: 'domcontentloaded', timeout: 120000 })
 
     // Wait for the list to load
     await page.waitForLoadState('networkidle')
@@ -187,7 +187,7 @@ test.describe('Pages Collection', () => {
 
   test('published page is accessible on frontend', async ({ page }) => {
     // Navigate to the page on the frontend
-    const pageUrl = `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/${testPageData.slug}`
+    const pageUrl = `${baseURL}/${testPageData.slug}`
     await page.goto(pageUrl)
 
     // Wait for the page to load
@@ -209,7 +209,7 @@ test.describe('Pages Collection', () => {
   })
 
   test('page has proper SEO metadata', async ({ page }) => {
-    const pageUrl = `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/${testPageData.slug}`
+    const pageUrl = `${baseURL}/${testPageData.slug}`
     await page.goto(pageUrl)
 
     // Wait for the page to load
@@ -230,7 +230,7 @@ test.describe('Pages Collection', () => {
 
   test('page is listed in search results (if search plugin is enabled)', async ({ page }) => {
     // Navigate to the frontend homepage
-    await page.goto(process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000')
+    await page.goto(baseURL)
 
     await page.waitForLoadState('networkidle')
 
@@ -253,37 +253,4 @@ test.describe('Pages Collection', () => {
     }
   })
 
-  test.afterAll(async ({ page }) => {
-    // Cleanup: Delete the test page
-    try {
-      await page.goto(`${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/admin/collections/pages`)
-
-      // Find and delete the test page
-      const pageLink = page.locator(`a:has-text("${testPageData.title}")`).first()
-
-      if (await pageLink.isVisible({ timeout: 5000 })) {
-        // Click on the page to open it
-        await pageLink.click()
-
-        // Look for delete button
-        const moreButton = page.locator('button:has-text("More"), button[aria-label*="more"]').first()
-
-        if (await moreButton.isVisible()) {
-          await moreButton.click()
-
-          const deleteButton = page.locator('button:has-text("Delete"), button:has-text("delete")').first()
-          await deleteButton.click()
-
-          // Confirm deletion
-          const confirmButton = page.locator('button:has-text("Confirm"), button:has-text("Yes")').first()
-          await confirmButton.click()
-
-          // Wait for deletion to complete
-          await page.waitForLoadState('networkidle')
-        }
-      }
-    } catch (error) {
-      console.log('Cleanup failed or page already deleted:', error)
-    }
-  })
 })

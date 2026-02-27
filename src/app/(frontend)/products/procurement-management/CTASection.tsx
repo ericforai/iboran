@@ -1,8 +1,18 @@
+'use client'
+
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Download, PhoneCall } from 'lucide-react'
 
 export const CTASection = () => {
+  const handleOpenDemoModal = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal'))
+  }
+
+  const handleOpenConsultModal = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 bg-blue-600 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-500 -skew-x-12 translate-x-1/2"></div>
@@ -17,11 +27,11 @@ export const CTASection = () => {
               我们的资深顾问将为您提供 1对1 免费业务诊断，助力企业打造透明、高效、合规的采购体系。
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 h-14 text-lg">
+              <Button onClick={handleOpenDemoModal} size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 h-14 text-lg">
                 预约专家演示
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 h-14 text-lg backdrop-blur-sm">
+              <Button onClick={handleOpenConsultModal} size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 h-14 text-lg backdrop-blur-sm">
                 下载数字化采购白皮书
                 <Download className="ml-2 w-5 h-5" />
               </Button>

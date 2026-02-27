@@ -8,6 +8,10 @@ import { MessageSquare, ArrowRight } from 'lucide-react'
 export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="py-24 bg-gradient-to-r from-[#0052D9] to-blue-700 relative overflow-hidden">
@@ -40,7 +44,7 @@ export default function CTASection() {
                 立即预约演示
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="px-10 py-5 bg-white text-[#0052D9] font-bold rounded-xl hover:bg-blue-50 transition-all shadow-xl shadow-black/10">
+              <button onClick={handleOpenConsult} className="px-10 py-5 bg-white text-[#0052D9] font-bold rounded-xl hover:bg-blue-50 transition-all shadow-xl shadow-black/10">
                 联络我们的专家
               </button>
             </div>

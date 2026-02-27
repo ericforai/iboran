@@ -1,6 +1,7 @@
 'use client'
 
-import { FileText, PlayCircle, Download } from 'lucide-react'
+import Link from 'next/link'
+import { FileText, Download } from 'lucide-react'
 
 export default function Resources() {
   return (
@@ -15,20 +16,18 @@ export default function Resources() {
               深入了解 YonBuilder 技术内幕
             </h2>
             <p className="text-slate-300 mb-8 max-w-xl">
-              下载官方技术白皮书，观看产品演示视频，获取更多关于低代码开发的深度洞察。
+              下载官方技术白皮书，获取更多关于低代码开发的深度洞察。
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <button className="flex items-center gap-3 px-6 py-3 bg-white text-slate-900 rounded-lg hover:bg-slate-100 transition-colors font-medium">
+              <Link
+                href="/whitepapers/business-finance-strategic-restructuring"
+                className="flex items-center gap-3 px-6 py-3 bg-white text-slate-900 rounded-lg hover:bg-slate-100 transition-colors font-medium"
+              >
                 <FileText className="w-5 h-5 text-[#E60012]" />
                 <span>下载技术白皮书</span>
                 <Download className="w-4 h-4 text-slate-400 ml-2" />
-              </button>
-              
-              <button className="flex items-center gap-3 px-6 py-3 bg-slate-700/50 text-white rounded-lg hover:bg-slate-700 transition-colors font-medium border border-slate-600">
-                <PlayCircle className="w-5 h-5" />
-                <span>观看产品演示</span>
-              </button>
+              </Link>
             </div>
           </div>
 

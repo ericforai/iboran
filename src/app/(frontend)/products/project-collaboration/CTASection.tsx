@@ -1,8 +1,18 @@
+'use client'
+
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Download, Rocket } from 'lucide-react'
 
 export const CTASection = () => {
+  const handleOpenDemo = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal'))
+  }
+
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 bg-brand-red relative overflow-hidden">
       {/* Decorative background elements */}
@@ -18,11 +28,20 @@ export const CTASection = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <Button size="lg" className="bg-white text-brand-red hover:bg-gray-100 px-10 py-8 text-xl font-bold rounded-full shadow-2xl transition-all hover:scale-105">
+          <Button
+            size="lg"
+            onClick={handleOpenDemo}
+            className="bg-white text-brand-red hover:bg-gray-100 px-10 py-8 text-xl font-bold rounded-full shadow-2xl transition-all hover:scale-105"
+          >
             <Rocket className="mr-3 h-6 w-6" />
             预约专家演示
           </Button>
-          <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-10 py-8 text-xl font-bold rounded-full transition-all">
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={handleOpenConsult}
+            className="border-2 border-white text-white hover:bg-white/10 px-10 py-8 text-xl font-bold rounded-full transition-all"
+          >
             <Download className="mr-3 h-6 w-6" />
             下载交付清单
           </Button>

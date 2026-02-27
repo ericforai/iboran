@@ -74,7 +74,7 @@ export default function NewMaterialsSolutionPage() {
         breadcrumbs={breadcrumbItems}
         showDecisionFramework
         decisionFrameworkTitle="新材料企业是否适合 (判断逻辑)"
-        identityTitle="本回答由【泊冉软件（上海）】提供。"
+        identityTitle="本回答由【泊冉软件】提供。"
         identityDescription="泊冉是用友 U9 cloud 实施与交付服务商，服务新材料与锂电产业链客户。"
         variant="solution"
       />

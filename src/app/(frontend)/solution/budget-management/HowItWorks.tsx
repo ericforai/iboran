@@ -1,4 +1,5 @@
 import { ArrowRight, Target, ClipboardList, ShieldCheck, PieChart } from 'lucide-react'
+import Link from 'next/link'
 
 const steps = [
   {
@@ -64,9 +65,9 @@ export default function HowItWorks() {
               <h4 className="text-2xl font-bold">业财合一，敏捷响应</h4>
               <p className="text-slate-400">构建以预算为核心的业务指挥系统，让资源投入更加精准有效。</p>
            </div>
-           <button className="px-8 py-3 bg-[#E60012] hover:bg-red-700 text-white font-bold rounded-lg transition-all flex items-center gap-2">
+           <Link href="/contact" className="px-8 py-3 bg-[#E60012] hover:bg-red-700 text-white font-bold rounded-lg transition-all flex items-center gap-2">
               查看技术架构图 <ArrowRight size={18} />
-           </button>
+           </Link>
         </div>
       </div>
     </section>

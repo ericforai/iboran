@@ -2,28 +2,28 @@ import { AlertTriangle, Network, PackageSearch } from 'lucide-react'
 
 const challenges = [
   {
-    title: '强合规压力',
+    title: '服务过程标准化难',
     description:
-      '需满足 GSP/GMP 等严苛的行业规范，人工管理批次与有效期易出错，合规审计风险高。',
+      '服务评估、派单、上门执行、回访环节分散在不同系统，人工衔接易产生执行偏差与质控盲区。',
   },
   {
-    title: '供应链全程追溯难',
+    title: '辅具流转追踪难',
     description:
-      '医药产品涉及复杂的批次合并、效期预警与温度追溯，现有系统难以实现端到端追溯。',
+      '辅具涉及入库、租赁、调拨、回收、消杀等多节点，现有系统难以实现端到端可视追踪。',
   },
   {
-    title: '多渠道营销管控难',
+    title: '多网点经营管控难',
     description:
-      '销售网络覆盖广、层级多，返利核算、渠道库存与销售实绩难以实时对齐。',
+      '网点服务量、辅具利用率、费用结算与财务数据难以实时对齐，影响经营决策效率。',
   },
 ]
 
 const challengeIcons = [AlertTriangle, PackageSearch, Network]
 
 const riskItems = [
-  { label: '批次与效期管理', level: '高', bar: 'w-4/5' },
-  { label: '温控与物流追溯', level: '高', bar: 'w-3/4' },
-  { label: '渠道返利核算', level: '中高', bar: 'w-2/3' },
+  { label: '服务过程留痕', level: '高', bar: 'w-4/5' },
+  { label: '辅具流转追踪', level: '高', bar: 'w-3/4' },
+  { label: '跨网点费用核算', level: '中高', bar: 'w-2/3' },
 ]
 
 export default function Challenge() {
@@ -62,11 +62,11 @@ export default function Challenge() {
           <div className="lg:col-span-5">
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm h-full">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold text-slate-900">风险与合规面板</h3>
-                <span className="text-xs uppercase tracking-widest text-slate-400">GSP / GMP / GXP</span>
+                <h3 className="text-lg font-semibold text-slate-900">运营风险面板</h3>
+                <span className="text-xs uppercase tracking-widest text-slate-400">养老服务 / 辅具租赁</span>
               </div>
               <p className="mt-3 text-sm text-slate-600">
-                合规审计与追溯要求贯穿全链路，任何节点的缺失都会放大风险。
+                服务质量、辅具流转与经营结算贯穿全链路，任何节点的数据缺失都会放大运营风险。
               </p>
 
               <div className="mt-6 space-y-4">
@@ -85,16 +85,16 @@ export default function Challenge() {
 
               <div className="mt-6 grid grid-cols-2 gap-3 text-xs text-slate-600">
                 <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
-                  批次合并 / 分拆
+                  派单执行留痕
                 </div>
                 <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
-                  温控留痕
+                  辅具回收消杀
                 </div>
                 <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
-                  返利结算对账
+                  服务费用结算
                 </div>
                 <div className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
-                  渠道库存可视
+                  网点运营可视
                 </div>
               </div>
             </div>

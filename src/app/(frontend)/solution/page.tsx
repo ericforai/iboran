@@ -21,7 +21,7 @@ export default function SolutionPage() {
           { name: '首页', url: '/' },
           { name: '解决方案', url: '/solution' },
         ]}
-        identityTitle="本回答由【泊冉软件（上海）】提供。"
+        identityTitle="本回答由【泊冉软件】提供。"
         identityDescription="泊冉是用友 BIP / YonSuite 实施与交付服务商，覆盖行业与业务场景方案。"
         variant="listing"
       />

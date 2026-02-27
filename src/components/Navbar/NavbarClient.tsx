@@ -547,7 +547,7 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
                   >
                     <div className="col-span-9 grid grid-cols-3 gap-x-6 pr-6 border-r border-slate-100">
                       <div className="space-y-1">
-                        <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                        <h3 className="text-sm font-heading font-black text-[#1F2329] mb-4 flex items-center gap-2">
                           <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
                           财务管控
                         </h3>
@@ -561,7 +561,7 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
                       </div>
 
                       <div className="col-span-2 space-y-1">
-                        <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                        <h3 className="text-sm font-heading font-black text-[#1F2329] mb-4 flex items-center gap-2">
                           <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
                           业务管控
                         </h3>
@@ -577,7 +577,7 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
 
                     <div className="col-span-3 pl-4">
                       <div className="bg-slate-50/50 border border-slate-100/50 rounded-2xl p-5">
-                        <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                        <h3 className="text-sm font-heading font-black text-[#1F2329] mb-6 flex items-center gap-2">
                           <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
                           数智底座与基础平台
                         </h3>
@@ -616,7 +616,7 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
                           .filter(Boolean)
                           .map((category) => (
                             <div key={category.name} className="space-y-4">
-                              <h3 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                              <h3 className="text-sm font-heading font-black text-[#1F2329] mb-4 flex items-center gap-2">
                                 <span className="w-1 h-3 bg-[#0052D9] rounded-full"></span>
                                 {category.name}
                               </h3>
@@ -768,7 +768,8 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                                 <div className="max-h-[50vh] overflow-y-auto">
                                   {solutionByIndustryCategory.map((category) => (
                                     <div key={category.name} className="pt-3 first:pt-2">
-                                      <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                                      <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                                        <span className="w-1 h-3 bg-[#E60012] rounded-full"></span>
                                         {category.name}
                                       </div>
                                       {category.items.map((item) => {
@@ -803,7 +804,8 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                                 <div className="max-h-[50vh] overflow-y-auto">
                                   {solutionByBusiness.map((category) => (
                                     <div key={category.name} className="pt-3 first:pt-2">
-                                      <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                                      <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                                        <span className="w-1 h-3 bg-[#E60012] rounded-full"></span>
                                         {category.name}
                                       </div>
                                       {category.items.map((dropItem) => {

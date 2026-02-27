@@ -36,6 +36,10 @@ const targets = [
 ]
 
 export default function TargetAudience() {
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-20 lg:py-28 bg-white">
       <div className="container mx-auto px-4">
@@ -80,7 +84,10 @@ export default function TargetAudience() {
               <div className="text-slate-500">涵盖制药、生物科技、新材料、羊绒纺织等多个成长型行业。</div>
             </div>
           </div>
-          <button className="whitespace-nowrap px-8 py-3 bg-[#E60012] text-white font-bold rounded-lg hover:bg-red-700 transition-colors">
+          <button
+            onClick={handleOpenConsult}
+            className="whitespace-nowrap px-8 py-3 bg-[#E60012] text-white font-bold rounded-lg hover:bg-red-700 transition-colors"
+          >
             立即进行匹配度分析
           </button>
         </div>

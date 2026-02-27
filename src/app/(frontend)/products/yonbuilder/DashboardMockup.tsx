@@ -55,23 +55,23 @@ export const DashboardMockup = () => {
         </div>
 
         <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-lg">
-          <button className="p-1.5 bg-white shadow-sm rounded text-slate-700">
+          <span className="p-1.5 bg-white shadow-sm rounded text-slate-700 inline-flex items-center justify-center cursor-default">
             <Monitor className="w-4 h-4" />
-          </button>
-          <button className="p-1.5 hover:bg-white/50 rounded text-slate-500 hover:text-slate-700">
+          </span>
+          <span className="p-1.5 hover:bg-white/50 rounded text-slate-500 hover:text-slate-700 inline-flex items-center justify-center cursor-default">
             <Smartphone className="w-4 h-4" />
-          </button>
+          </span>
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 rounded-md border border-slate-200">
+          <span className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 rounded-md border border-slate-200 cursor-default">
             <Save className="w-3.5 h-3.5" />
             保存
-          </button>
-          <button className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-white bg-[#0052D9] hover:bg-blue-700 rounded-md shadow-sm shadow-blue-200">
+          </span>
+          <span className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-white bg-[#0052D9] hover:bg-blue-700 rounded-md shadow-sm shadow-blue-200 cursor-default">
             <Play className="w-3.5 h-3.5" />
             预览发布
-          </button>
+          </span>
         </div>
       </div>
 

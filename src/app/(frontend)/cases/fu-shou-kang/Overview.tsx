@@ -1,12 +1,12 @@
 import { Activity, Building2, CheckCircle2, ClipboardList, ShieldCheck } from 'lucide-react'
 
 const goals = [
-  '建立符合 GXP 标准的合规闭环',
-  '打通批次、效期与温控的全程追溯',
-  '实现营销与财务模块的透明对账',
+  '建立覆盖评估、派单、执行、回访的服务闭环',
+  '打通辅具入库、租赁、回收与消杀的全程追踪',
+  '实现多网点服务与财务模块的透明对账',
 ]
 
-const scopes = ['研发创新', '合规生产', '精准流通', '渠道治理']
+const scopes = ['服务评估', '辅具租赁', '上门照护', '网点经营']
 
 export default function Overview() {
   return (
@@ -35,7 +35,7 @@ export default function Overview() {
                   </div>
                   <div>
                     <div className="text-xs text-slate-400 mb-1">行业</div>
-                    <div className="font-semibold text-slate-900">医药与医疗 · 养老服务</div>
+                    <div className="font-semibold text-slate-900">养老服务 · 辅具租赁</div>
                   </div>
                 </div>
 
@@ -44,8 +44,8 @@ export default function Overview() {
                     <ClipboardList className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs text-slate-400 mb-1">合规要求</div>
-                    <div className="font-semibold text-slate-900">GSP / GMP / GXP</div>
+                    <div className="text-xs text-slate-400 mb-1">业务特征</div>
+                    <div className="font-semibold text-slate-900">多网点服务 + 辅具租赁</div>
                   </div>
                 </div>
 
@@ -55,7 +55,7 @@ export default function Overview() {
                   </div>
                   <div>
                     <div className="text-xs text-slate-400 mb-1">方案</div>
-                    <div className="font-semibold text-slate-900">医药与医疗数字化升级</div>
+                    <div className="font-semibold text-slate-900">养老服务一体化运营升级</div>
                   </div>
                 </div>
               </div>
@@ -80,12 +80,12 @@ export default function Overview() {
             <h2 className="text-3xl font-bold text-slate-900 mb-6 tracking-tight">项目背景</h2>
             <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
               <p>
-                医药与医疗健康行业正处于高合规要求与数字化转型的交汇点。从研发创新、合规生产到精准流通，
-                企业亟需构建符合 GXP 标准的一体化管理体系。
+                福寿康的业务覆盖养老照护、上门服务与辅具租赁，多网点、多角色协同对服务标准化提出了更高要求。
+                传统分散系统难以支撑全过程追踪与跨网点统一运营。
               </p>
               <p>
-                泊冉软件通过数智化平台，以保障企业在严苛监管下实现效率与安全的双重跨越。项目背景为提供医疗护理、
-                养老照护及相关健康管理服务。
+                泊冉软件通过数智化平台，帮助其实现“服务执行可视、辅具流转可追、经营数据可算”，
+                支撑养老服务从经验驱动向数据驱动升级。
               </p>
             </div>
 
@@ -105,17 +105,17 @@ export default function Overview() {
               <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6">
                 <h3 className="text-sm font-semibold text-slate-900">交付重点</h3>
                 <p className="mt-4 text-sm text-slate-600 leading-relaxed">
-                  以合规为底座，贯通生产与流通，实现对批次、效期、温控、渠道库存及费用流的统一管理。
+                  以服务过程为底座，贯通服务派单、执行回访、辅具租赁与费用结算，实现运营全链路统一管理。
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <span className="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-600">
-                    合规审计
+                    服务质控
                   </span>
                   <span className="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-600">
-                    批次追溯
+                    辅具追踪
                   </span>
                   <span className="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-600">
-                    渠道对账
+                    费用对账
                   </span>
                 </div>
               </div>

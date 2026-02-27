@@ -1,7 +1,13 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import { CheckCircle2, XCircle } from 'lucide-react'
 
 export const TargetAudience = () => {
+  const handleOpenConsultModal = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   const applicable = [
     { title: '大中型多分支机构', desc: '需要统一预算管控与跨地域报销审批的企业' },
     { title: '极速成长期组织', desc: '财务流程滞后于业务扩张，需快速建立合规体系' },
@@ -75,7 +81,7 @@ export const TargetAudience = () => {
               <li>• 数据统计靠手工，管理决策无依据</li>
             </ul>
           </div>
-          <Button className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 rounded-md whitespace-nowrap">
+          <Button onClick={handleOpenConsultModal} className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-6 rounded-md whitespace-nowrap">
             诊断我的财务流程
           </Button>
         </div>

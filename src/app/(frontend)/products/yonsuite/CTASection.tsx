@@ -8,6 +8,10 @@ import { DemoRequestModal } from '@/components/DemoRequestModal'
 export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-20 bg-white overflow-hidden relative">
       {/* Background Element */}
@@ -47,7 +51,7 @@ export default function CTASection() {
                 获取报价与交付周期
                 <MessageCircle className="w-5 h-5" />
               </button>
-              <button className="px-10 py-5 bg-white text-[#1F2329] font-bold rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-3 border border-white">
+              <button onClick={handleOpenConsult} className="px-10 py-5 bg-white text-[#1F2329] font-bold rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-3 border border-white">
                 下载交付清单
                 <Download className="w-5 h-5" />
               </button>

@@ -6,6 +6,10 @@ import { useState } from 'react'
 export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-800 text-white relative overflow-hidden">
@@ -28,7 +32,7 @@ export default function CTASection() {
             >
               预约专家方案演示
             </button>
-            <button className="px-8 py-4 bg-white text-blue-700 font-bold rounded-lg hover:bg-blue-50 transition-colors">
+            <button onClick={handleOpenConsult} className="px-8 py-4 bg-white text-blue-700 font-bold rounded-lg hover:bg-blue-50 transition-colors">
               下载完整解决方案
             </button>
           </div>

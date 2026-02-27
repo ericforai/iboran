@@ -62,6 +62,9 @@ const scenarios = [
 
 export function KeyScenarios() {
   const [activeTab, setActiveTab] = useState(scenarios[0].id)
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
 
   return (
     <section className="py-20 bg-white">
@@ -156,7 +159,10 @@ export function KeyScenarios() {
                       </div>
 
                       <div className="mt-8 pt-6 border-t border-slate-200">
-                        <button className="flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all">
+                        <button
+                          onClick={handleOpenConsult}
+                          className="flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all"
+                        >
                           了解具体方案 <ArrowRight className="w-4 h-4" />
                         </button>
                       </div>

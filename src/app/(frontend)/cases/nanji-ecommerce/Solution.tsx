@@ -1,4 +1,5 @@
 import { Database, Network, LineChart, ShieldCheck, Cpu, Users } from 'lucide-react'
+import Link from 'next/link'
 
 const solutions = [
   {
@@ -48,10 +49,10 @@ export default function Solution() {
             </p>
           </div>
           <div className="flex-shrink-0">
-             <button className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl flex items-center gap-2">
+             <Link href="/contact" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl flex items-center gap-2">
                查看架构图
                <Network className="w-5 h-5 text-blue-400" />
-             </button>
+             </Link>
           </div>
         </div>
 

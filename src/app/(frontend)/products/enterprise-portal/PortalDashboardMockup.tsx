@@ -166,7 +166,9 @@ export function PortalDashboardMockup() {
                                 <span className="text-[10px] text-slate-400">{task.time}</span>
                             </div>
                         </div>
-                        <button className="text-xs text-blue-600 border border-blue-600 px-2 py-0.5 rounded hover:bg-blue-50">处理</button>
+                        <span className="text-xs text-blue-600 border border-blue-600 px-2 py-0.5 rounded bg-blue-50/40 cursor-default">
+                          处理
+                        </span>
                     </motion.div>
                 ))}
               </div>

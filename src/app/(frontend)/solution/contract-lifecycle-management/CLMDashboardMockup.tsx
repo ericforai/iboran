@@ -196,8 +196,8 @@ function DraftingView() {
               <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded-full text-[10px]">编辑中</span>
             </div>
             <div className="flex gap-2">
-               <button className="px-3 py-1.5 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors text-xs font-bold">OCR 识别</button>
-               <button className="px-3 py-1.5 bg-[#0052D9] text-white rounded hover:bg-blue-700 transition-colors text-xs font-bold">保存并送审</button>
+               <span className="px-3 py-1.5 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors text-xs font-bold cursor-default">OCR 识别</span>
+               <span className="px-3 py-1.5 bg-[#0052D9] text-white rounded hover:bg-blue-700 transition-colors text-xs font-bold cursor-default">保存并送审</span>
             </div>
          </div>
          <div className="flex-1 p-8 bg-slate-100 overflow-y-auto">
@@ -252,8 +252,8 @@ function ReviewView() {
                       检测到&quot;预付 80%&quot;条款，高于集团采购管理办法规定的最高预付比例 (30%)。
                     </p>
                     <div className="mt-3 flex gap-2">
-                      <button className="bg-white border border-orange-200 text-orange-700 px-2 py-1 rounded shadow-sm hover:bg-orange-50">保留原款</button>
-                      <button className="bg-orange-500 text-white px-2 py-1 rounded shadow-sm hover:bg-orange-600">一键修正为 30%</button>
+                      <span className="bg-white border border-orange-200 text-orange-700 px-2 py-1 rounded shadow-sm hover:bg-orange-50 inline-flex items-center justify-center cursor-default">保留原款</span>
+                      <span className="bg-orange-500 text-white px-2 py-1 rounded shadow-sm hover:bg-orange-600 inline-flex items-center justify-center cursor-default">一键修正为 30%</span>
                     </div>
                   </div>
                </div>
@@ -302,8 +302,8 @@ function SigningView() {
                <h3 className="text-xl font-bold text-slate-800 mb-2">等待相对方签署</h3>
                <p className="text-slate-500 mb-6">已通过短信/邮件发送签署链接至 138****0000</p>
                <div className="flex justify-center gap-3">
-                 <button className="px-4 py-2 bg-white border border-slate-300 rounded-lg text-slate-600 hover:bg-slate-50">查看签署链接</button>
-                 <button className="px-4 py-2 bg-[#0052D9] text-white rounded-lg hover:bg-blue-700">发送催签提醒</button>
+                 <span className="px-4 py-2 bg-white border border-slate-300 rounded-lg text-slate-600 hover:bg-slate-50 inline-flex items-center justify-center cursor-default">查看签署链接</span>
+                 <span className="px-4 py-2 bg-[#0052D9] text-white rounded-lg hover:bg-blue-700 inline-flex items-center justify-center cursor-default">发送催签提醒</span>
                </div>
             </div>
          </div>

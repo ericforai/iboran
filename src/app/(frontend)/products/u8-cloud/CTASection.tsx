@@ -7,6 +7,10 @@ import { DemoRequestModal } from '@/components/DemoRequestModal'
 export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-20 lg:py-28 bg-[#1F2329] relative overflow-hidden">
       {/* Background patterns */}
@@ -32,7 +36,7 @@ export default function CTASection() {
             <ArrowRight className="w-5 h-5" />
           </button>
           
-          <button className="w-full sm:w-auto px-10 py-5 border-2 border-slate-700 text-white font-bold rounded-xl hover:bg-slate-800 transition-all flex items-center justify-center gap-2 text-lg group">
+          <button onClick={handleOpenConsult} className="w-full sm:w-auto px-10 py-5 border-2 border-slate-700 text-white font-bold rounded-xl hover:bg-slate-800 transition-all flex items-center justify-center gap-2 text-lg group">
             下载交付清单 (PDF)
             <Download className="w-5 h-5 text-slate-500 group-hover:text-white transition-colors" />
           </button>

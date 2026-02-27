@@ -1,8 +1,18 @@
+'use client'
+
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Rocket, Download, PhoneCall } from 'lucide-react'
 
 export const CTASection = () => {
+  const handleOpenDemoModal = () => {
+    window.dispatchEvent(new CustomEvent('open-demo-modal'))
+  }
+
+  const handleOpenConsultModal = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 bg-gradient-to-br from-blue-600 to-indigo-800 text-white overflow-hidden relative">
       <div className="container px-4 mx-auto relative z-10 text-center">
@@ -18,10 +28,10 @@ export const CTASection = () => {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <Button size="lg" className="bg-brand-red hover:bg-red-700 text-white px-10 h-16 rounded-full text-xl shadow-xl transition-all hover:scale-105">
+            <Button onClick={handleOpenDemoModal} size="lg" className="bg-brand-red hover:bg-red-700 text-white px-10 h-16 rounded-full text-xl shadow-xl transition-all hover:scale-105">
               立即预约专家演示
             </Button>
-            <Button size="lg" variant="outline" className="border-white/20 bg-white/10 text-white hover:bg-white hover:text-blue-600 px-10 h-16 rounded-full text-xl transition-all">
+            <Button onClick={handleOpenConsultModal} size="lg" variant="outline" className="border-white/20 bg-white/10 text-white hover:bg-white hover:text-blue-600 px-10 h-16 rounded-full text-xl transition-all">
               <Download className="mr-2 w-5 h-5" /> 交付清单下载
             </Button>
           </div>

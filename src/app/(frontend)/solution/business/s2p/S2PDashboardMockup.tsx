@@ -112,7 +112,7 @@ function SourcingView() {
       <div className="bg-white p-5 rounded-lg border border-slate-100 shadow-sm">
         <div className="flex justify-between items-center mb-4">
           <h3 className="font-bold text-slate-800">最新寻源项目</h3>
-          <button className="text-blue-600 text-sm font-medium">查看全部</button>
+          <span className="text-blue-600 text-sm font-medium cursor-default">查看全部</span>
         </div>
         <div className="space-y-3">
           {[
@@ -182,7 +182,7 @@ function ProcurementView() {
                <AlertCircle size={16} /> A 类物料库存预警
              </div>
              <p className="text-xs text-blue-600/80">核心芯片 X-Intel 库存低于安全水位 (500)，建议立即补货 2000。</p>
-             <button className="mt-2 text-xs bg-blue-600 text-white px-3 py-1.5 rounded hover:bg-blue-700 transition">一键生成订单</button>
+             <span className="mt-2 text-xs bg-blue-600 text-white px-3 py-1.5 rounded hover:bg-blue-700 transition inline-flex items-center justify-center cursor-default">一键生成订单</span>
            </div>
         </div>
       </div>

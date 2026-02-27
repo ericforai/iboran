@@ -27,6 +27,10 @@ const scopeItems = [
 ]
 
 export default function DeliveryScope() {
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -81,7 +85,10 @@ export default function DeliveryScope() {
               </p>
             </div>
             <div className="md:ml-auto">
-              <button className="whitespace-nowrap px-6 py-3 bg-white text-slate-900 rounded-md font-bold hover:bg-slate-100 transition">
+              <button
+                onClick={handleOpenConsult}
+                className="whitespace-nowrap px-6 py-3 bg-white text-slate-900 rounded-md font-bold hover:bg-slate-100 transition"
+              >
                 查看详细交付文件
               </button>
             </div>

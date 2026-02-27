@@ -81,9 +81,6 @@ export default function Hero() {
                   免费试用
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <button className="px-8 py-4 border-2 border-[#0052D9] text-[#0052D9] font-bold rounded-md hover:bg-blue-50 transition-all">
-                  查看技术白皮书
-                </button>
               </div>
             </motion.div>
 

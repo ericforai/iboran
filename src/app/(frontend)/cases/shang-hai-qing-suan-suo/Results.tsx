@@ -135,8 +135,8 @@ export default function Results() {
             <div className="text-sm text-slate-400">国产信创达标</div>
           </div>
           <div className="text-center p-6 bg-white/5 rounded-xl border border-white/10">
-            <div className="text-3xl font-bold text-purple-400 mb-2">24/7</div>
-            <div className="text-sm text-slate-400">清算服务保障</div>
+            <div className="text-3xl font-bold text-purple-400 mb-2">7*24小时</div>
+            <div className="text-sm text-slate-400">服务保障</div>
           </div>
         </div>
       </div>

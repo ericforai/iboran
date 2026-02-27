@@ -30,12 +30,12 @@ export const GEOJsonLd: React.FC<GEOJsonLdProps> = ({
     })) || [],
     author: {
       '@type': 'Organization',
-      name: '泊冉软件（上海）',
+      name: '泊冉软件',
       url: 'https://www.iboran.com',
     },
     publisher: {
       '@type': 'Organization',
-      name: '泊冉软件（上海）',
+      name: '泊冉软件',
     },
   }
 
@@ -49,11 +49,11 @@ export const GEOJsonLd: React.FC<GEOJsonLdProps> = ({
     articleBody: articleBody,
     author: {
       '@type': 'Organization',
-      name: '泊冉软件（上海）',
+      name: '泊冉软件',
     },
     publisher: {
       '@type': 'Organization',
-      name: '泊冉软件（上海）',
+      name: '泊冉软件',
     },
     url: url,
   }

@@ -158,7 +158,7 @@ export default function BudgetDashboardMockup({ activeTab: _activeTab = 'default
           <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-100">
              <div className="flex items-center justify-between mb-4">
                 <h4 className="font-bold text-slate-700">实时预算控制预警</h4>
-                <button className="text-blue-600 font-medium">查看全部</button>
+                <span className="text-blue-600 font-medium cursor-default">查看全部</span>
              </div>
              <div className="space-y-2">
                 <AlertRow status="error" dept="市场部" event="2026 Q1 推广活动" amount="¥ 2,450,000" msg="超支预警 - 强制阻断" />

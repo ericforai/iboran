@@ -8,6 +8,10 @@ import CLMDashboardMockup from './CLMDashboardMockup'
 export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
+  const handleOpenConsultModal = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <>
       <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 bg-slate-50 overflow-hidden">
@@ -46,7 +50,8 @@ export default function Hero() {
                   预约专家演示
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </button>
-                <button 
+                <button
+                  onClick={handleOpenConsultModal}
                   className="px-8 py-4 border border-slate-200 text-slate-700 font-bold rounded-lg hover:bg-white hover:border-slate-300 transition-all bg-white/50 backdrop-blur w-full sm:w-auto"
                 >
                   下载解决方案白皮书
@@ -109,4 +114,3 @@ export default function Hero() {
     </>
   )
 }
-
