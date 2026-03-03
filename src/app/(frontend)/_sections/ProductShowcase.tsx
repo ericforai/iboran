@@ -52,7 +52,7 @@ const dataItems = [
 
 export const ProductShowcase: React.FC = React.memo(() => {
   return (
-    <section className="min-h-0 lg:h-screen flex items-center py-12 lg:py-12 bg-white relative overflow-hidden isolate">
+    <section className="min-h-0 lg:min-h-screen flex items-center py-12 lg:py-12 bg-white relative overflow-hidden isolate">
       {/* Precision Blueprint Grid Background */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04] z-0">
         <div className="absolute inset-0" style={{

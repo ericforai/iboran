@@ -39,6 +39,7 @@ import {
   Settings2,
   FileCheck,
   Share2,
+  Orbit,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -96,6 +97,7 @@ export const solutionByBusiness: BusinessCategory[] = [
   {
     name: '业务管控',
     items: [
+      { label: '经营-存证-AI一体化', href: '/solution/business/operation-evidence-ai', desc: '经营在云上、证据在本地、智能贯穿全流程的业务管控闭环', icon: Orbit },
       { label: '研发云', href: '/solution/business/plm', desc: '集成研发、工程与制造，缩短周期，加速创新', icon: FlaskConical },
       { label: '数智合同', href: '/solution/contract-lifecycle-management', desc: '业财法一体化，全生命周期智慧合同管理', icon: FileSpreadsheet },
       { label: '销售线索到收款', href: '/solution/business/lead-to-cash', desc: '全链路商机跟踪、自动化定价，实现销售高效闭环', icon: TrendingUp },

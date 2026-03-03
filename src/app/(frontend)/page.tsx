@@ -8,6 +8,7 @@ import type { Post } from '@/payload-types'
 // Components
 import { RecentPostsSection } from './_sections/RecentPostsSection'
 import { ProductShowcase } from './_sections/ProductShowcase'
+import { TrinityBanner } from './_sections/TrinityBanner'
 import { AdvantageSection } from './_sections/AdvantageSection'
 import { CaseLogosSection } from './_sections/CaseLogosSection'
 import { SEOKeywords } from './_sections/SEOKeywords'
@@ -43,6 +44,7 @@ export default async function Page() {
               <SeoH1 title="泊冉软件 - 专业的用友软件实施服务商 | 业财一体化与数智化转型专家" />
               <main className="flex-grow">
                   <Hero />
+                  <TrinityBanner />
                   <ProductShowcase />
                   <AdvantageSection />
                   <CaseLogosSection />

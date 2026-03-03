@@ -55,16 +55,16 @@ export const DesktopFloatingActions: React.FC<DesktopFloatingActionsProps> = Rea
   }, [trackPhoneCall])
 
   return (
-    <div className="hidden lg:flex fixed right-4 top-1/2 -translate-y-1/2 z-[95]">
-      <div className="relative w-[76px]">
-      <div className="w-[76px] bg-[#E60012] text-white rounded-sm shadow-xl border border-red-700/30">
+    <div className="hidden lg:flex fixed right-0 top-1/2 -translate-y-1/2 z-[95]">
+      <div className="relative w-[64px]">
+      <div className="w-[64px] bg-[#E60012] text-white rounded-l-sm shadow-xl border border-red-700/30 border-r-0">
         <button
           onClick={handleOpenConsult}
-          className="w-full h-[92px] flex flex-col items-center justify-center gap-1.5 hover:bg-red-700 transition-colors"
+          className="w-full h-[82px] flex flex-col items-center justify-center gap-1 hover:bg-red-700 transition-colors"
           aria-label="在线咨询"
         >
-          <Headset className="w-6 h-6" />
-          <span className="text-[14px] font-semibold leading-none">在线咨询</span>
+          <Headset className="w-5 h-5" />
+          <span className="text-[12px] font-semibold leading-none">在线咨询</span>
         </button>
 
         <div className="h-px bg-white/30 mx-2" />
@@ -86,11 +86,11 @@ export const DesktopFloatingActions: React.FC<DesktopFloatingActionsProps> = Rea
           <button
             type="button"
             onClick={handlePhoneClick}
-            className="w-full h-[92px] flex flex-col items-center justify-center gap-1.5 hover:bg-red-700 transition-colors"
+            className="w-full h-[82px] flex flex-col items-center justify-center gap-1 hover:bg-red-700 transition-colors"
             aria-label="电话咨询"
           >
-            <Phone className="w-6 h-6" />
-            <span className="text-[14px] font-semibold leading-none">电话咨询</span>
+            <Phone className="w-5 h-5" />
+            <span className="text-[12px] font-semibold leading-none">电话咨询</span>
           </button>
         </div>
 
@@ -98,11 +98,11 @@ export const DesktopFloatingActions: React.FC<DesktopFloatingActionsProps> = Rea
 
         <button
           onClick={handleOpenQuote}
-          className="w-full h-[92px] flex flex-col items-center justify-center gap-1.5 hover:bg-red-700 transition-colors"
+          className="w-full h-[82px] flex flex-col items-center justify-center gap-1 hover:bg-red-700 transition-colors"
           aria-label="获取报价"
         >
-          <BadgeDollarSign className="w-6 h-6" />
-          <span className="text-[14px] font-semibold leading-none">获取报价</span>
+          <BadgeDollarSign className="w-5 h-5" />
+          <span className="text-[12px] font-semibold leading-none">获取报价</span>
         </button>
       </div>
       </div>
