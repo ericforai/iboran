@@ -267,7 +267,7 @@ const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }
         {menuItems.map((item) => (
           <div
             key={item.label}
-            className="relative"
+            className="relative pb-6 -mb-6"
             onMouseEnter={() => item.hasDropdown && handleMenuEnter(item.label)}
             onMouseLeave={handleMenuLeave}
           >
