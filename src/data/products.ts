@@ -94,6 +94,12 @@ export const productCategories: ProductCategory[] = [
         desc: '数字化采购管理平台，实现从请购到支付的全流程闭环', 
         icon: Layers 
       },
+      {
+        label: '费控管理',
+        href: '/products/expense-management',
+        desc: '业财一体化费控平台，覆盖预算、报销、票据与商旅全链路',
+        icon: FileText,
+      },
     ]
   },
   {

@@ -83,9 +83,13 @@ export const solutionByBusiness: BusinessCategory[] = [
   {
     name: '财务管控',
     items: [
+      { label: '智能财务', href: '/solution/business/finance-cloud', desc: '事项法会计驱动智能核算、司库与税务协同的一体化财务管理', icon: Wallet },
       { label: '核算到报告', href: '/solution/business/r2r', desc: '让财务真正参与经营决策，驱动价值创造', icon: FileSpreadsheet },
+      { label: '合并报表管理', href: '/solution/consolidated-statements', desc: '多准则一键转换与自动化权益抵销，提升集团合并效率与准确性', icon: FileSpreadsheet },
+      { label: 'SPE 纵向 PDCA', href: '/solution/spe', desc: '打通战略、预算、执行与分析的纵向闭环管理体系', icon: Calculator },
       { label: '智能商旅到费控', href: '/solution/tes', desc: '实现业财税资档一体化管理的智能差旅费控平台', icon: Wallet },
       { label: '司库资金管理', href: '/solution/business/trm', desc: '全球资金实时监控与精准调度，构建数智化金融底座', icon: Landmark },
+      { label: '银企联', href: '/solution/business/bank-enterprise-link', desc: '连接 2500+ 银行，实现账户、回单与对账自动化协同', icon: Link2 },
       { label: '税务管理', href: '/solution/business/tax-management', desc: '金税四期合规 · 全税种自动申报 · 智能风险风控', icon: FileCheck },
       { label: '业财融合', href: '/solution/business/business-finance-integration', desc: '实时·精细·智能的业财数据底座，驱动价值转型', icon: Activity },
       { label: '财务共享', href: '/solution/financial-shared-services', desc: '打造全球财务共享服务平台，实现高效业财联动', icon: Share2 },
@@ -101,6 +105,7 @@ export const solutionByBusiness: BusinessCategory[] = [
       { label: '研发云', href: '/solution/business/plm', desc: '集成研发、工程与制造，缩短周期，加速创新', icon: FlaskConical },
       { label: '数智合同', href: '/solution/contract-lifecycle-management', desc: '业财法一体化，全生命周期智慧合同管理', icon: FileSpreadsheet },
       { label: '销售线索到收款', href: '/solution/business/lead-to-cash', desc: '全链路商机跟踪、自动化定价，实现销售高效闭环', icon: TrendingUp },
+      { label: '收入云', href: '/solution/business/revenue-cloud', desc: '明细级智能对账与滚动差异处理，支撑全球化收入管理', icon: TrendingUp },
       { label: '采购寻源到付款', href: '/solution/business/s2p', desc: '构建透明高效供应体系，实现采购全流程合规管控', icon: Package },
       { label: '项目立项到成本', href: '/solution/business/p2c-project-to-cost', desc: '项目全生命周期管控，进度透明，核算精细', icon: Layers },
       { label: '计划、生产到成本', href: '/solution/business/p2m', desc: '生产数字化、透明化管控，实现精益制造', icon: Factory },
@@ -116,6 +121,7 @@ export const solutionByBusiness: BusinessCategory[] = [
       { label: '企业集成平台', href: '/products/ipaas', desc: '系统孤岛多、数据不互通？让业务连接更简单', icon: Link2 },
       { label: '数智化协作', href: '/solution/business/eoc-collaboration', desc: '信息散乱、协作低效、事事靠人？AI 驱动的组织效能提升', icon: Users },
       { label: '数字化建模', href: '/solution/business/digital-modeling', desc: '需求变化快、开发跟不上？快速构建企业专属应用', icon: Blocks },
+      { label: 'DEV 开发平台', href: '/solution/business/dev', desc: '低代码与零代码结合，支持可视化构建与敏捷应用创新', icon: Code2 },
       { label: '技术平台底座', href: '/solution/business/ctp', desc: '技术栈老旧、扩展困难？云原生技术底座支撑转型', icon: Cpu },
 
       { label: '数据平台', href: '/solution/business/dmp', desc: '数据分散、分析困难、决策靠感觉？数据驱动经营决策', icon: Database },
