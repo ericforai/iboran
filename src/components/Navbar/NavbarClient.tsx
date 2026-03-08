@@ -22,7 +22,6 @@ import {
 import { productCategories } from '@/data/products'
 import type { Contact } from '@/payload-types'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
-import { ConsultationModal } from '@/components/ConsultationModal'
 import { useConversionTracking } from '@/hooks/useConversionTracking'
 
 interface NavbarClientProps {
@@ -50,8 +49,6 @@ const NavbarStateContext = React.createContext<{
   setMobileSolutionTab: (tab: 'business' | 'industry') => void
   isDemoModalOpen: boolean
   setIsDemoModalOpen: (open: boolean) => void
-  isConsultModalOpen: boolean
-  setIsConsultModalOpen: (open: boolean) => void
   handleMenuEnter: (label: string) => void
   handleMenuLeave: () => void
   handleOpenDemo: () => void
@@ -72,7 +69,6 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const [demoSource, setDemoSource] = useState<string | undefined>(undefined)
-  const [isConsultModalOpen, setIsConsultModalOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState<string[]>([])
   const [megaMenuTab, setMegaMenuTab] = useState<'business' | 'industry'>('business')
@@ -159,7 +155,21 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     setActiveDropdown(null)
     setIsMobileMenuOpen(false)
     trackWeChatOpen('navbar')
-    setIsConsultModalOpen(true)
+    
+    // Smart Aifafan trigger: Try to wake up the in-page widget first
+    const selectors = ['#nb_icon_wrap', '.nb-icon-inner-wrap', '#lxb-container-icon', '.lxb-container'];
+    let triggered = false;
+    for (const selector of selectors) {
+      const el = document.querySelector(selector) as HTMLElement;
+      if (el) {
+        el.click();
+        triggered = true;
+        break;
+      }
+    }
+    if (!triggered) {
+      window.open('https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f', '_blank');
+    }
   }, [trackWeChatOpen, setActiveDropdown])
 
   const handlePhoneClick = React.useCallback(() => {
@@ -204,8 +214,6 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     setMobileSolutionTab,
     isDemoModalOpen,
     setIsDemoModalOpen,
-    isConsultModalOpen,
-    setIsConsultModalOpen,
     handleMenuEnter,
     handleMenuLeave,
     handleOpenDemo,
@@ -217,7 +225,6 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     megaMenuTab,
     mobileSolutionTab,
     isDemoModalOpen,
-    isConsultModalOpen,
     handleMenuEnter,
     handleMenuLeave,
     handleOpenDemo,
@@ -248,7 +255,6 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
               source={demoSource}
             />
           )}
-          <ConsultationModal isOpen={isConsultModalOpen} onClose={() => setIsConsultModalOpen(false)} data={contactData} />
         </>
       )}
     </NavbarStateContext.Provider>

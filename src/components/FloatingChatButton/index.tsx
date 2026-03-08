@@ -1,4 +1,4 @@
-// Input: useConversionTracking hook, ConsultationModal component, Contact global data
+// Input: useConversionTracking hook, Contact global data
 // Output: 悬浮聊天按钮，跟踪微信咨询打开转化
 // Pos: components/FloatingChatButton - 悬浮按钮组件
 // 一旦我被更新，务必更新我的开头注释，以及所属的文件夹的 md。
@@ -7,7 +7,6 @@
 import React from 'react'
 import { MessageCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ConsultationModal } from '@/components/ConsultationModal'
 import type { Contact } from '@/payload-types'
 import { useConversionTracking } from '@/hooks/useConversionTracking'
 
@@ -20,14 +19,25 @@ export const FloatingChatButton: React.FC<FloatingChatButtonProps> = React.memo(
   contactData,
   showOnMobile = false,
 }) => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false)
   const { trackWeChatOpen } = useConversionTracking()
 
   const handleOpenModal = React.useCallback(() => {
     trackWeChatOpen('floating')
-    setIsModalOpen(true)
+    // Smart Aifafan trigger: Try to wake up the in-page widget first
+    const selectors = ['#nb_icon_wrap', '.nb-icon-inner-wrap', '#lxb-container-icon', '.lxb-container'];
+    let triggered = false;
+    for (const selector of selectors) {
+        const el = document.querySelector(selector) as HTMLElement;
+        if (el) {
+            el.click();
+            triggered = true;
+            break;
+        }
+    }
+    if (!triggered) {
+        window.open('https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f', '_blank');
+    }
   }, [trackWeChatOpen])
-  const handleCloseModal = React.useCallback(() => setIsModalOpen(false), [])
 
   return (
     <>
@@ -50,8 +60,6 @@ export const FloatingChatButton: React.FC<FloatingChatButtonProps> = React.memo(
           </AnimatePresence>
         </div>
       )}
-
-      <ConsultationModal isOpen={isModalOpen} onClose={handleCloseModal} data={contactData} />
     </>
   )
 })

@@ -85,7 +85,6 @@ export default {
       'PageRange',
 
       // Modals
-      'ConsultationModal',
       'DemoRequestModal',
 
       // Monitoring

@@ -17,7 +17,20 @@ export const DesktopFloatingActions: React.FC<DesktopFloatingActionsProps> = Rea
   const phoneCardRef = React.useRef<HTMLDivElement>(null)
 
   const handleOpenConsult = React.useCallback(() => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    // Smart Aifafan trigger: Try to wake up the in-page widget first
+    const selectors = ['#nb_icon_wrap', '.nb-icon-inner-wrap', '#lxb-container-icon', '.lxb-container'];
+    let triggered = false;
+    for (const selector of selectors) {
+        const el = document.querySelector(selector) as HTMLElement;
+        if (el) {
+            el.click();
+            triggered = true;
+            break;
+        }
+    }
+    if (!triggered) {
+        window.open('https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f', '_blank');
+    }
   }, [])
 
   const handleOpenQuote = React.useCallback(() => {
@@ -55,7 +68,7 @@ export const DesktopFloatingActions: React.FC<DesktopFloatingActionsProps> = Rea
   }, [trackPhoneCall])
 
   return (
-    <div className="hidden lg:flex fixed right-0 top-1/2 -translate-y-1/2 z-[95]">
+    <div className="hidden lg:flex fixed right-0 top-[65%] -translate-y-1/2 z-[95]">
       <div className="relative w-[64px]">
       <div className="w-[64px] bg-[#E60012] text-white rounded-l-sm shadow-xl border border-red-700/30 border-r-0">
         <button

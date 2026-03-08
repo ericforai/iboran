@@ -1,27 +1,37 @@
-// Input: useConversionTracking hook, DemoRequestModal, ConsultationModal, Contact global data
+// Input: useConversionTracking hook, DemoRequestModal, Contact global data
 // Output: 移动端底部栏组件，跟踪微信打开和电话点击转化
 // Pos: components/MobileStickyBar - 移动端底部栏组件
 // 一旦我被更新，务必更新我的开头注释，以及所属的文件夹的 md。
 'use client'
 
 import React, { useState } from 'react'
-import { Phone, MessageSquare, Presentation, Sparkles } from 'lucide-react'
+import { Phone, MessageSquare, Presentation } from 'lucide-react'
 import type { Contact } from '@/payload-types'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
-import { ConsultationModal } from '@/components/ConsultationModal'
 import { useConversionTracking } from '@/hooks/useConversionTracking'
 
 export const MobileStickyBar: React.FC<{ contactData?: Contact }> = React.memo(({ contactData }) => {
     const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
-    const [isConsultModalOpen, setIsConsultModalOpen] = useState(false)
     const { trackWeChatOpen, trackPhoneCall } = useConversionTracking()
 
     const handleOpenDemo = React.useCallback(() => setIsDemoModalOpen(true), [])
     const handleCloseDemo = React.useCallback(() => setIsDemoModalOpen(false), [])
     const handleOpenConsult = React.useCallback(() => {
-        window.dispatchEvent(new CustomEvent('open-ai-consultant'))
+        // Smart Aifafan trigger: Try to wake up the in-page widget first
+        const selectors = ['#nb_icon_wrap', '.nb-icon-inner-wrap', '#lxb-container-icon', '.lxb-container'];
+        let triggered = false;
+        for (const selector of selectors) {
+            const el = document.querySelector(selector) as HTMLElement;
+            if (el) {
+                el.click();
+                triggered = true;
+                break;
+            }
+        }
+        if (!triggered) {
+            window.open('https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f', '_blank');
+        }
     }, [])
-    const handleCloseConsult = React.useCallback(() => setIsConsultModalOpen(false), [])
     const handlePhoneClick = React.useCallback(() => {
         trackPhoneCall('mobile-sticky')
     }, [trackPhoneCall])
@@ -53,8 +63,8 @@ export const MobileStickyBar: React.FC<{ contactData?: Contact }> = React.memo((
                         className="col-span-1 flex flex-col items-center justify-center gap-1 py-1.5 text-[#4B5563] active:bg-slate-50 transition-colors rounded-lg min-w-0"
                         onClick={handleOpenConsult}
                     >
-                        <Sparkles className="w-5 h-5 flex-shrink-0" />
-                        <span className="text-[10px] font-bold truncate w-full text-center">AI 客服</span>
+                        <MessageSquare className="w-5 h-5 flex-shrink-0" />
+                        <span className="text-[10px] font-bold truncate w-full text-center">在线咨询</span>
                     </button>
                 </div>
             </div>
@@ -62,12 +72,6 @@ export const MobileStickyBar: React.FC<{ contactData?: Contact }> = React.memo((
             <DemoRequestModal
                 isOpen={isDemoModalOpen}
                 onClose={handleCloseDemo}
-            />
-
-            <ConsultationModal 
-                isOpen={isConsultModalOpen}
-                onClose={handleCloseConsult}
-                data={contactData}
             />
         </>
     )
