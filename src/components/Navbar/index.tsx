@@ -32,15 +32,23 @@ export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
     <header className="fixed top-0 inset-x-0 z-50 bg-white border-b border-gray-100 shadow-sm">
       <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
         {/* Left: Logo */}
-        <Link href="/" className="flex items-end gap-0 group h-11">
-          <div className="flex flex-col pr-2 pb-[2px]">
-            <span className="text-2xl font-heading font-black text-[#1F2329] tracking-tight leading-none mb-0.5">泊冉软件</span>
+        <Link href="/" className="flex items-center gap-2 group h-11">
+          <Image
+            src="/assets/images/boran-logo.png"
+            alt="Boran Logo"
+            width={32}
+            height={32}
+            className="object-contain"
+            priority
+          />
+          <div className="flex flex-col pr-1">
+            <span className="text-2xl font-heading font-black text-[#1B80C1] tracking-tight leading-none mb-0.5">泊冉软件</span>
             <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-tighter leading-none">
               BORAN SOFTWARE
             </span>
           </div>
-          <div className="h-6 w-px bg-slate-200 mb-2 mx-1"></div>
-          <div className="flex items-center pl-1 pb-[2px]">
+          <div className="h-6 w-px bg-slate-200 mx-1"></div>
+          <div className="flex items-center pl-1">
             <Image
               src="/yongyoulogo.png"
               alt="用友合作伙伴"

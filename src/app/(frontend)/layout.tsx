@@ -78,9 +78,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={`${GeistSans.variable} ${GeistMono.variable} ${lexend.variable}`} lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta name="baidu-site-verification" content="codeva-JLdkamsCUi" />
-        <link href="/favicon.ico" rel="icon" sizes="32x32" />
-        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
-        <link href="/assets/images/boran-logo-transparent.png" rel="apple-touch-icon" sizes="180x180" />
+        <link href="/assets/images/boran-logo.png" rel="apple-touch-icon" sizes="180x180" />
         <script
           dangerouslySetInnerHTML={{
             __html: `var _hmt = _hmt || [];

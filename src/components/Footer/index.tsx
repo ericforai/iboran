@@ -1,5 +1,6 @@
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { MapPin, Phone } from 'lucide-react'
 
 export const Footer = () => {
@@ -16,7 +17,14 @@ export const Footer = () => {
             <div className="col-span-2 md:col-span-1 lg:col-span-6 space-y-5 md:space-y-8 lg:order-1">
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="text-2xl font-heading font-black text-slate-900 dark:text-white tracking-tight">泊冉软件</div>
+                  <Image
+                    src="/assets/images/boran-logo.png"
+                    alt="Boran Logo"
+                    width={28}
+                    height={28}
+                    className="object-contain"
+                  />
+                  <div className="text-2xl font-heading font-black text-[#1B80C1] tracking-tight">泊冉软件</div>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-amber-100 to-amber-50 text-amber-700 border border-amber-200/50 shadow-sm whitespace-nowrap dark:from-amber-900/30 dark:to-amber-950/30 dark:text-amber-400 dark:border-amber-700/50">
                     用友合作伙伴
                   </span>
