@@ -36,18 +36,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={`${GeistSans.variable} ${GeistMono.variable} ${lexend.variable}`} lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta name="baidu-site-verification" content="codeva-JLdkamsCUi" />
-        <link href="/assets/images/boran-logo.png" rel="apple-touch-icon" sizes="180x180" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?1287e22d10212a7f224ed16edae3975f";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();`,
-          }}
-        />
+        <link href="/favicon.ico" rel="icon" sizes="32x32" />
+        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="/assets/images/boran-logo-transparent.png" rel="apple-touch-icon" sizes="180x180" />
         {/* Baidu Aifafan Bridge Script - Required: Replace with actual snippet from Aifafan Platform */}
         {/* <script src="https://ada.baidu.com/phone-bridge.js?siteId=YOUR_SITE_ID" /> */}
       </head>

@@ -65,12 +65,21 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }
 
     // 百度统计初始化
-    const baiduSiteId = process.env.NEXT_PUBLIC_BAIDU_SITE_ID
-    if (baiduSiteId && !(window as any).baiduInitialized) {
-      const script = document.createElement('script')
-      script.async = true
-      script.src = `https://hm.baidu.com/hm.js?${baiduSiteId}`
-      document.head.appendChild(script)
+    if (!(window as any).baiduInitialized) {
+      // @ts-ignore
+      var _hmt = window._hmt || [];
+      // @ts-ignore
+      window._hmt = _hmt;
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?e91dfc82759053f4c922045bf879a7d9";
+        var s = document.getElementsByTagName("script")[0]; 
+        if (s && s.parentNode) {
+          s.parentNode.insertBefore(hm, s);
+        } else {
+          document.head.appendChild(hm);
+        }
+      })();
       ;(window as any).baiduInitialized = true
     }
   }, [])
