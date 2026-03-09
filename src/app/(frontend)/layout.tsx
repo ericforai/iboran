@@ -39,6 +39,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
         <link href="/assets/images/boran-logo-transparent.png" rel="apple-touch-icon" sizes="180x180" />
+        {/* Baidu Analytics Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              var _hmt = _hmt || [];
+              (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?e91dfc82759053f4c922045bf879a7d9";
+                var s = document.getElementsByTagName("script")[0]; 
+                s.parentNode.insertBefore(hm, s);
+              })();
+            `,
+          }}
+        />
         {/* Baidu Aifafan Bridge Script - Required: Replace with actual snippet from Aifafan Platform */}
         {/* <script src="https://ada.baidu.com/phone-bridge.js?siteId=YOUR_SITE_ID" /> */}
       </head>

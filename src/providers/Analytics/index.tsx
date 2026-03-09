@@ -64,24 +64,7 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       ;(window as any).gtagInitialized = true
     }
 
-    // 百度统计初始化
-    if (!(window as any).baiduInitialized) {
-      // @ts-ignore
-      var _hmt = window._hmt || [];
-      // @ts-ignore
-      window._hmt = _hmt;
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?e91dfc82759053f4c922045bf879a7d9";
-        var s = document.getElementsByTagName("script")[0]; 
-        if (s && s.parentNode) {
-          s.parentNode.insertBefore(hm, s);
-        } else {
-          document.head.appendChild(hm);
-        }
-      })();
-      ;(window as any).baiduInitialized = true
-    }
+    // 百度统计初始化 - 已迁移至 layout.tsx <head> 中，确保全站覆盖且加载更早
   }, [])
 
   // 页面浏览跟踪
