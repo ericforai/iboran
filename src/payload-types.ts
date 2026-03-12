@@ -1135,6 +1135,10 @@ export interface Lead {
    */
   pageSlug?: string | null;
   /**
+   * 用于存储表单中的行业、岗位、具体痛点等其他自定义字段信息
+   */
+  notes?: string | null;
+  /**
    * 自动捕获的 UTM 参数和归因信息
    */
   utmData?: {
@@ -2118,6 +2122,7 @@ export interface LeadsSelect<T extends boolean = true> {
   sourcePageUrl?: T;
   resourceTitle?: T;
   pageSlug?: T;
+  notes?: T;
   utmData?:
     | T
     | {

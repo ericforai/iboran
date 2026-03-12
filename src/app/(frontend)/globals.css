@@ -406,11 +406,8 @@
   background-color: rgba(107, 114, 128, 0.8);
 }
 
-/* Reduce Baidu Aifafan Widget Width/Size */
-#nb_icon_wrap, 
-#nb_invite_wrap, 
-#lxb-container,
-.lxb-container {
-  transform: scale(0.8) !important;
+/* Reduce Baidu Aifafan Widget Size */
+#aff-im-root {
+  transform: scale(0.75) !important;
   transform-origin: bottom right !important;
 }
