@@ -37,33 +37,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={`${GeistSans.variable} ${GeistMono.variable} ${lexend.variable}`} lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta name="baidu-site-verification" content="codeva-JLdkamsCUi" />
-        <link href="/favicon.ico" rel="icon" sizes="32x32" />
-        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
-        <link href="/assets/images/boran-logo-transparent.png" rel="apple-touch-icon" sizes="180x180" />
-        {/* Baidu Analytics Script */}
+        {/* Baidu Analytics Script - Original ID, also auto-loads Aifafan widget */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               var _hmt = _hmt || [];
               (function() {
                 var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?1287e22d10212a7f224ed16edae3975f";
+                hm.src = "https://hm.baidu.com/hm.js?e91dfc82759053f4c922045bf879a7d9";
                 var s = document.getElementsByTagName("script")[0]; 
                 s.parentNode.insertBefore(hm, s);
-              })();
-            `,
-          }}
-        />
-        {/* Baidu Aifafan Bridge Script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var lxb = document.createElement("script");
-                lxb.src = "https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f";
-                lxb.async = true;
-                // Note: Actual bridge script often loads automatically with Analytics ID, 
-                // but explicit loading ensures the 'lxb' object is available for manual triggers.
               })();
             `,
           }}
@@ -102,6 +85,15 @@ export const metadata = {
   title: '泊冉软件 - 专业的用友软件实施服务商 | Yonyou Partner',
   description: '泊冉软件是用友合作伙伴，深耕智能制造、新零售及生物医药行业，提供从业务咨询到系统交付的全生命周期数智化转型服务。',
   keywords: '泊冉软件, 用友实施商, YonBIP, YonSuite, 用友合作伙伴, 数智化转型, ERP实施, 业财一体化',
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png' },
+    ],
+  },
 }
 
 export const viewport = {
