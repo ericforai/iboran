@@ -47,15 +47,27 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               var _hmt = _hmt || [];
               (function() {
                 var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?e91dfc82759053f4c922045bf879a7d9";
+                hm.src = "https://hm.baidu.com/hm.js?1287e22d10212a7f224ed16edae3975f";
                 var s = document.getElementsByTagName("script")[0]; 
                 s.parentNode.insertBefore(hm, s);
               })();
             `,
           }}
         />
-        {/* Baidu Aifafan Bridge Script - Required: Replace with actual snippet from Aifafan Platform */}
-        {/* <script src="https://ada.baidu.com/phone-bridge.js?siteId=YOUR_SITE_ID" /> */}
+        {/* Baidu Aifafan Bridge Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var lxb = document.createElement("script");
+                lxb.src = "https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f";
+                lxb.async = true;
+                // Note: Actual bridge script often loads automatically with Analytics ID, 
+                // but explicit loading ensures the 'lxb' object is available for manual triggers.
+              })();
+            `,
+          }}
+        />
       </head>
       <body suppressHydrationWarning className="antialiased font-sans lg:pb-0 pb-20">
         <OrganizationJsonLd />

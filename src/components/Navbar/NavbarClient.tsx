@@ -158,7 +158,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     trackWeChatOpen('navbar')
     
     // Smart Aifafan trigger: Try to wake up the in-page widget first
-    const selectors = ['#nb_icon_wrap', '.nb-icon-inner-wrap', '#lxb-container-icon', '.lxb-container'];
+    const selectors = ['#nb_icon_wrap', '.nb-icon-inner-wrap', '#lxb-container-icon', '.lxb-container', '#nb_invite_ok', '.nb-invite-ok'];
     let triggered = false;
     for (const selector of selectors) {
       const el = document.querySelector(selector) as HTMLElement;
@@ -168,8 +168,11 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
         break;
       }
     }
+    
+    // Fallback if widget is not initialized or hidden
     if (!triggered) {
-      window.open('https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f', '_blank');
+      const siteId = '1287e22d10212a7f224ed16edae3975f';
+      window.open(`https://p.qiao.baidu.com/cps/chat?siteId=${siteId}`, '_blank');
     }
   }, [trackWeChatOpen, setActiveDropdown])
 
