@@ -171,8 +171,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     
     // Fallback if widget is not initialized or hidden
     if (!triggered) {
-      const siteId = '1287e22d10212a7f224ed16edae3975f';
-      window.open(`https://p.qiao.baidu.com/cps/chat?siteId=${siteId}`, '_blank');
+      window.open('https://affim.baidu.com/unique_52771578/chat?siteId=22949567&userId=52771578&siteToken=aac20df95e015006d1b11e4bd6e64a83', '_blank');
     }
   }, [trackWeChatOpen, setActiveDropdown])
 

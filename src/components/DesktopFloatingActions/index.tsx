@@ -29,7 +29,7 @@ export const DesktopFloatingActions: React.FC<DesktopFloatingActionsProps> = Rea
         }
     }
     if (!triggered) {
-        window.open('https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f', '_blank');
+        window.open('https://affim.baidu.com/unique_52771578/chat?siteId=22949567&userId=52771578&siteToken=aac20df95e015006d1b11e4bd6e64a83', '_blank');
     }
   }, [])
 
