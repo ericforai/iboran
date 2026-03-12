@@ -86,6 +86,7 @@ export const Footer = () => {
                   <li><Link href="/posts" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>新闻动态</span></Link></li>
                   <li><Link href="/about" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>加入我们</span></Link></li>
                   <li><Link href="/contact" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>联系我们</span></Link></li>
+                  <li><Link href="/ai-co-creation" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center group"><span className="w-0 overflow-hidden transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:w-2 group-hover:mr-1 text-blue-600 dark:text-blue-400">•</span> <span>AI业务共创计划</span></Link></li>
                 </ul>
               </div>
             </div>
