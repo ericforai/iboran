@@ -102,6 +102,7 @@ type LeadData = {
     landingPage?: string
     pageHistory?: string
   }
+  notes?: string
   createdAt: string
 }
 
@@ -149,14 +150,18 @@ const sendLeadEmail = [
       sourceLabel = `博客文章: ${postTitle}`
     }
     const escapedSource = escapeHtml(sourceLabel)
+    
+    // Notes block for extra info
+    const notesBlock = lead.notes ? `<div style="background-color: #fff8e1; padding: 15px; border-radius: 4px; margin-bottom: 20px;"><h4 style="margin: 0 0 10px 0; color: #f57f17;">备注信息</h4><p style="margin: 0; color: #555; font-size: 14px; white-space: pre-wrap;">${escapeHtml(lead.notes)}</p></div>` : ''
 
     try {
       await req.payload.sendEmail({
         from: process.env.SMTP_FROM || 'noreply@iboran.com',
         to: emailRecipients,
         subject: `🔔 新客户咨询 - ${escapedCompany} - ${escapedName}`,
-        html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;"><div style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><h2 style="color: #E60012; margin: 0 0 20px 0;">🔔 新客户咨询</h2><div style="background-color: #f9f9f9; padding: 15px; border-radius: 4px; margin-bottom: 20px;"><h3 style="margin: 0 0 10px 0; color: #1F2329;">客户信息</h3><table style="width: 100%; border-collapse: collapse;"><tr><td style="padding: 8px 0; color: #666;"><strong>姓名:</strong></td><td style="padding: 8px 0;">${escapedName}</td></tr><tr><td style="padding: 8px 0; color: #666;"><strong>公司:</strong></td><td style="padding: 8px 0;">${escapedCompany}</td></tr><tr><td style="padding: 8px 0; color: #666;"><strong>电话:</strong></td><td style="padding: 8px 0;"><a href="tel:${lead.phone}" style="color: #0052D9;">${escapeHtml(lead.phone)}</a></td></tr>${escapedSource ? `<tr><td style="padding: 8px 0; color: #666;"><strong>来源:</strong></td><td style="padding: 8px 0;">${escapedSource}</td></tr>` : ''}</table></div>${utmRows ? `<div style="background-color: #f0f7ff; padding: 15px; border-radius: 4px; margin-bottom: 20px;"><h4 style="margin: 0 0 10px 0; color: #0052D9;">UTM 归因信息</h4><table style="width: 100%; border-collapse: collapse; font-size: 14px;">${utmRows}</table></div>` : ''}<p style="color: #999; font-size: 12px; margin: 20px 0 0 0;">提交时间: ${new Date(lead.createdAt).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</p><div style="text-align: center; margin-top: 30px;"><a href="${siteUrl}/admin/collections/leads/${lead.id}" style="display: inline-block; padding: 12px 30px; background-color: #E60012; color: #ffffff; text-decoration: none; border-radius: 4px;">查看详情</a></div></div></div>`,
+        html: `<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f5f5f5;"><div style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"><h2 style="color: #E60012; margin: 0 0 20px 0;">🔔 新客户咨询</h2><div style="background-color: #f9f9f9; padding: 15px; border-radius: 4px; margin-bottom: 20px;"><h3 style="margin: 0 0 10px 0; color: #1F2329;">客户信息</h3><table style="width: 100%; border-collapse: collapse;"><tr><td style="padding: 8px 0; color: #666;"><strong>姓名:</strong></td><td style="padding: 8px 0;">${escapedName}</td></tr><tr><td style="padding: 8px 0; color: #666;"><strong>公司:</strong></td><td style="padding: 8px 0;">${escapedCompany}</td></tr><tr><td style="padding: 8px 0; color: #666;"><strong>电话:</strong></td><td style="padding: 8px 0;"><a href="tel:${lead.phone}" style="color: #0052D9;">${escapeHtml(lead.phone)}</a></td></tr>${escapedSource ? `<tr><td style="padding: 8px 0; color: #666;"><strong>来源:</strong></td><td style="padding: 8px 0;">${escapedSource}</td></tr>` : ''}</table></div>${notesBlock}${utmRows ? `<div style="background-color: #f0f7ff; padding: 15px; border-radius: 4px; margin-bottom: 20px;"><h4 style="margin: 0 0 10px 0; color: #0052D9;">UTM 归因信息</h4><table style="width: 100%; border-collapse: collapse; font-size: 14px;">${utmRows}</table></div>` : ''}<p style="color: #999; font-size: 12px; margin: 20px 0 0 0;">提交时间: ${new Date(lead.createdAt).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}</p><div style="text-align: center; margin-top: 30px;"><a href="${siteUrl}/admin/collections/leads/${lead.id}" style="display: inline-block; padding: 12px 30px; background-color: #E60012; color: #ffffff; text-decoration: none; border-radius: 4px;">查看详情</a></div></div></div>`,
       })
+
       console.log(`✅ Lead email sent to ${adminEmail} for ${lead.name} from ${lead.company}`)
     } catch (error) {
       console.error('❌ Failed to send lead email:', error)
@@ -234,6 +239,14 @@ export const Leads: CollectionConfig = {
       label: '页面Slug',
       admin: {
         description: '文章或产品页面的URL标识，用于查找标题',
+      },
+    },
+    {
+      name: 'notes',
+      type: 'textarea',
+      label: '备注 / 额外信息',
+      admin: {
+        description: '用于存储表单中的行业、岗位、具体痛点等其他自定义字段信息',
       },
     },
     {
