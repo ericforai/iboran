@@ -405,3 +405,12 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: rgba(107, 114, 128, 0.8);
 }
+
+/* Reduce Baidu Aifafan Widget Width/Size */
+#nb_icon_wrap, 
+#nb_invite_wrap, 
+#lxb-container,
+.lxb-container {
+  transform: scale(0.8) !important;
+  transform-origin: bottom right !important;
+}
