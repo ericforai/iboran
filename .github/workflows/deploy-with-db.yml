@@ -11,12 +11,9 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-
     # 如果需要同步数据库，需要先启动本地 MongoDB
     # 这个工作流假设你在本地已经有 MongoDB 运行
     # 实际上数据库同步最好在本地进行，CI 无法访问本地数据库
-
     runs-on: self-hosted  # 需要自托管 runner 才能访问本地 MongoDB
     if: github.event.inputs.sync_db == true
 
