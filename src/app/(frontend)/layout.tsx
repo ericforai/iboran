@@ -37,7 +37,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={`${GeistSans.variable} ${GeistMono.variable} ${lexend.variable}`} lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta name="baidu-site-verification" content="codeva-JLdkamsCUi" />
-        {/* Baidu Analytics Script - Original ID, also auto-loads Aifafan widget */}
+        {/* Baidu Analytics Script */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -45,8 +45,22 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               (function() {
                 var hm = document.createElement("script");
                 hm.src = "https://hm.baidu.com/hm.js?e91dfc82759053f4c922045bf879a7d9";
-                var s = document.getElementsByTagName("script")[0]; 
+                var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(hm, s);
+              })();
+            `,
+          }}
+        />
+        {/* Baidu Aifafan (商桥) Script - 在线客服 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var lxb = document.createElement("script");
+                lxb.src = "https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f";
+                lxb.async = true;
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(lxb, s);
               })();
             `,
           }}
