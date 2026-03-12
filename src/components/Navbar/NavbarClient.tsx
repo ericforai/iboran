@@ -307,13 +307,6 @@ const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }
         <Link
           href={`tel:${phone.replace(/\s+/g, '')}`}
           onClick={handlePhoneClick}
-          className="lg:hidden text-[#E60012] font-semibold text-[15px] sm:text-[18px] leading-none tracking-wide whitespace-nowrap flex-shrink-0"
-        >
-          {phone}
-        </Link>
-        <Link
-          href={`tel:${phone.replace(/\s+/g, '')}`}
-          onClick={handlePhoneClick}
           className="hidden xl:flex items-center gap-2 text-sm font-semibold text-[#1F2329] hover:text-[#0052D9] transition-colors"
         >
           <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
