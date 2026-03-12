@@ -52,6 +52,7 @@ const NavbarStateContext = React.createContext<{
   handleMenuEnter: (label: string) => void
   handleMenuLeave: () => void
   handleOpenDemo: () => void
+  handleOpenConsult: () => void
   handlePhoneClick: () => void
 } | null>(null)
 
@@ -217,6 +218,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     handleMenuEnter,
     handleMenuLeave,
     handleOpenDemo,
+    handleOpenConsult,
     handlePhoneClick,
   }), [
     activeDropdown,
@@ -228,6 +230,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     handleMenuEnter,
     handleMenuLeave,
     handleOpenDemo,
+    handleOpenConsult,
     handlePhoneClick,
   ])
 
@@ -263,7 +266,7 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
 
 // Inline navigation and actions component
 const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }: NavbarClientProps) {
-  const { activeDropdown, setActiveDropdown, handleMenuEnter, handleMenuLeave, setIsMobileMenuOpen, isMobileMenuOpen, handleOpenDemo, handlePhoneClick } = useNavbarState()
+  const { activeDropdown, setActiveDropdown, handleMenuEnter, handleMenuLeave, setIsMobileMenuOpen, isMobileMenuOpen, handleOpenDemo, handleOpenConsult, handlePhoneClick } = useNavbarState()
   const phone = contactData?.phone || '400-9955-161'
 
   return (
@@ -315,6 +318,12 @@ const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }
           </div>
           <span>{phone}</span>
         </Link>
+        <button
+          onClick={handleOpenConsult}
+          className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-[#0052D9] border-2 border-[#0052D9] hover:bg-blue-50 rounded-md transition-all active:scale-95"
+        >
+          在线咨询
+        </button>
         <button
           onClick={handleOpenDemo}
           className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-sm transition-all hover:shadow-md active:scale-95"

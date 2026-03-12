@@ -12,6 +12,7 @@ import { WebVitals } from '@/components/WebVitals'
 import { ScrollTriggerDrawer } from '@/components/ScrollTriggerDrawer'
 import { ExitIntentModal } from '@/components/ExitIntentModal'
 import { DesktopFloatingActions } from '@/components/DesktopFloatingActions'
+import { FloatingChatButton } from '@/components/FloatingChatButton'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Contact } from '@/payload-types'
 import { AttributionProvider } from '@/providers/Attribution'
@@ -71,6 +72,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 {children}
               </main>
               <Footer />
+
 
               <MobileStickyBar contactData={contactData} />
               <ScrollTriggerDrawer />
