@@ -36,17 +36,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={`${GeistSans.variable} ${GeistMono.variable} ${lexend.variable}`} lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta name="baidu-site-verification" content="codeva-JLdkamsCUi" />
-        {/* Baidu Analytics + Aifafan (爱番番商桥) Script */}
+        {/* Baidu Analytics - load only on production domains */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              var _hmt = _hmt || [];
-              (function() {
-                var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?aac20df95e015006d1b11e4bd6e64a83";
-                var s = document.getElementsByTagName("script")[0];
-                s.parentNode.insertBefore(hm, s);
-              })();
+              var __baiduAnalyticsHosts = ['iboran.com', 'www.iboran.com'];
+              if (__baiduAnalyticsHosts.indexOf(window.location.hostname) !== -1) {
+                var _hmt = window._hmt || [];
+                window._hmt = _hmt;
+                (function() {
+                  var hm = document.createElement("script");
+                  hm.src = "https://hm.baidu.com/hm.js?e91dfc82759053f4c922045bf879a7d9";
+                  var s = document.getElementsByTagName("script")[0];
+                  s.parentNode.insertBefore(hm, s);
+                })();
+              }
             `,
           }}
         />

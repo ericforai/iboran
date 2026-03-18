@@ -17,7 +17,7 @@ export const MobileStickyBar: React.FC<{ contactData?: Contact }> = React.memo((
     const handleOpenDemo = React.useCallback(() => setIsDemoModalOpen(true), [])
     const handleCloseDemo = React.useCallback(() => setIsDemoModalOpen(false), [])
     const handleOpenConsult = React.useCallback(() => {
-        // Smart Aifafan trigger: Try to wake up the in-page widget first
+        // Prefer the in-page consultation widget when available.
         const selectors = ['#nb_icon_wrap', '.nb-icon-inner-wrap', '#lxb-container-icon', '.lxb-container'];
         let triggered = false;
         for (const selector of selectors) {
