@@ -60,6 +60,10 @@ logs
 # TypeScript build cache
 tsconfig.tsbuildinfo
 
+# Python bytecode cache
+__pycache__/
+*.py[cod]
+
 # Baidu push state and script
 scripts/.baidu-push-state.json
 scripts/baidu-push.ts
