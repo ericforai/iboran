@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={`${GeistSans.variable} ${GeistMono.variable} ${lexend.variable}`} lang="zh-CN" suppressHydrationWarning>
       <head>
         <meta name="baidu-site-verification" content="codeva-JLdkamsCUi" />
-        {/* Baidu Analytics - load only on production domains */}
+        {/* Baidu Aifafan/Tongji integration - load only on production domains */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -46,26 +46,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 window._hmt = _hmt;
                 (function() {
                   var hm = document.createElement("script");
-                  hm.src = "https://hm.baidu.com/hm.js?e91dfc82759053f4c922045bf879a7d9";
+                  hm.src = "https://hm.baidu.com/hm.js?aac20df95e015006d1b11e4bd6e64a83";
                   var s = document.getElementsByTagName("script")[0];
                   s.parentNode.insertBefore(hm, s);
-                })();
-              }
-            `,
-          }}
-        />
-        {/* Baidu Aifafan in-page consultation widget - production only */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              var __productionHosts = ['iboran.com', 'www.iboran.com'];
-              if (__productionHosts.indexOf(window.location.hostname) !== -1) {
-                (function() {
-                  var lxb = document.createElement("script");
-                  lxb.src = "https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f";
-                  lxb.async = true;
-                  var s = document.getElementsByTagName("script")[0];
-                  s.parentNode.insertBefore(lxb, s);
                 })();
               }
             `,
