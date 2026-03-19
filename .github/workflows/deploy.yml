@@ -50,8 +50,9 @@ jobs:
 
       - name: Deploy to server
         run: |
+          set -o pipefail
           # Upload build output into a temporary directory first, then swap it in after extraction completes.
-          tar -czf - .next public package.json pnpm-lock.yaml ecosystem.config.cjs | \
+          tar -czf - .next public package.json pnpm-lock.yaml ecosystem.config.js | \
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
           "set -e; \
           APP_DIR=/home/iboran; \
@@ -65,9 +66,9 @@ jobs:
           mv \$TMP_DIR/public \$APP_DIR/public; \
           cp \$TMP_DIR/package.json \$APP_DIR/package.json; \
           cp \$TMP_DIR/pnpm-lock.yaml \$APP_DIR/pnpm-lock.yaml; \
-          cp \$TMP_DIR/ecosystem.config.cjs \$APP_DIR/ecosystem.config.cjs; \
+          cp \$TMP_DIR/ecosystem.config.js \$APP_DIR/ecosystem.config.js; \
           cd \$APP_DIR; \
-          pm2 restart iboran || pm2 start ecosystem.config.cjs --only iboran"
+          pm2 restart iboran || pm2 start ecosystem.config.js --only iboran"
 
       - name: Cleanup
         if: always()
