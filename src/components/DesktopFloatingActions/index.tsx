@@ -4,6 +4,7 @@ import React from 'react'
 import { BadgeDollarSign, Headset, Phone } from 'lucide-react'
 import type { Contact } from '@/payload-types'
 import { useConversionTracking } from '@/hooks/useConversionTracking'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 interface DesktopFloatingActionsProps {
   contactData?: Contact
@@ -17,20 +18,7 @@ export const DesktopFloatingActions: React.FC<DesktopFloatingActionsProps> = Rea
   const phoneCardRef = React.useRef<HTMLDivElement>(null)
 
   const handleOpenConsult = React.useCallback(() => {
-    // Prefer the in-page consultation widget when available.
-    const selectors = ['#nb_icon_wrap', '.nb-icon-inner-wrap', '#lxb-container-icon', '.lxb-container'];
-    let triggered = false;
-    for (const selector of selectors) {
-        const el = document.querySelector(selector) as HTMLElement;
-        if (el) {
-            el.click();
-            triggered = true;
-            break;
-        }
-    }
-    if (!triggered) {
-        window.open('https://affim.baidu.com/unique_52771578/chat?siteId=22949567&userId=52771578&siteToken=aac20df95e015006d1b11e4bd6e64a83', '_blank');
-    }
+    openAifafanChat()
   }, [])
 
   const handleOpenQuote = React.useCallback(() => {

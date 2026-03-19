@@ -9,6 +9,7 @@ import { MessageCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Contact } from '@/payload-types'
 import { useConversionTracking } from '@/hooks/useConversionTracking'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 interface FloatingChatButtonProps {
   contactData?: Contact
@@ -23,20 +24,7 @@ export const FloatingChatButton: React.FC<FloatingChatButtonProps> = React.memo(
 
   const handleOpenModal = React.useCallback(() => {
     trackWeChatOpen('floating')
-    // Prefer the in-page consultation widget when available.
-    const selectors = ['#nb_icon_wrap', '.nb-icon-inner-wrap', '#lxb-container-icon', '.lxb-container'];
-    let triggered = false;
-    for (const selector of selectors) {
-        const el = document.querySelector(selector) as HTMLElement;
-        if (el) {
-            el.click();
-            triggered = true;
-            break;
-        }
-    }
-    if (!triggered) {
-        window.open('https://affim.baidu.com/unique_52771578/chat?siteId=22949567&userId=52771578&siteToken=aac20df95e015006d1b11e4bd6e64a83', '_blank');
-    }
+    openAifafanChat()
   }, [trackWeChatOpen])
 
   return (

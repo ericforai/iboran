@@ -40,8 +40,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              var __baiduAnalyticsHosts = ['iboran.com', 'www.iboran.com'];
-              if (__baiduAnalyticsHosts.indexOf(window.location.hostname) !== -1) {
+              var __productionHosts = ['iboran.com', 'www.iboran.com'];
+              if (__productionHosts.indexOf(window.location.hostname) !== -1) {
                 var _hmt = window._hmt || [];
                 window._hmt = _hmt;
                 (function() {
@@ -49,6 +49,23 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   hm.src = "https://hm.baidu.com/hm.js?e91dfc82759053f4c922045bf879a7d9";
                   var s = document.getElementsByTagName("script")[0];
                   s.parentNode.insertBefore(hm, s);
+                })();
+              }
+            `,
+          }}
+        />
+        {/* Baidu Aifafan in-page consultation widget - production only */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              var __productionHosts = ['iboran.com', 'www.iboran.com'];
+              if (__productionHosts.indexOf(window.location.hostname) !== -1) {
+                (function() {
+                  var lxb = document.createElement("script");
+                  lxb.src = "https://p.qiao.baidu.com/cps/chat?siteId=1287e22d10212a7f224ed16edae3975f";
+                  lxb.async = true;
+                  var s = document.getElementsByTagName("script")[0];
+                  s.parentNode.insertBefore(lxb, s);
                 })();
               }
             `,
