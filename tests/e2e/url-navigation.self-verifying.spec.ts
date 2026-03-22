@@ -88,6 +88,32 @@ const siteManifest: URLManifest = {
   ]
 }
 
+const assertCanonicalForPath = (canonicalHref: string, baseUrl: string, path: string): void => {
+  const canonicalUrl = new URL(canonicalHref)
+  const normalizedPath =
+    canonicalUrl.pathname !== '/' && canonicalUrl.pathname.endsWith('/')
+      ? canonicalUrl.pathname.slice(0, -1)
+      : canonicalUrl.pathname
+  const expectedPath = path === '/' ? '/' : path
+  expect(normalizedPath).toBe(expectedPath)
+
+  const baseHost = new URL(baseUrl).host
+  const allowedHosts = new Set([baseHost, 'www.iboran.com', 'iboran.com'])
+  expect(allowedHosts.has(canonicalUrl.host)).toBe(true)
+}
+
+const parseJsonLdScripts = async (page: any): Promise<any[]> => {
+  const contents = await page.locator('script[type="application/ld+json"]').allTextContents()
+  return contents.flatMap((content: string) => {
+    try {
+      const parsed = JSON.parse(content)
+      return Array.isArray(parsed) ? parsed : [parsed]
+    } catch {
+      return []
+    }
+  })
+}
+
 /**
  * Shadow Inspector for URL Navigation
  *
@@ -588,6 +614,11 @@ test.describe('@launch-critical URL Navigation', () => {
 
   test.describe('seo: critical SEO elements', () => {
     const seoRoutes = siteManifest.routes.filter(r => r.critical).slice(0, 10)
+    const keyTemplateRoutes = [
+      { path: '/', description: 'Homepage template' },
+      { path: '/products/yonsuite', description: 'Product template' },
+      { path: '/solution/business/r2r', description: 'Solution template' },
+    ]
 
     for (const route of seoRoutes) {
       test(`seo: ${route.description} has proper meta tags`, async ({ page }) => {
@@ -632,6 +663,44 @@ test.describe('@launch-critical URL Navigation', () => {
           console.warn(`No structured data found on ${route.path}`)
         }
       }
+    })
+
+    test('seo: homepage has a single H1 and canonical', async ({ page }) => {
+      await page.goto(`${siteManifest.baseUrl}/`, { waitUntil: 'domcontentloaded' })
+      await page.waitForLoadState('domcontentloaded')
+
+      const h1Count = await page.locator('h1').count()
+      expect(h1Count).toBe(1)
+
+      const canonicalHref = await page.locator('link[rel="canonical"]').first().getAttribute('href')
+      expect(canonicalHref).toBeTruthy()
+      assertCanonicalForPath(canonicalHref as string, siteManifest.baseUrl, '/')
+    })
+
+    for (const route of keyTemplateRoutes) {
+      test(`seo: ${route.description} has canonical and parseable json-ld`, async ({ page }) => {
+        await page.goto(`${siteManifest.baseUrl}${route.path}`, { waitUntil: 'domcontentloaded' })
+        await page.waitForLoadState('domcontentloaded')
+
+        const canonicalHref = await page.locator('link[rel="canonical"]').first().getAttribute('href')
+        expect(canonicalHref).toBeTruthy()
+        assertCanonicalForPath(canonicalHref as string, siteManifest.baseUrl, route.path)
+
+        const structuredData = await parseJsonLdScripts(page)
+        expect(structuredData.length).toBeGreaterThan(0)
+      })
+    }
+
+    test('seo: homepage includes Organization json-ld', async ({ page }) => {
+      await page.goto(`${siteManifest.baseUrl}/`, { waitUntil: 'domcontentloaded' })
+      await page.waitForLoadState('domcontentloaded')
+
+      const structuredData = await parseJsonLdScripts(page)
+      const organizationSchema = structuredData.find(
+        (item) => item?.['@type'] === 'Organization' && item?.name === '泊冉软件'
+      )
+
+      expect(organizationSchema).toBeTruthy()
     })
   })
 
