@@ -65,9 +65,9 @@ export const Hero = () => {
                      用友合作伙伴
                  </div>
                  <h1 className="text-2xl sm:text-4xl lg:text-[72px] font-heading font-bold leading-[1.1] lg:leading-[0.95] tracking-tighter mb-4 lg:mb-6 text-white drop-shadow-2xl">
-                   <span className="whitespace-nowrap">您的业财数据</span> <br className="lg:block" />
+                   <span className="whitespace-nowrap">专业用友软件实施服务商</span> <br className="lg:block" />
                    <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 animate-shimmer bg-[length:200%_100%]">
-                     打通了吗？
+                     业财一体化与数智化转型专家
                    </span>
                  </h1>
                  {/* Decorative Glitch Element - Refined */}
