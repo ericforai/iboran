@@ -58,24 +58,26 @@ export async function POST(req: Request) {
     const recentLead = await payload.find({
       collection: 'leads',
       where: {
-        and: [
-          {
-            phone: {
-              equals: body.phone,
-            },
-          },
-          {
-            createdAt: {
-              greater_than: tenMinutesAgo.toISOString(),
-            },
-          },
-        ],
+        phone: {
+          equals: body.phone,
+        },
       },
-      limit: 1,
+      sort: '-createdAt',
+      limit: 5,
+    })
+
+    const hasRecentDuplicate = recentLead.docs.some((lead) => {
+      const createdAt = typeof lead.createdAt === 'string'
+        ? new Date(lead.createdAt)
+        : null
+
+      return createdAt instanceof Date
+        && !Number.isNaN(createdAt.getTime())
+        && createdAt > tenMinutesAgo
     })
 
     // Reject if same phone submitted within 10 minutes
-    if (recentLead.docs.length > 0) {
+    if (hasRecentDuplicate) {
       return NextResponse.json({
         success: false,
         message: '请稍后再试，您刚刚提交过',
