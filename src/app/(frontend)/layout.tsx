@@ -16,6 +16,7 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { Contact } from '@/payload-types'
 import { AttributionProvider } from '@/providers/Attribution'
 import { AnalyticsProvider } from '@/providers/Analytics'
+import { BAIDU_AGL_PRODUCTION_ID } from '@/utilities/baiduTracking'
 
 const lexend = Lexend({
   subsets: ['latin'],
@@ -49,6 +50,27 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   hm.src = "https://hm.baidu.com/hm.js?aac20df95e015006d1b11e4bd6e64a83";
                   var s = document.getElementsByTagName("script")[0];
                   s.parentNode.insertBefore(hm, s);
+                })();
+              }
+            `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              var __productionHosts = ['iboran.com', 'www.iboran.com'];
+              if (__productionHosts.indexOf(window.location.hostname) !== -1) {
+                window._agl = window._agl || [];
+                (function () {
+                  window._agl.push(['production', '${BAIDU_AGL_PRODUCTION_ID}']);
+                  (function () {
+                    var agl = document.createElement('script');
+                    agl.type = 'text/javascript';
+                    agl.async = true;
+                    agl.src = 'https://fxgate.baidu.com/angelia/fcagl.js?production=${BAIDU_AGL_PRODUCTION_ID}';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(agl, s);
+                  })();
                 })();
               }
             `,
