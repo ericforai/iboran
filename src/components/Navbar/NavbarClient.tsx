@@ -143,9 +143,10 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
   }, [])
 
   const handleOpenDemo = React.useCallback((source?: string) => {
+    const normalizedSource = typeof source === 'string' ? source : undefined
     setActiveDropdown(null)
     setIsMobileMenuOpen(false)
-    setDemoSource(source)
+    setDemoSource(normalizedSource)
     if (onOpenDemo) {
       onOpenDemo()
     } else {
