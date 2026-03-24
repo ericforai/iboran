@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { useAttribution } from '@/providers/Attribution'
 import { getClientSideURL } from '@/utilities/getURL'
+import { trackBaiduConversionSuccess } from '@/utilities/baiduTracking'
 
 export function ContactForm() {
   const attribution = useAttribution()
@@ -65,6 +66,7 @@ export function ContactForm() {
       }
 
       form.reset()
+      trackBaiduConversionSuccess()
       setSubmitted(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : '提交失败，请稍后重试')
