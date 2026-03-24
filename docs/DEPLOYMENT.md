@@ -171,6 +171,37 @@ LEAD_EMAIL_TO=user1@qq.com,user2@qq.com  # 多收件人逗号分隔
 
 ---
 
+## Mongo 守护
+
+生产 MongoDB 依赖容器 `iboran-mongo-1` 和宿主机端口 `27018`。为避免数据库异常退出后静默宕机，当前部署增加了两层保护：
+
+1. 容器 restart policy 固定为 `unless-stopped`
+2. systemd timer 每分钟执行一次 `deploy/mongo-watchdog.sh`
+
+watchdog 行为：
+- 检查容器是否存在、是否运行、healthcheck 是否通过
+- 检查 `mongosh ping` 是否成功
+- 发现异常时自动 `docker start iboran-mongo-1`
+- 自动把 restart policy 修正为 `unless-stopped`
+- 恢复成功或失败时，通过 `.env` 中的 SMTP 配置发送邮件到 `LEAD_EMAIL_TO`
+
+生产机安装结果：
+- service: `iboran-mongo-watchdog.service`
+- timer: `iboran-mongo-watchdog.timer`
+- 日志: `/var/log/iboran-mongo-watchdog.log`
+
+常用命令：
+
+```bash
+systemctl status iboran-mongo-watchdog.timer
+systemctl status iboran-mongo-watchdog.service
+journalctl -u iboran-mongo-watchdog.service -n 100 --no-pager
+tail -f /var/log/iboran-mongo-watchdog.log
+docker inspect iboran-mongo-1 --format '{{.HostConfig.RestartPolicy.Name}}'
+```
+
+---
+
 ## 更新记录
 
 ### 2026-02-02 - GitHub Actions 自动部署成功
@@ -190,6 +221,22 @@ LEAD_EMAIL_TO=user1@qq.com,user2@qq.com  # 多收件人逗号分隔
 - 不需要服务器 git pull
 
 ---
+
+### 2026-03-24 - MongoDB 自愈与告警
+
+根因：
+- 生产 MongoDB 容器 `iboran-mongo-1` 在 2026-03-19 退出
+- 容器 restart policy 实际为 `no`
+- 因此数据库离线后没有自动恢复，导致 Payload 页面和 `/api/leads` 持续返回 500
+
+修复：
+- 手动恢复 MongoDB 容器并确认 `27018` 重新监听
+- 部署 watchdog 脚本和 systemd timer
+- GitHub Actions 每次部署都会同步并重装 watchdog
+
+结果：
+- MongoDB 异常退出后会自动尝试拉起
+- 恢复动作会写入日志并通过 SMTP 发送通知
 
 ## 相关链接
 
