@@ -183,6 +183,9 @@ watchdog 行为：
 - 检查 `mongosh ping` 是否成功
 - 发现异常时自动 `docker start iboran-mongo-1`
 - 自动把 restart policy 修正为 `unless-stopped`
+- 检查 PM2 应用 `iboran` 是否在线
+- 检查 `http://127.0.0.1:3000/`、`/contact` 和 `/api/leads` 是否健康
+- 应用异常时自动执行 `pm2 restart iboran`
 - 恢复成功或失败时，通过 `.env` 中的 SMTP 配置发送邮件到 `LEAD_EMAIL_TO`
 
 生产机安装结果：
@@ -236,6 +239,7 @@ docker inspect iboran-mongo-1 --format '{{.HostConfig.RestartPolicy.Name}}'
 
 结果：
 - MongoDB 异常退出后会自动尝试拉起
+- 应用进程在线但页面/API 不健康时也会自动重启 PM2
 - 恢复动作会写入日志并通过 SMTP 发送通知
 
 ## 相关链接

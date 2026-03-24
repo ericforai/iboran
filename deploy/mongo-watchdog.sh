@@ -6,6 +6,9 @@ APP_DIR="/home/iboran"
 ENV_FILE="$APP_DIR/.env"
 COMPOSE_FILE="$APP_DIR/docker-compose.prod.yml"
 CONTAINER_NAME="iboran-mongo-1"
+APP_NAME="iboran"
+APP_BASE_URL="http://127.0.0.1:3000"
+APP_HEALTH_PATHS=("/" "/contact")
 LOG_FILE="/var/log/iboran-mongo-watchdog.log"
 PING_CMD='db.runCommand("ping").ok'
 
@@ -72,6 +75,53 @@ ensure_restart_policy() {
   fi
 }
 
+app_online() {
+  pm2 pid "$APP_NAME" 2>/dev/null | grep -Eq '^[1-9][0-9]*$'
+}
+
+http_path_healthy() {
+  local path="$1"
+  local status
+  status="$(curl -s -o /dev/null -w '%{http_code}' "$APP_BASE_URL$path" || true)"
+  [[ "$status" == "200" ]]
+}
+
+app_http_healthy() {
+  local path
+
+  for path in "${APP_HEALTH_PATHS[@]}"; do
+    if ! http_path_healthy "$path"; then
+      return 1
+    fi
+  done
+
+  return 0
+}
+
+restart_app() {
+  if pm2 describe "$APP_NAME" >/dev/null 2>&1; then
+    pm2 restart "$APP_NAME" >/dev/null
+    log "Restarted PM2 app $APP_NAME"
+  else
+    cd "$APP_DIR"
+    pm2 start ecosystem.config.cjs --only "$APP_NAME" >/dev/null
+    log "Started PM2 app $APP_NAME"
+  fi
+}
+
+wait_for_app() {
+  local attempt
+
+  for attempt in {1..40}; do
+    if app_online && app_http_healthy; then
+      return 0
+    fi
+    sleep 3
+  done
+
+  return 1
+}
+
 container_exists() {
   docker inspect "$CONTAINER_NAME" >/dev/null 2>&1
 }
@@ -126,32 +176,56 @@ main() {
 
   if container_running && container_healthy && can_ping_mongo; then
     log "MongoDB container is healthy"
+  else
+    local before_status
+    before_status="$(docker inspect --format '{{.State.Status}}/{{if .State.Health}}{{.State.Health.Status}}{{else}}no-healthcheck{{end}}' "$CONTAINER_NAME" 2>/dev/null || echo 'missing')"
+    log "MongoDB unhealthy or unavailable (status=$before_status); attempting recovery"
+
+    start_mongo
+    ensure_restart_policy
+
+    if wait_for_mongo; then
+      local success_message
+      success_message="[$(timestamp)] MongoDB watchdog recovered $CONTAINER_NAME on $(hostname). Previous status: $before_status"
+      log "$success_message"
+      WATCHDOG_ALERT_SUBJECT="[iboran] MongoDB recovered on $(hostname)" \
+      WATCHDOG_ALERT_MESSAGE="$success_message" \
+        send_alert "[iboran] MongoDB recovered on $(hostname)" "$success_message"
+    else
+      local failure_message
+      failure_message="[$(timestamp)] MongoDB watchdog could not recover $CONTAINER_NAME on $(hostname). Manual intervention required."
+      log "$failure_message"
+      WATCHDOG_ALERT_SUBJECT="[iboran] MongoDB recovery failed on $(hostname)" \
+      WATCHDOG_ALERT_MESSAGE="$failure_message" \
+        send_alert "[iboran] MongoDB recovery failed on $(hostname)" "$failure_message"
+      exit 1
+    fi
+  fi
+
+  if app_online && app_http_healthy; then
+    log "Application $APP_NAME is healthy"
     exit 0
   fi
 
-  local before_status
-  before_status="$(docker inspect --format '{{.State.Status}}/{{if .State.Health}}{{.State.Health.Status}}{{else}}no-healthcheck{{end}}' "$CONTAINER_NAME" 2>/dev/null || echo 'missing')"
-  log "MongoDB unhealthy or unavailable (status=$before_status); attempting recovery"
+  log "Application $APP_NAME is unhealthy; attempting PM2 recovery"
+  restart_app
 
-  start_mongo
-  ensure_restart_policy
-
-  if wait_for_mongo; then
-    local success_message
-    success_message="[$(timestamp)] MongoDB watchdog recovered $CONTAINER_NAME on $(hostname). Previous status: $before_status"
-    log "$success_message"
-    WATCHDOG_ALERT_SUBJECT="[iboran] MongoDB recovered on $(hostname)" \
-    WATCHDOG_ALERT_MESSAGE="$success_message" \
-      send_alert "[iboran] MongoDB recovered on $(hostname)" "$success_message"
+  if wait_for_app; then
+    local app_success_message
+    app_success_message="[$(timestamp)] Application watchdog recovered $APP_NAME on $(hostname)."
+    log "$app_success_message"
+    WATCHDOG_ALERT_SUBJECT="[iboran] App recovered on $(hostname)" \
+    WATCHDOG_ALERT_MESSAGE="$app_success_message" \
+      send_alert "[iboran] App recovered on $(hostname)" "$app_success_message"
     exit 0
   fi
 
-  local failure_message
-  failure_message="[$(timestamp)] MongoDB watchdog could not recover $CONTAINER_NAME on $(hostname). Manual intervention required."
-  log "$failure_message"
-  WATCHDOG_ALERT_SUBJECT="[iboran] MongoDB recovery failed on $(hostname)" \
-  WATCHDOG_ALERT_MESSAGE="$failure_message" \
-    send_alert "[iboran] MongoDB recovery failed on $(hostname)" "$failure_message"
+  local app_failure_message
+  app_failure_message="[$(timestamp)] Application watchdog could not recover $APP_NAME on $(hostname). Manual intervention required."
+  log "$app_failure_message"
+  WATCHDOG_ALERT_SUBJECT="[iboran] App recovery failed on $(hostname)" \
+  WATCHDOG_ALERT_MESSAGE="$app_failure_message" \
+    send_alert "[iboran] App recovery failed on $(hostname)" "$app_failure_message"
   exit 1
 }
 

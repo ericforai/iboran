@@ -19,6 +19,8 @@ Requires=docker.service
 
 [Service]
 Type=oneshot
+Environment=HOME=/root
+Environment=PM2_HOME=/root/.pm2
 ExecStart=$WATCHDOG_SCRIPT
 EOF
 
