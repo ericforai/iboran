@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useForm, type UseFormRegister, type FieldErrors } from 'react-hook-form'
 import { ChevronRight, CheckCircle2, Loader2 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { trackBaiduConversionSuccess } from '@/utilities/baiduTracking'
 
 interface TwoStepLeadFormProps {
   onSubmit: (data: LeadFormData) => Promise<void>
@@ -77,7 +76,9 @@ export const TwoStepLeadForm: React.FC<TwoStepLeadFormProps> = ({ onSubmit, sour
     setError(null)
     try {
       await onSubmit({ ...coreData, ...data, source })
-      trackBaiduConversionSuccess()
+      if (window._agl) {
+        window._agl.push(['track', ['success', { t: 3 }]])
+      }
       setIsSuccess(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : '提交失败，请稍后重试')

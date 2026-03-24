@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Lock, ChevronRight, Loader2, CheckCircle2 } from 'lucide-react'
 import type { GateFormData } from './WhitepaperGate'
-import { trackBaiduConversionSuccess } from '@/utilities/baiduTracking'
 
 export interface WhitepaperGateInlineProps {
   title: string
@@ -30,7 +29,9 @@ export const WhitepaperGateInline: React.FC<WhitepaperGateInlineProps> = ({
     setError(null)
     try {
       await onUnlock(data)
-      trackBaiduConversionSuccess()
+      if (window._agl) {
+        window._agl.push(['track', ['success', { t: 3 }]])
+      }
       setIsSuccess(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : '提交失败，请稍后重试')

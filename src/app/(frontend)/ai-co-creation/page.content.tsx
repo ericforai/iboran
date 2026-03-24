@@ -22,7 +22,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
-import { trackBaiduConversionSuccess } from '@/utilities/baiduTracking'
 
 // Animations
 const fadeIn = {
@@ -687,7 +686,9 @@ function LeadForm() {
         throw new Error('网络请求失败，请稍后再试')
       }
 
-      trackBaiduConversionSuccess()
+      if (window._agl) {
+        window._agl.push(['track', ['success', { t: 3 }]])
+      }
       setSuccess(true)
     } catch (err: any) {
       setError(err.message || '提交失败，请重试')

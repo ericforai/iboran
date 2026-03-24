@@ -5,7 +5,6 @@ import { X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAttribution } from '@/providers/Attribution'
 import { getClientSideURL } from '@/utilities/getURL'
-import { trackBaiduConversionSuccess } from '@/utilities/baiduTracking'
 
 interface LeadFormData {
   name: string
@@ -117,7 +116,9 @@ export const ExitIntentModal: React.FC = React.memo(() => {
         throw new Error(errorMsg)
       }
 
-      trackBaiduConversionSuccess()
+      if (window._agl) {
+        window._agl.push(['track', ['success', { t: 3 }]])
+      }
       setIsSubmitted(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : '提交失败，请稍后重试')
