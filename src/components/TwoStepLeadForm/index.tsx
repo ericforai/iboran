@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 interface TwoStepLeadFormProps {
   onSubmit: (data: LeadFormData) => Promise<void>
   source?: string
+  submitLabel?: string
 }
 
 interface LeadFormData {
@@ -34,6 +35,7 @@ interface Step2Props {
   isLoading: boolean
   error: string | null
   onBack: () => void
+  submitLabel: string
 }
 
 const ROLE_OPTIONS = [
@@ -53,7 +55,7 @@ const SYSTEM_OPTIONS = [
   { label: '其他', value: 'other' },
 ]
 
-export const TwoStepLeadForm: React.FC<TwoStepLeadFormProps> = ({ onSubmit, source }) => {
+export const TwoStepLeadForm: React.FC<TwoStepLeadFormProps> = ({ onSubmit, source, submitLabel = '提交预约' }) => {
   const [step, setStep] = useState<1 | 2>(1)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -105,6 +107,7 @@ export const TwoStepLeadForm: React.FC<TwoStepLeadFormProps> = ({ onSubmit, sour
             isLoading={isLoading}
             error={error}
             onBack={() => setStep(1)}
+            submitLabel={submitLabel}
           />
         )}
       </AnimatePresence>
@@ -176,7 +179,7 @@ const Step1: React.FC<Step1Props> = ({ register, errors, isLoading }) => (
 )
 
 // Step 2: 补充信息（可选）
-const Step2: React.FC<Step2Props> = ({ register, errors, isLoading, error, onBack }) => (
+const Step2: React.FC<Step2Props> = ({ register, errors, isLoading, error, onBack, submitLabel }) => (
   <motion.div
     initial={{ opacity: 0, x: 20 }}
     animate={{ opacity: 1, x: 0 }}
@@ -252,7 +255,7 @@ const Step2: React.FC<Step2Props> = ({ register, errors, isLoading, error, onBac
         disabled={isLoading}
         className="flex-1 py-3 bg-[#E60012] hover:bg-red-700 text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2"
       >
-        {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : '提交预约'}
+        {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : submitLabel}
       </button>
     </div>
   </motion.div>

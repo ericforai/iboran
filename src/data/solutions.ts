@@ -89,6 +89,7 @@ export const solutionByBusiness: BusinessCategory[] = [
       { label: 'SPE 纵向 PDCA', href: '/solution/spe', desc: '打通战略、预算、执行与分析的纵向闭环管理体系', icon: Calculator },
       { label: '智能商旅到费控', href: '/solution/tes', desc: '实现业财税资档一体化管理的智能差旅费控平台', icon: Wallet },
       { label: '司库资金管理', href: '/solution/business/trm', desc: '全球资金实时监控与精准调度，构建数智化金融底座', icon: Landmark },
+      { label: '司库19张报表', href: '/solution/siku-19-reports', desc: '依托总账与台账分步建设，快速满足监管报送与管理提升', icon: FileSpreadsheet },
       { label: '银企联', href: '/solution/business/bank-enterprise-link', desc: '连接 2500+ 银行，实现账户、回单与对账自动化协同', icon: Link2 },
       { label: '税务管理', href: '/solution/business/tax-management', desc: '金税四期合规 · 全税种自动申报 · 智能风险风控', icon: FileCheck },
       { label: '业财融合', href: '/solution/business/business-finance-integration', desc: '实时·精细·智能的业财数据底座，驱动价值转型', icon: Activity },

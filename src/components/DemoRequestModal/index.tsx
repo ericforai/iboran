@@ -12,6 +12,9 @@ interface DemoRequestModalProps {
     isOpen: boolean
     onClose: () => void
     source?: string
+    title?: string
+    subtitle?: string
+    submitLabel?: string
 }
 
 interface LeadFormData {
@@ -25,7 +28,14 @@ interface LeadFormData {
     source?: string
 }
 
-export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onClose, source: sourceProp = 'demo-modal' }) => {
+export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ 
+    isOpen, 
+    onClose, 
+    source: sourceProp = 'demo-modal',
+    title = '预约专家演示',
+    subtitle = '我们的顾问将在 1 个工作日内与您联系',
+    submitLabel = '提交预约'
+}) => {
     const [isMounted, setIsMounted] = React.useState(false)
     const attribution = useAttribution()
 
@@ -137,8 +147,8 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
                         <div className="bg-gradient-to-r from-[#E60012] to-red-600 px-6 py-5 text-white">
                             <div className="flex items-center justify-between">
                                 <div>
-                                    <h2 className="text-xl font-bold">预约专家演示</h2>
-                                    <p className="text-sm text-white/80 mt-1">我们的顾问将在 1 个工作日内与您联系</p>
+                                    <h2 className="text-xl font-bold">{title}</h2>
+                                    <p className="text-sm text-white/80 mt-1">{subtitle}</p>
                                 </div>
                                 <button
                                     onClick={handleClose}
@@ -151,7 +161,7 @@ export const DemoRequestModal: React.FC<DemoRequestModalProps> = ({ isOpen, onCl
 
                         {/* Content */}
                         <div className="p-6">
-                            <TwoStepLeadForm onSubmit={onSubmit} source={sourceProp} />
+                            <TwoStepLeadForm onSubmit={onSubmit} source={sourceProp} submitLabel={submitLabel} />
                         </div>
                     </motion.div>
                 </motion.div>
