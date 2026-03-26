@@ -2,12 +2,12 @@ services:
   app:
     image: node:20-alpine
     ports:
-      - '3000:3000'
+      - '30168:30168'
     volumes:
       - .:/home/node/app
       - node_modules:/home/node/app/node_modules
     working_dir: /home/node/app
-    command: sh -c "corepack enable && pnpm install && pnpm dev"
+    command: sh -c "npm run dev"
     depends_on:
       mongo:
         condition: service_healthy

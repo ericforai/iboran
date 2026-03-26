@@ -64,8 +64,8 @@ export const DashboardPreview = React.memo(() => {
     switch (activeTab) {
       case 'finance':
         return (
-          <motion.div key="finance" variants={tabContentVariants} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-4 h-full flex-1">
-             <div className="grid grid-cols-2 gap-4">
+          <motion.div key="finance" variants={tabContentVariants} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-4 h-full flex-1 min-w-0">
+             <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 xl:gap-4">
                 {[
                    { l: '本月营收', v: '¥ 12.8 亿', c: 'text-white', i: <TrendingUp size={14} /> },
                    { l: '净利润率', v: '24.8%', c: 'text-emerald-400', i: <Activity size={14} /> },
@@ -121,11 +121,11 @@ export const DashboardPreview = React.memo(() => {
         )
       case 'treasury':
         return (
-          <motion.div key="treasury" variants={tabContentVariants} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-4 h-full flex-1">
+          <motion.div key="treasury" variants={tabContentVariants} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-4 h-full flex-1 min-w-0">
              {/* World Map Simulation */}
-             <div className="relative h-40 bg-[#111] rounded-lg border border-white/5 overflow-hidden flex items-center justify-center group cursor-crosshair">
+             <div className="relative h-40 shrink-0 bg-[#111] rounded-lg border border-white/5 overflow-hidden flex items-center justify-center group cursor-crosshair">
                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#444 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
-                <div className="relative z-10 grid grid-cols-2 gap-8 w-full px-8">
+                <div className="relative z-10 grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-8 w-full px-4 xl:px-8">
                     <div className="flex flex-col gap-1">
                         <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-cyan-500 animate-ping"></div>
@@ -156,7 +156,7 @@ export const DashboardPreview = React.memo(() => {
              </div>
 
              {/* FX Rates */}
-             <div className="grid grid-cols-2 gap-3 flex-1 min-h-[300px]">
+             <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 flex-1 flex-shrink min-h-0">
                 <div className="bg-[#111] rounded-lg p-3 border border-white/5 flex flex-col justify-between hover:border-blue-500/30 transition-colors">
                     <div className="flex justify-between items-start">
                         <span className="text-[10px] text-slate-500">美元/人民币</span>
@@ -192,9 +192,9 @@ export const DashboardPreview = React.memo(() => {
         )
       case 'supply':
         return (
-          <motion.div key="supply" variants={tabContentVariants} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-4 h-full flex-1">
+          <motion.div key="supply" variants={tabContentVariants} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-4 h-full flex-1 min-w-0">
              {/* Process Flow */}
-             <div className="flex items-center justify-between px-2 py-4 bg-[#111] rounded-lg border border-white/5">
+             <div className="flex flex-wrap items-center justify-center gap-4 px-2 py-4 bg-[#111] rounded-lg border border-white/5 shrink-0">
                 {[
                     { icon: <Factory size={14} />, label: '生产', val: '98%', c: 'text-cyan-400' },
                     { icon: <CheckCircle2 size={14} />, label: '质检', val: '99.5%', c: 'text-emerald-400' },
@@ -215,8 +215,8 @@ export const DashboardPreview = React.memo(() => {
              </div>
 
              {/* Inventory Bars */}
-             <div className="flex-1 bg-[#111] rounded-lg border border-white/5 p-4 flex flex-col gap-4 min-h-[300px]">
-                <div className="flex justify-between items-center mb-1">
+             <div className="flex-1 bg-[#111] rounded-lg border border-white/5 p-4 flex flex-col gap-4 flex-shrink min-h-0">
+                <div className="flex justify-between items-center mb-1 shrink-0">
                     <span className="text-xs text-slate-400 font-mono font-bold">库存水位</span>
                     <span className="text-[10px] bg-green-500/10 text-green-400 px-2 py-0.5 rounded border border-green-500/20">健康状态: 良好</span>
                 </div>
@@ -255,8 +255,8 @@ export const DashboardPreview = React.memo(() => {
         )
       case 'alert':
         return (
-          <motion.div key="alert" variants={tabContentVariants} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-3 h-full flex-1">
-             <div className="flex gap-2">
+          <motion.div key="alert" variants={tabContentVariants} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-3 h-full flex-1 min-w-0">
+             <div className="flex flex-col xl:flex-row gap-2 shrink-0">
                  <div className="flex-1 bg-red-500/10 border border-red-500/20 p-3 rounded-lg flex flex-col items-center justify-center gap-1 cursor-pointer hover:bg-red-500/20 transition-colors">
                      <AlertOctagon size={16} className="text-red-500" />
                      <span className="text-2xl font-bold text-white">3</span>
@@ -274,8 +274,8 @@ export const DashboardPreview = React.memo(() => {
                  </div>
              </div>
 
-             <div className="flex-1 bg-[#111] rounded-lg border border-white/5 overflow-hidden flex flex-col min-h-[300px]">
-                 <div className="px-3 py-2 border-b border-white/5 text-[10px] font-bold text-slate-500 uppercase">风险日志</div>
+             <div className="flex-1 bg-[#111] rounded-lg border border-white/5 overflow-hidden flex flex-col flex-shrink min-h-0">
+                 <div className="px-3 py-2 border-b border-white/5 text-[10px] font-bold text-slate-500 uppercase shrink-0">风险日志</div>
                  <div className="flex-1 p-2 space-y-2 overflow-y-auto">
                      {[
                          { msg: '数据库连接延迟过高 (>200ms)', lvl: 'critical' },
@@ -295,9 +295,9 @@ export const DashboardPreview = React.memo(() => {
         )
       case 'decision':
         return (
-          <motion.div key="decision" variants={tabContentVariants} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-4 h-full flex-1 relative">
+          <motion.div key="decision" variants={tabContentVariants} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-4 h-full flex-1 relative min-w-0">
               {/* AI Prediction Header */}
-              <div className="p-3 bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/20 rounded-lg flex items-start gap-3">
+              <div className="p-3 bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/20 rounded-lg flex items-start gap-3 shrink-0">
                   <div className="mt-1 p-1 bg-purple-500/20 rounded-md">
                       <Cpu size={14} className="text-purple-400" />
                   </div>
@@ -310,8 +310,8 @@ export const DashboardPreview = React.memo(() => {
               </div>
 
               {/* Radar Chart Simulation */}
-              <div className="flex-1 bg-[#111] rounded-lg border border-white/5 relative flex items-center justify-center min-h-[300px]">
-                  <div className="absolute top-2 left-3 text-[10px] text-slate-500 font-bold">企业健康指数</div>
+             <div className="flex-1 bg-[#111] rounded-lg border border-white/5 relative flex items-center justify-center flex-shrink min-h-0 overflow-hidden">
+                <div className="absolute top-2 left-3 text-[10px] text-slate-500 font-bold shrink-0">企业健康指数</div>
                   
                   {/* Hexagon Grid */}
                   <div className="relative w-32 h-32 flex items-center justify-center">
@@ -349,7 +349,7 @@ export const DashboardPreview = React.memo(() => {
       variants={containerVariants}
       initial="initial"
       animate="animate"
-      className="relative w-full h-full min-h-[500px] bg-[#0A0A0A] flex flex-col font-mono text-sm shadow-2xl rounded-xl border border-white/10"
+      className="relative w-full h-full bg-[#0A0A0A] flex flex-col font-mono text-sm shadow-2xl rounded-xl border border-white/10"
     >
       {/* 1. Command Bar Header (Linear Style) */}
       <div className="h-14 border-b border-white/10 flex items-center justify-between px-4 bg-white/[0.02]">
@@ -379,9 +379,9 @@ export const DashboardPreview = React.memo(() => {
       </div>
 
       {/* 2. Main Workspace */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden min-w-0">
          {/* Sidebar */}
-         <div className="w-48 sm:w-56 border-r border-white/5 bg-white/[0.01] flex flex-col py-4 gap-6 shrink-0 z-20">
+         <div className="w-32 sm:w-40 border-r border-white/5 bg-white/[0.01] flex flex-col py-4 gap-4 sm:gap-6 shrink-0 z-20">
             <div className="px-3 sm:px-4">
                <div className="text-[10px] font-bold text-slate-600 uppercase tracking-widest mb-2 px-2">经营管理</div>
                <div className="space-y-1">
@@ -426,14 +426,14 @@ export const DashboardPreview = React.memo(() => {
          </div>
 
          {/* Content Area */}
-         <div className="flex-1 p-4 sm:p-6 bg-black relative h-full overflow-hidden">
+         <div className="flex-1 p-3 sm:p-4 bg-black relative h-full overflow-hidden min-w-0">
             {/* Grid Background */}
             <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
                backgroundImage: `linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)`,
                backgroundSize: '20px 20px'
             }}></div>
-
-            <div className="relative z-10 w-full h-full flex flex-col">
+            {/* Tab Content */}
+            <div className="relative z-10 w-full h-full flex flex-col min-w-0">
                <AnimatePresence mode="wait">
                  {renderContent()}
                </AnimatePresence>

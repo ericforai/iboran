@@ -45,7 +45,7 @@ export const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] xl:grid-cols-[1.15fr_0.85fr] gap-8 lg:gap-12 items-center">
 
             {/* Left Column: Text Content */}
             <motion.div
@@ -64,7 +64,7 @@ export const Hero = () => {
                      <span className="opacity-40 mr-1">|</span>
                      用友合作伙伴
                  </div>
-                 <h1 className="text-2xl sm:text-4xl lg:text-[72px] font-heading font-bold leading-[1.1] lg:leading-[0.95] tracking-tighter mb-4 lg:mb-6 text-white drop-shadow-2xl">
+                 <h1 className="text-2xl sm:text-4xl lg:text-[clamp(1.5rem,2.8vw,3.5rem)] xl:text-[clamp(2.5rem,3.5vw,4.5rem)] 2xl:text-[72px] font-heading font-bold leading-[1.1] lg:leading-[1] tracking-tighter mb-4 lg:mb-6 text-white drop-shadow-2xl">
                    <span className="whitespace-nowrap">专业用友软件实施服务商</span> <br className="lg:block" />
                    <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 animate-shimmer bg-[length:200%_100%]">
                      业财一体化与数智化转型专家
@@ -173,10 +173,9 @@ export const Hero = () => {
            >
               <motion.div
                  style={{ y: y2 }}
-                 initial={{ opacity: 0, scale: 0.95 }}
+                 initial={{ opacity: 0, scale: 0.85 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 transition={{ duration: 1.5, ease: "easeOut" }}
-                 className="relative group w-full h-full"
+                  className="relative perspective-1000 group w-full lg:w-[480px] xl:w-[560px] lg:-ml-4 xl:-ml-6 aspect-[4/5] sm:aspect-[1/1] xl:aspect-[4/3] min-h-[400px]"
               >
                  {/* Glowing Rim */}
                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-indigo-500 to-purple-500 rounded-2xl opacity-40 group-hover:opacity-70 blur-lg transition-opacity duration-700"></div>

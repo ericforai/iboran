@@ -293,22 +293,22 @@ const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }
         <Link
           href={`tel:${phone.replace(/\s+/g, '')}`}
           onClick={handlePhoneClick}
-          className="hidden xl:flex items-center gap-2 text-sm font-semibold text-[#1F2329] hover:text-[#0052D9] transition-colors"
+          className="hidden xl:flex items-center gap-3 text-xl font-bold text-[#1F2329] hover:text-[#0052D9] transition-colors"
         >
-          <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-            <Phone className="w-4 h-4 text-[#0052D9]" />
+          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
+            <Phone className="w-5 h-5 text-[#0052D9]" />
           </div>
-          <span>{phone}</span>
+          <span className="tracking-tight">{phone}</span>
         </Link>
         <button
           onClick={handleOpenConsult}
-          className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-[#0052D9] border-2 border-[#0052D9] hover:bg-blue-50 rounded-md transition-all active:scale-95"
+          className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-base font-bold text-[#0052D9] border-2 border-[#0052D9] hover:bg-blue-50 rounded-md transition-all active:scale-95"
         >
           在线咨询
         </button>
         <button
           onClick={handleOpenDemo}
-          className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-sm transition-all hover:shadow-md active:scale-95"
+          className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-base font-bold text-white bg-[#E60012] border-2 border-transparent hover:bg-red-700 rounded-md shadow-sm transition-all hover:shadow-md active:scale-95"
         >
           预约专家评估
         </button>
