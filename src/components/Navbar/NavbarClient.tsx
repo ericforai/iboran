@@ -300,12 +300,7 @@ const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }
           </div>
           <span className="tracking-tight">{phone}</span>
         </Link>
-        <button
-          onClick={handleOpenConsult}
-          className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-base font-bold text-[#0052D9] border-2 border-[#0052D9] hover:bg-blue-50 rounded-md transition-all active:scale-95"
-        >
-          在线咨询
-        </button>
+
         <button
           onClick={handleOpenDemo}
           className="hidden lg:inline-flex items-center justify-center px-6 py-2.5 text-base font-bold text-white bg-[#E60012] border-2 border-transparent hover:bg-red-700 rounded-md shadow-sm transition-all hover:shadow-md active:scale-95"
@@ -899,13 +894,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
               <Phone className="w-4 h-4" />
               <span>{phone}</span>
             </Link>
-            <button
-              onClick={handleOpenConsult}
-              className="flex items-center justify-center gap-2 w-full py-3 text-sm font-medium text-[#0052D9] hover:bg-blue-50 rounded-md transition-colors"
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span>在线咨询 (企业微信)</span>
-            </button>
+
             <button
               onClick={handleOpenDemo}
               className="w-full py-3 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-sm transition-all"
