@@ -35,6 +35,12 @@ export const productCategories: ProductCategory[] = [
     description: '平台型能力 · 企业核心业务底座',
     items: [
       { 
+        label: 'StaffAI Agent OS', 
+        href: '/products/staff-ai', 
+        desc: '企业级 AI 员工操作系统 · 组织效率倍增器', 
+        icon: Bot 
+      },
+      { 
         label: '用友 BIP', 
         href: '/products/bip', 
         desc: '先进成熟的企业软件与智能服务平台', 
