@@ -1,11 +1,13 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Search, Rocket, BarChart2, ArrowRight } from 'lucide-react'
+import { DemoRequestModal } from '@/components/DemoRequestModal'
 
 const steps = [
   {
+    id: '01',
     order: '01',
     title: '深度诊断',
     icon: Search,
@@ -13,6 +15,7 @@ const steps = [
     duration: '1-2 周',
   },
   {
+    id: '02',
     order: '02',
     title: '极速试点',
     icon: Rocket,
@@ -20,6 +23,7 @@ const steps = [
     duration: '2-4 周',
   },
   {
+    id: '03',
     order: '03',
     title: '横向复制与扩张',
     icon: BarChart2,
@@ -29,6 +33,14 @@ const steps = [
 ]
 
 export const Methodology = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [activeStep, setActiveStep] = useState<string | null>(null)
+
+  const handleStepClick = (stepId: string) => {
+    setActiveStep(stepId)
+    setIsModalOpen(true)
+  }
+
   return (
     <section className="bg-slate-50 py-24 px-4 lg:py-32">
       <div className="container mx-auto">
@@ -79,8 +91,8 @@ export const Methodology = () => {
               </p>
               
               <button 
-                onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
-                className="mt-auto flex items-center gap-2 text-[#0052D9] font-bold group cursor-pointer hover:opacity-80 transition-opacity"
+                onClick={() => handleStepClick(step.id)}
+                className="mt-auto flex items-center gap-2 text-[#0052D9] font-bold group cursor-pointer hover:underline transition-all"
               >
                  了解详情 
                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -91,11 +103,17 @@ export const Methodology = () => {
 
         <div className="mt-20 p-8 rounded-3xl bg-[#0052D9]/5 border border-[#0052D9]/10 text-center">
            <p className="text-[#0052D9] font-bold text-lg mb-4">开始拥有您的 AI 员工体系</p>
-           <p className="text-slate-600 max-w-2xl mx-auto">
-              谁先建立 Agent OS，谁就掌握了未来的组织效率差。不要继续停留在讨论 AI，而是率先完成组织升级。
+           <p className="text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              谁先构建起 Agent OS，谁就赢得了组织的未来。让 AI 走出聊天框，成为 24/7 运转的组织级底座。
            </p>
         </div>
       </div>
+
+      <DemoRequestModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        source={`staffai-methodology-step-${activeStep}`}
+      />
     </section>
   )
 }

@@ -24,7 +24,7 @@ export const CTASection = () => {
               viewport={{ once: true }}
               className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-8 leading-relaxed"
             >
-              谁先建立 Agent OS，谁就掌握了未来的组织效率差。不要继续停留在讨论 AI，而是率先完成组织升级。
+              谁先构建起 Agent OS，谁就赢得了组织的未来。让 AI 走出聊天框，成为 24/7 运转的组织级底座。
             </motion.h2>
             
             <motion.p
@@ -32,7 +32,7 @@ export const CTASection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="mb-12 max-w-2xl text-lg text-blue-100/80 leading-relaxed md:text-xl"
+              className="mb-12 max-w-2xl lg:max-w-none text-lg text-blue-100/80 leading-relaxed md:text-xl lg:whitespace-nowrap"
             >
               加入先行者行列。让 StaffAI 成为您的企业大脑，开启全天候运转的“数字总部”。
             </motion.p>
