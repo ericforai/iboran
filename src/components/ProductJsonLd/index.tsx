@@ -9,6 +9,8 @@ export interface ProductJsonLdProps {
     price: string
     priceCurrency: string
     availability?: string
+    /** schema.org Offer.url — 产品/服务报价页链接 */
+    url?: string
   }
 }
 
@@ -42,6 +44,7 @@ export const ProductJsonLd: React.FC<ProductJsonLdProps> = ({
         price: offers.price,
         priceCurrency: offers.priceCurrency,
         availability: offers.availability || 'https://schema.org/InStock',
+        ...(offers.url ? { url: offers.url } : {}),
       },
     }),
   }

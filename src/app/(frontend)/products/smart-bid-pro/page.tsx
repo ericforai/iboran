@@ -40,14 +40,14 @@ const SmartBidProPage = () => {
     <main className="bg-white text-slate-900 selection:bg-blue-100 antialiased">
       {/* 0. SEO & GEO Optimizations */}
       <ProductJsonLd 
-        productName="智投 Pro"
+        name="智投 Pro"
         description="企业级投标管理与增长平台 (Industrial-grade Bidding OS)"
         brand="泊冉软件 (Boran)"
         offers={{
-           price: "0",
-           priceCurrency: "CNY",
-           availability: "InStock",
-           url: "https://iboran.com/products/smart-bid-pro"
+          price: '0',
+          priceCurrency: 'CNY',
+          availability: 'InStock',
+          url: 'https://www.iboran.com/products/smart-bid-pro',
         }}
       />
       <GEOJsonLd 
