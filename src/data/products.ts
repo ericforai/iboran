@@ -40,6 +40,12 @@ export const productCategories: ProductCategory[] = [
         desc: '企业级 AI 员工操作系统 · 组织效率倍增器', 
         icon: Bot 
       },
+      {
+        label: '智投 Pro',
+        href: '/products/smart-bid-pro',
+        desc: 'AI 自动生成标书与企业级投标管理平台',
+        icon: FileText,
+      },
       { 
         label: '用友 BIP', 
         href: '/products/bip', 

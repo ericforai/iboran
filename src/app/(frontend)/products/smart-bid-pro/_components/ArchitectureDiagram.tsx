@@ -18,13 +18,13 @@ const Node = ({ icon: Icon, label, description, color, delay }: any) => (
     whileInView={{ opacity: 1, scale: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.5, delay }}
-    className="bg-white border border-slate-100 p-6 rounded-3xl flex flex-col items-center text-center gap-3 group hover:border-blue-300 transition-all shadow-sm hover:shadow-lg"
+    className="bg-white border border-slate-100 p-4 sm:p-6 rounded-2xl sm:rounded-3xl flex flex-col items-center text-center gap-2 sm:gap-3 group hover:border-blue-300 transition shadow-sm hover:shadow-lg shrink-0 w-[148px] sm:w-[min(100%,11rem)] md:w-auto max-w-[11rem] md:max-w-none"
   >
-    <div className={`w-14 h-14 rounded-2xl ${color} flex items-center justify-center mb-1 group-hover:scale-110 shadow-lg shadow-black/5 transition-transform`}>
-      <Icon size={28} className="text-white" />
+    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl ${color} flex items-center justify-center mb-1 group-hover:scale-110 shadow-lg shadow-black/5 transition-transform`}>
+      <Icon className="text-white w-6 h-6 sm:w-7 sm:h-7" aria-hidden />
     </div>
-    <span className="font-extrabold text-slate-900 text-base whitespace-nowrap tracking-tight">{label}</span>
-    <span className="text-xs text-slate-500 leading-tight font-medium">{description}</span>
+    <span className="font-extrabold text-slate-900 text-sm sm:text-base tracking-tight leading-snug whitespace-normal md:whitespace-nowrap">{label}</span>
+    <span className="text-[11px] sm:text-xs text-slate-500 leading-snug font-medium px-0.5">{description}</span>
   </motion.div>
 )
 
@@ -57,33 +57,35 @@ export const ArchitectureDiagram = () => {
         style={{ backgroundImage: 'radial-gradient(#e2e8f0 1.5px, transparent 0)', backgroundSize: '32px 32px' }} 
       />
 
-      {/* Layer 1: Data Ingestion */}
-      <div className="flex items-center w-full max-w-4xl relative z-10">
-        <Node 
-          icon={CloudDownload} 
-          label="全网智能采集" 
-          description="标讯详情自动深度清洗" 
-          color="bg-blue-600"
-          delay={0.1}
-        />
-        <Arrow delay={0.4} />
-        <div className="flex flex-col items-center gap-6 relative">
-             <Node 
-                icon={Cpu} 
-                label="智投 AI 引擎" 
-                description="机会 BAR 模型量化评分" 
-                color="bg-blue-500"
-                delay={0.6}
+      {/* Layer 1: Data Ingestion — horizontal scroll on narrow viewports */}
+      <div className="w-full max-w-4xl relative z-10 overflow-x-auto overscroll-x-contain md:overflow-visible [-webkit-overflow-scrolling:touch] px-1 -mx-1 md:mx-0 md:px-0">
+        <div className="flex items-center w-max md:w-full mx-auto gap-2 sm:gap-4 md:gap-0 py-1 md:py-0">
+          <Node 
+            icon={CloudDownload} 
+            label="全网智能采集" 
+            description="标讯详情自动深度清洗" 
+            color="bg-blue-600"
+            delay={0.1}
+          />
+          <Arrow delay={0.4} />
+          <div className="flex flex-col items-center gap-6 relative shrink-0">
+            <Node 
+              icon={Cpu} 
+              label="智投 AI 引擎" 
+              description="机会 BAR 模型量化评分" 
+              color="bg-blue-500"
+              delay={0.6}
             />
+          </div>
+          <Arrow delay={0.9} />
+          <Node 
+            icon={Layers} 
+            label="投标任务中心" 
+            description="PDCA 闭环标准作业" 
+            color="bg-indigo-600"
+            delay={1.1}
+          />
         </div>
-        <Arrow delay={0.9} />
-        <Node 
-          icon={Layers} 
-          label="投标任务中心" 
-          description="PDCA 闭环标准作业" 
-          color="bg-indigo-600"
-          delay={1.1}
-        />
       </div>
 
       {/* Vertical Linkage */}
@@ -96,28 +98,30 @@ export const ArchitectureDiagram = () => {
       />
 
       {/* Layer 2: Asset & Insight */}
-      <div className="flex items-center w-full max-w-5xl justify-center gap-12 mt-2 relative z-10">
-        <Node 
-          icon={Database} 
-          label="组织知识资产" 
-          description="全生命周期沉淀与复用" 
-          color="bg-emerald-600"
-          delay={1.4}
-        />
-        <Node 
-          icon={ShieldCheck} 
-          label="安全审计管控" 
-          description="多级权限与操作可审计" 
-          color="bg-slate-800"
-          delay={1.6}
-        />
-        <Node 
-          icon={TrendingUp} 
-          label="经营深度洞察" 
-          description="竞对分析与多维看板报告" 
-          color="bg-amber-600"
-          delay={1.8}
-        />
+      <div className="w-full max-w-5xl overflow-x-auto overscroll-x-contain md:overflow-visible [-webkit-overflow-scrolling:touch] mt-2 relative z-10 px-1 -mx-1 md:mx-0 md:px-0">
+        <div className="flex items-stretch md:items-center justify-center gap-4 sm:gap-8 md:gap-12 w-max md:w-full mx-auto py-1 md:py-0">
+          <Node 
+            icon={Database} 
+            label="组织知识资产" 
+            description="全生命周期沉淀与复用" 
+            color="bg-emerald-600"
+            delay={1.4}
+          />
+          <Node 
+            icon={ShieldCheck} 
+            label="安全审计管控" 
+            description="多级权限与操作可审计" 
+            color="bg-slate-800"
+            delay={1.6}
+          />
+          <Node 
+            icon={TrendingUp} 
+            label="经营深度洞察" 
+            description="竞对分析与多维看板报告" 
+            color="bg-amber-600"
+            delay={1.8}
+          />
+        </div>
       </div>
 
       <div className="mt-8 text-blue-400 text-[12px] font-extrabold uppercase tracking-[0.3em] opacity-40">

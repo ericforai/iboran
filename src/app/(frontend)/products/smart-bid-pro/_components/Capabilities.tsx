@@ -65,7 +65,7 @@ const ExecutionWidget = () => (
       <h4 className="text-sm font-black text-slate-800 uppercase tracking-widest">投标任务看板</h4>
       <Filter size={14} className="text-slate-400" />
     </div>
-    <div className="grid grid-cols-3 gap-4 flex-1">
+    <div className="grid grid-cols-1 min-[480px]:grid-cols-3 gap-4 flex-1">
       {[
         { label: '待处理 (Draft)', count: 2, items: [{ t: '资质文件汇总', p: 40 }] },
         { label: '执行中 (Doing)', count: 4, items: [{ t: '技术偏离表确认', p: 75 }, { t: '报价模型测算', p: 20 }] },
@@ -184,8 +184,8 @@ const BrowserFrame = ({ children, title }: { children: React.ReactNode, title: s
         <div className="w-2.5 h-2.5 rounded-full bg-slate-200" />
         <div className="w-2.5 h-2.5 rounded-full bg-slate-200" />
       </div>
-      <div className="flex-1 max-w-[400px] h-6 bg-white border border-slate-200/60 rounded-full mx-auto flex items-center px-3 justify-between">
-         <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest">smart-bid-pro.boran.ai/{title.toLowerCase()}</span>
+      <div className="flex-1 max-w-[400px] min-w-0 h-6 bg-white border border-slate-200/60 rounded-full mx-auto flex items-center px-3 justify-between gap-2">
+         <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest truncate">smart-bid-pro.boran.ai/{title.toLowerCase()}</span>
          <Clock size={10} className="text-slate-200" />
       </div>
     </div>
@@ -231,9 +231,9 @@ export const Capabilities = () => {
   const activeFeature = features.find(f => f.id === activeTab) || features[0]
 
   return (
-    <section id="capabilities" className="py-32 bg-white px-6 border-b border-slate-100 overflow-hidden">
+    <section id="capabilities" className="py-16 md:py-32 bg-white px-4 sm:px-6 border-b border-slate-100 overflow-hidden">
       <div className="container max-w-7xl mx-auto">
-        <div className="text-center mb-20 px-6">
+        <div className="text-center mb-12 md:mb-20 px-2 sm:px-6">
           <motion.h2 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -253,14 +253,14 @@ export const Capabilities = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20 items-center">
           {/* Left: Tab selectors */}
           <div className="lg:col-span-5 space-y-4">
             {features.map((f) => (
               <button
                 key={f.id}
                 onClick={() => setActiveTab(f.id)}
-                className={`w-full text-left p-6 md:p-8 rounded-[32px] border transition-all relative overflow-hidden group ${
+                className={`w-full text-left p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-[32px] border transition-all relative overflow-hidden group touch-manipulation ${
                   activeTab === f.id 
                     ? 'bg-blue-50 border-blue-200 shadow-xl shadow-blue-600/5' 
                     : 'bg-white border-slate-100 hover:bg-slate-50 hover:border-slate-200 shadow-sm'
@@ -272,13 +272,13 @@ export const Capabilities = () => {
                         className="absolute left-0 top-0 bottom-0 w-1.5 bg-blue-600"
                     />
                 )}
-                <div className="flex items-start gap-6">
-                  <div className={`p-4 rounded-2xl shrink-0 transition-colors ${activeTab === f.id ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}>
+                <div className="flex items-start gap-4 sm:gap-6">
+                  <div className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl shrink-0 transition-colors ${activeTab === f.id ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}>
                     <f.icon size={24} />
                   </div>
-                  <div>
-                    <h3 className={`font-extrabold text-lg md:text-xl mb-2 leading-none ${activeTab === f.id ? 'text-slate-900' : 'text-slate-800'}`}>{f.title}</h3>
-                    <p className={`text-base md:text-lg font-medium leading-relaxed transition-colors ${activeTab === f.id ? 'text-slate-600' : 'text-slate-500'}`}>
+                  <div className="min-w-0">
+                    <h3 className={`font-extrabold text-base sm:text-lg md:text-xl mb-1.5 sm:mb-2 leading-snug ${activeTab === f.id ? 'text-slate-900' : 'text-slate-800'}`}>{f.title}</h3>
+                    <p className={`text-sm sm:text-base md:text-lg font-medium leading-relaxed transition-colors ${activeTab === f.id ? 'text-slate-600' : 'text-slate-500'}`}>
                       {f.description}
                     </p>
                   </div>
@@ -288,8 +288,8 @@ export const Capabilities = () => {
           </div>
 
           {/* Right: Mockup display */}
-          <div className="lg:col-span-7 aspect-[4/3] relative h-[500px] lg:h-[600px]">
-            <div className="relative w-full h-full bg-slate-50/50 rounded-[48px] p-4 md:p-8 border border-slate-100 shadow-inner">
+          <div className="lg:col-span-7 relative min-h-[min(420px,72dvh)] h-[min(520px,75dvh)] sm:h-[500px] lg:aspect-[4/3] lg:h-auto lg:min-h-[560px]">
+            <div className="relative w-full h-full min-h-0 bg-slate-50/50 rounded-3xl sm:rounded-[48px] p-3 sm:p-4 md:p-8 border border-slate-100 shadow-inner">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(59,130,246,0.1),transparent)]" />
               
               <AnimatePresence mode="wait">
@@ -302,7 +302,7 @@ export const Capabilities = () => {
                   className="w-full h-full relative z-10"
                 >
                   <BrowserFrame title={activeFeature.id}>
-                     <div className="w-full h-full transform origin-top scale-[0.98]">
+                     <div className="w-full h-full min-h-0 transform origin-top scale-[0.96] sm:scale-[0.98]">
                         <activeFeature.component />
                      </div>
                   </BrowserFrame>

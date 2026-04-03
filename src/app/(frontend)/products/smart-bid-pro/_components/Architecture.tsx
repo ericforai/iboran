@@ -6,7 +6,7 @@ import { ArchitectureDiagram } from './ArchitectureDiagram'
 
 export const Architecture = () => {
   return (
-    <section id="architecture" className="py-32 bg-white px-6">
+    <section id="architecture" className="py-16 md:py-32 bg-white px-4 sm:px-6">
       <div className="container max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           <div className="flex-1 text-left">

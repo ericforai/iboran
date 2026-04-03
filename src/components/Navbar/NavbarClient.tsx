@@ -84,16 +84,16 @@ function NavbarStateProvider({ children, menuItems, contactData, onOpenDemo }: N
     setIsMobileMenuOpen(false)
   }, [pathname])
 
-  // Close menu on ESC key
+  // Close menus on ESC (desktop mega + mobile drawer)
   useEffect(() => {
     const handleEscKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && activeDropdown) {
-        setActiveDropdown(null)
-      }
+      if (e.key !== 'Escape') return
+      setActiveDropdown(null)
+      setIsMobileMenuOpen(false)
     }
     document.addEventListener('keydown', handleEscKey)
     return () => document.removeEventListener('keydown', handleEscKey)
-  }, [activeDropdown])
+  }, [])
 
 
 
@@ -688,15 +688,16 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
         />
       )}
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu Drawer — wider on phone, safe-area for home indicator */}
       <div
-        className={`fixed top-0 right-0 h-full w-[280px] bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed top-0 right-0 h-full w-[min(22rem,calc(100vw-1rem))] max-w-[100vw] bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden touch-manipulation overscroll-y-contain ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
+        style={{ paddingTop: 'env(safe-area-inset-top, 0px)' }}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full min-h-0">
           {/* Mobile Menu Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-100">
+          <div className="flex shrink-0 items-center justify-between p-4 border-b border-gray-100">
             <span className="text-lg font-bold text-[#1F2329]">泊冉软件</span>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
@@ -707,27 +708,28 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
             </button>
           </div>
 
-          {/* Mobile Menu Items */}
-          <nav className="flex-1 overflow-y-auto py-4">
+          {/* Mobile Menu Items — min-h-0 so nested panels scroll inside viewport */}
+          <nav className="flex-1 min-h-0 overflow-y-auto overscroll-y-contain py-2">
             {menuItems.map((item) => (
               <div key={item.label} className="border-b border-gray-50">
                 {item.hasDropdown ? (
                   <>
-                    <div
-                      className="flex items-center justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                    <button
+                      type="button"
+                      className="flex w-full items-center justify-between text-left hover:bg-slate-50 active:bg-slate-100 transition-colors min-h-[48px] touch-manipulation"
                       onClick={() => toggleMobileDropdown(item.label)}
                     >
-                      <span className="flex-1 px-6 py-4 text-base font-medium text-[#1F2329]">
+                      <span className="flex-1 px-5 py-3 text-base font-medium text-[#1F2329]">
                         {item.label}
                       </span>
-                      <div className="px-4 py-4 text-slate-400 hover:text-[#0052D9] transition-colors">
+                      <div className="px-4 py-3 text-slate-400" aria-hidden>
                         <ChevronDown
                           className={`w-5 h-5 transition-transform duration-200 ${
                             mobileActiveDropdown.includes(item.label) ? 'rotate-180' : ''
                           }`}
                         />
                       </div>
-                    </div>
+                    </button>
                     <div className="bg-slate-50 pb-2">
                       {mobileActiveDropdown.includes(item.label) && (
                         <>
@@ -757,7 +759,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                               </div>
 
                               {mobileSolutionTab === 'industry' && (
-                                <div className="max-h-[50vh] overflow-y-auto">
+                                <div className="max-h-[min(60vh,calc(100dvh-14rem))] overflow-y-auto overscroll-y-contain touch-pan-y">
                                   {solutionByIndustryCategory.map((category) => (
                                     <div key={category.name} className="pt-3 first:pt-2">
                                       <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
@@ -771,7 +773,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                                             key={item.href}
                                             href={item.href}
                                             onClick={() => setIsMobileMenuOpen(false)}
-                                            className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
+                                            className="flex items-center gap-3 px-5 py-3.5 min-h-[48px] hover:bg-slate-100 active:bg-slate-200/80 transition-colors touch-manipulation"
                                           >
                                             <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
                                               <IconComponent className="w-4 h-4 text-[#0052D9]" />
@@ -780,7 +782,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                                               <div className="font-medium text-[#1F2329] text-sm">
                                                 {item.label}
                                               </div>
-                                              <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">
+                                              <div className="text-xs text-slate-500 mt-0.5 line-clamp-2">
                                                 {item.desc}
                                               </div>
                                             </div>
@@ -793,7 +795,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                               )}
 
                               {mobileSolutionTab === 'business' && (
-                                <div className="max-h-[50vh] overflow-y-auto">
+                                <div className="max-h-[min(60vh,calc(100dvh-14rem))] overflow-y-auto overscroll-y-contain touch-pan-y">
                                   {solutionByBusiness.map((category) => (
                                     <div key={category.name} className="pt-3 first:pt-2">
                                       <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
@@ -807,7 +809,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                                             key={dropItem.href}
                                             href={dropItem.href}
                                             onClick={() => setIsMobileMenuOpen(false)}
-                                            className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
+                                            className="flex items-center gap-3 px-5 py-3.5 min-h-[48px] hover:bg-slate-100 active:bg-slate-200/80 transition-colors touch-manipulation"
                                           >
                                             <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
                                               <IconComponent className="w-4 h-4 text-[#0052D9]" />
@@ -816,7 +818,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                                               <div className="font-medium text-[#1F2329] text-sm">
                                                 {dropItem.label}
                                               </div>
-                                              <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">
+                                              <div className="text-xs text-slate-500 mt-0.5 line-clamp-2">
                                                 {dropItem.desc}
                                               </div>
                                             </div>
@@ -830,7 +832,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                             </>
                           )}
                           {item.label === '核心产品' && (
-                            <div className="max-h-[50vh] overflow-y-auto">
+                            <div className="max-h-[min(60vh,calc(100dvh-14rem))] overflow-y-auto overscroll-y-contain touch-pan-y">
                               {productCategories.map((category) => (
                                 <div key={category.name} className="pt-3 first:pt-2">
                                   <div className="px-6 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider flex items-center gap-2">
@@ -844,7 +846,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                                         key={prodItem.href}
                                         href={prodItem.href}
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="flex items-center gap-3 px-6 py-3 hover:bg-slate-100 transition-colors"
+                                        className="flex items-center gap-3 px-5 py-3.5 min-h-[48px] hover:bg-slate-100 active:bg-slate-200/80 transition-colors touch-manipulation"
                                       >
                                         <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center flex-shrink-0">
                                           <IconComponent className="w-4 h-4 text-[#E60012]" />
@@ -853,7 +855,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                                           <div className="font-medium text-[#1F2329] text-sm">
                                             {prodItem.label}
                                           </div>
-                                          <div className="text-xs text-slate-500 mt-0.5 line-clamp-1">
+                                          <div className="text-xs text-slate-500 mt-0.5 line-clamp-2">
                                             {prodItem.desc}
                                           </div>
                                         </div>
@@ -872,7 +874,7 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
                   <Link
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block px-6 py-4 text-base font-medium text-[#1F2329] hover:bg-slate-50 transition-colors"
+                    className="flex items-center min-h-[48px] px-5 py-3 text-base font-medium text-[#1F2329] hover:bg-slate-50 active:bg-slate-100 transition-colors touch-manipulation"
                   >
                     {item.label}
                   </Link>
@@ -882,22 +884,26 @@ const NavbarMobileMenu = React.memo(function NavbarMobileMenu({
           </nav>
 
           {/* Mobile Menu Footer */}
-          <div className="p-4 border-t border-gray-100 space-y-3">
+          <div
+            className="shrink-0 p-4 pt-3 border-t border-gray-100 space-y-3"
+            style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 0px))' }}
+          >
             <Link
-              href="tel:4009955161"
+              href={`tel:${phone.replace(/\s+/g, '')}`}
               onClick={() => {
                 setIsMobileMenuOpen(false)
                 handlePhoneClick()
               }}
-              className="flex items-center justify-center gap-2 py-3 text-sm font-medium text-[#0052D9] hover:bg-blue-50 rounded-md transition-colors"
+              className="flex min-h-[48px] items-center justify-center gap-2 py-3 text-sm font-medium text-[#0052D9] hover:bg-blue-50 active:bg-blue-100/80 rounded-md transition-colors touch-manipulation"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-4 h-4 shrink-0" />
               <span>{phone}</span>
             </Link>
 
             <button
+              type="button"
               onClick={handleOpenDemo}
-              className="w-full py-3 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-sm transition-all"
+              className="w-full min-h-[48px] py-3 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 active:bg-red-800 rounded-md shadow-sm transition-all touch-manipulation"
             >
               预约专家评估
             </button>
