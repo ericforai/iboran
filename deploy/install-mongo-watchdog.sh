@@ -26,11 +26,11 @@ EOF
 
 cat > "$TIMER_PATH" <<EOF
 [Unit]
-Description=Run iboran MongoDB watchdog every minute
+Description=Run iboran MongoDB watchdog every 2 minutes
 
 [Timer]
 OnBootSec=2min
-OnUnitActiveSec=1min
+OnUnitActiveSec=2min
 Persistent=true
 
 [Install]

@@ -26,6 +26,8 @@ services:
     image: mongo:7
     container_name: iboran-mongo-1
     restart: unless-stopped
+    ports:
+      - "127.0.0.1:27018:27017"
     volumes:
       - mongo_data:/data/db
     healthcheck:
