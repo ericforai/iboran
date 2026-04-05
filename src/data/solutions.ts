@@ -111,6 +111,7 @@ export const solutionByBusiness: BusinessCategory[] = [
       { label: '项目立项到成本', href: '/solution/business/p2c-project-to-cost', desc: '项目全生命周期管控，进度透明，核算精细', icon: Layers },
       { label: '计划、生产到成本', href: '/solution/business/p2m', desc: '生产数字化、透明化管控，实现精益制造', icon: Factory },
       { label: '智能制造', href: '/solution/business/mes', desc: '实时感知、智能排产，打造数智化生产车间', icon: Wrench },
+      { label: 'NexSCM周边供应链', href: '/solution/nexscm', desc: 'IP 企划 2.0 · 生产数字孪生 · AI 自适应补货', icon: Crown },
       { label: '资产全生命周期管理', href: '/solution/business/eam', desc: '实现实物资产与价值管理的统一与全生命周期协同', icon: HardHat },
       { label: '人力资源管理', href: '/solution/business/hrm', desc: '赋能员工 激活组织，构建招聘、选育用留闭环', icon: UserCircle },
     ]
