@@ -405,3 +405,24 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: rgba(107, 114, 128, 0.8);
 }
+
+/* Lexical Checklist Styles */
+.lexical-checklist {
+  list-style-type: none !important;
+  padding-left: 0 !important;
+}
+
+.lexical-checklist-item {
+  list-style-type: none !important;
+  margin-left: 0 !important;
+}
+
+.lexical-checklist-item [data-checked="true"] {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Reset prose list styles for checklists */
+.prose ul.lexical-checklist > li::before {
+  display: none !important;
+}

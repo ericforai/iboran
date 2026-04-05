@@ -136,6 +136,61 @@ function markdownToLexical(markdown: string): any {
   let currentParagraph: any[] = []
   let currentList: any = null
 
+  function parseInline(text: string): any[] {
+    const nodes: any[] = []
+    // Regex for links [text](url) and bold **text**
+    // We'll process them tokens by tokens or use a simplified split-based approach for common B2B content
+    
+    // Step 1: Split by links first
+    const linkParts = text.split(/(\[.+?\]\(.+?\))/g)
+    
+    for (let i = 0; i < linkParts.length; i++) {
+        const part = linkParts[i]
+        if (!part) continue
+        
+        const linkMatch = part.match(/^\[(.+?)\]\((.+?)\)$/)
+        if (linkMatch) {
+            // It's a link
+            const linkText = linkMatch[1]
+            const linkUrl = linkMatch[2]
+            nodes.push({
+                type: 'link',
+                fields: {
+                    url: linkUrl,
+                    newTab: false,
+                    linkType: 'custom'
+                },
+                children: parseBold(linkText) // Allow bold inside links
+            })
+        } else {
+            // It's normal text, but might contain bold
+            nodes.push(...parseBold(part))
+        }
+    }
+    
+    return nodes.length > 0 ? nodes : [{ type: 'text', text: '', version: 1 }]
+  }
+
+  function parseBold(text: string): any[] {
+    const nodes: any[] = []
+    const boldParts = text.split(/\*\*(.+?)\*\*/g)
+    
+    for (let j = 0; j < boldParts.length; j++) {
+      if (!boldParts[j]) continue
+      
+      nodes.push({
+        type: 'text',
+        text: boldParts[j],
+        detail: 0,
+        format: (j % 2 === 1) ? 1 : 0, // 1 for Bold
+        mode: 'normal',
+        style: '',
+        version: 1,
+      })
+    }
+    return nodes
+  }
+
   const flushParagraph = () => {
     if (currentParagraph.length > 0) {
       children.push({
@@ -171,16 +226,20 @@ function markdownToLexical(markdown: string): any {
       continue
     }
 
-    // 列表项处理 (- 或 *)
-    if (line.startsWith('- ') || line.startsWith('* ')) {
+    // 列表项处理 (- 或 * 或 [ ] 或 [x])
+    if (line.startsWith('- ') || line.startsWith('* ') || line.startsWith('- [ ] ') || line.startsWith('- [x] ') || line.startsWith('* [ ] ') || line.startsWith('* [x] ')) {
       flushParagraph() // 列表打断段落
       
+      const isChecklist = line.includes('[ ]') || line.includes('[x]')
+      const isChecked = line.includes('[x]')
+      
       // 如果没有正在构建的列表，创建一个新的
-      if (!currentList) {
+      if (!currentList || (isChecklist && currentList.listType !== 'check') || (!isChecklist && currentList.listType === 'check')) {
+        flushList()
         currentList = {
           type: 'list',
-          tag: 'ul',
-          listType: 'bullet',
+          tag: isChecklist ? 'ul' : 'ul',
+          listType: isChecklist ? 'check' : 'bullet',
           format: 0,
           indent: 0,
           version: 1,
@@ -189,38 +248,12 @@ function markdownToLexical(markdown: string): any {
         }
       }
 
-      const listItemText = line.substring(2)
-      // 处理粗体
-      const parts = listItemText.split(/\*\*(.+?)\*\*/g)
-      const listItemChildren: any[] = []
-      
-      for (let j = 0; j < parts.length; j++) {
-        if (!parts[j]) continue
-        
-        if (j % 2 === 0) {
-          // 普通文本
-          listItemChildren.push({
-            type: 'text',
-            text: parts[j],
-            detail: 0,
-            format: 0,
-            mode: 'normal',
-            style: '',
-            version: 1,
-          })
-        } else {
-          // 粗体文本
-          listItemChildren.push({
-            type: 'text',
-            text: parts[j],
-            detail: 0,
-            format: 1, // Bold
-            mode: 'normal',
-            style: '',
-            version: 1,
-          })
-        }
+      let listItemText = line.startsWith('- ') || line.startsWith('* ') ? line.substring(2) : line.substring(2)
+      if (isChecklist) {
+          listItemText = listItemText.replace(/^\[[ x]?\]\s*/, '')
       }
+
+      const listItemNodes = parseInline(listItemText)
 
       // 将列表项添加到当前列表
       currentList.children.push({
@@ -229,18 +262,14 @@ function markdownToLexical(markdown: string): any {
         indent: 0,
         version: 1,
         direction: 'ltr',
+        checked: isChecklist ? isChecked : undefined,
         children: [{
-            // List item content wrapped in paragraph is standard for Payload Lexical
-            type: 'paragraph', // Or just direct text nodes depending on strictness, but paragraph is safer for rich text
+            type: 'paragraph', 
             format: 0,
             indent: 0,
             version: 1,
             direction: 'ltr',
-            children: listItemChildren.length > 0 ? listItemChildren : [{
-                type: 'text',
-                text: '',
-                version: 1
-            }] 
+            children: listItemNodes
         }]
       })
       continue
@@ -248,6 +277,10 @@ function markdownToLexical(markdown: string): any {
 
     // 非列表行，先 flush 列表
     flushList()
+
+    // ... (Headings and Q/A remain same, using parseInline)
+    // [Omitting those for brevity in this replace_file_content call if possible, or include them if necessary]
+    // Wait, I need to include them to keep the file correct.
 
     // H1 标题
     if (line.startsWith('# ')) {
@@ -259,15 +292,7 @@ function markdownToLexical(markdown: string): any {
         indent: 0,
         version: 1,
         direction: 'ltr',
-        children: [{
-          type: 'text',
-          text: line.substring(2),
-          detail: 0,
-          format: 0,
-          mode: 'normal',
-          style: '',
-          version: 1,
-        }],
+        children: parseInline(line.substring(2)),
       })
       continue
     }
@@ -282,15 +307,7 @@ function markdownToLexical(markdown: string): any {
         indent: 0,
         version: 1,
         direction: 'ltr',
-        children: [{
-          type: 'text',
-          text: line.substring(3),
-          detail: 0,
-          format: 0,
-          mode: 'normal',
-          style: '',
-          version: 1,
-        }],
+        children: parseInline(line.substring(3)),
       })
       continue
     }
@@ -305,15 +322,7 @@ function markdownToLexical(markdown: string): any {
         indent: 0,
         version: 1,
         direction: 'ltr',
-        children: [{
-          type: 'text',
-          text: line.substring(4),
-          detail: 0,
-          format: 0,
-          mode: 'normal',
-          style: '',
-          version: 1,
-        }],
+        children: parseInline(line.substring(4)),
       })
       continue
     }
@@ -344,12 +353,7 @@ function markdownToLexical(markdown: string): any {
 
     // Q/A 回答 (Paragraph starts with A:)
     if (line.startsWith('A: ')) {
-        // Just treat as paragraph text, but maybe verify previous was Q
-        // For now, standard paragraph handling deals with this, 
-        // but we might want to start a new paragraph explicitly for A:
         flushParagraph() 
-        // Allow it to fall through to normal text processing or handle explicitly
-        // Original code handled strictly:
         const answer = line.substring(3)
         children.push({
             type: 'paragraph',
@@ -371,28 +375,30 @@ function markdownToLexical(markdown: string): any {
     }
 
     // 表格（简单处理）
-    if (line.startsWith('|') && line.endsWith('|')) {
+    const trimmedLine = line.trim()
+    if (trimmedLine.includes('|') && (trimmedLine.startsWith('|') || trimmedLine.split('|').length > 2)) {
       // 跳过表头分隔线
-      if (line.includes('---')) continue
+      if (trimmedLine.includes('|') && trimmedLine.includes('---')) continue
       flushParagraph()
       
-      // 表格作为代码块处理（简化）
-      const cells = line.split('|').filter(c => c.trim())
+      // 移除首尾的 | 并分割
+      const cells = trimmedLine.replace(/^\|/, '').replace(/\|$/, '').split('|').map(c => c.trim())
+      const cellNodes: any[] = []
+      
+      cells.forEach((cell, idx) => {
+          cellNodes.push(...parseInline(cell))
+          if (idx < cells.length - 1) {
+              cellNodes.push({ type: 'text', text: ' | ', version: 1 })
+          }
+      })
+
       children.push({
         type: 'paragraph',
         format: 0,
         indent: 0,
         version: 1,
         direction: 'ltr',
-        children: [{
-          type: 'text',
-          text: cells.join(' | '),
-          detail: 0,
-          format: 0,
-          mode: 'normal',
-          style: '',
-          version: 1,
-        }],
+        children: cellNodes
       })
       continue
     }
@@ -411,36 +417,7 @@ function markdownToLexical(markdown: string): any {
     }
 
     // 普通文本（添加到当前段落）
-    // 处理粗体
-    const parts = line.split(/\*\*(.+?)\*\*/g)
-    for (let j = 0; j < parts.length; j++) {
-      if (!parts[j]) continue
-
-      if (j % 2 === 0) {
-        currentParagraph.push({
-          type: 'text',
-          text: parts[j],
-          detail: 0,
-          format: 0,
-          mode: 'normal',
-          style: '',
-          version: 1,
-        })
-      } else {
-        currentParagraph.push({
-          type: 'text',
-          text: parts[j],
-          detail: 0,
-          format: 1, // Bold
-          mode: 'normal',
-          style: '',
-          version: 1,
-        })
-      }
-    }
-    // Add a space if concatenating lines? Markdown implies newline -> space usually
-    // But original logic didn't. Let's stick to original behavior: lines accumulate in paragraph
-    // Actually original logic accumulated text nodes.
+    currentParagraph.push(...parseInline(line))
   }
 
   // 循环结束，清理剩余
@@ -620,16 +597,19 @@ async function main() {
       content: lexicalContent,
       tldr: tldr || undefined,
       atomicFAQs: atomicFAQs.length > 0 ? atomicFAQs : undefined,
-      hero: heroImageId, // Add hero image
       meta: {
         title: `${title} | 泊冉软件深度解析`,
         description: tldr 
           ? `${tldr} 泊冉软件专注 YonSuite / YonBIP 数字化落地与业财一体化实施服务。` 
           : `${title} - 深度解析企业数字化转型、ERP实施与业财一体化落地的实战经验。泊冉软件作为用友官方合作伙伴，提供专业的 YonSuite 实施定制服务。`,
-        image: heroImageId, // Set meta image too
       },
       categories: categoryIds.length > 0 ? categoryIds : undefined,
       _status: args.status || 'draft',
+    }
+
+    if (heroImageId) {
+      postData.hero = heroImageId
+      postData.meta.image = heroImageId
     }
 
     if (args.status === 'published') {

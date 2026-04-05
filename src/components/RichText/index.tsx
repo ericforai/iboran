@@ -47,7 +47,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
     CallToActionBlock: CallToActionBlock as unknown as React.ComponentType<Record<string, unknown>>,
     MediaBlock: MediaBlock as unknown as React.ComponentType<Record<string, unknown>>,
     CodeBlock: CodeBlock as unknown as React.ComponentType<Record<string, unknown>>,
-  })({ defaultConverters }).blocks,
+  })({ defaultConverters }),
 })
 
 type Props = {
