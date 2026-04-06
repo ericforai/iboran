@@ -80,7 +80,7 @@ export default function NexSCMDashboardMockup() {
                 </div>
               </div>
               
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 2xl:grid-cols-4 gap-4 2xl:gap-6">
                 <MetricCard label="热度指数" value="98.4" sub="+5.2%" />
                 <MetricCard label="开发难度" value="A-" sub="中高" />
                 <MetricCard label="预计毛利" value="342%" sub="极优" />
@@ -186,11 +186,13 @@ function NavItem({ icon: Icon, label, active = false }: { icon: any, label: stri
 
 function MetricCard({ label, value, sub }: { label: string, value: string, sub: string }) {
   return (
-    <div className="space-y-1">
-      <div className="text-[9px] text-slate-400 font-medium">{label}</div>
-      <div className="flex items-baseline gap-1">
-        <span className="text-lg font-bold text-slate-800">{value}</span>
-        <span className="text-[10px] text-green-500 font-bold">{sub}</span>
+    <div className="flex flex-col gap-1 min-w-0">
+      <div className="text-[9px] text-slate-400 font-bold truncate whitespace-nowrap uppercase tracking-tight" title={label}>
+        {label}
+      </div>
+      <div className="flex flex-col gap-0.5 min-w-0">
+        <span className="text-sm md:text-base font-black text-slate-900 leading-none whitespace-nowrap">{value}</span>
+        <span className="text-[9px] text-green-500 font-black leading-none whitespace-nowrap">{sub}</span>
       </div>
     </div>
   )
@@ -198,24 +200,24 @@ function MetricCard({ label, value, sub }: { label: string, value: string, sub: 
 
 function ProductionStep({ label, progress, status, active = false }: { label: string, progress: number, status: string, active?: boolean }) {
   return (
-    <div className={`relative p-2 rounded-lg border flex items-center justify-between gap-3 ${active ? 'bg-blue-50 border-blue-200 ring-1 ring-blue-100' : 'bg-white border-slate-100'}`}>
-      <div className="flex-1">
-        <div className="flex justify-between items-center mb-1">
-          <span className={`font-bold ${active ? 'text-blue-700' : 'text-slate-700'}`}>{label}</span>
-          <span className={`text-[9px] px-1.5 py-0.5 rounded ${active ? 'bg-blue-200 text-blue-700' : 'bg-slate-100 text-slate-500'}`}>
+    <div className={`relative p-2 rounded-lg border flex items-center justify-between gap-2 ${active ? 'bg-blue-50 border-blue-200 ring-1 ring-blue-100' : 'bg-white border-slate-100'}`}>
+      <div className="flex-1 min-w-0">
+        <div className="flex justify-between items-center mb-1.5 gap-2">
+          <span className={`font-bold truncate text-[10px] ${active ? 'text-blue-700' : 'text-slate-700'}`}>{label}</span>
+          <span className={`text-[8px] px-1.5 py-0.5 rounded whitespace-nowrap shrink-0 font-medium ${active ? 'bg-blue-200 text-blue-700' : 'bg-slate-100 text-slate-500'}`}>
             {status}
           </span>
         </div>
-        <div className="w-full bg-slate-100 h-1 rounded-full overflow-hidden">
+        <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
           <motion.div 
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className={`h-full rounded-full ${progress === 100 ? 'bg-green-500' : 'bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]'}`}
+            className={`h-full rounded-full ${progress === 100 ? 'bg-green-500' : 'bg-blue-500'}`}
           />
         </div>
       </div>
-      <div className="shrink-0 w-8 text-right text-[10px] font-bold text-slate-500">
+      <div className="shrink-0 w-7 text-right text-[9px] font-black text-slate-400">
         {progress}%
       </div>
       {active && (
