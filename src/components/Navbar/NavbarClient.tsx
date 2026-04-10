@@ -336,15 +336,20 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
   handleOpenDemo: () => void
 }) {
   const { activeDropdown, setActiveDropdown, megaMenuTab, setMegaMenuTab } = useNavbarState()
-  const menuRef = useRef<HTMLDivElement>(null)
+  const productsRef = useRef<HTMLDivElement>(null)
+  const solutionsRef = useRef<HTMLDivElement>(null)
 
-  // Handle click outside
+  // Handle click outside for both menus
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      if (!activeDropdown) return
+
+      const isOutsideProducts = productsRef.current && !productsRef.current.contains(event.target as Node)
+      const isOutsideSolutions = solutionsRef.current && !solutionsRef.current.contains(event.target as Node)
+
       if (
-        activeDropdown && 
-        menuRef.current && 
-        !menuRef.current.contains(event.target as Node)
+        (activeDropdown === '核心产品' && isOutsideProducts) ||
+        (activeDropdown === '解决方案' && isOutsideSolutions)
       ) {
         setActiveDropdown(null)
       }
@@ -385,95 +390,102 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
 
   return createPortal(
     <>
-      {/* Core Products Mega Menu */}
-      {activeDropdown === '核心产品' && (
-        <div
-          ref={menuRef}
-          className="hidden lg:block fixed top-20 inset-x-0 mx-auto w-full lg:max-w-6xl bg-white backdrop-blur-md rounded-b-2xl border-x border-b border-gray-100 shadow-xl z-[100] max-h-[calc(100vh-6rem)] overflow-y-auto custom-scrollbar"
-          onMouseEnter={() => handleMenuEnter('核心产品')}
-          onMouseLeave={handleMenuLeave}
-        >
-          <div className="container mx-auto px-6 py-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:divide-x divide-gray-100">
-              {productCategories.map((category) => (
-                <div key={category.name} className="flex flex-col md:pl-8 first:pl-0">
-                  <div className="mb-6">
-                    <h3 className="text-sm font-heading font-black text-[#1F2329] flex items-center gap-3 mb-2">
-                      <span className="w-1.5 h-4 bg-[#E60012] rounded-full"></span>
-                      {category.name}
-                    </h3>
-                    <p className="text-[10px] font-mono font-bold text-slate-400 pl-4 uppercase tracking-tighter">
-                      {category.description}
-                    </p>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    {category.items.map((item) => {
-                      const IconComponent = item.icon
-                      return (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          onClick={() => setActiveDropdown(null)}
-                          className="group flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-all duration-200"
-                        >
-                          <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-red-50 group-hover:bg-white group-hover:shadow-sm flex items-center justify-center transition-all">
-                            <IconComponent className="w-4 h-4 text-[#E60012]" />
-                          </div>
-                          <div className="flex-1 min-w-0 pt-0.5">
-                            <div className="font-medium text-[#1F2329] text-sm group-hover:text-[#E60012] transition-colors">
-                              {item.label}
+      <AnimatePresence>
+        {activeDropdown === '核心产品' && (
+          <motion.div
+            key="mega-menu-products"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            ref={productsRef}
+            className="hidden lg:block fixed top-20 inset-x-0 mx-auto w-full lg:max-w-6xl bg-white backdrop-blur-md rounded-b-2xl border-x border-b border-gray-100 shadow-xl z-[100] max-h-[calc(100vh-6rem)] overflow-y-auto custom-scrollbar"
+            onMouseEnter={() => handleMenuEnter('核心产品')}
+            onMouseLeave={handleMenuLeave}
+          >
+            <div className="container mx-auto px-6 py-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:divide-x divide-gray-100">
+                {productCategories.map((category) => (
+                  <div key={category.name} className="flex flex-col md:pl-8 first:pl-0">
+                    <div className="mb-6">
+                      <h3 className="text-sm font-heading font-black text-[#1F2329] flex items-center gap-3 mb-2">
+                        <span className="w-1.5 h-4 bg-[#E60012] rounded-full"></span>
+                        {category.name}
+                      </h3>
+                      <p className="text-[10px] font-mono font-bold text-slate-400 pl-4 uppercase tracking-tighter">
+                        {category.description}
+                      </p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      {category.items.map((item) => {
+                        const IconComponent = item.icon
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setActiveDropdown(null)}
+                            className="group flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-all duration-200"
+                          >
+                            <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-red-50 group-hover:bg-white group-hover:shadow-sm flex items-center justify-center transition-all">
+                              <IconComponent className="w-4 h-4 text-[#E60012]" />
                             </div>
-                            <div className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                              {item.desc}
+                            <div className="flex-1 min-w-0 pt-0.5">
+                              <div className="font-medium text-[#1F2329] text-sm group-hover:text-[#E60012] transition-colors">
+                                {item.label}
+                              </div>
+                              <div className="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                                {item.desc}
+                              </div>
                             </div>
-                          </div>
-                        </Link>
-                      )
-                    })}
+                          </Link>
+                        )
+                      })}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom CTA Bar */}
-            <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
-              <div className="flex gap-6">
-                <Link
-                  href="/products"
-                  onClick={() => setActiveDropdown(null)}
-                  className="inline-flex items-center gap-2 text-sm font-medium text-[#1F2329] hover:text-[#E60012] transition-colors"
-                >
-                  产品总览
-                </Link>
-                <Link
-                  href="/pricing"
-                  onClick={() => setActiveDropdown(null)}
-                  className="inline-flex items-center gap-2 text-sm font-medium text-[#1F2329] hover:text-[#E60012] transition-colors"
-                >
-                  价格体系
-                </Link>
+                ))}
               </div>
-              <button
-                onClick={handleOpenDemo}
-                className="inline-flex items-center gap-2 text-sm font-medium text-[#E60012] hover:text-red-700 transition-colors group"
-              >
-                预约产品演示
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+
+              {/* Bottom CTA Bar */}
+              <div className="flex items-center justify-between mt-6 pt-4 border-t border-slate-100">
+                <div className="flex gap-6">
+                  <Link
+                    href="/products"
+                    onClick={() => setActiveDropdown(null)}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-[#1F2329] hover:text-[#E60012] transition-colors"
+                  >
+                    产品总览
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    onClick={() => setActiveDropdown(null)}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-[#1F2329] hover:text-[#E60012] transition-colors"
+                  >
+                    价格体系
+                  </Link>
+                </div>
+                <button
+                  onClick={handleOpenDemo}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[#E60012] hover:text-red-700 transition-colors group"
+                >
+                  预约产品演示
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Mega Menu Dropdown - Solutions */}
       <AnimatePresence>
         {activeDropdown === '解决方案' && (
           <motion.div
+            key="mega-menu-solutions"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            ref={menuRef}
+            ref={solutionsRef}
             className="hidden lg:block fixed top-20 inset-x-0 mx-auto w-full lg:max-w-6xl bg-white backdrop-blur-md rounded-b-2xl border-x border-b border-gray-100 shadow-xl z-[100] max-h-[calc(100vh-6rem)] overflow-y-auto custom-scrollbar"
             onMouseEnter={() => handleMenuEnter('解决方案')}
             onMouseLeave={handleMenuLeave}
