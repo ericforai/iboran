@@ -46,14 +46,17 @@ export default function Hero() {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                <Link 
-                href="/resources/whitepaper"
-                className="bg-white text-slate-900 border border-slate-200 px-8 py-3 rounded-lg font-medium hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
-              >
+                <button 
+                  onClick={handleOpenConsult}
+                  className="bg-white text-slate-900 border border-slate-200 px-8 py-3 rounded-lg font-medium hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
+                >
                   预约行业专家咨询
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
-                </Link>
-                <button onClick={handleOpenConsult} className="px-8 py-3.5 bg-white text-[#0052D9] border-2 border-[#0052D9] rounded-md font-semibold hover:bg-blue-50 transition">
+                </button>
+                <button 
+                  onClick={handleOpenConsult} 
+                  className="px-8 py-3.5 bg-white text-[#0052D9] border-2 border-[#0052D9] rounded-md font-semibold hover:bg-blue-50 transition"
+                >
                   下载白皮书
                 </button>
               </div>

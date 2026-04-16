@@ -1,5 +1,5 @@
+'use client'
 import { TrendingUp, Clock, Wrench, ShieldCheck } from 'lucide-react'
-import Link from 'next/link'
 
 const metrics = [
   {
@@ -38,6 +38,10 @@ const metrics = [
 ]
 
 export default function ValueSection() {
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="absolute top-0 right-0 w-64 h-64 bg-slate-200/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -100,9 +104,12 @@ export default function ValueSection() {
             </p>
           </div>
           <div className="flex-shrink-0">
-             <Link href="/resources" className="px-8 py-4 bg-white text-slate-900 font-bold rounded-2xl hover:bg-blue-50 transition-all shadow-xl shadow-white/5">
+             <button 
+                onClick={handleOpenConsult}
+                className="px-8 py-4 bg-white text-slate-900 font-bold rounded-2xl hover:bg-blue-50 transition-all shadow-xl shadow-white/5"
+             >
                 下载 EAM 业务全景图
-             </Link>
+             </button>
           </div>
         </div>
       </div>

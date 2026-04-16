@@ -1,7 +1,12 @@
+'use client'
 import { ArrowRight, Download } from 'lucide-react'
 import Link from 'next/link'
 
 export function CTASection() {
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="py-20 bg-emerald-900 relative overflow-hidden">
       {/* Background Decor */}
@@ -27,13 +32,13 @@ export function CTASection() {
               预约专家咨询
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link 
-              href="/resources" // Or specific resource link
+            <button 
+              onClick={handleOpenConsult}
               className="bg-transparent border-2 border-emerald-400/30 text-emerald-100 px-8 py-4 rounded-xl font-bold text-lg hover:bg-emerald-800/50 transition-all flex items-center justify-center gap-2"
             >
               <Download className="w-5 h-5" />
               下载行业白皮书
-            </Link>
+            </button>
           </div>
           
           <p className="mt-6 text-sm text-emerald-400/60">

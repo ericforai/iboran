@@ -42,7 +42,7 @@ export function Hero() {
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link 
-                  href="/resources" 
+                  href="/whitepapers" 
                   className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-white border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 transition-colors"
                 >
                   下载白皮书

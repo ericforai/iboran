@@ -49,7 +49,7 @@ export function Resources() {
               获取最新的产品资料与开发指南，加速您的数智化门户建设。
             </p>
           </div>
-          <Link href="/resources" className="text-blue-600 font-medium hover:text-blue-700 flex items-center gap-2">
+          <Link href="/whitepapers" className="text-blue-600 font-medium hover:text-blue-700 flex items-center gap-2">
             查看更多资源 <ArrowRightIcon />
           </Link>
         </div>

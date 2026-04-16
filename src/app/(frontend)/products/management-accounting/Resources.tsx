@@ -48,7 +48,7 @@ export default function Resources() {
                  我们为您准备了详实的技术文档与实践指南，助力您更全面地了解 BIP 管理会计。
               </p>
            </div>
-           <Link href="/resources" className="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-2 group">
+           <Link href="/whitepapers" className="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-2 group">
               查看更多资源 <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
            </Link>
         </div>
