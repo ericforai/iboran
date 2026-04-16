@@ -265,14 +265,14 @@ const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }
         {menuItems.map((item) => (
           <div
             key={item.label}
-            className="relative pb-6 -mb-6"
+            className="flex items-center h-full"
             onMouseEnter={() => item.hasDropdown && handleMenuEnter(item.label)}
             onMouseLeave={handleMenuLeave}
           >
             <Link
               href={item.href}
               onClick={() => setActiveDropdown(null)}
-              className="flex items-center gap-1 text-sm font-heading font-bold text-[#1F2329] hover:text-[#0052D9] transition-colors relative group py-2"
+              className="relative flex items-center gap-1 text-sm font-heading font-bold text-[#1F2329] hover:text-[#0052D9] transition-colors group py-4 px-1"
             >
               {item.label}
               {item.hasDropdown && (
@@ -282,7 +282,12 @@ const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }
                   }`}
                 />
               )}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0052D9] transition-all duration-300 group-hover:w-full"></span>
+              {/* The Hover Bridge: ensuring the dropdown stays open when moving mouse down */}
+              {item.hasDropdown && (
+                <div className="absolute top-full left-0 w-full h-6 pointer-events-auto" />
+              )}
+              {/* Bottom active line */}
+              <span className="absolute bottom-0 left-1 w-0 h-[2px] bg-[#0052D9] transition-all duration-300 group-hover:w-[calc(100%-8px)]"></span>
             </Link>
           </div>
         ))}
@@ -464,6 +469,7 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
                   </Link>
                 </div>
                 <button
+                  type="button"
                   onClick={handleOpenDemo}
                   className="inline-flex items-center gap-2 text-sm font-medium text-[#E60012] hover:text-red-700 transition-colors group"
                 >
@@ -648,6 +654,7 @@ const NavbarMegaMenus = React.memo(function NavbarMegaMenus({
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <button
+                  type="button"
                   onClick={handleOpenDemo}
                   className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-[#E60012] hover:bg-red-700 rounded-md shadow-sm transition-all hover:shadow-md active:scale-95"
                 >

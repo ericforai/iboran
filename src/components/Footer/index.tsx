@@ -23,6 +23,7 @@ export const Footer = () => {
                     width={28}
                     height={28}
                     className="object-contain"
+                    style={{ height: 'auto' }}
                   />
                   <div className="text-2xl font-heading font-black text-[#1B80C1] tracking-tight">泊冉软件</div>
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-amber-100 to-amber-50 text-amber-700 border border-amber-200/50 shadow-sm whitespace-nowrap dark:from-amber-900/30 dark:to-amber-950/30 dark:text-amber-400 dark:border-amber-700/50">

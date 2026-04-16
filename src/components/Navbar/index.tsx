@@ -39,6 +39,7 @@ export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
             width={32}
             height={32}
             className="object-contain"
+            style={{ height: 'auto' }}
             priority
           />
           <div className="flex flex-col pr-1">
@@ -55,6 +56,7 @@ export function Navbar({ onOpenDemo, contactData }: NavbarProps) {
               width={48}
               height={24}
               className="object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+              style={{ height: 'auto' }}
               priority
             />
           </div>

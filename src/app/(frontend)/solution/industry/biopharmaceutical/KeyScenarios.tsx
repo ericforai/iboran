@@ -10,25 +10,25 @@ const scenarios = [
     id: 'cdmo',
     icon: Microscope,
     title: "研产一体化 (CDMO/CRO)",
-    description: "打通临床前研究、临床研究到商业化生产的全链路。实现研发项目预算、进度与质量全透明，工艺参数无缝转移。",
+    description: "打通临床前前研究到商业化生产全链路。实现工艺配方到生产BOM自动转换，LIMS实验数据自动采集结算。",
     features: [
-      "多管线项目全生命周期管控",
-      "研发工艺配方到生产BOM自动转换",
-      "LIMS与实验数据自动采集集成",
-      "试产物料与委托加工（CMO）协同"
+      "多项目并行全生命周期管控",
+      "研发工艺参数（Recipe）无缝转移",
+      "LIMS 与实验数据自动集成",
+      "试产物料与委托加工（B证委托）协同"
     ],
     image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80&w=1000"
   },
   {
     id: 'compliance',
     icon: FileCheck,
-    title: "全流程合规管控",
-    description: "内置符合NMPA/FDA标准的GMP/GSP管理规范，支持Csv计算机化系统验证，以保障数据完整性与追溯合规。",
+    title: "GMP/GSP 核心合规管控",
+    description: "内置符合 NMPA/FDA/EU 标准的管理规范。支持 CSV 计算机化系统验证，确保数据完整性与合规可追溯。",
     features: [
-      "基于GAMP5的全生命周期CSV验证",
-      "质量管理QMS/DMS/TMS一体化",
-      "电子批记录(EBR)与电子签名",
-      "稳定性考察与留样全生命周期管理"
+      "基于 GAMP5 的全生命周期 CSV 验证",
+      "人员健康档案及年度培训管理",
+      "电子批记录 (EBR) 与电子签名控制",
+      "物料状态自动控制与稳定性考察"
     ],
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1000"
   },
@@ -36,25 +36,25 @@ const scenarios = [
     id: 'accounting',
     icon: Link2,
     title: "事项会计与精益成本",
-    description: "基于事项会计中台，实现业务、财务、税务三位一体。单批次成本、项目损益实时洞察，支撑科学定价与集采应对。",
+    description: "基于事项会计中台，解决成本算不准、算不全的问题。单批次成本、项目损益实时核算，支撑集采科学定价。",
     features: [
-      "多维会计核算，支持多准则报告",
-      "产品批次成本、全周期成本精准核算",
-      "精细化成本动因分析与管控",
-      "全员线上报销与预算事前控制"
+      "多维会计核算，支持 IPO 审计追踪",
+      "单批次、单项目全生命周期成本核算",
+      "业务流程审批与预算事前强控",
+      "供应链采购价格与供应商审计联动"
     ],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000"
   },
   {
     id: 'ai-agents',
     icon: Globe2,
-    title: "AI+全球化数智运营",
-    description: "YonGPT 2.0 AI智能体赋能企业经营，多语言、多币种、跨国准则支持，助力药企全球化扩张与出海经营。",
+    title: "AI+全球化安全运营",
+    description: "YonGPT 智能体赋能经营决策。支持 License-out 模式海外监管、多组织财务合并与数据隐私安全保护。",
     features: [
-      "AI智能营销分析与费用看板",
-      "全球多组织管理与海外合规审计",
-      "跨国供应链协同与电子仓储对接",
-      "经营指标层层穿透直达根因分析"
+      "AI 智能辅助质量预警与风险洞察",
+      "海外机构属地经营与合规审计监管",
+      "跨国供应链协同与多币种自动结算",
+      "企业级数据安全与隐私防泄漏保护"
     ],
     image: "https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&q=80&w=1000"
   }
@@ -84,6 +84,7 @@ export function KeyScenarios() {
             {scenarios.map((scenario) => (
               <button
                 key={scenario.id}
+                type="button"
                 onClick={() => setActiveTab(scenario.id)}
                 className={`flex items-center gap-4 p-4 rounded-xl text-left transition-all duration-300 border ${
                   activeTab === scenario.id
@@ -126,14 +127,14 @@ export function KeyScenarios() {
                     className="relative bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 shadow-xl"
                   >
                     <div className="relative h-64 sm:h-80 overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10 pointer-events-none" />
                       <Image
                         src={scenario.image} 
                         alt={scenario.title}
                         fill
                         className="object-cover transform hover:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute bottom-6 left-6 z-20">
+                      <div className="absolute bottom-6 left-6 z-20 pointer-events-none">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/90 text-white text-sm font-medium mb-3 backdrop-blur-sm">
                           <scenario.icon className="w-4 h-4" />
                           <span>核心场景</span>
@@ -160,6 +161,7 @@ export function KeyScenarios() {
 
                       <div className="mt-8 pt-6 border-t border-slate-200">
                         <button
+                          type="button"
                           onClick={handleOpenConsult}
                           className="flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all"
                         >

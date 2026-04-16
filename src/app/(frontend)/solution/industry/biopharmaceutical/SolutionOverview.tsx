@@ -9,7 +9,7 @@ export function SolutionOverview() {
             全产业链数智化解决方案架构
           </h2>
           <p className="text-lg text-slate-600">
-            以“合规、融合、创新”为核心，构建覆盖研发、生产、营销、管控的一体化平台
+            以“统一平台、统一数据、统一规范”为核心，构建覆盖研发、生产、营销、合规的一体化平台
           </p>
         </div>
 
@@ -120,8 +120,8 @@ export function SolutionOverview() {
           {/* Bottom Bar: Value */}
           <div className="bg-slate-900 p-6 text-center">
             <p className="text-slate-300 text-sm md:text-base">
-              已帮助 <span className="text-white font-bold">500+</span> 生物医药企业实现合规经营与降本增效，
-              <span className="text-blue-400">IPO通过率99%以上</span>
+              基于成熟行业最佳实践，助力药企建立稳健增长的 <span className="text-white font-bold">数智化引擎</span>，
+              <span className="text-blue-400">实现高质量合规与全球化运营</span>
             </p>
           </div>
         </div>

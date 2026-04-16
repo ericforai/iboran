@@ -4,6 +4,7 @@ import { IndustryChallenges } from './IndustryChallenges'
 import { SolutionOverview } from './SolutionOverview'
 import { KeyScenarios } from './KeyScenarios'
 import { IndustryCases } from './IndustryCases'
+import { SecuritySection } from './SecuritySection'
 import { ValueSection } from './ValueSection'
 import { CTASection } from './CTASection'
 import { GeoSection } from '@/components/GeoSection'
@@ -24,6 +25,7 @@ export default function BiopharmaceuticalSolutionPage() {
       <SolutionOverview />
       <KeyScenarios />
       <ValueSection />
+      <SecuritySection />
       <IndustryCases />
       <GeoSection
         title={metadata.title as string}

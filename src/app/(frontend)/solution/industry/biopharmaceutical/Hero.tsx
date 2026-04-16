@@ -15,14 +15,14 @@ export function Hero() {
             </div>
             
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6 leading-tight">
-              AI驱动药企研产销
+              打造成长稳健的
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
-                全流程质量合规
+                药企数智引擎
               </span>
             </h2>
             
             <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              基于事项会计与YonGPT智能体，构建符合GMP/GSP/CSV合规要求的全产业链数智平台，助力生物医药企业IPO上市与全球化运营。
+              基于事项会计与 YonGPT 智能体，构建符合 GMP/GSP/CSV 合规要求的全产业链数智平台。助力生物医药企业打破数据孤岛，实现研产一体化协同与高质量增长。
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">

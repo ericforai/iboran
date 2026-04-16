@@ -2,24 +2,24 @@ import { Microscope, TrendingUp, Layers, FileWarning } from 'lucide-react'
 
 const challenges = [
   {
-    icon: TrendingUp,
-    title: "集采压力与竞争力重塑",
-    description: "在集采常态化背景下，创新药与仿制药面临严峻调价压力。需通过精益管控提升中标产品供应链效能，并针对落标产品探索营销模式创新。",
+    icon: Layers,
+    title: "业务断点与数据孤岛",
+    description: "业务到财务、研发到生产存在明显断点。线上线下双轨运行，导致数据完整性与准确性不足，严重制约决策效能。",
   },
   {
     icon: FileWarning,
-    title: "多维质量合规与监管",
-    description: "深处监管核心，必须严守GMP/GSP规范。CSV（计算机化系统验证）已成刚需，需在GMP框架下实现全过程自动化防错与质量追溯。",
+    title: "多维合规与监管压力",
+    description: "严守GMP/GSP规范是生存红线。质量管理与业务流程脱节，CSV验证成本高昂，亟需全过程自动防错与质量追溯。",
+  },
+  {
+    icon: TrendingUp,
+    title: "集采常态化与精益成本",
+    description: "创仿药调价压力剧增，管理精度较低导致成本“算不准、算不全”。需通过精细化核算支撑科学定价与供应链提效。",
   },
   {
     icon: Microscope,
-    title: "研产协同与转产卡点",
-    description: "从分子发现到商业化生产（CDMO模式）跨度大，工艺转移复杂。研发项目进度、物料状态与生产执行常脱节，影响新药上市进程。",
-  },
-  {
-    icon: Layers,
-    title: "业财断层与IPO合规",
-    description: "融资上市过程中，监管对财税合规、数据完整性、审计追踪要求极高。需打破SAP、Veeva等异构系统孤岛，实现穿透式经营洞察。",
+    title: "研产协同与智能化瓶颈",
+    description: "从分子发现到商业化生产转换复杂，智能化程度低，难以快速利用AI模型辅助研发提效、质量预警与经营风险控制。",
   }
 ]
 
