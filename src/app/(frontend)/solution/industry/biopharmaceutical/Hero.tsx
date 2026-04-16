@@ -1,7 +1,12 @@
+'use client'
 import { ArrowRight, CheckCircle2, Pill, Activity, ShieldCheck, Microscope } from 'lucide-react'
 import Link from 'next/link'
 
 export function Hero() {
+  const handleOpenConsult = () => {
+    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+  }
+
   return (
     <section className="relative bg-gradient-to-b from-slate-50 to-white pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
       <div className="container px-4 md:px-6">
@@ -33,12 +38,12 @@ export function Hero() {
                 预约专家咨询
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
-              <Link 
-                href="/resources/whitepaper"
+              <button 
+                onClick={handleOpenConsult}
                 className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-slate-700 bg-white border-2 border-slate-200 hover:border-blue-600 hover:text-blue-600 rounded-lg transition-all duration-200"
               >
                 下载行业白皮书
-              </Link>
+              </button>
             </div>
 
             <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-4 text-sm text-slate-500">
