@@ -282,10 +282,6 @@ const InlineNavbar = React.memo(function InlineNavbar({ menuItems, contactData }
                   }`}
                 />
               )}
-              {/* The Hover Bridge: ensuring the dropdown stays open when moving mouse down */}
-              {item.hasDropdown && (
-                <div className="absolute top-full left-0 w-full h-6 pointer-events-auto" />
-              )}
               {/* Bottom active line */}
               <span className="absolute bottom-0 left-1 w-0 h-[2px] bg-[#0052D9] transition-all duration-300 group-hover:w-[calc(100%-8px)]"></span>
             </Link>
