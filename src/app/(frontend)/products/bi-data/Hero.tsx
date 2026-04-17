@@ -1,6 +1,6 @@
-import { openAifafanChat } from '@/utilities/openAifafanChat'
-
 'use client'
+
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
