@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { useState } from 'react'
 import { Plus, Minus, HelpCircle } from 'lucide-react'
@@ -33,7 +34,7 @@ const faqs = [
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(0)
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

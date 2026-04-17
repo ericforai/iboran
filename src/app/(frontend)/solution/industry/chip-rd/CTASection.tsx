@@ -1,4 +1,5 @@
 'use client';
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import React from 'react';
 import { motion } from 'framer-motion';
@@ -10,7 +11,7 @@ const CTASection = () => {
   }
 
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

@@ -1,10 +1,11 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 import { ArrowRight, CheckCircle2, Pill, Activity, ShieldCheck, Microscope } from 'lucide-react'
 import Link from 'next/link'
 
 export function Hero() {
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

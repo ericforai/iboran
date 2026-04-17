@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { useState } from 'react'
 import { ArrowRight, Sparkles } from 'lucide-react'
@@ -9,7 +10,7 @@ export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
   const handleOpenConsultModal = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

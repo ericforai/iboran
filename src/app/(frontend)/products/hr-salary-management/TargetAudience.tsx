@@ -1,11 +1,12 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { Button } from '@/components/ui/button'
 import { CheckCircle2, XCircle } from 'lucide-react'
 
 export const TargetAudience = () => {
   const handleOpenConsultModal = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   const applicable = [

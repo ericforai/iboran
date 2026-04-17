@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Database, ShieldCheck, Activity } from 'lucide-react'
@@ -41,12 +42,9 @@ export function Hero() {
                   预约演示
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link 
-                  href="/whitepapers" 
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-white border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 transition-colors"
-                >
+                <button onClick={() => openAifafanChat()} className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-white border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 transition-colors">
                   下载白皮书
-                </Link>
+                </button>
               </div>
 
               <div className="mt-12 grid grid-cols-3 gap-6">

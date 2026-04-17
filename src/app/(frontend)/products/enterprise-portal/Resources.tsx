@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
@@ -49,9 +50,9 @@ export function Resources() {
               获取最新的产品资料与开发指南，加速您的数智化门户建设。
             </p>
           </div>
-          <Link href="/whitepapers" className="text-blue-600 font-medium hover:text-blue-700 flex items-center gap-2">
+          <button onClick={() => openAifafanChat()} className="text-blue-600 font-medium hover:text-blue-700 flex items-center gap-2">
             查看更多资源 <ArrowRightIcon />
-          </Link>
+          </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

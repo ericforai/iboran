@@ -1,3 +1,6 @@
+'use client'
+
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 import Link from 'next/link'
 import React from 'react'
 import { Search, ArrowRight, BookOpen, ChevronRight } from 'lucide-react'
@@ -36,13 +39,13 @@ export default function NotFound() {
               <p className="text-xs text-slate-500">查看 500+ 企业的数智化实践</p>
             </Link>
 
-            <Link href="/whitepapers/business-finance-strategic-restructuring" className="group p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-indigo-200 hover:bg-white transition-all text-left">
+            <button onClick={() => openAifafanChat()} className="group p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-indigo-200 hover:bg-white transition-all text-left">
               <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                 <BookOpen className="w-6 h-6" />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">避坑指南</h3>
               <p className="text-xs text-slate-500">免费获取 14 年交付经验总结</p>
-            </Link>
+            </button>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

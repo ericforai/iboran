@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import React from 'react'
 import { Button } from '@/components/ui/button'
@@ -11,7 +12,7 @@ export const Hero = () => {
   }
 
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

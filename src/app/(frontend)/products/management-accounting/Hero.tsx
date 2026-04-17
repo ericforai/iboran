@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import React from 'react'
 import { motion } from 'framer-motion'
@@ -54,9 +55,9 @@ export default function Hero() {
                 variant="outline"
                 className="border-slate-700 text-slate-300 hover:bg-slate-800 rounded-full px-8 h-14 text-base font-semibold transition-all"
               >
-                <Link href="/whitepapers/business-finance-strategic-restructuring">
+                <button onClick={() => openAifafanChat()} className="mr-2 h-5 w-5">
                   <Download className="mr-2 h-5 w-5" /> 下载方案白皮书
-                </Link>
+                </button>
               </Button>
             </div>
           </motion.div>

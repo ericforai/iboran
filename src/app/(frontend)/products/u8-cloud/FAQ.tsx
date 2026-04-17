@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -34,7 +35,7 @@ const faqs = [
 export default function FAQ() {
   const [activeIdx, setActiveIdx] = useState<number | null>(0)
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

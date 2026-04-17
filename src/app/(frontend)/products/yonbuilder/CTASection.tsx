@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { ArrowRight, MessageSquare } from 'lucide-react'
 
@@ -8,7 +9,7 @@ export default function CTASection() {
   }
 
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

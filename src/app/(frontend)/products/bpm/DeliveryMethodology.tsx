@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { ClipboardCheck, Layout, Rocket, LineChart, MoveRight } from 'lucide-react'
 
@@ -31,7 +32,7 @@ const phases = [
 
 export default function DeliveryMethodology() {
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

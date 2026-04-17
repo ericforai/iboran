@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import Link from 'next/link'
 import { FileText, Download } from 'lucide-react'
@@ -20,14 +21,11 @@ export default function Resources() {
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/whitepapers/business-finance-strategic-restructuring"
-                className="flex items-center gap-3 px-6 py-3 bg-white text-slate-900 rounded-lg hover:bg-slate-100 transition-colors font-medium"
-              >
+              <button onClick={() => openAifafanChat()} className="flex items-center gap-3 px-6 py-3 bg-white text-slate-900 rounded-lg hover:bg-slate-100 transition-colors font-medium">
                 <FileText className="w-5 h-5 text-[#E60012]" />
                 <span>下载技术白皮书</span>
                 <Download className="w-4 h-4 text-slate-400 ml-2" />
-              </Link>
+              </button>
             </div>
           </div>
 

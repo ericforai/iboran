@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { useState } from 'react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
@@ -7,7 +8,7 @@ export default function CTASection() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import React from 'react'
 import Link from 'next/link'
@@ -29,7 +30,7 @@ export const WhitepaperCTA = () => {
           <div className="relative z-10 flex flex-col lg:flex-row items-center gap-4 lg:gap-24">
             {/* Visual: Industrial Book Mockup V2 */}
             <SlideUp className="w-full lg:w-[450px] flex justify-center">
-              <Link href="/whitepapers/business-finance-strategic-restructuring" className="relative group/book block">
+              <button onClick={() => openAifafanChat()} className="relative group/book block">
                 {/* Immersive Shadow */}
                 <div className="absolute -inset-10 bg-blue-600/20 blur-[100px] opacity-0 group-hover/book:opacity-100 transition-opacity duration-1000"></div>
 
@@ -81,7 +82,7 @@ export const WhitepaperCTA = () => {
                    <div className="text-[9px] font-mono font-black text-blue-400 uppercase tracking-widest mb-1">核心增长指标</div>
                    <div className="text-lg font-heading font-black text-white">+32% 投资回报</div>
                 </div>
-              </Link>
+              </button>
             </SlideUp>
 
             {/* Content: Prestige Copywriting */}
@@ -101,11 +102,11 @@ export const WhitepaperCTA = () => {
               </SlideUp>
 
               <SlideUp delay={300} className="flex flex-col sm:flex-row items-center gap-3 md:gap-8 justify-center lg:justify-start">
-                 <Link href="/whitepapers/business-finance-strategic-restructuring" className="group relative px-6 py-3 md:px-12 md:py-5 bg-blue-600 text-white font-mono font-black rounded-xl flex items-center gap-2.5 md:gap-4 overflow-hidden shadow-[0_20px_50px_rgba(0,82,217,0.4)] active:scale-95 transition-all uppercase tracking-tight md:tracking-tighter border border-white/20">
+                 <button onClick={() => openAifafanChat()} className="group relative px-6 py-3 md:px-12 md:py-5 bg-blue-600 text-white font-mono font-black rounded-xl flex items-center gap-2.5 md:gap-4 overflow-hidden shadow-[0_20px_50px_rgba(0,82,217,0.4)] active:scale-95 transition-all uppercase tracking-tight md:tracking-tighter border border-white/20">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     免费获取指南
                     <Download className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-y-1 transition-transform" strokeWidth={3} />
-                 </Link>
+                 </button>
 
                  <div className="flex items-center gap-3 md:gap-5 py-2.5 px-5 md:px-8 bg-white/5 border border-white/10 rounded-[20px] backdrop-blur-sm group/stats cursor-default">
                     <div className="flex -space-x-2">

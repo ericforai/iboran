@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { useState } from 'react'
 import { ArrowRight, CheckCircle, TrendingUp, BarChart3 } from 'lucide-react'
@@ -44,12 +45,9 @@ export default function Hero() {
                   预约专家演示
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/>
                 </button>
-                <Link
-                  href="/whitepapers/business-finance-strategic-restructuring"
-                  className="px-8 py-3.5 bg-white text-[#0052D9] border-2 border-[#0052D9] rounded-md font-semibold hover:bg-blue-50 transition flex items-center gap-2"
-                >
+                <button onClick={() => openAifafanChat()} className="px-8 py-3.5 bg-white text-[#0052D9] border-2 border-[#0052D9] rounded-md font-semibold hover:bg-blue-50 transition flex items-center gap-2">
                   下载解决方案白皮书
-                </Link>
+                </button>
               </div>
 
               <div className="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-slate-500">

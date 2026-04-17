@@ -1,10 +1,11 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 import { ArrowRight, Download } from 'lucide-react'
 import Link from 'next/link'
 
 export function CTASection() {
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

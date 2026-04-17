@@ -1,3 +1,4 @@
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 'use client'
 
@@ -11,7 +12,7 @@ export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
   const handleOpenConsultModal = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

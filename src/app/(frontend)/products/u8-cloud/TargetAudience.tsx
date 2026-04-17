@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { motion } from 'framer-motion'
 import { CheckCircle2, XCircle, Building2, HelpCircle } from 'lucide-react'
@@ -37,7 +38,7 @@ const targets = [
 
 export default function TargetAudience() {
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

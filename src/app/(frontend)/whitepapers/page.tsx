@@ -1,16 +1,9 @@
-import { Metadata } from 'next/types'
-import Link from 'next/link'
+'use client'
+
+import React from 'react'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 import { Footer } from '@/components/Footer'
 import { Navbar } from '@/components/Navbar'
-
-export const dynamic = 'force-static'
-
-export function generateMetadata(): Metadata {
-  return {
-    title: '白皮书中心 | 泊冉软件',
-    description: '获取泊冉软件在业财一体化、数字化转型领域的深度洞察与实施指南。',
-  }
-}
 
 const whitepapers = [
   {
@@ -24,6 +17,11 @@ const whitepapers = [
 ]
 
 export default function WhitepapersPage() {
+  const handleDownload = (e: React.MouseEvent) => {
+    e.preventDefault()
+    openAifafanChat()
+  }
+
   return (
     <>
       <Navbar />
@@ -45,10 +43,10 @@ export default function WhitepapersPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto space-y-6">
               {whitepapers.map((wp) => (
-                <Link
+                <button
                   key={wp.slug}
-                  href={`/whitepapers/${wp.slug}`}
-                  className="block bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all group"
+                  onClick={handleDownload}
+                  className="w-full text-left block bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all group"
                 >
                   <div className="flex flex-col md:flex-row gap-6">
                     {/* 封面缩略图 */}
@@ -78,14 +76,14 @@ export default function WhitepapersPage() {
                       <p className="text-slate-600 mb-3">{wp.subtitle}</p>
                       <p className="text-sm text-slate-500">{wp.description}</p>
                       <div className="mt-4 flex items-center text-[#E60012] font-medium">
-                        立即阅读
+                        获取白皮书
                         <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </div>
                     </div>
                   </div>
-                </Link>
+                </button>
               ))}
             </div>
 
@@ -96,15 +94,15 @@ export default function WhitepapersPage() {
               <p className="text-slate-600 mb-6">
                 我们将持续发布关于数字化转型、业财一体化、企业治理等主题的深度内容
               </p>
-              <Link
-                href="/contact"
+              <button
+                onClick={handleDownload}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[#E60012] text-white font-bold rounded-xl hover:bg-red-700 transition-colors"
               >
-                订阅更新通知
+                咨询获取更多
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </Link>
+              </button>
             </div>
           </div>
         </section>

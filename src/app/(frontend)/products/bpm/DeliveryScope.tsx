@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { Check, X, Package, ShieldCheck, HelpCircle } from 'lucide-react'
 
@@ -28,7 +29,7 @@ const scopeItems = [
 
 export default function DeliveryScope() {
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

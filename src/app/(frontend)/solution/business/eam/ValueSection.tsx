@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 import { TrendingUp, Clock, Wrench, ShieldCheck } from 'lucide-react'
 
 const metrics = [
@@ -39,7 +40,7 @@ const metrics = [
 
 export default function ValueSection() {
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (

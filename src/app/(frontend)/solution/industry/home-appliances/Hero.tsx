@@ -1,4 +1,5 @@
 'use client'
+import { openAifafanChat } from '@/utilities/openAifafanChat'
 
 import { useState } from 'react'
 import { ArrowRight, CheckCircle, Smartphone, Speaker, Tv, Cpu, ShoppingBag, BarChart3, Package, Users } from 'lucide-react'
@@ -8,7 +9,7 @@ export default function Hero() {
   const [isDemoOpen, setIsDemoOpen] = useState(false)
 
   const handleOpenConsult = () => {
-    window.dispatchEvent(new CustomEvent('open-consult-modal'))
+    openAifafanChat()
   }
 
   return (
