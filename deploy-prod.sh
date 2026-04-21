@@ -16,6 +16,20 @@ echo -e "${YELLOW}===================================${NC}"
 echo -e "${YELLOW}  完整部署 (重建 Docker 镜像)${NC}"
 echo -e "${YELLOW}===================================${NC}"
 
+# 0. 预检：TypeScript 编译检查（本地快速验证，防止把坏代码传上去）
+echo -e "${GREEN}>>> [0/5] 本地预检 TypeScript...${NC}"
+if command -v docker &> /dev/null && docker image ls | grep -q iboran-app; then
+  # 用 Docker 容器做 tsc 检查（避免需要本地 Node 环境）
+  docker run --rm -v "$(pwd)":/app -w /app \
+    --entrypoint sh iboran-app:latest \
+    -c "pnpm tsc --noEmit 2>&1 | tail -20" && echo "✓ TypeScript 检查通过" || {
+    echo -e "${YELLOW}⚠️  TypeScript 检查失败，终止部署！请先修复错误。${NC}"
+    exit 1
+  }
+else
+  echo "(跳过 tsc 检查：无本地镜像可用)"
+fi
+
 # 1. 确保本地 .env 正确
 echo -e "${GREEN}>>> [1/5] 检查本地配置...${NC}"
 if ! grep -q "NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_URL" .env; then
@@ -58,7 +72,7 @@ docker run -d \
   --network iboran_default \
   -e DATABASE_URI=mongodb://172.18.0.2:27017/iboran \
   -e SMTP_PASS=sidhbegzhqolcafd \
-  -e LEAD_EMAIL_TO="hzwyz@qq.com,13761778461@qq.com" \
+  -e LEAD_EMAIL_TO="hzwyz@qq.com,zsw@in-sun.com,13761778461@qq.com" \
   $IMAGE_NAME:latest
 
 # 等待容器启动
