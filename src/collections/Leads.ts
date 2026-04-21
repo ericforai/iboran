@@ -111,7 +111,7 @@ const sendLeadEmail = [
     if (operation !== 'create') return
 
     const lead = doc as LeadData
-    const adminEmail = process.env.LEAD_EMAIL_TO || 'hzwyz@qq.com'
+    const adminEmail = process.env.LEAD_EMAIL_TO || 'hzwyz@qq.com, zsw@in-sun.com'
     // Support multiple recipients (comma-separated or array)
     const emailRecipients = adminEmail.includes(',') ? adminEmail.split(',').map((e: string) => e.trim()) : adminEmail
     const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://www.iboran.com'

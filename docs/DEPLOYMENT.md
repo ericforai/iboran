@@ -166,7 +166,7 @@ jobs:
 # 关键配置
 DATABASE_URI=mongodb://localhost:27018/iboran
 NEXT_PUBLIC_SERVER_URL=https://www.iboran.com
-LEAD_EMAIL_TO=user1@qq.com,user2@qq.com  # 多收件人逗号分隔
+LEAD_EMAIL_TO=hzwyz@qq.com,zsw@in-sun.com,user2@qq.com  # 多收件人逗号分隔
 ```
 
 ---

@@ -139,7 +139,7 @@ const maybeSendInquiryEmail = async (
       },
     })
 
-    const adminEmail = process.env.LEAD_EMAIL_TO || 'hzwyz@qq.com'
+    const adminEmail = process.env.LEAD_EMAIL_TO || 'hzwyz@qq.com, zsw@in-sun.com'
     const recipients = adminEmail.includes(',')
       ? adminEmail.split(',').map((item) => item.trim()).filter(Boolean)
       : adminEmail

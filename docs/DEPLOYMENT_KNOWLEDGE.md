@@ -182,7 +182,7 @@ PAYLOAD_SECRET=d587beaf9532cb1c89f3945e
 NEXT_PUBLIC_SERVER_URL=https://www.iboran.com
 
 # 邮件多收件人（逗号分隔）
-LEAD_EMAIL_TO=hzwyz@qq.com,13761778461@qq.com
+LEAD_EMAIL_TO=hzwyz@qq.com,zsw@in-sun.com,13761778461@qq.com
 
 # SMTP 邮箱配置
 SMTP_HOST=smtp.qq.com
