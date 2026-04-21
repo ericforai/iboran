@@ -13,6 +13,7 @@ LOG_FILE="/var/log/iboran-monitor.log"
 ALERT_STATE_FILE="/tmp/iboran-monitor-alert.state"
 ALERT_COOLDOWN=1800   # 30 分钟内同类告警只发一次
 ENV_FILE="/opt/iboran/.env"
+ALERT_TO="13761778461@qq.com"   # 巡检告警专用收件人
 
 # 需要巡检的关键页面（状态码必须是 200）
 CHECK_PATHS=(
@@ -67,25 +68,25 @@ send_alert() {
   local type="$1" subject="$2" body="$3"
   can_send_alert "$type" || return 0
 
-  if [[ -z "${SMTP_HOST:-}" || -z "${SMTP_USER:-}" || -z "${SMTP_PASS:-}" || -z "${LEAD_EMAIL_TO:-}" ]]; then
+  if [[ -z "${SMTP_HOST:-}" || -z "${SMTP_USER:-}" || -z "${SMTP_PASS:-}" ]]; then
     log "SMTP 未配置，跳过邮件告警"
     return 0
   fi
 
-  ALERT_SUBJECT="$subject" ALERT_BODY="$body" \
+  ALERT_SUBJECT="$subject" ALERT_BODY="$body" ALERT_TO_ADDR="$ALERT_TO" \
   python3 - <<'PY'
 import os, smtplib
 from email.mime.text import MIMEText
 msg = MIMEText(os.environ["ALERT_BODY"], "plain", "utf-8")
 msg["Subject"] = os.environ["ALERT_SUBJECT"]
 msg["From"]    = os.environ.get("SMTP_FROM", os.environ["SMTP_USER"])
-recipients     = [r.strip() for r in os.environ["LEAD_EMAIL_TO"].split(",") if r.strip()]
+recipients     = [r.strip() for r in os.environ["ALERT_TO_ADDR"].split(",") if r.strip()]
 msg["To"]      = ", ".join(recipients)
 try:
     with smtplib.SMTP_SSL(os.environ["SMTP_HOST"], int(os.environ.get("SMTP_PORT","465"))) as s:
         s.login(os.environ["SMTP_USER"], os.environ["SMTP_PASS"])
         s.sendmail(msg["From"], recipients, msg.as_string())
-    print("邮件已发送")
+    print("邮件已发送至: " + msg["To"])
 except Exception as e:
     print(f"邮件发送失败: {e}")
 PY
