@@ -97,8 +97,8 @@ export const Hero = () => {
                   {[
                     { label: '传统ERP太重，迭代跟不上业务？', href: '/products/yonsuite' },
                     { label: '多套系统割裂，数据成孤岛？', href: '/solution/business/digital-modeling' },
-                    { label: '实施周期失控，预算变黑洞？', href: '/about#trust' },
-                    { label: '业务流程低效，人工成本高？', href: '/ai-co-creation' },
+                    { label: '实施周期失控，预算变黑洞？', href: '/posts?category=implementation' },
+                    { label: '业务流程低效，人工成本高？', href: '/products/staff-ai' },
                   ].map((item: any, idx: number) => (
                     <Link key={idx} href={item.href} className="flex items-center gap-2 group whitespace-nowrap">
                       <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0 shadow-[0_0_8px_rgba(34,211,238,0.4)]"></span>
@@ -109,7 +109,7 @@ export const Hero = () => {
 
                <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 sm:gap-5 relative z-20 w-full">
                  {/* Spotlight Button 1 */}
-                 <Link href="/contact" className="group relative w-full sm:w-auto">
+                 <Link href="/ai-co-creation" className="group relative w-full sm:w-auto">
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                     <div className="relative px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-slate-950 font-bold text-sm rounded-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-cyan-500/20 transition-all active:scale-[0.98]">
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>

@@ -1,107 +1,81 @@
 #!/bin/bash
-# 完整部署脚本 - 重建 Docker 镜像
-# 用法: ./deploy-prod.sh
+# Emergency/manual fallback deploy. Normal production deploys should use
+# GitHub Actions: push to main and let "Deploy to Aliyun ECS (Docker)" run.
+# Usage: ./deploy-prod.sh
 
-set -e
+set -euo pipefail
 
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-SERVER="root@47.111.2.171"
-IMAGE_NAME="iboran-app"
-NEXT_PUBLIC_URL="https://www.iboran.com"
+SERVER="${SERVER:-root@47.111.2.171}"
+APP_DIR="${APP_DIR:-/opt/iboran}"
+IMAGE_NAME="${IMAGE_NAME:-iboran-app}"
+SITE_URL="${SITE_URL:-https://www.iboran.com}"
 
 echo -e "${YELLOW}===================================${NC}"
-echo -e "${YELLOW}  完整部署 (重建 Docker 镜像)${NC}"
+echo -e "${YELLOW}  Boran production deploy${NC}"
 echo -e "${YELLOW}===================================${NC}"
 
-# 0. 预检：TypeScript 编译检查（本地快速验证，防止把坏代码传上去）
-echo -e "${GREEN}>>> [0/5] 本地预检 TypeScript...${NC}"
-if command -v docker &> /dev/null && docker image ls | grep -q iboran-app; then
-  # 用 Docker 容器做 tsc 检查（避免需要本地 Node 环境）
-  docker run --rm -v "$(pwd)":/app -w /app \
-    --entrypoint sh iboran-app:latest \
-    -c "pnpm tsc --noEmit 2>&1 | tail -20" && echo "✓ TypeScript 检查通过" || {
-    echo -e "${YELLOW}⚠️  TypeScript 检查失败，终止部署！请先修复错误。${NC}"
-    exit 1
-  }
+echo -e "${GREEN}>>> [1/4] Local TypeScript check${NC}"
+if command -v pnpm >/dev/null 2>&1; then
+  pnpm exec tsc --noEmit --pretty false
 else
-  echo "(跳过 tsc 检查：无本地镜像可用)"
+  echo "pnpm not found locally; skipping local TypeScript check"
 fi
 
-# 1. 确保本地 .env 正确
-echo -e "${GREEN}>>> [1/5] 检查本地配置...${NC}"
-if ! grep -q "NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_URL" .env; then
-  echo "⚠️  .env 中的 NEXT_PUBLIC_SERVER_URL 不正确，正在修复..."
-  sed -i "s|NEXT_PUBLIC_SERVER_URL=.*|NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_URL|" .env
-fi
-echo "✓ NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_URL"
-
-# 2. 上传代码到服务器
-echo -e "${GREEN}>>> [2/5] 上传代码到服务器...${NC}"
-rsync -avz --delete \
+echo -e "${GREEN}>>> [2/4] Sync source to server${NC}"
+rsync -az --delete \
+  --exclude='.git' \
+  --exclude='.env' \
+  --exclude='.env.*' \
   --exclude='.next' \
   --exclude='node_modules' \
-  --exclude='.git' \
-  ./ $SERVER:/opt/iboran/
+  --exclude='.pnpm-store' \
+  --exclude='tmp' \
+  --exclude='backups' \
+  --exclude='*.log' \
+  --exclude='*.tar' \
+  --exclude='*.tar.gz' \
+  --exclude='*.zip' \
+  ./ "$SERVER:$APP_DIR/"
 
-# 3. 在服务器上构建镜像
-echo -e "${GREEN}>>> [3/5] 在服务器上构建 Docker 镜像...${NC}"
-ssh $SERVER << ENDSSH
-cd /opt/iboran
+echo -e "${GREEN}>>> [3/4] Build image on server and restart app${NC}"
+ssh "$SERVER" <<ENDSSH
+set -euo pipefail
+cd "$APP_DIR"
 
-# 设置构建参数
-export NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_URL
+test -f .env
+test -f Dockerfile
+test -f docker-compose.prod.yml
 
-# 构建镜像（使用 build arg）
-docker build \
-  --build-arg NEXT_PUBLIC_SERVER_URL=$NEXT_PUBLIC_URL \
-  -t $IMAGE_NAME:latest \
+# Build on Aliyun/Linux. --network host is required because Next/Payload
+# collects static page data from MongoDB at localhost:27018 during build.
+docker build --network host \
+  --build-arg NEXT_PUBLIC_SERVER_URL="$SITE_URL" \
+  -t "$IMAGE_NAME:latest" \
   .
 
-# 停止并删除旧容器
-docker stop $IMAGE_NAME 2>/dev/null || true
-docker rm $IMAGE_NAME 2>/dev/null || true
-
-# 运行新容器
-docker run -d \
-  --name $IMAGE_NAME \
-  --restart unless-stopped \
-  -p 3000:3000 \
-  --network iboran_default \
-  -e DATABASE_URI=mongodb://172.18.0.2:27017/iboran \
-  -e SMTP_PASS=sidhbegzhqolcafd \
-  -e LEAD_EMAIL_TO="hzwyz@qq.com,zsw@in-sun.com,13761778461@qq.com" \
-  $IMAGE_NAME:latest
-
-# 等待容器启动
-sleep 10
+docker compose -f docker-compose.prod.yml up -d --no-build app
+sleep 8
+docker ps --filter "name=$IMAGE_NAME" --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"
 ENDSSH
 
-# 4. 验证服务
-echo -e "${GREEN}>>> [4/5] 验证服务状态...${NC}"
-HOME_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://47.111.2.171/)
-POSTS_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://47.111.2.171/posts)
-SITEMAP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://47.111.2.171/sitemap.xml)
+echo -e "${GREEN}>>> [4/4] Verify production${NC}"
+HOME_STATUS=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 30 "$SITE_URL/")
+POSTS_STATUS=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 30 "$SITE_URL/posts")
+LOGO_STATUS=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 30 "$SITE_URL/assets/images/boran-logo.png")
+STAFF_AI_STATUS=$(curl -sS -o /dev/null -w "%{http_code}" --max-time 30 "$SITE_URL/products/staff-ai")
 
-echo "首页: $HOME_STATUS"
+echo "Home: $HOME_STATUS"
 echo "Posts: $POSTS_STATUS"
-echo "Sitemap: $SITEMAP_STATUS"
+echo "Logo: $LOGO_STATUS"
+echo "Staff AI: $STAFF_AI_STATUS"
 
-# 5. 验证 sitemap 域名
-echo -e "${GREEN}>>> [5/5] 验证 sitemap 域名...${NC}"
-SITEMAP_CONTENT=$(curl -s http://47.111.2.171/sitemap.xml)
-if echo "$SITEMAP_CONTENT" | grep -q "$NEXT_PUBLIC_URL"; then
-  echo -e "${GREEN}✓ Sitemap 域名正确: $NEXT_PUBLIC_URL${NC}"
+if [ "$HOME_STATUS" = "200" ] && [ "$POSTS_STATUS" = "200" ] && [ "$LOGO_STATUS" = "200" ]; then
+  echo -e "${GREEN}Deployment complete.${NC}"
 else
-  echo -e "${YELLOW}⚠️  Sitemap 域名可能不正确${NC}"
-  echo "$SITEMAP_CONTENT"
-fi
-
-if [ "$HOME_STATUS" = "200" ] && [ "$POSTS_STATUS" = "200" ]; then
-    echo -e "${GREEN}✅ 部署成功！${NC}"
-else
-    echo -e "${YELLOW}⚠️  部署可能有问题${NC}"
-    exit 1
+  echo -e "${YELLOW}Deployment verification failed.${NC}"
+  exit 1
 fi

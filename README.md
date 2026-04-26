@@ -36,6 +36,10 @@ pnpm dev
 - **部署文档**: [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) - 服务器部署和运维
 - **设计文档**: [docs/plans/](./docs/plans/) - 功能设计和实施计划
 
+## 生产部署
+
+生产部署以 GitHub 为准：提交并推送到 `main` 后，GitHub Actions 的 `Deploy to Aliyun ECS (Docker)` 工作流会自动同步源码到阿里云 `/opt/iboran`，并在服务器本地构建 Docker 镜像。`./deploy-prod.sh` 只作为紧急手动备用入口。
+
 ## 主要功能
 
 - **AI 智能顾问**: 基于 DeepSeek API 的智能问答，支持知识库检索和人工转接

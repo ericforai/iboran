@@ -1,20 +1,17 @@
-name: Deploy to Aliyun ECS (PM2 Mode)
+name: Deploy to Aliyun ECS (Docker)
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
-    services:
-      mongo:
-        image: mongo:7
-        ports:
-          - 27018:27017
+    concurrency:
+      group: production-deploy
+      cancel-in-progress: false
 
     steps:
       - name: Checkout code
@@ -23,22 +20,16 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
-      - name: Install pnpm
+      - name: Enable pnpm
         run: corepack enable pnpm && pnpm -v
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build application
-        run: pnpm build
-        env:
-          NEXT_PUBLIC_SERVER_URL: https://www.iboran.com
-          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
-          DATABASE_URI: mongodb://localhost:27018/iboran
-          CRON_SECRET: ${{ secrets.CRON_SECRET }}
-          PREVIEW_SECRET: ${{ secrets.PREVIEW_SECRET }}
+      - name: TypeScript check
+        run: pnpm exec tsc --noEmit --pretty false
 
       - name: Configure SSH
         run: |
@@ -46,33 +37,43 @@ jobs:
           chmod 700 ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan "${{ secrets.SERVER_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Deploy to server
+      - name: Sync source to server
         run: |
-          set -o pipefail
-          # Upload build output into a temporary directory first, then swap it in after extraction completes.
-          tar -czf - .next public deploy package.json pnpm-lock.yaml ecosystem.config.js | \
-          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-          "set -e; \
-          APP_DIR=/home/iboran; \
-          TMP_DIR=\$APP_DIR/.deploy-tmp; \
-          mkdir -p \$TMP_DIR; \
-          rm -rf \$TMP_DIR/.next \$TMP_DIR/public \$TMP_DIR/deploy; \
-          tar -xzf - -C \$TMP_DIR; \
-          pm2 stop iboran || true; \
-          rm -rf \$APP_DIR/.next \$APP_DIR/public \$APP_DIR/deploy; \
-          mv \$TMP_DIR/.next \$APP_DIR/.next; \
-          mv \$TMP_DIR/public \$APP_DIR/public; \
-          mv \$TMP_DIR/deploy \$APP_DIR/deploy; \
-          cp \$TMP_DIR/package.json \$APP_DIR/package.json; \
-          cp \$TMP_DIR/pnpm-lock.yaml \$APP_DIR/pnpm-lock.yaml; \
-          cp \$TMP_DIR/ecosystem.config.js \$APP_DIR/ecosystem.config.js; \
-          chmod +x \$APP_DIR/deploy/mongo-watchdog.sh \$APP_DIR/deploy/install-mongo-watchdog.sh; \
-          \$APP_DIR/deploy/install-mongo-watchdog.sh; \
-          cd \$APP_DIR; \
-          pm2 restart iboran || pm2 start ecosystem.config.js --only iboran"
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+            --exclude='.git' \
+            --exclude='.env' \
+            --exclude='.env.*' \
+            --exclude='.next' \
+            --exclude='node_modules' \
+            --exclude='.pnpm-store' \
+            --exclude='tmp' \
+            --exclude='backups' \
+            --exclude='*.log' \
+            --exclude='*.tar' \
+            --exclude='*.tar.gz' \
+            --exclude='*.zip' \
+            ./ "${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/opt/iboran/"
 
-      - name: Cleanup
+      - name: Build and restart on server
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
+            "${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}" <<'ENDSSH'
+          set -euo pipefail
+          cd /opt/iboran
+          docker build --network host \
+            --build-arg NEXT_PUBLIC_SERVER_URL=https://www.iboran.com \
+            -t iboran-app:latest \
+            .
+          docker compose -f docker-compose.prod.yml up -d --no-build app
+          sleep 8
+          curl -fsSI https://www.iboran.com/ >/dev/null
+          curl -fsSI https://www.iboran.com/posts >/dev/null
+          curl -fsSI https://www.iboran.com/assets/images/boran-logo.png >/dev/null
+          ENDSSH
+
+      - name: Cleanup SSH key
         if: always()
         run: rm -f ~/.ssh/deploy_key

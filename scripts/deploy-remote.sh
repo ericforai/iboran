@@ -1,34 +1,11 @@
 #!/bin/bash
-#
-# Local Deployment Script
-#
-# Run this from your LOCAL machine to deploy to server
-#
-# Usage: ./scripts/deploy-remote.sh
+# Local deployment wrapper. GitHub push to main is the normal deploy path.
+# Use this only as an emergency/manual fallback.
 
-# Server configuration - update these
-SERVER_USER="root"  # TODO: Update this
-SERVER_HOST="your-server-ip"  # TODO: Update this
-APP_DIR="/home/iboran"
+set -euo pipefail
 
-# Colors
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
 
-echo -e "${YELLOW}========================================${NC}"
-echo -e "${YELLOW}  Deploying to server...${NC}"
-echo -e "${YELLOW}========================================${NC}"
-echo ""
-echo "Server: $SERVER_USER@$SERVER_HOST"
-echo ""
-
-# First, push to git
-echo -e "${GREEN}[1/2]${NC} Pushing to git..."
-git push
-
-# Then, deploy on server
-echo -e "${GREEN}[2/2]${NC} Deploying on server..."
-ssh "$SERVER_USER@$SERVER_HOST" "cd $APP_DIR && ./deploy.sh"
-
-echo -e "\n${GREEN}Done!${NC}"
+echo "Manual fallback deploy: syncing current working tree with the safe production deploy path."
+exec ./deploy-prod.sh

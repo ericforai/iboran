@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-APP_DIR="/home/iboran"
+APP_DIR="/opt/iboran"
 SERVICE_PATH="/etc/systemd/system/iboran-mongo-watchdog.service"
 TIMER_PATH="/etc/systemd/system/iboran-mongo-watchdog.timer"
 WATCHDOG_SCRIPT="$APP_DIR/deploy/mongo-watchdog.sh"
@@ -20,7 +20,6 @@ Requires=docker.service
 [Service]
 Type=oneshot
 Environment=HOME=/root
-Environment=PM2_HOME=/root/.pm2
 ExecStart=$WATCHDOG_SCRIPT
 EOF
 

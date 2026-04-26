@@ -220,17 +220,17 @@ Cross-layer verification (UI ↔ Database) using manifest-based testing.
 
 ---
 
-## Deployment Guide (CRITICAL - Updated 2026-02-02)
+## Deployment Guide (CRITICAL - Updated 2026-04-27)
 
 ### Production Architecture
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                   阿里云 ECS 服务器                      │
 │  ┌─────────────────────────────────────────────────┐   │
-│  │   PM2 → Next.js 应用 (源码部署)                 │   │
-│  │   - 通过 git pull 更新代码                      │   │
-│  │   - 本地 pnpm build 构建                        │   │
-│  │   - pm2 管理进程                                │   │
+│  │   Docker → Next.js / Payload 应用               │   │
+│  │   - 容器名: iboran-app                          │   │
+│  │   - 镜像在服务器 Linux 环境本机构建             │   │
+│  │   - 通过 docker compose 重启                    │   │
 │  └─────────────────────────────────────────────────┘   │
 │  ┌─────────────────────────────────────────────────┐   │
 │  │   Docker → MongoDB 7 (数据持久化)               │   │
@@ -241,50 +241,43 @@ Cross-layer verification (UI ↔ Database) using manifest-based testing.
 └─────────────────────────────────────────────────────────┘
 ```
 
-### Deployment Mode Decision (WHY PM2 instead of pure Docker?)
+### Deployment Rule
 
-**问题背景**：
-- 之前每次改一行代码都要构建 Docker 镜像（10-15分钟）
-- 服务器：阿里云 ECS
-- 维护者：单人
-- 源码不保密，无合规要求
+**决策**：Docker app + Docker MongoDB。生产镜像必须在阿里云 Linux 服务器本机构建。
 
-**决策**：PM2 源码部署 + MongoDB Docker 混合模式
-
-**原因**：
-1. Docker 镜像构建太慢（10-15分钟 vs 2-3分钟）
-2. 单人维护不需要环境隔离
-3. MongoDB 数据独立更安全
-4. 部署流程简化：git push → 自动部署
+不要上传本机 `.next/standalone`、`.next/static` 或 macOS 构建产物。`sharp` 等原生依赖是平台相关的，本机 macOS 产物会破坏 Linux 容器。
 
 ### Server Details
 - **IP**: 47.111.2.171
 - **User**: root
-- **App Dir**: /home/iboran
+- **App Dir**: /opt/iboran
 - **Next.js Port**: 3000
 - **MongoDB Port**: 27018 (external) / 27017 (container)
 
 ### Quick Deploy Commands
 
 ```bash
-# 自动部署（推荐）- git push 后自动触发
-git push
+# 标准生产部署：推送 main 后由 GitHub Actions 自动部署
+git add .
+git commit -m "fix: update deployment flow"
+git push origin main
 
-# 手动部署（紧急情况）
-ssh root@47.111.2.171 "cd /home/iboran && git pull && pnpm install && pnpm build && pm2 restart iboran"
+# 紧急备用：GitHub Actions 不可用时才手动执行
+./deploy-prod.sh
 
-# 服务器上直接操作
+# 服务器上直接操作，仅用于故障恢复
 ssh root@47.111.2.171
-cd /home/iboran
-git pull && pnpm build && pm2 restart iboran && pm2 save
+cd /opt/iboran
+docker build --network host --build-arg NEXT_PUBLIC_SERVER_URL=https://www.iboran.com -t iboran-app:latest .
+docker compose -f docker-compose.prod.yml up -d --no-build app
+curl -I https://www.iboran.com/
 ```
 
-### PM2 Management
+### Docker Management
 ```bash
-pm2 status                 # 查看状态
-pm2 logs iboran            # 查看日志
-pm2 restart iboran         # 重启
-pm2 save                   # 保存配置
+docker ps --filter name=iboran-app
+docker logs --tail=100 iboran-app
+docker compose -f docker-compose.prod.yml up -d --no-build app
 ```
 
 ### MongoDB Management
@@ -306,12 +299,15 @@ SMTP_PASS=your-authorization-code  # QQ邮箱授权码，不是密码
 
 ### GitHub Actions Auto-Deploy
 
-**配置完成后的流程**：
-1. 本地 `git push`
-2. GitHub Actions 自动触发
-3. SSH 连接服务器
-4. 执行部署（git pull + build + restart）
-5. 约 3-4 分钟完成
+GitHub is the source of truth for code history, rollback, and normal production deploys. Push to `main` runs the `Deploy to Aliyun ECS (Docker)` workflow.
+
+The workflow must SSH to the server and run the same server-side Docker build/restart flow:
+
+```bash
+cd /opt/iboran
+docker build --network host --build-arg NEXT_PUBLIC_SERVER_URL=https://www.iboran.com -t iboran-app:latest .
+docker compose -f docker-compose.prod.yml up -d --no-build app
+```
 
 **Secrets** (https://github.com/ericforai/iboran/settings/secrets/actions):
 - `SSH_PRIVATE_KEY`: 服务器私钥（完整 BEGIN/END 行）
@@ -326,19 +322,22 @@ SMTP_PASS=your-authorization-code  # QQ邮箱授权码，不是密码
 - Key: `ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGTFvgusy5IlgqeB1Yx5w0kRH6xJLmsWolXTaky/JAt5 github-deploy-iboran`
 - ✅ Allow write access
 
-**最终方案**（2026-02-02 验证成功）：
-- GitHub Actions 上构建（服务 `mongo:7`，端口 27018）
-- 通过 SSH tar 传输 `.next public` 到服务器
-- 服务器无需访问 GitHub（解决网络问题）
-- 构建时需要数据库连接，使用临时 MongoDB service
+**禁止重新引入**：
+- GitHub Actions 上传 `.next`
+- 本地上传 `.next/standalone`
+- `Dockerfile.simple`
+- PM2 部署生产 app
+- 部署脚本里硬编码 SMTP 密码
+- `deploy-with-db` / 一键迁移脚本混合部署代码和数据库
 
 ### Common Issues & Solutions
 
 1. **GitHub Actions exit code 255** → SSH_PRIVATE_KEY 格式不对，确保包含 BEGIN/END 行
-2. **构建失败 - MongoDB 连接** → 已解决：GitHub Actions 现在启动临时 MongoDB service
+2. **构建失败 - MongoDB 连接** → 服务器构建必须使用 `docker build --network host`
 3. **Sitemap 显示 localhost** → 检查 NEXT_PUBLIC_SERVER_URL
 4. **邮件发送失败** → 检查 SMTP_PASS 是授权码不是密码，LEAD_EMAIL_TO 多个收件人用逗号分隔
-5. **服务器无法访问 GitHub** → 不需要，构建在 GitHub Actions 上完成
+5. **GitHub Actions 显示旧的 PM2 名称** → 本地 workflow 还没推到 `main`，提交并推送 `.github/workflows/deploy.yml`
+6. **服务器构建慢** → 正常，阿里云本地 Docker build 通常需要数分钟；不要切回上传 `.next`
 
 ### Data Backup
 MongoDB 数据在 Docker volume `iboran_mongo_data` 中，不受代码部署影响。

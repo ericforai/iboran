@@ -5,11 +5,11 @@
 
 set -euo pipefail
 
-APP_DIR="/home/iboran"
+APP_DIR="/opt/iboran"
 ENV_FILE="$APP_DIR/.env"
 COMPOSE_FILE="$APP_DIR/docker-compose.prod.yml"
 CONTAINER_NAME="iboran-mongo-1"
-APP_NAME="iboran"
+APP_NAME="iboran-app"
 APP_BASE_URL="http://127.0.0.1:3000"
 APP_HEALTH_PATHS=("/" "/contact")
 LOG_FILE="/var/log/iboran-mongo-watchdog.log"
@@ -162,7 +162,7 @@ ensure_restart_policy() {
 }
 
 app_online() {
-  pm2 pid "$APP_NAME" 2>/dev/null | grep -Eq '^[1-9][0-9]*$'
+  [[ "$(docker inspect --format '{{.State.Status}}' "$APP_NAME" 2>/dev/null || true)" == "running" ]]
 }
 
 http_path_healthy() {
@@ -183,14 +183,9 @@ app_http_healthy() {
 }
 
 restart_app() {
-  if pm2 describe "$APP_NAME" >/dev/null 2>&1; then
-    pm2 restart "$APP_NAME" >/dev/null
-    log "Restarted PM2 app $APP_NAME"
-  else
-    cd "$APP_DIR"
-    pm2 start ecosystem.config.js --only "$APP_NAME" >/dev/null
-    log "Started PM2 app $APP_NAME"
-  fi
+  cd "$APP_DIR"
+  docker compose -f "$COMPOSE_FILE" up -d --no-build app >/dev/null
+  log "Restarted Docker app $APP_NAME via compose"
 }
 
 wait_for_app() {
@@ -281,7 +276,7 @@ main() {
     exit 0
   fi
 
-  log "Application $APP_NAME is unhealthy; attempting PM2 recovery"
+  log "Application $APP_NAME is unhealthy; attempting Docker compose recovery"
   restart_app
 
   if wait_for_app; then

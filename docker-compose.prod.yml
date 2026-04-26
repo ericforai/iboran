@@ -3,6 +3,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      # Next/Payload collects static page data during build and connects to
+      # MongoDB through the host-mapped localhost:27018 port on Aliyun.
+      network: host
     image: iboran-app:latest
     container_name: iboran-app
     restart: unless-stopped
