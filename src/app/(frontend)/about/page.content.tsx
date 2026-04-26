@@ -8,8 +8,6 @@ import {
   ShieldCheck,
   Rocket,
   Code,
-  AlertTriangle,
-  X,
   DollarSign,
   Cpu
 } from 'lucide-react'
@@ -62,12 +60,6 @@ const certificates = [
   { name: '软件企业证书', year: '2020', category: 'gov', image: '/certificates/软件企业证书.jpg' },
 ]
 
-const riskBoundaries = [
-  { title: '项目复杂度与投入匹配度', desc: '如果您的项目预算低于 10 万，建议选择标准化 SaaS 产品以确保投产比' },
-  { title: '标准 SaaS 与定制开发分界', desc: '如果只需要基础财务记账功能，用友畅捷通等入门产品更符合您的轻量化需求' },
-  { title: '数字化转型的科学周期', desc: '数字化转型通常需要 3-6 个月，科学的交付周期是项目成功的必要确定性' },
-  { title: '核心深耕行业聚焦', desc: '我们专注制造业、新零售、生物医药等行业，致力于在熟悉的领地提供专家级交付' },
-]
 
 
 export function AboutPageContent() {
@@ -293,12 +285,10 @@ export function AboutPageContent() {
       </section>
 
       {/* Brand Trust - Client Logo Wall */}
-      <section className="py-14 md:py-24 bg-white overflow-hidden">
+      <LogoWall className="pt-0" />
+
+      <section className="pb-14 md:pb-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl font-bold text-slate-800">行业认可与标杆客户</h2>
-          </div>
-          <LogoWall />
           <div className="mt-10 md:mt-20 pt-8 md:pt-16 border-t border-slate-100 flex flex-wrap justify-center gap-x-6 md:gap-x-10 gap-y-3 md:gap-y-6">
             <Link href="/solution/industry/new-retail" className="text-sm text-slate-400 hover:text-blue-600 transition-colors"># 新零售解决方案</Link>
             <Link href="/solution/business/business-finance-integration" className="text-sm text-slate-400 hover:text-blue-600 transition-colors"># 业财一体化</Link>
@@ -307,48 +297,6 @@ export function AboutPageContent() {
         </div>
       </section>
 
-      {/* Risk Boundary Section */}
-      <section className="py-14 md:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-9 md:mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 text-amber-700 rounded-full text-sm font-medium mb-4">
-                <AlertTriangle className="w-4 h-4" />
-                <span>诚实说明，节省彼此时间</span>
-              </div>
-              <h2 className="text-2xl md:text-4xl font-black text-slate-900 mb-3 md:mb-4">我们可能不适合</h2>
-              <p className="text-slate-600">如果您的企业符合以下情况，我们可能暂不匹配</p>
-            </div>
-
-            <div className="space-y-3 md:space-y-4">
-              {riskBoundaries.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex items-start gap-3 md:gap-4 p-4 md:p-6 bg-slate-50 rounded-2xl"
-                >
-                  <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center shrink-0">
-                    <X className="w-4 h-4 text-slate-500" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-slate-900 mb-1">{item.title}</h3>
-                    <p className="text-slate-600 text-sm">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 md:mt-12 p-5 md:p-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl text-center">
-              <p className="text-slate-700 mb-4">如果您的情况不在上述范围内，欢迎联系我们</p>
-              <button
-                onClick={handleOpenDemo}
-                className="px-8 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                免费咨询适配度
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Bottom CTA */}
       <section className="py-14 md:py-24 bg-slate-900 relative overflow-hidden">
