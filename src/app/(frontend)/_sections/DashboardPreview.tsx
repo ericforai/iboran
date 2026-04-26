@@ -364,7 +364,7 @@ export const DashboardPreview = React.memo(() => {
                <Activity size={14} />
                <span className="font-medium text-xs">泊冉软件</span>
                <span className="text-slate-600">/</span>
-               <span className="text-cyan-400">管理驾驶舱</span>
+               <span className="text-cyan-400">驱动业务增长的 AI 数智化专家</span>
             </div>
          </div>
          

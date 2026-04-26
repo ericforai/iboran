@@ -65,9 +65,9 @@ export const Hero = () => {
                      用友合作伙伴
                  </div>
                  <h1 className="text-2xl sm:text-4xl lg:text-[clamp(1.5rem,2.8vw,3.5rem)] xl:text-[clamp(2.5rem,3.5vw,4.5rem)] 2xl:text-[72px] font-heading font-bold leading-[1.1] lg:leading-[1] tracking-tighter mb-4 lg:mb-6 text-white drop-shadow-2xl">
-                   <span className="whitespace-nowrap">专业用友软件实施服务商</span> <br className="lg:block" />
+                   <span className="whitespace-nowrap">用友核心交付伙伴</span> <br className="lg:block" />
                    <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600 animate-shimmer bg-[length:200%_100%]">
-                     业财一体化与数智化转型专家
+                     驱动业务增长的 AI 数智化专家
                    </span>
                  </h1>
                  {/* Decorative Glitch Element - Refined */}
@@ -75,7 +75,7 @@ export const Hero = () => {
                </motion.div>
 
                 <motion.p variants={fadeInUp} className="text-sm sm:text-base lg:text-xl text-slate-400 font-medium leading-relaxed mb-4 lg:mb-8 max-w-full lg:max-w-xl">
-                  14年深耕 <span className="text-cyan-400 font-semibold">半导体、新零售、装备制造、消费品、专业服务</span> 五大行业，帮您避开我们踩过的坑。服务 5500+ 企业，其中 80% 是老客户转介绍。
+                  扎根管理软件14余年，深耕 <span className="text-cyan-400 font-semibold">国资、消费品、制造、医药、新零售、专业服务</span> 等行业。以YonSuite/BIP云产品为核心，用“避坑指南”级标准交付，为企业提供降本增效的确定性。服务5500+企业，其中近500家集团客户，80%源于老客户信任推荐。
                 </motion.p>
 
                 <motion.div variants={fadeInUp} className="md:hidden flex flex-wrap gap-2 mb-5 w-full">
@@ -95,15 +95,15 @@ export const Hero = () => {
                   className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-400 font-medium mb-5 lg:mb-10 w-full"
                 >
                   {[
-                    '业财数据打通？',
-                    '财务共享建设？',
-                    '供应链协同优化？',
-                    '遗留系统迁移？',
+                    { label: '传统ERP太重，迭代跟不上业务？', href: '/products/yonsuite' },
+                    { label: '多套系统割裂，数据成孤岛？', href: '/solution/business/digital-modeling' },
+                    { label: '实施周期失控，预算变黑洞？', href: '/about#trust' },
+                    { label: '业务流程低效，人工成本高？', href: '/ai-co-creation' },
                   ].map((item, idx) => (
-                    <div key={idx} className="flex items-center gap-2 group whitespace-nowrap">
+                    <Link key={idx} href={item.href} className="flex items-center gap-2 group whitespace-nowrap">
                       <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0 shadow-[0_0_8px_rgba(34,211,238,0.4)]"></span>
-                      <span className="group-hover:text-cyan-300 transition-colors">{item}</span>
-                    </div>
+                      <span className="group-hover:text-cyan-300 transition-colors underline decoration-cyan-500/20 underline-offset-4">{item.label}</span>
+                    </Link>
                   ))}
                 </motion.div>
 
@@ -113,7 +113,7 @@ export const Hero = () => {
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
                     <div className="relative px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-slate-950 font-bold text-sm rounded-lg flex items-center justify-center gap-2 shadow-xl hover:shadow-cyan-500/20 transition-all active:scale-[0.98]">
                       <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                      <span>免费诊断我的企业</span>
+                      <span>申请加入「AI落地·种子计划」</span>
                       <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-slate-950 group-hover:translate-x-1 transition-all" />
                     </div>
                  </Link>
@@ -153,7 +153,7 @@ export const Hero = () => {
                        "国家级高新技术企业",
                        "国家级科技型中小企业",
                        "上海市专精特新企业",
-                       "宝山区企业技术中心"
+                       "上海市重合同守信用企业"
                      ].map((honor, i) => (
                        <div key={i} className="flex items-center gap-2 sm:gap-3 group cursor-default">
                           <div className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-cyan-400 transition-colors duration-300 flex-shrink-0"></div>

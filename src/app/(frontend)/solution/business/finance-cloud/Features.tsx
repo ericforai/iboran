@@ -114,7 +114,7 @@ export default function Features() {
                     <div key={i}>
                         <h3>{t.title}</h3>
                         <p>{t.desc || t.description || ""}</p>
-                        {t.features && <ul>{t.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                        {t.features && <ul>{t.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
                         {t.metrics && <p>Metrics: {t.metrics.join(', ')}</p>}
                     </div>
                 ))}

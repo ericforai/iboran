@@ -234,14 +234,14 @@ export const Capabilities = () => {
     <section id="capabilities" className="py-16 md:py-32 bg-white px-4 sm:px-6 border-b border-slate-100 overflow-hidden">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {features.map((item, i) => (
+                {features.map((item: any, i: number) => (
                     <div key={i}>
                         <h3>{item.title}</h3>
                         <p>{item.problem || item.description || item.desc || ""}</p>
                         <p>{item.solution || ""}</p>
                         <p>{item.outcome || ""}</p>
-                        {item.features && <ul>{item.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.benefits && <ul>{item.benefits.map((b, bi) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
                         {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
                     </div>
                 ))}

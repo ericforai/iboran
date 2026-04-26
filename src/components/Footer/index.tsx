@@ -41,10 +41,12 @@ export const Footer = () => {
                     <MapPin className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                   </div>
                   <span className="hidden md:block text-[15px] md:text-sm font-medium pt-1 transition-colors group-hover:text-slate-900 dark:group-hover:text-slate-200">
-                    上海市普陀区曹杨路1888号星光耀广场1号楼1005室
+                    上海总部：上海市普陀区曹杨路1888号星光耀广场1号楼1005室<br />
+                    南京研发中心：南京市雨花台区大周路（软件科创城）D2南 707 室
                   </span>
                   <span className="md:hidden text-[15px] font-medium pt-1 transition-colors group-hover:text-slate-900 dark:group-hover:text-slate-200">
-                    上海普陀区曹杨路1888号1号楼1005室
+                    上海总部：普陀区曹杨路1888号1号楼1005室<br />
+                    南京：南京市雨花台区大周路D2南 707 室
                   </span>
                 </div>
   

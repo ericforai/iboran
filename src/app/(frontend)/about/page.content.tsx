@@ -9,7 +9,9 @@ import {
   Rocket,
   Code,
   AlertTriangle,
-  X
+  X,
+  DollarSign,
+  Cpu
 } from 'lucide-react'
 import { DemoRequestModal } from '@/components/DemoRequestModal'
 import { motion } from 'framer-motion'
@@ -21,24 +23,24 @@ const milestones = [
   { year: '2012', title: '公司成立', desc: '泊冉软件正式成立，开启一站式企业管理解决方案征程。' },
   { year: '2017', title: '杰出合作伙伴', desc: '凭借卓越的实施交付能力，获评用友 TOP 10 杰出合作伙伴。' },
   { year: '2019', title: '高新技术企业', desc: '正式获评国家级"高新技术企业"认定，迈入技术驱动新阶段。' },
-  { year: '2023', title: '专精特新', desc: '获评上海市"专精特新"中小企业及宝山区企业技术中心认定。' },
+  { year: '2023', title: '专精特新', desc: '获评上海市"专精特新"中小企业及上海市"重合同守信用"企业认证。' },
 ]
 
 const values = [
   {
     icon: Target,
     title: '使命 Mission',
-    desc: '懂变，才安稳。泊冉，14年未雨绸缪。助力企业在变局中实现稳健增长与数智化跨越。'
+    desc: '懂变，才安稳。泊冉，14年未雨绸缪。专注于 AI 企业数智化升级，助力企业在变局中实现稳健增长。'
   },
   {
     icon: ShieldCheck,
     title: '核心实力 Strength',
-    desc: '80% 以上技术人员占比，深耕现代服务业与智能制造 (C2M 工业 4.0)。'
+    desc: '80% 以上技术人员占比，专注于 AI 企业数智化，深耕现代服务业与智能制造。'
   },
   {
     icon: Award,
     title: '行业信任 Trust',
-    desc: '5500+ 客户的共同选择，包含多家世界500强与大型国企。'
+    desc: '5500+ 客户的共同选择，包含 500+ 集团企业、世界500强与大型国企。'
   },
 ]
 
@@ -48,8 +50,10 @@ const productEcosystem = {
   ],
   selfDeveloped: [
     { name: '泊冉动态建模平台', desc: '自主知识产权的低代码开发引擎', icon: Code },
-    { name: 'MES / WMS 系统', desc: '赋能智能制造与数字化仓储', icon: Rocket },
-    { name: 'DMS 经销商管理', desc: '全渠道营销与分销掌控力', icon: Target },
+    { name: '会计档案平台', desc: '业财电子档案合规化管理', icon: ShieldCheck },
+    { name: '集成/连接器', desc: '打通异构系统数据孤岛', icon: Rocket },
+    { name: '税务系统', desc: '智能税务管理与合规申报', icon: DollarSign },
+    { name: 'AI 场景落地', desc: '业务驱动的 AI 智能插件', icon: Cpu },
   ]
 }
 
@@ -59,10 +63,10 @@ const certificates = [
 ]
 
 const riskBoundaries = [
-  { title: '预算较低', desc: '如果您的项目预算低于 10 万，建议选择标准化 SaaS 产品' },
-  { title: '只需简单记账', desc: '如果只需要基础财务记账功能，用友畅捷通等入门产品更合适' },
-  { title: '期望立即见效', desc: '数字化转型通常需要 3-6 个月，如果您期望 1 个月内完成全部上线，风险较高' },
-  { title: '行业不匹配', desc: '我们专注制造业、新零售、生物医药等行业，其他行业经验相对较少' },
+  { title: '项目复杂度与投入匹配度', desc: '如果您的项目预算低于 10 万，建议选择标准化 SaaS 产品以确保投产比' },
+  { title: '标准 SaaS 与定制开发分界', desc: '如果只需要基础财务记账功能，用友畅捷通等入门产品更符合您的轻量化需求' },
+  { title: '数字化转型的科学周期', desc: '数字化转型通常需要 3-6 个月，科学的交付周期是项目成功的必要确定性' },
+  { title: '核心深耕行业聚焦', desc: '我们专注制造业、新零售、生物医药等行业，致力于在熟悉的领地提供专家级交付' },
 ]
 
 
@@ -92,9 +96,9 @@ export function AboutPageContent() {
                 安 以 应 变 · 未 雨 会 泊 冉
               </div>
               <h1 className="text-3xl md:text-6xl lg:text-7xl font-black text-white mb-5 md:mb-8 tracking-tight md:tracking-tighter leading-tight">
-                一站式企业管理<br />
+                专注企业全面上云与<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-                  解决方案提供商
+                  AI 数智化升级
                 </span>
               </h1>
               <p className="text-base md:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto mb-7 md:mb-12">
@@ -128,8 +132,8 @@ export function AboutPageContent() {
             {[
               { label: '服务经验', value: '14+', unit: '年', sub: '始于 2012' },
               { label: '技术人员占比', value: '80', unit: '%+', sub: '研发驱动 DNA' },
-              { label: '累计服务客户', value: '5500', unit: '+', sub: '客户遍布全国 30+ 省市' },
-              { label: '分支机构', value: '4', unit: '城', sub: '沪宁杭甬 协同服务' },
+              { label: '累计服务客户', value: '5500', unit: '+', sub: '其中包含 500+ 集团企业' },
+              { label: '自主技术专利', value: '60', unit: '+', sub: '坚持技术自研' },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col items-center justify-center text-center group p-3 md:p-4 rounded-2xl hover:bg-slate-50 transition-colors duration-300">
                 <div className="flex flex-row flex-nowrap items-baseline mb-2 text-slate-900 group-hover:text-blue-600 transition-colors">

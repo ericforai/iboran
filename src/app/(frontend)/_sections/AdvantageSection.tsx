@@ -16,7 +16,7 @@ const advantages = [
     number: '14',
     unit: '年',
     label: '行业深耕经验',
-    desc: '专注中大型企业信息化建设与业财一体化转型'
+    desc: '专注企业全面上云与 AI 数智化升级'
   },
   {
     number: '100',
@@ -26,13 +26,13 @@ const advantages = [
   },
   {
     number: '5500',
-    unit: '家',
+    unit: '+',
     label: '客户信赖',
-    desc: '长期服务于多家世界500强、大型国企及数千家成长型企业'
+    desc: '长期服务于 500+ 集团企业及数千家高成长型企业'
   },
   {
-    number: '30',
-    unit: '项',
+    number: '60',
+    unit: '+',
     label: '自主技术专利',
     desc: '坚持技术自研，引领行业数智化解决方案底座'
   }

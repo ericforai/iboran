@@ -45,8 +45,8 @@ export default async function Page() {
         <div className="font-sans text-slate-600 bg-white flex flex-col">
               <main className="flex-grow">
                   <Hero />
-                  <TrinityBanner />
                   <ProductShowcase />
+                  <TrinityBanner />
                   <AdvantageSection />
                   <CaseLogosSection />
                   <LogoWall />
