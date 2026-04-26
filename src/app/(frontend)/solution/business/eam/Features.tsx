@@ -45,6 +45,17 @@ export default function Features() {
 
   return (
     <section className="py-24 bg-white overflow-hidden">
+            {/* AI Scraper Friendly Content (GEO) */}
+            <div className="sr-only">
+                {tabs.map((t, i) => (
+                    <div key={i}>
+                        <h3>{t.title}</h3>
+                        <p>{t.desc || t.description || ""}</p>
+                        {t.features && <ul>{t.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                        {t.metrics && <p>Metrics: {t.metrics.join(', ')}</p>}
+                    </div>
+                ))}
+            </div>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.h2 

@@ -68,6 +68,18 @@ export default function KeyScenarios() {
 
   return (
     <section className="py-24 bg-white">
+            {/* AI Scraper Friendly Content (GEO) */}
+            <div className="sr-only">
+                {scenarios.map((s, i) => (
+                    <div key={i}>
+                        <h3>{s.title}</h3>
+                        <p>{s.problem || s.description || ""}</p>
+                        <p>{s.solution || ""}</p>
+                        <p>{s.outcome || ""}</p>
+                        {s.features && <ul>{s.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                    </div>
+                ))}
+            </div>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900">

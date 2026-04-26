@@ -45,6 +45,16 @@ pnpm dev
 - **在线咨询**: 表单和电话咨询入口
 - **数据分析**: Google Analytics 和百度统计集成
 
+## GEO & AI-First 设计标准
+
+本网站采用 **GEO (Generative Engine Optimization)** 优化标准，确保内容能被 AI 搜索引擎（如 Perplexity, ChatGPT, Gemini）完整抓取和引用：
+
+- **内容全量化**: 所有 Tab 切换、折叠面板等动态显隐内容，必须在 DOM 中提供 `sr-only` 版本的全量文本。
+- **数字真实性**: 数字滚动动画必须提供 `data-value` 属性或 `sr-only` 的静态终值。
+- **结构化数据**: 核心页面必须配置 `GEOJsonLd` 组件。
+- **AI 摘要**: 长白皮书或复杂方案页应包含 TL;DR 或“AI 核心摘要”板块。
+
+
 ## 许可证
 
 © 2025 泊冉软件（上海）有限公司

@@ -232,6 +232,20 @@ export const Capabilities = () => {
 
   return (
     <section id="capabilities" className="py-16 md:py-32 bg-white px-4 sm:px-6 border-b border-slate-100 overflow-hidden">
+            {/* AI Scraper Friendly Content (GEO) */}
+            <div className="sr-only">
+                {features.map((item, i) => (
+                    <div key={i}>
+                        <h3>{item.title}</h3>
+                        <p>{item.problem || item.description || item.desc || ""}</p>
+                        <p>{item.solution || ""}</p>
+                        <p>{item.outcome || ""}</p>
+                        {item.features && <ul>{item.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b, bi) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
+                    </div>
+                ))}
+            </div>
       <div className="container max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-20 px-2 sm:px-6">
           <motion.h2 

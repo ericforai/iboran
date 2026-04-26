@@ -69,6 +69,20 @@ export default function Features() {
 
   return (
     <section className="py-24 bg-slate-50">
+            {/* AI Scraper Friendly Content (GEO) */}
+            <div className="sr-only">
+                {features.map((item, i) => (
+                    <div key={i}>
+                        <h3>{item.title}</h3>
+                        <p>{item.problem || item.description || item.desc || ""}</p>
+                        <p>{item.solution || ""}</p>
+                        <p>{item.outcome || ""}</p>
+                        {item.features && <ul>{item.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b, bi) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
+                    </div>
+                ))}
+            </div>
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">

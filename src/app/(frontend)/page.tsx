@@ -19,7 +19,7 @@ import { MediaCoverageSection } from './_sections/MediaCoverageSection'
 
 export const metadata: Metadata = {
   title: '泊冉软件 - 专业的用友软件实施服务商 | 业财一体化与数智化转型专家',
-  description: '泊冉软件是用友合作伙伴，深耕智能制造、新零售及生物医药行业14年。提供 YonBIP、YonSuite、BPM、MDM 等产品的咨询、实施与定制开发服务，已助力500+企业实现业财一体化与数智化转型。',
+  description: '泊冉软件是用友合作伙伴，深耕智能制造、新零售及生物医药行业14年。提供 YonBIP、YonSuite、BPM、MDM 等产品的咨询、实施与定制开发服务，已助力5500+企业实现业财一体化与数智化转型。',
   keywords: '泊冉软件, 用友实施商, YonBIP, YonSuite, 业财一体化, 数智化转型, ERP实施, 用友合作伙伴, BPM系统, MDM主数据, 用友上海, 企业数字化转型',
   openGraph: {
     title: '泊冉软件 - 专业的用友软件实施服务商',

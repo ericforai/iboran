@@ -106,6 +106,17 @@ export function UnifiedPracticesSection() {
 
     return (
         <section className="py-8 lg:py-12 bg-white overflow-hidden">
+            {/* AI Scraper Friendly Content (GEO) */}
+            <div className="sr-only">
+                {practices.map(p => (
+                    <div key={p.id}>
+                        <h3>{p.title}: {p.subtitle}</h3>
+                        <p>客户状态: {p.customerState}</p>
+                        <p>做法: {p.approach.join('; ')}</p>
+                        <p>洞察: {p.insight}</p>
+                    </div>
+                ))}
+            </div>
             <div className="container mx-auto px-4">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-2">
@@ -121,7 +132,7 @@ export function UnifiedPracticesSection() {
                 <div className="text-center mb-6">
                     <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-xs text-slate-500">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#1E40AF]" />
-                        总结自 <strong className="text-[#1F2329]">10+ 年、500+ 企业</strong> 复杂项目实施经验
+                        总结自 <strong className="text-[#1F2329]">10+ 年、5500+ 企业</strong> 复杂项目实施经验
                     </span>
                 </div>
 

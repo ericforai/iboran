@@ -31,3 +31,10 @@
 ## Configuration & Architecture Notes
 - Copy `.env.example` to `.env`; Payload admin lives at `/admin`.
 - If you touch module boundaries, review `ARCHITECTURE_GUIDE.md` and re-run `pnpm architecture:check`.
+
+## Generative Engine Optimization (GEO) Guidelines
+- **AI-First Content Visibility**: Ensure all content is accessible to LLMs and crawlers, even if hidden visually for animation or interaction purposes.
+- **Dynamic Content Pattern**: For components with Tabs, Accordions, or unmounted conditional content, a `sr-only` (screen-reader only) block containing the full-text content MUST be provided.
+- **Animated Values**: Components like `AnimatedNumber` MUST provide the final target value in a `sr-only` span or `data-value` attribute to avoid AI capturing initial/zero values.
+- **Structured Data**: Use the `GEOJsonLd` component to provide explicit schema metadata (FAQ, Article) for every public-facing page.
+

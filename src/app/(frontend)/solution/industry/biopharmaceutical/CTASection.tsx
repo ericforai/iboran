@@ -47,7 +47,7 @@ export function CTASection() {
             </div>
             
             <p className="mt-8 text-sm text-blue-200 opacity-80">
-              已为 500+ 生物医药企业提供合规验证与数字化服务
+              已为 5500+ 生物医药企业提供合规验证与数字化服务
             </p>
           </div>
         </div>

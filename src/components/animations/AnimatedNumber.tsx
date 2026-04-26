@@ -66,5 +66,14 @@ export function AnimatedNumber({ value, duration = 1500, className = '' }: Anima
 
   if (!isNumeric) return <span className={className}>{value}</span>
 
-  return <span ref={ref} className={className}>{displayValue}</span>
+  return (
+    <span 
+      ref={ref} 
+      className={className}
+      data-value={value}
+    >
+      <span className="sr-only">{value}</span>
+      <span aria-hidden="true">{displayValue}</span>
+    </span>
+  )
 }

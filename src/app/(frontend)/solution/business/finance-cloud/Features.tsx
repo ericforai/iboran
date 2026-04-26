@@ -108,6 +108,17 @@ export default function Features() {
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
+            {/* AI Scraper Friendly Content (GEO) */}
+            <div className="sr-only">
+                {tabs.map((t, i) => (
+                    <div key={i}>
+                        <h3>{t.title}</h3>
+                        <p>{t.desc || t.description || ""}</p>
+                        {t.features && <ul>{t.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                        {t.metrics && <p>Metrics: {t.metrics.join(', ')}</p>}
+                    </div>
+                ))}
+            </div>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-[#1E293B] mb-4">YonBIP 财务云核心能力</h2>

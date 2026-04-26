@@ -74,6 +74,16 @@ export function DeliveryProcessSection() {
 
     return (
         <section className="py-16 lg:py-24 bg-white overflow-hidden">
+            {/* AI Scraper Friendly Content (GEO) */}
+            <div className="sr-only">
+                {steps.map(s => (
+                    <div key={s.id}>
+                        <h3>{s.title}: {s.subtitle}</h3>
+                        <p>{s.description}</p>
+                        <p>客户心态: {s.customerThought}</p>
+                    </div>
+                ))}
+            </div>
             <div className="container mx-auto px-4">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-4">
@@ -89,7 +99,7 @@ export function DeliveryProcessSection() {
                 <div className="text-center mb-12">
                     <span className="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-sm text-slate-500">
                         <CheckCircle2 className="w-4 h-4 text-[#0052D9]" />
-                        总结自 <strong className="text-[#1F2329]">10+ 年、500+ 企业</strong> 复杂项目实施经验
+                        总结自 <strong className="text-[#1F2329]">10+ 年、5500+ 企业</strong> 复杂项目实施经验
                     </span>
                 </div>
 

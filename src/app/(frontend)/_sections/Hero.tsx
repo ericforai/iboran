@@ -75,7 +75,7 @@ export const Hero = () => {
                </motion.div>
 
                 <motion.p variants={fadeInUp} className="text-sm sm:text-base lg:text-xl text-slate-400 font-medium leading-relaxed mb-4 lg:mb-8 max-w-full lg:max-w-xl">
-                  14年深耕 <span className="text-cyan-400 font-semibold">半导体、新零售、装备制造、消费品、专业服务</span> 五大行业，帮您避开我们踩过的坑。服务 500+ 企业，其中 80% 是老客户转介绍。
+                  14年深耕 <span className="text-cyan-400 font-semibold">半导体、新零售、装备制造、消费品、专业服务</span> 五大行业，帮您避开我们踩过的坑。服务 5500+ 企业，其中 80% 是老客户转介绍。
                 </motion.p>
 
                 <motion.div variants={fadeInUp} className="md:hidden flex flex-wrap gap-2 mb-5 w-full">

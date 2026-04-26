@@ -60,6 +60,17 @@ export default function Features() {
 
   return (
     <section className="py-24 bg-white">
+            {/* AI Scraper Friendly Content (GEO) */}
+            <div className="sr-only">
+                {tabs.map((t, i) => (
+                    <div key={i}>
+                        <h3>{t.title}</h3>
+                        <p>{t.desc || t.description || ""}</p>
+                        {t.features && <ul>{t.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                        {t.metrics && <p>Metrics: {t.metrics.join(', ')}</p>}
+                    </div>
+                ))}
+            </div>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-[#1F2329] mb-4">
