@@ -43,15 +43,13 @@ export default function KeyScenarios() {
     <section className="py-24 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {scenarios.map((s: any, i: number) => (
+                {scenarios.map((s, i) => (
                     <div key={i}>
-                        <h3>{s.title || s.label || ""}</h3>
-                        <p>{s.problem || s.description || s.desc || ""}</p>
+                        <h3>{s.title}</h3>
+                        <p>{s.problem || s.description || ""}</p>
                         <p>{s.solution || ""}</p>
                         <p>{s.outcome || ""}</p>
-                        {s.features && Array.isArray(s.features) && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {s.points && Array.isArray(s.points) && <ul>{s.points.map((p: any, pi: number) => <li key={pi}>{p}</li>)}</ul>}
-                        {s.benefits && Array.isArray(s.benefits) && <ul>{s.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
+                        {s.features && <ul>{s.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
                     </div>
                 ))}
             </div>
@@ -129,17 +127,14 @@ export default function KeyScenarios() {
                   由此带来的价值收益
                 </h4>
                 <div className="space-y-8">
-                  {scenarios[activeTab].outcome.split('。').filter(s => s).map((item: any, i: number) => (
-                    <div key={i}>
-                        <h3>{item.title || item.label || ""}</h3>
-                        <p>{item.problem || item.description || item.desc || ""}</p>
-                        <p>{item.solution || ""}</p>
-                        <p>{item.outcome || ""}</p>
-                        {item.features && Array.isArray(item.features) && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.points && Array.isArray(item.points) && <ul>{item.points.map((p: any, pi: number) => <li key={pi}>{p}</li>)}</ul>}
-                        {item.benefits && Array.isArray(item.benefits) && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
+                  {scenarios[activeTab].outcome.split('。').filter(s => s).map((item, i) => (
+                    <div key={i} className="flex gap-4">
+                      <div className="w-1.5 h-1.5 bg-[#0052D9] rounded-full mt-2.5 shrink-0" />
+                      <p className="text-slate-300 leading-relaxed">
+                        {item}。
+                      </p>
                     </div>
-                ))}
+                  ))}
                 </div>
               </div>
             </div>

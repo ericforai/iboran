@@ -71,15 +71,15 @@ export default function Features() {
     <section className="py-24 bg-slate-50">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {features.map((item: any, i: number) => (
+                {features.map((item, i) => (
                     <div key={i}>
-                        <h3>{item.title || item.label || ""}</h3>
+                        <h3>{item.title}</h3>
                         <p>{item.problem || item.description || item.desc || ""}</p>
                         <p>{item.solution || ""}</p>
                         <p>{item.outcome || ""}</p>
-                        {item.features && Array.isArray(item.features) && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.points && Array.isArray(item.points) && <ul>{item.points.map((p: any, pi: number) => <li key={pi}>{p}</li>)}</ul>}
-                        {item.benefits && Array.isArray(item.benefits) && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.features && <ul>{item.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b, bi) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
                     </div>
                 ))}
             </div>

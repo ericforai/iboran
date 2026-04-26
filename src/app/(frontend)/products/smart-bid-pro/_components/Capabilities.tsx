@@ -32,17 +32,59 @@ const DemandWidget = () => (
       { title: '全国电力数字化集采项目', budget: '￥1.2B', match: 92, time: '15分钟前' },
       { title: '大型银行云平台二期工程', budget: '￥850W', match: 88, time: '1小时前' },
       { title: '省级算力中心建设项目', budget: '￥5,600W', match: 95, time: '3小时前' }
-    ].map((item: any, i: number) => (
-                    <div key={i}>
-                        <h3>{item.title || item.label || ""}</h3>
-                        <p>{item.problem || item.description || item.desc || ""}</p>
-                        <p>{item.solution || ""}</p>
-                        <p>{item.outcome || ""}</p>
-                        {item.features && Array.isArray(item.features) && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.points && Array.isArray(item.points) && <ul>{item.points.map((p: any, pi: number) => <li key={pi}>{p}</li>)}</ul>}
-                        {item.benefits && Array.isArray(item.benefits) && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
-                    </div>
-                ))}
+    ].map((item, i) => (
+      <motion.div 
+        key={i}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: i * 0.1 }}
+        className="p-4 bg-white border border-slate-100 rounded-2xl flex items-center justify-between shadow-sm hover:border-blue-200 transition-colors"
+      >
+        <div className="flex flex-col gap-1">
+          <span className="text-sm font-extrabold text-slate-900 line-clamp-1">{item.title}</span>
+          <div className="flex items-center gap-3 text-[11px] text-slate-500 font-medium">
+            <span className="text-blue-600 font-bold">{item.budget}</span>
+            <span>{item.time}</span>
+          </div>
+        </div>
+        <div className="flex flex-col items-end gap-1">
+          <div className="flex items-center gap-1">
+              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+              <span className="text-xs font-black text-slate-900">{item.match}%</span>
+          </div>
+          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Match</span>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+)
+
+const ExecutionWidget = () => (
+  <div className="p-6 h-full flex flex-col">
+    <div className="flex items-center justify-between mb-6">
+      <h4 className="text-sm font-black text-slate-800 uppercase tracking-widest">投标任务看板</h4>
+      <Filter size={14} className="text-slate-400" />
+    </div>
+    <div className="grid grid-cols-1 min-[480px]:grid-cols-3 gap-4 flex-1">
+      {[
+        { label: '待处理 (Draft)', count: 2, items: [{ t: '资质文件汇总', p: 40 }] },
+        { label: '执行中 (Doing)', count: 4, items: [{ t: '技术偏离表确认', p: 75 }, { t: '报价模型测算', p: 20 }] },
+        { label: '已提交 (Done)', count: 12, items: [{ t: '某智慧工厂标书', p: 100 }] }
+      ].map((col, i) => (
+        <div key={i} className="flex flex-col gap-3">
+          <div className="flex items-center justify-between px-1">
+            <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{col.label}</span>
+            <span className="text-[10px] font-bold bg-slate-100 text-slate-500 px-1.5 rounded-full">{col.count}</span>
+          </div>
+          <div className="flex-1 bg-slate-50/50 rounded-2xl p-2 space-y-2 border border-slate-100">
+            {col.items.map((item, j) => (
+              <div key={j} className="p-3 bg-white border border-slate-100 rounded-xl shadow-sm">
+                <p className="text-[11px] font-extrabold text-slate-800 mb-2 leading-tight">{item.t}</p>
+                <div className="h-1 bg-slate-100 rounded-full overflow-hidden">
+                  <div className={`h-full ${item.p === 100 ? 'bg-emerald-500' : 'bg-blue-600'} rounded-full`} style={{ width: `${item.p}%` }} />
+                </div>
+              </div>
+            ))}
             <div className="h-20 border-2 border-dashed border-slate-100 rounded-xl flex items-center justify-center">
                <span className="text-[10px] text-slate-300 font-medium">+ 添加任务</span>
             </div>
@@ -192,15 +234,15 @@ export const Capabilities = () => {
     <section id="capabilities" className="py-16 md:py-32 bg-white px-4 sm:px-6 border-b border-slate-100 overflow-hidden">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {features.map((item: any, i: number) => (
+                {features.map((item, i) => (
                     <div key={i}>
-                        <h3>{item.title || item.label || ""}</h3>
+                        <h3>{item.title}</h3>
                         <p>{item.problem || item.description || item.desc || ""}</p>
                         <p>{item.solution || ""}</p>
                         <p>{item.outcome || ""}</p>
-                        {item.features && Array.isArray(item.features) && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.points && Array.isArray(item.points) && <ul>{item.points.map((p: any, pi: number) => <li key={pi}>{p}</li>)}</ul>}
-                        {item.benefits && Array.isArray(item.benefits) && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.features && <ul>{item.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b, bi) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
                     </div>
                 ))}
             </div>

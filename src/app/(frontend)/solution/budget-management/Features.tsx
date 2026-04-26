@@ -262,17 +262,23 @@ function AnalysisVisual() {
             { label: '市场推广费', p: 85, c: '#E60012' },
             { label: '研发物料费', p: 48, c: '#0052D9' },
             { label: '日常办公费', p: 92, c: '#22C55E' }
-          ].map((item: any, i: number) => (
-                    <div key={i}>
-                        <h3>{item.title || item.label || ""}</h3>
-                        <p>{item.problem || item.description || item.desc || ""}</p>
-                        <p>{item.solution || ""}</p>
-                        <p>{item.outcome || ""}</p>
-                        {item.features && Array.isArray(item.features) && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.points && Array.isArray(item.points) && <ul>{item.points.map((p: any, pi: number) => <li key={pi}>{p}</li>)}</ul>}
-                        {item.benefits && Array.isArray(item.benefits) && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
-                    </div>
-                ))}
+          ].map((item, i) => (
+            <div key={i} className="space-y-1.5">
+              <div className="flex justify-between text-[9px]">
+                <span className="opacity-70">{item.label}</span>
+                <span className="font-bold">{item.p}%</span>
+              </div>
+              <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  whileInView={{ width: `${item.p}%` }}
+                  transition={{ duration: 1, delay: i * 0.1 }}
+                  className="h-full rounded-full"
+                  style={{ backgroundColor: item.c }}
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       
@@ -286,15 +292,52 @@ function AnalysisVisual() {
             { name: '华北区市场活动', id: 'BX00192', val: '¥ 45,000' },
             { name: 'Q1 广告位投放', id: 'BX00204', val: '¥ 12,500' },
             { name: '社交媒体推广', id: 'BX00215', val: '¥ 8,800' }
-          ].map((item: any, i: number) => (
+          ].map((item, i) => (
+            <motion.div 
+              key={i}
+              initial={{ x: -10, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5 + i * 0.1 }}
+              className="flex items-center justify-between p-2 rounded hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-all cursor-pointer group"
+            >
+              <div className="flex flex-col">
+                <span className="text-[10px] font-bold text-slate-800">{item.name}</span>
+                <span className="text-[8px] text-slate-400">单据号: {item.id}</span>
+              </div>
+              <div className="text-[10px] font-black text-slate-700 group-hover:text-[#E60012] transition-colors">
+                {item.val}
+              </div>
+            </motion.div>
+          ))}
+          <div className="mt-auto text-center">
+            <Link href="/contact" className="text-[9px] text-[#0052D9] font-bold hover:underline">查看完整溯源报告 →</Link>
+          </div>
+        </div>
+        
+        {/* Decorative background layers to represent depth */}
+        <div className="absolute inset-0 bg-slate-100 rounded-xl -z-10 translate-y-3 scale-[0.96] border border-slate-200/50" />
+        <div className="absolute inset-0 bg-slate-50 rounded-xl -z-20 translate-y-6 scale-[0.92] border border-slate-200/30" />
+      </div>
+    </div>
+  )
+}
+
+export default function Features() {
+  const [activeTab, setActiveTab] = useState(features[0].id)
+
+  return (
+    <section className="py-24 bg-white overflow-hidden">
+            {/* AI Scraper Friendly Content (GEO) */}
+            <div className="sr-only">
+                {features.map((item, i) => (
                     <div key={i}>
-                        <h3>{item.title || item.label || ""}</h3>
+                        <h3>{item.title}</h3>
                         <p>{item.problem || item.description || item.desc || ""}</p>
                         <p>{item.solution || ""}</p>
                         <p>{item.outcome || ""}</p>
-                        {item.features && Array.isArray(item.features) && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.points && Array.isArray(item.points) && <ul>{item.points.map((p: any, pi: number) => <li key={pi}>{p}</li>)}</ul>}
-                        {item.benefits && Array.isArray(item.benefits) && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.features && <ul>{item.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b, bi) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
                     </div>
                 ))}
             </div>
