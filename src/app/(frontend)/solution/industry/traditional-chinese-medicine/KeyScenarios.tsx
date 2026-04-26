@@ -66,13 +66,15 @@ export function KeyScenarios() {
     <section className="py-24 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {scenarios.map((s, i) => (
+                {scenarios.map((s: any, i: number) => (
                     <div key={i}>
-                        <h3>{s.title}</h3>
-                        <p>{s.problem || s.description || ""}</p>
+                        <h3>{s.title || s.label || ""}</h3>
+                        <p>{s.problem || s.description || s.desc || ""}</p>
                         <p>{s.solution || ""}</p>
                         <p>{s.outcome || ""}</p>
-                        {s.features && <ul>{s.features.map((f, fi) => <li key={fi}>{f}</li>)}</ul>}
+                        {s.features && Array.isArray(s.features) && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {s.points && Array.isArray(s.points) && <ul>{s.points.map((p: any, pi: number) => <li key={pi}>{p}</li>)}</ul>}
+                        {s.benefits && Array.isArray(s.benefits) && <ul>{s.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
                     </div>
                 ))}
             </div>
