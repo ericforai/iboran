@@ -105,7 +105,7 @@ export function BestPracticesSection() {
                 <div className="text-center mb-6">
                     <span className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-full text-sm text-slate-500">
                         <CheckCircle2 className="w-4 h-4 text-[#0052D9]" />
-                        总结自泊冉 <strong className="text-[#1F2329]">10+ 年、500+ 企业</strong> 复杂项目交付经验
+                        总结自泊冉 <strong className="text-[#1F2329]">10+ 年、5500+ 企业</strong> 复杂项目交付经验
                     </span>
                 </div>
 

@@ -36,7 +36,7 @@ export default function NotFound() {
                 <ChevronRight className="w-6 h-6" />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">成功案例</h3>
-              <p className="text-xs text-slate-500">查看 500+ 企业的数智化实践</p>
+              <p className="text-xs text-slate-500">查看 5500+ 企业的数智化实践</p>
             </Link>
 
             <button onClick={() => openAifafanChat()} className="group p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-indigo-200 hover:bg-white transition-all text-left">

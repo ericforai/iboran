@@ -15,7 +15,7 @@ export const SuccessStoriesSection: React.FC<Props> = ({ stories }) => {
           <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-4">见证价值，赋能成长</h2>
           <div className="w-16 h-1 bg-[#E60012] mx-auto rounded-full mb-6"></div>
           <p className="text-lg text-slate-600">
-            赋能 500+ 企业数智化转型，用真实的交付结果证明专业价值。
+            赋能 5500+ 企业数智化转型，用真实的交付结果证明专业价值。
           </p>
         </div>
 

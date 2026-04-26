@@ -79,7 +79,7 @@ export default function CTASection() {
                             </div>
                           ))}
                         </div>
-                        <p className="text-white text-xs font-medium">已有 500+ 企业咨询相关方案</p>
+                        <p className="text-white text-xs font-medium">已有 5500+ 企业咨询相关方案</p>
                     </div>
                  </div>
               </div>

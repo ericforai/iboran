@@ -99,7 +99,7 @@ export function DeliveryProcessSection() {
                 <div className="text-center mb-12">
                     <span className="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-sm text-slate-500">
                         <CheckCircle2 className="w-4 h-4 text-[#0052D9]" />
-                        总结自 <strong className="text-[#1F2329]">10+ 年、5500+ 企业</strong> 复杂项目实施经验
+                        总结自 <strong className="text-[#1F2329]">10+ 年、55500+ 企业</strong> 复杂项目实施经验
                     </span>
                 </div>
 

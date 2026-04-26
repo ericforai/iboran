@@ -28,7 +28,7 @@ const advantages = [
     number: '5500',
     unit: '+',
     label: '客户信赖',
-    desc: '长期服务于 500+ 集团企业及数千家高成长型企业'
+    desc: '长期服务于 5500+ 企业及数千家高成长型企业'
   },
   {
     number: '60',
@@ -116,7 +116,7 @@ export const AdvantageSection: React.FC<AdvantageSectionProps> = React.memo(({
 
                 <div className="flex items-baseline gap-2 mb-5 lg:mb-8 relative z-10">
                    <span className="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight sm:tracking-tighter group-hover:text-cyan-400 transition-colors duration-500">
-                      <AnimatedNumber value={adv.number} />
+                      <><AnimatedNumber value={adv.number} /><span className="sr-only">{adv.number}</span></>
                    </span>
                    <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest">{adv.unit}</span>
                 </div>

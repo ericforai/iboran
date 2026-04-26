@@ -60,7 +60,7 @@ export default function CTA() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-amber-400" />
-              <span>500+ 成功案例</span>
+              <span>5500+ 成功案例</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-amber-400" />

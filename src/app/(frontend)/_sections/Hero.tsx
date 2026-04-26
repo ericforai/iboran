@@ -75,7 +75,7 @@ export const Hero = () => {
                </motion.div>
 
                 <motion.p variants={fadeInUp} className="text-sm sm:text-base lg:text-xl text-slate-400 font-medium leading-relaxed mb-4 lg:mb-8 max-w-full lg:max-w-xl">
-                  扎根管理软件14余年，深耕 <span className="text-cyan-400 font-semibold">国资、消费品、制造、医药、新零售、专业服务</span> 等行业。以YonSuite/BIP云产品为核心，用“避坑指南”级标准交付，为企业提供降本增效的确定性。服务5500+企业，其中近500家集团客户，80%源于老客户信任推荐。
+                  扎根管理软件14余年，深耕 <span className="text-cyan-400 font-semibold">国资、消费品、制造、医药、新零售、专业服务</span> 等行业。以YonSuite/BIP云产品为核心，用“避坑指南”级标准交付，为企业提供降本增效的确定性。服务5500+企业，其中5500+ 企业，80%源于老客户信任推荐。
                 </motion.p>
 
                 <motion.div variants={fadeInUp} className="md:hidden flex flex-wrap gap-2 mb-5 w-full">

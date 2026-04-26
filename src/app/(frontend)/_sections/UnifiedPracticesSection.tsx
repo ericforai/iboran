@@ -132,7 +132,7 @@ export function UnifiedPracticesSection() {
                 <div className="text-center mb-6">
                     <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-xs text-slate-500">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#1E40AF]" />
-                        总结自 <strong className="text-[#1F2329]">10+ 年、5500+ 企业</strong> 复杂项目实施经验
+                        总结自 <strong className="text-[#1F2329]">10+ 年、55500+ 企业</strong> 复杂项目实施经验
                     </span>
                 </div>
 

@@ -38,7 +38,7 @@ const values = [
   {
     icon: Award,
     title: '行业信任 Trust',
-    desc: '5500+ 客户的共同选择，包含 500+ 集团企业、世界500强与大型国企。'
+    desc: '5500+ 客户的共同选择，包含 5500+ 企业、世界500强与大型国企。'
   },
 ]
 
@@ -124,7 +124,7 @@ export function AboutPageContent() {
             {[
               { label: '服务经验', value: '14+', unit: '年', sub: '始于 2012' },
               { label: '技术人员占比', value: '80', unit: '%+', sub: '研发驱动 DNA' },
-              { label: '累计服务客户', value: '5500', unit: '+', sub: '其中包含 500+ 集团企业' },
+              { label: '累计服务客户', value: '5500', unit: '+', sub: '其中包含 5500+ 企业' },
               { label: '自主技术专利', value: '60', unit: '+', sub: '坚持技术自研' },
             ].map((stat: any) => (
               <div key={stat.label} className="flex flex-col items-center justify-center text-center group p-3 md:p-4 rounded-2xl hover:bg-slate-50 transition-colors duration-300">
