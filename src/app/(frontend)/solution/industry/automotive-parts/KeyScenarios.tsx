@@ -70,13 +70,13 @@ export default function KeyScenarios() {
     <section className="py-24 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {scenarios.map((s: any, i: number) => (
+                {(scenarios as any[]).map((s: any, i: number) => (
                     <div key={i}>
                         <h3>{s.title}</h3>
                         <p>{s.problem || s.description || ""}</p>
                         <p>{s.solution || ""}</p>
                         <p>{s.outcome || ""}</p>
-                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
                     </div>
                 ))}
             </div>
@@ -93,7 +93,7 @@ export default function KeyScenarios() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* 左侧 Tabs 控制器 */}
           <div className="lg:col-span-4 space-y-4">
-            {scenarios.map((s) => (
+            {scenarios.map((s: any) => (
               <button
                 key={s.id}
                 onClick={() => setActiveTab(s.id)}
@@ -121,7 +121,7 @@ export default function KeyScenarios() {
           {/* 右侧 内容展示 */}
           <div className="lg:col-span-8">
             <AnimatePresence mode="wait">
-              {scenarios.map((s) => s.id === activeTab && (
+              {scenarios.map((s: any) => s.id === activeTab && (
                 <motion.div
                   key={s.id}
                   initial={{ opacity: 0, x: 20 }}
@@ -141,7 +141,7 @@ export default function KeyScenarios() {
                       </p>
                       
                       <div className="space-y-4 mb-10">
-                        {s.features.map((f) => (
+                        {s.features.map((f: any) => (
                           <div key={f} className="flex items-center gap-3 text-slate-700">
                              <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
                              <span className="font-medium text-sm md:text-base">{f}</span>

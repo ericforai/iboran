@@ -52,7 +52,7 @@ export default function IndustryChallenges() {
         
         {/* 5 columns layout for 5 challenges */}
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-          {challenges.map((challenge, idx) => (
+          {challenges.map((challenge: any, idx: number) => (
             <div
               key={idx}
               className="bg-[#F7F8FA] p-6 rounded-xl border border-slate-100 hover:shadow-lg transition-shadow"

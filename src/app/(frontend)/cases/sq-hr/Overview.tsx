@@ -60,7 +60,7 @@ export default function Overview() {
                 <p className="text-sm text-slate-600">服务企业客户</p>
               </div>
               <div className="p-5 bg-slate-50 rounded-xl border border-slate-200">
-                <div className="text-2xl font-bold text-[#E60012] mb-1">12年</div>
+                <div className="text-2xl font-bold text-[#E60012] mb-1">14年</div>
                 <p className="text-sm text-slate-600">行业经验</p>
               </div>
             </div>

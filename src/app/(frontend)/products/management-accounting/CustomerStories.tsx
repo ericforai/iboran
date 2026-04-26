@@ -39,7 +39,7 @@ export default function CustomerStories() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-           {cases.map((item, i) => (
+           {cases.map((item: any, i: number) => (
              <motion.div
                key={i}
                 initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
@@ -69,7 +69,7 @@ export default function CustomerStories() {
 
                 <div className="flex items-center justify-between border-t border-slate-200 pt-8">
                    <div className="flex gap-2">
-                      {item.highlights.map((h, j) => (
+                      {item.highlights.map((h: any, j: number) => (
                         <span key={j} className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-bold">
                            {h}
                         </span>

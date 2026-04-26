@@ -104,7 +104,7 @@ export const AdvantageSection: React.FC<AdvantageSectionProps> = React.memo(({
             staggerDelay={100} 
             className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8"
           >
-            {advantages.map((adv, idx) => (
+            {advantages.map((adv: any, idx: number) => (
               <div
                 key={idx}
                 className="p-5 sm:p-6 lg:p-12 bg-white/[0.03] border border-white/10 rounded-3xl lg:rounded-[32px] backdrop-blur-sm hover:bg-white/[0.05] hover:border-cyan-500/30 transition-all duration-500 group relative overflow-hidden hover:-translate-y-2"

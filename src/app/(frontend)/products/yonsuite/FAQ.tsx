@@ -44,7 +44,7 @@ export default function FAQ() {
         </div>
 
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, idx) => (
+          {faqs.map((faq: any, idx: number) => (
             <div 
               key={idx} 
               className="border border-slate-100 rounded-xl overflow-hidden hover:border-blue-100 transition-colors"

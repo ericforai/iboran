@@ -113,7 +113,7 @@ export default function Hero() {
                         <div className="font-bold text-[#1F2329]">集团化深度应用</div>
                       </div>
                       <div className="grid grid-cols-3 gap-2">
-                        {['智能财务', '供应链', '生产制造', '资金管理', '合并报表', '全栈信创'].map(item => (
+                        {['智能财务', '供应链', '生产制造', '资金管理', '合并报表', '全栈信创'].map((item: any) => (
                           <div key={item} className="bg-white px-2 py-1.5 rounded text-[10px] text-slate-600 font-medium text-center border border-slate-100">
                             {item}
                           </div>
@@ -125,7 +125,7 @@ export default function Hero() {
                       <div className="bg-blue-50/50 rounded-lg p-4 border border-blue-100">
                         <div className="font-bold text-[#0052D9] text-sm mb-2">多组织协同</div>
                         <div className="space-y-1.5">
-                          {['财务集中控制', '跨组织采购', '协同生产', '内部往来销'].map(item => (
+                          {['财务集中控制', '跨组织采购', '协同生产', '内部往来销'].map((item: any) => (
                             <div key={item} className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full bg-[#0052D9]"></div>
                               <span className="text-xs text-slate-600">{item}</span>
@@ -136,7 +136,7 @@ export default function Hero() {
                       <div className="bg-slate-50/50 rounded-lg p-4 border border-slate-100">
                         <div className="font-bold text-slate-700 text-sm mb-2">开放集成</div>
                         <div className="space-y-1.5">
-                          {['[610]+ OpenAPI', 'YonBIP 连接', 'YonSuite 融合', '第三方系统'].map(item => (
+                          {['[610]+ OpenAPI', 'YonBIP 连接', 'YonSuite 融合', '第三方系统'].map((item: any) => (
                             <div key={item} className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
                               <span className="text-xs text-slate-600">{item}</span>

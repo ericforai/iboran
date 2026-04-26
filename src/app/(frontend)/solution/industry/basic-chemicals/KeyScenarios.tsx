@@ -42,13 +42,13 @@ export default function KeyScenarios() {
     <section className="py-24 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {scenarios.map((s: any, i: number) => (
+                {(scenarios as any[]).map((s: any, i: number) => (
                     <div key={i}>
                         <h3>{s.title}</h3>
                         <p>{s.problem || s.description || ""}</p>
                         <p>{s.solution || ""}</p>
                         <p>{s.outcome || ""}</p>
-                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
                     </div>
                 ))}
             </div>
@@ -68,7 +68,7 @@ export default function KeyScenarios() {
         
         {/* Tab 切换 */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {scenarios.map((scenario, idx) => (
+          {scenarios.map((scenario: any, idx: number) => (
             <button
               key={idx}
               onClick={() => setActiveTab(idx)}

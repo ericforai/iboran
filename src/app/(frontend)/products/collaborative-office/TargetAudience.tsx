@@ -38,7 +38,7 @@ export default function TargetAudience() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          {targets.map((target, idx) => (
+          {targets.map((target: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -52,7 +52,7 @@ export default function TargetAudience() {
                 <h3 className="text-xl font-bold text-[#1F2329]">{target.title}</h3>
               </div>
               <ul className="space-y-4">
-                {target.items.map((item, i) => (
+                {target.items.map((item: any, i: number) => (
                   <li key={i} className="flex gap-3">
                     {idx === 0 ? (
                       <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />

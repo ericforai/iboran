@@ -62,7 +62,7 @@ export default function FeatureHub() {
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-            {stats.map((stat, idx) => (
+            {stats.map((stat: any, idx: number) => (
               <div key={idx} className="bg-slate-800/50 p-3 rounded-lg border border-slate-700">
                 <div className="text-2xl font-bold text-[#E60012]">{stat.value}</div>
                 <div className="text-xs text-slate-400">{stat.label}</div>
@@ -72,7 +72,7 @@ export default function FeatureHub() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, idx) => (
+          {features.map((feature: any, idx: number) => (
             <div 
               key={idx} 
               className="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-[#E60012]/50 hover:bg-slate-800/80 transition-all group"

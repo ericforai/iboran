@@ -83,7 +83,7 @@ export const DashboardMockup = () => {
             { icon: Database, label: '数据' },
             { icon: Code, label: '逻辑' },
             { icon: Settings, label: '设置' },
-          ].map((item, i) => (
+          ].map((item: any, i: number) => (
             <div
               key={i}
               className={`flex flex-col items-center gap-1 p-2 rounded-lg cursor-pointer transition-colors ${
@@ -117,11 +117,11 @@ export const DashboardMockup = () => {
               { title: '布局容器', items: [{ icon: Columns, label: '分栏布局' }, { icon: Box, label: '卡片容器' }] },
               { title: '基础组件', items: [{ icon: Type, label: '文本标题' }, { icon: ImageIcon, label: '图片展示' }, { icon: Plus, label: '操作按钮' }] },
               { title: '表单组件', items: [{ icon: List, label: '下拉选择' }, { icon: Calendar, label: '日期时间' }] },
-            ].map((group, i) => (
+            ].map((group: any, i: number) => (
               <div key={i}>
                 <div className="text-xs font-semibold text-slate-400 mb-2 px-1">{group.title}</div>
                 <div className="grid grid-cols-2 gap-1.5">
-                  {group.items.map((item, j) => (
+                  {group.items.map((item: any, j: number) => (
                     <motion.div
                       whileHover={{ scale: 1.02, backgroundColor: '#F8FAFC', borderColor: '#CBD5E1' }}
                       whileTap={{ scale: 0.98 }}

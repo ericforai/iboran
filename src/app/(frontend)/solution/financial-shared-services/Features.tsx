@@ -60,7 +60,7 @@ export default function Features() {
             <div className="w-16 h-1 bg-[#E60012] rounded-full mb-8" />
             
             <div className="space-y-6">
-              {FEATURES.map((feature, idx) => (
+              {FEATURES.map((feature: any, idx: number) => (
                 <div 
                   key={feature.id}
                   onClick={() => setActiveFeature(idx)}
@@ -83,7 +83,7 @@ export default function Features() {
                       </p>
                       {activeFeature === idx && (
                         <div className="flex gap-4">
-                          {feature.metrics.map((metric, i) => (
+                          {feature.metrics.map((metric: any, i: number) => (
                             <span key={i} className="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-1 rounded">
                               {metric}
                             </span>

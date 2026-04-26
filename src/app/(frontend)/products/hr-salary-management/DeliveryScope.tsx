@@ -33,7 +33,7 @@ export const DeliveryScope = () => {
                   标准交付项
                 </h3>
                 <ul className="space-y-4">
-                  {scope.filter(s => s.status === 'include').map((s, i) => (
+                  {scope.filter((s: any) => s.status === 'include').map((s: any, i: number) => (
                     <li key={i} className="text-sm text-slate-600 flex items-start gap-2">
                       <span className="mt-1 text-green-500">•</span>
                       {s.title}
@@ -48,7 +48,7 @@ export const DeliveryScope = () => {
                   可选服务
                 </h3>
                 <ul className="space-y-4">
-                  {scope.filter(s => s.status === 'optional').map((s, i) => (
+                  {scope.filter((s: any) => s.status === 'optional').map((s: any, i: number) => (
                     <li key={i} className="text-sm text-slate-600 flex items-start gap-2">
                        <span className="mt-1 text-blue-500">•</span>
                       {s.title}
@@ -64,7 +64,7 @@ export const DeliveryScope = () => {
                   不包含范围
                 </h3>
                 <ul className="space-y-4">
-                  {scope.filter(s => s.status === 'exclude').map((s, i) => (
+                  {scope.filter((s: any) => s.status === 'exclude').map((s: any, i: number) => (
                     <li key={i} className="text-sm text-slate-400 flex items-start gap-2">
                       <span className="mt-1 text-slate-300">•</span>
                       {s.title}

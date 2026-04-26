@@ -67,7 +67,7 @@ export default function IndustryChallenges({ industryName }: IndustryChallengesP
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {challenges.map((challenge, index) => {
+          {challenges.map((challenge: any, index: number) => {
             const Icon = challenge.icon
             return (
               <motion.div

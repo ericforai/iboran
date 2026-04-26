@@ -69,7 +69,7 @@ export default function Features() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Left Navigation */}
           <div className="lg:w-1/3 flex flex-col gap-4">
-            {features.map((feature, idx) => (
+            {features.map((feature: any, idx: number) => (
               <div
                 key={idx}
                 onClick={() => setActiveTab(idx)}
@@ -101,7 +101,7 @@ export default function Features() {
                       className="overflow-hidden"
                     >
                       <ul className="grid grid-cols-2 gap-2">
-                        {feature.bullets.map((bullet, bIdx) => (
+                        {feature.bullets.map((bullet: any, bIdx: number) => (
                           <li key={bIdx} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
                             <div className="w-1 h-1 rounded-full bg-blue-500"></div>
                             {bullet}

@@ -28,7 +28,7 @@ export default function DeliveryScope() {
                 "标准打印模板设置 (凭证/单据)",
                 "关键用户操作培训",
                 "标准角色与权限配置"
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <li key={i} className="flex gap-3 text-sm text-slate-600">
                   <Check className="w-5 h-5 text-[#0052D9] flex-shrink-0" />
                   {item}
@@ -51,7 +51,7 @@ export default function DeliveryScope() {
                 "BI 报表定制开发",
                 "复杂审批工作流定义",
                 "私有化部署环境搭建与调优"
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <li key={i} className="flex gap-3 text-sm text-slate-600">
                   <Info className="w-5 h-5 text-amber-500 flex-shrink-0" />
                   {item}
@@ -73,7 +73,7 @@ export default function DeliveryScope() {
                 "操作系统/数据库授权购买",
                 "客户方网络环境搭建",
                 "非软件原因导致的数据错误修正"
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <li key={i} className="flex gap-3 text-sm text-slate-500">
                   <X className="w-5 h-5 text-slate-400 flex-shrink-0" />
                   {item}

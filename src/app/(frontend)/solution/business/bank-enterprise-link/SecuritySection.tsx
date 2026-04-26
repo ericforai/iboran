@@ -67,7 +67,7 @@ export default function SecuritySection() {
           </div>
 
           <div className="lg:w-2/3 grid md:grid-cols-2 gap-8">
-            {securityFeatures.map((feature, idx) => (
+            {securityFeatures.map((feature: any, idx: number) => (
               <div
                 key={idx}
                 className="p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
@@ -75,7 +75,7 @@ export default function SecuritySection() {
                 <feature.icon className="w-8 h-8 text-blue-400 mb-6" />
                 <h3 className="text-xl font-bold mb-6">{feature.title}</h3>
                 <ul className="space-y-3">
-                  {feature.items.map((item, i) => (
+                  {feature.items.map((item: any, i: number) => (
                     <li key={i} className="flex items-start gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
                       <span className="text-sm text-slate-300">{item}</span>

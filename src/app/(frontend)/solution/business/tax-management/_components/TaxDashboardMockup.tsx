@@ -158,7 +158,7 @@ export default function TaxDashboardMockup() {
                   </div>
                 </div>
                 <div className="flex-1 flex items-end justify-between gap-1">
-                   {[40, 60, 45, 70, 50, 80, 55, 45, 65, 50, 60, 90].map((h,i) =>(
+                   {[40, 60, 45, 70, 50, 80, 55, 45, 65, 50, 60, 90].map((h: any, i: number) =>(
                      <div key={i} className="w-full bg-blue-50/50 rounded-t-sm relative h-full group">
                         <motion.div 
                           className="absolute bottom-0 w-full bg-[#0052D9] rounded-t-sm opacity-80"

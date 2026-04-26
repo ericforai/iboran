@@ -68,20 +68,20 @@ const features = [
 
 export default function Features() {
   const [activeTab, setActiveTab] = useState(features[0].id)
-  const activeFeature = features.find(f => f.id === activeTab) || features[0]
+  const activeFeature = features.find((f: any) => f.id === activeTab) || features[0]
 
   return (
     <section className="py-24 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {features.map((item: any, i: number) => (
+                {(features as any[]).map((item: any, i: number) => (
                     <div key={i}>
                         <h3>{item.title}</h3>
                         <p>{item.problem || item.description || item.desc || ""}</p>
                         <p>{item.solution || ""}</p>
                         <p>{item.outcome || ""}</p>
-                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{(typeof b === "object" ? (b.title || b.label || b.name || b.desc || JSON.stringify(b)) : b)}</li>)}</ul>}
                         {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
                     </div>
                 ))}
@@ -97,7 +97,7 @@ export default function Features() {
 
         {/* Tab Navigation */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {features.map((feature) => (
+          {features.map((feature: any) => (
             <button
               key={feature.id}
               onClick={() => setActiveTab(feature.id)}
@@ -139,7 +139,7 @@ export default function Features() {
                   </p>
                   
                   <div className="grid md:grid-cols-2 gap-4">
-                    {activeFeature.points.map((point, idx) => (
+                    {activeFeature.points.map((point: any, idx: number) => (
                       <div key={idx} className="flex items-start gap-2">
                         <div className={`mt-1 min-w-[20px] h-5 rounded-full bg-${activeFeature.color}-100 flex items-center justify-center`}>
                           <Check size={12} className={`text-${activeFeature.color}-600`} />

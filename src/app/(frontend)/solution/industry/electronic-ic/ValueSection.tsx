@@ -45,7 +45,7 @@ export default function ValueSection() {
         </div>
         
         <div className="grid md:grid-cols-3 gap-12">
-          {metrics.map((metric, idx) => {
+          {metrics.map((metric: any, idx: number) => {
             const Icon = icons[idx]
             return (
               <div key={idx} className="text-center group">

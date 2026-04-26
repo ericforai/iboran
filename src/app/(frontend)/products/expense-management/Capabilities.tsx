@@ -71,7 +71,7 @@ export const Capabilities = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {capabilities.map((item, index) => (
+          {capabilities.map((item: any, index: number) => (
             <div 
               key={index} 
               className="group p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-blue-600 hover:scale-[1.02] transition-all duration-300"

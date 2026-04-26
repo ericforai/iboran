@@ -45,7 +45,7 @@ export default function Solution() {
 
         {/* Solution Cards */}
         <div className="grid md:grid-cols-2 gap-6">
-          {solutions.map((solution, index) => {
+          {solutions.map((solution: any, index: number) => {
             const Icon = solution.icon
             return (
               <div
@@ -70,7 +70,7 @@ export default function Solution() {
 
                 {/* Features */}
                 <ul className="space-y-2">
-                  {solution.features.map((feature, idx) => (
+                  {solution.features.map((feature: any, idx: number) => (
                     <li key={idx} className="flex items-center gap-2 text-sm text-slate-700">
                       <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
                       {feature}

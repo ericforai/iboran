@@ -35,7 +35,7 @@ export default function MigrationProcess() {
         </div>
 
         <div className="grid md:grid-cols-4 gap-8">
-          {steps.map((step, i) => (
+          {steps.map((step: any, i: number) => (
             <div key={i} className="relative group">
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-slate-200 -z-10"></div>

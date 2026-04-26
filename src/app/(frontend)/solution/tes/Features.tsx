@@ -50,7 +50,7 @@ export default function Features() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, idx) => (
+          {features.map((feature: any, idx: number) => (
             <div
               key={idx}
               className="p-8 rounded-2xl border border-slate-100 bg-white hover:border-blue-100 hover:shadow-xl hover:shadow-blue-50/50 transition-all"

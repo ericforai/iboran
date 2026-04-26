@@ -24,7 +24,7 @@ export const DeliveryScope = () => {
         </div>
 
         <div className="max-w-3xl mx-auto bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-          {scope.map((s, idx) => (
+          {scope.map((s: any, idx: number) => (
             <div key={idx} className="flex items-center justify-between p-6 border-b border-gray-50 last:border-0 hover:bg-gray-50 transition-colors">
               <span className={`text-lg transition-colors ${s.status === 'excluded' ? 'text-gray-400 line-through' : 'text-gray-700'}`}>
                 {s.item}

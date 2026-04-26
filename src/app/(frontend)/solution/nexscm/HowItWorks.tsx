@@ -43,7 +43,7 @@ export default function HowItWorks() {
           <h2 className="text-3xl md:text-5xl font-black text-[#1F2329] mb-6">全链路协同流程</h2>
           <p className="text-lg text-slate-500 font-medium">从创意到成品，从交付到再生，NexSCM 为您管理每一个关键里程碑。</p>
           <div className="flex justify-center gap-1 mt-8">
-            {[1, 2, 3, 4].map(i => (
+            {[1, 2, 3, 4].map((i: any) => (
               <div key={i} className="w-1.5 h-1.5 rounded-full bg-slate-200" />
             ))}
           </div>
@@ -55,7 +55,7 @@ export default function HowItWorks() {
           <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 hidden lg:block z-0" />
           
           <div className="grid lg:grid-cols-4 gap-8 relative z-10">
-            {steps.map((step, idx) => (
+            {steps.map((step: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -123,7 +123,7 @@ export default function HowItWorks() {
                  <ArrowRight size={20} />
               </div>
               <div className="flex -space-x-2">
-                 {[1,2,3].map(i => (
+                 {[1,2,3].map((i: any) => (
                     <div key={i} className="w-12 h-12 rounded-full border-2 border-white bg-slate-100" />
                  ))}
               </div>

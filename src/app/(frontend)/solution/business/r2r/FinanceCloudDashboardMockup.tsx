@@ -81,7 +81,7 @@ export default function FinanceCloudDashboardMockup() {
                 <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-100">
                   <div className="font-bold text-slate-700 mb-2">资金流入流出</div>
                   <div className="h-24 flex items-end gap-2 px-2">
-                    {[40, 60, 45, 70, 50, 80, 65].map((h, i) => (
+                    {[40, 60, 45, 70, 50, 80, 65].map((h: any, i: number) => (
                       <div key={i} className="flex-1 bg-blue-500 rounded-t opacity-80" style={{ height: `${h}%` }} />
                     ))}
                   </div>

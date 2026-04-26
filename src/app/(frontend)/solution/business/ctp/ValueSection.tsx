@@ -52,7 +52,7 @@ export default function ValueSection() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {metrics.map((item, idx) => (
+          {metrics.map((item: any, idx: number) => (
             <div 
               key={idx} 
               className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col hover:shadow-xl transition-all duration-300"
@@ -72,7 +72,7 @@ export default function ValueSection() {
               </p>
 
               <div className="mt-auto grid grid-cols-3 gap-3">
-                {item.stats.map((stat, sIdx) => (
+                {item.stats.map((stat: any, sIdx: number) => (
                   <div key={sIdx} className="bg-slate-50 p-3 rounded-xl text-center">
                     <div className={`${
                       item.color === 'blue' ? 'text-blue-600' :

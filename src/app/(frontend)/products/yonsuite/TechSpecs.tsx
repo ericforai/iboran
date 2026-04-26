@@ -52,7 +52,7 @@ export default function TechSpecs() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {specs.map((spec, idx) => (
+          {specs.map((spec: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -66,7 +66,7 @@ export default function TechSpecs() {
               </div>
               <h3 className="text-lg font-bold text-[#1F2329] mb-6">{spec.title}</h3>
               <div className="space-y-4">
-                {spec.items.map((item, i) => (
+                {spec.items.map((item: any, i: number) => (
                   <div key={i} className="flex justify-between items-center text-sm">
                     <span className="text-slate-500">{item.label}</span>
                     <span className="font-semibold text-[#1F2329]">{item.value}</span>

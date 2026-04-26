@@ -45,7 +45,7 @@ export default function HowItWorks() {
           <div className="hidden lg:block absolute top-12 left-0 w-full h-0.5 bg-slate-200 -z-0"></div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, idx) => (
+            {steps.map((step: any, idx: number) => (
               <div key={idx} className="relative z-10 bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-12 h-12 bg-white border-2 border-[#0052D9] text-[#0052D9] rounded-full flex items-center justify-center mb-6 mx-auto lg:mx-0 font-bold text-xl relative">
                   <span className="bg-white px-1 z-10">{idx + 1}</span>

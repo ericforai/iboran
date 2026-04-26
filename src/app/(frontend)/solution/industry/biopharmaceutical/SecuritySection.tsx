@@ -70,7 +70,7 @@ export function SecuritySection() {
 
           {/* Right Side: Features Grid */}
           <div className="lg:w-1/2 grid sm:grid-cols-2 gap-8">
-            {securityFeatures.map((feature, index) => (
+            {securityFeatures.map((feature: any, index: number) => (
               <div key={index} className="group p-8 rounded-3xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:shadow-xl hover:border-blue-100 transition-all duration-300">
                 <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                   <feature.icon className="w-7 h-7 text-blue-600 group-hover:text-white" />

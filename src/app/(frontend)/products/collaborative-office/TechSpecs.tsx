@@ -37,7 +37,7 @@ export default function TechSpecs() {
         <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-12 text-center">技术规范与集成能力</h2>
         
         <div className="grid md:grid-cols-2 gap-8">
-          {specs.map((spec, idx) => (
+          {specs.map((spec: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
@@ -52,7 +52,7 @@ export default function TechSpecs() {
                 <h3 className="text-xl font-bold text-[#1F2329] mb-3">{spec.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed mb-4">{spec.desc}</p>
                 <div className="flex flex-wrap gap-2">
-                  {spec.tags.map(tag => (
+                  {spec.tags.map((tag: any) => (
                     <span key={tag} className="px-2 py-1 bg-slate-100 text-slate-500 text-[10px] font-bold rounded uppercase tracking-wider">
                       {tag}
                     </span>

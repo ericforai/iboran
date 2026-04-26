@@ -47,14 +47,14 @@ export default function DeliveryScope() {
         <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-12 text-center">交付边界与范围</h2>
         
         <div className="grid lg:grid-cols-3 gap-8">
-          {scopes.map((scope, idx) => (
+          {scopes.map((scope: any, idx: number) => (
             <div key={idx} className={`p-8 rounded-2xl border ${scope.className}`}>
               <div className="flex items-center gap-3 mb-6">
                 {scope.icon}
                 <h3 className="text-xl font-bold text-[#1F2329]">{scope.title}</h3>
               </div>
               <ul className="space-y-4">
-                {scope.items.map((item, i) => (
+                {scope.items.map((item: any, i: number) => (
                   <li key={i} className="flex gap-3 text-sm text-slate-600 leading-relaxed">
                     <div className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 shrink-0"></div>
                     {item}

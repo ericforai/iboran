@@ -182,7 +182,7 @@ export default function Challenge() {
 
           {/* Challenge List */}
           <div className="space-y-4">
-            {challenges.map((challenge, index) => {
+            {challenges.map((challenge: any, index: number) => {
               const Icon = challenge.icon
               return (
                 <div

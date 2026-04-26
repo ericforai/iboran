@@ -50,7 +50,7 @@ export default function BankLinkIllustration() {
           {/* 左侧边栏 - 模拟菜单 */}
           <rect x="250" y="201" width="80" height="349" fill="#F8FAFC" rx="0" />
           <rect x="329" y="201" width="1" height="349" fill="#E2E8F0" />
-          {[1, 2, 3, 4, 5].map((i) => (
+          {[1, 2, 3, 4, 5].map((i: any) => (
              <rect key={i} x="270" y={220 + i * 30} width="40" height="6" rx="3" fill={i === 1 ? '#0052D9' : '#CBD5E1'} />
           ))}
 
@@ -104,7 +104,7 @@ export default function BankLinkIllustration() {
         </motion.g>
 
         {/* 银行连接节点与数据流 */}
-        {nodes.map((node, i) => (
+        {nodes.map((node: any, i: number) => (
           <g key={i}>
              {/* 连接线 */}
              <path 

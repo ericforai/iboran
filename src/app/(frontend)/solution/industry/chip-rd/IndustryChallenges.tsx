@@ -57,7 +57,7 @@ const IndustryChallenges = () => {
 
         {/* Challenges Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {challenges.map((challenge, idx) => (
+          {challenges.map((challenge: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}

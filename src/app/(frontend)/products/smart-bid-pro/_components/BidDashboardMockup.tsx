@@ -66,7 +66,7 @@ export const BidDashboardMockup = () => {
                 { label: '活跃跟进中', value: '42', grow: '5个临期', icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50' },
                 { label: '综合中标率', value: '68.5%', grow: '+2.4%', icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50' },
                 { label: '知识文档库', value: '3,520', grow: '+15%', icon: FileText, color: 'text-indigo-600', bg: 'bg-indigo-50' }
-              ].map((stat, i) => (
+              ].map((stat: any, i: number) => (
                 <div key={i} className="bg-white border border-slate-100 p-6 rounded-[24px] shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex justify-between items-start mb-3">
                     <span className="text-slate-500 text-xs font-extrabold uppercase tracking-widest">{stat.label}</span>
@@ -101,7 +101,7 @@ export const BidDashboardMockup = () => {
                   { title: '某智慧城市二期建设项目', tag: '重点项目', status: '编制中', progress: 78, date: '2024-04-10', users: 5 },
                   { title: '全国电力数字化深度采购', tag: '公开招标', status: '审核中', progress: 95, date: '2024-04-05', users: 3 },
                   { title: '大型银行云基础架构项目', tag: '框架协议', status: '校对中', progress: 45, date: '2024-04-15', users: 8 }
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <motion.div 
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
@@ -134,7 +134,7 @@ export const BidDashboardMockup = () => {
 
                     <div className="flex justify-between items-center mt-4">
                       <div className="flex -space-x-2.5">
-                        {[1, 2, 3].map(u => (
+                        {[1, 2, 3].map((u: any) => (
                           <div key={u} className="w-8 h-8 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-[10px] font-black shadow-sm">
                             U{u}
                           </div>

@@ -66,7 +66,7 @@ export default function CustomerSuccess() {
                 </p>
                 
                 <div className="flex flex-wrap gap-3">
-                  {capabilities.map((cap, idx) => (
+                  {capabilities.map((cap: any, idx: number) => (
                     <span 
                       key={idx}
                       className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium"
@@ -87,7 +87,7 @@ export default function CustomerSuccess() {
 
           {/* Advantages Grid */}
           <div className="grid md:grid-cols-3 gap-8">
-            {advantages.map((adv, idx) => (
+            {advantages.map((adv: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}

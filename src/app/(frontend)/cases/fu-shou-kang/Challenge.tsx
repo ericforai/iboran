@@ -37,7 +37,7 @@ export default function Challenge() {
         <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           <div className="lg:col-span-7">
             <div className="grid gap-6">
-              {challenges.map((item, index) => {
+              {challenges.map((item: any, index: number) => {
                 const Icon = challengeIcons[index]
                 return (
                   <div
@@ -70,7 +70,7 @@ export default function Challenge() {
               </p>
 
               <div className="mt-6 space-y-4">
-                {riskItems.map((item) => (
+                {riskItems.map((item: any) => (
                   <div key={item.label}>
                     <div className="flex items-center justify-between text-sm text-slate-700">
                       <span>{item.label}</span>

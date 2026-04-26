@@ -34,14 +34,14 @@ export const TechSpecs = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {specs.map((spec, idx) => (
+          {specs.map((spec: any, idx: number) => (
             <div key={idx} className="p-8 rounded-3xl border border-gray-100 hover:border-blue-200 transition-all bg-gray-50/30">
               <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-6">
                 <spec.icon className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">{spec.title}</h3>
               <ul className="space-y-3">
-                {spec.items.map((item, i) => (
+                {spec.items.map((item: any, i: number) => (
                   <li key={i} className="flex items-center gap-2 text-sm text-gray-600 font-medium">
                     <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
                     {item}

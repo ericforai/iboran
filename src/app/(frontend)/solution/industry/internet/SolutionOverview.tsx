@@ -64,7 +64,7 @@ export default function SolutionOverview() {
             <div className="pt-6">
                <h4 className="font-bold text-[#1F2329] mb-3">核心产品模块：</h4>
                <div className="flex flex-wrap gap-2">
-                 {coreProducts.map((p, i) => (
+                 {coreProducts.map((p: any, i: number) => (
                    <span key={i} className="px-3 py-1 bg-white border border-slate-200 rounded-full text-sm text-slate-600 shadow-sm">
                      {p.name}
                    </span>

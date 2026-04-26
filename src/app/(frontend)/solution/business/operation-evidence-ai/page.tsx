@@ -143,7 +143,7 @@ export default function OperationEvidenceAIPage() {
       <section className="relative bg-slate-50 py-20 md:py-24">
         <div className="container mx-auto px-4">
           <div className="relative grid grid-cols-1 gap-16 md:grid-cols-3 md:gap-20">
-            {pillars.map((item, idx) => {
+            {pillars.map((item: any, idx: number) => {
               const Icon = item.icon
               return (
                 <div key={item.title} className="group relative">
@@ -245,7 +245,7 @@ export default function OperationEvidenceAIPage() {
                 {/* Visual Line for steps */}
                 <div className="absolute top-[3.5rem] left-[15%] right-[15%] hidden h-[2px] bg-slate-100 md:block" />
                 
-                {steps.map((step, idx) => (
+                {steps.map((step: any, idx: number) => (
                   <div key={step.title} className="relative z-10 flex flex-col items-center">
                     <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-xl font-black text-white shadow-lg shadow-blue-200">
                       {idx + 1}
@@ -274,7 +274,7 @@ export default function OperationEvidenceAIPage() {
             </div>
             
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {scenarios.map((item) => (
+              {scenarios.map((item: any) => (
                 <div 
                   key={item} 
                   className="group flex cursor-pointer items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 transition-all hover:border-emerald-200 hover:shadow-md"

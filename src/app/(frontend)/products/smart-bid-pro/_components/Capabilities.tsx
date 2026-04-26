@@ -32,7 +32,7 @@ const DemandWidget = () => (
       { title: '全国电力数字化集采项目', budget: '￥1.2B', match: 92, time: '15分钟前' },
       { title: '大型银行云平台二期工程', budget: '￥850W', match: 88, time: '1小时前' },
       { title: '省级算力中心建设项目', budget: '￥5,600W', match: 95, time: '3小时前' }
-    ].map((item, i) => (
+    ].map((item: any, i: number) => (
       <motion.div 
         key={i}
         initial={{ opacity: 0, y: 10 }}
@@ -70,14 +70,14 @@ const ExecutionWidget = () => (
         { label: '待处理 (Draft)', count: 2, items: [{ t: '资质文件汇总', p: 40 }] },
         { label: '执行中 (Doing)', count: 4, items: [{ t: '技术偏离表确认', p: 75 }, { t: '报价模型测算', p: 20 }] },
         { label: '已提交 (Done)', count: 12, items: [{ t: '某智慧工厂标书', p: 100 }] }
-      ].map((col, i) => (
+      ].map((col: any, i: number) => (
         <div key={i} className="flex flex-col gap-3">
           <div className="flex items-center justify-between px-1">
             <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">{col.label}</span>
             <span className="text-[10px] font-bold bg-slate-100 text-slate-500 px-1.5 rounded-full">{col.count}</span>
           </div>
           <div className="flex-1 bg-slate-50/50 rounded-2xl p-2 space-y-2 border border-slate-100">
-            {col.items.map((item, j) => (
+            {col.items.map((item: any, j: number) => (
               <div key={j} className="p-3 bg-white border border-slate-100 rounded-xl shadow-sm">
                 <p className="text-[11px] font-extrabold text-slate-800 mb-2 leading-tight">{item.t}</p>
                 <div className="h-1 bg-slate-100 rounded-full overflow-hidden">
@@ -129,7 +129,7 @@ const QualityWidget = () => (
           { label: '财务报表审计', status: 'pass' },
           { label: '技术偏离分析', status: 'warn' },
           { label: '专家委员会评审', status: 'pending' }
-        ].map((check, i) => (
+        ].map((check: any, i: number) => (
           <div key={i} className="flex items-center justify-between p-3 bg-white border border-slate-100 rounded-xl shadow-sm">
             <span className="text-[10px] font-bold text-slate-700">{check.label}</span>
             {check.status === 'pass' && <BadgeCheck size={14} className="text-emerald-500" />}
@@ -158,7 +158,7 @@ const KnowledgeWidget = () => (
         { label: '项目案例 (Cases)', count: 156, last: '昨日更新', icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50' },
         { label: '标书范本 (Templates)', count: 48, last: '1wk ago', icon: Database, color: 'text-amber-600', bg: 'bg-amber-50' },
         { label: '人员简历 (Bios)', count: 85, last: '刚刚', icon: Briefcase, color: 'text-indigo-600', bg: 'bg-indigo-50' }
-      ].map((asset, i) => (
+      ].map((asset: any, i: number) => (
         <div key={i} className="p-6 bg-white border border-slate-100 rounded-[28px] shadow-sm hover:shadow-md transition-all group cursor-default">
           <div className="flex justify-between items-start mb-4">
             <div className={`p-2.5 rounded-xl ${asset.bg} ${asset.color}`}>
@@ -228,20 +228,20 @@ const features = [
 
 export const Capabilities = () => {
   const [activeTab, setActiveTab] = useState(features[0].id)
-  const activeFeature = features.find(f => f.id === activeTab) || features[0]
+  const activeFeature = features.find((f: any) => f.id === activeTab) || features[0]
 
   return (
     <section id="capabilities" className="py-16 md:py-32 bg-white px-4 sm:px-6 border-b border-slate-100 overflow-hidden">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {features.map((item: any, i: number) => (
+                {(features as any[]).map((item: any, i: number) => (
                     <div key={i}>
                         <h3>{item.title}</h3>
                         <p>{item.problem || item.description || item.desc || ""}</p>
                         <p>{item.solution || ""}</p>
                         <p>{item.outcome || ""}</p>
-                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{(typeof b === "object" ? (b.title || b.label || b.name || b.desc || JSON.stringify(b)) : b)}</li>)}</ul>}
                         {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
                     </div>
                 ))}
@@ -270,7 +270,7 @@ export const Capabilities = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-20 items-center">
           {/* Left: Tab selectors */}
           <div className="lg:col-span-5 space-y-4">
-            {features.map((f) => (
+            {features.map((f: any) => (
               <button
                 key={f.id}
                 onClick={() => setActiveTab(f.id)}

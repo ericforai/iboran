@@ -73,7 +73,7 @@ export default function Capabilities() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {capabilities.map((item, idx) => (
+          {capabilities.map((item: any, idx: number) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 20 }}

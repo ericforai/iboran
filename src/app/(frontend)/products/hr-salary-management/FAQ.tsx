@@ -42,7 +42,7 @@ export const FAQ = () => {
         </div>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {faqs.map((faq: any, index: number) => (
             <div key={index} className="border-b border-slate-100">
               <button
                 className="w-full flex items-center justify-between py-6 text-left font-bold text-slate-800 hover:text-blue-600 transition-colors"

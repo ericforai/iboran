@@ -82,7 +82,7 @@ export default function ElectronicArchivesDashboard() {
                   { label: '完整性 (Integrity)', status: 'Verified' },
                   { label: '可用性 (Usability)', status: 'Verified' },
                   { label: '安全性 (Security)', status: 'Verified' },
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <div key={i} className="flex items-center justify-between text-xs">
                     <span className="text-slate-600">{item.label}</span>
                     <span className="text-green-600 font-bold flex items-center gap-1">
@@ -131,7 +131,7 @@ export default function ElectronicArchivesDashboard() {
                     { icon: ShieldCheck, color: 'text-green-400', label: '合规校验', delay: 0 },
                     { icon: Search, color: 'text-amber-400', label: '智能检索', delay: 1 },
                     { icon: Zap, color: 'text-purple-400', label: '快速响应', delay: 2 },
-                  ].map((node, idx) => (
+                  ].map((node: any, idx: number) => (
                     <motion.div 
                       key={idx}
                       animate={{ 

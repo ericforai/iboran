@@ -71,7 +71,7 @@ function ModelingVisual() {
           { label: '产品维', icon: '📦', count: 1200 },
           { label: '渠道维', icon: '🌐', count: 12 },
           { label: '科目维', icon: '💹', count: 85 }
-        ].map((v, i) => (
+        ].map((v: any, i: number) => (
           <motion.div 
             key={i}
             initial={{ opacity: 0, scale: 0.9 }}
@@ -130,7 +130,7 @@ function PredictionVisual() {
       </div>
       <div className="flex-1 relative flex items-end justify-between px-2 gap-1 mb-6">
         {/* Past Data */}
-        {[30, 45, 40, 55, 60, 65, 75, 70].map((h, i) => (
+        {[30, 45, 40, 55, 60, 65, 75, 70].map((h: any, i: number) => (
           <div key={i} className="flex-1 bg-white/20 rounded-t-sm relative group h-full flex items-end">
             <motion.div 
               initial={{ height: 0 }}
@@ -140,7 +140,7 @@ function PredictionVisual() {
           </div>
         ))}
         {/* Forecast Data (Pulsing) */}
-        {[80, 85, 95, 92].map((h, i) => (
+        {[80, 85, 95, 92].map((h: any, i: number) => (
           <div key={i+8} className="flex-1 bg-white/5 rounded-t-sm relative h-full flex items-end">
             <motion.div 
               initial={{ height: 0 }}
@@ -262,7 +262,7 @@ function AnalysisVisual() {
             { label: '市场推广费', p: 85, c: '#E60012' },
             { label: '研发物料费', p: 48, c: '#0052D9' },
             { label: '日常办公费', p: 92, c: '#22C55E' }
-          ].map((item, i) => (
+          ].map((item: any, i: number) => (
             <div key={i} className="space-y-1.5">
               <div className="flex justify-between text-[9px]">
                 <span className="opacity-70">{item.label}</span>
@@ -292,7 +292,7 @@ function AnalysisVisual() {
             { name: '华北区市场活动', id: 'BX00192', val: '¥ 45,000' },
             { name: 'Q1 广告位投放', id: 'BX00204', val: '¥ 12,500' },
             { name: '社交媒体推广', id: 'BX00215', val: '¥ 8,800' }
-          ].map((item, i) => (
+          ].map((item: any, i: number) => (
             <motion.div 
               key={i}
               initial={{ x: -10, opacity: 0 }}
@@ -329,14 +329,14 @@ export default function Features() {
     <section className="py-24 bg-white overflow-hidden">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {features.map((item: any, i: number) => (
+                {(features as any[]).map((item: any, i: number) => (
                     <div key={i}>
                         <h3>{item.title}</h3>
                         <p>{item.problem || item.description || item.desc || ""}</p>
                         <p>{item.solution || ""}</p>
                         <p>{item.outcome || ""}</p>
-                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{(typeof b === "object" ? (b.title || b.label || b.name || b.desc || JSON.stringify(b)) : b)}</li>)}</ul>}
                         {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
                     </div>
                 ))}
@@ -350,7 +350,7 @@ export default function Features() {
             </h2>
             
             <div className="flex flex-col gap-4">
-              {features.map((feature) => (
+              {features.map((feature: any) => (
                 <button
                   key={feature.id}
                   onClick={() => setActiveTab(feature.id)}
@@ -380,7 +380,7 @@ export default function Features() {
                         {feature.description}
                       </p>
                       <ul className="space-y-2">
-                        {feature.bullets.map((bullet, i) => (
+                        {feature.bullets.map((bullet: any, i: number) => (
                           <li key={i} className="flex items-center gap-2 text-sm text-slate-700 font-medium">
                             <CheckCircle2 className="text-green-500 w-4 h-4" />
                             {bullet}
@@ -410,7 +410,7 @@ export default function Features() {
                 
                 <div className="relative z-10 text-center lg:text-left">
                    <div className="inline-block px-4 py-1 rounded-full bg-blue-100 text-[#0052D9] font-bold text-sm mb-6">
-                     核心指标: {features.find(f => f.id === activeTab)?.metric}
+                     核心指标: {features.find((f: any) => f.id === activeTab)?.metric}
                    </div>
                    
                    {/* High Fidelity Visual Framework */}
@@ -425,11 +425,11 @@ export default function Features() {
                             <div className="space-y-1">
                                <div className="text-slate-400 text-xs">实时数智引擎</div>
                                <div className="text-xl font-bold text-slate-800 tracking-tight">
-                                  {features.find(f => f.id === activeTab)?.subtitle}
+                                  {features.find((f: any) => f.id === activeTab)?.subtitle}
                                </div>
                             </div>
                              {(() => {
-                                const FeatureIcon = features.find(f => f.id === activeTab)?.icon
+                                const FeatureIcon = features.find((f: any) => f.id === activeTab)?.icon
                                 return FeatureIcon ? <FeatureIcon className="w-12 h-12 text-[#E60012]/10" /> : null
                              })()}
                          </div>

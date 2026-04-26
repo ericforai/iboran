@@ -55,7 +55,7 @@ export default function Overview() {
               <div className="mt-8 pt-6 border-t border-slate-200">
                 <div className="text-xs uppercase tracking-widest text-slate-400 mb-3">业务特征</div>
                 <div className="flex flex-wrap gap-2">
-                  {traits.map((trait) => (
+                  {traits.map((trait: any) => (
                     <span
                       key={trait}
                       className="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-600"
@@ -85,7 +85,7 @@ export default function Overview() {
               <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
                 <h3 className="text-sm font-semibold text-slate-900">转型目标</h3>
                 <ul className="mt-4 space-y-3 text-sm text-slate-600">
-                  {goals.map((goal) => (
+                  {goals.map((goal: any) => (
                     <li key={goal} className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-amber-600 mt-0.5" />
                       <span>{goal}</span>
@@ -100,7 +100,7 @@ export default function Overview() {
                   以集团财务为主线，覆盖费用、资金、税务与合同管理，实现业务与财务的统一协同。
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {scopes.map((scope) => (
+                  {scopes.map((scope: any) => (
                     <span
                       key={scope}
                       className="px-3 py-1 rounded-full bg-white border border-slate-200 text-xs text-slate-600"

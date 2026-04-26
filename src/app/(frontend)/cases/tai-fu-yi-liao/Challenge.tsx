@@ -27,7 +27,7 @@ export default function Challenge() {
           <p className="text-base sm:text-lg text-slate-600">转型前的核心痛点与业务瓶颈</p>
         </header>
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {challenges.map((challenge, index) => {
+          {challenges.map((challenge: any, index: number) => {
             const Icon = challenge.icon
             return (
               <div

@@ -77,7 +77,7 @@ export default function SolutionOverview() {
                   '生产智能化：柔性自主生产、AI驱动过程控制',
                   '业务协同化：采购、生产、输送、营销无缝衔接',
                   '资源共享化：设备、物资、人力、资金充分共享',
-                ].map((item, idx) => (
+                ].map((item: any, idx: number) => (
                   <li key={idx} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
                     <span className="text-slate-700">{item}</span>
@@ -110,7 +110,7 @@ export default function SolutionOverview() {
 
         {/* Core Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {coreProducts.map((product, idx) => (
+          {coreProducts.map((product: any, idx: number) => (
             <div
               key={idx}
               className="bg-white p-6 rounded-xl border border-slate-100 hover:shadow-md transition group"
@@ -135,7 +135,7 @@ export default function SolutionOverview() {
             <h3 className="text-xl font-bold text-[#1F2329]">交付物清单</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
-            {deliverables.map((item, idx) => (
+            {deliverables.map((item: any, idx: number) => (
               <div key={idx} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
                 <div>

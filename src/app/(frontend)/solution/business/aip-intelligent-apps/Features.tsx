@@ -37,7 +37,7 @@ export default function Features() {
         </div>
         
         <div className="grid md:grid-cols-2 gap-12">
-          {features.map((feature, idx) => (
+          {features.map((feature: any, idx: number) => (
             <div key={idx} className="flex gap-6 group">
               <div className="flex-shrink-0 w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center group-hover:bg-[#0052D9] transition-colors">
                 <feature.icon className="w-8 h-8 text-[#0052D9] group-hover:text-white transition-colors" />

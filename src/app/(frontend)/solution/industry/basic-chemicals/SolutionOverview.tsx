@@ -63,13 +63,13 @@ export default function SolutionOverview() {
         {/* Architecture Layers */}
         <div className="max-w-4xl mx-auto mb-16">
           <div className="space-y-3">
-            {architectureLayers.map((layer, idx) => (
+            {architectureLayers.map((layer: any, idx: number) => (
               <div key={idx} className="flex items-stretch gap-3">
                 <div className={`${layer.color} text-white font-bold text-sm px-4 py-3 rounded-l-lg flex items-center justify-center min-w-[80px]`}>
                   {layer.name}
                 </div>
                 <div className="flex-1 bg-white rounded-r-lg p-3 border border-slate-200 flex flex-wrap gap-2">
-                  {layer.modules.map((module, midx) => (
+                  {layer.modules.map((module: any, midx: number) => (
                     <span key={midx} className="px-3 py-1 bg-slate-100 text-slate-700 text-sm rounded-full">
                       {module}
                     </span>
@@ -82,7 +82,7 @@ export default function SolutionOverview() {
 
         {/* Core Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {coreProducts.map((product, idx) => (
+          {coreProducts.map((product: any, idx: number) => (
             <div key={idx} className="bg-white p-6 rounded-xl border border-slate-200 hover:shadow-lg transition-shadow">
               <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
                 <product.icon className="w-6 h-6 text-[#0052D9]" />

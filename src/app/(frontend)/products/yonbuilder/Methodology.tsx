@@ -49,7 +49,7 @@ export default function Methodology() {
           <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 hidden lg:block"></div>
           
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            {steps.map((step, index) => (
+            {steps.map((step: any, index: number) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

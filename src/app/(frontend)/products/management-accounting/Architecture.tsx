@@ -29,7 +29,7 @@ export default function Architecture() {
                 { label: '制造云 (MES/ERP)', icon: <Database className="w-5 h-5" /> },
                 { label: '采购云 (SRM)', icon: <Layers className="w-5 h-5" /> },
                 { label: '资产/人力云', icon: <Zap className="w-5 h-5" /> }
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
@@ -76,7 +76,7 @@ export default function Architecture() {
                 { label: '财务会计 (合规外报)', icon: <ShieldCheck className="w-5 h-5" /> },
                 { label: '管理核算 (内部决策)', icon: <BarChart4 className="w-5 h-5" /> },
                 { label: '智能分析 (盈利洞察)', icon: <Layers className="w-5 h-5" /> }
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 20 }}
@@ -95,7 +95,7 @@ export default function Architecture() {
 
           {/* Value Tags */}
           <div className="mt-20 flex flex-wrap justify-center gap-4">
-             {['双口径核算', '实时事项驱动', '精细化溯源', '智能化规则', '全球化支撑'].map((tag, i) => (
+             {['双口径核算', '实时事项驱动', '精细化溯源', '智能化规则', '全球化支撑'].map((tag: any, i: number) => (
                <span key={i} className="px-6 py-2 bg-white border border-slate-200 rounded-full text-sm font-semibold text-slate-600 shadow-sm">
                   {tag}
                </span>

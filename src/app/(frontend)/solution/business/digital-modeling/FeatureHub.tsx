@@ -102,7 +102,7 @@ export default function FeatureHub() {
         <div className="flex flex-col lg:flex-row gap-12 items-start text-xs md:text-sm lg:text-base">
           {/* Tabs Navigation */}
           <div className="lg:w-1/3 w-full space-y-4">
-            {features.map((feature) => (
+            {features.map((feature: any) => (
               <div
                 key={feature.id}
                 onClick={() => setActiveTab(feature.id)}
@@ -143,10 +143,10 @@ export default function FeatureHub() {
                   className="flex flex-col h-full"
                 >
                   <div className="mb-10 lg:mb-12">
-                    <div className="text-sm font-bold text-[#E60012] mb-2 uppercase tracking-wider">{features.find(f => f.id === activeTab)?.metric}</div>
+                    <div className="text-sm font-bold text-[#E60012] mb-2 uppercase tracking-wider">{features.find((f: any) => f.id === activeTab)?.metric}</div>
                     <h2 className="text-3xl font-bold text-slate-800 mb-6">关键核心特性</h2>
                     <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
-                      {features.find(f => f.id === activeTab)?.details.map((detail, idx) => (
+                      {features.find((f: any) => f.id === activeTab)?.details.map((detail: any, idx: number) => (
                         <div key={idx} className="flex items-start gap-3 p-1">
                           <CheckCircle2 size={18} className="text-[#0052D9] shrink-0 mt-0.5" />
                           <span className="text-slate-600 leading-relaxed text-sm md:text-base">{detail}</span>

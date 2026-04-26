@@ -62,7 +62,7 @@ export default function CoreCapabilities() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {capabilities.map((cap, idx) => (
+          {capabilities.map((cap: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}

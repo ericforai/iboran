@@ -84,7 +84,7 @@ export default function Hero() {
                       { icon: Users, name: '会员', desc: '营销运营' },
                       { icon: TrendingUp, name: 'BI', desc: '经营分析' },
                       { icon: Utensils, name: '点餐', desc: '全渠道' },
-                    ].map((module, idx) => (
+                    ].map((module: any, idx: number) => (
                       <div key={idx} className="bg-orange-50 rounded-lg p-3 text-center border border-orange-100 hover:bg-orange-100 transition">
                         <module.icon size={20} className="mx-auto text-orange-600 mb-1" />
                         <div className="text-[#1F2329] font-bold text-sm">{module.name}</div>

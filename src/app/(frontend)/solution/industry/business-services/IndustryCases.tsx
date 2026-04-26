@@ -31,7 +31,7 @@ export default function IndustryCases({ cases }: IndustryCasesProps) {
         </div>
         
         <div className="grid lg:grid-cols-2 gap-8">
-          {cases.map((caseItem, idx) => (
+          {cases.map((caseItem: any, idx: number) => (
             <div
               key={idx}
               className="bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300"

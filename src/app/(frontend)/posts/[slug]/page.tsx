@@ -126,7 +126,7 @@ export default async function Post({ params: paramsPromise }: Args) {
                 <div className="relative z-10">
                   <h3 className="text-2xl lg:text-3xl font-bold mb-4">准备好开启数字化转型了吗？</h3>
                   <p className="text-slate-300 text-lg mb-8 max-w-xl">
-                    泊冉软件专家团队深耕行业 12 年，已助力 500+ 企业实现精密管理。点击下方按钮，获取专属行业深度建议。
+                    泊冉软件专家团队深耕行业 14 年，已助力 500+ 企业实现精密管理。点击下方按钮，获取专属行业深度建议。
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
@@ -150,7 +150,7 @@ export default async function Post({ params: paramsPromise }: Args) {
               {post.relatedPosts && post.relatedPosts.length > 0 && (
                 <RelatedPosts
                   className="mt-20 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-                  docs={post.relatedPosts.filter((post) => typeof post === 'object')}
+                  docs={post.relatedPosts.filter((post: any) => typeof post === 'object')}
                 />
               )}
             </div>

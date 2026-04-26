@@ -20,7 +20,7 @@ export default function CTA() {
                 以集团财务为核心构建连锁餐饮的数字化治理体系，让门店经营更透明、资金流转更高效。
               </p>
               <div className="mt-6 grid sm:grid-cols-3 gap-3 text-sm text-red-50">
-                {points.map((point) => (
+                {points.map((point: any) => (
                   <div key={point} className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-white/80" />
                     <span>{point}</span>

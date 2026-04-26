@@ -35,7 +35,7 @@ export default function KeyScenarios({ scenarios }: KeyScenariosProps) {
         
         {/* Tab Navigation */}
         <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {scenarios.map((scenario, idx) => (
+          {scenarios.map((scenario: any, idx: number) => (
             <button
               key={idx}
               onClick={() => setActiveTab(idx)}

@@ -114,7 +114,7 @@ export default function RoadmapPage() {
       {/* Stats Bar */}
       <div className="container mx-auto px-4 -mt-6 lg:-mt-10 relative z-20">
         <div className="bg-white rounded-2xl shadow-xl flex flex-wrap divide-y md:divide-y-0 md:divide-x divide-slate-100 p-4 lg:p-8">
-          {stats.map((stat, i) => (
+          {stats.map((stat: any, i: number) => (
             <div key={i} className="flex-1 min-w-[160px] lg:min-w-[200px] flex items-center justify-center gap-3 lg:gap-4 py-3 lg:py-4 md:py-0">
               <div className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600">
                 <stat.icon className="w-5 h-5 lg:w-6 lg:h-6" />
@@ -144,7 +144,7 @@ export default function RoadmapPage() {
                   "以客户价值为中心，快速实现业务闭环",
                   "深度利用 AW (Agile Workstation) 支撑平台",
                   "A 类迁移工具 + B 类实施工具沉淀提效"
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <div key={i} className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-blue-600" />
                     <span className="font-bold text-slate-800">{item}</span>
@@ -176,7 +176,7 @@ export default function RoadmapPage() {
 
           {/* Timeline Phases */}
           <StaggerContainer className="grid lg:grid-cols-2 gap-4 lg:gap-8">
-            {phases.map((phase) => (
+            {phases.map((phase: any) => (
               <SlideUp key={phase.id} className="group relative">
                 <div className="h-full bg-white rounded-2xl lg:rounded-3xl p-5 lg:p-12 border border-slate-200 shadow-sm transition-all duration-500 hover:shadow-2xl hover:border-blue-200 relative overflow-hidden">
                   {/* Phase ID Background */}
@@ -198,7 +198,7 @@ export default function RoadmapPage() {
                     <p className="text-slate-500 mb-5 lg:mb-10 leading-relaxed font-medium text-sm lg:text-base">{phase.description}</p>
 
                     <div className="space-y-3 lg:space-y-6 mb-5 lg:mb-10">
-                      {phase.details.map((detail, idx) => (
+                      {phase.details.map((detail: any, idx: number) => (
                         <div key={idx} className="flex gap-3 lg:gap-4 group/item">
                           <div className={`mt-2 w-1.5 h-1.5 rounded-full bg-${phase.color}-600 shrink-0`}></div>
                           <div>
@@ -212,7 +212,7 @@ export default function RoadmapPage() {
                     <div className="pt-4 lg:pt-8 border-t border-slate-100">
                       <div className="text-[10px] font-mono font-black text-slate-400 uppercase tracking-widest mb-3 lg:mb-4">核心阶段成果 (Outputs)</div>
                       <div className="flex flex-wrap gap-1.5 lg:gap-2">
-                        {phase.outputs.map((out, i) => (
+                        {phase.outputs.map((out: any, i: number) => (
                           <span key={i} className="px-2.5 lg:px-3 py-1.5 bg-slate-50 text-slate-600 rounded-lg text-xs font-bold border border-slate-100">
                             {out}
                           </span>

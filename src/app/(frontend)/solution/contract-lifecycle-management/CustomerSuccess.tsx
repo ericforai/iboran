@@ -45,7 +45,7 @@ export default function CustomerSuccess() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-3 gap-8 mb-20 max-w-4xl mx-auto divide-x divide-slate-200">
-             {stats.map((stat, i) => (
+             {stats.map((stat: any, i: number) => (
                  <div key={i} className="text-center px-4">
                      <div className="text-4xl font-extrabold text-[#0052D9] mb-2">{stat.value}</div>
                      <div className="font-bold text-slate-800 mb-1">{stat.label}</div>
@@ -56,7 +56,7 @@ export default function CustomerSuccess() {
 
         {/* Testimonials */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-20">
-          {testimonials.map((item, idx) => (
+          {testimonials.map((item: any, idx: number) => (
             <div 
               key={idx} 
               className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 relative hover:shadow-lg transition-shadow"
@@ -86,7 +86,7 @@ export default function CustomerSuccess() {
         <div className="border-t border-slate-200 pt-16">
             <p className="text-center text-slate-400 text-sm mb-8 uppercase tracking-widest font-bold">TRUSTED BY INDUSTRY LEADERS</p>
             <div className="flex flex-wrap justify-center gap-4 lg:gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                {logos.map((logo, i) => (
+                {logos.map((logo: any, i: number) => (
                     <div key={i} className="px-6 py-3 bg-white border border-slate-100 rounded-lg font-bold text-slate-600 shadow-sm text-sm">
                         {logo}
                     </div>

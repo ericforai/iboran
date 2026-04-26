@@ -26,8 +26,8 @@ export async function generateStaticParams() {
   }) as PaginatedDocs<Resource>
 
   return resources.docs
-    .filter((doc) => doc.slug)
-    .map((doc) => ({
+    .filter((doc: any) => doc.slug)
+    .map((doc: any) => ({
       slug: doc.slug,
     }))
 }

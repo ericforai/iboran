@@ -123,7 +123,7 @@ export function BestPracticesSection() {
                 <div className="max-w-4xl mx-auto mb-12">
                     {/* Desktop: Tab Navigation */}
                     <div className="hidden lg:flex gap-2 mb-6 p-1 bg-white rounded-xl border border-slate-200">
-                        {practices.map((practice) => (
+                        {practices.map((practice: any) => (
                             <button
                                 key={practice.id}
                                 onClick={() => setActiveId(practice.id)}
@@ -142,14 +142,14 @@ export function BestPracticesSection() {
 
                     {/* Desktop: Active Practice Content */}
                     <div className="hidden lg:block">
-                        {practices.filter(p => p.id === activeId).map((practice) => (
+                        {practices.filter((p: any) => p.id === activeId).map((practice: any) => (
                             <PracticeCard key={practice.id} practice={practice} />
                         ))}
                     </div>
 
                     {/* Mobile: Accordion */}
                     <div className="lg:hidden space-y-3">
-                        {practices.map((practice) => (
+                        {practices.map((practice: any) => (
                             <div key={practice.id} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
                                 <button
                                     onClick={() => setActiveId(activeId === practice.id ? 0 : practice.id)}
@@ -256,7 +256,7 @@ function PracticeContent({ practice }: { practice: Practice }) {
                     泊冉的做法
                 </div>
                 <ul className="space-y-2">
-                    {practice.approach.map((item, idx) => (
+                    {practice.approach.map((item: any, idx: number) => (
                         <li key={idx} className="flex items-start gap-2 text-sm text-[#1F2329]">
                             <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: practice.color }} />
                             {item}

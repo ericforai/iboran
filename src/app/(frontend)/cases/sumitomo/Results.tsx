@@ -42,7 +42,7 @@ export default function Results() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-            {results.map((item, index) => (
+            {results.map((item: any, index: number) => (
                 <div key={index} className="bg-slate-800/50 rounded-2xl p-8 border border-slate-700/50 backdrop-blur-sm hover:bg-slate-800 transition-all duration-300">
                     <div className="flex items-center justify-between mb-8">
                          <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center">

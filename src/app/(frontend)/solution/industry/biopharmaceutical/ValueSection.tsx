@@ -46,7 +46,7 @@ export function ValueSection() {
           {/* Connecting Line (Desktop) */}
           <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500/0 via-blue-500/20 to-blue-500/0 -translate-y-1/2 z-0"></div>
 
-          {stages.map((stage, index) => (
+          {stages.map((stage: any, index: number) => (
             <div 
               key={index}
               className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 z-10"
@@ -64,7 +64,7 @@ export function ValueSection() {
               </div>
 
               <div className="space-y-4">
-                {stage.features.map((feature, i) => (
+                {stage.features.map((feature: any, i: number) => (
                   <div key={i} className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0" />
                     <span className="text-sm text-slate-300 font-medium">{feature}</span>

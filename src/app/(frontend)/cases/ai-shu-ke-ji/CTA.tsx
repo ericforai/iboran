@@ -20,7 +20,7 @@ export default function CTA() {
                 构建覆盖数据治理、财务协同与安全防护的一体化平台，让业务更敏捷、更可控。
               </p>
               <div className="mt-6 grid sm:grid-cols-3 gap-3 text-sm text-cyan-50">
-                {points.map((point) => (
+                {points.map((point: any) => (
                   <div key={point} className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-white/80" />
                     <span>{point}</span>

@@ -25,7 +25,7 @@ export default function SolutionOverview() {
             </p>
             
             <div className="space-y-4">
-              {features.map((feature, idx) => (
+              {features.map((feature: any, idx: number) => (
                 <div key={idx} className="flex gap-3 items-start">
                   <CheckCircle2 className="w-6 h-6 text-[#E60012] shrink-0" />
                   <p className="text-slate-700 font-medium">{feature}</p>

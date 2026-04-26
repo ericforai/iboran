@@ -47,7 +47,7 @@ export const DeliveryMethodology = () => {
           {/* Connector Line (Desktop) */}
           <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -translate-y-1/2 z-0"></div>
           
-          {steps.map((step, idx) => (
+          {steps.map((step: any, idx: number) => (
             <div key={idx} className="relative z-10 p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100 group">
               <div className={`w-14 h-14 ${step.color} rounded-2xl flex items-center justify-center mb-6 text-white transform group-hover:rotate-6 transition-transform`}>
                 <step.icon className="w-8 h-8" />

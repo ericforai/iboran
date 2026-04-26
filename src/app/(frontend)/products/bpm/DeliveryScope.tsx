@@ -43,7 +43,7 @@ export default function DeliveryScope() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {scopeItems.map((group, gIdx) => (
+          {scopeItems.map((group: any, gIdx: number) => (
             <div key={gIdx} className={`rounded-2xl border ${gIdx === 0 ? 'border-blue-100 bg-blue-50/30' : 'border-slate-200 bg-slate-50/50'} overflow-hidden`}>
               <div className={`px-8 py-6 border-b ${gIdx === 0 ? 'border-blue-100 bg-blue-100/50' : 'border-slate-200 bg-slate-100/50'}`}>
                 <div className="flex items-center gap-3">
@@ -53,7 +53,7 @@ export default function DeliveryScope() {
               </div>
               <div className="p-8">
                 <ul className="space-y-4">
-                  {group.items.map((item, iIdx) => (
+                  {group.items.map((item: any, iIdx: number) => (
                     <li key={iIdx} className="flex items-center justify-between group">
                       <div className="flex items-center gap-3">
                         {item.status === 'included' ? (

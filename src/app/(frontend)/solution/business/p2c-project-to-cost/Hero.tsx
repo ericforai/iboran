@@ -115,7 +115,7 @@ export default function Hero() {
                       <TrendingUp size={16} className="text-green-500"/>
                     </div>
                     <div className="h-24 flex items-end justify-between gap-2 px-2">
-                      {[40, 60, 45, 70, 85, 90, 65, 55, 75, 80].map((h, i) => (
+                      {[40, 60, 45, 70, 85, 90, 65, 55, 75, 80].map((h: any, i: number) => (
                         <div 
                           key={i} 
                           className={`w-full rounded-t-sm transition-all duration-500 ${h > 80 ? 'bg-red-400' : 'bg-[#0052D9]'}`}

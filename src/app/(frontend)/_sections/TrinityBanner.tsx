@@ -96,7 +96,7 @@ export const TrinityBanner = () => {
         </motion.div>
 
         <div className="mt-8 grid grid-cols-1 gap-4 md:mt-10 md:grid-cols-3 md:gap-5">
-          {trinityItems.map((item, index) => {
+          {trinityItems.map((item: any, index: number) => {
             const Icon = item.icon
 
             return (
@@ -151,7 +151,7 @@ export const TrinityBanner = () => {
                 让每一笔经营都有结果，每一个结果都有证据，每一份证据都能转化为下一步增长。
               </p>
               <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
-                {outcomes.map((outcome) => (
+                {outcomes.map((outcome: any) => (
                   <div
                     key={outcome}
                     className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-medium text-slate-700"

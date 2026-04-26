@@ -29,7 +29,7 @@ export const TrustProof = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto mb-16">
-          {cases.map((item, index) => (
+          {cases.map((item: any, index: number) => (
             <Card key={index} className="border-none shadow-sm hover:shadow-lg transition-all overflow-hidden bg-white">
               <CardContent className="p-0 flex flex-col md:flex-row">
                 <div className="p-8 md:w-2/3">

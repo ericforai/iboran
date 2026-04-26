@@ -103,7 +103,7 @@ export default function PricingPage() {
       <section className="py-14 lg:py-20 -mt-10 lg:-mt-20 relative z-20">
          <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 max-w-6xl mx-auto">
-               {tiers.map((tier) => (
+               {tiers.map((tier: any) => (
                   <div key={tier.name} className={`bg-white rounded-2xl p-5 lg:p-8 shadow-xl flex flex-col ${tier.popular ? 'ring-4 ring-[#0052D9]/20 relative' : 'border border-slate-100'}`}>
                      {tier.popular && (
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0052D9] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
@@ -117,7 +117,7 @@ export default function PricingPage() {
                      </div>
                      
                      <ul className="space-y-3 lg:space-y-4 mb-5 lg:mb-8 flex-1">
-                        {tier.features.map((feature) => (
+                        {tier.features.map((feature: any) => (
                            <li key={feature.name} className="flex items-center justify-between text-xs lg:text-sm">
                               <span className="text-slate-600">{feature.name}</span>
                               {feature.included === true ? (
@@ -191,7 +191,7 @@ export default function PricingPage() {
          <div className="container mx-auto px-4 max-w-3xl">
              <h2 className="text-2xl lg:text-3xl font-bold text-[#1F2329] mb-8 lg:mb-12 text-center">常见问题</h2>
              <div className="space-y-4 lg:space-y-6">
-                {faqs.map((faq, i) => (
+                {faqs.map((faq: any, i: number) => (
                    <div key={i} className="bg-slate-50 rounded-2xl p-4 lg:p-6 hover:bg-white hover:shadow-md transition-all border border-transparent hover:border-slate-100">
                       <h4 className="font-bold text-[#1F2329] mb-3 flex items-start gap-3">
                          <HelpCircle className="w-5 h-5 text-[#0052D9] shrink-0 mt-0.5" />

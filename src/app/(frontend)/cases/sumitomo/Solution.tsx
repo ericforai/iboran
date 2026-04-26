@@ -44,7 +44,7 @@ export default function Solution() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-            {solutions.map((item, index) => (
+            {solutions.map((item: any, index: number) => (
                 <div key={index} className="relative group">
                     <div className="absolute inset-0 bg-blue-600 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
                     <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 h-full group-hover:border-blue-500/0 group-hover:bg-white transition-colors duration-300">

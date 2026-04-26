@@ -49,7 +49,7 @@ export default function ValueSection() {
 
         {/* Metrics Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {metrics.map((item, idx) => (
+          {metrics.map((item: any, idx: number) => (
             <div 
               key={idx} 
               className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center hover:shadow-xl transition-all duration-300"
@@ -84,7 +84,7 @@ export default function ValueSection() {
             <p className="text-slate-500 text-sm">涵盖汽车、钢铁、制造、餐饮、能源等多个行业</p>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
-            {customers.map((customer, idx) => (
+            {customers.map((customer: any, idx: number) => (
               <div 
                 key={idx} 
                 className="px-6 py-3 bg-slate-50 rounded-lg text-slate-600 font-medium hover:bg-[#0052D9] hover:text-white transition-colors duration-300 cursor-default"

@@ -59,14 +59,14 @@ export default function Features() {
     <section className="py-32 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {features.map((item: any, i: number) => (
+                {(features as any[]).map((item: any, i: number) => (
                     <div key={i}>
                         <h3>{item.title}</h3>
                         <p>{item.problem || item.description || item.desc || ""}</p>
                         <p>{item.solution || ""}</p>
                         <p>{item.outcome || ""}</p>
-                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{(typeof b === "object" ? (b.title || b.label || b.name || b.desc || JSON.stringify(b)) : b)}</li>)}</ul>}
                         {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
                     </div>
                 ))}
@@ -79,7 +79,7 @@ export default function Features() {
             <p className="text-slate-500 mb-10">从数据采集到档案利用，为您打造全闭环的数智档案管理体系。</p>
             
             <div className="space-y-4">
-              {features.map((feature) => (
+              {features.map((feature: any) => (
                 <button
                   key={feature.id}
                   onClick={() => setActiveTab(feature.id)}
@@ -119,7 +119,7 @@ export default function Features() {
           {/* Tab Content Display */}
           <div className="flex-1 w-full lg:min-h-[500px]">
             <AnimatePresence mode="wait">
-              {features.map((feature) => feature.id === activeTab && (
+              {features.map((feature: any) => feature.id === activeTab && (
                 <motion.div
                   key={feature.id}
                   initial={{ opacity: 0, x: 20 }}
@@ -138,7 +138,7 @@ export default function Features() {
                     </p>
                     
                     <div className="grid sm:grid-cols-2 gap-6 mb-12">
-                      {feature.highlights.map((item, i) => (
+                      {feature.highlights.map((item: any, i: number) => (
                         <div key={i} className="flex items-center gap-3">
                           <div className="w-6 h-6 rounded-full bg-green-500/10 flex items-center justify-center">
                             <FileCheck2 size={14} className="text-green-600" />

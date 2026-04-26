@@ -44,7 +44,7 @@ export default function Methodology() {
         </div>
 
         <div className="grid md:grid-cols-4 gap-6">
-          {phases.map((phase, idx) => (
+          {phases.map((phase: any, idx: number) => (
             <div key={idx} className="group">
               <div className="bg-[#F7F8FA] rounded-2xl p-8 h-full border border-transparent hover:border-[#0052D9] hover:bg-white hover:shadow-xl transition-all duration-300">
                 <div className="mb-6 flex justify-between items-start">
@@ -60,7 +60,7 @@ export default function Methodology() {
                 </p>
                 
                 <ul className="space-y-2">
-                  {phase.items.map((item, i) => (
+                  {phase.items.map((item: any, i: number) => (
                     <li key={i} className="flex items-center text-xs text-slate-600">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#E60012] mr-2"></div>
                       {item}

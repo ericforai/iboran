@@ -38,7 +38,7 @@ export default function PainPoints() {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {points.map((point, idx) => (
+          {points.map((point: any, idx: number) => (
             <div
               key={idx}
               className="group bg-white p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 transform hover:-translate-y-2"

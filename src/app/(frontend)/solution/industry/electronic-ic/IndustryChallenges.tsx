@@ -54,7 +54,7 @@ export default function IndustryChallenges({ industryName }: IndustryChallengesP
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {challenges.map((challenge, idx) => {
+          {challenges.map((challenge: any, idx: number) => {
             const Icon = icons[idx]
             return (
               <div

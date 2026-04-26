@@ -42,7 +42,7 @@ export const FAQ = () => {
         </div>
         
         <div className="space-y-4">
-          {faqs.map((faq, i) => (
+          {faqs.map((faq: any, i: number) => (
             <div key={i} className="border-b border-slate-100 last:border-0">
               <button
                 className="w-full py-6 flex items-center justify-between text-left group"

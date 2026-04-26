@@ -66,13 +66,13 @@ export function KeyScenarios() {
     <section className="py-24 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {scenarios.map((s: any, i: number) => (
+                {(scenarios as any[]).map((s: any, i: number) => (
                     <div key={i}>
                         <h3>{s.title}</h3>
                         <p>{s.problem || s.description || ""}</p>
                         <p>{s.solution || ""}</p>
                         <p>{s.outcome || ""}</p>
-                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
                     </div>
                 ))}
             </div>
@@ -89,7 +89,7 @@ export function KeyScenarios() {
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Left Navigation */}
           <div className="lg:w-1/3 space-y-4">
-            {scenarios.map((scenario) => (
+            {scenarios.map((scenario: any) => (
               <button
                 key={scenario.id}
                 onClick={() => setActiveTab(scenario.id)}
@@ -120,7 +120,7 @@ export function KeyScenarios() {
           {/* Right Content Area */}
           <div className="lg:w-2/3 bg-slate-50 rounded-3xl p-8 border border-slate-100 min-h-[500px] flex items-center">
             <AnimatePresence mode="wait">
-              {scenarios.map((scenario) => (
+              {scenarios.map((scenario: any) => (
                 activeTab === scenario.id && (
                   <motion.div
                     key={scenario.id}
@@ -141,7 +141,7 @@ export function KeyScenarios() {
                         </p>
                         
                         <div className="space-y-4">
-                          {scenario.features.map((feature, i) => (
+                          {scenario.features.map((feature: any, i: number) => (
                             <div key={i} className="flex items-center gap-3">
                               <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                               <span className="text-slate-800 font-medium">{feature}</span>

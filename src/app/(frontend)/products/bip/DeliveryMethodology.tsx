@@ -49,7 +49,7 @@ export default function DeliveryMethodology() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          {steps.map((step) => (
+          {steps.map((step: any) => (
             <div key={step.id} className="bg-white rounded-xl p-4 lg:p-6 relative group overflow-hidden shadow-sm hover:shadow-lg transition-all">
               {/* Step Number Background */}
               <div className="hidden lg:block absolute -right-4 -top-6 text-9xl font-bold text-slate-50 group-hover:text-blue-50 transition-colors select-none">
@@ -69,7 +69,7 @@ export default function DeliveryMethodology() {
                   <div>
                     <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">主要输入</div>
                     <ul className="text-xs text-slate-600 space-y-1">
-                      {step.inputs.map((i, idx) => (
+                      {step.inputs.map((i: any, idx: number) => (
                         <li key={idx} className="flex items-center gap-1.5">
                           <span className="w-1 h-1 bg-slate-300 rounded-full"></span>
                           {i}
@@ -80,7 +80,7 @@ export default function DeliveryMethodology() {
                   <div>
                     <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">关键产出 (交付物)</div>
                     <ul className="text-xs text-[#0052D9] font-medium space-y-1">
-                      {step.outputs.map((o, idx) => (
+                      {step.outputs.map((o: any, idx: number) => (
                         <li key={idx} className="flex items-center gap-1.5">
                           <span className="w-1 h-1 bg-blue-400 rounded-full"></span>
                           {o}

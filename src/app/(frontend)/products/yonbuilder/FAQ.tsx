@@ -39,7 +39,7 @@ export default function FAQ() {
           </h2>
 
           <div className="space-y-4">
-            {faqs.map((faq, index) => (
+            {faqs.map((faq: any, index: number) => (
               <div
                 key={index}
                 className="border border-slate-200 rounded-lg overflow-hidden transition-all hover:border-slate-300"

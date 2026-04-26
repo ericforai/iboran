@@ -40,7 +40,7 @@ export default function DeliveryMethodology() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {steps.map((step, idx) => (
+          {steps.map((step: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -58,7 +58,7 @@ export default function DeliveryMethodology() {
               
               <div className="space-y-2">
                 <div className="text-xs font-bold text-[#1F2329] uppercase tracking-wider opacity-60">标准产出物：</div>
-                {step.outputs.map((out, i) => (
+                {step.outputs.map((out: any, i: number) => (
                   <div key={i} className="flex items-center gap-2 text-xs text-slate-600">
                     <ChevronRight className="w-3 h-3 text-[#0052D9]" />
                     {out}

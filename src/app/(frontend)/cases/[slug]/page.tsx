@@ -36,7 +36,7 @@ export async function generateStaticParams() {
       const isStatic = fs.existsSync(path.join(staticCasesPath, slug))
       return !isStatic
     })
-    .map((slug) => ({ slug }))
+    .map((slug: any) => ({ slug }))
 }
 
 type Args = {
@@ -60,7 +60,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
       { name: '成功案例', url: '/cases' },
       { name: story.title, url: `/cases/${slug}` }
   ]
-  const challengeSummary = story.challenges?.map((c) => c.challenge).filter(Boolean).join('；')
+  const challengeSummary = story.challenges?.map((c: any) => c.challenge).filter(Boolean).join('；')
   const solutionSummary = story.solution?.oneLiner || story.solution?.keyDesign
   const resultSummary = [
     story.keyResults?.efficiency,
@@ -193,7 +193,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                       {story.challenges.map((c, i) => (
+                       {story.challenges.map((c: any, i: number) => (
                           <div key={i} className="group p-6 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-red-200 transition-all duration-300">
                              <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-400 flex items-center justify-center mb-4 group-hover:bg-red-50 group-hover:text-red-500 transition-colors">
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
@@ -222,7 +222,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
                        
                        <div className="p-8">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                             {story.solution.modules?.map((m, i) => (
+                             {story.solution.modules?.map((m: any, i: number) => (
                                 <div key={i} className="flex gap-3">
                                    <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0 shadow-lg shadow-blue-500/50" />
                                    <p className="text-slate-600 text-sm leading-7">{m.item}</p>
@@ -327,7 +327,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
                     </div>
 
                     <div className="relative pl-4 space-y-12 before:absolute before:left-[19px] before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200">
-                       {story.deliveryProcess.map((item, i) => (
+                       {story.deliveryProcess.map((item: any, i: number) => (
                           <div key={i} className="relative pl-12">
                              <div className="absolute left-0 top-1 w-10 h-10 rounded-full bg-white border-4 border-green-50 text-green-600 font-bold text-xs flex items-center justify-center shadow-sm z-10">
                                 M{i}
@@ -354,7 +354,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
                         <div>
                            <h4 className="text-xs font-bold text-purple-400 uppercase tracking-widest mb-6">实施步骤</h4>
                            <div className="space-y-4">
-                              {story.methodology.steps?.map((s, i) => (
+                              {story.methodology.steps?.map((s: any, i: number) => (
                                  <div key={i} className="flex items-center gap-4 group">
                                     <div className="w-6 h-6 rounded-full bg-purple-100 text-purple-600 text-xs font-bold flex items-center justify-center group-hover:bg-purple-600 group-hover:text-white transition-colors">
                                        {i+1}
@@ -367,7 +367,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
                         <div>
                            <h4 className="text-xs font-bold text-purple-400 uppercase tracking-widest mb-6">关键交付物</h4>
                            <div className="flex flex-wrap gap-2">
-                              {story.methodology.deliverables?.map((d, i) => (
+                              {story.methodology.deliverables?.map((d: any, i: number) => (
                                  <span key={i} className="px-3 py-1.5 bg-white text-purple-700 text-sm font-medium rounded-lg border border-purple-100 shadow-sm">
                                     {d.item}
                                  </span>
@@ -394,7 +394,7 @@ export default async function SuccessStoryPage({ params: paramsPromise }: Args) 
                            为什么选择泊冉
                          </h3>
                          <ul className="space-y-5">
-                            {story.whyBoran.map((item, i) => (
+                            {story.whyBoran.map((item: any, i: number) => (
                                <li key={i} className="flex gap-4">
                                   <svg className="w-5 h-5 text-red-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>
                                   <span className="text-slate-300 text-sm leading-relaxed">{item.reason}</span>

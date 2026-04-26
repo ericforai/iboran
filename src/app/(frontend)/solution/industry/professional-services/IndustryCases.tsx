@@ -36,7 +36,7 @@ export default function IndustryCases({ cases }: IndustryCasesProps) {
         </motion.div>
 
         <div className="grid lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
-          {cases.map((caseItem, index) => (
+          {cases.map((caseItem: any, index: number) => (
             <motion.div
               key={caseItem.company}
               initial={{ opacity: 0, y: 20 }}

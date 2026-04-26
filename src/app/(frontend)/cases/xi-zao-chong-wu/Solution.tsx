@@ -34,7 +34,7 @@ export default function Solution() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {solutions.map((solution, index) => {
+          {solutions.map((solution: any, index: number) => {
             const Icon = solution.icon
             return (
               <div
@@ -48,7 +48,7 @@ export default function Solution() {
                 <p className="text-slate-600 leading-relaxed mb-6 text-sm">{solution.description}</p>
 
                 <ul className="space-y-2">
-                  {solution.features.map((feature, idx) => (
+                  {solution.features.map((feature: any, idx: number) => (
                     <li key={idx} className="flex items-center gap-2 text-sm text-slate-600">
                       <div className="w-1.5 h-1.5 rounded-full bg-orange-600" />
                       <span>{feature}</span>

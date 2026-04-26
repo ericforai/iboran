@@ -115,7 +115,7 @@ export default function Hero() {
                       { icon: '🔗', title: 'YonBIP 连接器', desc: '财务/供应链同步', color: 'bg-blue-100 text-blue-600', status: '正常运行' },
                       { icon: '☁️', title: '钉钉/企微集成', desc: '协同流程对接', color: 'bg-indigo-100 text-indigo-600', status: '已连接' },
                       { icon: '🛠️', title: 'SAP/Oracle 集成', desc: '遗留系统同步', color: 'bg-red-100 text-red-600', status: '流转中' },
-                    ].map((item, i) => (
+                    ].map((item: any, i: number) => (
                       <motion.div 
                         key={i}
                         initial={{ x: -20, opacity: 0 }}

@@ -82,7 +82,7 @@ export default function HowItWorks() {
           <div className="hidden lg:block absolute top-12 left-0 w-full h-0.5 bg-slate-200 -z-10"></div>
 
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {steps.map((step, idx) => (
+            {steps.map((step: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ export default function HowItWorks() {
                   <p className="text-xs text-slate-500 mb-4 h-8">{step.desc}</p>
                   
                   <ul className="text-left space-y-2">
-                    {step.items.map((item, i) => (
+                    {step.items.map((item: any, i: number) => (
                       <li key={i} className="flex items-start gap-2 text-xs text-slate-600 leading-tight">
                         <div className="w-1 h-1 bg-[#E60012] rounded-full mt-1.5 shrink-0"></div>
                         {item}

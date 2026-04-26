@@ -88,7 +88,7 @@ export default function Features() {
 
         {/* Feature Grid */}
         <div className="grid lg:grid-cols-2 gap-12">
-          {features.map((f, i) => (
+          {features.map((f: any, i: number) => (
             <motion.div 
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -115,7 +115,7 @@ export default function Features() {
               </div>
 
               <div className="mt-auto space-y-4 pt-8 border-t border-slate-200/60">
-                {f.items.map((item, idx) => (
+                {f.items.map((item: any, idx: number) => (
                   <div key={idx} className="flex gap-4 group/item">
                     <div className="mt-1.5 shrink-0">
                       <CheckCircle2 className={`w-4 h-4 text-${f.color}-500 opacity-40 group-hover/item:opacity-100 transition-opacity`} />

@@ -94,7 +94,7 @@ export default function Hero() {
                       { icon: Package, name: 'SCM', desc: '供应链' },
                       { icon: TrendingUp, name: 'BI', desc: '数据洞察' },
                       { icon: Sparkles, name: 'AI', desc: '智能营销' },
-                    ].map((module, idx) => (
+                    ].map((module: any, idx: number) => (
                       <div key={idx} className="bg-pink-50 rounded-lg p-3 text-center border border-pink-100 hover:bg-pink-100 transition">
                         <module.icon size={20} className="mx-auto text-pink-500 mb-1" />
                         <div className="text-[#1F2329] font-bold text-sm">{module.name}</div>

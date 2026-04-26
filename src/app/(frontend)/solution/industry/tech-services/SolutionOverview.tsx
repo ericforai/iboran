@@ -34,7 +34,7 @@ export default function SolutionOverview() {
                 核心产品组合
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                {coreProducts.map((product, idx) => (
+                {coreProducts.map((product: any, idx: number) => (
                   <div key={idx} className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg">
                     <Check className="w-4 h-4 text-green-500" />
                     <div>

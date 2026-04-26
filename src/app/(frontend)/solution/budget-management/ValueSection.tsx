@@ -26,7 +26,7 @@ export default function ValueSection() {
     <section className="py-24 bg-[#0052D9] text-white">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
-          {metrics.map((metric, idx) => (
+          {metrics.map((metric: any, idx: number) => (
             <div key={idx} className="space-y-4">
               <div className="text-5xl md:text-6xl font-bold tracking-tight">
                 {metric.value}

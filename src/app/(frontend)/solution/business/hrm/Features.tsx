@@ -86,7 +86,7 @@ const featureTabs = [
 
 export default function Features() {
   const [activeTab, setActiveTab] = useState(featureTabs[0].id)
-  const currentTab = featureTabs.find(tab => tab.id === activeTab) || featureTabs[0]
+  const currentTab = featureTabs.find((tab: any) => tab.id === activeTab) || featureTabs[0]
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
@@ -103,7 +103,7 @@ export default function Features() {
 
         {/* Tab Buttons */}
         <div className="flex flex-wrap justify-center gap-2 mb-16 px-2">
-          {featureTabs.map((tab) => (
+          {featureTabs.map((tab: any) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
@@ -144,7 +144,7 @@ export default function Features() {
               </div>
 
               <div className="lg:col-span-8 grid md:grid-cols-2 gap-6">
-                {currentTab.features.map((feature, idx) => (
+                {currentTab.features.map((feature: any, idx: number) => (
                   <div 
                     key={idx}
                     className="p-6 bg-white rounded-2xl border border-slate-100 hover:border-blue-200 transition-all group"

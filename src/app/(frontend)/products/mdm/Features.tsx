@@ -46,7 +46,7 @@ export function Features() {
               </p>
               
               <div className="grid sm:grid-cols-2 gap-8">
-                {features.map((feature) => (
+                {features.map((feature: any) => (
                   <div key={feature.title} className="flex flex-col gap-3">
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-blue-100 rounded-lg text-blue-600">
@@ -85,7 +85,7 @@ export function Features() {
                             <div className="w-1/3 bg-slate-50 rounded-lg p-4 border border-slate-100">
                                 <div className="text-xs font-semibold text-slate-400 mb-2">实体属性</div>
                                 <div className="space-y-2">
-                                    {['客户名称', '统一社会信用代码', '所属行业', '注册地址', '法人代表'].map(item => (
+                                    {['客户名称', '统一社会信用代码', '所属行业', '注册地址', '法人代表'].map((item: any) => (
                                         <div key={item} className="flex items-center gap-2 p-2 bg-white rounded border border-slate-100 text-xs text-slate-600">
                                             <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
                                             {item}

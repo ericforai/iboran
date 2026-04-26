@@ -130,7 +130,7 @@ function OverviewView() {
             </div>
             {/* Mock Chart */}
             <div className="flex-1 flex items-end justify-between gap-2 px-2 pb-2">
-               {[40, 65, 45, 80, 55, 70, 90, 60, 75, 50, 85, 95].map((h, i) => (
+               {[40, 65, 45, 80, 55, 70, 90, 60, 75, 50, 85, 95].map((h: any, i: number) => (
                  <motion.div 
                    key={i}
                    initial={{ height: 0 }}
@@ -179,7 +179,7 @@ function DraftingView() {
       <div className="col-span-3 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
         <div className="p-4 border-b border-slate-100 bg-slate-50 font-bold text-slate-700">标准范本库</div>
         <div className="flex-1 overflow-y-auto p-2 space-y-1">
-          {['采购框架合同 (2024版)', '技术服务协议', '保密协议 (NDN)', '劳动合同', '房屋租赁合同'].map((t, i) => (
+          {['采购框架合同 (2024版)', '技术服务协议', '保密协议 (NDN)', '劳动合同', '房屋租赁合同'].map((t: any, i: number) => (
             <div key={i} className={`p-3 rounded-lg text-xs cursor-pointer flex items-center gap-2 ${i === 0 ? 'bg-blue-50 text-blue-700 border border-blue-100' : 'hover:bg-slate-50 text-slate-600'}`}>
                <FileText size={14} />
                {t}
@@ -232,7 +232,7 @@ function ReviewView() {
          <div className="flex-1 p-8 bg-slate-50 relative overflow-hidden">
              {/* Document visual */}
              <div className="bg-white shadow p-8 mx-auto max-w-2xl h-full text-xs text-slate-400 blur-[2px]">
-                {Array(20).fill(0).map((_, i) => (
+                {Array(20).fill(0).map((_: any, i: number) => (
                   <div key={i} className="h-2 bg-slate-100 rounded mb-3 w-full" style={{ width: `${60 + (i * 10) % 40}%` }} />
                 ))}
             </div>
@@ -356,7 +356,7 @@ function MonitoringView() {
                    { name: "年度IT设备采购合同", type: "预付款 30%", date: "2024-05-15", amt: "¥ 150,000", status: "paid" },
                    { name: "园区安保服务协议", type: "进度款 Q2", date: "2024-06-30", amt: "¥ 85,000", status: "pending" },
                    { name: "核心系统维保合同", type: "尾款 10%", date: "2024-07-10", amt: "¥ 28,000", status: "pending" },
-                 ].map((row, i) => (
+                 ].map((row: any, i: number) => (
                    <tr key={i} className="hover:bg-slate-50">
                      <td className="p-4 font-medium text-slate-700">{row.name}</td>
                      <td className="p-4 text-slate-600">{row.type}</td>

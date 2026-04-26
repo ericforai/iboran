@@ -62,19 +62,19 @@ const scenarios = [
 
 export function KeyScenarios() {
   const [activeTab, setActiveTab] = useState(scenarios[0].id)
-  const activeScenario = scenarios.find(s => s.id === activeTab)!
+  const activeScenario = scenarios.find((s: any) => s.id === activeTab)!
 
   return (
     <section className="py-24 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {scenarios.map((s: any, i: number) => (
+                {(scenarios as any[]).map((s: any, i: number) => (
                     <div key={i}>
                         <h3>{s.title}</h3>
                         <p>{s.problem || s.description || ""}</p>
                         <p>{s.solution || ""}</p>
                         <p>{s.outcome || ""}</p>
-                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
                     </div>
                 ))}
             </div>
@@ -92,7 +92,7 @@ export function KeyScenarios() {
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Tabs */}
           <div className="lg:w-1/3 space-y-4">
-            {scenarios.map((scenario) => (
+            {scenarios.map((scenario: any) => (
               <button
                 key={scenario.id}
                 onClick={() => setActiveTab(scenario.id)}
@@ -126,7 +126,7 @@ export function KeyScenarios() {
                       {activeScenario.description}
                     </p>
                     <ul className="space-y-4">
-                      {activeScenario.features.map((feature, idx) => (
+                      {activeScenario.features.map((feature: any, idx: number) => (
                         <li key={idx} className="flex items-start gap-3">
                           <CheckCircle2 className="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" />
                           <span className="text-slate-700">{feature}</span>

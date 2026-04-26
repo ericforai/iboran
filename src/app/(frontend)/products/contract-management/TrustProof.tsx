@@ -32,7 +32,7 @@ export default function TrustProof() {
               实现数智化合同治理
             </h2>
             <div className="space-y-6">
-              {stats.map((stat, idx) => (
+              {stats.map((stat: any, idx: number) => (
                 <div key={idx} className="flex items-start gap-4">
                   <div className="mt-1 p-2 bg-blue-100 rounded-lg text-blue-600">
                     <CheckCircle2 size={24} />
@@ -59,7 +59,7 @@ export default function TrustProof() {
              {/* Background Decoration */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-400/5 blur-3xl rounded-full" />
             
-            {cases.map((item, idx) => (
+            {cases.map((item: any, idx: number) => (
               <div key={idx} className="relative bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-shadow group">
                 <div className="flex items-center gap-2 mb-6 text-slate-400 border-b border-slate-50 pb-4">
                   <Building size={16} />
@@ -72,7 +72,7 @@ export default function TrustProof() {
                 </p>
                 
                 <div className="flex flex-wrap gap-2">
-                  {item.tags.map((tag, i) => (
+                  {item.tags.map((tag: any, i: number) => (
                     <span key={i} className="px-3 py-1 bg-slate-100 text-slate-500 text-[10px] font-bold rounded-full uppercase">
                       {tag}
                     </span>

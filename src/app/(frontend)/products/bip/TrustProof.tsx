@@ -34,7 +34,7 @@ export default function TrustProof() {
         {/* Logos Placeholder (Using Text for now or could use Images if available) */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 grayscale opacity-60">
            {/* Placeholder for logos. Using div with text for representation */}
-           {['中国建筑', '一汽集团', '国家电网', '三一重工', '蒙牛集团', '碧桂园'].map(name => (
+           {['中国建筑', '一汽集团', '国家电网', '三一重工', '蒙牛集团', '碧桂园'].map((name: any) => (
              <div key={name} className="h-16 border border-slate-200 rounded flex items-center justify-center font-bold text-slate-400">
                {name}
              </div>

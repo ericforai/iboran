@@ -126,7 +126,7 @@ export function AboutPageContent() {
               { label: '技术人员占比', value: '80', unit: '%+', sub: '研发驱动 DNA' },
               { label: '累计服务客户', value: '5500', unit: '+', sub: '其中包含 500+ 集团企业' },
               { label: '自主技术专利', value: '60', unit: '+', sub: '坚持技术自研' },
-            ].map((stat) => (
+            ].map((stat: any) => (
               <div key={stat.label} className="flex flex-col items-center justify-center text-center group p-3 md:p-4 rounded-2xl hover:bg-slate-50 transition-colors duration-300">
                 <div className="flex flex-row flex-nowrap items-baseline mb-2 text-slate-900 group-hover:text-blue-600 transition-colors">
                   <span className="text-3xl md:text-5xl font-black tracking-tight">{stat.value}</span>
@@ -144,7 +144,7 @@ export function AboutPageContent() {
       <section id="trust" className="py-14 md:py-24 bg-slate-50 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-4 md:gap-8">
-            {values.map((v, i) => (
+            {values.map((v: any, i: number) => (
               <motion.div
                 key={v.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -181,7 +181,7 @@ export function AboutPageContent() {
           <div className="grid lg:grid-cols-2 gap-7 lg:gap-20">
             <div className="space-y-4 md:space-y-6">
               <h3 className="text-sm font-bold text-blue-600 uppercase tracking-widest">代理体系</h3>
-              {productEcosystem.agency.map((p) => (
+              {productEcosystem.agency.map((p: any) => (
                 <div key={p.name} className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
                   <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
                     <p.icon className="w-5 h-5 text-blue-600" />
@@ -196,7 +196,7 @@ export function AboutPageContent() {
 
             <div className="space-y-4 md:space-y-6">
               <h3 className="text-sm font-bold text-red-600 uppercase tracking-widest">自主知识产权产品</h3>
-              {productEcosystem.selfDeveloped.map((p) => (
+              {productEcosystem.selfDeveloped.map((p: any) => (
                 <div key={p.name} className="flex items-center gap-4 p-4 rounded-2xl bg-red-50/50 border border-red-100">
                   <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center">
                     <p.icon className="w-5 h-5 text-red-600" />
@@ -226,7 +226,7 @@ export function AboutPageContent() {
                 <div className="absolute top-1/2 left-0 right-0 h-px bg-slate-800 hidden lg:block"></div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-7 md:gap-12 relative z-10">
-                  {milestones.map((m, i) => (
+                  {milestones.map((m: any, i: number) => (
                     <motion.div
                       key={m.year}
                       initial={{ opacity: 0, y: 20 }}
@@ -260,7 +260,7 @@ export function AboutPageContent() {
             <p className="text-slate-600">合规认证，品质保障</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
-            {certificates.map((cert) => (
+            {certificates.map((cert: any) => (
               <motion.div
                 key={cert.name}
                 initial={{ opacity: 0, y: 20 }}

@@ -38,7 +38,7 @@ export default function SolutionOverview() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, idx) => (
+          {features.map((feature: any, idx: number) => (
             <div key={idx} className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
               <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6">
                 <feature.icon className="w-6 h-6 text-[#0052D9]" />
@@ -64,7 +64,7 @@ export default function SolutionOverview() {
                   '项目研发：项目计划、进度填报、费用管控与成果物归档',
                   '精益生产：MRP 运算优化需求计划，精细化成本构成实时分析',
                   '费控管理：业务代表移动拜访与外勤人员费用闭环管控'
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <li key={i} className="flex items-start gap-3">
                     <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#E60012] shrink-0" />
                     <span className="text-slate-700">{item}</span>

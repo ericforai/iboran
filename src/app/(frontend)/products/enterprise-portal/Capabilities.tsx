@@ -62,7 +62,7 @@ export function Capabilities() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
+          {features.map((feature: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -103,7 +103,7 @@ export function Capabilities() {
                         打破系统壁垒，将 ERP、OA、CRM 等系统的审批任务统一归集。支持按紧急程度智能排序，提供PC与移动端一致的审批体验，让管理者随时随地高效决策。
                     </p>
                     <ul className="space-y-3">
-                        {['异构系统待办集成', '审批流转全链路监控', '批量审批与快捷处理', '智能消息提醒'].map((item, i) => (
+                        {['异构系统待办集成', '审批流转全链路监控', '批量审批与快捷处理', '智能消息提醒'].map((item: any, i: number) => (
                             <li key={i} className="flex items-center gap-3 text-slate-300">
                                 <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
                                     <Check className="w-3 h-3" />
@@ -122,7 +122,7 @@ export function Capabilities() {
                             <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full">12</span>
                         </div>
                         <div className="space-y-3">
-                           {[1, 2, 3].map((_, i) => (
+                           {[1, 2, 3].map((_: any, i: number) => (
                                <div key={i} className="bg-slate-700/50 p-3 rounded border border-slate-600 flex items-center gap-3">
                                    <div className={`w-8 h-8 rounded flex items-center justify-center font-bold text-xs ${i === 0 ? 'bg-orange-900 text-orange-200' : 'bg-blue-900 text-blue-200'}`}>
                                        {i === 0 ? 'ERP' : 'OA'}

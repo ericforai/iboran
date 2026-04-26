@@ -45,7 +45,7 @@ export default function BIPValue() {
             </p>
             
             <div className="grid sm:grid-cols-2 gap-8">
-              {features.map((feature, i) => (
+              {features.map((feature: any, i: number) => (
                 <motion.div 
                   key={i}
                   initial={{ opacity: 0, y: 10 }}
@@ -85,7 +85,7 @@ export default function BIPValue() {
 
                 {/* Layer 1: SaaS */}
                 <div className="grid grid-cols-5 gap-2">
-                  {['财务云', '人力云', '供应链', '营销云', '制造云'].map((item, i) => (
+                  {['财务云', '人力云', '供应链', '营销云', '制造云'].map((item: any, i: number) => (
                     <div key={i} className="bg-gradient-to-br from-blue-600/20 to-indigo-600/20 border border-blue-500/30 rounded-lg py-3 text-center text-xs font-medium text-blue-200">
                       {item}
                     </div>

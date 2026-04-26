@@ -56,7 +56,7 @@ export default function Results() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {results.map((result) => {
+          {results.map((result: any) => {
             const Icon = result.icon
             return (
               <div

@@ -134,7 +134,7 @@ export default function Hero() {
                         <div className="text-[10px] text-slate-400 font-bold uppercase mb-1">AI Agent</div>
                         <div className="text-sm font-bold text-[#1F2329]">智能体运行中</div>
                         <div className="flex gap-1 mt-2">
-                          {[1,2,3,4].map(i => (
+                          {[1,2,3,4].map((i: any) => (
                             <motion.div 
                               key={i}
                               animate={{ scaleY: [1, 1.5, 1] }}

@@ -114,7 +114,7 @@ export default function Hero() {
                         <div className="font-bold text-[#1F2329]">智能协同应用</div>
                       </div>
                       <div className="grid grid-cols-3 gap-2">
-                        {['公文管理', '流程审批', '会议协同', '知识社区', '综合办公', '移动门户'].map(item => (
+                        {['公文管理', '流程审批', '会议协同', '知识社区', '综合办公', '移动门户'].map((item: any) => (
                           <div key={item} className="bg-white px-2 py-1.5 rounded text-[10px] text-slate-600 font-medium text-center border border-slate-100">
                             {item}
                           </div>
@@ -129,7 +129,7 @@ export default function Hero() {
                           <div className="font-bold text-[#0052D9] text-sm">CAP 低代码平台</div>
                         </div>
                         <div className="space-y-1.5">
-                          {['业务建模', '流程驱动', '报表引擎', '随需定制'].map(item => (
+                          {['业务建模', '流程驱动', '报表引擎', '随需定制'].map((item: any) => (
                             <div key={item} className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full bg-[#0052D9]"></div>
                               <span className="text-xs text-slate-600">{item}</span>
@@ -143,7 +143,7 @@ export default function Hero() {
                           <div className="font-bold text-slate-700 text-sm">连接集成 CIP</div>
                         </div>
                         <div className="space-y-1.5">
-                          {['ERP 集成', 'HR 对接', 'CRM 联动', '第三方应用'].map(item => (
+                          {['ERP 集成', 'HR 对接', 'CRM 联动', '第三方应用'].map((item: any) => (
                             <div key={item} className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
                               <span className="text-xs text-slate-600">{item}</span>

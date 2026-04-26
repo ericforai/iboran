@@ -48,14 +48,14 @@ export const TargetAudience = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-20">
-          {targets.map((group, idx) => (
+          {targets.map((group: any, idx: number) => (
             <div key={idx} className={`p-8 rounded-2xl border ${group.bg} ${group.borderColor}`}>
               <div className="flex items-center gap-3 mb-6">
                 {group.icon}
                 <h3 className="text-xl font-bold">{group.title}</h3>
               </div>
               <ul className="space-y-4">
-                {group.items.map((item, i) => (
+                {group.items.map((item: any, i: number) => (
                   <li key={i} className="flex items-start gap-2 text-gray-700">
                     <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-blue shrink-0" />
                     {item}
@@ -69,7 +69,7 @@ export const TargetAudience = () => {
         <div className="max-w-5xl mx-auto">
           <h3 className="text-2xl font-bold mb-10 text-center text-brand-red">解决核心痛点</h3>
           <div className="grid md:grid-cols-3 gap-8">
-            {painPoints.map((point) => (
+            {painPoints.map((point: any) => (
               <div key={point.id} className="relative p-6 pt-10 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                 <span className="absolute top-4 left-6 text-4xl font-bold text-brand-blue/10 leading-none">
                   {point.id}

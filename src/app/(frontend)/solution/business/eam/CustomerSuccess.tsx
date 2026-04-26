@@ -25,7 +25,7 @@ export default function CustomerSuccess() {
 
         {/* Logo Wall */}
         <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 mb-20 opacity-50 contrast-125 grayscale hover:grayscale-0 transition-all">
-          {customers.map((customer, idx) => (
+          {customers.map((customer: any, idx: number) => (
             <div key={idx} className="flex flex-col items-center">
               <div className="h-12 w-32 bg-slate-200 rounded animate-pulse" /> {/* Placeholder for logos */}
               <span className="mt-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">{customer.name}</span>

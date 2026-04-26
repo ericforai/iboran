@@ -48,7 +48,7 @@ export default function SolutionOverview() {
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/20 via-blue-500/40 to-blue-500/20 -translate-x-1/2" />
 
           <div className="space-y-12">
-            {layers.map((layer, index) => (
+            {layers.map((layer: any, index: number) => (
               <motion.div
                 key={layer.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -76,7 +76,7 @@ export default function SolutionOverview() {
                       <h3 className="text-xl font-bold text-slate-900">{layer.title}</h3>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
-                      {layer.items.map((item) => (
+                      {layer.items.map((item: any) => (
                         <div key={item} className="flex items-center gap-2 text-slate-600">
                           <div className={`w-1.5 h-1.5 rounded-full ${layer.color === 'blue' ? 'bg-blue-400' : layer.color === 'red' ? 'bg-red-400' : layer.color === 'emerald' ? 'bg-emerald-400' : 'bg-slate-400'}`} />
                           <span className="text-sm font-medium">{item}</span>

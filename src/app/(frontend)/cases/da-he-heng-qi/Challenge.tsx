@@ -104,7 +104,7 @@ export default function Challenge() {
 
           {/* Right: Challenge Cards */}
           <div className="space-y-5">
-            {challenges.map((challenge, index) => {
+            {challenges.map((challenge: any, index: number) => {
               const Icon = challenge.icon
               const colors = colorMap[challenge.color as keyof typeof colorMap]
               return (

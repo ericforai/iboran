@@ -74,7 +74,7 @@ export default function Results() {
 
         {/* Results Grid */}
         <div className="grid md:grid-cols-3 gap-8">
-          {results.map((result, index) => {
+          {results.map((result: any, index: number) => {
             const Icon = result.icon
             const colors = colorMap[result.color as keyof typeof colorMap]
             return (

@@ -30,7 +30,7 @@ export default function PainPoints() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {painPoints.map((point, idx) => (
+          {painPoints.map((point: any, idx: number) => (
             <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 group">
               <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center text-[#E60012] mb-6 group-hover:scale-110 transition-transform">
                 <point.icon size={28} />

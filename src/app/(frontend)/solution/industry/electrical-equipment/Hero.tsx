@@ -86,7 +86,7 @@ export default function Hero() {
                   
                   {/* Module Grid */}
                   <div className="grid grid-cols-3 gap-3">
-                    {['生产计划', '仓储管理', '运输物流', '项目管控', '财务云', '供应链'].map((module, idx) => (
+                    {['生产计划', '仓储管理', '运输物流', '项目管控', '财务云', '供应链'].map((module: any, idx: number) => (
                       <div key={idx} className="bg-white/5 rounded-lg p-3 text-center border border-white/10 hover:bg-white/10 transition">
                         <div className="text-cyan-400 font-bold text-sm">{module}</div>
                         <div className="text-slate-500 text-xs mt-1">

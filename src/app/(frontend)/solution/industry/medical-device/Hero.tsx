@@ -84,7 +84,7 @@ export default function Hero() {
                       { icon: ClipboardCheck, name: 'GSP', desc: '经营规范' },
                       { icon: FlaskConical, name: '研发', desc: '一体协同' },
                       { icon: Activity, name: '品控', desc: '电子批记录' },
-                    ].map((module, idx) => (
+                    ].map((module: any, idx: number) => (
                       <div key={idx} className="bg-teal-50 rounded-lg p-3 text-center border border-teal-100 hover:bg-teal-100 transition">
                         <module.icon size={20} className="mx-auto text-teal-600 mb-1" />
                         <div className="text-[#1F2329] font-bold text-sm">{module.name}</div>

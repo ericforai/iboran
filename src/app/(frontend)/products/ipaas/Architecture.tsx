@@ -80,7 +80,7 @@ export default function Architecture() {
           <div className="grid gap-6 relative z-10">
             {/* Top Layer: Consumption / Applications */}
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-              {systems.map((sys, idx) => (
+              {systems.map((sys: any, idx: number) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: -20 }}
@@ -103,7 +103,7 @@ export default function Architecture() {
 
             {/* Core Architecture Layers */}
             <div className="space-y-4">
-               {layers.map((layer, idx) => (
+               {layers.map((layer: any, idx: number) => (
                  <motion.div
                     key={idx}
                     initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
@@ -119,7 +119,7 @@ export default function Architecture() {
                     <div className="flex-1 text-center md:text-left">
                       <h3 className="text-xl font-bold text-[#1F2329] mb-2">{layer.title}</h3>
                       <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                        {layer.items.map((item, i) => (
+                        {layer.items.map((item: any, i: number) => (
                            <span key={i} className="px-3 py-1 bg-slate-50 text-slate-600 text-xs rounded-full border border-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
                              {item}
                            </span>

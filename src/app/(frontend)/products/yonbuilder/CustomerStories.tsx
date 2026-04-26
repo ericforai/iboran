@@ -56,7 +56,7 @@ export default function CustomerStories() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {stories.map((story, index) => (
+          {stories.map((story: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -83,7 +83,7 @@ export default function CustomerStories() {
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 pt-6 border-t border-slate-100">
-                  {story.stats.map((stat, i) => (
+                  {story.stats.map((stat: any, i: number) => (
                     <div key={i}>
                       <div className="text-xl font-bold text-slate-800">{stat.value}</div>
                       <div className="text-xs text-slate-400">{stat.label}</div>

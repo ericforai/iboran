@@ -49,7 +49,7 @@ export default function GlobalIntroduction() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-          {values.map((value, index) => (
+          {values.map((value: any, index: number) => (
             <motion.div
               key={value.title}
               initial={{ opacity: 0, y: 20 }}

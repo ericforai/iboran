@@ -18,7 +18,7 @@ export const SEOKeywords = () => {
     <section className="py-12 bg-white border-t border-slate-100">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
-          {keywords.map((kw, idx) => (
+          {keywords.map((kw: any, idx: number) => (
             <span 
               key={idx} 
               className="text-xs font-medium text-slate-400 hover:text-[#0052D9] transition-colors cursor-default"

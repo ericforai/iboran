@@ -110,7 +110,7 @@ export const WhitepaperCTA = () => {
 
                  <div className="flex items-center gap-3 md:gap-5 py-2.5 px-5 md:px-8 bg-white/5 border border-white/10 rounded-[20px] backdrop-blur-sm group/stats cursor-default">
                     <div className="flex -space-x-2">
-                       {[1,2,3].map(i => (
+                       {[1,2,3].map((i: any) => (
                          <div key={i} className="w-7 h-7 md:w-9 md:h-9 rounded-full border-2 border-slate-950 bg-slate-800 flex items-center justify-center overflow-hidden ring-2 ring-white/5">
                             <div className="w-full h-full bg-gradient-to-br from-blue-600/40 to-indigo-600/40"></div>
                          </div>

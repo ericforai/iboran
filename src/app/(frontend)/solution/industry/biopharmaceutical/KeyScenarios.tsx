@@ -71,13 +71,13 @@ export function KeyScenarios() {
     <section className="py-20 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {scenarios.map((s: any, i: number) => (
+                {(scenarios as any[]).map((s: any, i: number) => (
                     <div key={i}>
                         <h3>{s.title}</h3>
                         <p>{s.problem || s.description || ""}</p>
                         <p>{s.solution || ""}</p>
                         <p>{s.outcome || ""}</p>
-                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
                     </div>
                 ))}
             </div>
@@ -94,7 +94,7 @@ export function KeyScenarios() {
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Left: Tabs */}
           <div className="lg:w-1/3 flex flex-col gap-4">
-            {scenarios.map((scenario) => (
+            {scenarios.map((scenario: any) => (
               <button
                 key={scenario.id}
                 type="button"
@@ -129,7 +129,7 @@ export function KeyScenarios() {
           {/* Right: Content Area */}
           <div className="lg:w-2/3">
             <AnimatePresence mode="wait">
-              {scenarios.map((scenario) => (
+              {scenarios.map((scenario: any) => (
                 activeTab === scenario.id && (
                   <motion.div
                     key={scenario.id}
@@ -164,7 +164,7 @@ export function KeyScenarios() {
                       </p>
                       
                       <div className="grid sm:grid-cols-2 gap-6">
-                        {scenario.features.map((feature, idx) => (
+                        {scenario.features.map((feature: any, idx: number) => (
                           <div key={idx} className="flex items-start gap-3">
                             <CheckCircle2 className="w-5 h-5 text-blue-600 mt-0.5 shrink-0" />
                             <span className="text-slate-700 font-medium">{feature}</span>

@@ -33,7 +33,7 @@ export default function SolutionOverview() {
             </p>
             
             <div className="grid sm:grid-cols-2 gap-4">
-              {coreProducts.map((product, idx) => (
+              {coreProducts.map((product: any, idx: number) => (
                 <div key={idx} className="flex items-start gap-3 p-4 bg-white rounded-lg shadow-sm">
                   <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <div>

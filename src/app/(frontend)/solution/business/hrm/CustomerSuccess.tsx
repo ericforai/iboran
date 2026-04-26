@@ -46,7 +46,7 @@ export default function CustomerSuccess() {
         </div>
 
         <div className="space-y-12">
-          {caseStudies.map((item, idx) => (
+          {caseStudies.map((item: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
@@ -84,7 +84,7 @@ export default function CustomerSuccess() {
 
               {/* Right Side: Results Grid */}
               <div className="lg:w-1/2 grid grid-cols-2 gap-4">
-                {item.results.map((result, rIdx) => (
+                {item.results.map((result: any, rIdx: number) => (
                   <div key={rIdx} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow min-w-0">
                     <div className="text-xl xl:text-2xl font-bold text-[#1F2329] mb-1 whitespace-nowrap overflow-hidden text-ellipsis">{result.value}</div>
                     <div className="text-xs font-bold text-[#0052D9] mb-2 uppercase tracking-wide">{result.label}</div>
@@ -101,7 +101,7 @@ export default function CustomerSuccess() {
             <p className="text-slate-400 text-sm font-medium mb-10">服务部分行业客户</p>
             <div className="flex flex-wrap justify-center gap-x-16 gap-y-10 grayscale opacity-40">
                {/* Simplified UI placeholders for logos */}
-               {['招商局集团', '中国中化', '居然之家', '通威农发', '中国燃气', '蜜雪冰城'].map((logo, i) => (
+               {['招商局集团', '中国中化', '居然之家', '通威农发', '中国燃气', '蜜雪冰城'].map((logo: any, i: number) => (
                  <span key={i} className="text-xl font-extrabold tracking-tighter text-slate-900">{logo}</span>
                ))}
             </div>

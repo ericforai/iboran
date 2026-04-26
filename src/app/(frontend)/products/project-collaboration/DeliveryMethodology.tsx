@@ -43,7 +43,7 @@ export const DeliveryMethodology = () => {
           {/* Connector Line */}
           <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -translate-y-12" />
           
-          {phases.map((phase, idx) => (
+          {phases.map((phase: any, idx: number) => (
             <div key={idx} className="relative z-10 flex flex-col items-center">
               <div className="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center mb-8 border border-gray-100">
                 {phase.icon}
@@ -55,7 +55,7 @@ export const DeliveryMethodology = () => {
               <div className="w-full bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest block mb-3">核心产出物</span>
                 <ul className="space-y-2">
-                  {phase.deliverables.map((item, i) => (
+                  {phase.deliverables.map((item: any, i: number) => (
                     <li key={i} className="text-xs text-gray-700 flex items-center gap-2">
                       <div className="w-1 h-1 rounded-full bg-brand-red" />
                       {item}

@@ -78,7 +78,7 @@ export default function DashboardMockup({ type }: DashboardMockupProps) {
                { icon: DollarSign, label: "销售机会", active: false },
                { icon: ShoppingCart, label: "订单中心", active: false },
                { icon: MoreHorizontal, label: "更多应用", active: false },
-             ].map((item, idx) => (
+             ].map((item: any, idx: number) => (
                <div 
                   key={idx} 
                   className={`
@@ -155,7 +155,7 @@ function CRMDashboard() {
             { l: '商机', v: '75%', c: 'bg-blue-200' },
             { l: '报价', v: '50%', c: 'bg-blue-400' },
             { l: '合同', v: '25%', c: 'bg-blue-600' }
-          ].map((item, idx) => (
+          ].map((item: any, idx: number) => (
              <div key={idx} className="flex items-center gap-2">
                <span className="text-[10px] w-8 text-slate-500">{item.l}</span>
                <div className="flex-1 bg-slate-100 rounded-full h-2 overflow-hidden">
@@ -203,7 +203,7 @@ function CommerceDashboard() {
         </div>
   
         <div className="grid grid-cols-2 gap-3">
-           {[1,2,3,4].map(i => (
+           {[1,2,3,4].map((i: any) => (
              <div key={i} className="bg-white p-3 rounded-lg border border-slate-100 shadow-sm">
                 <div className="w-full aspect-square bg-slate-100 rounded mb-2 relative overflow-hidden">
                     {/* Skeleton Image */}
@@ -249,7 +249,7 @@ function SupplyDashboard() {
              <span className="text-[10px] text-red-500 bg-red-50 px-2 py-0.5 rounded-full">3 项严重</span>
           </div>
           <div className="space-y-3">
-             {[1,2,3].map(i => (
+             {[1,2,3].map((i: any) => (
                 <div key={i} className="flex items-center gap-3 p-2 rounded bg-slate-50">
                    <div className="w-8 h-8 bg-white rounded border border-slate-200 flex items-center justify-center">
                       <Package size={14} className="text-slate-400" />
@@ -290,7 +290,7 @@ function FinanceDashboard() {
        <div className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
           <h4 className="text-sm font-bold text-slate-700 mb-4">费用支出趋势</h4>
           <div className="flex items-end gap-2 h-32 pt-4">
-             {[30, 45, 35, 60, 50, 75, 65].map((h, i) => (
+             {[30, 45, 35, 60, 50, 75, 65].map((h: any, i: number) => (
                 <div key={i} className="flex-1 flex flex-col justify-end gap-1 group">
                    <motion.div 
                      initial={{ height: 0 }}

@@ -42,7 +42,7 @@ const capabilities = [
 
 export default function Capabilities() {
   const [activeTab, setActiveTab] = useState(capabilities[0].id)
-  const activeData = capabilities.find(c => c.id === activeTab)!
+  const activeData = capabilities.find((c: any) => c.id === activeTab)!
 
   return (
     <section className="py-24 bg-white">
@@ -59,7 +59,7 @@ export default function Capabilities() {
         <div className="flex flex-col lg:flex-row gap-12 items-start">
           {/* Tabs Navigation */}
           <div className="w-full lg:w-1/3 flex flex-col space-y-4">
-            {capabilities.map((item) => (
+            {capabilities.map((item: any) => (
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
@@ -98,7 +98,7 @@ export default function Capabilities() {
                         <h4 className="text-2xl font-bold text-slate-900">{activeData.title}</h4>
                         <p className="text-slate-600 leading-relaxed">{activeData.description}</p>
                         <ul className="space-y-3">
-                           {activeData.features.map((feature, i) => (
+                           {activeData.features.map((feature: any, i: number) => (
                              <li key={i} className="flex items-center space-x-3 text-slate-700 font-medium">
                                 <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
                                 <span>{feature}</span>

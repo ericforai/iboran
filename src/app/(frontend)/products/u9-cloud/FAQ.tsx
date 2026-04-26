@@ -40,7 +40,7 @@ export const FAQ = () => {
         </div>
 
         <div className="space-y-4">
-          {faqs.map((faq, idx) => (
+          {faqs.map((faq: any, idx: number) => (
             <details key={idx} className="group border border-gray-100 rounded-2xl p-6 bg-gray-50/50 open:bg-blue-50/30 transition-all">
               <summary className="list-none flex items-center justify-between cursor-pointer focus:outline-none">
                 <span className="text-lg font-bold text-gray-900 pr-4">{faq.q}</span>

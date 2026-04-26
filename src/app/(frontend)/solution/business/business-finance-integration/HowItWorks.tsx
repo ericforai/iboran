@@ -39,7 +39,7 @@ export default function HowItWorks() {
           <div className="hidden lg:block absolute top-[60px] left-0 right-0 h-0.5 bg-slate-800 z-0" />
           
           <div className="grid lg:grid-cols-4 gap-12 relative z-10">
-            {steps.map((step, idx) => (
+            {steps.map((step: any, idx: number) => (
               <div key={idx} className="flex flex-col items-center">
                 <div className="w-24 h-24 rounded-full bg-slate-900 border-2 border-slate-800 flex items-center justify-center mb-6 relative group">
                   <div className="absolute inset-0 rounded-full border border-blue-500/30 scale-110 group-hover:scale-125 group-hover:border-blue-500 transition-all" />

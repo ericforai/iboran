@@ -81,7 +81,7 @@ export default function InnovationBuilder() {
               </p>
 
               <div className="space-y-8">
-                {builderFeatures.map((f, i) => (
+                {builderFeatures.map((f: any, i: number) => (
                   <div key={i} className="flex gap-4">
                     <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
                       {f.icon}

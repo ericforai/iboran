@@ -68,7 +68,7 @@ export const Methodology = () => {
           {/* Connecting arrow/line for desktop */}
           <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-slate-200 -translate-y-12 z-0" />
 
-          {steps.map((step, i) => (
+          {steps.map((step: any, i: number) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}

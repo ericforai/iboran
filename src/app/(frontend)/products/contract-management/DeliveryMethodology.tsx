@@ -46,7 +46,7 @@ export default function DeliveryMethodology() {
           {/* Connector Line (visible on desktop) */}
           <div className="hidden lg:block absolute top-[44px] left-[15%] right-[15%] h-0.5 bg-blue-100 -z-0" />
 
-          {steps.map((step, index) => (
+          {steps.map((step: any, index: number) => (
             <div key={index} className="relative z-10 flex flex-col">
               <div className="w-20 h-20 bg-white rounded-2xl shadow-sm border border-blue-50 flex items-center justify-center mb-6 mx-auto lg:mx-0">
                 {step.icon}

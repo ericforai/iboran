@@ -51,14 +51,14 @@ export default function TechSpecs() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {specs.map((spec, idx) => (
+          {specs.map((spec: any, idx: number) => (
             <div key={idx} className="p-8 rounded-2xl bg-slate-50 border border-slate-100">
               <div className="flex items-center gap-3 mb-8">
                 {spec.icon}
                 <h3 className="font-bold text-slate-900">{spec.title}</h3>
               </div>
               <div className="space-y-6">
-                {spec.items.map((item, i) => (
+                {spec.items.map((item: any, i: number) => (
                   <div key={i}>
                     <div className="text-[10px] text-slate-400 font-bold uppercase mb-1">{item.label}</div>
                     <div className="text-sm text-slate-700 font-medium">{item.value}</div>

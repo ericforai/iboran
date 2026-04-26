@@ -53,7 +53,7 @@ export default function HowItWorks() {
           <div className="hidden lg:block absolute top-12 left-0 w-full h-0.5 bg-slate-100 z-0"></div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-4 relative z-10">
-            {steps.map((step, idx) => (
+            {steps.map((step: any, idx: number) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -102,7 +102,7 @@ export default function HowItWorks() {
             <div className="flex-1 bg-white p-6 rounded-xl border border-blue-100 shadow-sm">
               <div className="text-xs font-bold text-[#0052D9] uppercase tracking-wider mb-4">Front Office (营销/销售)</div>
               <div className="grid grid-cols-2 gap-3">
-                {['全渠道获客', 'SCRM', '商机管理', 'CPQ报价'].map(item => (
+                {['全渠道获客', 'SCRM', '商机管理', 'CPQ报价'].map((item: any) => (
                   <div key={item} className="bg-blue-50 text-blue-700 text-sm py-2 px-3 rounded font-medium text-center">
                     {item}
                   </div>
@@ -121,7 +121,7 @@ export default function HowItWorks() {
             <div className="flex-1 bg-white p-6 rounded-xl border border-red-100 shadow-sm">
               <div className="text-xs font-bold text-[#E60012] uppercase tracking-wider mb-4">Back Office (订单/财务)</div>
               <div className="grid grid-cols-2 gap-3">
-                {['订单中心', '合同归档', '应收确认', '发票税务'].map(item => (
+                {['订单中心', '合同归档', '应收确认', '发票税务'].map((item: any) => (
                   <div key={item} className="bg-red-50 text-red-700 text-sm py-2 px-3 rounded font-medium text-center">
                     {item}
                   </div>

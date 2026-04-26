@@ -39,7 +39,7 @@ export default function TrustProof() {
       <div className="container mx-auto px-4">
         {/* Stats */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
-          {stats.map((stat, idx) => (
+          {stats.map((stat: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,7 @@ export default function TrustProof() {
         {/* Case Cards */}
         <h2 className="text-3xl font-bold text-[#1F2329] mb-12 text-center">行业先锋的实战见证</h2>
         <div className="grid lg:grid-cols-3 gap-8">
-          {cases.map((item, idx) => (
+          {cases.map((item: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -76,7 +76,7 @@ export default function TrustProof() {
                   <span className="text-xs text-[#0052D9] font-bold bg-blue-50 px-2 py-0.5 rounded italic">{item.industry}</span>
                 </div>
                 <div className="flex-grow text-right">
-                  {item.tags.map(tag => (
+                  {item.tags.map((tag: any) => (
                     <span key={tag} className="text-[10px] text-slate-400 border border-slate-200 px-1.5 py-0.5 rounded ml-1 uppercase">
                       {tag}
                     </span>

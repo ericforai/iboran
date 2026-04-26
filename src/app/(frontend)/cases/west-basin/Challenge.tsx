@@ -30,7 +30,7 @@ export default function Challenge() {
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
-          {challenges.map((item, index) => (
+          {challenges.map((item: any, index: number) => (
             <div key={index} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 group">
               <div className="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-500 transition-colors duration-300">
                 <item.icon className="w-7 h-7 text-red-500 group-hover:text-white transition-colors duration-300" />

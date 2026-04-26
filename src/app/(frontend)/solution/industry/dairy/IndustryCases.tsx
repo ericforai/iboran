@@ -25,7 +25,7 @@ export default function IndustryCases() {
         </div>
         
         <div className="grid gap-12 max-w-5xl mx-auto">
-          {cases.map((cs, idx) => (
+          {cases.map((cs: any, idx: number) => (
             <div 
               key={idx}
               className="relative bg-[#F7F8FA] rounded-3xl p-8 lg:p-12 border border-slate-100 flex flex-col lg:flex-row gap-12 items-center"
@@ -68,7 +68,7 @@ export default function IndustryCases() {
                      <CheckCircle2 className="w-5 h-5" /> 核心价值
                   </h4>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    {cs.result.split('。').filter(s => s).map((res, i) => (
+                    {cs.result.split('。').filter((s: any) => s).map((res: any, i: number) => (
                       <div key={i} className="flex items-center gap-3">
                         <div className="w-1.5 h-1.5 bg-green-500 rounded-full shrink-0" />
                         <span className="text-sm text-slate-700 font-medium">{res}。</span>

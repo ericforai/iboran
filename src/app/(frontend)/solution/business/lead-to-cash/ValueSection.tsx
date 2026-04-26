@@ -64,7 +64,7 @@ export default function ValueSection() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {valueCategories.map((category, idx) => {
+          {valueCategories.map((category: any, idx: number) => {
             const colors = colorClasses[category.color as keyof typeof colorClasses]
             return (
               <div 
@@ -79,7 +79,7 @@ export default function ValueSection() {
                 </div>
                 
                 <div className="space-y-4">
-                  {category.metrics.map((metric, mIdx) => (
+                  {category.metrics.map((metric: any, mIdx: number) => (
                     <div 
                       key={mIdx} 
                       className={`${colors.valueBg} p-4 rounded-xl flex items-center justify-between`}
@@ -98,7 +98,7 @@ export default function ValueSection() {
         <div className="mt-16 text-center">
           <h3 className="text-lg font-semibold text-slate-500 mb-6">适用行业</h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {['消费品', '农牧业', '化工', '流程制造', '装备制造', '离散制造', 'IT服务'].map((industry, idx) => (
+            {['消费品', '农牧业', '化工', '流程制造', '装备制造', '离散制造', 'IT服务'].map((industry: any, idx: number) => (
               <span 
                 key={idx}
                 className="px-4 py-2 bg-slate-100 text-slate-700 rounded-full text-sm font-medium hover:bg-[#0052D9] hover:text-white transition-colors cursor-default"

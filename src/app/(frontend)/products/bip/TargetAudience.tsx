@@ -84,7 +84,7 @@ export default function TargetAudience() {
               risk: "制约业务创新",
               icon: AlertTriangle
             }
-          ].map((item, idx) => (
+          ].map((item: any, idx: number) => (
             <div key={idx} className="bg-white p-5 lg:p-8 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all group">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-9 h-9 lg:w-12 lg:h-12 bg-red-50 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">

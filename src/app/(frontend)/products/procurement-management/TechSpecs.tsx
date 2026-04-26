@@ -40,14 +40,14 @@ export const TechSpecs = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12">
-          {specs.map((spec, index) => (
+          {specs.map((spec: any, index: number) => (
             <div key={index} className="space-y-6">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-50 rounded-xl">
                 <spec.icon className="w-6 h-6 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold text-slate-900">{spec.title}</h3>
               <ul className="space-y-4">
-                {spec.items.map((item, i) => (
+                {spec.items.map((item: any, i: number) => (
                   <li key={i} className="text-slate-600 text-sm flex items-start gap-2">
                     <span className="mt-1.5 w-1 h-1 bg-blue-600 rounded-full shrink-0"></span>
                     {item}

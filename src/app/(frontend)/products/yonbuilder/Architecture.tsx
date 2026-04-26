@@ -38,7 +38,7 @@ export default function Architecture() {
                   { icon: Terminal, label: '移动端' },
                   { icon: Box, label: '桌面端' },
                   { icon: Layout, label: '小程序' },
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <div key={i} className="bg-slate-50 border border-slate-200 rounded-lg p-4 flex flex-col items-center justify-center gap-2 hover:border-blue-400 transition-colors cursor-default">
                     <item.icon className="w-5 h-5 text-slate-600" />
                     <span className="text-sm font-medium text-slate-700">{item.label}</span>
@@ -71,7 +71,7 @@ export default function Architecture() {
                         <Layout className="w-4 h-4 text-[#E60012]" /> 页面设计
                       </h4>
                       <div className="space-y-2">
-                        {['拖拽式画布', '响应式布局', '组件属性配置', '主题样式定义'].map(t => (
+                        {['拖拽式画布', '响应式布局', '组件属性配置', '主题样式定义'].map((t: any) => (
                           <div key={t} className="text-xs text-slate-600 bg-slate-50 px-2 py-1.5 rounded border border-slate-100">{t}</div>
                         ))}
                       </div>
@@ -81,7 +81,7 @@ export default function Architecture() {
                         <GitBranch className="w-4 h-4 text-[#E60012]" /> 流程编排
                       </h4>
                       <div className="space-y-2">
-                        {['BPMN 2.0', '审批流设计', '业务规则引擎', '自动化触发器'].map(t => (
+                        {['BPMN 2.0', '审批流设计', '业务规则引擎', '自动化触发器'].map((t: any) => (
                           <div key={t} className="text-xs text-slate-600 bg-slate-50 px-2 py-1.5 rounded border border-slate-100">{t}</div>
                         ))}
                       </div>
@@ -91,7 +91,7 @@ export default function Architecture() {
                         <Database className="w-4 h-4 text-[#E60012]" /> 数据建模
                       </h4>
                       <div className="space-y-2">
-                        {['元数据驱动', '实体关系图', '数据查询设计', 'Excel 导入导出'].map(t => (
+                        {['元数据驱动', '实体关系图', '数据查询设计', 'Excel 导入导出'].map((t: any) => (
                           <div key={t} className="text-xs text-slate-600 bg-slate-50 px-2 py-1.5 rounded border border-slate-100">{t}</div>
                         ))}
                       </div>
@@ -122,7 +122,7 @@ export default function Architecture() {
                     <Shield className="w-4 h-4" /> 安全与治理
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {['RBAC 权限', '数据加密', '审计日志', 'API 网关'].map(t => (
+                    {['RBAC 权限', '数据加密', '审计日志', 'API 网关'].map((t: any) => (
                       <span key={t} className="text-xs bg-white text-slate-600 px-2 py-1 rounded border border-blue-100">{t}</span>
                     ))}
                   </div>
@@ -132,7 +132,7 @@ export default function Architecture() {
                     <Cloud className="w-4 h-4" /> 云原生底座
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {['微服务', '容器化', 'DevOps', '多租户'].map(t => (
+                    {['微服务', '容器化', 'DevOps', '多租户'].map((t: any) => (
                       <span key={t} className="text-xs bg-white text-slate-600 px-2 py-1 rounded border border-blue-100">{t}</span>
                     ))}
                   </div>

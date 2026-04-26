@@ -38,7 +38,7 @@ export const DeliveryScope = () => {
               包含内容
             </h3>
             <ul className="space-y-4">
-              {inclusions.map((item, i) => (
+              {inclusions.map((item: any, i: number) => (
                 <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
                   <span className="w-1.5 h-1.5 bg-green-500 rounded-full mt-1.5"></span>
                   {item}
@@ -53,7 +53,7 @@ export const DeliveryScope = () => {
               可选服务
             </h3>
             <ul className="space-y-4">
-              {optionals.map((item, i) => (
+              {optionals.map((item: any, i: number) => (
                 <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
                   <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></span>
                   {item}
@@ -68,7 +68,7 @@ export const DeliveryScope = () => {
               不包含内容
             </h3>
             <ul className="space-y-4">
-              {exclusions.map((item, i) => (
+              {exclusions.map((item: any, i: number) => (
                 <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
                   <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-1.5"></span>
                   {item}

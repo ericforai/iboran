@@ -39,7 +39,7 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
 
   const where: Where = {}
   if (categorySlug) {
-    const activeCategory = categories.docs.find((cat) => cat.slug === categorySlug)
+    const activeCategory = categories.docs.find((cat: any) => cat.slug === categorySlug)
 
     if (activeCategory) {
       where.categories = {

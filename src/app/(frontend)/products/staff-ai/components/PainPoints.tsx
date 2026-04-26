@@ -62,7 +62,7 @@ export const PainPoints = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch">
-          {points.map((point, i) => (
+          {points.map((point: any, i: number) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}

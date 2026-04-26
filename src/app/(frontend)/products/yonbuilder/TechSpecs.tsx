@@ -23,7 +23,7 @@ export default function TechSpecs() {
                 已通过等保三级认证、ISO 27001 信息安全认证、可信云认证。
               </p>
               <div className="flex gap-2">
-                {['等保三级', 'ISO27001', '可信云'].map(t => (
+                {['等保三级', 'ISO27001', '可信云'].map((t: any) => (
                   <span key={t} className="text-[10px] bg-white border border-slate-200 px-2 py-1 rounded text-slate-600">{t}</span>
                 ))}
               </div>

@@ -50,7 +50,7 @@ export default function Capabilities() {
             </p>
 
             <div className="grid sm:grid-cols-2 gap-8">
-              {mainCapabilities.map((item, idx) => (
+              {mainCapabilities.map((item: any, idx: number) => (
                 <div key={idx} className="group">
                   <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                     <div className="group-hover:text-white">

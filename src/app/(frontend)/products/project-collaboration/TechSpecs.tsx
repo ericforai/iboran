@@ -36,7 +36,7 @@ export const TechSpecs = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {specs.map((spec, idx) => (
+          {specs.map((spec: any, idx: number) => (
             <div key={idx} className="p-8 rounded-2xl border border-gray-100 bg-gray-50/30 hover:bg-white hover:shadow-xl transition-all group">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-brand-red/5 text-brand-red flex items-center justify-center group-hover:bg-brand-red group-hover:text-white transition-colors">
@@ -45,7 +45,7 @@ export const TechSpecs = () => {
                 <h3 className="text-xl font-bold">{spec.title}</h3>
               </div>
               <ul className="space-y-4">
-                {spec.items.map((item, i) => (
+                {spec.items.map((item: any, i: number) => (
                   <li key={i} className="flex items-center gap-3 text-gray-600 text-sm">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
                     {item}

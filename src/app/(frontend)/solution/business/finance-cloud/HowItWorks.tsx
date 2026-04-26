@@ -46,7 +46,7 @@ export default function HowItWorks() {
         <div className="relative">
           {/* Architecture Visual */}
           <div className="hidden lg:grid grid-cols-4 gap-8 mb-16 relative z-10">
-            {steps.map((step, idx) => (
+            {steps.map((step: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,7 @@ export default function HowItWorks() {
                 <h3 className="text-xl font-bold text-[#1F2329] mb-3">{step.title}</h3>
                 <p className="text-slate-500 text-sm mb-6">{step.desc}</p>
                 <ul className="space-y-2">
-                  {step.details.map((detail, i) => (
+                  {step.details.map((detail: any, i: number) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-slate-600">
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-200" />
                       {detail}

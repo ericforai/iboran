@@ -65,7 +65,7 @@ export default function IndustryCases() {
 
         {/* Case Selector */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {cases.map((c, idx) => (
+          {cases.map((c: any, idx: number) => (
             <button
               key={idx}
               onClick={() => setActiveCase(idx)}
@@ -119,7 +119,7 @@ export default function IndustryCases() {
 
                 {/* Results */}
                 <div className="flex flex-wrap gap-2 mt-6">
-                  {cases[activeCase].results.map((result, idx) => (
+                  {cases[activeCase].results.map((result: any, idx: number) => (
                     <span
                       key={idx}
                       className="px-3 py-1.5 bg-green-50 text-green-700 text-sm rounded-full border border-green-200 flex items-center gap-1"

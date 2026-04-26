@@ -62,7 +62,7 @@ export const CaseLogosSection: React.FC<CaseLogosSectionProps> = React.memo(({
 
         {/* Industry Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-20">
-          {industries.map((item, index) => (
+          {industries.map((item: any, index: number) => (
             <SlideUp key={item.name} delay={index * 50}>
               <Link 
                 href={item.href}
@@ -118,7 +118,7 @@ export const CaseLogosSection: React.FC<CaseLogosSectionProps> = React.memo(({
                       { label: '合规准则', value: '99%以上', sub: 'Global Compliance' },
                       { label: '多币种支', value: '支持', sub: 'Multi-Currency' },
                       { label: '财资安全', value: '银行级', sub: 'Bank-grade Security' }
-                    ].map((metric) => (
+                    ].map((metric: any) => (
                         <div key={metric.label} className="p-4 md:p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-300 group/card">
                             <div className="text-blue-400 font-bold text-xl md:text-2xl mb-1 group-hover/card:scale-110 transition-transform origin-left">
                               {metric.value}

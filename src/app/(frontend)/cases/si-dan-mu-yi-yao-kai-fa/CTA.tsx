@@ -64,7 +64,7 @@ export default function CTA() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-green-400" />
-              <span>12+ 年行业经验</span>
+              <span>14+ 年行业经验</span>
             </div>
           </div>
         </div>

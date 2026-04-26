@@ -95,7 +95,7 @@ export const HeroV2 = () => {
                    { t: '财务共享建设', d: '标准化流程，降本增效' },
                    { t: '供应链协同', d: '上下游打通，敏捷响应' },
                    { t: '遗留系统迁移', d: '平滑过渡，核心资产零流失' },
-                 ].map((item, idx) => (
+                 ].map((item: any, idx: number) => (
                    <div key={idx} className="flex flex-col gap-1 group">
                      <div className="flex items-center gap-2">
                         <div className="w-1 h-1 rounded-full bg-cyan-500 shadow-[0_0_5px_rgba(6,182,212,0.5)] group-hover:scale-150 transition-transform"></div>
@@ -132,7 +132,7 @@ export const HeroV2 = () => {
                     { l: "科技型中小企业", i: <Zap size={14} className="text-cyan-400" /> },
                     { l: "专精特新企业", i: <ShieldCheck size={14} className="text-emerald-500" /> },
                     { l: "技术中心认定", i: <Globe2 size={14} className="text-indigo-400" /> }
-                  ].map((honor, i) => (
+                  ].map((honor: any, i: number) => (
                     <div key={i} className="flex flex-col gap-2 group cursor-default">
                        <div className="flex items-center gap-2">
                           <div className="w-5 h-5 rounded bg-white/[0.03] border border-white/[0.08] flex items-center justify-center group-hover:bg-white/[0.08] transition-colors">

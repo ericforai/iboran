@@ -69,7 +69,7 @@ export default function Hero() {
                     <p className="text-slate-400 text-sm mt-1">用友BIP超级版 产业协同平台</p>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
-                    {['数智牧场', '精益制造', '全渠道营销', '全链路溯源'].map((module, idx) => (
+                    {['数智牧场', '精益制造', '全渠道营销', '全链路溯源'].map((module: any, idx: number) => (
                       <div key={idx} className="bg-white/5 rounded-lg p-3 text-center border border-white/10">
                         <div className="text-blue-400 font-bold text-sm">{module}</div>
                       </div>

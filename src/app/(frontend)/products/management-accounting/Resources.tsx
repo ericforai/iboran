@@ -55,7 +55,7 @@ export default function Resources() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-           {resources.map((res, i) => (
+           {resources.map((res: any, i: number) => (
              <motion.div
                key={i}
                initial={{ opacity: 0, y: 20 }}

@@ -28,7 +28,7 @@ export default function CustomerSuccess() {
 
         {/* Metrics Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 divide-x divide-slate-100">
-          {metrics.map((metric, idx) => (
+          {metrics.map((metric: any, idx: number) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -52,7 +52,7 @@ export default function CustomerSuccess() {
 
         {/* Logo Wall Placeholder - Since we don't have real logo images, we use stylish text boxes */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {logos.map((logo, idx) => (
+          {logos.map((logo: any, idx: number) => (
              <div 
                key={idx}
                className="h-20 bg-slate-50 rounded-lg flex items-center justify-center border border-slate-100 hover:shadow-md hover:bg-white hover:border-blue-100 transition-all duration-300 font-bold text-slate-400 hover:text-[#0052D9] text-xl"

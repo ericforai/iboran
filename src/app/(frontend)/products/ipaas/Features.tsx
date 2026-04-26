@@ -55,7 +55,7 @@ export default function Features() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {features.map((feature, idx) => (
+          {features.map((feature: any, idx: number) => (
             <div
               key={idx}
               className="bg-[#F7F8FA] p-10 rounded-2xl border border-slate-100 flex flex-col md:flex-row gap-8 hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-300 group"
@@ -71,7 +71,7 @@ export default function Features() {
                   {feature.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {feature.tags.map((tag) => (
+                  {feature.tags.map((tag: any) => (
                     <span 
                       key={tag} 
                       className="px-3 py-1 bg-white text-slate-500 text-xs rounded-full font-medium border border-slate-200"

@@ -141,7 +141,7 @@ export default function BusinessFinanceDashboardMockup() {
                 <TrendingUp size={14} className="text-green-500" />
              </div>
              <div className="h-16 flex items-end gap-1">
-                {[45, 60, 40, 70, 85, 50, 65, 90, 75, 55, 60, 80, 70, 50, 60].map((h, i) => (
+                {[45, 60, 40, 70, 85, 50, 65, 90, 75, 55, 60, 80, 70, 50, 60].map((h: any, i: number) => (
                   <motion.div 
                     key={i}
                     initial={{ height: 0 }}

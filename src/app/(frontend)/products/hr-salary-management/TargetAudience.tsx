@@ -38,7 +38,7 @@ export const TargetAudience = () => {
               <h3 className="text-xl font-bold text-slate-900">最适用的组织</h3>
             </div>
             <div className="space-y-6">
-              {applicable.map((item, index) => (
+              {applicable.map((item: any, index: number) => (
                 <div key={index} className="flex gap-4">
                   <div className="mt-1 text-blue-600 font-bold">0{index + 1}.</div>
                   <div>
@@ -59,7 +59,7 @@ export const TargetAudience = () => {
               <h3 className="text-xl font-bold text-slate-900">不适用的情况</h3>
             </div>
             <div className="space-y-6">
-              {notApplicable.map((item, index) => (
+              {notApplicable.map((item: any, index: number) => (
                 <div key={index} className="flex gap-4 grayscale">
                   <div className="mt-1 text-slate-400 font-bold">0{index + 1}.</div>
                   <div>

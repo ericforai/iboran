@@ -52,7 +52,7 @@ export default function KeyScenarios() {
         
         {/* Tab 切换 */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {scenarios.map((scenario, idx) => {
+          {scenarios.map((scenario: any, idx: number) => {
             const Icon = scenarioIcons[idx]
             return (
               <button
@@ -111,7 +111,7 @@ export default function KeyScenarios() {
                   实现价值收益
                 </h4>
                 <div className="space-y-6">
-                  {scenarios[activeTab].outcome.split('。').filter(s => s).map((item, i) => (
+                  {scenarios[activeTab].outcome.split('。').filter((s: any) => s).map((item: any, i: number) => (
                     <div key={i} className="flex gap-4 items-start border-l-2 border-slate-700 pl-6 py-1">
                       <p className="text-slate-300 leading-relaxed">
                         {item}。

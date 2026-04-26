@@ -93,7 +93,7 @@ export function Hero() {
                     { icon: Clock, label: '交付周期', val: '-35%', color: 'cyan' },
                     { icon: Pill, label: '批次成本', val: '精细核算', color: 'indigo' },
                     { icon: CheckCircle2, label: '合规验证', val: 'GAMP5', color: 'emerald' },
-                  ].map((item, idx) => (
+                  ].map((item: any, idx: number) => (
                     <div key={idx} className="p-4 rounded-xl bg-slate-50 border border-slate-100">
                       <item.icon className="w-5 h-5 text-blue-600 mb-3" />
                       <div className="text-xs text-slate-500 mb-1">{item.label}</div>

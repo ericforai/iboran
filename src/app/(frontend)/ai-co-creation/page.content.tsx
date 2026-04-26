@@ -144,7 +144,7 @@ export function AiCoCreationPageContent() {
               "希望提高效率、改善流程、辅助决策，却找不到第一批可验证的应用点",
               "担心项目大、周期长、投入高，最后变成一次内部展示",
               "不清楚 AI 应该接在哪个业务环节，系统怎么配合"
-            ].map((point, i) => (
+            ].map((point: any, i: number) => (
               <motion.div 
                 key={i}
                 className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-start gap-4 hover:border-blue-300 hover:shadow-md transition-all duration-200 cursor-pointer"
@@ -197,7 +197,7 @@ export function AiCoCreationPageContent() {
                   "结合现有系统、流程和数据基础设计落地路径",
                   "形成可演示、可试点、可复制的场景方案",
                   "让企业从“知道 AI”走向“用上 AI、看见效果”"
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <li key={i} className="flex gap-3 text-slate-700">
                     <CheckCircle2 className="w-6 h-6 text-emerald-500 shrink-0" />
                     <span className="text-lg">{item}</span>
@@ -393,7 +393,7 @@ export function AiCoCreationPageContent() {
                   "ERP、协同、流程、档案、数据等系统环境",
                   "从咨询、实施到二次开发的落地链路",
                   "制造、服务、连锁、集团型企业的实际管理场景"
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <li key={i} className="flex gap-3 text-slate-200 bg-white/5 p-3 rounded-lg border border-white/10">
                     <CheckCircle2 className="w-6 h-6 text-blue-400 shrink-0" />
                     <span>{item}</span>
@@ -569,7 +569,7 @@ function SceneCard({ title, problems, scenarios, values, icon, color }: {
         <div>
           <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">常见问题卡点</h4>
           <ul className="space-y-2">
-            {problems.map((p, i) => (
+            {problems.map((p: any, i: number) => (
               <li key={i} className="flex gap-2 text-slate-600">
                 <span className="text-slate-300 mt-1">•</span>
                 <span>{p}</span>
@@ -583,7 +583,7 @@ function SceneCard({ title, problems, scenarios, values, icon, color }: {
             <Target className="w-4 h-4 text-blue-600" /> AI 可优先切入场景
           </h4>
           <ul className="space-y-2">
-            {scenarios.map((s, i) => (
+            {scenarios.map((s: any, i: number) => (
               <li key={i} className="flex gap-2 text-slate-700 font-medium">
                 <CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" />
                 <span>{s}</span>
@@ -595,7 +595,7 @@ function SceneCard({ title, problems, scenarios, values, icon, color }: {
         <div>
            <h4 className="text-sm font-bold text-emerald-600 uppercase tracking-wider mb-2">预期价值</h4>
            <div className="flex flex-wrap gap-2">
-             {values.map((v, i) => (
+             {values.map((v: any, i: number) => (
                <span key={i} className="text-sm bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-100">
                  {v}
                </span>

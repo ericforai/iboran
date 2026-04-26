@@ -45,7 +45,7 @@ export default function ValueSection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {valueMetrics.map((metric, idx) => (
+          {valueMetrics.map((metric: any, idx: number) => (
             <div 
               key={idx}
               className="text-center p-8 bg-gradient-to-br from-slate-50 to-white rounded-2xl border border-slate-100 hover:shadow-lg transition-shadow"

@@ -48,7 +48,7 @@ export const Architecture = () => {
                   { icon: ShieldCheck, title: '全链路权限分配', desc: 'SSO 身份认证与多级权限鉴定' },
                   { icon: Workflow, title: '企业级多级审批流', desc: '将 AI 指定任务嵌入 OA 审批链' },
                   { icon: Database, title: '全局记忆调度', desc: '跨模型、跨项目的 L1/L2/L3 知识流转' },
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <li key={i} className="flex gap-4">
                     <div className="h-10 w-10 shrink-0 bg-white rounded-lg flex items-center justify-center shadow-sm text-[#0052D9]">
                       <item.icon size={20} />
@@ -96,7 +96,7 @@ export const Architecture = () => {
                   { icon: ShieldCheck, title: '物理级 Docker 沙箱', desc: '每一次复业务执行均受底层隔离' },
                   { icon: Rocket, title: '长时任务并行处理', desc: '支持长达数周的任务挂起与断点恢复' },
                   { icon: ShieldCheck, title: '红队预审防火墙', desc: '全维度防篡改与越权漏洞扫描' },
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <li key={i} className="flex gap-4">
                     <div className="h-10 w-10 shrink-0 bg-slate-800 rounded-lg flex items-center justify-center shadow-sm text-green-400">
                       <item.icon size={20} />

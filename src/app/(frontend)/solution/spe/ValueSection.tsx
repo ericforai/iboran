@@ -41,7 +41,7 @@ export default function ValueSection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {metrics.map((metric, idx) => (
+          {metrics.map((metric: any, idx: number) => (
             <div key={idx} className="text-center group">
               <div className="text-5xl font-bold mb-4 text-white group-hover:scale-110 transition-transform duration-300">
                 {metric.value}

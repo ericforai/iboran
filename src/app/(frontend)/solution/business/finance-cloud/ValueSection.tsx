@@ -43,7 +43,7 @@ export default function ValueSection() {
         </div>
 
         <div className="grid md:grid-cols-4 gap-8">
-          {values.map((item, idx) => (
+          {values.map((item: any, idx: number) => (
             <div key={idx} className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl hover:bg-white/10 hover:border-white/20 transition-all duration-300 text-center group cursor-default">
               <div className="w-12 h-12 bg-[#2563EB]/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#2563EB] transition-all duration-300">
                 <item.icon size={24} className="text-[#3B82F6] group-hover:text-white" />

@@ -35,7 +35,7 @@ export default function Services() {
                   "法律法规与税务政策同步更新",
                   "原厂工程师 7x24h 应急响应",
                   "系统性能调优与数据库维护"
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <li key={i} className="flex items-start text-slate-700">
                     <CheckCircle2 className="w-5 h-5 text-blue-500 mr-3 shrink-0 mt-0.5" />
                     <span>{item}</span>
@@ -66,7 +66,7 @@ export default function Services() {
                   "保留历史凭证与业务单据",
                   "用户操作习惯无缝衔接",
                   "云原生架构，支持弹性扩展"
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <li key={i} className="flex items-start text-slate-700">
                     <CheckCircle2 className="w-5 h-5 text-indigo-500 mr-3 shrink-0 mt-0.5" />
                     <span>{item}</span>

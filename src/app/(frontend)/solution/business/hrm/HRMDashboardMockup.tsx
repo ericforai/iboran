@@ -121,7 +121,7 @@ export const HRMDashboardMockup = () => {
                 { label: '技术面试', count: 480, percent: '11%' },
                 { label: '录用沟通', count: 120, percent: '3%' },
                 { label: '正式入职', count: 85, percent: '2%' },
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <div key={i} className="flex items-center gap-4">
                   <div className="w-16 text-slate-400">{item.label}</div>
                   <div className="flex-1 h-6 bg-slate-50 rounded-sm relative overflow-hidden flex items-center px-3">

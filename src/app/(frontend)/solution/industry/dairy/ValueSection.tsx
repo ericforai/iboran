@@ -22,7 +22,7 @@ export default function ValueSection() {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {metrics.map((metric, idx) => (
+          {metrics.map((metric: any, idx: number) => (
             <div key={idx} className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-center">
               <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                 <metric.icon className="w-8 h-8 text-blue-400" />

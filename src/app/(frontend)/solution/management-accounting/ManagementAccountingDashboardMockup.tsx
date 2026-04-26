@@ -98,7 +98,7 @@ export default function ManagementAccountingDashboardMockup({ activeTab = 'defau
                 <div className="w-32 bg-slate-50 rounded p-2 flex flex-col">
                    <span className="text-[8px] text-slate-500 mb-2">成本走势 (LTM)</span>
                    <div className="flex-1 flex items-end justify-between gap-1 pb-1 px-1">
-                      {[30, 45, 35, 60, 50, 40].map((h, i) => (
+                      {[30, 45, 35, 60, 50, 40].map((h: any, i: number) => (
                         <div key={i} className="flex-1 bg-blue-100 rounded-t-sm" style={{ height: `${h}%` }} />
                       ))}
                    </div>

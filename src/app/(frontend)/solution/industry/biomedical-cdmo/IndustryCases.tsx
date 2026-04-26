@@ -28,7 +28,7 @@ export function IndustryCases() {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          {cases.map((item, index) => (
+          {cases.map((item: any, index: number) => (
             <div key={index} className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl shadow-slate-200/50 border border-slate-100 flex flex-col md:flex-row gap-12">
               <div className="md:w-1/3">
                 <div className="w-20 h-20 rounded-2xl bg-blue-600 flex items-center justify-center mb-6">
@@ -38,7 +38,7 @@ export function IndustryCases() {
                 <div className="text-blue-600 font-medium mb-6">{item.industry}</div>
                 
                 <div className="space-y-4">
-                  {item.stats.map((stat, sIdx) => (
+                  {item.stats.map((stat: any, sIdx: number) => (
                     <div key={sIdx}>
                       <div className="text-2xl font-bold text-slate-900">{stat.value}</div>
                       <div className="text-sm text-slate-500">{stat.label}</div>
@@ -52,7 +52,7 @@ export function IndustryCases() {
                   {item.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-10">
-                  {item.tags.map((tag, tIdx) => (
+                  {item.tags.map((tag: any, tIdx: number) => (
                     <span key={tIdx} className="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-full">
                       {tag}
                     </span>

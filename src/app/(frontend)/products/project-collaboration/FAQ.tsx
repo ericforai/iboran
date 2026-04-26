@@ -45,7 +45,7 @@ export const FAQ = () => {
 
         <div className="max-w-4xl mx-auto border border-gray-100 rounded-3xl p-4 sm:p-10 shadow-sm">
           <div className="space-y-2">
-            {faqs.map((faq, idx) => (
+            {faqs.map((faq: any, idx: number) => (
               <div key={idx} className="border-b last:border-b-0 border-gray-100">
                 <button
                   className="w-full flex items-center justify-between py-6 text-left font-bold text-gray-900 hover:text-brand-blue transition-colors group"

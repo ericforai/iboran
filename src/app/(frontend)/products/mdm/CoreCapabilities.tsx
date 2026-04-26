@@ -55,7 +55,7 @@ export function CoreCapabilities() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {capabilities.map((cat, catIndex) => (
+          {capabilities.map((cat: any, catIndex: number) => (
             <motion.div
               key={cat.category}
               initial={{ opacity: 0, y: 20 }}
@@ -69,7 +69,7 @@ export function CoreCapabilities() {
                 {cat.category}
               </h3>
               <div className="space-y-6">
-                {cat.items.map((item) => (
+                {cat.items.map((item: any) => (
                   <div key={item.name} className="flex gap-4 group">
                     <div className="mt-1 w-10 h-10 bg-white rounded-lg border border-slate-200 flex items-center justify-center text-slate-500 group-hover:text-blue-600 group-hover:border-blue-200 transition-colors shrink-0">
                       <item.icon className="w-5 h-5" />

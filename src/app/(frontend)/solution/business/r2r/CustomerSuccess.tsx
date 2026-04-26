@@ -39,10 +39,10 @@ export default function CustomerSuccess() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {cases.map((item, idx) => (
+          {cases.map((item: any, idx: number) => (
             <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300">
               <div className="flex flex-wrap gap-2 mb-6">
-                {item.tags.map((tag, tIdx) => (
+                {item.tags.map((tag: any, tIdx: number) => (
                   <span key={tIdx} className="px-3 py-1 bg-blue-50 text-[#0052D9] text-xs font-bold rounded-full">
                     {tag}
                   </span>

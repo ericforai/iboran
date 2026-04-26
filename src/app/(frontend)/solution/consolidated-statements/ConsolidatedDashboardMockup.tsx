@@ -30,7 +30,7 @@ export default function ConsolidatedDashboardMockup() {
             { icon: ArrowRightLeft, label: '对账' },
             { icon: Calculator, label: '抵销' },
             { icon: FileText, label: '报告' },
-          ].map((item, idx) => (
+          ].map((item: any, idx: number) => (
             <div 
               key={idx}
               className={`p-2 rounded flex items-center gap-2 cursor-pointer transition-colors ${
@@ -69,7 +69,7 @@ export default function ConsolidatedDashboardMockup() {
               { label: '合并进度', value: '85%', color: 'text-blue-500', sub: '已上报 42/50' },
               { label: '自动抵销率', value: '98.2%', color: 'text-green-500', sub: '覆盖 128 条规则' },
               { label: '差异', value: '3', color: 'text-red-500', sub: '需人工干预' },
-            ].map((stat, i) => (
+            ].map((stat: any, i: number) => (
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -98,7 +98,7 @@ export default function ConsolidatedDashboardMockup() {
                 { label: '对账', status: 'processing' },
                 { label: '抵销', status: 'pending' },
                 { label: '出表', status: 'pending' },
-              ].map((step, i) => (
+              ].map((step: any, i: number) => (
                 <div key={i} className="relative z-10 flex flex-col items-center gap-1 bg-white px-1">
                   <div className={`w-5 h-5 rounded-full flex items-center justify-center border-2 ${
                     step.status === 'complete' ? 'bg-green-500 border-green-500 text-white' :
@@ -129,7 +129,7 @@ export default function ConsolidatedDashboardMockup() {
                   { type: '权益', title: '子权益抵销', amount: '¥ 1.5B', status: '成功' },
                   { type: '内部', title: '买卖对销', amount: '¥ 850M', status: '成功' },
                   { type: '往来', title: '应收对销', amount: '¥ 420M', status: '校验中' },
-                ].map((log, i) => (
+                ].map((log: any, i: number) => (
                   <div key={i} className="flex items-center justify-between p-1 bg-slate-50/50 rounded text-[9px]">
                     <div className="flex flex-col">
                       <span className="text-[7px] text-blue-500 font-bold">{log.type}</span>
@@ -153,7 +153,7 @@ export default function ConsolidatedDashboardMockup() {
                   { name: '华东部', progress: 100 },
                   { name: '美国研发', progress: 100 },
                   { name: '东南亚', progress: 65 },
-                ].map((entity, i) => (
+                ].map((entity: any, i: number) => (
                   <div key={i} className="flex flex-col gap-0.5">
                     <div className="flex justify-between items-center text-[8px]">
                       <span className="text-slate-700">{entity.name}</span>

@@ -79,7 +79,7 @@ export const Hero = () => {
                 </motion.p>
 
                 <motion.div variants={fadeInUp} className="md:hidden flex flex-wrap gap-2 mb-5 w-full">
-                  {['业财打通', '财务共享', '供应链协同', '系统迁移'].map((item, idx) => (
+                  {['业财打通', '财务共享', '供应链协同', '系统迁移'].map((item: any, idx: number) => (
                     <div
                       key={idx}
                       className="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/20 bg-white/5 px-2.5 py-1 text-[11px] text-slate-300"
@@ -99,7 +99,7 @@ export const Hero = () => {
                     { label: '多套系统割裂，数据成孤岛？', href: '/solution/business/digital-modeling' },
                     { label: '实施周期失控，预算变黑洞？', href: '/about#trust' },
                     { label: '业务流程低效，人工成本高？', href: '/ai-co-creation' },
-                  ].map((item, idx) => (
+                  ].map((item: any, idx: number) => (
                     <Link key={idx} href={item.href} className="flex items-center gap-2 group whitespace-nowrap">
                       <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0 shadow-[0_0_8px_rgba(34,211,238,0.4)]"></span>
                       <span className="group-hover:text-cyan-300 transition-colors underline decoration-cyan-500/20 underline-offset-4">{item.label}</span>
@@ -154,7 +154,7 @@ export const Hero = () => {
                        "国家级科技型中小企业",
                        "上海市专精特新企业",
                        "上海市重合同守信用企业"
-                     ].map((honor, i) => (
+                     ].map((honor: any, i: number) => (
                        <div key={i} className="flex items-center gap-2 sm:gap-3 group cursor-default">
                           <div className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-cyan-400 transition-colors duration-300 flex-shrink-0"></div>
                           <span className="text-xs sm:text-sm text-slate-500 font-medium group-hover:text-slate-300 transition-colors duration-300 tracking-wide">{honor}</span>

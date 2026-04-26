@@ -55,7 +55,7 @@ export default function ValueSection() {
 
         {/* Metrics Grid */}
         <div className="grid md:grid-cols-4 gap-8 mb-20">
-          {metrics.map((metric, idx) => (
+          {metrics.map((metric: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -80,7 +80,7 @@ export default function ValueSection() {
         <div className="pt-16 border-t border-slate-100">
            <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-10">Trusted by Global Leaders</p>
            <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60">
-              {customers.map((c, i) => (
+              {customers.map((c: any, i: number) => (
                 <div key={i} className="flex flex-col items-center gap-2 grayscale hover:grayscale-0 transition-all cursor-pointer">
                    <div className="h-12 flex items-center justify-center text-center">
                       <span className="text-lg font-bold text-slate-800">{c.name}</span>

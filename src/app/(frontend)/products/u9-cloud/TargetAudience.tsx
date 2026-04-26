@@ -41,7 +41,7 @@ export const TargetAudience = () => {
               U9 cloud 专为追求精益管理、敏捷制造的中大型制造企业打造，深度适配以下核心行业：
             </p>
             <div className="space-y-4">
-              {targets.map((item, idx) => (
+              {targets.map((item: any, idx: number) => (
                 <div key={idx} className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 transition-all">
                   <CheckCircle2 className="w-5 h-5 text-blue-500 shrink-0" />
                   <div>
@@ -68,7 +68,7 @@ export const TargetAudience = () => {
               当您的企业面临以下“生长痛”时，说明您迫切需要一套高性能的数智底座：
             </p>
             <div className="space-y-6">
-              {pains.map((item, idx) => (
+              {pains.map((item: any, idx: number) => (
                 <div key={idx} className="relative pl-8 before:absolute before:left-0 before:top-1.5 before:w-3 before:h-3 before:bg-red-200 before:rounded-full">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{item.desc}</p>

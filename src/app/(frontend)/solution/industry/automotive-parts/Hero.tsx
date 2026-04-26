@@ -80,7 +80,7 @@ export default function Hero() {
               transition={{ delay: 0.4 }}
               className="flex items-center justify-center lg:justify-start gap-8"
             >
-              {['一汽集团', '北汽集团', '江铃汽车'].map((client) => (
+              {['一汽集团', '北汽集团', '江铃汽车'].map((client: any) => (
                 <div key={client} className="flex items-center gap-2 text-slate-400 font-medium">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                   {client}
@@ -117,7 +117,7 @@ export default function Hero() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 mb-10">
-                  {modules.map((m, idx) => (
+                  {modules.map((m: any, idx: number) => (
                     <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-red-100 transition-colors group">
                       <m.icon className="w-6 h-6 text-[#0052D9] mb-2 group-hover:scale-110 transition-transform" />
                       <div className="text-sm font-bold text-slate-900">{m.label}</div>

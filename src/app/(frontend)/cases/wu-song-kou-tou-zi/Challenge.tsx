@@ -32,7 +32,7 @@ export default function Challenge() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {challenges.map((challenge, index) => {
+          {challenges.map((challenge: any, index: number) => {
             const Icon = challenge.icon
             return (
               <div

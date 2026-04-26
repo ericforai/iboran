@@ -64,7 +64,7 @@ export const Capabilities = () => {
         <div className="flex flex-col gap-12 lg:flex-row items-start">
           {/* Tab Selection */}
           <div className="w-full lg:w-1/3 flex flex-col gap-4">
-            {capabilities.map((cap) => (
+            {capabilities.map((cap: any) => (
               <button
                 key={cap.id}
                 onClick={() => setActiveTab(cap.id)}
@@ -90,7 +90,7 @@ export const Capabilities = () => {
           {/* Details Content */}
           <div className="lg:w-2/3 bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden min-h-[500px] flex flex-col">
             <AnimatePresence mode="wait">
-              {capabilities.map((cap) => cap.id === activeTab && (
+              {capabilities.map((cap: any) => cap.id === activeTab && (
                 <motion.div
                   key={cap.id}
                   initial={{ opacity: 0, x: 20 }}
@@ -111,7 +111,7 @@ export const Capabilities = () => {
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-auto">
-                    {cap.features.map((feature, i) => (
+                    {cap.features.map((feature: any, i: number) => (
                       <div key={i} className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 group hover:border-blue-200 transition-colors">
                         <CheckCircle2 className="text-green-500 group-hover:scale-110 transition-transform" size={20} />
                         <span className="font-medium text-slate-700">{feature}</span>

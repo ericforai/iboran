@@ -75,7 +75,7 @@ export default function Features() {
               {/* Vertical Flow Line */}
               <div className="absolute left-12 top-10 bottom-10 w-px border-l-2 border-dashed border-slate-200 hidden lg:block z-0" />
               
-              {tabs.map((tab) => (
+              {tabs.map((tab: any) => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab)}
@@ -122,7 +122,7 @@ export default function Features() {
                     { label: '数智核算', desc: '事项驱动，实时凭证' },
                     { label: '全球合并', desc: '智能抵销，秒级合并' },
                     { label: '经营洞察', desc: '穿透洞察，辅助决策' }
-                  ].map((item, i) => (
+                  ].map((item: any, i: number) => (
                     <li key={i} className="flex gap-3">
                        <div className="w-1 h-8 bg-blue-500/30 rounded-full shrink-0" />
                        <div>
@@ -139,7 +139,7 @@ export default function Features() {
           <div className="lg:w-2/3 w-full bg-[#F7F8FA] rounded-3xl p-8 lg:px-12 lg:py-10 relative">
              <div className="space-y-10">
                 <div className="grid md:grid-cols-3 gap-6">
-                  {activeTab.features.map((feature, idx) => (
+                  {activeTab.features.map((feature: any, idx: number) => (
                     <motion.div
                       key={feature.title}
                       initial={{ opacity: 0, y: 10 }}

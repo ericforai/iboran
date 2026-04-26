@@ -123,7 +123,7 @@ export const ProductShowcase: React.FC = React.memo(() => {
                   </p>
 
                   <div className="space-y-3">
-                    {erpItems.map((item, i) => (
+                    {erpItems.map((item: any, i: number) => (
                       <Link href={item.href} key={i} className="group/item flex flex-col hover:bg-white/5 p-1.5 md:p-2 rounded-lg transition-colors -mx-1.5 md:-mx-2">
                         <div className="flex items-center gap-2 text-white font-bold text-base mb-0.5">
                           <span className="w-1.5 h-1.5 rounded-full bg-blue-500 group-hover/item:bg-blue-400 transition-colors"></span>
@@ -155,7 +155,7 @@ export const ProductShowcase: React.FC = React.memo(() => {
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-3">
-                   {collabItems.map((item, i) => (
+                   {collabItems.map((item: any, i: number) => (
                      <Link href={item.href} key={i} className="bg-white border border-slate-200/60 rounded-lg px-2.5 md:px-3 py-1.5 md:py-2 text-[11px] md:text-xs font-bold text-slate-600 shadow-sm flex items-center gap-1.5 md:gap-2 hover:border-indigo-200 hover:text-indigo-700 transition-colors group">
                         <div className="w-1 h-1 rounded-full bg-indigo-400 group-hover:bg-indigo-600 transition-colors"></div>
                         {item.name}
@@ -179,7 +179,7 @@ export const ProductShowcase: React.FC = React.memo(() => {
                  </div>
 
                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3">
-                   {dataItems.map((item, i) => (
+                   {dataItems.map((item: any, i: number) => (
                      <Link href={item.href} key={i} className="bg-white border border-emerald-100/50 rounded-xl p-2 md:p-3 flex flex-row md:flex-col gap-1.5 md:gap-2 items-center md:items-start hover:shadow-md transition-all hover:bg-emerald-50/50 group">
                         <item.icon size={15} className="text-emerald-600 group-hover:scale-110 transition-transform" />
                         <span className="text-[11px] md:text-xs font-bold text-slate-700 group-hover:text-emerald-800 transition-colors">{item.label}</span>

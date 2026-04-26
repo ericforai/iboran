@@ -75,7 +75,7 @@ export default function HowItWorks() {
           <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-800 -translate-y-1/2 hidden lg:block" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-8 relative">
-            {steps.map((step, idx) => (
+            {steps.map((step: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -117,7 +117,7 @@ export default function HowItWorks() {
             </div>
           </div>
           <div className="flex-shrink-0 w-full lg:w-96 aspect-video bg-slate-700/50 rounded-2xl border border-slate-600 flex flex-col justify-center p-6 gap-4">
-             {['HR核心服务', '数智能力中心', '业务中台底座'].map((layer, i) => (
+             {['HR核心服务', '数智能力中心', '业务中台底座'].map((layer: any, i: number) => (
                <div key={i} className="bg-slate-800 border-l-4 border-[#E60012] p-3 text-sm font-bold shadow-md">
                  {layer}
                </div>

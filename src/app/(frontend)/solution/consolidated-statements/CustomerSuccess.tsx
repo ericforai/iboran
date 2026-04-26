@@ -19,7 +19,7 @@ export default function CustomerSuccess() {
           </h2>
           
           <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
-            {customers.map((customer, i) => (
+            {customers.map((customer: any, i: number) => (
               <div key={i} className="text-2xl md:text-3xl font-black italic tracking-tighter text-slate-800">
                 {customer.name}
               </div>

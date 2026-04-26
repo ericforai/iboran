@@ -53,7 +53,7 @@ export default function R2RDashboardMockup({ activeTab = 'overview' }: Dashboard
                 { icon: Globe, label: '合并报表', active: activeTab === 'consolidation' },
                 { icon: Activity, label: '经营分析', active: activeTab === 'insights' },
                 { icon: FileText, label: '会计档案', active: false },
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <div 
                   key={i} 
                   className={`flex items-center gap-3 px-3 py-2.5 rounded transition-colors group cursor-pointer ${item.active ? 'bg-blue-600/10 text-blue-400' : 'hover:bg-slate-800'}`}
@@ -189,7 +189,7 @@ function OverviewView() {
             transition={{ delay: 0.1 }}
             className="w-4/5 h-16 bg-slate-50 border border-dashed border-slate-300 rounded-xl flex items-center justify-center gap-12"
           >
-             {['采购', '销售', '项目', '资产', '税务'].map((s, i) => (
+             {['采购', '销售', '项目', '资产', '税务'].map((s: any, i: number) => (
                <div key={i} className="flex flex-col items-center gap-1 opacity-50">
                   <div className="w-6 h-6 bg-slate-200 rounded-full" />
                   <span className="text-[8px] font-medium text-slate-500">{s}</span>
@@ -229,7 +229,7 @@ function AccountingView() {
                   { event: '销售收款预提-1022', type: '管理口径', status: '已转换', id: 'VOU-100022' },
                   { event: '固定资产折旧计提', type: 'CAS / IFRS', status: '进行中', id: 'VOU-100023' },
                   { event: '内部交易协同对账', type: '抵销口径', status: '待处理', id: '-' },
-                ].map((row, i) => (
+                ].map((row: any, i: number) => (
                   <tr key={i} className="hover:bg-slate-50 transition-colors">
                      <td className="px-4 py-2.5 font-medium">{row.event}</td>
                      <td className="px-4 py-2.5 text-slate-400">{row.type}</td>
@@ -370,7 +370,7 @@ function InsightsView() {
              </div>
           </div>
           <div className="h-32 flex items-end gap-2 px-2">
-             {[45, 60, 30, 80, 55, 90, 75, 40, 65, 85, 70, 95].map((h, i) => (
+             {[45, 60, 30, 80, 55, 90, 75, 40, 65, 85, 70, 95].map((h: any, i: number) => (
                 <div key={i} className="flex-1 flex flex-col items-center gap-1">
                    <div className="w-full flex">
                       <motion.div 

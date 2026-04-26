@@ -37,7 +37,7 @@ export default function DeliveryScope() {
                   'Web 端运行时环境',
                   '系统管理与权限中心',
                   '标准 Open API 接口'
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <li key={i} className="flex items-center gap-3">
                     <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center">
                       <Check className="w-3 h-3 text-[#0052D9]" />
@@ -81,7 +81,7 @@ export default function DeliveryScope() {
                   '私有化部署支持',
                   '高级安全审计与风控',
                   '多租户运营管理'
-                ].map((item, i) => (
+                ].map((item: any, i: number) => (
                   <li key={i} className="flex items-center gap-3">
                     <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center">
                       <Plus className="w-3 h-3 text-[#E60012]" />

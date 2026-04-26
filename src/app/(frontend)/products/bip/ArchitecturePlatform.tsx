@@ -46,7 +46,7 @@ export default function ArchitecturePlatform() {
             </p>
 
             <div className="grid sm:grid-cols-2 gap-8">
-              {stacks.map((stack, index) => (
+              {stacks.map((stack: any, index: number) => (
                 <motion.div
                   key={stack.name}
                   initial={{ opacity: 0, x: -20 }}

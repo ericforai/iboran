@@ -135,7 +135,7 @@ export default function FinancialSharedServicesDashboardMockup({ type: _type = '
                 {/* Subtle X-Axis */}
                 <div className="absolute bottom-[28px] left-0 right-0 h-[1px] bg-slate-100 z-0"></div>
                 
-                {[40, 65, 55, 80, 72, 95, 88].map((h, i) => (
+                {[40, 65, 55, 80, 72, 95, 88].map((h: any, i: number) => (
                   <div key={i} className="flex-1 flex flex-col justify-end gap-1.5 group relative z-10 h-full">
                     <div className="flex-1 relative min-h-0 w-full px-0.5">
                       <div className="absolute inset-0 flex flex-col justify-end overflow-hidden rounded-t-sm">

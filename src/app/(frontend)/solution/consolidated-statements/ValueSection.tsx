@@ -49,7 +49,7 @@ export default function ValueSection() {
                 '告别 Excel 时代的手工核对与抵销',
                 '满足国资监管、全球化审计等多元需求',
                 '支撑从核算到分析的价值链升级'
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <div key={i} className="flex items-center gap-4 text-slate-700 font-medium">
                   <div className="w-6 h-6 rounded-full bg-green-50 flex items-center justify-center text-green-600">
                     <ShieldCheck size={16} />
@@ -61,7 +61,7 @@ export default function ValueSection() {
           </div>
 
           <div className="lg:w-1/2 grid grid-cols-2 gap-6">
-            {metrics.map((metric, idx) => (
+            {metrics.map((metric: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, scale: 0.95 }}

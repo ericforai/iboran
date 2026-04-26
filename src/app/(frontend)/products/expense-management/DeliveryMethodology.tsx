@@ -43,7 +43,7 @@ export const DeliveryMethodology = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, index) => (
+          {steps.map((step: any, index: number) => (
             <div key={index} className="relative">
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-blue-200 -z-10 -ml-4"></div>

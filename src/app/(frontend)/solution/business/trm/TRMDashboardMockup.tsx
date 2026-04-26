@@ -53,7 +53,7 @@ const BalanceView = () => (
           { name: '招商银行', type: '结算户', balance: '98.2M', color: 'bg-red-400' },
           { name: '中国建设银行', type: '外币户', balance: '76.5M', color: 'bg-blue-500' },
           { name: '汇丰银行', type: '境外户', balance: '42.1M', color: 'bg-red-600' }
-        ].map((bank, i) => (
+        ].map((bank: any, i: number) => (
           <div key={i} className="flex items-center justify-between text-[10px]">
             <div className="flex items-center gap-2">
               <div className={`w-1.5 h-1.5 rounded-full ${bank.color}`} />
@@ -84,7 +84,7 @@ const LiquidityView = () => (
         </div>
       </div>
       <div className="h-24 flex items-end justify-between gap-1">
-        {[40, 60, 45, 80, 55, 90, 70, 85, 60, 95].map((h, i) => (
+        {[40, 60, 45, 80, 55, 90, 70, 85, 60, 95].map((h: any, i: number) => (
           <div key={i} className="flex-1 flex flex-col items-center gap-1 group">
              <div className="w-full flex flex-col gap-0.5 translate-y-2">
                 <motion.div 
@@ -128,7 +128,7 @@ const PaymentView = () => (
       { company: '北京中投集团', amount: '¥ 2,845,000.00', status: '审批中', bank: '招行结算', date: '13:45:22' },
       { company: '广州贸易物流', amount: '¥ 45,200.00', status: '待审核', bank: '中行直联', date: '11:12:08' },
       { company: '深港实业（海外项目）', amount: '$ 85,000.00', status: '已下达', bank: '汇丰境外', date: '10:30:00' },
-    ].map((item, i) => (
+    ].map((item: any, i: number) => (
       <div key={i} className="bg-white p-3 rounded-xl border border-slate-100 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-3">
           <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${item.status === '已下达' ? 'bg-green-50 text-green-500' : 'bg-blue-50 text-blue-500'}`}>
@@ -180,7 +180,7 @@ const FinanceView = () => (
           <span className="text-[9px] font-bold">合规风控</span>
         </div>
         <div className="flex -space-x-1.5">
-          {[1,2,3].map(i => <div key={i} className="w-5 h-5 rounded-full border border-white bg-slate-100 flex items-center justify-center text-[8px] text-slate-400">{i}</div>)}
+          {[1,2,3].map((i: any) => <div key={i} className="w-5 h-5 rounded-full border border-white bg-slate-100 flex items-center justify-center text-[8px] text-slate-400">{i}</div>)}
         </div>
         <div className="text-[8px] text-slate-400">本月未触发重大预警</div>
       </div>
@@ -225,7 +225,7 @@ export default function TRMDashboardMockup() {
             <span>搜索功能模块...</span>
           </div>
 
-          {tabs.map(tab => (
+          {tabs.map((tab: any) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
@@ -259,7 +259,7 @@ export default function TRMDashboardMockup() {
         {/* Top Header */}
         <header className="h-14 bg-white border-b border-slate-100 flex items-center justify-between px-6">
           <div className="flex items-center gap-3">
-            <h2 className="font-bold text-slate-700 text-sm">仪表盘 / {tabs.find(t => t.id === activeTab)?.label}</h2>
+            <h2 className="font-bold text-slate-700 text-sm">仪表盘 / {tabs.find((t: any) => t.id === activeTab)?.label}</h2>
             <div className="bg-green-50 text-green-600 px-2 py-0.5 rounded text-[8px] font-bold">已连接银企直联 (12)</div>
           </div>
           <div className="flex items-center gap-4">

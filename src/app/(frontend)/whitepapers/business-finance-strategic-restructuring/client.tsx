@@ -203,7 +203,7 @@ export function BusinessFinanceStrategicRestructuringGated() {
               需要业财一体化实施服务？
             </h3>
             <p className="text-slate-600 mb-6">
-              泊冉软件是用友官方实施服务商，拥有12+年业财一体化落地经验
+              泊冉软件是用友官方实施服务商，拥有14+年业财一体化落地经验
             </p>
             <Link
               href="/contact"

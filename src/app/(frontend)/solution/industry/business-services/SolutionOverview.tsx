@@ -69,7 +69,7 @@ export default function SolutionOverview() {
             </p>
             
             <div className="grid sm:grid-cols-2 gap-6">
-              {highlights.map((item, idx) => (
+              {highlights.map((item: any, idx: number) => (
                 <div key={idx} className="flex gap-4">
                   <div className="shrink-0 w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
                     <item.icon className="w-5 h-5 text-[#0052D9]" />
@@ -104,7 +104,7 @@ export default function SolutionOverview() {
             <h3 className="text-xl font-bold text-[#1F2329]">交付物清单</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
-            {deliverables.map((item, idx) => (
+            {deliverables.map((item: any, idx: number) => (
               <div key={idx} className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-[#0052D9] shrink-0 mt-0.5" />
                 <div>

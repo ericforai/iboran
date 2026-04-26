@@ -56,13 +56,13 @@ const KeyScenarios = () => {
     <section className="py-24 bg-slate-50">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {scenarios.map((s: any, i: number) => (
+                {(scenarios as any[]).map((s: any, i: number) => (
                     <div key={i}>
                         <h3>{s.title}</h3>
                         <p>{s.problem || s.description || ""}</p>
                         <p>{s.solution || ""}</p>
                         <p>{s.outcome || ""}</p>
-                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {s.features && <ul>{s.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
                     </div>
                 ))}
             </div>
@@ -88,7 +88,7 @@ const KeyScenarios = () => {
           
           {/* Navigation */}
           <div className="lg:w-1/3 flex flex-col gap-4">
-            {scenarios.map((item) => (
+            {scenarios.map((item: any) => (
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
@@ -118,7 +118,7 @@ const KeyScenarios = () => {
           {/* Content Area */}
           <div className="lg:w-2/3 h-full">
             <AnimatePresence mode="wait">
-              {scenarios.map((item) => item.id === activeTab && (
+              {scenarios.map((item: any) => item.id === activeTab && (
                 <motion.div
                   key={item.id}
                   initial={{ opacity: 0, x: 20 }}
@@ -140,7 +140,7 @@ const KeyScenarios = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                      {item.features.map((feature, i) => (
+                      {item.features.map((feature: any, i: number) => (
                         <div key={i} className="flex items-center text-slate-700 font-semibold group">
                           <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center mr-3 group-hover:bg-blue-600 transition-colors">
                             <ArrowRight className="w-3 h-3 text-blue-600 group-hover:text-white" />

@@ -77,7 +77,7 @@ export default function Hero() {
                       { icon: Users, name: '人才', desc: '干部管理' },
                       { icon: TrendingUp, name: '经营', desc: '业绩考核' },
                       { icon: BarChart3, name: '决策', desc: '数据驾驶舱' },
-                    ].map((module, idx) => (
+                    ].map((module: any, idx: number) => (
                       <div key={idx} className="bg-white/5 rounded-lg p-3 text-center border border-white/10 hover:bg-white/10 transition">
                         <module.icon size={20} className="mx-auto text-red-400 mb-1" />
                         <div className="text-white font-bold text-sm">{module.name}</div>

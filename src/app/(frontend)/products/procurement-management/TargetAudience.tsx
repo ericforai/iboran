@@ -63,7 +63,7 @@ export const TargetAudience = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {painPoints.map((item, index) => (
+          {painPoints.map((item: any, index: number) => (
             <div key={index} className="p-6 border border-slate-100 rounded-xl hover:shadow-lg transition-shadow bg-white">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl font-bold text-slate-200">0{index + 1}</span>

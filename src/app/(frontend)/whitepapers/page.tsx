@@ -42,7 +42,7 @@ export default function WhitepapersPage() {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto space-y-6">
-              {whitepapers.map((wp) => (
+              {whitepapers.map((wp: any) => (
                 <button
                   key={wp.slug}
                   onClick={handleDownload}

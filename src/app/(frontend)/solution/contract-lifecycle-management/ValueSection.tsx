@@ -19,7 +19,7 @@ export default function ValueSection() {
         </p>
         
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {metrics.map((metric, idx) => (
+          {metrics.map((metric: any, idx: number) => (
             <div key={idx} className="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors group">
               <div className="text-4xl lg:text-5xl font-extrabold text-[#E60012] mb-4 group-hover:scale-105 transition-transform">
                 {metric.value}

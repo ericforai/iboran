@@ -36,7 +36,7 @@ export default function Features() {
         </div>
         
         <div className="grid lg:grid-cols-3 gap-8 items-start">
-          {features.map((feature, idx) => (
+          {features.map((feature: any, idx: number) => (
             <div key={idx} className="flex flex-col bg-slate-50 rounded-3xl p-8 border border-slate-200 relative overflow-hidden group hover:border-blue-300 hover:bg-white hover:shadow-xl transition-all duration-300 cursor-pointer">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold text-xl">
@@ -51,7 +51,7 @@ export default function Features() {
               <div className="mb-8">
                 <div className="text-sm font-bold text-slate-400 mb-3 uppercase tracking-wider">覆盖报表范围</div>
                 <div className="flex flex-wrap gap-2">
-                  {feature.tables.map(table => (
+                  {feature.tables.map((table: any) => (
                     <span key={table} className="px-3 py-1 bg-white text-slate-700 text-sm font-semibold rounded-md border border-slate-200">
                       {table}
                     </span>

@@ -20,7 +20,7 @@ export default function CTA() {
                 构建央企合规与业财协同的一体化平台，让治理更透明、决策更高效。
               </p>
               <div className="mt-6 grid sm:grid-cols-3 gap-3 text-sm text-blue-50">
-                {points.map((point) => (
+                {points.map((point: any) => (
                   <div key={point} className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-white/80" />
                     <span>{point}</span>

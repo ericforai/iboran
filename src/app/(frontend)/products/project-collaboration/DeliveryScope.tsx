@@ -37,7 +37,7 @@ export const DeliveryScope = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {scopes.map((scope, idx) => (
+          {scopes.map((scope: any, idx: number) => (
             <div key={idx} className={`bg-gray-800/50 p-8 rounded-2xl border ${scope.color}`}>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
@@ -51,7 +51,7 @@ export const DeliveryScope = () => {
                 </div>
               </div>
               <ul className="space-y-4">
-                {scope.items.map((item, i) => (
+                {scope.items.map((item: any, i: number) => (
                   <li key={i} className="flex items-start gap-3 group text-gray-300">
                     <div className="mt-2 w-1.5 h-1.5 rounded-full bg-brand-red shrink-0" />
                     <span className="text-sm group-hover:text-white transition-colors">{item}</span>

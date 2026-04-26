@@ -79,7 +79,7 @@ export const RecentPostsSection: React.FC<Props> = ({ posts }) => {
 
             {/* Desktop/tablet: keep multi-card layout */}
             <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-7 md:gap-y-12">
-              {posts.map((post) => {
+              {posts.map((post: any) => {
               const firstCategory = post.categories?.[0]
               const categoryTitle =
                 typeof firstCategory === 'object' && firstCategory ? firstCategory.title : '深度分析'

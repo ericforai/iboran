@@ -44,7 +44,7 @@ export default function TargetAudience() {
               典型现状与管理瓶颈
             </h3>
             <div className="grid sm:grid-cols-2 gap-6">
-              {painPoints.map((point, index) => (
+              {painPoints.map((point: any, index: number) => (
                 <div key={index} className="p-6 rounded-xl bg-slate-50 border border-slate-100 hover:shadow-md transition">
                   <div className="w-10 h-10 bg-white rounded-lg shadow-sm flex items-center justify-center text-red-500 mb-4">
                     <AlertCircle size={20} />
@@ -108,7 +108,7 @@ export default function TargetAudience() {
 
               {/* Data Visualization Style */}
               <div className="mt-10 grid grid-cols-3 gap-4 pt-8 border-t border-slate-800">
-                {indicators.map((item, idx) => (
+                {indicators.map((item: any, idx: number) => (
                   <div key={idx} className="text-center">
                     <div className={`text-xl font-bold ${item.color}`}>{item.value}</div>
                     <div className="text-[10px] text-slate-500 uppercase tracking-wider">{item.label}({item.unit})</div>

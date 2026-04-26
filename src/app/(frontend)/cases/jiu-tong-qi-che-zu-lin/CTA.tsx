@@ -33,7 +33,7 @@ export default function CTA() {
 
           {/* Description */}
           <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">
-            泊冉软件拥有 12+ 年企业数字化服务经验，已助力 500+ 家企业实现精细化转型，
+            泊冉软件拥有 14+ 年企业数字化服务经验，已助力 500+ 家企业实现精细化转型，
             专注国资与汽车租赁行业的数字化升级实践。
           </p>
 

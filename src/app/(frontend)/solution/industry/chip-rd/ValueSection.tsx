@@ -57,7 +57,7 @@ const ValueSection = () => {
 
         {/* Value Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-20">
-          {values.map((item, idx) => (
+          {values.map((item: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -97,7 +97,7 @@ const ValueSection = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 relative">
-            {metrics.map((metric, idx) => (
+            {metrics.map((metric: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, scale: 0.9 }}

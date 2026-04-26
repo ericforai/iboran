@@ -50,7 +50,7 @@ export default function TargetAudience() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {targets.map((target, idx) => (
+          {targets.map((target: any, idx: number) => (
             <motion.div
               key={target.title}
               initial={{ opacity: 0, y: 20 }}
@@ -64,7 +64,7 @@ export default function TargetAudience() {
               <div className="mb-6">{target.icon}</div>
               <h3 className="text-xl font-bold text-[#1F2329] mb-6">{target.title}</h3>
               <ul className="space-y-4">
-                {target.items.map((item, i) => (
+                {target.items.map((item: any, i: number) => (
                   <li key={i} className="flex gap-3 text-slate-600 leading-relaxed">
                     <div className="mt-1.5 w-1 h-1 rounded-full bg-slate-300 flex-shrink-0" />
                     <span className="text-sm lg:text-base">{item}</span>

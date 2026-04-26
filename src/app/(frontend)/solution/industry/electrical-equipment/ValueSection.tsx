@@ -46,7 +46,7 @@ export default function ValueSection() {
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {valueMetrics.map((metric, idx) => (
+          {valueMetrics.map((metric: any, idx: number) => (
             <div
               key={idx}
               className="bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 text-center hover:bg-white/10 transition-colors"

@@ -18,7 +18,7 @@ export default function DashboardMockup({ type }: MockupProps) {
                <span className="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">实时更新</span>
             </div>
             <div className="grid grid-cols-3 gap-4">
-              {[1, 2, 3].map(i => (
+              {[1, 2, 3].map((i: any) => (
                 <div key={i} className="bg-slate-50 p-3 rounded-xl border border-slate-100">
                   <p className="text-[10px] text-slate-400 uppercase">毛利贡献</p>
                   <p className="text-sm font-bold text-slate-700">¥{(842 - i * 120)}k</p>
@@ -26,7 +26,7 @@ export default function DashboardMockup({ type }: MockupProps) {
               ))}
             </div>
             <div className="h-40 bg-slate-50 rounded-xl border border-slate-100 flex items-end justify-between px-4 pb-2">
-               {[40, 70, 45, 90, 65, 80].map((h, i) => (
+               {[40, 70, 45, 90, 65, 80].map((h: any, i: number) => (
                  <motion.div 
                     key={i}
                     initial={{ height: 0 }}
@@ -52,7 +52,7 @@ export default function DashboardMockup({ type }: MockupProps) {
                  { label: '事项分录生产', status: 'done', progress: 100 },
                  { label: '成本卷积计算', status: 'active', progress: 65 },
                  { label: '结转规则验证', status: 'pending', progress: 0 }
-               ].map((step, i) => (
+               ].map((step: any, i: number) => (
                  <div key={i} className="p-3 bg-white rounded-xl border border-slate-100 shadow-sm transition-all hover:bg-slate-50">
                     <div className="flex justify-between text-xs mb-2">
                        <span className="text-slate-600 font-medium">{step.label}</span>
@@ -159,7 +159,7 @@ export default function DashboardMockup({ type }: MockupProps) {
                    <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
                       <h6 className="text-slate-400 text-xs uppercase font-bold mb-3">实时成本构成</h6>
                       <div className="space-y-3">
-                         {['直接材料', '直接人工', '制造费用', '外协成本'].map((label, i) => (
+                         {['直接材料', '直接人工', '制造费用', '外协成本'].map((label: any, i: number) => (
                            <div key={i}>
                               <div className="flex justify-between text-xs text-slate-300 mb-1">
                                  <span>{label}</span>
@@ -192,7 +192,7 @@ export default function DashboardMockup({ type }: MockupProps) {
                 {/* Center Panel: Global Map Visualization */}
                 <div className="col-span-12 md:col-span-8 bg-slate-800/30 rounded-xl border border-slate-700/50 relative overflow-hidden flex items-center justify-center min-h-[200px]">
                    {/* Abstract Map Nodes */}
-                   {[1, 2, 3, 4, 5].map((node, i) => (
+                   {[1, 2, 3, 4, 5].map((node: any, i: number) => (
                       <motion.div
                          key={i}
                          className="absolute w-3 h-3 bg-blue-400 rounded-full shadow-[0_0_15px_rgba(96,165,250,0.8)]"

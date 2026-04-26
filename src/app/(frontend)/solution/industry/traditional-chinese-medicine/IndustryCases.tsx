@@ -40,7 +40,7 @@ export function IndustryCases() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {cases.map((item, index) => (
+          {cases.map((item: any, index: number) => (
             <div key={index} className="bg-slate-800 rounded-2xl p-8 hover:bg-slate-750 transition-colors border border-slate-700">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
@@ -59,7 +59,7 @@ export function IndustryCases() {
               </blockquote>
 
               <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-700">
-                {item.metrics.map((metric, i) => (
+                {item.metrics.map((metric: any, i: number) => (
                   <div key={i}>
                     <div className="text-2xl font-bold text-white mb-1">{metric.value}</div>
                     <div className="text-xs text-slate-400 uppercase tracking-wider">{metric.label}</div>

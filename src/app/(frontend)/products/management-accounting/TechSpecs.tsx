@@ -61,7 +61,7 @@ export default function TechSpecs() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-           {specs.map((spec, i) => (
+           {specs.map((spec: any, i: number) => (
              <motion.div
                key={i}
                initial={{ opacity: 0, scale: 0.95 }}
@@ -75,7 +75,7 @@ export default function TechSpecs() {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-6">{spec.title}</h3>
                 <ul className="space-y-4">
-                  {spec.items.map((item, j) => (
+                  {spec.items.map((item: any, j: number) => (
                     <li key={j} className="flex items-start space-x-3 text-sm text-slate-600 leading-relaxed">
                        <div className="w-1.5 h-1.5 rounded-full bg-blue-300 mt-1.5 flex-shrink-0" />
                        <span>{item}</span>

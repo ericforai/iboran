@@ -100,7 +100,7 @@ export default function P2MDashboardMockup() {
             <div className="col-span-3 row-span-6 bg-[#1e293b] rounded-lg border border-slate-700 p-3 flex flex-col">
               <div className="text-slate-400 text-[10px] uppercase tracking-wider mb-2">实时告警</div>
               <div className="space-y-2 overflow-hidden relative">
-                {[1, 2, 3, 4, 5].map((i) => (
+                {[1, 2, 3, 4, 5].map((i: any) => (
                   <motion.div 
                     key={i}
                     initial={{ x: 20, opacity: 0 }}
@@ -137,7 +137,7 @@ export default function P2MDashboardMockup() {
 
               {/* Simplified Gantt / Line Visualization */}
               <div className="relative z-10 mt-6 space-y-6">
-                 {['工序 1: 焊接', '工序 2: 涂装', '工序 3: 总装'].map((stage, idx) => (
+                 {['工序 1: 焊接', '工序 2: 涂装', '工序 3: 总装'].map((stage: any, idx: number) => (
                     <div key={idx} className="flex items-center gap-4">
                        <div className="w-24 text-right text-slate-400 text-[10px]">{stage}</div>
                        <div className="flex-1 h-3 bg-slate-800 rounded-full overflow-hidden relative">

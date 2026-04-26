@@ -20,7 +20,7 @@ export default function CTA() {
                 构建面向国资交通集团的统一财务与业务协同平台，让监管更透明、运营更高效。
               </p>
               <div className="mt-6 grid sm:grid-cols-3 gap-3 text-sm text-amber-50">
-                {points.map((point) => (
+                {points.map((point: any) => (
                   <div key={point} className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-white/80" />
                     <span>{point}</span>

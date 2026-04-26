@@ -66,7 +66,7 @@ export const Capabilities = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {capabilities.map((cap, idx) => (
+          {capabilities.map((cap: any, idx: number) => (
             <Card key={idx} className="border-gray-100 hover:border-brand-blue/30 transition-all hover:shadow-lg group">
               <CardContent className="p-8">
                 <div className="w-12 h-12 rounded-lg bg-brand-blue/5 text-brand-blue flex items-center justify-center mb-6 group-hover:bg-brand-blue group-hover:text-white transition-colors">

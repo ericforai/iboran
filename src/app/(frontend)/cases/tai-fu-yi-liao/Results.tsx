@@ -30,7 +30,7 @@ export default function Results() {
           <p className="text-base sm:text-lg text-slate-300">数字化转型带来的可量化收益</p>
         </header>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {results.map((result, index) => {
+          {results.map((result: any, index: number) => {
             const Icon = result.icon
             return (
               <div

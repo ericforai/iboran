@@ -71,7 +71,7 @@ export default function ProductsPage() {
                      面向大型企业的旗舰级数智化底座，重构企业数智战斗力，覆盖财务、人力、供应链等十大核心领域。
                    </p>
                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 lg:gap-3 mb-5 lg:mb-8">
-                      {['财务云', '人力云', '供应链', '营销云'].map(tag => (
+                      {['财务云', '人力云', '供应链', '营销云'].map((tag: any) => (
                         <span key={tag} className="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-lg text-xs font-medium text-slate-600 text-center">{tag}</span>
                       ))}
                    </div>
@@ -98,7 +98,7 @@ export default function ProductsPage() {
                      专为成长型企业打造的公有云 SaaS 全场景服务，开箱即用，支持快速上线与弹性扩展。
                    </p>
                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 lg:gap-3 mb-5 lg:mb-8">
-                      {['在线会计', '进销存', '电商通', '移动办公'].map(tag => (
+                      {['在线会计', '进销存', '电商通', '移动办公'].map((tag: any) => (
                         <span key={tag} className="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-lg text-xs font-medium text-slate-600 text-center">{tag}</span>
                       ))}
                    </div>
@@ -122,7 +122,7 @@ export default function ProductsPage() {
                       </div>
                    </div>
                    <div className="flex flex-wrap gap-2 flex-1 justify-center">
-                       {['精细管控', '智能制造', '阿米巴', 'IPO支持', '集团管控'].map(tag => (
+                       {['精细管控', '智能制造', '阿米巴', 'IPO支持', '集团管控'].map((tag: any) => (
                           <span key={tag} className="px-3 py-1.5 bg-orange-50 text-orange-700 rounded-lg text-xs font-bold">{tag}</span>
                        ))}
                    </div>
@@ -140,7 +140,7 @@ export default function ProductsPage() {
                   { icon: Cpu, name: 'iPaaS 集成平台', desc: '连接异构系统，打破信息孤岛', color: 'text-indigo-600', bg: 'bg-indigo-50' },
                   { icon: Database, name: '数据中台', desc: '全域数据治理与商业智能分析', color: 'text-purple-600', bg: 'bg-purple-50' },
                   { icon: Activity, name: 'AI 智能平台', desc: 'YonGPT大模型驱动的企业大脑', color: 'text-emerald-600', bg: 'bg-emerald-50' },
-                ].map((item) => (
+                ].map((item: any) => (
                    <div key={item.name} className="bg-slate-800 rounded-2xl p-4 lg:p-6 text-slate-300 flex items-center gap-3 lg:gap-4 hover:bg-slate-700 transition-colors">
                       <div className={`w-10 h-10 rounded-lg ${item.bg} ${item.color} flex items-center justify-center`}>
                          <item.icon className="w-5 h-5" />
@@ -165,14 +165,14 @@ export default function ProductsPage() {
              </div>
              
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
-                {productCategories.map((category) => (
+                {productCategories.map((category: any) => (
                    <div key={category.name} className="space-y-4 lg:space-y-6">
                       <div className="flex items-center gap-3 pb-3 lg:pb-4 border-b border-slate-100">
                          <div className="w-1 h-6 bg-[#E60012] rounded-full"></div>
                          <h3 className="text-lg font-bold text-[#1F2329]">{category.name}</h3>
                       </div>
                       <div className="grid gap-3 lg:gap-4">
-                         {category.items.map((item) => {
+                         {category.items.map((item: any) => {
                             const Icon = item.icon
                             return (
                                <Link key={item.href} href={item.href} className="group flex items-start gap-3 lg:gap-4 p-3 lg:p-4 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">

@@ -34,7 +34,7 @@ export const TrustProof = () => {
               我们在采购管理领域拥有深厚的行业积累，为各行各业的客户提供更懂业务、更稳健的数字化解决方案。
             </p>
             <div className="grid grid-cols-2 gap-8">
-              {stats.map((stat, i) => (
+              {stats.map((stat: any, i: number) => (
                 <div key={i} className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm">
                     <stat.icon className="w-6 h-6 text-blue-600" />
@@ -48,13 +48,13 @@ export const TrustProof = () => {
             </div>
           </div>
           <div className="space-y-6">
-            {cases.map((item, i) => (
+            {cases.map((item: any, i: number) => (
               <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                 <div className="text-blue-600 text-xs font-bold uppercase tracking-wider mb-2">{item.industry}</div>
                 <h3 className="text-xl font-bold text-slate-900 mb-4">{item.title}</h3>
                 <p className="text-slate-600 text-sm mb-6 leading-relaxed">{item.desc}</p>
                 <div className="flex gap-2">
-                  {item.tags.map(tag => (
+                  {item.tags.map((tag: any) => (
                     <span key={tag} className="px-3 py-1 bg-slate-100 text-slate-500 rounded-full text-xs italic">#{tag}</span>
                   ))}
                 </div>

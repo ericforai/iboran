@@ -44,14 +44,14 @@ export default function TechSpecs() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {specs.map((spec, idx) => (
+          {specs.map((spec: any, idx: number) => (
             <div key={idx} className="bg-white p-8 rounded-2xl border border-slate-200 hover:shadow-lg transition group">
               <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                 {spec.icon}
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-6">{spec.title}</h3>
               <div className="space-y-4">
-                {spec.items.map((item, iIdx) => (
+                {spec.items.map((item: any, iIdx: number) => (
                   <div key={iIdx} className="flex flex-col">
                     <span className="text-xs text-slate-400 uppercase tracking-wider mb-1">{item.label}</span>
                     <span className="text-sm text-slate-700 font-medium">{item.value}</span>
@@ -74,7 +74,7 @@ export default function TechSpecs() {
                 响应国家自主可控策略，BPM 平台已完成从芯片（鲲鹏、飞腾）、操作系统（麒麟、统信）到数据库（达梦、人大金仓）的全栈国产化适配测试，以保障核心业务链条的高安全性。
               </p>
               <div className="flex flex-wrap gap-4">
-                {['华为鲲鹏', '麒麟软件', '达梦数据库', '金蝶中间件'].map((tag, tIdx) => (
+                {['华为鲲鹏', '麒麟软件', '达梦数据库', '金蝶中间件'].map((tag: any, tIdx: number) => (
                   <span key={tIdx} className="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-full border border-slate-200">
                     {tag}
                   </span>

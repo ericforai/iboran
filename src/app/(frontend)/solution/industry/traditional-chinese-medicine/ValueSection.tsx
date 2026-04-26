@@ -37,7 +37,7 @@ export function ValueSection() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {values.map((item, index) => (
+          {values.map((item: any, index: number) => (
             <div key={index} className="text-center group">
               <div className="w-16 h-16 mx-auto bg-white rounded-2xl shadow-lg border border-slate-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <item.icon className="w-8 h-8 text-emerald-600" />

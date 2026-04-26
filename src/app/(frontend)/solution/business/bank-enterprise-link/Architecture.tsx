@@ -115,7 +115,7 @@ export default function Architecture() {
               { label: '统一运维', desc: '云端自动升级维护' },
               { label: '安全合规', desc: '数据加密传输' },
               { label: '高可用性', desc: '99.9% SLA 保障' },
-            ].map((item, idx) => (
+            ].map((item: any, idx: number) => (
               <div key={idx} className="text-center">
                 <div className="text-lg font-bold text-[#1F2329]">{item.label}</div>
                 <div className="text-sm text-slate-500">{item.desc}</div>

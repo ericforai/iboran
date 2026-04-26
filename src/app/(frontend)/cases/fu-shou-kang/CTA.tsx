@@ -24,7 +24,7 @@ export default function CTA() {
                 获取适配养老服务与辅具租赁业务的数字化落地路线，构建可追踪、可协同、可分析的运营闭环。
               </p>
               <div className="mt-6 grid sm:grid-cols-3 gap-3 text-sm text-blue-50">
-                {points.map((point) => (
+                {points.map((point: any) => (
                   <div key={point} className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-white/80" />
                     <span>{point}</span>

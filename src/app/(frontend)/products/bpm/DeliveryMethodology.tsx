@@ -50,7 +50,7 @@ export default function DeliveryMethodology() {
           <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -translate-y-1/2"></div>
           
           <div className="grid lg:grid-cols-4 gap-8">
-            {phases.map((phase, idx) => (
+            {phases.map((phase: any, idx: number) => (
               <div key={idx} className="relative z-10 flex flex-col items-center">
                 {/* Icon Circle */}
                 <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg mb-6 ring-8 ring-white">
@@ -66,7 +66,7 @@ export default function DeliveryMethodology() {
                   <div className="pt-4 border-t border-slate-100">
                     <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-3">核心交付物</div>
                     <ul className="space-y-2">
-                      {phase.outputs.map((output, oIdx) => (
+                      {phase.outputs.map((output: any, oIdx: number) => (
                         <li key={oIdx} className="text-xs text-slate-700 bg-slate-50 py-1.5 px-3 rounded flex items-center justify-center gap-1.5 grayscale group-hover:grayscale-0 transition">
                           <MoveRight size={10} className="text-blue-500" />
                           {output}

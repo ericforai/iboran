@@ -34,7 +34,7 @@ export const TrustProof = () => {
               项目协同管理系统已助力数万家组织实现高效协同。
             </p>
             <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, idx) => (
+              {stats.map((stat: any, idx: number) => (
                 <div key={idx} className="bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
                   <div className="text-3xl font-bold text-brand-blue mb-2">
                     {stat.value}<span className="text-sm font-normal text-gray-500 ml-1">{stat.unit}</span>
@@ -45,7 +45,7 @@ export const TrustProof = () => {
             </div>
           </div>
           <div className="grid gap-6">
-            {cases.map((item, idx) => (
+            {cases.map((item: any, idx: number) => (
               <Card key={idx} className="border-none shadow-md">
                 <CardContent className="p-8">
                   <div className="flex items-center gap-3 mb-4">
@@ -58,7 +58,7 @@ export const TrustProof = () => {
                     “{item.content}”
                   </p>
                   <div className="flex gap-2">
-                    {item.tags.map(tag => (
+                    {item.tags.map((tag: any) => (
                       <span key={tag} className="text-[10px] text-gray-400 border border-gray-200 px-2 py-0.5 rounded">
                         #{tag}
                       </span>

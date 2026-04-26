@@ -77,7 +77,7 @@ export default function Features() {
         <div className="max-w-6xl mx-auto">
           {/* Tabs Header */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {tabs.map((tab) => (
+            {tabs.map((tab: any) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab)}
@@ -122,7 +122,7 @@ export default function Features() {
                   </p>
                   
                   <div className="space-y-4 mb-8">
-                    {activeTab.details.map((detail, idx) => (
+                    {activeTab.details.map((detail: any, idx: number) => (
                       <div key={idx} className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-[#0052D9]">
                           <detail.icon size={14} />

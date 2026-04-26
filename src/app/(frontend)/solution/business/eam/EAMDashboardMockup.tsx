@@ -157,7 +157,7 @@ const OverviewView = () => (
           icon: <AlertTriangle className="text-red-500" size={18} />,
           color: 'red'
         },
-      ].map((stat, i) => (
+      ].map((stat: any, i: number) => (
         <Card key={i} className="flex flex-col justify-between h-28 md:h-32 p-3 md:p-5 group hover:border-blue-200 transition-colors">
           <div className="flex justify-between items-start">
             <span className="text-[9px] md:text-[10px] text-slate-400 font-bold uppercase tracking-wider whitespace-nowrap">{stat.label}</span>
@@ -192,7 +192,7 @@ const OverviewView = () => (
           </div>
         </div>
         <div className="h-48 flex items-end gap-2 px-2">
-          {[40, 60, 45, 80, 55, 90, 70, 85, 60, 75, 50, 65].map((h, i) => (
+          {[40, 60, 45, 80, 55, 90, 70, 85, 60, 75, 50, 65].map((h: any, i: number) => (
             <div key={i} className="flex-1 flex flex-col items-center gap-1">
               <motion.div 
                 initial={{ height: 0 }}
@@ -216,7 +216,7 @@ const OverviewView = () => (
             { title: '中央空调#2 维护工单已关闭', time: '2小时前', type: 'success' },
             { title: '新资产入库: 工业机器人x5', time: '5小时前', type: 'info' },
             { title: '备品备件库存低于临界值', time: '昨天', type: 'danger' },
-          ].map((item, i) => (
+          ].map((item: any, i: number) => (
             <div key={i} className="flex gap-3">
               <div className={`w-1 h-8 rounded-full shrink-0 ${
                 item.type === 'warning' ? 'bg-orange-400' : 
@@ -267,7 +267,7 @@ const RegistryView = () => (
             { id: 'EAM-2024-0128', name: '高压变压器 3#', type: '基础设施', status: '就绪', health: 2840 },
             { id: 'EAM-2024-0256', name: '数控加工中心 T1', type: '机电设备', status: '运行中', health: 890 },
             { id: 'EAM-2024-0312', name: '消防监控系统', type: '基础设施', status: '故障', health: 12 },
-          ].map((asset, i) => (
+          ].map((asset: any, i: number) => (
             <tr key={i} className="border-b border-slate-50 group hover:bg-slate-50/80 transition-colors">
               <td className="py-3 pl-2 font-mono text-slate-500">{asset.id}</td>
               <td className="py-3 font-bold text-slate-800">{asset.name}</td>
@@ -306,7 +306,7 @@ const MaintenanceView = () => (
           { title: '注塑机液压系统漏油修复', priority: '高', date: '今日' },
           { title: '中央空调冷却塔季度保养', priority: '中', date: '明日' },
           { title: '变配电系统定期除尘', priority: '低', date: '12-28' },
-        ].map((task, i) => (
+        ].map((task: any, i: number) => (
           <div key={i} className="p-3 bg-slate-50 rounded-lg border border-slate-100 hover:border-blue-200 transition-colors cursor-pointer group">
             <div className="flex justify-between items-start mb-1">
               <div className="text-[11px] font-bold text-slate-800 group-hover:text-blue-600">{task.title}</div>
@@ -375,7 +375,7 @@ const InspectionView = () => (
           { name: 'B区 仓储中心', progress: 45, staff: '王工', issues: 2 },
           { name: 'C区 动力机房', progress: 80, staff: '陈工', issues: 1 },
           { name: 'D区 办公主楼', progress: 0, staff: '未领用', issues: 0 },
-        ].map((area, i) => (
+        ].map((area: any, i: number) => (
           <div key={i} className="p-4 bg-white rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between">
             <div>
               <div className="text-[11px] font-bold text-slate-800 mb-1">{area.name}</div>
@@ -447,7 +447,7 @@ const AnalysisView = () => (
         <div className="h-56 relative">
           {/* ROI Chart Mock */}
           <div className="absolute inset-0 flex items-end justify-around px-4">
-            {[30, 45, 40, 65, 80, 75, 95].map((h, i) => (
+            {[30, 45, 40, 65, 80, 75, 95].map((h: any, i: number) => (
               <div key={i} className="w-8 flex flex-col items-center gap-2">
                 <motion.div 
                   initial={{ height: 0 }}

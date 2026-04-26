@@ -71,7 +71,7 @@ export default function S2PDashboardMockup({ type }: S2PDashboardMockupProps) {
                { icon: Users, label: "供应商库", active: type === 'supplier' },
                { icon: FileText, label: "合同管理", active: false },
                { icon: Truck, label: "库存物流", active: false },
-             ].map((item, idx) => (
+             ].map((item: any, idx: number) => (
                <div 
                   key={idx} 
                   className={`
@@ -119,7 +119,7 @@ function SourcingView() {
             { name: "2025年度 IT 设备集采项目", status: "招标中", date: "2024-12-30", type: "公开招标" },
             { name: "华东区物流运输服务外包", status: "专家评审", date: "2024-12-28", type: "邀请招标" },
             { name: "Q1 办公用品定点采购", status: "待发布", date: "2025-01-05", type: "询价" },
-          ].map((item, i) => (
+          ].map((item: any, i: number) => (
              <div key={i} className="flex items-center justify-between p-3 hover:bg-slate-50 rounded-lg border border-transparent hover:border-slate-100 transition-all">
                <div>
                  <div className="font-semibold text-slate-700 text-sm">{item.name}</div>
@@ -158,7 +158,7 @@ function ProcurementView() {
         <div className="bg-white p-5 rounded-lg border border-slate-100 shadow-sm">
            <h3 className="font-bold text-slate-800 mb-4">待处理订单</h3>
            <div className="space-y-3">
-              {[1, 2, 3].map(i => (
+              {[1, 2, 3].map((i: any) => (
                 <div key={i} className="flex gap-3 p-2 border-b border-slate-50 last:border-0">
                   <div className="w-10 h-10 bg-blue-50 rounded flex items-center justify-center text-blue-600">
                     <ShoppingCart size={18} />

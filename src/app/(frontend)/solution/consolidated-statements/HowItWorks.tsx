@@ -47,7 +47,7 @@ export default function HowItWorks() {
           <div className="hidden lg:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-            {steps.map((step, idx) => (
+            {steps.map((step: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -92,7 +92,7 @@ export default function HowItWorks() {
           <div className="text-blue-400 font-bold mb-4 tracking-widest uppercase text-sm">强大的集成底座</div>
           <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
             {/* Using text logos for placeholder consistency */}
-             {['用友 BIP', 'SAP S/4HANA', 'Oracle EBS', 'Microsoft Dynamics'].map((brand, i) => (
+             {['用友 BIP', 'SAP S/4HANA', 'Oracle EBS', 'Microsoft Dynamics'].map((brand: any, i: number) => (
                <div key={i} className="text-xl font-black italic tracking-tighter text-white/80">{brand}</div>
              ))}
           </div>

@@ -11,7 +11,7 @@ export default function ValueSection() {
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl font-bold text-[#1F2329] mb-12">数智赋能带来的核心价值</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {metrics.map((item, idx) => (
+          {metrics.map((item: any, idx: number) => (
             <div key={idx} className="p-6">
               <div className="text-4xl font-bold text-[#E60012] mb-2">{item.value}</div>
               <div className="text-lg font-semibold text-[#1F2329] mb-2">{item.label}</div>

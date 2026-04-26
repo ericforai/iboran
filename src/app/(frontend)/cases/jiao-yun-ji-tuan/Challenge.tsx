@@ -41,7 +41,7 @@ export default function Challenge() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {challenges.map((challenge) => {
+          {challenges.map((challenge: any) => {
             const Icon = challenge.icon
             return (
               <div

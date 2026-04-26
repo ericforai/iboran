@@ -45,7 +45,7 @@ export default function ValueSection() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {metrics.map((metric, idx) => (
+          {metrics.map((metric: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.9 }}

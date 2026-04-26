@@ -86,7 +86,7 @@ export default function Features() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Tab Navigation */}
           <div className="w-full lg:w-1/3 flex flex-col gap-2">
-            {tabs.map((tab) => (
+            {tabs.map((tab: any) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
@@ -109,7 +109,7 @@ export default function Features() {
           {/* Tab Content Area */}
           <div className="w-full lg:w-2/3">
             <AnimatePresence mode="wait">
-              {tabs.map((tab) => (
+              {tabs.map((tab: any) => (
                 tab.id === activeTab && (
                   <motion.div
                     key={tab.id}
@@ -133,7 +133,7 @@ export default function Features() {
                       </p>
 
                       <div className="grid md:grid-cols-1 gap-6">
-                        {tab.details.map((detail, idx) => (
+                        {tab.details.map((detail: any, idx: number) => (
                           <div key={idx} className="flex items-start gap-4">
                             <div className="w-6 h-6 rounded-full bg-blue-100 text-[#0052D9] flex items-center justify-center flex-shrink-0 mt-1">
                               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

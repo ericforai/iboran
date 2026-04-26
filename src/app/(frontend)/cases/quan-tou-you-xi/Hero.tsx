@@ -49,7 +49,7 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              {highlightTags.map((tag) => (
+              {highlightTags.map((tag: any) => (
                 <span
                   key={tag}
                   className="px-4 py-2 rounded-full border border-white/15 bg-white/10 text-sm text-white/90"
@@ -72,7 +72,7 @@ export default function Hero() {
                 <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1">全球化</span>
               </div>
               <div className="mt-6 grid gap-4">
-                {focusItems.map((item) => {
+                {focusItems.map((item: any) => {
                   const Icon = item.icon
                   return (
                     <div

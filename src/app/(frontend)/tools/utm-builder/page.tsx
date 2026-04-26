@@ -116,7 +116,7 @@ export default function UTMBuilderPage() {
                 onChange={(e) => setParams({ ...params, utm_source: e.target.value })}
                 className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0052D9]"
               >
-                {SOURCE_OPTIONS.map(opt => (
+                {SOURCE_OPTIONS.map((opt: any) => (
                   <option key={opt.value} value={opt.value}>
                     {opt.label} ({opt.value}) - {opt.description}
                   </option>
@@ -134,7 +134,7 @@ export default function UTMBuilderPage() {
                 onChange={(e) => setParams({ ...params, utm_medium: e.target.value })}
                 className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0052D9]"
               >
-                {MEDIUM_OPTIONS.map(opt => (
+                {MEDIUM_OPTIONS.map((opt: any) => (
                   <option key={opt.value} value={opt.value}>
                     {opt.label} ({opt.value})
                   </option>
@@ -162,7 +162,7 @@ export default function UTMBuilderPage() {
                 utm_content (内容标识)
               </label>
               <div className="flex gap-2 flex-wrap">
-                {CONTENT_OPTIONS.map(opt => (
+                {CONTENT_OPTIONS.map((opt: any) => (
                   <button
                     key={opt.value}
                     type="button"

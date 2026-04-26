@@ -51,7 +51,7 @@ export default function Features() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {features.map((feature, idx) => (
+          {features.map((feature: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}

@@ -62,11 +62,11 @@ export default function Features() {
     <section className="py-24 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {tabs.map((t, i) => (
+                {(tabs as any[]).map((t: any, i: number) => (
                     <div key={i}>
                         <h3>{t.title}</h3>
                         <p>{t.desc || t.description || ""}</p>
-                        {t.features && <ul>{t.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {t.features && <ul>{t.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
                         {t.metrics && <p>Metrics: {t.metrics.join(', ')}</p>}
                     </div>
                 ))}
@@ -84,7 +84,7 @@ export default function Features() {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
           {/* Tabs Navigation (Left) */}
           <div className="w-full lg:w-1/3 flex flex-col gap-2">
-            {tabs.map((tab) => (
+            {tabs.map((tab: any) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
@@ -110,7 +110,7 @@ export default function Features() {
           {/* Content Area (Right) */}
           <div className="w-full lg:w-2/3 min-h-[500px]">
             <AnimatePresence mode="wait">
-              {tabs.map((tab) => (
+              {tabs.map((tab: any) => (
                 activeTab === tab.id && (
                   <motion.div
                     key={tab.id}
@@ -126,7 +126,7 @@ export default function Features() {
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-6">
-                      {tab.features.map((feature, idx) => (
+                      {tab.features.map((feature: any, idx: number) => (
                         <div key={idx} className="bg-white p-6 rounded-xl shadow-sm">
                           <h4 className="font-bold text-[#1F2329] mb-2 flex items-center gap-2">
                             <div className="w-2 h-2 bg-[#E60012] rounded-full"></div>

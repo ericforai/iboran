@@ -110,11 +110,11 @@ export default function Features() {
     <section className="py-24 bg-white relative overflow-hidden">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {tabs.map((t, i) => (
+                {(tabs as any[]).map((t: any, i: number) => (
                     <div key={i}>
                         <h3>{t.title}</h3>
                         <p>{t.desc || t.description || ""}</p>
-                        {t.features && <ul>{t.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {t.features && <ul>{t.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
                         {t.metrics && <p>Metrics: {t.metrics.join(', ')}</p>}
                     </div>
                 ))}
@@ -130,7 +130,7 @@ export default function Features() {
 
         {/* Tabs Control */}
         <div className="flex flex-wrap justify-center gap-4 mb-16 px-4">
-          {tabs.map((tab) => (
+          {tabs.map((tab: any) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
@@ -149,7 +149,7 @@ export default function Features() {
         {/* Tab Content */}
         <div className="bg-white/40 backdrop-blur-xl border border-white/20 rounded-3xl p-8 lg:p-12 min-h-[500px] shadow-2xl shadow-slate-200/50">
           <AnimatePresence mode="wait">
-            {tabs.map((tab) => tab.id === activeTab && (
+            {tabs.map((tab: any) => tab.id === activeTab && (
               <motion.div
                 key={tab.id}
                 initial={{ opacity: 0, y: 10 }}
@@ -163,14 +163,14 @@ export default function Features() {
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-12">
-                  {tab.groups.map((group, groupIdx) => (
+                  {tab.groups.map((group: any, groupIdx: number) => (
                     <div key={groupIdx}>
                       <h4 className="flex items-center gap-2 text-lg font-bold text-[#1E293B] mb-6 border-b border-slate-200 pb-2">
                         <Layers size={20} className="text-[#2563EB]" />
                         {group.title}
                       </h4>
                       <div className="space-y-6">
-                        {group.features.map((feature, featureIdx) => (
+                        {group.features.map((feature: any, featureIdx: number) => (
                           <div 
                             key={featureIdx}
                             className="bg-white p-6 rounded-2xl hover:shadow-xl hover:translate-y-[-2px] transition-all duration-300 group flex items-start gap-4 border border-slate-100 hover:border-blue-100 cursor-pointer"

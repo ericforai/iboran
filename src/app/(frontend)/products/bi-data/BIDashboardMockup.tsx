@@ -51,7 +51,7 @@ export default function BIDashboardMockup() {
       <div className="flex-1 flex overflow-hidden relative z-10">
         {/* Sidebar */}
         <div className="w-16 border-r border-slate-700/50 bg-[#1E293B]/50 flex flex-col items-center py-6 gap-6">
-          {[LayoutGrid, Database, Activity, Globe, Settings].map((Icon, idx) => (
+          {[LayoutGrid, Database, Activity, Globe, Settings].map((Icon: any, idx: number) => (
             <div key={idx} className={`w-8 h-8 rounded-lg flex items-center justify-center cursor-pointer transition-all ${idx === 0 ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' : 'text-slate-400 hover:text-white hover:bg-slate-700'}`}>
               <Icon size={18} />
             </div>
@@ -122,7 +122,7 @@ export default function BIDashboardMockup() {
                   <TrendingUp className="w-3 h-3 text-emerald-500" />
                </div>
                <div className="space-y-3">
-                  {[1,2,3,4,5].map(i => (
+                  {[1,2,3,4,5].map((i: any) => (
                     <div key={i} className="flex items-center gap-2 group/item">
                        <div className={`w-4 h-4 rounded-sm flex items-center justify-center text-[10px] font-bold ${i < 4 ? 'bg-amber-500/20 text-amber-500' : 'bg-slate-700 text-slate-400'}`}>
                          {i}

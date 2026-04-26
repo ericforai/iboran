@@ -40,7 +40,7 @@ export default function SolutionOverview() {
               用友BIP超级版构建了从“上游智能采购、中游智慧加工、下游数智服务”的完整闭环，通过数据湖与AI能力，将离散的门店孤岛连接成协同增值的价值网。
             </p>
             <div className="grid sm:grid-cols-2 gap-6">
-              {features.map((f, i) => (
+              {features.map((f: any, i: number) => (
                 <div key={i} className="flex gap-3">
                   <f.icon className="w-6 h-6 text-[#0052D9] shrink-0" />
                   <div>

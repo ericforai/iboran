@@ -27,7 +27,7 @@ export default function Capabilities() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-4">
-          {capabilities.map((item, idx) => (
+          {capabilities.map((item: any, idx: number) => (
             <div key={idx} className="group p-4 lg:p-6 rounded-xl border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all bg-white text-left lg:text-center cursor-default">
               <div className="flex items-center gap-2 mb-2 lg:block lg:mb-4">
                 <div className="w-8 h-8 lg:w-12 lg:h-12 lg:mx-auto bg-slate-50 group-hover:bg-blue-600 rounded-md lg:rounded-full flex items-center justify-center transition-colors flex-shrink-0">

@@ -39,7 +39,7 @@ export default function KeyScenarios({ scenarios }: KeyScenariosProps) {
 
         {/* Tab Navigation */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {scenarios.map((scenario, index) => (
+          {scenarios.map((scenario: any, index: number) => (
             <button
               key={scenario.title}
               onClick={() => setActiveIndex(index)}

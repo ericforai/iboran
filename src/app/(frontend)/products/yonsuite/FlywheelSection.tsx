@@ -51,7 +51,7 @@ export default function FlywheelSection() {
               </p>
 
               <div className="grid sm:grid-cols-1 gap-6 mb-10">
-                {flywheelFeatures.map((f, i) => (
+                {flywheelFeatures.map((f: any, i: number) => (
                   <div key={i} className="flex gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
                     <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center shrink-0">
                       {f.icon}
@@ -102,7 +102,7 @@ export default function FlywheelSection() {
                   { name: '制造', angle: 144, color: 'bg-emerald-500' },
                   { name: '营销', angle: 216, color: 'bg-orange-500' },
                   { name: '人力', angle: 288, color: 'bg-purple-500' }
-                ].map((node, i) => (
+                ].map((node: any, i: number) => (
                   <div
                     key={i}
                     className="absolute w-16 h-16 flex flex-col items-center justify-center transition-all duration-700"

@@ -18,7 +18,7 @@ export default function ValueSection() {
           <p className="text-slate-400">通实时、精细、智能的成本管理，驱动企业利润增长与转型升级。</p>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {METRICS.map((metric, idx) => (
+          {METRICS.map((metric: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.9 }}

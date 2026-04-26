@@ -49,7 +49,7 @@ export const MemorySystem = () => {
               全员共享。承载企业级规章制度、核心产品技术手册、全司通用的标准化 SOP 与合规要求。推进组织整体智商单边上扬。
             </p>
             <div className="space-y-3 mt-auto">
-               {['标准业务 SOP 库', '企业合规红蓝军', '核心产品白皮书'].map((tag, i) => (
+               {['标准业务 SOP 库', '企业合规红蓝军', '核心产品白皮书'].map((tag: any, i: number) => (
                  <div key={i} className="px-4 py-2 bg-slate-700/50 rounded-lg text-xs font-mono text-slate-300 border border-slate-600 flex items-center">
                     <Share2 size={12} className="shrink-0 mr-2 text-blue-400" />
                     <span>{tag}</span>
@@ -75,7 +75,7 @@ export const MemorySystem = () => {
               权限隔离。沉淀特定项目组的背景资料、团队长期协作的沟通记录、以及特定业务线的专属语料库与交付标准。
             </p>
             <div className="space-y-3 mt-auto">
-               {['项目沟通历史流', '专用业务语料库', '交付验收准则'].map((tag, i) => (
+               {['项目沟通历史流', '专用业务语料库', '交付验收准则'].map((tag: any, i: number) => (
                  <div key={i} className="px-4 py-2 bg-slate-700/50 rounded-lg text-xs font-mono text-slate-300 border border-slate-600 flex items-center">
                     <Layers size={12} className="shrink-0 mr-2 text-red-500" />
                     <span>{tag}</span>
@@ -101,7 +101,7 @@ export const MemorySystem = () => {
               个人专属。记录员工的个性化使用偏好、长期微调的指令习惯与历史任务复盘。让 AI 越写越懂你，真正辅助人主。
             </p>
             <div className="space-y-3 mt-auto">
-               {['个性化指令偏好', '任务复盘存档集', '长期经验调优对位'].map((tag, i) => (
+               {['个性化指令偏好', '任务复盘存档集', '长期经验调优对位'].map((tag: any, i: number) => (
                  <div key={i} className="px-4 py-2 bg-slate-700/50 rounded-lg text-xs font-mono text-slate-300 border border-slate-600 flex items-center">
                     <ShieldCheck size={12} className="shrink-0 mr-2 text-green-400" />
                     <span>{tag}</span>

@@ -38,7 +38,7 @@ export const Architecture = () => {
                 { label: '多端自动化采集', desc: '全天候聚合 3,000+ 招采平台与行业公告' },
                 { label: 'BAR 智能初评模型', desc: '核心围绕“能不能投、赢面多大”提供量化依据' },
                 { label: 'AI 合规质量管控', desc: '自动扫描标书红线项与废标高风险点' }
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <motion.li 
                   key={i}
                   initial={{ opacity: 0, x: -20 }}

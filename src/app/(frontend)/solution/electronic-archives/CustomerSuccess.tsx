@@ -32,7 +32,7 @@ export default function CustomerSuccess() {
              
              {/* Simple Logo Placeholder Grid */}
              <div className="grid grid-cols-2 gap-4">
-               {[1, 2, 3, 4].map(i => (
+               {[1, 2, 3, 4].map((i: any) => (
                  <div key={i} className="h-16 bg-slate-50 rounded-xl border border-dashed border-slate-200 flex items-center justify-center text-[10px] text-slate-300 font-bold uppercase tracking-wider">
                    Logo {i}
                  </div>
@@ -41,7 +41,7 @@ export default function CustomerSuccess() {
           </div>
           
           <div className="lg:w-2/3 flex flex-col md:flex-row gap-8">
-            {cases.map((item, idx) => (
+            {cases.map((item: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, x: 20 }}

@@ -48,7 +48,7 @@ export default function DeliveryScope() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {scopes.map((scope, idx) => (
+          {scopes.map((scope: any, idx: number) => (
             <motion.div
               key={scope.category}
               initial={{ opacity: 0, y: 20 }}
@@ -62,7 +62,7 @@ export default function DeliveryScope() {
                 {scope.category}
               </h3>
               <ul className="space-y-4">
-                {scope.items.map((item, i) => (
+                {scope.items.map((item: any, i: number) => (
                   <li key={i} className="flex gap-3 text-slate-600 text-sm lg:text-base leading-relaxed">
                     <div className="mt-2 w-1 h-1 rounded-full bg-slate-300 flex-shrink-0" />
                     {item}

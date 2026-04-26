@@ -53,7 +53,7 @@ export default function IndustrySolutions() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {industries.map((ind, idx) => (
+          {industries.map((ind: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -70,7 +70,7 @@ export default function IndustrySolutions() {
                 {ind.desc}
               </p>
               <div className="flex flex-wrap gap-2">
-                {ind.tags.map(tag => (
+                {ind.tags.map((tag: any) => (
                   <span key={tag} className="px-2 py-1 bg-slate-100 text-slate-500 text-[10px] font-medium rounded">
                     {tag}
                   </span>

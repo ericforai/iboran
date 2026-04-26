@@ -41,7 +41,7 @@ export default function ValueSection() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
-          {values.map((v, i) => (
+          {values.map((v: any, i: number) => (
             <div key={i} className="text-center group">
               <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#E60012] transition-colors">
                 <v.icon className="w-8 h-8 text-[#E60012] group-hover:text-white transition-colors" />

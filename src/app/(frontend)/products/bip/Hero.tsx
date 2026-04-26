@@ -113,7 +113,7 @@ export default function Hero() {
                         <div className="font-bold text-[#1F2329]">企业 AI 智能体</div>
                       </div>
                       <div className="grid grid-cols-2 gap-2">
-                        {['智友助手', '数智员工', '经营分析', '智能预测'].map(item => (
+                        {['智友助手', '数智员工', '经营分析', '智能预测'].map((item: any) => (
                           <div key={item} className="bg-white px-3 py-2 rounded text-xs text-slate-600 font-medium text-center border border-slate-100">
                             {item}
                           </div>
@@ -125,7 +125,7 @@ export default function Hero() {
                       <div className="bg-blue-50/50 rounded-lg p-4 border border-blue-100">
                         <div className="font-bold text-[#0052D9] text-sm mb-2">业务中台</div>
                         <div className="space-y-1.5">
-                          {['财务云', '供应链云', '人力云', '营销云'].map(item => (
+                          {['财务云', '供应链云', '人力云', '营销云'].map((item: any) => (
                             <div key={item} className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full bg-[#0052D9]"></div>
                               <span className="text-xs text-slate-600">{item}</span>
@@ -136,7 +136,7 @@ export default function Hero() {
                       <div className="bg-slate-50/50 rounded-lg p-4 border border-slate-100">
                         <div className="font-bold text-slate-700 text-sm mb-2">数据中台</div>
                         <div className="space-y-1.5">
-                          {['主数据', '数据湖', 'BI分析', '数据治理'].map(item => (
+                          {['主数据', '数据湖', 'BI分析', '数据治理'].map((item: any) => (
                             <div key={item} className="flex items-center gap-2">
                               <div className="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
                               <span className="text-xs text-slate-600">{item}</span>

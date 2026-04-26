@@ -43,7 +43,7 @@ const IndustryCases = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {cases.map((item, idx) => (
+          {cases.map((item: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}

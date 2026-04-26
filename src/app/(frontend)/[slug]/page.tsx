@@ -27,7 +27,7 @@ export async function generateStaticParams() {
   })
 
   const params = pages.docs
-    ?.filter((doc) => {
+    ?.filter((doc: any) => {
       return doc.slug !== 'home'
     })
     .map(({ slug }) => {

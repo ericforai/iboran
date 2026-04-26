@@ -30,7 +30,7 @@ export default function CustomerSuccess() {
         </div>
         
         <div className="grid md:grid-cols-2 gap-8">
-          {cases.map((item, idx) => (
+          {cases.map((item: any, idx: number) => (
             <div key={idx} className="bg-[#F7F8FA] p-8 md:p-12 rounded-3xl relative overflow-hidden group">
                {/* Decorative icon background */}
                <div className="absolute top-[-10%] right-[-10%] text-slate-200 opacity-20 scale-150 group-hover:rotate-12 transition-transform duration-500">

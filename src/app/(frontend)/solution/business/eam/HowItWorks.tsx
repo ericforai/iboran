@@ -76,7 +76,7 @@ export default function HowItWorks() {
           <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0" />
           
           <div className="flex justify-between items-start relative z-10">
-            {steps.map((step, idx) => (
+            {steps.map((step: any, idx: number) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -100,7 +100,7 @@ export default function HowItWorks() {
 
         {/* Mobile View: Vertical Cards */}
         <div className="lg:hidden space-y-8">
-          {steps.map((step, idx) => (
+          {steps.map((step: any, idx: number) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, x: -20 }}

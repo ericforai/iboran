@@ -65,7 +65,7 @@ export default function DeliveryMethodology() {
 
           <div className="lg:w-2/3">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {steps.map((step, idx) => (
+              {steps.map((step: any, idx: number) => (
                 <motion.div
                   key={step.phase}
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -90,7 +90,7 @@ export default function DeliveryMethodology() {
                       阶段产出物
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {step.deliverables.map(item => (
+                      {step.deliverables.map((item: any) => (
                         <span key={item} className="px-2 py-1 bg-slate-50 text-slate-600 text-[11px] rounded border border-slate-100">
                           {item}
                         </span>

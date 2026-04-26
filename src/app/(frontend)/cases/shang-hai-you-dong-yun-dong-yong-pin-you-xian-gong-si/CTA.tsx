@@ -33,7 +33,7 @@ export default function CTA() {
 
           {/* Description */}
           <p className="text-xl text-orange-100 mb-12 max-w-2xl mx-auto leading-relaxed">
-            泊冉软件拥有 12+ 年企业数字化服务经验，已助力 500+ 家服装鞋帽企业实现精细化转型
+            泊冉软件拥有 14+ 年企业数字化服务经验，已助力 500+ 家服装鞋帽企业实现精细化转型
           </p>
 
           {/* CTA Buttons */}

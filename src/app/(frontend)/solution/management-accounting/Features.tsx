@@ -70,7 +70,7 @@ export default function Features() {
             </motion.div>
             
             <div className="space-y-4">
-              {FEATURES.map((feature, idx) => (
+              {FEATURES.map((feature: any, idx: number) => (
                 <motion.div 
                   key={feature.id}
                   initial={{ opacity: 0, y: 10 }}
@@ -118,7 +118,7 @@ export default function Features() {
                             exit={{ opacity: 0, height: 0 }}
                             className="flex flex-wrap gap-3 mt-4"
                           >
-                            {feature.metrics.map((metric, i) => (
+                            {feature.metrics.map((metric: any, i: number) => (
                               <span key={i} className="text-[11px] font-bold text-[#0052D9] bg-white border border-blue-100 px-3 py-1 rounded-full shadow-sm">
                                 {metric}
                               </span>
@@ -198,7 +198,7 @@ function IntegrationVisual() {
             { label: '销售出库单', color: 'bg-blue-500' },
             { label: '采购入库单', color: 'bg-indigo-500' },
             { label: '领料出库单', color: 'bg-slate-700' }
-          ].map((item, i) => (
+          ].map((item: any, i: number) => (
             <motion.div
               key={i}
               initial={{ x: -20, opacity: 0 }}
@@ -216,7 +216,7 @@ function IntegrationVisual() {
         <div className="flex-1 px-4 relative flex items-center justify-center">
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <svg className="w-full h-full" viewBox="0 0 100 100">
-                {[0, 1, 2].map((i) => (
+                {[0, 1, 2].map((i: any) => (
                   <motion.path
                     key={i}
                     d={`M 10,${30 + i * 20} Q 50,50 90,${30 + i * 20}`}
@@ -246,7 +246,7 @@ function IntegrationVisual() {
 
         {/* Right: Accounting Entries */}
         <div className="space-y-3 z-10 w-32">
-          {[1, 2, 3].map((i) => (
+          {[1, 2, 3].map((i: any) => (
             <motion.div
               key={i}
               initial={{ x: 20, opacity: 0 }}
@@ -322,7 +322,7 @@ function MultiPurposeVisual() {
                 <path d="M 0,75 L 50,75 C 100,75 120,120 150,120" stroke="#F59E0B" strokeWidth="2" fill="none" className="opacity-30" />
                 
                 {/* Animated Particles */}
-                {[30, 75, 120].map((y, i) => (
+                {[30, 75, 120].map((y: any, i: number) => (
                   <motion.circle
                     key={i}
                     r="3"
@@ -340,7 +340,7 @@ function MultiPurposeVisual() {
                { title: '财务核算', sub: '外部合规', color: 'bg-indigo-50 border-indigo-200 text-indigo-700' },
                { title: '管理核算', sub: '内部考核', color: 'bg-emerald-50 border-emerald-200 text-emerald-700' },
                { title: '责任会计', sub: '利润中心', color: 'bg-amber-50 border-amber-200 text-amber-700' }
-             ].map((book, idx) => (
+             ].map((book: any, idx: number) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: 20 }}
@@ -400,7 +400,7 @@ function PrecisionCostVisual() {
                { label: '原材料 (Raw Materials)', value: 65, color: '#3B82F6', icon: Database },
                { label: '人工成本 (Direct Labor)', value: 20, color: '#F59E0B', icon: Users },
                { label: '制造费用 (Overhead)', value: 15, color: '#10B981', icon: Settings }
-             ].map((cost, i) => (
+             ].map((cost: any, i: number) => (
                <motion.div 
                  key={i}
                  initial={{ opacity: 0, scale: 0.95 }}

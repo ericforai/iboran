@@ -39,7 +39,7 @@ export default function DashboardMockup() {
         <div className="col-span-12 md:col-span-8 space-y-6">
           {/* Stats Cards */}
           <div className="grid grid-cols-3 gap-4">
-            {stats.map((stat, idx) => (
+            {stats.map((stat: any, idx: number) => (
               <div key={idx} className="bg-white p-4 rounded-lg border border-slate-100 shadow-sm">
                 <div className="flex justify-between items-start mb-2">
                   <div className={`p-1.5 rounded-md ${stat.bg}`}>
@@ -68,7 +68,7 @@ export default function DashboardMockup() {
              </div>
              {/* CSS Bar Chart Simulation */}
              <div className="flex items-end justify-between h-32 px-2 gap-2">
-                {[40, 65, 45, 80, 55, 70, 90, 60, 75, 50, 85, 95].map((h, i) => (
+                {[40, 65, 45, 80, 55, 70, 90, 60, 75, 50, 85, 95].map((h: any, i: number) => (
                    <motion.div 
                      key={i} 
                      initial={{ height: 0 }}
@@ -91,7 +91,7 @@ export default function DashboardMockup() {
                 实时合规监控
               </h4>
               <div className="space-y-3">
-                 {recentTrips.map((trip, i) => (
+                 {recentTrips.map((trip: any, i: number) => (
                     <div key={i} className="flex flex-col p-3 bg-slate-50 rounded border border-slate-100">
                        <div className="flex justify-between mb-1">
                           <span className="text-xs font-bold text-slate-700">{trip.user}</span>

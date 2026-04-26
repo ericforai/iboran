@@ -25,7 +25,7 @@ export const Capabilities = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {capabilities.map((cap, idx) => (
+          {capabilities.map((cap: any, idx: number) => (
             <div key={idx} className="p-8 rounded-3xl border border-gray-100 hover:shadow-2xl transition-all group bg-white">
               <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors">
                 <cap.icon className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" />

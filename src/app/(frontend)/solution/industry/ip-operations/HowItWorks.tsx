@@ -48,7 +48,7 @@ export default function HowItWorks() {
 
           {/* Rows */}
           <div className="space-y-4">
-            {scenarios.map((scenario, idx) => (
+            {scenarios.map((scenario: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}

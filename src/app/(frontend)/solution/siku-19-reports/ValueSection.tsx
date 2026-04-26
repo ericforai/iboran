@@ -10,7 +10,7 @@ export default function ValueSection() {
     <section className="bg-blue-600 py-24 text-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center divide-x-0 md:divide-x divide-white/20 items-center">
-          {metrics.map((m, i) => (
+          {metrics.map((m: any, i: number) => (
             <div key={i} className="flex flex-col items-center">
               <div className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-br from-white to-blue-200">
                 {m.value}

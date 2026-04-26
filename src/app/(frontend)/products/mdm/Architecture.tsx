@@ -34,7 +34,7 @@ export function Architecture() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-6">多源业务系统</h3>
               <div className="grid grid-cols-2 gap-3 w-full">
-                 {['ERP 系统', 'CRM 客户', 'SRM 采购', 'MES 制造', 'HR 人力', 'OA 协同'].map((sys) => (
+                 {['ERP 系统', 'CRM 客户', 'SRM 采购', 'MES 制造', 'HR 人力', 'OA 协同'].map((sys: any) => (
                     <div key={sys} className="p-3 bg-slate-50 rounded-lg text-sm font-medium text-slate-600 border border-slate-200">
                         {sys}
                     </div>

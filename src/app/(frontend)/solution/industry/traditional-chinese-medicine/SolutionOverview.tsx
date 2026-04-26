@@ -37,7 +37,7 @@ export function SolutionOverview() {
                     'GMP 生产制造执行',
                     'GSP 医药流通管理',
                     '全渠道营销平台'
-                  ].map((item, i) => (
+                  ].map((item: any, i: number) => (
                     <li key={i} className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
                       <span className="text-slate-700">{item}</span>
@@ -64,7 +64,7 @@ export function SolutionOverview() {
                     'CSV 计算机系统验证',
                     '精细化成本核算',
                     '基于大数据的经营分析'
-                  ].map((item, i) => (
+                  ].map((item: any, i: number) => (
                     <li key={i} className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-purple-600" />
                       <span className="text-slate-700">{item}</span>
@@ -91,7 +91,7 @@ export function SolutionOverview() {
                     '大模型辅助研发',
                     'RPA 流程自动化',
                     '云原生高可用架构'
-                  ].map((item, i) => (
+                  ].map((item: any, i: number) => (
                     <li key={i} className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
                       <span className="text-slate-700">{item}</span>

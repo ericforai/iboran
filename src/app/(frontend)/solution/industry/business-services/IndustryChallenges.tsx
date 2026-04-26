@@ -60,7 +60,7 @@ export default function IndustryChallenges({ industryName }: IndustryChallengesP
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {challenges.map((challenge, idx) => (
+          {challenges.map((challenge: any, idx: number) => (
             <div
               key={idx}
               className="group bg-[#F7F8FA] p-8 rounded-2xl border border-slate-100 hover:shadow-xl hover:bg-white hover:-translate-y-1 transition-all duration-300"

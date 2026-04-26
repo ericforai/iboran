@@ -68,7 +68,7 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {highlights.map((item) => (
+              {highlights.map((item: any) => (
                 <div
                   key={item.label}
                   className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur transition-colors hover:bg-white/10"
@@ -113,7 +113,7 @@ export default function Hero() {
                 </p>
 
                 <div className="mt-6 space-y-4">
-                  {focusItems.map((item) => {
+                  {focusItems.map((item: any) => {
                     const Icon = item.icon
                     return (
                       <div

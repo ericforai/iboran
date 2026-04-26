@@ -54,7 +54,7 @@ export function SoulSection() {
 
           {/* Right: Tenets */}
           <div className="lg:w-1/2 space-y-8">
-            {tenets.map((tenet, idx) => (
+            {tenets.map((tenet: any, idx: number) => (
               <div 
                 key={idx} 
                 className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/50 transition-all duration-300"

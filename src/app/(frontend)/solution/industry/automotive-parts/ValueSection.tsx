@@ -51,7 +51,7 @@ export default function ValueSection() {
             </p>
             
             <div className="space-y-6">
-              {values.slice(0, 2).map((v) => (
+              {values.slice(0, 2).map((v: any) => (
                 <div key={v.label} className="flex gap-6 p-6 rounded-2xl bg-slate-50 border border-slate-100">
                   <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-red-500 shrink-0">
                     <v.icon className="w-6 h-6" />
@@ -69,7 +69,7 @@ export default function ValueSection() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:translate-y-12">
-            {values.map((v, idx) => (
+            {values.map((v: any, idx: number) => (
               <motion.div
                 key={v.label}
                 initial={{ opacity: 0, y: 20 }}

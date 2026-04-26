@@ -46,7 +46,7 @@ export default function FAQ() {
         </div>
 
         <div className="max-w-4xl mx-auto space-y-4">
-          {faqs.map((faq, idx) => (
+          {faqs.map((faq: any, idx: number) => (
             <div key={idx} className="border border-slate-100 rounded-xl overflow-hidden hover:border-slate-200 transition-colors">
               <button
                 onClick={() => setActiveIndex(activeIndex === idx ? null : idx)}

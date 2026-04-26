@@ -50,7 +50,7 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              {['供应链管理', '物流配送', '仓储服务', '采购分销'].map((tag, i) => (
+              {['供应链管理', '物流配送', '仓储服务', '采购分销'].map((tag: any, i: number) => (
                 <span key={i} className="px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-lg text-slate-300 text-sm">
                   {tag}
                 </span>

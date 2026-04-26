@@ -49,7 +49,7 @@ export default function PainPoints() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {painPoints.map((item, index) => (
+          {painPoints.map((item: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

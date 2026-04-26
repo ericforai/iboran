@@ -22,7 +22,7 @@ export default function ValueSection() {
                 { title: '质量合规化', desc: '建立完整的质量追溯体系，满足高端验厂需求，客诉率降低 30%' },
                 { title: '成本精细化', desc: '实时采集工时与物料消耗，精准核算生产成本，减少浪费' },
                 { title: '决策科学化', desc: '基于真实数据的 OEE 与产能分析，辅助管理层优化决策' }
-              ].map((item, idx) => (
+              ].map((item: any, idx: number) => (
                 <div key={idx} className="flex gap-4">
                   <div className="mt-1">
                     <CheckCircle2 className="text-blue-500" />

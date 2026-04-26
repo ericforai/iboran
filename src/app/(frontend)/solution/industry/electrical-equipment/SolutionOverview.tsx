@@ -48,7 +48,7 @@ export default function SolutionOverview() {
           <div className="bg-white rounded-2xl p-8 shadow-sm border border-slate-100 mb-6">
             <h3 className="text-lg font-bold text-[#1F2329] mb-6 text-center">核心业务云</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {coreModules.map((module, idx) => (
+              {coreModules.map((module: any, idx: number) => (
                 <div 
                   key={idx}
                   className="text-center p-4 rounded-xl bg-gradient-to-br from-blue-50 to-slate-50 border border-slate-100 hover:shadow-md transition-shadow"
@@ -67,7 +67,7 @@ export default function SolutionOverview() {
           <div className="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-6 shadow-sm">
             <h3 className="text-lg font-bold text-white mb-4 text-center">iuap 统一数智底座</h3>
             <div className="grid md:grid-cols-3 gap-4">
-              {platformLayers.map((layer, idx) => (
+              {platformLayers.map((layer: any, idx: number) => (
                 <div 
                   key={idx}
                   className="text-center p-4 rounded-xl bg-white/5 border border-white/10"
@@ -87,7 +87,7 @@ export default function SolutionOverview() {
               { label: 'WMS+TMS一体', value: '物流协同' },
               { label: '多组织内部交易', value: '集团管控' },
               { label: '项目型成本归集', value: '精准核算' },
-            ].map((cap, idx) => (
+            ].map((cap: any, idx: number) => (
               <div key={idx} className="bg-white rounded-xl p-4 text-center border border-slate-100">
                 <div className="text-[#E60012] font-bold text-lg">{cap.value}</div>
                 <div className="text-slate-600 text-sm mt-1">{cap.label}</div>

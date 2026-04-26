@@ -42,7 +42,7 @@ export default function TrustProof() {
       <div className="container mx-auto px-4">
         {/* Industry Honors */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
-          {honors.map((honor, idx) => (
+          {honors.map((honor: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ export default function TrustProof() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {cases.map((cs, idx) => (
+          {cases.map((cs: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: idx === 0 ? -20 : 20 }}

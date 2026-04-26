@@ -20,7 +20,7 @@ const capabilities = [
         </div>
         <div className="flex-1 grid grid-cols-12 gap-4">
           <div className="col-span-3 border-r border-slate-200 pr-4 space-y-2">
-            {[1, 2, 3, 4].map(i => (
+            {[1, 2, 3, 4].map((i: any) => (
               <div key={i} className="h-8 bg-white border border-slate-200 rounded flex items-center px-2">
                 <div className="w-4 h-4 bg-slate-100 rounded mr-2"></div>
                 <div className="w-12 h-2 bg-slate-100 rounded"></div>
@@ -89,7 +89,7 @@ const capabilities = [
         <div className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center z-10 border-2 border-blue-100">
           <Share2 className="w-8 h-8 text-[#0052D9]" />
         </div>
-        {[0, 60, 120, 180, 240, 300].map((deg, i) => (
+        {[0, 60, 120, 180, 240, 300].map((deg: any, i: number) => (
           <div key={i} className="absolute w-2 h-2 bg-blue-400 rounded-full" 
                style={{ transform: `rotate(${deg}deg) translate(60px)` }}></div>
         ))}
@@ -117,7 +117,7 @@ export default function Capabilities() {
         <div className="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
           {/* Left Navigation */}
           <div className="lg:w-1/3 space-y-4">
-            {capabilities.map((cap) => (
+            {capabilities.map((cap: any) => (
               <div
                 key={cap.id}
                 onClick={() => setActiveTab(cap.id)}
@@ -159,7 +159,7 @@ export default function Capabilities() {
                 transition={{ duration: 0.3 }}
                 className="w-full h-full p-6"
               >
-                {capabilities.find(c => c.id === activeTab)?.content}
+                {capabilities.find((c: any) => c.id === activeTab)?.content}
               </motion.div>
             </AnimatePresence>
           </div>

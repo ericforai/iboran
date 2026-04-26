@@ -34,7 +34,7 @@ export default function TechSpecs() {
           <div className="lg:w-1/2">
             <h2 className="text-3xl lg:text-4xl font-bold text-[#1F2329] mb-8">数智化底座，硬核支撑</h2>
             <div className="grid grid-cols-1 gap-8">
-              {specs.map((spec, idx) => (
+              {specs.map((spec: any, idx: number) => (
                 <motion.div
                   key={spec.title}
                   initial={{ opacity: 0, x: -20 }}

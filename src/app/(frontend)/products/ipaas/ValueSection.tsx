@@ -20,7 +20,7 @@ export default function ValueSection() {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((item, idx) => (
+            {values.map((item: any, idx: number) => (
               <div key={idx} className="text-center">
                 <div className="text-4xl lg:text-5xl font-bold text-[#E60012] mb-3 flex items-baseline justify-center">
                   {item.value}

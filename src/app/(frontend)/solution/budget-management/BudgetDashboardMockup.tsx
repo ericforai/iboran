@@ -116,7 +116,7 @@ export default function BudgetDashboardMockup({ activeTab: _activeTab = 'default
                 </div>
               </div>
               <div className="h-40 w-full flex items-end justify-between px-2 gap-2">
-                {[40, 65, 45, 90, 75, 55, 80, 95, 70, 85, 60, 50].map((h, i) => (
+                {[40, 65, 45, 90, 75, 55, 80, 95, 70, 85, 60, 50].map((h: any, i: number) => (
                   <div key={i} className="flex-1 flex flex-col items-center gap-2 group">
                     <div className="w-full relative">
                       <motion.div 

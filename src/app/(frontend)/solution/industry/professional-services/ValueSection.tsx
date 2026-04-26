@@ -30,7 +30,7 @@ export default function ValueSection({ metrics }: ValueSectionProps) {
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {metrics.map((metric, index) => (
+          {metrics.map((metric: any, index: number) => (
             <motion.div
               key={metric.label}
               initial={{ opacity: 0, y: 20 }}

@@ -79,7 +79,7 @@ const SolutionOverview = () => {
 
                     {/* Layer 3: External Nodes */}
                     <div className="flex justify-between gap-4">
-                      {['Foundry', 'CP', 'Package', 'FT'].map((node, idx) => (
+                      {['Foundry', 'CP', 'Package', 'FT'].map((node: any, idx: number) => (
                         <div key={idx} className="flex-1 h-14 bg-slate-800/50 border border-white/5 rounded-lg flex items-center justify-center text-[10px] text-slate-400 font-bold uppercase">
                           {node}
                         </div>
@@ -119,7 +119,7 @@ const SolutionOverview = () => {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {modules.map((module, idx) => (
+                {modules.map((module: any, idx: number) => (
                   <div key={idx} className="group">
                     <div className="flex items-center space-x-4 mb-4">
                       <div className="w-10 h-10 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
@@ -152,7 +152,7 @@ const SolutionOverview = () => {
             <h3 className="text-xl font-bold text-slate-900">交付物清单</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
-            {deliverables.map((item, idx) => (
+            {deliverables.map((item: any, idx: number) => (
               <div key={idx} className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
                 <div>

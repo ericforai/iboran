@@ -60,7 +60,7 @@ export default function FAQ() {
           </div>
 
           <div className="lg:w-2/3 space-y-4">
-            {faqs.map((faq, idx) => (
+            {faqs.map((faq: any, idx: number) => (
               <div 
                 key={idx}
                 className={`border rounded-2xl transition-all ${

@@ -122,7 +122,7 @@ function Overview() {
             </div>
           </div>
           <div className="flex-1 flex items-end justify-between gap-1 px-2">
-            {[40, 65, 45, 80, 55, 95, 70, 85, 60, 100].map((h, i) => (
+            {[40, 65, 45, 80, 55, 95, 70, 85, 60, 100].map((h: any, i: number) => (
               <motion.div 
                 key={i}
                 initial={{ height: 0 }}
@@ -223,7 +223,7 @@ function ControlView() {
                  { step: '单据报销', val: '¥ 12,500', status: 'Blocked' },
                  { step: '合同签约', val: '¥ 450,000', status: 'Approved' },
                  { step: '采购申请', val: '¥ 88,000', status: 'Warning' }
-               ].map((item, idx) => (
+               ].map((item: any, idx: number) => (
                  <div key={idx} className="flex items-center justify-between border-b border-slate-800 pb-2">
                     <span className="text-slate-400">{item.step}</span>
                     <span className="font-mono text-white">{item.val}</span>
@@ -260,7 +260,7 @@ function BudgetView() {
              </div>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-             {['华东', '华北', '华南', '西南'].map((reg, i) => (
+             {['华东', '华北', '华南', '西南'].map((reg: any, i: number) => (
                <div key={reg} className="p-3 bg-slate-950/50 rounded-lg border border-slate-800">
                   <div className="text-xs text-slate-500 mb-2">{reg}大区</div>
                   <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden mb-2">
@@ -277,7 +277,7 @@ function BudgetView() {
           <div className="mt-8">
              <div className="text-[10px] text-slate-500 mb-2">多版滚动预测趋势</div>
              <div className="h-32 w-full flex items-end gap-1">
-                {[30, 45, 60, 55, 75, 85, 90, 80, 95, 100].map((h, i) => (
+                {[30, 45, 60, 55, 75, 85, 90, 80, 95, 100].map((h: any, i: number) => (
                   <div key={i} className="flex-1 flex flex-col gap-1 items-center justify-end">
                      <div className="w-full bg-slate-800 rounded-t-sm" style={{ height: `${h * 0.8}%` }} />
                      <div className="w-full bg-blue-600 rounded-t-sm" style={{ height: `${h}%` }} />
@@ -331,7 +331,7 @@ function ModelingView() {
     <div className="h-full flex flex-col center items-center justify-center relative bg-slate-900 rounded-lg border border-slate-800 overflow-hidden">
        {/* Multidimensional database visualization */}
        <div className="flex gap-4">
-          {[1,2,3].map(i => (
+          {[1,2,3].map((i: any) => (
             <motion.div 
               key={i}
               initial={{ rotateX: 60, rotateY: 0, rotateZ: 45 }}

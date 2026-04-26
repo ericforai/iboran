@@ -35,7 +35,7 @@ export default function SolutionOverview() {
             </p>
             
             <div className="grid sm:grid-cols-2 gap-4">
-              {coreProducts.map((product, idx) => (
+              {coreProducts.map((product: any, idx: number) => (
                 <div key={idx} className="flex items-start gap-3 p-4 bg-white rounded-lg shadow-sm border border-slate-50">
                   <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <div>
@@ -51,7 +51,7 @@ export default function SolutionOverview() {
           <div className="lg:w-1/2 w-full">
             <div className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 relative overflow-hidden">
               <div className="grid grid-cols-2 gap-6 relative z-10">
-                {categories.map((cat, idx) => (
+                {categories.map((cat: any, idx: number) => (
                   <div key={idx} className="p-6 rounded-xl bg-slate-50 border border-slate-100 group hover:border-[#0052D9]/30 hover:bg-white transition-all">
                     <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform">
                       <cat.icon className="w-6 h-6 text-[#0052D9]" />

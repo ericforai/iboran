@@ -70,7 +70,7 @@ export function PortalDashboardMockup() {
               { icon: Briefcase, label: '应用中心' },
               { icon: FileText, label: '公文管理' },
               { icon: Calendar, label: '日程计划' },
-            ].map((item, index) => (
+            ].map((item: any, index: number) => (
               <div key={index} className="px-2 lg:px-4 py-2 mx-2 hover:bg-slate-800 rounded-md flex items-center gap-3 cursor-pointer group relative">
                 <item.icon className="w-5 h-5 shrink-0 group-hover:text-white transition-colors" />
                 <span className="hidden lg:block text-sm group-hover:text-white transition-colors">{item.label}</span>
@@ -108,7 +108,7 @@ export function PortalDashboardMockup() {
                   { name: '企业云盘', color: 'bg-cyan-100 text-cyan-600' },
                   { name: '费控报销', color: 'bg-rose-100 text-rose-600' },
                   { name: '更多...', color: 'bg-slate-100 text-slate-500' },
-                ].map((app, i) => (
+                ].map((app: any, i: number) => (
                   <div key={i} className="flex flex-col items-center gap-2 cursor-pointer group">
                     <div className={`w-10 h-10 ${app.color} rounded-lg flex items-center justify-center transition-transform group-hover:scale-110`}>
                       <BoxIcon i={i} />
@@ -150,7 +150,7 @@ export function PortalDashboardMockup() {
                     { title: '新员工入职流程 - 张三', source: 'HR', time: '昨天', urgent: false },
                     { title: 'Q1季度预算调整申请', source: '预算', time: '昨天', urgent: true },
                     { title: 'IT设备采购申请', source: '行政', time: '前天', urgent: false },
-                ].map((task, i) => (
+                ].map((task: any, i: number) => (
                     <motion.div 
                         key={i} 
                         initial={{ opacity: 0, y: 10 }}
@@ -187,7 +187,7 @@ export function PortalDashboardMockup() {
                     { title: '关于开展2024年度员工满意度调查的通知', tag: '人资', date: '03-15', top: false },
                     { title: '关于加强网络安全管理的通知', tag: 'IT', date: '03-10', top: false },
                     { title: '3月份员工生日会活动安排', tag: '工会', date: '03-08', top: false },
-                 ].map((news, i) => (
+                 ].map((news: any, i: number) => (
                     <div key={i} className="flex items-center justify-between group cursor-pointer">
                         <div className="flex items-center gap-2 min-w-0">
                             {news.top && <span className="text-[10px] bg-red-50 text-red-500 border border-red-100 px-1 rounded transform scale-90 origin-left">置顶</span>}
@@ -212,7 +212,7 @@ export function PortalDashboardMockup() {
                 </div>
               </div>
               <div className="flex items-end justify-between h-32 gap-2 px-2 pb-2">
-                 {[40, 65, 45, 80, 55, 90, 70, 85, 60, 75, 50, 95].map((h, i) => (
+                 {[40, 65, 45, 80, 55, 90, 70, 85, 60, 75, 50, 95].map((h: any, i: number) => (
                      <div key={i} className="flex-1 flex flex-col justify-end gap-1 group">
                         <div className="w-full bg-slate-100 rounded-t-sm relative overflow-hidden h-24">
                             <motion.div 

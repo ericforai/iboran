@@ -47,7 +47,7 @@ export default function HowItWorks() {
           <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-blue-100 via-blue-200 to-blue-100 -translate-y-1/2 z-0" />
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {steps.map((step, idx) => (
+            {steps.map((step: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export default function HowItWorks() {
                 <p className="text-blue-100">预置 100+ 财务、供应链、人力等领域分析模型</p>
             </div>
             <div className="flex -space-x-4">
-               {[1,2,3,4].map(i => (
+               {[1,2,3,4].map((i: any) => (
                    <div key={i} className="w-12 h-12 rounded-full border-2 border-white bg-blue-400 flex items-center justify-center text-xs font-bold shadow-sm">
                        Logo
                    </div>

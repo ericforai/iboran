@@ -71,7 +71,7 @@ export const DashboardPreview = React.memo(() => {
                    { l: '净利润率', v: '24.8%', c: 'text-emerald-400', i: <Activity size={14} /> },
                    { l: '同比增长', v: '+15.2%', c: 'text-cyan-400', i: <ArrowUpRight size={14} /> },
                    { l: '经营现金流', v: '¥ 4.5 亿', c: 'text-purple-400', i: <DollarSign size={14} /> },
-                ].map((stat, i) => (
+                ].map((stat: any, i: number) => (
                   <div key={i} className="bg-[#111] border border-white/5 p-3 rounded-lg hover:bg-white/5 hover:border-cyan-500/30 transition-all group cursor-pointer relative">
                      <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
                         <ArrowUpRight size={12} className="text-slate-400" />
@@ -94,7 +94,7 @@ export const DashboardPreview = React.memo(() => {
                 <div className="flex-1 relative overflow-hidden">
                    <div className="flex flex-col gap-2">
                       <AnimatePresence mode="popLayout" initial={false}>
-                         {[0,1,2,3,4].map((offset) => {
+                         {[0,1,2,3,4].map((offset: any) => {
                            const index = (tickerIndex + offset) % logs.length;
                            const log = logs[index];
                            return (
@@ -165,7 +165,7 @@ export const DashboardPreview = React.memo(() => {
                     <div className="py-2">
                         {/* Fake Sparkline */}
                         <div className="flex items-end gap-[2px] h-8 opacity-50">
-                            {[4,6,3,7,5,8,6,9,7,8,9,6,5,8,9].map((h, i) => (
+                            {[4,6,3,7,5,8,6,9,7,8,9,6,5,8,9].map((h: any, i: number) => (
                                 <div key={i} className="flex-1 bg-blue-500 rounded-t-sm" style={{ height: `${h * 10}%` }}></div>
                             ))}
                         </div>
@@ -180,7 +180,7 @@ export const DashboardPreview = React.memo(() => {
                     <div className="py-2">
                          {/* Fake Sparkline */}
                          <div className="flex items-end gap-[2px] h-8 opacity-50">
-                            {[8,7,9,6,5,7,8,6,5,4,5,6,3,5,4].map((h, i) => (
+                            {[8,7,9,6,5,7,8,6,5,4,5,6,3,5,4].map((h: any, i: number) => (
                                 <div key={i} className="flex-1 bg-purple-500 rounded-t-sm" style={{ height: `${h * 10}%` }}></div>
                             ))}
                         </div>
@@ -200,7 +200,7 @@ export const DashboardPreview = React.memo(() => {
                     { icon: <CheckCircle2 size={14} />, label: '质检', val: '99.5%', c: 'text-emerald-400' },
                     { icon: <Package size={14} />, label: '入库', val: '24h', c: 'text-blue-400' },
                     { icon: <Truck size={14} />, label: '配送', val: '准时', c: 'text-purple-400' },
-                ].map((step, i) => (
+                ].map((step: any, i: number) => (
                     <React.Fragment key={i}>
                         <div className="flex flex-col items-center gap-2">
                              <div className={`w-8 h-8 rounded-full bg-white/5 flex items-center justify-center ${step.c} border border-white/10`}>
@@ -283,7 +283,7 @@ export const DashboardPreview = React.memo(() => {
                          { msg: 'Q4 预算使用率达到 92%，接近上限', lvl: 'warning' },
                          { msg: '已拦截来自 IP 192.168.x.x 的未授权访问', lvl: 'critical' },
                          { msg: '许可证将在 15 天后过期', lvl: 'warning' },
-                     ].map((alert, i) => (
+                     ].map((alert: any, i: number) => (
                          <div key={i} className="flex items-start gap-2 p-2 rounded hover:bg-white/5 transition-colors cursor-pointer">
                              <div className={`mt-0.5 w-1.5 h-1.5 rounded-full shrink-0 ${alert.lvl === 'critical' ? 'bg-red-500 animate-pulse' : 'bg-yellow-500'}`}></div>
                              <span className="text-xs text-slate-300 leading-tight">{alert.msg}</span>
@@ -315,7 +315,7 @@ export const DashboardPreview = React.memo(() => {
                   
                   {/* Hexagon Grid */}
                   <div className="relative w-32 h-32 flex items-center justify-center">
-                       {[0, 1, 2].map(i => (
+                       {[0, 1, 2].map((i: any) => (
                            <div key={i} className="absolute inset-0 border border-white/10" 
                            style={{ 
                                clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',

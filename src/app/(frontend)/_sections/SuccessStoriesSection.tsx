@@ -21,7 +21,7 @@ export const SuccessStoriesSection: React.FC<Props> = ({ stories }) => {
 
         {stories.length > 0 ? (
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            {stories.map((story) => (
+            {stories.map((story: any) => (
               <div 
                 key={story.id} 
                 className="group p-1 bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl hover:from-[#0052D9]/20 hover:to-[#0052D9]/5 transition-all duration-500"

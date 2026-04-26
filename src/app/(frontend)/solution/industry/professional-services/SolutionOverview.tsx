@@ -62,7 +62,7 @@ export default function SolutionOverview() {
         </motion.div>
 
         <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {modules.map((module, index) => {
+          {modules.map((module: any, index: number) => {
             const Icon = module.icon
             return (
               <motion.div
@@ -80,7 +80,7 @@ export default function SolutionOverview() {
                   {module.title}
                 </h3>
                 <ul className="space-y-2">
-                  {module.features.map((feature) => (
+                  {module.features.map((feature: any) => (
                     <li key={feature} className="flex items-center gap-2 text-sm text-slate-300">
                       <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
                       {feature}

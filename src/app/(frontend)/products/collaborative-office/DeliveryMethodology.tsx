@@ -44,7 +44,7 @@ export default function DeliveryMethodology() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, idx) => (
+          {steps.map((step: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,7 @@ export default function DeliveryMethodology() {
               <h3 className="text-xl font-bold text-[#1F2329] mb-3">{step.title}</h3>
               <p className="text-slate-500 text-sm mb-6 leading-relaxed">{step.desc}</p>
               <div className="space-y-3">
-                {step.items.map((item, i) => (
+                {step.items.map((item: any, i: number) => (
                   <div key={i} className="flex items-center gap-2 text-xs font-medium text-slate-400">
                     <div className={`w-1.5 h-1.5 rounded-full ${step.color === 'blue' ? 'bg-[#0052D9]' : 'bg-[#E60012]'}`}></div>
                     {item}

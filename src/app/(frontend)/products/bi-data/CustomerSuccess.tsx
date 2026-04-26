@@ -24,7 +24,7 @@ export default function CustomerSuccess() {
         </div>
 
         <div className="grid md:grid-cols-4 gap-6">
-           {customers.map((c, i) => (
+           {customers.map((c: any, i: number) => (
              <motion.div
                key={i}
                initial={{ opacity: 0, y: 20 }}

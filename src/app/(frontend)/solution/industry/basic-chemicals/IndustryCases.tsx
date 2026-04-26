@@ -50,7 +50,7 @@ export default function IndustryCases() {
         
         {/* Featured Cases */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {featuredCases.map((caseItem, idx) => (
+          {featuredCases.map((caseItem: any, idx: number) => (
             <div
               key={idx}
               className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow"
@@ -90,7 +90,7 @@ export default function IndustryCases() {
             更多标杆客户
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {allCustomers.map((customer, idx) => (
+            {allCustomers.map((customer: any, idx: number) => (
               <div 
                 key={idx}
                 className="px-6 py-3 bg-slate-50 rounded-lg text-slate-700 font-medium hover:bg-slate-100 transition"

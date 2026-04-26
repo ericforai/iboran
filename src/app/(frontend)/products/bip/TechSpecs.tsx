@@ -21,7 +21,7 @@ export default function TechSpecs() {
                 <div>
                   <h3 className="text-lg font-bold text-[#1F2329] mb-2">部署灵活性</h3>
                   <div className="flex flex-wrap gap-2">
-                    {['公有云', '私有云 (On-Premise)', '混合云'].map(tag => (
+                    {['公有云', '私有云 (On-Premise)', '混合云'].map((tag: any) => (
                       <span key={tag} className="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-full font-medium">
                         {tag}
                       </span>
@@ -38,7 +38,7 @@ export default function TechSpecs() {
                   <h3 className="text-lg font-bold text-[#1F2329] mb-2">开放集成能力 (LINK)</h3>
                   <p className="text-sm text-slate-600 mb-2">提供标准 Open API 与 预置集成连接器。</p>
                   <div className="flex flex-wrap gap-2">
-                    {['RestAPI', 'WebHook', 'ETL', '消息队列 ESB'].map(tag => (
+                    {['RestAPI', 'WebHook', 'ETL', '消息队列 ESB'].map((tag: any) => (
                       <span key={tag} className="px-3 py-1 bg-slate-100 text-slate-600 text-xs rounded-full font-medium">
                         {tag}
                       </span>
@@ -55,7 +55,7 @@ export default function TechSpecs() {
                   <h3 className="text-lg font-bold text-[#1F2329] mb-2">安全与合规</h3>
                   <p className="text-sm text-slate-600 mb-2">全面适配国产化软硬件环境 (信创)。</p>
                   <div className="flex flex-wrap gap-2">
-                    {['三级等保', 'ISO 27001', '数据加密', '审计追踪'].map(tag => (
+                    {['三级等保', 'ISO 27001', '数据加密', '审计追踪'].map((tag: any) => (
                       <span key={tag} className="px-3 py-1 bg-green-50 text-green-700 text-xs rounded-full font-medium border border-green-100">
                         {tag}
                       </span>
@@ -78,7 +78,7 @@ export default function TechSpecs() {
                 <div>
                   <div className="text-xs text-slate-400 mb-2 uppercase tracking-wider">Database</div>
                   <div className="flex flex-wrap gap-2">
-                    {['Oracle', 'SQL Server', 'MySQL', '达梦', '人大金仓'].map(t => (
+                    {['Oracle', 'SQL Server', 'MySQL', '达梦', '人大金仓'].map((t: any) => (
                       <span key={t} className="px-3 py-1 border border-slate-700 rounded text-sm text-slate-300">{t}</span>
                     ))}
                   </div>
@@ -86,7 +86,7 @@ export default function TechSpecs() {
                 <div>
                   <div className="text-xs text-slate-400 mb-2 uppercase tracking-wider">OS</div>
                   <div className="flex flex-wrap gap-2">
-                    {['Windows Server', 'Linux (RedHat/CentOS)', '麒麟', '统信 UOS'].map(t => (
+                    {['Windows Server', 'Linux (RedHat/CentOS)', '麒麟', '统信 UOS'].map((t: any) => (
                       <span key={t} className="px-3 py-1 border border-slate-700 rounded text-sm text-slate-300">{t}</span>
                     ))}
                   </div>
@@ -94,7 +94,7 @@ export default function TechSpecs() {
                 <div>
                   <div className="text-xs text-slate-400 mb-2 uppercase tracking-wider">Middleware</div>
                   <div className="flex flex-wrap gap-2">
-                    {['Tomcat', 'WebLogic', '东方通', '宝兰德'].map(t => (
+                    {['Tomcat', 'WebLogic', '东方通', '宝兰德'].map((t: any) => (
                       <span key={t} className="px-3 py-1 border border-slate-700 rounded text-sm text-slate-300">{t}</span>
                     ))}
                   </div>

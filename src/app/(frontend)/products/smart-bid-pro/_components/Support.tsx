@@ -53,7 +53,7 @@ export const FAQ = () => {
           <p className="text-slate-600 text-xl font-medium">解答您在选择与使用过程中最关心的技术与业务细节。</p>
         </div>
         <div className="space-y-6">
-          {faqs.map((f, i) => (
+          {faqs.map((f: any, i: number) => (
             <div key={i} id={`faq-item-${i}`} className={`border rounded-[32px] overflow-hidden transition-all duration-300 ${openIndex === i ? 'border-blue-200 bg-blue-50/30 shadow-md' : 'border-slate-100 bg-white shadow-sm'}`}>
               <button 
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}

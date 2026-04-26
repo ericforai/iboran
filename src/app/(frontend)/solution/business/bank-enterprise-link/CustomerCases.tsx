@@ -33,7 +33,7 @@ export default function CustomerCases() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {cases.map((c, idx) => (
+          {cases.map((c: any, idx: number) => (
             <div
               key={idx}
               className="bg-slate-50 p-8 rounded-2xl relative group hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100"

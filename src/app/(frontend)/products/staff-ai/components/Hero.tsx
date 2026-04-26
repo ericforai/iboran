@@ -127,7 +127,7 @@ export const Hero = () => {
             { label: '可靠性', value: 'Checkpoint 无损恢复' },
             { label: '透明度', value: '100% 执行链路留痕' },
             { label: '生产力', value: '24/7 异步任务调度' },
-          ].map((stat, i) => (
+          ].map((stat: any, i: number) => (
             <div key={i} className="text-center lg:text-left">
               <div className="text-sm text-slate-500 mb-1">{stat.label}</div>
               <div className="text-lg font-bold text-slate-900">{stat.value}</div>

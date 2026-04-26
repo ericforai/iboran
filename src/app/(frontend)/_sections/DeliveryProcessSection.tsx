@@ -65,7 +65,7 @@ export function DeliveryProcessSection() {
 
     // Animate steps appearing one by one
     useEffect(() => {
-        steps.forEach((_, idx) => {
+        steps.forEach((_: any, idx: number) => {
             setTimeout(() => {
                 setVisibleSteps(prev => [...prev, idx + 1])
             }, 200 * (idx + 1))
@@ -76,7 +76,7 @@ export function DeliveryProcessSection() {
         <section className="py-16 lg:py-24 bg-white overflow-hidden">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {steps.map(s => (
+                {steps.map((s: any) => (
                     <div key={s.id}>
                         <h3>{s.title}: {s.subtitle}</h3>
                         <p>{s.description}</p>
@@ -109,7 +109,7 @@ export function DeliveryProcessSection() {
                         {/* Connection Line */}
                         <div className="absolute top-10 left-12 right-12 h-0.5 bg-gradient-to-r from-[#EF4444] via-[#F59E0B] to-[#8B5CF6] opacity-30"></div>
                         
-                        {steps.map((step, idx) => (
+                        {steps.map((step: any, idx: number) => (
                             <div
                                 key={step.id}
                                 className={`relative flex flex-col items-center w-1/5 transition-all duration-500 ${
@@ -177,7 +177,7 @@ export function DeliveryProcessSection() {
 
                 {/* Process Flow - Mobile */}
                 <div className="lg:hidden space-y-4 mb-12">
-                    {steps.map((step, idx) => (
+                    {steps.map((step: any, idx: number) => (
                         <div 
                             key={step.id}
                             className={`flex items-start gap-4 p-4 rounded-xl transition-all duration-500 ${

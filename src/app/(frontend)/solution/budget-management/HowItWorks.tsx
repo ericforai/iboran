@@ -36,7 +36,7 @@ export default function HowItWorks() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, idx) => (
+          {steps.map((step: any, idx: number) => (
             <div key={idx} className="relative group">
               <div className="flex flex-col items-center text-center">
                 <div className="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#0052D9] transition-all duration-300 relative">

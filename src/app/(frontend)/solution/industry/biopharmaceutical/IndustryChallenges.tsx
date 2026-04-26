@@ -37,7 +37,7 @@ export function IndustryChallenges() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {challenges.map((challenge, index) => (
+          {challenges.map((challenge: any, index: number) => (
             <div 
               key={index}
               className="group p-6 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100"

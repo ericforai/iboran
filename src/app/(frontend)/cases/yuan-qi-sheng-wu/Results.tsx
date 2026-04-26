@@ -35,7 +35,7 @@ export default function Results() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {stats.map((stat, idx) => (
+          {stats.map((stat: any, idx: number) => (
             <div key={idx} className="relative group">
               <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative p-8 rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm hover:border-purple-500/30 transition-all duration-300 h-full">

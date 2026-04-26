@@ -14,7 +14,7 @@ export default function ValueSection() {
     <section className="py-20 bg-[#001529] text-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {METRICS.map((metric, idx) => (
+          {METRICS.map((metric: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.9 }}

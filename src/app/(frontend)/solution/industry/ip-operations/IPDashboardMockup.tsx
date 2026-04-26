@@ -27,7 +27,7 @@ export default function IPDashboardMockup({ type = 'overview' }: IPDashboardMock
             { icon: FileText, label: '授权管理', active: type === 'license' },
             { icon: Receipt, label: '结算中心', active: type === 'settlement' },
             { icon: Brain, label: 'AI 维权', active: type === 'ai' },
-          ].map((item, idx) => (
+          ].map((item: any, idx: number) => (
             <div 
               key={idx}
               className={`px-2 md:px-3 py-2 rounded flex items-center gap-2 cursor-pointer transition-colors ${
@@ -86,7 +86,7 @@ function OverviewContent() {
           { label: '有效授权', value: '1,832', icon: FileText, color: 'blue' },
           { label: '本月 Royalty', value: '¥2.8M', icon: DollarSign, color: 'green' },
           { label: '待处理预警', value: '12', icon: AlertTriangle, color: 'red' },
-        ].map((stat, idx) => (
+        ].map((stat: any, idx: number) => (
           <motion.div 
             key={idx}
             initial={{ opacity: 0, y: 10 }}
@@ -137,7 +137,7 @@ function OverviewContent() {
               { text: '新签授权：品牌A-饮料品类', icon: CheckCircle, color: 'green' },
               { text: 'Royalty 到账：¥128,000', icon: DollarSign, color: 'blue' },
               { text: '冲突预警：品类重叠', icon: AlertTriangle, color: 'red' },
-            ].map((item, idx) => (
+            ].map((item: any, idx: number) => (
               <div key={idx} className="flex items-center gap-2 text-[10px]">
                 <item.icon size={10} className={`text-${item.color}-500`} />
                 <span className="text-slate-600 truncate">{item.text}</span>
@@ -155,7 +155,7 @@ function AssetContent() {
     <div className="h-full flex flex-col gap-3">
       {/* Category Filter */}
       <div className="flex gap-2">
-        {['全部', '快消', '服饰', '玩具', '家居'].map((cat, idx) => (
+        {['全部', '快消', '服饰', '玩具', '家居'].map((cat: any, idx: number) => (
           <span 
             key={idx}
             className={`px-2 py-1 rounded text-[10px] cursor-pointer ${
@@ -169,7 +169,7 @@ function AssetContent() {
 
       {/* Asset Grid */}
       <div className="flex-1 grid grid-cols-3 gap-2">
-        {[1, 2, 3, 4, 5, 6].map((item) => (
+        {[1, 2, 3, 4, 5, 6].map((item: any) => (
           <motion.div
             key={item}
             initial={{ opacity: 0, scale: 0.9 }}
@@ -220,7 +220,7 @@ function LicenseContent() {
           { id: 'IP-2024-001', party: '某某公司', category: '饮料', status: '执行中' },
           { id: 'IP-2024-002', party: '品牌方B', category: '服饰', status: '待审核' },
           { id: 'IP-2024-003', party: '经销商C', category: '玩具', status: '已到期' },
-        ].map((contract, idx) => (
+        ].map((contract: any, idx: number) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, x: -10 }}
@@ -249,7 +249,7 @@ function SettlementContent() {
       {/* Period Selector */}
       <div className="flex items-center justify-between">
         <div className="flex gap-2">
-          {['本月', '上月', '本季度'].map((period, idx) => (
+          {['本月', '上月', '本季度'].map((period: any, idx: number) => (
             <span 
               key={idx}
               className={`px-2 py-1 rounded text-[10px] cursor-pointer ${
@@ -269,7 +269,7 @@ function SettlementContent() {
           { label: 'MG 保底费', value: '¥1,200,000', trend: '+5%' },
           { label: 'Royalty 分成', value: '¥1,580,000', trend: '+18%' },
           { label: '待回款', value: '¥320,000', trend: '-12%' },
-        ].map((stat, idx) => (
+        ].map((stat: any, idx: number) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 10 }}
@@ -293,7 +293,7 @@ function SettlementContent() {
       <div className="flex-1 bg-white rounded-lg border border-slate-100 p-3">
         <div className="text-[11px] font-bold text-slate-700 mb-2">Royalty 趋势</div>
         <div className="h-[calc(100%-24px)] bg-gradient-to-t from-green-50 to-white rounded flex items-end justify-around px-2 pb-2">
-          {[40, 65, 55, 80, 70, 90, 85].map((h, idx) => (
+          {[40, 65, 55, 80, 70, 90, 85].map((h: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ height: 0 }}
@@ -336,7 +336,7 @@ function AIContent() {
             { platform: '淘宝', product: 'XX 品牌水杯', match: '92%' },
             { platform: '拼多多', product: 'XX 卡通T恤', match: '87%' },
             { platform: '京东', product: 'XX 联名手机壳', match: '78%' },
-          ].map((alert, idx) => (
+          ].map((alert: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: -10 }}

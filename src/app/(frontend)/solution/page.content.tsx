@@ -91,7 +91,7 @@ export function SolutionPageContent() {
         <section className="py-16 bg-slate-50">
           <div className="container mx-auto px-4">
             <div className="space-y-16">
-              {solutionByBusiness.map((category) => (
+              {solutionByBusiness.map((category: any) => (
                 <div key={category.name}>
                   {/* Category Header */}
                   <div className="flex items-center gap-3 pb-4 border-b border-slate-100 mb-8">
@@ -101,7 +101,7 @@ export function SolutionPageContent() {
                   
                   {/* Solutions Grid */}
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {category.items.map((solution) => {
+                    {category.items.map((solution: any) => {
                       const IconComponent = solution.icon
                       return (
                         <Link
@@ -136,7 +136,7 @@ export function SolutionPageContent() {
         <section className="py-16 bg-slate-50">
           <div className="container mx-auto px-4">
             <div className="space-y-16">
-              {solutionByIndustryCategory.map((category) => (
+              {solutionByIndustryCategory.map((category: any) => (
                 <div key={category.name}>
                   {/* Category Header */}
                   <div className="flex items-center gap-3 pb-4 border-b border-slate-100 mb-8">
@@ -146,7 +146,7 @@ export function SolutionPageContent() {
                   
                   {/* Solutions Grid */}
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {category.items.map((solution) => {
+                    {category.items.map((solution: any) => {
                       const IconComponent = solution.icon
                       return (
                         <Link

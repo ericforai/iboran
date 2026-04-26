@@ -71,7 +71,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                    { l: '净利润率', v: '24.8%', c: 'text-emerald-400', i: <Activity size={14} /> },
                    { l: '同比增长', v: '+15.2%', c: 'text-cyan-400', i: <ArrowUpRight size={14} /> },
                    { l: '经营现金流', v: '¥ 4.5 亿', c: 'text-purple-400', i: <DollarSign size={14} /> },
-                ].map((stat, i) => (
+                ].map((stat: any, i: number) => (
                    <div key={i} className="bg-white/[0.03] border border-white/[0.05] p-3 rounded-lg hover:bg-white/[0.08] hover:border-cyan-500/40 transition-all group cursor-pointer relative overflow-hidden backdrop-blur-sm">
                       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                       <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -99,7 +99,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                 <div className="flex-1 relative overflow-hidden z-10">
                    <div className="flex flex-col gap-2">
                       <AnimatePresence mode="popLayout" initial={false}>
-                         {[0,1,2,3,4].map((offset) => {
+                         {[0,1,2,3,4].map((offset: any) => {
                            const index = (tickerIndex + offset) % logs.length;
                            const log = logs[index];
                            return (
@@ -171,7 +171,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                     </div>
                     <div className="py-2">
                         <div className="flex items-end gap-[3px] h-10">
-                            {[4,6,3,7,5,8,6,9,7,8,9,6,5,8,9].map((h, i) => (
+                            {[4,6,3,7,5,8,6,9,7,8,9,6,5,8,9].map((h: any, i: number) => (
                                 <motion.div 
                                   key={i} 
                                   initial={{ height: 0 }} 
@@ -193,7 +193,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                     </div>
                     <div className="py-2">
                          <div className="flex items-end gap-[3px] h-10">
-                            {[8,7,9,6,5,7,8,6,5,4,5,6,3,5,4].map((h, i) => (
+                            {[8,7,9,6,5,7,8,6,5,4,5,6,3,5,4].map((h: any, i: number) => (
                                 <motion.div 
                                   key={i} 
                                   initial={{ height: 0 }} 
@@ -217,7 +217,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                     { icon: <CheckCircle2 size={16} />, label: 'QC Pass', val: '99.5%', c: 'text-emerald-400' },
                     { icon: <Package size={16} />, label: 'Inbound', val: '24h', c: 'text-blue-400' },
                     { icon: <Truck size={16} />, label: 'Delivery', val: 'ON TIME', c: 'text-indigo-400' },
-                ].map((step, i) => (
+                ].map((step: any, i: number) => (
                     <React.Fragment key={i}>
                         <div className="flex flex-col items-center gap-2 group/step">
                              <div className={`w-10 h-10 rounded-full bg-white/[0.03] flex items-center justify-center ${step.c} border border-white/10 group-hover/step:border-cyan-500/50 group-hover/step:shadow-[0_0_15px_rgba(6,182,212,0.2)] transition-all`}>
@@ -251,7 +251,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                       { label: 'RAW MATERIALS', val: 65, color: 'bg-cyan-500' },
                       { label: 'WORK IN PROGRESS', val: 42, color: 'bg-indigo-500' },
                       { label: 'FINISHED GOODS', val: 88, color: 'bg-blue-600' }
-                    ].map((bar, i) => (
+                    ].map((bar: any, i: number) => (
                       <div key={i} className="space-y-2">
                           <div className="flex justify-between text-[10px] font-black text-slate-500 tracking-wider">
                                <span>{bar.label}</span>
@@ -270,7 +270,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                 </div>
                 
                 <div className="mt-auto grid grid-cols-3 gap-2">
-                   {[1,2,3].map(i => (
+                   {[1,2,3].map((i: any) => (
                      <div key={i} className="h-1 bg-white/[0.03] rounded-full overflow-hidden">
                         <motion.div 
                           animate={{ x: ['-100%', '100%'] }}
@@ -291,7 +291,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                    { icon: <AlertOctagon size={16} />, val: '3', label: 'SEVERE', bg: 'bg-rose-500/10', border: 'border-rose-500/20', text: 'text-rose-500', sub: 'text-rose-300/60' },
                    { icon: <AlertTriangle size={16} />, val: '12', label: 'WARNING', bg: 'bg-amber-500/10', border: 'border-amber-500/20', text: 'text-amber-500', sub: 'text-amber-300/60' },
                    { icon: <Shield size={16} />, val: '98%', label: 'SECURITY', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20', text: 'text-cyan-500', sub: 'text-cyan-300/60' }
-                 ].map((item, i) => (
+                 ].map((item: any, i: number) => (
                    <motion.div 
                     key={i}
                     whileHover={{ scale: 1.02, backgroundColor: 'rgba(255,255,255,0.05)' }}
@@ -320,7 +320,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                          { msg: 'Fiscal Q4 budget utilization: 92.4%', lvl: 'warning', time: '1h ago' },
                          { msg: 'Blocked unauthorized IP: 192.168.1.104', lvl: 'critical', time: '2h ago' },
                          { msg: 'License renewal required (15 days remaining)', lvl: 'warning', time: '1d ago' },
-                     ].map((alert, i) => (
+                     ].map((alert: any, i: number) => (
                          <div key={i} className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-white/[0.03] transition-all cursor-pointer group/alert relative overflow-hidden">
                              <div className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${alert.lvl === 'critical' ? 'bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.6)] animate-pulse' : 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.4)]'}`}></div>
                              <div className="flex-1">
@@ -366,7 +366,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                        {/* Background pulse rings */}
                        <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0, 0.1] }} transition={{ duration: 4, repeat: Infinity }} className="absolute inset-0 border border-indigo-500/20 rounded-full" />
                        
-                       {[0, 1, 2, 3].map(i => (
+                       {[0, 1, 2, 3].map((i: any) => (
                            <div key={i} className="absolute inset-0 border border-white/[0.03]" 
                            style={{ 
                                clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
@@ -467,7 +467,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                     { id: 'finance', label: 'FINANCE PANORAMA', icon: <BarChart3 size={14} /> },
                     { id: 'treasury', label: 'GLOBAL TREASURY', icon: <Globe size={14} /> },
                     { id: 'supply', label: 'SUPPLY CHAIN', icon: <Server size={14} /> }
-                  ].map((tab) => (
+                  ].map((tab: any) => (
                     <button 
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
@@ -489,7 +489,7 @@ export const DashboardPreviewV2 = React.memo(() => {
                   {[
                     { id: 'alert', label: 'BUSINESS ALERTS', icon: <Shield size={14} /> },
                     { id: 'decision', label: 'AI DECISION SUPPORT', icon: <Cpu size={14} /> }
-                  ].map((tab) => (
+                  ].map((tab: any) => (
                     <button 
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}

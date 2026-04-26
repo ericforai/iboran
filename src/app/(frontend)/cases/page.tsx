@@ -30,10 +30,10 @@ export default async function SuccessStoriesPage() {
 
 
   // Deduplicate stories: prioritize staticStories, only add dynamic stories if slug doesn't exist
-  const staticSlugs = new Set(staticStories.map(s => s.slug))
+  const staticSlugs = new Set(staticStories.map((s: any) => s.slug))
   const allStories = [...staticStories]
 
-  stories.docs.forEach(story => {
+  stories.docs.forEach((story: any) => {
     if (story.slug && !staticSlugs.has(story.slug)) {
       allStories.push(story)
     }

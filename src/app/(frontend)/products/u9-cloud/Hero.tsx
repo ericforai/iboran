@@ -39,7 +39,7 @@ export const Hero = () => {
                 { label: '订单交付周期', value: '缩短 50%', icon: Clock },
                 { label: '库存周转率', value: '提升 40%', icon: BarChart3 },
                 { label: 'IT 投入成本', value: '降低 62%', icon: ShieldCheck },
-              ].map((item, idx) => (
+              ].map((item: any, idx: number) => (
                 <div key={idx} className="flex items-start gap-3 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
                   <div className="p-2 bg-blue-50 rounded-lg">
                     <item.icon className="w-5 h-5 text-blue-600" />
@@ -93,7 +93,7 @@ export const Hero = () => {
                         <CheckCircle2 className="w-4 h-4 text-green-500" />
                     </div>
                     <div className="flex gap-4">
-                        {['PLM', 'SRM', 'MES', 'CRM'].map(sys => (
+                        {['PLM', 'SRM', 'MES', 'CRM'].map((sys: any) => (
                             <div key={sys} className="px-3 py-1 bg-white border border-gray-200 rounded-lg text-xs font-bold text-gray-600">
                                 {sys}
                             </div>

@@ -33,7 +33,7 @@ export default function ValueSection() {
           </div>
 
           <div className="grid grid-cols-2 gap-6">
-            {metrics.map((m, idx) => (
+            {metrics.map((m: any, idx: number) => (
               <div key={idx} className="bg-white p-8 rounded-2xl text-center shadow-2xl">
                 <div className={`text-4xl font-black mb-2 ${m.color}`}>
                   {m.value}

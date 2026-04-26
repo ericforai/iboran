@@ -36,7 +36,7 @@ export default function HowItWorks() {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          {steps.map((step, idx) => (
+          {steps.map((step: any, idx: number) => (
             <div key={idx} className="flex gap-6 md:gap-12 relative mb-12 last:mb-0">
               {idx < steps.length - 1 && (
                 <div className="absolute left-[27px] md:left-[39px] top-[60px] bottom-[-40px] w-0.5 bg-slate-200" />

@@ -42,7 +42,7 @@ export const MediaCoverageSection = () => {
                  {[
                    { source: '新华网', type: '主流媒体专访', icon: <Newspaper size={14} />, color: 'text-red-600', bg: 'bg-red-50' },
                    { source: '主流报道', type: '数字化排头兵', icon: <Award size={14} />, color: 'text-blue-600', bg: 'bg-blue-50' }
-                 ].map((item, i) => (
+                 ].map((item: any, i: number) => (
                    <div key={i} className="flex items-center gap-2.5 p-2 md:p-3 md:pr-6 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-all group/item cursor-default">
                       <div className={`w-9 h-9 md:w-10 md:h-10 ${item.bg} ${item.color} rounded-xl flex items-center justify-center transition-transform group-hover/item:scale-110`}>
                         {item.icon}
@@ -102,7 +102,7 @@ export const MediaCoverageSection = () => {
                     “ 通过致远互联协同运营平台 COP，实现业财一体化与前端业务打通，业务数据实时传递... 凭证自动化率已达到 <span className="text-blue-600 font-black">80%</span>，大幅提升财务工作质量和效率。 ”
                   </p>
                   <div className="flex flex-wrap gap-2 md:gap-3">
-                     {['财务共享中心', '业财一体化', '数字化转型'].map(tag => (
+                     {['财务共享中心', '业财一体化', '数字化转型'].map((tag: any) => (
                        <span key={tag} className="px-2.5 py-1 bg-slate-50 text-[10px] font-bold text-slate-400 rounded-md uppercase tracking-wider">
                          {tag}
                        </span>

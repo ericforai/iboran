@@ -49,7 +49,7 @@ export default function DeliveryScope() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {sections.map((section, idx) => (
+          {sections.map((section: any, idx: number) => (
             <div key={idx} className={`p-8 rounded-3xl border ${
               section.type === 'included' ? 'border-blue-500/30 bg-blue-500/5' : 
               section.type === 'optional' ? 'border-slate-700 bg-slate-800/50' : 
@@ -69,7 +69,7 @@ export default function DeliveryScope() {
               </div>
 
               <ul className="space-y-4">
-                {section.items.map((item, i) => (
+                {section.items.map((item: any, i: number) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-slate-300 leading-relaxed">
                     <div className="mt-1.5 w-1 h-1 rounded-full bg-slate-500 shrink-0" />
                     {item}

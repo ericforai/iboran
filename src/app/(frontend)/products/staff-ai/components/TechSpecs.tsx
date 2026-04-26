@@ -56,7 +56,7 @@ export const TechSpecs = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {specs.map((spec, i) => (
+          {specs.map((spec: any, i: number) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ export const TechSpecs = () => {
              { label: '任务恢复率', val: '100%' },
              { label: '安全审计精度', val: '毫秒级' },
              { label: '专家包覆盖', val: '144+' },
-           ].map((item, i) => (
+           ].map((item: any, i: number) => (
              <div key={i} className="text-center group p-4 border-r border-slate-200 last:border-0">
                 <div className="text-3xl font-black text-[#0052D9] mb-2 group-hover:scale-110 transition-transform">{item.val}</div>
                 <div className="text-xs font-bold text-slate-400 uppercase">{item.label}</div>

@@ -77,7 +77,7 @@ export default function SolutionOverview() {
                   '内部往来自动对账，支持合并报表',
                   '完整的审批流程与业务过程控制',
                   '复用东岛新能源得到审计师认可的成本核算方案',
-                ].map((item, idx) => (
+                ].map((item: any, idx: number) => (
                   <li key={idx} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
                     <span className="text-slate-700">{item}</span>
@@ -110,7 +110,7 @@ export default function SolutionOverview() {
 
         {/* Core Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {coreProducts.map((product, idx) => (
+          {coreProducts.map((product: any, idx: number) => (
             <div
               key={idx}
               className="bg-white p-6 rounded-xl border border-slate-100 hover:shadow-md transition group"
@@ -135,7 +135,7 @@ export default function SolutionOverview() {
             <h3 className="text-xl font-bold text-[#1F2329]">交付物清单</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
-            {deliverables.map((item, idx) => (
+            {deliverables.map((item: any, idx: number) => (
               <div key={idx} className="flex items-start gap-3">
                 <CheckCircle className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
                 <div>

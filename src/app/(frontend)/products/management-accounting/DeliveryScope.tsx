@@ -51,7 +51,7 @@ export default function DeliveryScope() {
                           </tr>
                        </thead>
                        <tbody>
-                          {scopeItems.map((item, i) => (
+                          {scopeItems.map((item: any, i: number) => (
                             <tr key={i} className="border-b border-slate-200/50 hover:bg-white transition-colors">
                                <td className="px-6 py-4 text-xs font-medium text-slate-500">{item.category}</td>
                                <td className="px-6 py-4 text-sm font-semibold text-slate-800">{item.label}</td>

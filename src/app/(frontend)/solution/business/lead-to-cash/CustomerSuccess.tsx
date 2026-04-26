@@ -39,7 +39,7 @@ export default function CustomerSuccess() {
 
           <div className="lg:w-2/3">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {customers.map((customer, idx) => (
+              {customers.map((customer: any, idx: number) => (
                 <div 
                   key={idx}
                   className="bg-white h-24 rounded-lg border border-slate-100 flex items-center justify-center p-4 hover:shadow-md transition-shadow grayscale hover:grayscale-0 opacity-80 hover:opacity-100"

@@ -104,7 +104,7 @@ const Hero = () => {
               
               {/* Capability Grid */}
               <div className="grid grid-cols-2 gap-4 mb-10">
-                {capabilities.map((item, idx) => (
+                {capabilities.map((item: any, idx: number) => (
                   <div key={idx} className="flex items-center space-x-3 p-3 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-200 transition-colors group">
                     <item.icon className="w-5 h-5 text-blue-500 group-hover:scale-110 transition-transform" />
                     <span className="text-sm font-semibold text-slate-700">{item.text}</span>
@@ -114,7 +114,7 @@ const Hero = () => {
 
               {/* Metrics Bar */}
               <div className="grid grid-cols-3 gap-2 border-t border-slate-100 pt-8 mt-4">
-                {metrics.map((metric, idx) => (
+                {metrics.map((metric: any, idx: number) => (
                   <div key={idx} className="text-center">
                     <div className="text-xl font-black text-blue-600">{metric.value}</div>
                     <div className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">{metric.label}</div>

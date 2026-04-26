@@ -16,7 +16,7 @@ export default function CustomerSuccess() {
         
         <div className="flex flex-wrap justify-center gap-8 lg:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
           {/* Using text placeholders enriched with styling since we don't have actual logo assets handy */}
-          {CUSTOMERS.map((name, idx) => (
+          {CUSTOMERS.map((name: any, idx: number) => (
              <div key={idx} className="text-xl font-bold text-slate-400 hover:text-[#0052D9] cursor-default transition-colors select-none">
                {name}
              </div>

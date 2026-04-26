@@ -47,7 +47,7 @@ export default function TrustProof() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {stats.map((stat, idx) => (
+          {stats.map((stat: any, idx: number) => (
             <div key={idx} className="p-6 bg-slate-50 rounded-xl border-b-4 border-blue-600">
               <div className="text-3xl font-bold text-slate-900 mb-1">{stat.value}</div>
               <div className="text-sm font-bold text-blue-600 mb-2">{stat.label}</div>
@@ -57,7 +57,7 @@ export default function TrustProof() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {cases.map((card, idx) => (
+          {cases.map((card: any, idx: number) => (
             <div key={idx} className="p-8 bg-white border border-slate-200 rounded-2xl flex flex-col hover:border-blue-400 transition shadow-sm">
               <div className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest mb-4">
                 <Users size={14} />
@@ -82,7 +82,7 @@ export default function TrustProof() {
 
         <div className="mt-16 flex flex-wrap justify-center items-center gap-12 opacity-40 grayscale hover:grayscale-0 transition duration-500">
           {/* Logo Placeholders */}
-          {[1, 2, 3, 4, 5].map((i) => (
+          {[1, 2, 3, 4, 5].map((i: any) => (
             <div key={i} className="flex items-center gap-2">
               <ShieldCheck size={32} />
               <div className="font-bold text-xl tracking-tighter">PARTNER_{i}</div>

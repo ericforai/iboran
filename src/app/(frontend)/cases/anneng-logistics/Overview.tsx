@@ -47,7 +47,7 @@ export default function Overview() {
                 <div>
                   <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold mb-2">关键技术栈</div>
                   <div className="grid grid-cols-2 gap-2">
-                    {techStack.map((tech) => (
+                    {techStack.map((tech: any) => (
                       <div key={tech.name} className="flex items-center gap-2 p-2 bg-white rounded-lg border border-slate-100 text-xs font-medium text-slate-600">
                         <tech.icon className="w-3 h-3 text-blue-500" />
                         {tech.name}

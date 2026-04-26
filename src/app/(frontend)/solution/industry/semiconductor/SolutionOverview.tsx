@@ -46,7 +46,7 @@ export default function SolutionOverview() {
                 </span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {coreModules.map((module, idx) => (
+                {coreModules.map((module: any, idx: number) => (
                   <div key={idx} className="bg-[#F7F8FA] rounded-lg p-4 text-center hover:shadow-md transition group">
                     <div className="w-10 h-10 bg-white rounded-lg shadow-sm flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
                       <module.icon size={20} className="text-[#0052D9]" />

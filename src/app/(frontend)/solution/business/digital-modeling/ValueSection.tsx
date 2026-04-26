@@ -45,7 +45,7 @@ export default function ValueSection() {
               数智化转型价值
             </h2>
             <div className="grid gap-8">
-              {metrics.map((metric, idx) => (
+              {metrics.map((metric: any, idx: number) => (
                 <div key={idx} className="flex gap-6 items-start p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-colors">
                   <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-[#0052D9] flex-shrink-0">
                     <metric.icon className="w-6 h-6" />
@@ -69,7 +69,7 @@ export default function ValueSection() {
               <h3 className="text-2xl font-bold mb-8 relative z-10 text-white">行业标杆案例</h3>
               
               <div className="space-y-10 relative z-10">
-                {cases.map((item, idx) => (
+                {cases.map((item: any, idx: number) => (
                   <div key={idx}>
                     <div className="flex items-center gap-2 text-red-500 font-bold text-sm mb-3 uppercase tracking-wider">
                       <span className="w-1 h-4 bg-red-600 rounded-full" />

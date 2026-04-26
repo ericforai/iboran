@@ -44,7 +44,7 @@ export default function CTASection() {
               '定制化协同运营方案一套',
               '交付报价与实施周期预估',
               '全栈信创适配白皮书'
-            ].map(item => (
+            ].map((item: any) => (
               <div key={item} className="flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-lg">
                 <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
                 <span className="text-slate-200 text-sm font-medium">{item}</span>

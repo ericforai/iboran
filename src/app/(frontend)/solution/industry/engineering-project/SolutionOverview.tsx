@@ -56,7 +56,7 @@ export default function SolutionOverview() {
                   '实时动态成本：预警控制合同执行，成本实时进账，规避发票丢失与风险',
                   '施工精细协同：甲方、监理、施工单位多方信息共享，现场隐患整改有理有据',
                   '自动化转固：竣工验收完成即启动资产化流程，打通项目与财务管理的最后一公里',
-                ].map((item, idx) => (
+                ].map((item: any, idx: number) => (
                   <li key={idx} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
                     <span className="text-slate-700">{item}</span>
@@ -89,7 +89,7 @@ export default function SolutionOverview() {
 
         {/* Core Products Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {coreProducts.map((product, idx) => (
+          {coreProducts.map((product: any, idx: number) => (
             <div
               key={idx}
               className="bg-white p-6 rounded-xl border border-slate-100 hover:shadow-md transition group"

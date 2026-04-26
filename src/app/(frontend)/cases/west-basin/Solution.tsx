@@ -43,7 +43,7 @@ export default function Solution() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {solutions.map((item, index) => (
+          {solutions.map((item: any, index: number) => (
             <div key={index} className="p-8 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 group">
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
                 <item.icon className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors duration-300" />

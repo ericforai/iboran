@@ -116,7 +116,7 @@ export default function Hero() {
                         { label: "报价", value: "423", width: "60%", color: "bg-blue-400", text: "text-white" },
                         { label: "合同", value: "198", width: "40%", color: "bg-blue-600", text: "text-white" },
                         { label: "回款", value: "¥8.5M", width: "30%", color: "bg-[#E60012]", text: "text-white" }
-                      ].map((item, idx) => (
+                      ].map((item: any, idx: number) => (
                         <div key={idx} className="flex items-center gap-4 group cursor-default">
                           <div className="w-16 text-right text-xs font-medium text-slate-500">{item.label}</div>
                           <div className="flex-1">

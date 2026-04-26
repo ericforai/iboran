@@ -89,7 +89,7 @@ export default function Hero() {
                       { icon: Package, name: '流通', desc: 'GSP管理' },
                       { icon: TrendingUp, name: '营销', desc: '全渠道' },
                       { icon: Leaf, name: '质量', desc: '全检追溯' },
-                    ].map((module, idx) => (
+                    ].map((module: any, idx: number) => (
                       <div key={idx} className="bg-emerald-50 rounded-lg p-3 text-center border border-emerald-100 hover:bg-emerald-100 transition">
                         <module.icon size={20} className="mx-auto text-emerald-600 mb-1" />
                         <div className="text-[#1F2329] font-bold text-sm">{module.name}</div>

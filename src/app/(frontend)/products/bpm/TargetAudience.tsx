@@ -46,7 +46,7 @@ export default function TargetAudience() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {targets.map((item, idx) => (
+          {targets.map((item: any, idx: number) => (
             <div key={idx} className="p-8 bg-slate-50 border border-slate-100 rounded-xl hover:shadow-md transition">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm mb-6">
                 {item.icon}
@@ -66,7 +66,7 @@ export default function TargetAudience() {
               <h3 className="text-xl font-bold text-white">理想适用情况</h3>
             </div>
             <ul className="space-y-4">
-              {conditions.suitable.map((text, idx) => (
+              {conditions.suitable.map((text: any, idx: number) => (
                 <li key={idx} className="flex items-start gap-3">
                   <CheckCircle2 size={18} className="text-green-500 mt-1 flex-shrink-0" />
                   <span className="text-slate-300">{text}</span>
@@ -83,7 +83,7 @@ export default function TargetAudience() {
               <h3 className="text-xl font-bold text-white">建议暂缓引入</h3>
             </div>
             <ul className="space-y-4">
-              {conditions.unsuitable.map((text, idx) => (
+              {conditions.unsuitable.map((text: any, idx: number) => (
                 <li key={idx} className="flex items-start gap-3">
                   <XCircle size={18} className="text-red-500 mt-1 flex-shrink-0" />
                   <span className="text-slate-400 italic">{text}</span>

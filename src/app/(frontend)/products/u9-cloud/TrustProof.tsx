@@ -35,7 +35,7 @@ export const TrustProof = () => {
       <div className="container px-4 mx-auto">
         {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
-          {stats.map((s, idx) => (
+          {stats.map((s: any, idx: number) => (
             <div key={idx} className="text-center p-8 rounded-3xl bg-white/5 border border-white/10">
               <div className="inline-flex p-3 rounded-2xl bg-blue-500/20 mb-4">
                 <s.icon className="w-6 h-6 text-blue-400" />
@@ -55,7 +55,7 @@ export const TrustProof = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {cases.map((cs, idx) => (
+          {cases.map((cs: any, idx: number) => (
             <div key={idx} className="p-8 rounded-3xl bg-white/5 border border-white/10 flex flex-col justify-between hover:bg-white/10 transition-all cursor-default">
               <div>
                 <div className="inline-block px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold mb-6">

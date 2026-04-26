@@ -60,7 +60,7 @@ export const SecurityFirewall = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {firewalls.map((firewall, i) => (
+          {firewalls.map((firewall: any, i: number) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.9 }}

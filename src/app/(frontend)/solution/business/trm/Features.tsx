@@ -46,7 +46,7 @@ export default function Features() {
         </div>
 
         <div className="space-y-16">
-          {featureGroups.map((group, groupIdx) => (
+          {featureGroups.map((group: any, groupIdx: number) => (
             <div key={groupIdx} className="relative">
               <div className="flex items-center gap-4 mb-10">
                 <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-[#0052D9]">
@@ -59,7 +59,7 @@ export default function Features() {
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
-                {group.features.map((feature, featureIdx) => (
+                {group.features.map((feature: any, featureIdx: number) => (
                   <div 
                     key={featureIdx}
                     className="p-8 bg-[#F7F8FA] rounded-2xl border border-transparent hover:border-blue-100 hover:bg-white hover:shadow-lg transition-all duration-300"

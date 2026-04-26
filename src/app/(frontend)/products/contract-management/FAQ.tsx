@@ -44,7 +44,7 @@ export default function FAQ() {
         </div>
 
         <div className="space-y-4">
-          {faqs.map((faq, idx) => (
+          {faqs.map((faq: any, idx: number) => (
             <div key={idx} className="bg-slate-50/50 rounded-2xl border border-slate-100 overflow-hidden transition-colors hover:border-blue-200">
               <button
                 onClick={() => setOpenIdx(openIdx === idx ? null : idx)}

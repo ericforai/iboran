@@ -65,20 +65,20 @@ const features = [
 
 export default function Features() {
   const [activeTab, setActiveTab] = useState(features[0].id)
-  const activeFeature = features.find(f => f.id === activeTab)
+  const activeFeature = features.find((f: any) => f.id === activeTab)
 
   return (
     <section className="py-24 bg-slate-50">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {features.map((item: any, i: number) => (
+                {(features as any[]).map((item: any, i: number) => (
                     <div key={i}>
                         <h3>{item.title}</h3>
                         <p>{item.problem || item.description || item.desc || ""}</p>
                         <p>{item.solution || ""}</p>
                         <p>{item.outcome || ""}</p>
-                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
-                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{b}</li>)}</ul>}
+                        {item.features && <ul>{item.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
+                        {item.benefits && <ul>{item.benefits.map((b: any, bi: number) => <li key={bi}>{(typeof b === "object" ? (b.title || b.label || b.name || b.desc || JSON.stringify(b)) : b)}</li>)}</ul>}
                         {item.metrics && <p>Metrics: {item.metrics.join(', ')}</p>}
                     </div>
                 ))}
@@ -96,7 +96,7 @@ export default function Features() {
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Tabs */}
           <div className="lg:w-1/3 flex flex-col gap-4">
-            {features.map((feature) => (
+            {features.map((feature: any) => (
               <button
                 key={feature.id}
                 onClick={() => setActiveTab(feature.id)}
@@ -145,7 +145,7 @@ export default function Features() {
                         <h3 className="text-2xl font-bold text-slate-900 mb-4">{activeFeature.title}</h3>
                         <p className="text-slate-600 leading-relaxed mb-8">{activeFeature.description}</p>
                         <ul className="space-y-4">
-                          {activeFeature.points.map((point, idx) => (
+                          {activeFeature.points.map((point: any, idx: number) => (
                             <li key={idx} className="flex items-start gap-3 text-slate-700">
                               <CheckCircle2 className="w-5 h-5 text-[#E60012] shrink-0 mt-0.5" />
                               <span className="text-sm">{point}</span>

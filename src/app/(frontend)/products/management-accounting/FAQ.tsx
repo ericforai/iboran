@@ -43,7 +43,7 @@ export default function FAQ() {
         </div>
 
         <div className="max-w-3xl mx-auto space-y-4">
-           {faqs.map((faq, i) => (
+           {faqs.map((faq: any, i: number) => (
              <div key={i} className="border border-slate-200 rounded-3xl overflow-hidden hover:border-blue-200 transition-colors">
                 <button
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}

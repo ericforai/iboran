@@ -17,7 +17,7 @@ export default function ResourcesClient({ initialResources }: { initialResources
   ]
 
   const filteredResources = useMemo(() => {
-    return initialResources.filter(res => {
+    return initialResources.filter((res: any) => {
       const matchesSearch = res.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                            res.summary?.toLowerCase().includes(searchQuery.toLowerCase())
       const matchesCategory = activeCategory === 'all' || res.category === activeCategory
@@ -32,7 +32,7 @@ export default function ResourcesClient({ initialResources }: { initialResources
           <SearchBar onSearch={setSearchQuery} className="mb-8" />
           
           <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((cat) => (
+            {categories.map((cat: any) => (
               <button
                 key={cat.value}
                 onClick={() => setActiveCategory(cat.value)}
@@ -51,7 +51,7 @@ export default function ResourcesClient({ initialResources }: { initialResources
 
       <div className="container px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredResources.map((resource) => (
+          {filteredResources.map((resource: any) => (
             <ResourceCard key={resource.id} resource={resource} />
           ))}
         </div>

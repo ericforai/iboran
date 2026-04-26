@@ -65,7 +65,7 @@ export const Methodology = () => {
           <div className="absolute top-[40px] left-0 w-full h-1 bg-slate-200 -translate-y-1/2 hidden lg:block rounded-full" />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-            {steps.map((s, i) => (
+            {steps.map((s: any, i: number) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -104,7 +104,7 @@ export const TechSpecs = () => {
                 { title: '体系集成', desc: '提供标准 Open API；深度对接钉钉、企微、飞书等主流 SSO 协同体系。' },
                 { title: '合规治理', desc: '符合等保三级及大型审计标准；多级权限隔离与高强度全文日志追踪。' },
                 { title: '落地效率', desc: '标准软件交付包集成通用模板库，支持最快 2 周实现全业务体系上线。' }
-            ].map((spec, i) => (
+            ].map((spec: any, i: number) => (
                 <div key={i} className="flex items-start gap-5">
                     <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 shadow-inner">
                         <CheckCircle size={22} className="text-blue-600" />
@@ -164,7 +164,7 @@ export const CustomerStories = () => {
                             stat: "60% 作业效率提升", 
                             logo: "NY" 
                         }
-                    ].map((story, i) => (
+                    ].map((story: any, i: number) => (
                         <motion.div 
                             key={i}
                             initial={{ opacity: 0, y: 20 }}

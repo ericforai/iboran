@@ -41,7 +41,7 @@ export function DeliveryScope() {
                 { title: '统一身份认证', desc: '支持标准 OAuth2 / CAS 协议对接' },
                 { title: '统一待办集成', desc: '提供标准 API 接口，支持 3 个系统的待办集成' },
                 { title: '标准主题模版', desc: '提供 5 套行业通用门户主题模版' },
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <li key={i} className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-blue-500 shrink-0 mt-0.5" />
                   <div>
@@ -77,7 +77,7 @@ export function DeliveryScope() {
                 { title: 'UI/UX 定制设计', desc: '企业专属 VI 视觉风格设计与主题开发' },
                 { title: '多租户运营扩展', desc: '面向集团二级单位的独立租户运营能力' },
                 { title: '数据大屏集成', desc: '集成 DataV 或 QuickBI 等专业数据大屏' },
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <li key={i} className="flex items-start gap-3">
                   <PlusCircle className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" />
                   <div>

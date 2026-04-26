@@ -95,20 +95,20 @@ export function UnifiedPracticesSection() {
 
     // Animate steps appearing one by one
     useEffect(() => {
-        practices.forEach((_, idx) => {
+        practices.forEach((_: any, idx: number) => {
             setTimeout(() => {
                 setVisibleSteps(prev => [...prev, idx + 1])
             }, 150 * (idx + 1))
         })
     }, [])
 
-    const activePractice = practices.find(p => p.id === activeId)
+    const activePractice = practices.find((p: any) => p.id === activeId)
 
     return (
         <section className="py-8 lg:py-12 bg-white overflow-hidden">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {practices.map(p => (
+                {practices.map((p: any) => (
                     <div key={p.id}>
                         <h3>{p.title}: {p.subtitle}</h3>
                         <p>客户状态: {p.customerState}</p>
@@ -159,7 +159,7 @@ export function UnifiedPracticesSection() {
                                 <line x1="74%" y1="12" x2="86%" y2="12" stroke="#E5E7EB" strokeWidth="1" strokeDasharray="3 2" markerEnd="url(#subtleArrow)" />
                             </svg>
                             
-                            {practices.map((practice) => (
+                            {practices.map((practice: any) => (
                                 <button
                                     key={practice.id}
                                     onClick={() => setActiveId(practice.id)}
@@ -221,7 +221,7 @@ export function UnifiedPracticesSection() {
                     {/* Mobile Flow - Horizontal Scroll */}
                     <div className="lg:hidden">
                         <div className="flex gap-3 overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
-                            {practices.map((practice) => (
+                            {practices.map((practice: any) => (
                                 <button
                                     key={practice.id}
                                     onClick={() => setActiveId(practice.id)}
@@ -289,7 +289,7 @@ export function UnifiedPracticesSection() {
                                         泊冉的做法
                                     </div>
                                     <ul className="space-y-1.5">
-                                        {activePractice.approach.map((item, idx) => (
+                                        {activePractice.approach.map((item: any, idx: number) => (
                                             <li key={idx} className="flex items-start gap-2 text-sm text-[#1F2329]">
                                                 <CheckCircle2 
                                                     className="w-4 h-4 mt-0.5 flex-shrink-0" 

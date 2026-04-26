@@ -51,7 +51,7 @@ export default function CTASection() {
 
             <div className="mt-12 flex items-center justify-center gap-4 text-slate-500 text-sm">
                <div className="flex -space-x-2">
-                  {[1,2,3,4].map(i => (
+                  {[1,2,3,4].map((i: any) => (
                     <div key={i} className="w-8 h-8 rounded-full border-2 border-[#001529] bg-slate-700" />
                   ))}
                </div>

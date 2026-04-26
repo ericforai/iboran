@@ -45,7 +45,7 @@ export default function KeyScenarios() {
     <section className="py-24 bg-white">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {scenarios.map((s: any, i: number) => (
+                {(scenarios as any[]).map((s: any, i: number) => (
                     <div key={i}>
                         <h3>{s.title}</h3>
                         <p>{s.problem || s.description || ""}</p>
@@ -67,7 +67,7 @@ export default function KeyScenarios() {
         
         {/* Tab Navigation */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {scenarios.map((scenario, idx) => (
+          {scenarios.map((scenario: any, idx: number) => (
             <button
               key={scenario.id}
               onClick={() => setActiveTab(idx)}
@@ -134,7 +134,7 @@ export default function KeyScenarios() {
               
               {/* Process Flow */}
               <div className="space-y-4">
-                {['数据采集', '智能分析', '自动决策', '执行反馈'].map((step, idx) => (
+                {['数据采集', '智能分析', '自动决策', '执行反馈'].map((step: any, idx: number) => (
                   <div key={idx} className="flex items-center gap-4">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold ${
                       idx === 0 ? 'bg-[#E60012]' : 

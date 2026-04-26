@@ -32,7 +32,7 @@ export function Architecture() {
                 { icon: Smartphone, label: '移动门户 (友空间)' },
                 { icon: Layout, label: '桌面端' },
                 { icon: Monitor, label: '数据大屏' },
-              ].map((item, i) => (
+              ].map((item: any, i: number) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
@@ -130,7 +130,7 @@ export function Architecture() {
                  { label: 'HR系统', bg: 'bg-purple-50', text: 'text-purple-600', border: 'border-purple-100' },
                  { label: 'CRM系统', bg: 'bg-rose-50', text: 'text-rose-600', border: 'border-rose-100' },
                  { label: '三方异构', bg: 'bg-slate-100', text: 'text-slate-600', border: 'border-slate-200' },
-               ].map((sys, i) => (
+               ].map((sys: any, i: number) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}

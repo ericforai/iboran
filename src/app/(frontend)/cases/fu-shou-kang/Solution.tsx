@@ -44,7 +44,7 @@ export default function Solution() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {solutions.map((solution) => {
+          {solutions.map((solution: any) => {
             const Icon = solution.icon
             return (
               <div
@@ -57,7 +57,7 @@ export default function Solution() {
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">{solution.title}</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">{solution.description}</p>
                 <ul className="space-y-2 text-xs text-slate-600">
-                  {solution.items.map((item) => (
+                  {solution.items.map((item: any) => (
                     <li key={item} className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-cyan-600 mt-0.5" />
                       <span>{item}</span>

@@ -41,7 +41,7 @@ export default function FAQ() {
         </div>
 
         <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((item, idx) => (
+          {faqs.map((item: any, idx: number) => (
             <FAQItem key={idx} q={item.q} a={item.a} />
           ))}
         </div>

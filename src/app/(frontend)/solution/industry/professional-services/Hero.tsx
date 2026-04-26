@@ -84,7 +84,7 @@ export default function Hero() {
                       { icon: Award, name: '资质', desc: '信用管理' },
                       { icon: Globe, name: '知识', desc: '智库共享' },
                       { icon: Shield, name: '风控', desc: '利冲合规' },
-                    ].map((module, idx) => (
+                    ].map((module: any, idx: number) => (
                       <div key={idx} className="bg-indigo-50 rounded-lg p-3 text-center border border-indigo-100 hover:bg-indigo-100 transition">
                         <module.icon size={20} className="mx-auto text-indigo-600 mb-1" />
                         <div className="text-[#1F2329] font-bold text-sm">{module.name}</div>

@@ -46,7 +46,7 @@ export default function DigitalModelingDashboardMockup({ activeView = 'overview'
             { id: 'object', icon: GitBranch, label: '业务对象' },
             { id: 'data', icon: Database, label: '主数据管理' },
             { id: 'compliance', icon: ShieldCheck, label: '合规与风险' },
-          ].map((item) => (
+          ].map((item: any) => (
             <div 
               key={item.id}
               className={`px-3 py-2 rounded flex items-center gap-2 cursor-pointer transition-colors ${
@@ -132,7 +132,7 @@ function OverviewUI() {
             <span className="text-[10px] text-blue-500 cursor-pointer">查看详情 <ChevronRight size={10} className="inline" /></span>
           </div>
           <div className="flex-1 flex items-end gap-2 pb-2">
-            {[60, 45, 80, 55, 90, 70, 75].map((h, i) => (
+            {[60, 45, 80, 55, 90, 70, 75].map((h: any, i: number) => (
               <motion.div 
                 key={i}
                 initial={{ height: 0 }}
@@ -170,7 +170,7 @@ function OverviewUI() {
             { tag: '主数据', title: '物料编码唯一性冲突', color: 'bg-orange-50 text-orange-600 border-orange-100' },
             { tag: '组织', title: '多维架构时间轴错位', color: 'bg-blue-50 text-blue-600 border-blue-100' },
             { tag: '流程', title: '采购审批流节点挂起', color: 'bg-slate-50 text-slate-600 border-slate-100' },
-          ].map((item, idx) => (
+          ].map((item: any, idx: number) => (
             <div key={idx} className="space-y-1">
               <div className="flex justify-between items-center shrink-0">
                 <span className={`px-1.5 py-0.5 rounded text-[8px] border ${item.color}`}>{item.tag}</span>
@@ -212,14 +212,14 @@ function OrgTreeUI() {
             { label: '华东大区', children: ['上海子公司', '南京办事处'] },
             { label: '华南大区', children: ['广州分公司', '深圳研发中心'] },
             { label: '海外事业部', children: ['新加坡中心', '欧洲办事处'] }
-          ].map((node, i) => (
+          ].map((node: any, i: number) => (
             <div key={i} className="flex flex-col items-center min-w-[80px] shrink-0">
               <div className="w-20 p-1.5 bg-blue-50 border border-blue-200 text-blue-700 rounded text-center font-medium shadow-sm shrink-0">
                 {node.label}
               </div>
               <div className="w-0.5 h-4 bg-slate-200 shrink-0" />
               <div className="flex gap-2 shrink-0">
-                {node.children.map((child, ci) => (
+                {node.children.map((child: any, ci: number) => (
                   <div key={ci} className="w-16 p-1 bg-white border border-slate-100 rounded text-[8px] text-slate-500 text-center shadow-xs truncate shrink-0">
                     {child}
                   </div>
@@ -249,7 +249,7 @@ function ProcessDesignerUI() {
         {/* Nodes Palette */}
         <div className="w-8 md:w-32 bg-white border-r border-slate-100 p-2 space-y-2 shrink-0">
           <div className="font-bold text-[9px] text-slate-400 mb-2 uppercase hidden md:block">节点类型</div>
-          {['开始', '任务', '分支', '消息', '子流程'].map((n, i) => (
+          {['开始', '任务', '分支', '消息', '子流程'].map((n: any, i: number) => (
             <div key={i} className="p-1.5 md:p-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded flex items-center gap-2 cursor-grab shrink-0">
               <div className="w-4 h-4 md:w-5 md:h-5 bg-blue-500/10 rounded flex items-center justify-center shrink-0">
                 <div className={`w-2 h-2 ${i === 0 ? 'rounded-full' : i === 2 ? 'rotate-45' : ''} bg-blue-500`} />
@@ -303,7 +303,7 @@ function ObjectModelingUI() {
       <div className="flex-1 flex overflow-hidden shrink-0 min-w-0">
         <div className="w-1/3 border-r border-slate-100 p-3 shrink-0 flex flex-col overflow-y-auto">
           <div className="text-slate-400 text-[9px] mb-2 uppercase shrink-0">实体库</div>
-          {['销售订单 (SalesOrder)', '采购请购单 (PurchaseReq)', '物料主档 (Material)', '客户档案 (Customer)'].map((t, i) => (
+          {['销售订单 (SalesOrder)', '采购请购单 (PurchaseReq)', '物料主档 (Material)', '客户档案 (Customer)'].map((t: any, i: number) => (
             <div key={i} className={`p-2 rounded mb-1 cursor-pointer truncate ${i === 2 ? 'bg-blue-50 text-blue-600 font-bold' : 'text-slate-600'}`}>
               {t}
             </div>
@@ -326,7 +326,7 @@ function ObjectModelingUI() {
                 { name: 'specification', type: 'String', mapping: '自由特征组: Spec' },
                 { name: 'unit', type: 'Reference', mapping: '计量单位库' },
                 { name: 'is_active', type: 'Boolean', mapping: '-' },
-              ].map((row, i) => (
+              ].map((row: any, i: number) => (
                 <tr key={i} className="border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors">
                   <td className="py-2 font-mono shrink-0 truncate">{row.name}</td>
                   <td className="py-2 shrink-0">{row.type}</td>
@@ -375,7 +375,7 @@ function DataMasterUI() {
                { label: '属性特征', val: 'WD' },
                { label: '年份', val: '24' },
                { label: '流水号', val: '001' }
-             ].map((seg, i) => (
+             ].map((seg: any, i: number) => (
                <div key={i} className="flex items-center shrink-0">
                  <div className="flex flex-col items-center">
                    <div className="text-[8px] text-slate-400 mb-1">{seg.label}</div>
@@ -438,7 +438,7 @@ function SecurityUI() {
               { op: '密级设定', user: 'Security', status: 'Alert', icon: ShieldCheck },
               { op: '数据脱敏', user: 'System', status: 'Success', icon: Database },
               { op: '环境迁移', user: 'Admin', status: 'Audit', icon: Globe },
-            ].map((log, i) => (
+            ].map((log: any, i: number) => (
               <div key={i} className="flex items-center gap-2 p-1.5 hover:bg-slate-700 rounded transition-colors shrink-0">
                 <log.icon size={12} className="text-slate-500 shrink-0" />
                 <span className="truncate flex-1 shrink-0">{log.op}</span>

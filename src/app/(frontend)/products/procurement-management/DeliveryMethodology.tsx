@@ -38,7 +38,7 @@ export const DeliveryMethodology = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, index) => (
+          {steps.map((step: any, index: number) => (
             <div key={index} className="relative group">
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-12 left-full w-full border-t border-dashed border-slate-700 -translate-x-4 z-0"></div>
@@ -52,7 +52,7 @@ export const DeliveryMethodology = () => {
                 <div className="pt-6 border-t border-slate-700">
                   <div className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-3">交付产出物：</div>
                   <ul className="space-y-2">
-                    {step.deliverables.map((item, i) => (
+                    {step.deliverables.map((item: any, i: number) => (
                       <li key={i} className="text-xs text-slate-300 flex items-center gap-2">
                         <span className="w-1 h-1 bg-blue-400 rounded-full"></span>
                         {item}

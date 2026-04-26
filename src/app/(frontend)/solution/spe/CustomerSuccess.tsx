@@ -39,7 +39,7 @@ export default function CustomerSuccess() {
 
         {/* Featured Cases */}
         <div className="grid md:grid-cols-2 gap-8 mb-20">
-          {cases.map((item, idx) => (
+          {cases.map((item: any, idx: number) => (
             <div key={idx} className="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-all">
               <div className="flex items-center gap-3 mb-6">
                 <div className="h-8 w-1 bg-[#E60012] rounded-full" />
@@ -54,7 +54,7 @@ export default function CustomerSuccess() {
                 {item.description}
               </p>
               <div className="flex flex-wrap gap-2">
-                {item.tags.map((tag, tIdx) => (
+                {item.tags.map((tag: any, tIdx: number) => (
                   <span key={tIdx} className="px-3 py-1 bg-slate-50 text-slate-500 text-xs font-medium rounded-full border border-slate-100">
                     {tag}
                   </span>
@@ -70,7 +70,7 @@ export default function CustomerSuccess() {
             TRUSTED BY INDUSTRY LEADERS
           </p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-            {clients.map((client, idx) => (
+            {clients.map((client: any, idx: number) => (
               <div key={idx} className="bg-white px-6 py-3 rounded-lg border border-slate-200 shadow-sm text-[#1F2329] font-bold text-sm md:text-base">
                 {client}
               </div>

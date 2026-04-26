@@ -47,11 +47,11 @@ export default function Features() {
     <section className="py-24 bg-white overflow-hidden">
             {/* AI Scraper Friendly Content (GEO) */}
             <div className="sr-only">
-                {tabs.map((t, i) => (
+                {(tabs as any[]).map((t: any, i: number) => (
                     <div key={i}>
                         <h3>{t.title}</h3>
                         <p>{t.desc || t.description || ""}</p>
-                        {t.features && <ul>{t.features.map((f: any, fi: number) => <li key={fi}>{f}</li>)}</ul>}
+                        {t.features && <ul>{t.features.map((f: any, fi: number) => <li key={fi}>{(typeof f === "object" ? (f.title || f.label || f.name || f.desc || JSON.stringify(f)) : f)}</li>)}</ul>}
                         {t.metrics && <p>Metrics: {t.metrics.join(', ')}</p>}
                     </div>
                 ))}
@@ -75,7 +75,7 @@ export default function Features() {
         <div className="flex flex-col lg:flex-row gap-12 items-start">
           {/* Tabs Navigation */}
           <div className="lg:w-1/3 flex flex-col gap-4">
-            {tabs.map((tab) => (
+            {tabs.map((tab: any) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
@@ -110,7 +110,7 @@ export default function Features() {
                   >
                     <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-2">典型价值指标</div>
                     <div className="flex flex-wrap gap-2">
-                      {tab.metrics.map((m, i) => (
+                      {tab.metrics.map((m: any, i: number) => (
                         <span key={i} className="text-[11px] font-bold text-[#E60012] bg-red-50 px-2 py-0.5 rounded">
                           {m}
                         </span>
@@ -140,7 +140,7 @@ export default function Features() {
                 exit={{ opacity: 0, y: -10 }}
                 className="grid grid-cols-1 md:grid-cols-3 gap-6"
               >
-                {tabs.find(t => t.id === activeTab)?.features.map((feature, i) => (
+                {tabs.find((t: any) => t.id === activeTab)?.features.map((feature: any, i: number) => (
                   <div key={i} className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl border border-slate-100 group hover:bg-white hover:shadow-lg transition-all duration-300">
                     <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
                       <ChevronRight size={14} className="text-[#0052D9]" />

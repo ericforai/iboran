@@ -40,7 +40,7 @@ export function ValueSection() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
+          {values.map((value: any, index: number) => (
             <motion.div
               key={value.title}
               initial={{ opacity: 0, y: 20 }}

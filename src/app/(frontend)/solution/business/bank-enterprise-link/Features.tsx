@@ -61,7 +61,7 @@ export default function Features() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {features.map((feature, idx) => (
+          {features.map((feature: any, idx: number) => (
             <div
               key={idx}
               className="flex flex-col md:flex-row bg-[#F7F8FA] rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100"
@@ -78,7 +78,7 @@ export default function Features() {
                   {feature.subtitle}
                 </h4>
                 <ul className="space-y-4">
-                  {feature.items.map((item, i) => (
+                  {feature.items.map((item: any, i: number) => (
                     <li key={i} className="flex items-start gap-3">
                       <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 mt-0.5">
                         <div className="w-2 h-2 rounded-full bg-[#0052D9]" />

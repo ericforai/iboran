@@ -27,7 +27,7 @@ export default function Solution() {
           <p className="text-base sm:text-lg text-slate-600">基于泊冉数智化底座的一体化架构</p>
         </header>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {solutions.map((solution, index) => {
+          {solutions.map((solution: any, index: number) => {
             const Icon = solution.icon
             return (
               <div

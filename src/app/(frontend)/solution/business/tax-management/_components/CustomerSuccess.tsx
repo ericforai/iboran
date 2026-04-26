@@ -19,7 +19,7 @@ export default function CustomerSuccess() {
         <div className="flex flex-wrap justify-center gap-12 mb-20 opacity-60">
            {/* In a real scenario, we would use real logos. Here we use text placeholders for the implementation. 
                The user can replace these with actual Image components later. */}
-           {customers.map((name, idx) => (
+           {customers.map((name: any, idx: number) => (
              <div key={idx} className="text-xl font-bold text-slate-400 border-2 border-slate-100 px-6 py-3 rounded-lg grayscale hover:grayscale-0 hover:border-blue-200 hover:text-blue-600 transition-all cursor-default">
                {name}
              </div>

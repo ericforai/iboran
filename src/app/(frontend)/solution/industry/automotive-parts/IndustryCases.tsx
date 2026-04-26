@@ -50,7 +50,7 @@ export default function IndustryCases() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {cases.map((c, index) => (
+          {cases.map((c: any, index: number) => (
             <motion.div
               key={c.company}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -77,7 +77,7 @@ export default function IndustryCases() {
               </div>
 
               <div className="mt-auto pt-6 border-t border-slate-50 grid grid-cols-2 gap-y-3">
-                {c.results.map((r) => (
+                {c.results.map((r: any) => (
                   <div key={r} className="flex items-center gap-2 text-xs font-bold text-slate-900">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                     {r}

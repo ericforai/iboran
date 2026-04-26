@@ -27,8 +27,8 @@ export async function generateStaticParams() {
   })
 
   const params = solutions.docs
-    .filter((doc) => typeof doc.slug === 'string')
-    .map((doc) => ({ slug: doc.slug as string }))
+    .filter((doc: any) => typeof doc.slug === 'string')
+    .map((doc: any) => ({ slug: doc.slug as string }))
 
   return params
 }
@@ -85,7 +85,7 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
                 <div className="w-12 h-1 bg-red-500 rounded-full"></div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {solution.relatedSuccessStories.map((story, index) => {
+                {solution.relatedSuccessStories.map((story: any, index: number) => {
                   if (typeof story === 'object') {
                     return <StoryCard key={index} doc={story} />
                   }
@@ -102,7 +102,7 @@ export default async function IndustrySolutionPage({ params: paramsPromise }: Ar
                 <div className="w-12 h-1 bg-blue-600 rounded-full"></div>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {resources.docs.map((resource, index) => (
+                {resources.docs.map((resource: any, index: number) => (
                   <ResourceCard key={index} resource={resource} variant="horizontal" />
                 ))}
               </div>

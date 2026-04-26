@@ -37,7 +37,7 @@ export const Hero = () => {
               基于 COP 平台打造，实现从请购、寻源、合同到支付的全流程闭环管理。规范采购流程，强化过程监控，提升供应链协同效率。
             </p>
             <div className="flex flex-wrap gap-4 mb-10">
-              {['降本幅度 [15]%+', '协同效率提升 [30]%+', '合规闭环 [100]%'].map((item) => (
+              {['降本幅度 [15]%+', '协同效率提升 [30]%+', '合规闭环 [100]%'].map((item: any) => (
                 <div key={item} className="flex items-center gap-2 text-slate-700 font-medium">
                   <CheckCircle2 className="w-5 h-5 text-green-500" />
                   {item}

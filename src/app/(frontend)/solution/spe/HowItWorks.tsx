@@ -50,7 +50,7 @@ export default function HowItWorks() {
           {/* Central Architecture Spine */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-50 via-[#0052D9] to-blue-50 -translate-x-1/2 rounded-full opacity-30" />
           
-          {steps.map((step, idx) => (
+          {steps.map((step: any, idx: number) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -80,7 +80,7 @@ export default function HowItWorks() {
                   </p>
                   
                   <div className={`flex flex-wrap gap-2 ${idx % 2 === 0 ? 'lg:justify-end' : 'lg:justify-start'}`}>
-                    {step.details.map((detail, dIdx) => (
+                    {step.details.map((detail: any, dIdx: number) => (
                       <span key={dIdx} className="text-xs font-medium text-slate-500 bg-slate-50 py-1.5 px-3 rounded-full border border-slate-100">
                         {detail}
                       </span>
